@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
 import { ShieldCheck, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { CoverageBar } from "@/components/governance/CoverageBar";
@@ -14,7 +15,9 @@ export const metadata: Metadata = {
 
 export default async function ControlsPage() {
   const actor = await getActor();
-  if (!actor) redirect(LOGIN_PATH);
+  if (!actor) {
+    redirect({ href: LOGIN_PATH, locale: await getLocale() });
+  }
   const report = await computeCoverage(actor);
 
   return (

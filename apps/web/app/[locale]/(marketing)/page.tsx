@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   ShieldCheck,
   FileSearch,
@@ -9,6 +8,7 @@ import {
   FileBarChart,
   ArrowRight,
 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Hero } from "@/components/marketing/Hero";
 import { FeatureGrid } from "@/components/marketing/FeatureGrid";
 import { FrameworkLogoStrip } from "@/components/marketing/FrameworkLogoStrip";

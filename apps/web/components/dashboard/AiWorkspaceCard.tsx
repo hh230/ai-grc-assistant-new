@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Sparkles, FileSearch, GitCompareArrows, ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/Badge";
 
 const ACTIONS = [

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Download, FileText, Loader2, Sparkles, Trash2 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";

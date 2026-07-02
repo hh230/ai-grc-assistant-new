@@ -1,4 +1,8 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
 /** @type {import('next').NextConfig} */
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 // Security headers applied to every response. A pragmatic Content-Security-Policy is used;
 // tightening script-src to a per-request nonce is the recommended production follow-up.
@@ -47,4 +51,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

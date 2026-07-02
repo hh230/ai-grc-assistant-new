@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { LOGIN_PATH } from "@/lib/auth/config";
 import { can, type Action, type ResourceType } from "@/lib/auth/permissions";
 import type { UserRole } from "@/lib/auth/roles";

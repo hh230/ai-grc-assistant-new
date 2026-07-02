@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { AlertTriangle, FileText, Loader2, RefreshCw, Sparkles } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { AnalysisScoreCards } from "@/components/analysis/AnalysisScoreCards";

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import { ArrowLeft, CheckCircle2, CircleDashed } from "lucide-react";
+import { Link, redirect } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { CoverageBar } from "@/components/governance/CoverageBar";
 import { LOGIN_PATH } from "@/lib/auth/config";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function FrameworkDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const actor = await getActor();
-  if (!actor) redirect(LOGIN_PATH);
+  if (!actor) redirect({ href: LOGIN_PATH, locale: await getLocale() });
   const { id } = await params;
   const report = await computeCoverage(actor);
   const framework = findFrameworkCoverage(report, id);

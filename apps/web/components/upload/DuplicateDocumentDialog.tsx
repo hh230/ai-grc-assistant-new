@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Copy } from "lucide-react";
+import { useRouter } from "@/i18n/navigation";
 import { Modal } from "@/components/ui/Modal";
 import { useStartAnalysis } from "@/hooks/useAnalyses";
 import type { DocumentDto } from "@/lib/documents/types";

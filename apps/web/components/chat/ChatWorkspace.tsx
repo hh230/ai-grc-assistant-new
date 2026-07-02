@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import Link from "next/link";
 import {
   ArrowUp,
   FileText,
@@ -11,6 +10,7 @@ import {
   Trash2,
   TriangleAlert,
 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
 import {
   useConversations,

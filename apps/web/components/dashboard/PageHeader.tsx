@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ChevronDown, Download, FileUp } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 export function PageHeader() {
   return (

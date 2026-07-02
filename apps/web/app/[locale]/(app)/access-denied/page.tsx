@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowLeft, ShieldX } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {

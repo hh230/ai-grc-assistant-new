@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ArrowRight, Loader2, Lock, Mail, ShieldHalf, TriangleAlert } from "lucide-react";
+import { useRouter } from "@/i18n/navigation";
 import { DEFAULT_AUTHENTICATED_PATH } from "@/lib/auth/config";
 
 /** Restrict post-login redirects to in-app paths to prevent open-redirect abuse. */

@@ -5,7 +5,8 @@
  */
 
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
 import { ACCESS_DENIED_PATH, LOGIN_PATH, SESSION_COOKIE } from "./config";
 import { can, type Action, type ResourceType } from "./permissions";
 import type { UserRole } from "./roles";
@@ -28,7 +29,9 @@ export async function getSessionUser(): Promise<SessionUser | null> {
 export async function requireSession(nextPath?: string): Promise<SessionPayload> {
   const session = await getSession();
   if (!session) {
-    redirect(nextPath ? `${LOGIN_PATH}?next=${encodeURIComponent(nextPath)}` : LOGIN_PATH);
+    const locale = await getLocale();
+    const href = nextPath ? `${LOGIN_PATH}?next=${encodeURIComponent(nextPath)}` : LOGIN_PATH;
+    redirect({ href, locale });
   }
   return session;
 }
@@ -37,7 +40,8 @@ export async function requireSession(nextPath?: string): Promise<SessionPayload>
 export async function requireRoles(...roles: UserRole[]): Promise<SessionPayload> {
   const session = await requireSession();
   if (!roles.some((role) => session.roles.includes(role))) {
-    redirect(ACCESS_DENIED_PATH);
+    const locale = await getLocale();
+    redirect({ href: ACCESS_DENIED_PATH, locale });
   }
   return session;
 }
@@ -49,7 +53,8 @@ export async function requirePermission(
 ): Promise<SessionPayload> {
   const session = await requireSession();
   if (!can(session.roles, action, resource)) {
-    redirect(ACCESS_DENIED_PATH);
+    const locale = await getLocale();
+    redirect({ href: ACCESS_DENIED_PATH, locale });
   }
   return session;
 }

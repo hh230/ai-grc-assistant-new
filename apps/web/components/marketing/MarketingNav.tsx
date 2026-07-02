@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import type { Route } from "next";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, ShieldHalf, X } from "lucide-react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const LINKS: { label: string; href: Route }[] = [

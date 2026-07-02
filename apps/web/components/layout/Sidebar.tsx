@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ShieldHalf } from "lucide-react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
 import {
   PRIMARY_NAV,

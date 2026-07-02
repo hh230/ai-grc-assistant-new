@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { CheckCircle2, CircleDashed, FileText, Loader2, Search } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
 import { useEvidence } from "@/hooks/useEvidence";

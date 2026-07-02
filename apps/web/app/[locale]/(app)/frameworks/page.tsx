@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import { ChevronRight, Library } from "lucide-react";
+import { Link, redirect } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { CoverageBar } from "@/components/governance/CoverageBar";
 import { LOGIN_PATH } from "@/lib/auth/config";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function FrameworksPage() {
   const actor = await getActor();
-  if (!actor) redirect(LOGIN_PATH);
+  if (!actor) redirect({ href: LOGIN_PATH, locale: await getLocale() });
   const report = await computeCoverage(actor);
 
   return (

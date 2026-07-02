@@ -37,18 +37,22 @@
   "notifications": {
     "title": "الإشعارات",
     "unread": "{count} غير مقروء",
-    "viewAll": "عرض كل النشاط"
+    "viewAll": "عرض كل النشاط",
+    "menuLabel": "الإشعارات",
+    "menuLabelUnread": "الإشعارات، {count} غير مقروءة"
   },
   "orgSwitcher": {
     "activeOrganization": "المؤسسة النشطة",
-    "switchHint": "يتطلب تبديل المؤسسات تسجيل الدخول إلى تلك المؤسسة."
+    "switchHint": "يتطلب تبديل المؤسسات تسجيل الدخول إلى تلك المؤسسة.",
+    "menuLabel": "تبديل المؤسسة، الحالية: {organization}"
   },
   "userMenu": {
     "profile": "الملف الشخصي",
     "preferences": "التفضيلات",
     "security": "الأمان والوصول",
     "signOut": "تسجيل الخروج",
-    "signingOut": "جارٍ تسجيل الخروج…"
+    "signingOut": "جارٍ تسجيل الخروج…",
+    "menuLabel": "قائمة الحساب"
   },
   "dashboard": {
     "needsAttention": {
@@ -82,10 +86,22 @@
       "improvingQoQ": "تحسّن ربع سنوي"
     },
     "kpis": {
-      "frameworksActive": { "label": "الأطر النشطة", "sub": "3 إقليمية · 3 دولية" },
-      "controlsMonitored": { "label": "الضوابط المراقبة", "sub": "94% مرتبطة بأدلة" },
-      "openFindings": { "label": "النتائج المفتوحة", "sub": "7 عالية · 11 متوسطة · 5 منخفضة" },
-      "aiReviews": { "label": "مراجعات الذكاء الاصطناعي هذا الشهر", "sub": "العقود والسياسات والأدلة" }
+      "frameworksActive": {
+        "label": "الأطر النشطة",
+        "sub": "3 إقليمية · 3 دولية"
+      },
+      "controlsMonitored": {
+        "label": "الضوابط المراقبة",
+        "sub": "94% مرتبطة بأدلة"
+      },
+      "openFindings": {
+        "label": "النتائج المفتوحة",
+        "sub": "7 عالية · 11 متوسطة · 5 منخفضة"
+      },
+      "aiReviews": {
+        "label": "مراجعات الذكاء الاصطناعي هذا الشهر",
+        "sub": "العقود والسياسات والأدلة"
+      }
     },
     "executiveSummary": {
       "title": "الملخص التنفيذي",
@@ -168,6 +184,25 @@
         "scheduled": "مجدول",
         "generating": "قيد الإنشاء"
       }
+    }
+  },
+  "aiAssistant": {
+    "pageSubtitle": "تحدّث مع قاعدة معرفة الحوكمة والمخاطر والامتثال لديك. تُستخرج الإجابات من مستندات مؤسستك المفهرسة وتُذكر مصادرها.",
+    "newChat": "محادثة جديدة",
+    "noConversations": "لا توجد محادثات بعد.",
+    "deleteConversation": "حذف المحادثة",
+    "composerPlaceholder": "اسأل عن مستنداتك المرفوعة…",
+    "sendMessage": "إرسال الرسالة",
+    "groundedFooter": "الإجابات مستندة إلى مستندات مؤسستك المفهرسة وتذكر مصادرها.",
+    "sources": "المصادر",
+    "emptyTitle": "اسأل قاعدة معرفة الحوكمة والمخاطر والامتثال",
+    "emptyDescription": "إجابات موثقة من مستنداتك المرفوعة، مع مراجع للمصدر.",
+    "noResponse": "(لا توجد إجابة.)",
+    "suggestions": {
+      "accessControl": "لخّص سياسة ضبط الوصول لدينا.",
+      "frameworksCovered": "ما الأطر التي تغطيها وثائقنا؟",
+      "passwordMfa": "ما متطلبات كلمة المرور والمصادقة متعددة العوامل؟",
+      "iso27001Gaps": "أين الفجوات مقابل ISO 27001؟"
     }
   },
   "marketingNav": {

@@ -25,6 +25,7 @@ export function OrgSwitcher() {
     <Popover
       align="start"
       width={272}
+      ariaLabel={t("menuLabel", { organization: user.organizationName })}
       trigger={() => (
         <span className="flex h-9 items-center gap-2.5 rounded-lg border border-hairline bg-surface/60 ps-2 pe-2.5 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
           <span className="flex h-6 w-6 items-center justify-center rounded-md bg-accent-soft text-2xs font-semibold text-accent-foreground">

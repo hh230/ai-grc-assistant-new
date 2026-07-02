@@ -1,15 +1,13 @@
-"use client";
-
 import { ShieldCheck, Activity } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { ScoreRing } from "@/components/ui/ScoreRing";
 import { TrendPill } from "@/components/ui/TrendPill";
 import { Badge } from "@/components/ui/Badge";
 import { COMPLIANCE_SCORE, RISK_SCORE } from "@/lib/data";
 
-export function ScoreCards() {
-  const t = useTranslations("dashboard.scoreCards");
+export async function ScoreCards() {
+  const t = await getTranslations("dashboard.scoreCards");
 
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">

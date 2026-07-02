@@ -11,6 +11,13 @@ interface PopoverProps {
   /** Width of the panel in pixels. */
   width?: number;
   panelClassName?: string;
+  /**
+   * Accessible name for the trigger button. Required whenever the visible trigger
+   * content is icon-only or a short avatar/initials fragment that wouldn't make sense
+   * read aloud on its own (e.g. "JD" or a bell icon) — screen readers announce this
+   * instead of the trigger's visible text.
+   */
+  ariaLabel?: string;
 }
 
 /**
@@ -24,6 +31,7 @@ export function Popover({
   align = "end",
   width = 288,
   panelClassName,
+  ariaLabel,
 }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -53,6 +61,7 @@ export function Popover({
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label={ariaLabel}
         className="block rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
       >
         {trigger(open)}

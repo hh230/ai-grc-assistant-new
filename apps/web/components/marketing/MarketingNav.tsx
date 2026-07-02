@@ -54,7 +54,7 @@ export function MarketingNav() {
           <LanguageSwitcher />
           <Link
             href="/login"
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             {t("getStarted")}
           </Link>

@@ -1,13 +1,11 @@
-"use client";
-
 import { Sparkles } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { EXECUTIVE_SUMMARY_STATS } from "@/lib/data";
 
-export function ExecutiveSummary() {
-  const t = useTranslations("dashboard.executiveSummary");
+export async function ExecutiveSummary() {
+  const t = await getTranslations("dashboard.executiveSummary");
 
   return (
     <Card grain className="overflow-hidden">

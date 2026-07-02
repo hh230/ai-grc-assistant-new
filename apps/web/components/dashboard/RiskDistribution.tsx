@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RISK_DISTRIBUTION, RISK_SCORE, type RiskSlice } from "@/lib/data";
@@ -19,9 +17,9 @@ const RADIUS = (SIZE - STROKE) / 2;
 const CIRC = 2 * Math.PI * RADIUS;
 const GAP = 2; // px gap between slices for a refined, segmented look
 
-export function RiskDistribution() {
-  const t = useTranslations("dashboard.riskDistribution");
-  const tScoreCards = useTranslations("dashboard.scoreCards");
+export async function RiskDistribution() {
+  const t = await getTranslations("dashboard.riskDistribution");
+  const tScoreCards = await getTranslations("dashboard.scoreCards");
   let cumulative = 0;
 
   return (

@@ -1,11 +1,9 @@
-"use client";
-
 import { ChevronDown, Download, FileUp } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-export function PageHeader() {
-  const t = useTranslations("dashboard.pageHeader");
+export async function PageHeader() {
+  const t = await getTranslations("dashboard.pageHeader");
 
   return (
     <div className="flex flex-col gap-4 pb-7 sm:flex-row sm:items-end sm:justify-between">
@@ -43,7 +41,7 @@ export function PageHeader() {
         {/* Primary CTA — Upload Contract → navigates to the upload experience */}
         <Link
           href="/upload"
-          className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+          className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
         >
           <FileUp className="h-4 w-4" strokeWidth={2} />
           {t("uploadContract")}

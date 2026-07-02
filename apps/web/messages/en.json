@@ -37,18 +37,22 @@
   "notifications": {
     "title": "Notifications",
     "unread": "{count} unread",
-    "viewAll": "View all activity"
+    "viewAll": "View all activity",
+    "menuLabel": "Notifications",
+    "menuLabelUnread": "Notifications, {count} unread"
   },
   "orgSwitcher": {
     "activeOrganization": "Active organization",
-    "switchHint": "Switching organizations requires signing in to that tenant."
+    "switchHint": "Switching organizations requires signing in to that tenant.",
+    "menuLabel": "Switch organization, current: {organization}"
   },
   "userMenu": {
     "profile": "Profile",
     "preferences": "Preferences",
     "security": "Security & access",
     "signOut": "Sign out",
-    "signingOut": "Signing out…"
+    "signingOut": "Signing out…",
+    "menuLabel": "Account menu"
   },
   "dashboard": {
     "needsAttention": {
@@ -82,10 +86,22 @@
       "improvingQoQ": "Improving QoQ"
     },
     "kpis": {
-      "frameworksActive": { "label": "Frameworks active", "sub": "3 regional · 3 international" },
-      "controlsMonitored": { "label": "Controls monitored", "sub": "94% with linked evidence" },
-      "openFindings": { "label": "Open findings", "sub": "7 high · 11 medium · 5 low" },
-      "aiReviews": { "label": "AI reviews this month", "sub": "Contracts, policies & evidence" }
+      "frameworksActive": {
+        "label": "Frameworks active",
+        "sub": "3 regional · 3 international"
+      },
+      "controlsMonitored": {
+        "label": "Controls monitored",
+        "sub": "94% with linked evidence"
+      },
+      "openFindings": {
+        "label": "Open findings",
+        "sub": "7 high · 11 medium · 5 low"
+      },
+      "aiReviews": {
+        "label": "AI reviews this month",
+        "sub": "Contracts, policies & evidence"
+      }
     },
     "executiveSummary": {
       "title": "Executive Summary",
@@ -168,6 +184,25 @@
         "scheduled": "Scheduled",
         "generating": "Generating"
       }
+    }
+  },
+  "aiAssistant": {
+    "pageSubtitle": "Chat with your GRC knowledge base. Answers are retrieved from your tenant's indexed documents and cite their sources.",
+    "newChat": "New chat",
+    "noConversations": "No conversations yet.",
+    "deleteConversation": "Delete conversation",
+    "composerPlaceholder": "Ask about your uploaded documents…",
+    "sendMessage": "Send message",
+    "groundedFooter": "Answers are grounded in your tenant's indexed documents and cite their sources.",
+    "sources": "Sources",
+    "emptyTitle": "Ask your GRC knowledge base",
+    "emptyDescription": "Grounded answers from your uploaded documents, with citations to the source.",
+    "noResponse": "(No response.)",
+    "suggestions": {
+      "accessControl": "Summarize our access control policy.",
+      "frameworksCovered": "Which frameworks does our documentation cover?",
+      "passwordMfa": "What are the password and MFA requirements?",
+      "iso27001Gaps": "Where are the gaps against ISO 27001?"
     }
   },
   "marketingNav": {

@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FileText, Loader2, Sparkles } from "lucide-react";
+import { FileText, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { Skeleton } from "@/components/ui/Skeleton";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { useAnalyses } from "@/hooks/useAnalyses";
 import { useDocuments } from "@/hooks/useDocuments";
@@ -34,9 +35,19 @@ export function AnalysisHistory() {
 
   if (isLoading) {
     return (
-      <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
-        <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-        Loading analyses…
+      <Card flush>
+        <div className="divide-y divide-hairline">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-3.5 px-5 py-3.5">
+              <Skeleton className="h-8 w-8 shrink-0 rounded-lg" />
+              <Skeleton className="h-4 w-48 max-w-[40%]" />
+              <Skeleton className="ms-auto h-5 w-20 rounded-full" />
+              <Skeleton className="h-5 w-20 rounded-full" />
+              <Skeleton className="hidden h-4 w-16 sm:block" />
+              <Skeleton className="hidden h-4 w-20 sm:block" />
+            </div>
+          ))}
+        </div>
       </Card>
     );
   }
@@ -106,14 +117,14 @@ export function AnalysisHistory() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-sm">
             <thead>
-              <tr className="border-b border-hairline text-left text-2xs uppercase tracking-wider text-foreground-muted">
+              <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
                 <th className="px-5 py-2.5 font-medium">Document</th>
                 <th className="px-3 py-2.5 font-medium">Category</th>
                 <th className="px-3 py-2.5 font-medium">Status</th>
                 <th className="px-3 py-2.5 font-medium">Versions</th>
                 <th className="px-3 py-2.5 font-medium">Findings</th>
                 <th className="px-3 py-2.5 font-medium">Analyzed</th>
-                <th className="px-5 py-2.5 text-right font-medium" />
+                <th className="px-5 py-2.5 text-end font-medium" />
               </tr>
             </thead>
             <tbody>
@@ -143,7 +154,7 @@ export function AnalysisHistory() {
                     <td className="px-3 py-3 text-foreground-secondary">
                       v{analysis.version}
                       {analysis.versionCount > 1 && (
-                        <span className="ml-1 text-2xs text-foreground-muted">
+                        <span className="ms-1 text-2xs text-foreground-muted">
                           of {analysis.versionCount}
                         </span>
                       )}
@@ -154,7 +165,7 @@ export function AnalysisHistory() {
                     <td className="px-3 py-3 text-foreground-muted">
                       {formatDate(analysis.createdAt)}
                     </td>
-                    <td className="px-5 py-3 text-right">
+                    <td className="px-5 py-3 text-end">
                       <Link
                         href={`/analysis?doc=${analysis.documentId}`}
                         className="inline-flex h-7 items-center gap-1 rounded-md border border-hairline bg-surface/60 px-2 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"

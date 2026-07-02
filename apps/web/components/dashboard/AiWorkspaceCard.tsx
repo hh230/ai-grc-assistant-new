@@ -1,7 +1,5 @@
-"use client";
-
 import { Sparkles, FileSearch, GitCompareArrows, ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/Badge";
 
@@ -13,8 +11,8 @@ const ACTIONS = [
 const rowClass =
   "group flex w-full items-center gap-3 rounded-xl border border-hairline bg-surface-2/60 px-3.5 py-3 text-start backdrop-blur-sm transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-hover";
 
-export function AiWorkspaceCard() {
-  const t = useTranslations("dashboard.aiWorkspaceCard");
+export async function AiWorkspaceCard() {
+  const t = await getTranslations("dashboard.aiWorkspaceCard");
 
   return (
     <section className="relative overflow-hidden rounded-2xl border border-accent/20 bg-surface p-5 shadow-soft">

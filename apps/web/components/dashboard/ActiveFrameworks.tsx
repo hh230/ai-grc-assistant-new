@@ -1,7 +1,5 @@
-"use client";
-
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -20,7 +18,7 @@ function FrameworkCard({
   t,
 }: {
   framework: ActiveFramework;
-  t: ReturnType<typeof useTranslations>;
+  t: Awaited<ReturnType<typeof getTranslations>>;
 }) {
   const status = statusMeta[framework.status];
   const barTone = framework.status === "compliant" ? "success" : "warning";
@@ -65,8 +63,8 @@ function FrameworkCard({
   );
 }
 
-export function ActiveFrameworks() {
-  const t = useTranslations("dashboard.activeFrameworks");
+export async function ActiveFrameworks() {
+  const t = await getTranslations("dashboard.activeFrameworks");
 
   return (
     <div>

@@ -58,7 +58,7 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
               onClose();
               router.push(`/analysis?doc=${document.id}`);
             }}
-            className="inline-flex h-9 items-center rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+            className="inline-flex h-9 items-center rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             Open previous analysis
           </button>

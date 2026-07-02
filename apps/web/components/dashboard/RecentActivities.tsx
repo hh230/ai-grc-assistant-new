@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ClipboardCheck,
   FileCheck2,
@@ -9,7 +7,7 @@ import {
   FileBarChart,
   type LucideIcon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RECENT_ACTIVITIES, type Activity } from "@/lib/data";
@@ -25,8 +23,8 @@ const kindMeta: Record<Activity["kind"], { icon: LucideIcon; tone: Tone }> = {
   report: { icon: FileBarChart, tone: "warning" },
 };
 
-export function RecentActivities() {
-  const t = useTranslations("dashboard.recentActivities");
+export async function RecentActivities() {
+  const t = await getTranslations("dashboard.recentActivities");
 
   return (
     <Card>

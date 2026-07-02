@@ -1,14 +1,12 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TrendPill } from "@/components/ui/TrendPill";
 import { COMPLIANCE_PROGRESS } from "@/lib/data";
 
-export function ComplianceProgress() {
-  const t = useTranslations("dashboard.complianceProgress");
+export async function ComplianceProgress() {
+  const t = await getTranslations("dashboard.complianceProgress");
 
   return (
     <Card>

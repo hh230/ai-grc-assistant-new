@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -21,8 +19,8 @@ function ScorePill({ score }: { score: number | null }) {
   return <span className={`font-mono text-xs font-medium tabular-nums ${tone}`}>{score}</span>;
 }
 
-export function RecentAssessments() {
-  const t = useTranslations("dashboard.recentAssessments");
+export async function RecentAssessments() {
+  const t = await getTranslations("dashboard.recentAssessments");
 
   return (
     <Card flush>

@@ -6,12 +6,10 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { AnalysisScoreCards } from "@/components/analysis/AnalysisScoreCards";
-import { FindingsList } from "@/components/analysis/FindingsList";
-import { FrameworkChecks } from "@/components/analysis/FrameworkChecks";
-import { StrengthsWeaknesses } from "@/components/analysis/StrengthsWeaknesses";
-import { Recommendations } from "@/components/analysis/Recommendations";
 import { VersionHistory } from "@/components/analysis/VersionHistory";
 import { useAnalysisVersions, useStartAnalysis } from "@/hooks/useAnalyses";
+import { useDocuments } from "@/hooks/useDocuments";
+import { getAnalysisModule } from "@/lib/analysis/modules/registry";
 import type { AnalysisRecord } from "@/lib/analysis/types";
 import { formatNumber } from "@/lib/utils";
 
@@ -141,6 +139,14 @@ function ProcessedAnalysis({
   onRerun: () => void;
   pending: boolean;
 }) {
+  // Adaptive-layout slot (design proposal §8/§12): selects the section set for this
+  // document's category. Empty registry today, so every category renders the same
+  // generic module DefaultModule already did — this lookup has zero visible effect
+  // until a category-specific module is registered.
+  const { data: documents } = useDocuments();
+  const category = documents?.find((doc) => doc.id === analysis.documentId)?.category;
+  const Module = getAnalysisModule(category);
+
   return (
     <div className="space-y-5">
       <Card>
@@ -205,10 +211,7 @@ function ProcessedAnalysis({
         </Card>
       )}
 
-      <StrengthsWeaknesses strengths={analysis.strengths} weaknesses={analysis.weaknesses} />
-      <FrameworkChecks frameworks={analysis.frameworks} />
-      <Recommendations recommendations={analysis.recommendations} />
-      <FindingsList findings={analysis.findings} />
+      <Module analysis={analysis} />
 
       <div className="flex items-center gap-3">
         <Link
@@ -251,7 +254,7 @@ function RunButton({
       className={
         compact
           ? "inline-flex h-8 items-center gap-1.5 rounded-lg border border-hairline bg-surface px-2.5 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground disabled:opacity-60"
-          : "inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 disabled:opacity-60"
+          : "inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
       }
     >
       {pending ? (

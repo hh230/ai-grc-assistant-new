@@ -151,7 +151,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
               type="button"
               disabled={!category}
               onClick={() => setStep("upload")}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 disabled:opacity-40"
+              className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] disabled:opacity-40"
             >
               Continue
               <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />
@@ -195,7 +195,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
             }}
             onDrop={onDrop}
             className={cn(
-              "group flex flex-col items-center justify-center rounded-2xl border-2 border-dashed px-8 py-12 text-center outline-none transition-colors duration-200",
+              "group flex flex-col items-center justify-center rounded-2xl border-2 border-dashed px-8 py-12 text-center outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent/40",
               dragging
                 ? "border-accent/60 bg-accent-soft"
                 : "border-hairline-strong bg-surface hover:border-foreground-muted/40 hover:bg-surface-2",

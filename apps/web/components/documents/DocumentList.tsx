@@ -55,7 +55,7 @@ export function DocumentList({ canDelete }: DocumentListProps) {
       <div className="flex items-center justify-between px-5 py-3.5">
         <h2 className="text-sm font-semibold tracking-tight text-foreground">
           Documents
-          <span className="ml-2 text-2xs font-normal text-foreground-muted">
+          <span className="ms-2 text-2xs font-normal text-foreground-muted">
             {documents.length} total
           </span>
         </h2>
@@ -63,14 +63,14 @@ export function DocumentList({ canDelete }: DocumentListProps) {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[680px] text-sm">
           <thead>
-            <tr className="border-y border-hairline text-left text-2xs uppercase tracking-wider text-foreground-muted">
+            <tr className="border-y border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
               <th className="px-5 py-2.5 font-medium">Document</th>
               <th className="px-3 py-2.5 font-medium">Category</th>
               <th className="px-3 py-2.5 font-medium">Status</th>
               <th className="px-3 py-2.5 font-medium">Size</th>
               <th className="px-3 py-2.5 font-medium">Uploaded by</th>
               <th className="px-3 py-2.5 font-medium">Date</th>
-              <th className="px-5 py-2.5 text-right font-medium">Actions</th>
+              <th className="px-5 py-2.5 text-end font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -153,7 +153,7 @@ function DocumentRow({ doc, canDelete }: { doc: DocumentDto; canDelete: boolean 
               ) : (
                 <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
               )}
-              {confirming && <span className="ml-1">Confirm</span>}
+              {confirming && <span className="ms-1">Confirm</span>}
             </button>
           )}
         </div>

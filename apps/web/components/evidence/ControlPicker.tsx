@@ -28,14 +28,14 @@ export function ControlPicker({ value, onChange }: ControlPickerProps) {
     <div className="rounded-lg border border-hairline bg-surface/40">
       <div className="relative border-b border-hairline">
         <Search
-          className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-foreground-muted"
+          className="pointer-events-none absolute start-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-foreground-muted"
           strokeWidth={1.75}
         />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search controls…"
-          className="h-9 w-full bg-transparent pl-8 pr-3 text-sm text-foreground outline-none placeholder:text-foreground-muted"
+          className="h-9 w-full bg-transparent ps-8 pe-3 text-sm text-foreground outline-none placeholder:text-foreground-muted focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-inset"
         />
       </div>
       <div className="scrollbar-thin max-h-52 overflow-y-auto p-1.5">
@@ -56,7 +56,7 @@ export function ControlPicker({ value, onChange }: ControlPickerProps) {
                     key={control.id}
                     type="button"
                     onClick={() => toggle(control.id)}
-                    className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors duration-150 hover:bg-white/[0.03]"
+                    className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-start transition-colors duration-150 hover:bg-white/[0.03]"
                   >
                     <span
                       className={cn(
@@ -70,7 +70,7 @@ export function ControlPicker({ value, onChange }: ControlPickerProps) {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="text-xs font-medium text-foreground">{control.code}</span>
-                      <span className="ml-1.5 text-xs text-foreground-muted">{control.title}</span>
+                      <span className="ms-1.5 text-xs text-foreground-muted">{control.title}</span>
                     </span>
                   </button>
                 );

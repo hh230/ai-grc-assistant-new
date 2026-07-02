@@ -11,6 +11,7 @@ import {
   Search,
   Tag,
   Trash2,
+  TriangleAlert,
   Upload,
   X,
 } from "lucide-react";
@@ -57,21 +58,21 @@ export function EvidenceWorkspace(permissions: Permissions) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full max-w-sm">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
+            className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
             strokeWidth={1.75}
           />
           <input
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search evidence by title or tag…"
-            className="h-9 w-full rounded-lg border border-hairline bg-surface/60 pl-9 pr-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
+            className="h-9 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
           />
         </div>
         {permissions.canCreate && (
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+            className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
             Add evidence
@@ -177,7 +178,7 @@ function EvidenceRow({
       <button
         type="button"
         onClick={onOpen}
-        className="flex min-w-0 flex-1 items-center gap-3 text-left"
+        className="flex min-w-0 flex-1 items-center gap-3 text-start"
       >
         <KindIcon kind={item.currentVersion?.kind ?? "file"} />
         <div className="min-w-0">
@@ -188,7 +189,7 @@ function EvidenceRow({
         </div>
       </button>
       <div className="flex items-center gap-4 sm:gap-6">
-        <div className="hidden text-right sm:block">
+        <div className="hidden text-end sm:block">
           <p className="text-2xs text-foreground-muted">
             v{item.versionCount} ·{" "}
             {item.currentVersion ? formatBytes(item.currentVersion.sizeBytes) : "—"}
@@ -203,7 +204,7 @@ function EvidenceRow({
             </span>
           </div>
         )}
-        <div className="ml-auto flex items-center gap-1 sm:ml-0">
+        <div className="ms-auto flex items-center gap-1 sm:ms-0">
           {item.currentVersion && (
             <a
               href={`/api/evidence/${item.id}/versions/current/content?download`}
@@ -232,7 +233,7 @@ function EvidenceRow({
               title="Delete"
             >
               <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
-              {confirming && <span className="ml-1">Confirm</span>}
+              {confirming && <span className="ms-1">Confirm</span>}
             </button>
           )}
         </div>
@@ -343,9 +344,10 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
     >
       <form id="add-evidence-form" onSubmit={onSubmit} className="space-y-4">
         {error && (
-          <p className="rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
-            {error}
-          </p>
+          <div className="flex items-start gap-2 rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{error}</span>
+          </div>
         )}
         <label className="block">
           <FieldLabel>Title</FieldLabel>
@@ -379,7 +381,7 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
             type="file"
             accept={EVIDENCE_ACCEPT}
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-            className="block w-full text-sm text-foreground-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-surface-2 file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:bg-surface-hover"
+            className="block w-full text-sm text-foreground-secondary file:me-3 file:rounded-lg file:border-0 file:bg-surface-2 file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:bg-surface-hover"
           />
           <p className="mt-1 text-2xs text-foreground-muted">
             PDF, Word, or image (PNG/JPG) · up to 25 MB

@@ -1,7 +1,5 @@
-"use client";
-
 import { FileText, Download, Clock, Loader2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -22,8 +20,8 @@ function ActionIcon({ status }: { status: ReportItem["status"] }) {
   return <Clock className="h-4 w-4" strokeWidth={1.75} />;
 }
 
-export function ReportsSection() {
-  const t = useTranslations("dashboard.reportsSection");
+export async function ReportsSection() {
+  const t = await getTranslations("dashboard.reportsSection");
 
   return (
     <Card flush>

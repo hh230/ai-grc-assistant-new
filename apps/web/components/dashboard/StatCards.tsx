@@ -1,12 +1,10 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { TrendPill } from "@/components/ui/TrendPill";
 import { KPIS } from "@/lib/data";
 
-export function StatCards() {
-  const t = useTranslations("dashboard.kpis");
+export async function StatCards() {
+  const t = await getTranslations("dashboard.kpis");
 
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">

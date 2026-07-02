@@ -19,6 +19,7 @@ export function NotificationsMenu() {
   return (
     <Popover
       width={332}
+      ariaLabel={unread > 0 ? t("menuLabelUnread", { count: unread }) : t("menuLabel")}
       trigger={() => (
         <span className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-hairline bg-surface/60 text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2 hover:text-foreground">
           <Bell className="h-4 w-4" strokeWidth={1.75} />

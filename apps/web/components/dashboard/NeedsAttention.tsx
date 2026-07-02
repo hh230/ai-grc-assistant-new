@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -14,9 +12,9 @@ import { toneIconClasses } from "@/lib/design/tone";
  * right after the topline scores: "what needs a decision today?" Built entirely from
  * existing tone/badge primitives, no new visual language.
  */
-export function NeedsAttention() {
-  const t = useTranslations("dashboard.needsAttention");
-  const tCategory = useTranslations("dashboard.riskDistribution.categories");
+export async function NeedsAttention() {
+  const t = await getTranslations("dashboard.needsAttention");
+  const tCategory = await getTranslations("dashboard.riskDistribution.categories");
   const items = getNeedsAttentionItems();
 
   if (items.length === 0) return null;

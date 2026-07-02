@@ -24,7 +24,7 @@ export function CTASection({ title, description, ctaLabel, ctaHref = "/login" }:
         </p>
         <Link
           href={ctaHref}
-          className="mt-8 inline-flex h-11 items-center gap-1.5 rounded-lg bg-accent px-5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+          className="mt-8 inline-flex h-11 items-center gap-1.5 rounded-lg bg-accent px-5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
         >
           {ctaLabel ?? t("getStarted")}
           <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />

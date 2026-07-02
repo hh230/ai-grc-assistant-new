@@ -156,7 +156,7 @@ export function RiskRegister(permissions: RiskPermissions) {
                       style={{ width: `${width}%` }}
                     />
                   </div>
-                  <span className="w-5 text-right text-2xs text-foreground-secondary">{count}</span>
+                  <span className="w-5 text-end text-2xs text-foreground-secondary">{count}</span>
                 </div>
               );
             })}
@@ -203,7 +203,7 @@ export function RiskRegister(permissions: RiskPermissions) {
           <button
             type="button"
             onClick={() => setCreating(true)}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 sm:ml-auto"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] sm:ms-auto"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
             New risk
@@ -225,13 +225,18 @@ export function RiskRegister(permissions: RiskPermissions) {
             No risks{" "}
             {statusFilter !== "all" || severityFilter !== "all" ? "match the filters" : "yet"}
           </p>
+          <p className="text-xs text-foreground-muted">
+            {statusFilter !== "all" || severityFilter !== "all"
+              ? "Try a different status or severity filter."
+              : "Identify a risk and score it on the 5×5 matrix to get started."}
+          </p>
         </Card>
       ) : (
         <Card flush>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] text-sm">
               <thead>
-                <tr className="border-b border-hairline text-left text-2xs uppercase tracking-wider text-foreground-muted">
+                <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
                   <th className="px-5 py-2.5 font-medium">Risk</th>
                   <th className="px-3 py-2.5 font-medium">Category</th>
                   <th className="px-3 py-2.5 font-medium">Inherent</th>
@@ -390,7 +395,7 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
             type="submit"
             form="create-risk-form"
             disabled={create.isPending}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow hover:opacity-90 disabled:opacity-60"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
           >
             {create.isPending && <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />}
             Add to register
@@ -400,9 +405,10 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
     >
       <form id="create-risk-form" onSubmit={onSubmit} className="space-y-4">
         {error && (
-          <p className="rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
-            {error}
-          </p>
+          <div className="flex items-start gap-2 rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{error}</span>
+          </div>
         )}
         <label className="block">
           <FieldLabel>Title</FieldLabel>
@@ -546,7 +552,7 @@ function RiskDetailModal({
                   className={cn(
                     "inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-2xs font-medium disabled:opacity-60",
                     isAccept
-                      ? "bg-accent text-white shadow-glow hover:opacity-90"
+                      ? "bg-accent text-white shadow-glow hover:opacity-90 active:scale-[0.98]"
                       : "border border-hairline bg-surface/60 text-foreground-secondary hover:border-hairline-strong hover:text-foreground",
                   )}
                 >
@@ -561,9 +567,10 @@ function RiskDetailModal({
     >
       <div className="space-y-4">
         {error && (
-          <p className="rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
-            {error}
-          </p>
+          <div className="flex items-start gap-2 rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{error}</span>
+          </div>
         )}
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-2xs capitalize text-foreground-secondary">

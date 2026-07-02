@@ -38,7 +38,7 @@ export function ReportsWorkspace() {
               type="button"
               onClick={() => setKind(k)}
               className={cn(
-                "rounded-2xl border p-4 text-left transition-colors duration-150",
+                "rounded-2xl border p-4 text-start transition-colors duration-150",
                 active
                   ? "border-hairline-strong bg-surface-2"
                   : "border-hairline bg-surface hover:border-hairline-strong",
@@ -83,7 +83,7 @@ export function ReportsWorkspace() {
             </a>
             <a
               href={reportExportUrl(kind, "xlsx")}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+              className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
             >
               <FileSpreadsheet className="h-4 w-4" strokeWidth={1.75} />
               Export Excel
@@ -131,7 +131,7 @@ export function ReportsWorkspace() {
                   <div className="overflow-x-auto rounded-xl border border-hairline">
                     <table className="w-full min-w-[520px] text-sm">
                       <thead>
-                        <tr className="border-b border-hairline bg-white/[0.02] text-left text-2xs uppercase tracking-wider text-foreground-muted">
+                        <tr className="border-b border-hairline bg-white/[0.02] text-start text-2xs uppercase tracking-wider text-foreground-muted">
                           {section.table.columns.map((col) => (
                             <th key={col} className="px-4 py-2 font-medium">
                               {col}

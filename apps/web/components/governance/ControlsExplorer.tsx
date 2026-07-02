@@ -40,14 +40,14 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center">
         <div className="relative w-full max-w-xs">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
+            className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
             strokeWidth={1.75}
           />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search controls…"
-            className="h-9 w-full rounded-lg border border-hairline bg-surface/60 pl-9 pr-3 text-sm text-foreground outline-none focus:border-hairline-strong"
+            className="h-9 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none focus:border-hairline-strong"
           />
         </div>
         <select
@@ -78,12 +78,12 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] text-sm">
             <thead>
-              <tr className="border-b border-hairline text-left text-2xs uppercase tracking-wider text-foreground-muted">
+              <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
                 <th className="px-5 py-2.5 font-medium">Control</th>
                 <th className="px-3 py-2.5 font-medium">Framework</th>
                 <th className="px-3 py-2.5 font-medium">Status</th>
                 <th className="px-3 py-2.5 font-medium">Evidence</th>
-                <th className="px-5 py-2.5 text-right font-medium" />
+                <th className="px-5 py-2.5 text-end font-medium" />
               </tr>
             </thead>
             <tbody>
@@ -119,7 +119,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
                     </span>
                   </td>
                   <td className="px-3 py-3 text-foreground-secondary">{control.evidenceCount}</td>
-                  <td className="px-5 py-3 text-right">
+                  <td className="px-5 py-3 text-end">
                     <button
                       type="button"
                       onClick={() => setActiveControl(control.id)}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,9 @@ interface ModalProps {
   size?: "md" | "lg";
 }
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function Modal({
   open,
   onClose,
@@ -23,13 +26,39 @@ export function Modal({
   footer,
   size = "md",
 }: ModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<Element | null>(null);
+
   useEffect(() => {
     if (!open) return;
+    triggerRef.current = document.activeElement;
+    const panel = panelRef.current;
+    const focusable = panel?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
+    (focusable?.[0] ?? panel)?.focus();
+
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+      const nodes = panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      if (triggerRef.current instanceof HTMLElement) triggerRef.current.focus();
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -37,16 +66,18 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto p-4 sm:p-6">
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="animate-modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden
       />
       <div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label={title}
+        tabIndex={-1}
         className={cn(
-          "relative z-10 mt-8 w-full rounded-2xl border border-hairline bg-surface shadow-elevated",
+          "animate-modal-panel relative z-10 mt-8 w-full rounded-2xl border border-hairline bg-surface shadow-elevated focus:outline-none",
           size === "lg" ? "max-w-2xl" : "max-w-lg",
         )}
       >

@@ -98,7 +98,7 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                 <button
                   type="button"
                   onClick={() => onSelect(version.id)}
-                  className="min-w-0 flex-1 text-left"
+                  className="min-w-0 flex-1 text-start"
                 >
                   <p className="truncate text-sm font-medium text-foreground">{version.title}</p>
                   <p className="text-2xs text-foreground-muted">
@@ -157,7 +157,7 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                     ) : (
                       <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
                     )}
-                    {isConfirmingDelete && <span className="ml-1">Confirm</span>}
+                    {isConfirmingDelete && <span className="ms-1">Confirm</span>}
                   </button>
                 </div>
               )}

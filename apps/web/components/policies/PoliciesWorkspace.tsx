@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, FileText, Loader2, Plus, ShieldCheck, Trash2 } from "lucide-react";
+import { CheckCircle2, FileText, Loader2, Plus, ShieldCheck, Trash2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
 import { ControlPicker } from "@/components/evidence/ControlPicker";
@@ -65,7 +65,7 @@ export function PoliciesWorkspace(permissions: PolicyPermissions) {
           <button
             type="button"
             onClick={() => setCreating(true)}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
             New policy
@@ -111,7 +111,7 @@ export function PoliciesWorkspace(permissions: PolicyPermissions) {
 function PolicyRow({ policy, onOpen }: { policy: PolicySummary; onOpen: () => void }) {
   return (
     <Card>
-      <button type="button" onClick={onOpen} className="flex w-full items-center gap-3 text-left">
+      <button type="button" onClick={onOpen} className="flex w-full items-center gap-3 text-start">
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
           <ShieldCheck className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
         </span>
@@ -187,9 +187,10 @@ function CreatePolicyModal({ onClose }: { onClose: () => void }) {
     >
       <form id="create-policy-form" onSubmit={onSubmit} className="space-y-4">
         {error && (
-          <p className="rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
-            {error}
-          </p>
+          <div className="flex items-start gap-2 rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{error}</span>
+          </div>
         )}
         <label className="block">
           <FieldLabel>Title</FieldLabel>
@@ -306,7 +307,7 @@ function PolicyDetailModal({
                   className={cn(
                     "inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-2xs font-medium disabled:opacity-60",
                     isPublish
-                      ? "bg-accent text-white shadow-glow hover:opacity-90"
+                      ? "bg-accent text-white shadow-glow hover:opacity-90 active:scale-[0.98]"
                       : "border border-hairline bg-surface/60 text-foreground-secondary hover:border-hairline-strong hover:text-foreground",
                   )}
                 >
@@ -321,9 +322,10 @@ function PolicyDetailModal({
     >
       <div className="space-y-4">
         {error && (
-          <p className="rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
-            {error}
-          </p>
+          <div className="flex items-start gap-2 rounded-lg border border-danger/30 bg-danger-soft px-3 py-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{error}</span>
+          </div>
         )}
         <div className="flex items-center gap-2">
           <PolicyStatusBadge status={policy.status} />

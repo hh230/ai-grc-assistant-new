@@ -21,6 +21,7 @@ export function UserMenu() {
   return (
     <Popover
       width={248}
+      ariaLabel={t("menuLabel")}
       trigger={() => (
         <span className="flex h-9 items-center gap-2 rounded-lg border border-hairline bg-surface/60 py-1 ps-1 pe-2 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-accent/40 to-accent/10 text-2xs font-semibold text-accent-foreground">

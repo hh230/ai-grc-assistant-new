@@ -10,6 +10,7 @@ import {
   Trash2,
   TriangleAlert,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
 import {
@@ -21,15 +22,11 @@ import { fetchConversation, streamChat } from "@/lib/chat/client";
 import type { ChatMessageRecord, Citation } from "@/lib/chat/types";
 import { cn } from "@/lib/utils";
 
-const SUGGESTIONS = [
-  "Summarize our access control policy.",
-  "Which frameworks does our documentation cover?",
-  "What are the password and MFA requirements?",
-  "Where are the gaps against ISO 27001?",
-];
+const SUGGESTION_KEYS = ["accessControl", "frameworksCovered", "passwordMfa", "iso27001Gaps"] as const;
 
 export function ChatWorkspace() {
   const { user } = useSession();
+  const t = useTranslations("aiAssistant");
   const { data: conversations } = useConversations();
   const refreshConversations = useRefreshConversations();
   const deleteConversation = useDeleteConversation();
@@ -102,7 +99,7 @@ export function ChatWorkspace() {
             {
               id: crypto.randomUUID(),
               role: "assistant",
-              content: accumulated || "(No response.)",
+              content: accumulated || t("noResponse"),
               citations,
               createdAt: new Date().toISOString(),
             },
@@ -138,10 +135,10 @@ export function ChatWorkspace() {
           <button
             type="button"
             onClick={newConversation}
-            className="inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-lg bg-accent text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
+            className="inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-lg bg-accent text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             <MessageSquarePlus className="h-4 w-4" strokeWidth={2} />
-            New chat
+            {t("newChat")}
           </button>
         </div>
         <div className="scrollbar-thin flex-1 space-y-0.5 overflow-y-auto px-2 pb-2">
@@ -156,7 +153,7 @@ export function ChatWorkspace() {
               <button
                 type="button"
                 onClick={() => void openConversation(conversation.id)}
-                className="min-w-0 flex-1 truncate text-left text-foreground-secondary group-hover:text-foreground"
+                className="min-w-0 flex-1 truncate text-start text-foreground-secondary group-hover:text-foreground"
               >
                 {conversation.title}
               </button>
@@ -167,7 +164,7 @@ export function ChatWorkspace() {
                   if (conversation.id === activeId) newConversation();
                 }}
                 className="shrink-0 rounded p-1 text-foreground-muted opacity-0 transition-opacity duration-150 hover:text-danger group-hover:opacity-100"
-                aria-label="Delete conversation"
+                aria-label={t("deleteConversation")}
               >
                 <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
               </button>
@@ -175,7 +172,7 @@ export function ChatWorkspace() {
           ))}
           {(conversations ?? []).length === 0 && (
             <p className="px-2 py-4 text-center text-2xs text-foreground-muted">
-              No conversations yet.
+              {t("noConversations")}
             </p>
           )}
         </div>
@@ -225,7 +222,7 @@ export function ChatWorkspace() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onComposerKeyDown}
               rows={1}
-              placeholder="Ask about your uploaded documents…"
+              placeholder={t("composerPlaceholder")}
               className="scrollbar-thin max-h-32 min-h-[24px] flex-1 resize-none bg-transparent text-sm text-foreground outline-none placeholder:text-foreground-muted"
             />
             <button
@@ -233,7 +230,7 @@ export function ChatWorkspace() {
               onClick={() => void send(input)}
               disabled={streaming || !input.trim()}
               className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-white transition-opacity duration-150 hover:opacity-90 disabled:opacity-40"
-              aria-label="Send message"
+              aria-label={t("sendMessage")}
             >
               {streaming ? (
                 <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />
@@ -243,7 +240,7 @@ export function ChatWorkspace() {
             </button>
           </div>
           <p className="mx-auto mt-2 max-w-2xl text-center text-2xs text-foreground-muted">
-            Answers are grounded in your tenant’s indexed documents and cite their sources.
+            {t("groundedFooter")}
           </p>
         </div>
       </div>
@@ -285,7 +282,7 @@ function ChatBubble({
           <p className="whitespace-pre-wrap break-words">
             {message.content}
             {pending && (
-              <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-accent-foreground align-middle" />
+              <span className="ms-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-accent-foreground align-middle" />
             )}
           </p>
         </div>
@@ -298,10 +295,11 @@ function ChatBubble({
 }
 
 function Citations({ citations }: { citations: Citation[] }) {
+  const t = useTranslations("aiAssistant");
   return (
     <div className="mt-2">
       <p className="mb-1 text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-        Sources
+        {t("sources")}
       </p>
       <div className="flex flex-wrap gap-1.5">
         {citations.map((citation) => (
@@ -322,26 +320,25 @@ function Citations({ citations }: { citations: Citation[] }) {
 }
 
 function EmptyState({ onPick }: { onPick: (suggestion: string) => void }) {
+  const t = useTranslations("aiAssistant");
   return (
     <div className="mx-auto flex max-w-md flex-col items-center pt-10 text-center">
       <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-hairline-strong bg-surface-2 shadow-soft">
         <Sparkles className="h-5 w-5 text-accent-foreground" strokeWidth={1.75} />
       </div>
       <h2 className="mt-4 text-base font-semibold tracking-tight text-foreground">
-        Ask your GRC knowledge base
+        {t("emptyTitle")}
       </h2>
-      <p className="mt-1 text-sm text-foreground-secondary">
-        Grounded answers from your uploaded documents, with citations to the source.
-      </p>
+      <p className="mt-1 text-sm text-foreground-secondary">{t("emptyDescription")}</p>
       <div className="mt-6 grid w-full gap-2">
-        {SUGGESTIONS.map((suggestion) => (
+        {SUGGESTION_KEYS.map((key) => (
           <button
-            key={suggestion}
+            key={key}
             type="button"
-            onClick={() => onPick(suggestion)}
-            className="rounded-lg border border-hairline bg-surface/60 px-3 py-2 text-left text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
+            onClick={() => onPick(t(`suggestions.${key}`))}
+            className="rounded-lg border border-hairline bg-surface/60 px-3 py-2 text-start text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
           >
-            {suggestion}
+            {t(`suggestions.${key}`)}
           </button>
         ))}
       </div>

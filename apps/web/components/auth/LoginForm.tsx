@@ -131,7 +131,7 @@ export function LoginForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-accent text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-accent text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? (
             <>

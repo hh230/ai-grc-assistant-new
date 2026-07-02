@@ -1,0 +1,39 @@
+# ---- Node / Next.js ----
+node_modules/
+.pnpm-store/
+.next/
+out/
+dist/
+*.tsbuildinfo
+.turbo/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+*.egg-info/
+
+# ---- Env & secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.log
+
+# ---- Build / infra ----
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Local document storage (Upload Center)
+.data/

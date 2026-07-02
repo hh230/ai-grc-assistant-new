@@ -1,0 +1,18 @@
+# Base, non-sensitive configuration (CLAUDE.md §22 — secrets never live here).
+app:
+  name: ai-grc-assistant
+  env: default
+
+llm:
+  default_provider: anthropic
+  budgets:
+    max_tokens_per_call: 8000
+    timeout_seconds: 60
+
+rag:
+  retrieval:
+    top_k: 8
+    hybrid: true
+
+tenancy:
+  default_deny: true

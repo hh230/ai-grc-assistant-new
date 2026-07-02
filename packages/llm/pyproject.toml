@@ -1,0 +1,13 @@
+[project]
+name = "grc-llm"
+version = "0.0.0"
+description = "LLM provider abstraction with budgets, retry and fallback."
+requires-python = ">=3.12"
+dependencies = ["openai>=2.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_llm"]

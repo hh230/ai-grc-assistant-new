@@ -1,0 +1,39 @@
+{
+  "id": "framework:nca_ecc",
+  "name": "NCA Essential Cybersecurity Controls",
+  "version": "2.0",
+  "region": "SA",
+  "languages": ["ar", "en"],
+  "controls": [
+    {
+      "id": "nca_ecc:1-1-1",
+      "code": "1-1-1",
+      "title": "Cybersecurity Strategy",
+      "domain": "Cybersecurity Governance",
+      "requirements": [
+        {
+          "code": "1-1-1-1",
+          "text": "A cybersecurity strategy must be defined, documented and approved by the authorizing official."
+        }
+      ],
+      "evidence_expectations": [
+        { "description": "Approved and dated cybersecurity strategy document." }
+      ]
+    },
+    {
+      "id": "nca_ecc:2-1-1",
+      "code": "2-1-1",
+      "title": "Asset Management",
+      "domain": "Cybersecurity Defence",
+      "requirements": [
+        {
+          "code": "2-1-1-1",
+          "text": "Cybersecurity requirements for managing information and technology assets must be defined, documented and approved."
+        }
+      ],
+      "evidence_expectations": [
+        { "description": "Asset register and an approved asset management policy." }
+      ]
+    }
+  ]
+}

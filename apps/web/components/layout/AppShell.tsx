@@ -1,0 +1,74 @@
+"use client";
+
+import { useEffect, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { Topbar } from "@/components/layout/Topbar";
+import { cn } from "@/lib/utils";
+
+interface AppShellProps {
+  children: ReactNode;
+}
+
+/**
+ * The workspace frame: a persistent left navigation, a top bar, and a scrolling
+ * content well. Mounted once in the root layout so the shell does not remount
+ * between routes. Below `lg` the sidebar collapses into an overlay drawer.
+ */
+export function AppShell({ children }: AppShellProps) {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close the drawer whenever the route changes (covers nav clicks and back/forward).
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [pathname]);
+
+  // While the drawer is open, allow Escape to dismiss it.
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setMobileNavOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileNavOpen]);
+
+  return (
+    <div className="flex h-screen overflow-hidden bg-background">
+      {/* Desktop navigation — always present at lg and above */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
+
+      {/* Mobile navigation — overlay drawer below lg */}
+      <div
+        className={cn("fixed inset-0 z-50 lg:hidden", mobileNavOpen ? "" : "pointer-events-none")}
+        aria-hidden={!mobileNavOpen}
+      >
+        <div
+          onClick={() => setMobileNavOpen(false)}
+          className={cn(
+            "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300",
+            mobileNavOpen ? "opacity-100" : "opacity-0",
+          )}
+        />
+        <div
+          className={cn(
+            "absolute inset-y-0 left-0 shadow-elevated transition-transform duration-300 ease-out-soft",
+            mobileNavOpen ? "translate-x-0" : "-translate-x-full",
+          )}
+        >
+          <Sidebar onNavigate={() => setMobileNavOpen(false)} />
+        </div>
+      </div>
+
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Topbar onMenuClick={() => setMobileNavOpen(true)} />
+        <main className="scrollbar-thin flex-1 overflow-y-auto">
+          <div className="mx-auto w-full max-w-[1320px] px-4 py-7 sm:px-6">{children}</div>
+        </main>
+      </div>
+    </div>
+  );
+}

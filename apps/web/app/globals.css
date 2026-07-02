@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens — Version 2, light-first enterprise theme.
+ * Warm, low-saturation palette (cream/warm-white surfaces, dark-brown ink, sand secondary,
+ * a restrained gold accent) inspired by Microsoft Purview / Stripe / Linear / Notion.
+ * See apps/web/DESIGN_SYSTEM.md for usage rules.
+ */
+:root {
+  --bg: #fbf8f3;
+  --canvas: #f5efe6;
+  --surface: #ffffff;
+  --surface-2: #f3ece0;
+  --surface-hover: #efe6d8;
+
+  --border: rgba(59, 44, 31, 0.1);
+  --border-strong: rgba(59, 44, 31, 0.18);
+
+  --text: #2b2015;
+  --text-2: #6b5a47;
+  --text-3: #9c8b78;
+
+  --accent: #5b3a22;
+  --accent-soft: rgba(91, 58, 34, 0.08);
+  --accent-fg: #3d2716;
+
+  --gold: #b8923f;
+  --gold-soft: rgba(184, 146, 63, 0.12);
+
+  --success: #3f8f5c;
+  --success-soft: rgba(63, 143, 92, 0.1);
+
+  --warning: #b8792e;
+  --warning-soft: rgba(184, 121, 46, 0.1);
+
+  --danger: #b23a34;
+  --danger-soft: rgba(178, 58, 52, 0.1);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-feature-settings: "cv11", "ss01";
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: var(--accent-soft);
+    color: var(--accent-fg);
+  }
+}
+
+@layer utilities {
+  /* Subtle, premium scrollbars that match the light surfaces. */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 44, 31, 0.16) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(59, 44, 31, 0.14);
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(59, 44, 31, 0.22);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hairline divider used to separate sections without heavy borders. */
+  .divider-x {
+    height: 1px;
+    background-image: var(--tw-gradient-to, none);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(59, 44, 31, 0.14),
+      transparent
+    );
+  }
+
+  /* Flips direction-sensitive icons (arrows/chevrons) in RTL locales. */
+  .flip-rtl {
+    transform: scaleX(1);
+  }
+  [dir="rtl"] .flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  /* Subtle entrance used by the upload simulation and analysis sections. */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}

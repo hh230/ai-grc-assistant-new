@@ -1,0 +1,17 @@
+{
+  "id": "map:iso_27001_to_nca_ecc",
+  "source_framework": "framework:iso_27001",
+  "target_framework": "framework:nca_ecc",
+  "correspondences": [
+    {
+      "source_control": "iso_27001:A.5.1",
+      "target_control": "nca_ecc:1-1-1",
+      "relation": "related"
+    },
+    {
+      "source_control": "iso_27001:A.8.1",
+      "target_control": "nca_ecc:2-1-1",
+      "relation": "related"
+    }
+  ]
+}

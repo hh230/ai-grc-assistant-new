@@ -1,0 +1,9 @@
+# Default owners for everything (adjust as the team grows).
+*       @ai-grc-assistant/maintainers
+
+# Architecture-critical areas require architect review.
+/CLAUDE.md                      @ai-grc-assistant/architects
+/docs/architecture/             @ai-grc-assistant/architects
+/packages/domain/               @ai-grc-assistant/architects
+/packages/tools/registry/       @ai-grc-assistant/architects
+/frameworks/                    @ai-grc-assistant/compliance

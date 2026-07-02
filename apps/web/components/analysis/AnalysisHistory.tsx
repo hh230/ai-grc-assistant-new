@@ -1,0 +1,174 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { FileText, Loader2, Sparkles } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
+import { useAnalyses } from "@/hooks/useAnalyses";
+import { useDocuments } from "@/hooks/useDocuments";
+import {
+  DOCUMENT_CATEGORIES,
+  DOCUMENT_CATEGORY_LABELS,
+  type DocumentCategory,
+} from "@/lib/documents/types";
+import { cn, formatDate, formatNumber } from "@/lib/utils";
+
+export function AnalysisHistory() {
+  const { data: analyses, isLoading, isError, error } = useAnalyses();
+  const { data: documents } = useDocuments();
+  const [categoryFilter, setCategoryFilter] = useState<DocumentCategory | "all">("all");
+
+  const categoryByDocumentId = useMemo(() => {
+    const map = new Map<string, DocumentCategory>();
+    for (const doc of documents ?? []) map.set(doc.id, doc.category);
+    return map;
+  }, [documents]);
+
+  const filtered = useMemo(() => {
+    if (!analyses) return [];
+    if (categoryFilter === "all") return analyses;
+    return analyses.filter((a) => categoryByDocumentId.get(a.documentId) === categoryFilter);
+  }, [analyses, categoryFilter, categoryByDocumentId]);
+
+  if (isLoading) {
+    return (
+      <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
+        <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
+        Loading analyses…
+      </Card>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Card className="py-10 text-center text-sm text-danger">{(error as Error).message}</Card>
+    );
+  }
+
+  if (!analyses || analyses.length === 0) {
+    return (
+      <Card grain className="flex flex-col items-center gap-3 py-14 text-center">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-hairline-strong bg-surface-2">
+          <Sparkles className="h-5 w-5 text-foreground-muted" strokeWidth={1.75} />
+        </div>
+        <div className="space-y-1">
+          <p className="text-sm font-medium text-foreground">No analyses yet</p>
+          <p className="text-xs text-foreground-muted">
+            Upload a document and run analysis to see results here.
+          </p>
+        </div>
+        <Link
+          href="/upload"
+          className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
+        >
+          <FileText className="h-4 w-4" strokeWidth={1.75} />
+          Go to Upload Center
+        </Link>
+      </Card>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-1.5">
+        <button
+          type="button"
+          onClick={() => setCategoryFilter("all")}
+          className={cn(
+            "rounded-full border px-2.5 py-1 text-2xs font-medium transition-colors duration-150",
+            categoryFilter === "all"
+              ? "border-accent/40 bg-accent-soft text-accent-foreground"
+              : "border-hairline bg-surface text-foreground-secondary hover:border-hairline-strong",
+          )}
+        >
+          All
+        </button>
+        {DOCUMENT_CATEGORIES.map((category) => (
+          <button
+            key={category}
+            type="button"
+            onClick={() => setCategoryFilter(category)}
+            className={cn(
+              "rounded-full border px-2.5 py-1 text-2xs font-medium transition-colors duration-150",
+              categoryFilter === category
+                ? "border-accent/40 bg-accent-soft text-accent-foreground"
+                : "border-hairline bg-surface text-foreground-secondary hover:border-hairline-strong",
+            )}
+          >
+            {DOCUMENT_CATEGORY_LABELS[category]}
+          </button>
+        ))}
+      </div>
+
+      <Card flush>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] text-sm">
+            <thead>
+              <tr className="border-b border-hairline text-left text-2xs uppercase tracking-wider text-foreground-muted">
+                <th className="px-5 py-2.5 font-medium">Document</th>
+                <th className="px-3 py-2.5 font-medium">Category</th>
+                <th className="px-3 py-2.5 font-medium">Status</th>
+                <th className="px-3 py-2.5 font-medium">Versions</th>
+                <th className="px-3 py-2.5 font-medium">Findings</th>
+                <th className="px-3 py-2.5 font-medium">Analyzed</th>
+                <th className="px-5 py-2.5 text-right font-medium" />
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((analysis) => {
+                const category = categoryByDocumentId.get(analysis.documentId);
+                return (
+                  <tr
+                    key={analysis.documentId}
+                    className="border-b border-hairline last:border-0 hover:bg-surface-elevated/60"
+                  >
+                    <td className="px-5 py-3">
+                      <div className="flex items-center gap-2.5">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
+                          <FileText className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
+                        </span>
+                        <span className="truncate font-medium text-foreground">
+                          {analysis.fileName}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      {category && <Badge tone="neutral">{DOCUMENT_CATEGORY_LABELS[category]}</Badge>}
+                    </td>
+                    <td className="px-3 py-3">
+                      <DocumentStatusBadge status={analysis.status} />
+                    </td>
+                    <td className="px-3 py-3 text-foreground-secondary">
+                      v{analysis.version}
+                      {analysis.versionCount > 1 && (
+                        <span className="ml-1 text-2xs text-foreground-muted">
+                          of {analysis.versionCount}
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-3 py-3 text-foreground-secondary">
+                      {formatNumber(analysis.findings.length)}
+                    </td>
+                    <td className="px-3 py-3 text-foreground-muted">
+                      {formatDate(analysis.createdAt)}
+                    </td>
+                    <td className="px-5 py-3 text-right">
+                      <Link
+                        href={`/analysis?doc=${analysis.documentId}`}
+                        className="inline-flex h-7 items-center gap-1 rounded-md border border-hairline bg-surface/60 px-2 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
+                      >
+                        View
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+    </div>
+  );
+}

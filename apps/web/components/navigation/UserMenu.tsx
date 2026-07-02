@@ -1,0 +1,77 @@
+"use client";
+
+import { ChevronDown, Loader2, LogOut, Settings, Shield, User } from "lucide-react";
+import { Popover } from "@/components/ui/Popover";
+import { useSession } from "@/components/auth/SessionProvider";
+import { primaryRole, ROLE_META } from "@/lib/auth/roles";
+
+const MENU = [
+  { label: "Profile", icon: User },
+  { label: "Preferences", icon: Settings },
+  { label: "Security & access", icon: Shield },
+];
+
+export function UserMenu() {
+  const { user, signOut, isSigningOut } = useSession();
+  const role = primaryRole(user.roles);
+  const roleLabel = role ? ROLE_META[role].label : "Member";
+
+  return (
+    <Popover
+      width={248}
+      trigger={() => (
+        <span className="flex h-9 items-center gap-2 rounded-lg border border-hairline bg-surface/60 py-1 pl-1 pr-2 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-accent/40 to-accent/10 text-2xs font-semibold text-accent-foreground">
+            {user.initials}
+          </span>
+          <ChevronDown className="h-3.5 w-3.5 text-foreground-muted" strokeWidth={1.75} />
+        </span>
+      )}
+    >
+      <div className="flex items-center gap-3 border-b border-hairline px-4 py-3">
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent/40 to-accent/10 text-xs font-semibold text-accent-foreground">
+          {user.initials}
+        </span>
+        <span className="min-w-0 leading-tight">
+          <span className="block truncate text-sm font-medium text-foreground">{user.name}</span>
+          <span className="block truncate text-2xs text-foreground-muted">{user.email}</span>
+        </span>
+      </div>
+      <div className="border-b border-hairline px-4 py-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-2 py-0.5 text-2xs font-medium text-accent-foreground">
+          {roleLabel}
+        </span>
+      </div>
+      <div className="py-1.5">
+        {MENU.map((item) => {
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.label}
+              type="button"
+              className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-foreground-secondary transition-colors duration-150 hover:bg-white/[0.03] hover:text-foreground"
+            >
+              <Icon className="h-4 w-4 text-foreground-muted" strokeWidth={1.75} />
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
+      <div className="border-t border-hairline py-1.5">
+        <button
+          type="button"
+          onClick={() => void signOut()}
+          disabled={isSigningOut}
+          className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-foreground-secondary transition-colors duration-150 hover:bg-white/[0.03] hover:text-foreground disabled:opacity-60"
+        >
+          {isSigningOut ? (
+            <Loader2 className="h-4 w-4 animate-spin text-foreground-muted" strokeWidth={1.75} />
+          ) : (
+            <LogOut className="h-4 w-4 text-foreground-muted" strokeWidth={1.75} />
+          )}
+          {isSigningOut ? "Signing out…" : "Sign out"}
+        </button>
+      </div>
+    </Popover>
+  );
+}

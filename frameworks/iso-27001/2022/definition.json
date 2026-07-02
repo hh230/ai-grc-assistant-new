@@ -1,0 +1,39 @@
+{
+  "id": "framework:iso_27001",
+  "name": "ISO/IEC 27001:2022",
+  "version": "2022",
+  "region": "INT",
+  "languages": ["en"],
+  "controls": [
+    {
+      "id": "iso_27001:A.5.1",
+      "code": "A.5.1",
+      "title": "Policies for information security",
+      "domain": "Organizational",
+      "requirements": [
+        {
+          "code": "A.5.1",
+          "text": "Information security policy and topic-specific policies shall be defined, approved by management, published, communicated to and acknowledged by relevant personnel and relevant interested parties."
+        }
+      ],
+      "evidence_expectations": [
+        { "description": "Approved information security policy document with evidence of communication." }
+      ]
+    },
+    {
+      "id": "iso_27001:A.8.1",
+      "code": "A.8.1",
+      "title": "User endpoint devices",
+      "domain": "Technological",
+      "requirements": [
+        {
+          "code": "A.8.1",
+          "text": "Information stored on, processed by or accessible via user endpoint devices shall be protected."
+        }
+      ],
+      "evidence_expectations": [
+        { "description": "Endpoint protection configuration baseline and enforcement records." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# TypeScript/JS workspace members only. Python packages are managed by uv (see pyproject.toml).
+packages:
+  - "apps/web"
+  - "packages/ui"
+  - "packages/contracts"
+  - "packages/i18n"

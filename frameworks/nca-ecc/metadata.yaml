@@ -1,0 +1,6 @@
+# Example metadata (data only — definitions added later).
+id: framework:nca_ecc
+name: NCA Essential Cybersecurity Controls
+region: SA
+languages: [ar, en]
+status: placeholder

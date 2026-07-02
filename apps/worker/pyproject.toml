@@ -1,0 +1,13 @@
+[project]
+name = "grc-app-worker"
+version = "0.0.0"
+description = "Background and scheduled jobs runner; event consumers."
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.9.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/grc_worker"]

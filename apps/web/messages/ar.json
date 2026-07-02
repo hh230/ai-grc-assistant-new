@@ -4,5 +4,50 @@
     "language": "اللغة",
     "switchToArabic": "التبديل إلى العربية",
     "switchToEnglish": "Switch to English"
+  },
+  "nav": {
+    "brandTagline": "الحوكمة · المخاطر · الذكاء الاصطناعي",
+    "badgeNew": "جديد",
+    "groups": {
+      "overview": "نظرة عامة",
+      "governance": "الحوكمة",
+      "riskCompliance": "المخاطر والامتثال"
+    },
+    "items": {
+      "dashboard": "لوحة القيادة التنفيذية",
+      "aiAssistant": "المساعد الذكي",
+      "missions": "المهام",
+      "controls": "الضوابط",
+      "policies": "السياسات",
+      "frameworks": "الأطر",
+      "riskRegister": "سجل المخاطر",
+      "assessments": "التقييمات",
+      "evidence": "الأدلة",
+      "reports": "التقارير",
+      "settings": "الإعدادات",
+      "help": "المساعدة والدعم"
+    }
+  },
+  "topbar": {
+    "newMission": "مهمة جديدة",
+    "searchPlaceholder": "البحث في الضوابط، المخاطر، الأطر…",
+    "openMenu": "فتح قائمة التنقل",
+    "search": "بحث"
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "unread": "{count} غير مقروء",
+    "viewAll": "عرض كل النشاط"
+  },
+  "orgSwitcher": {
+    "activeOrganization": "المؤسسة النشطة",
+    "switchHint": "يتطلب تبديل المؤسسات تسجيل الدخول إلى تلك المؤسسة."
+  },
+  "userMenu": {
+    "profile": "الملف الشخصي",
+    "preferences": "التفضيلات",
+    "security": "الأمان والوصول",
+    "signOut": "تسجيل الخروج",
+    "signingOut": "جارٍ تسجيل الخروج…"
   }
 }

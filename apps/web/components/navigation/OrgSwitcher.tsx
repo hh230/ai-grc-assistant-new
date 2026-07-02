@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, ChevronsUpDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Popover } from "@/components/ui/Popover";
 import { useSession } from "@/components/auth/SessionProvider";
 import { ORGANIZATIONS } from "@/lib/data";
@@ -14,6 +15,7 @@ function monogram(name: string): string {
 
 export function OrgSwitcher() {
   const { user } = useSession();
+  const t = useTranslations("orgSwitcher");
   // The tenant is bound to the authenticated session; the active org reflects it.
   const activeOrg = ORGANIZATIONS.find((org) => org.name === user.organizationName);
   const initials = activeOrg?.initials ?? monogram(user.organizationName);
@@ -24,7 +26,7 @@ export function OrgSwitcher() {
       align="start"
       width={272}
       trigger={() => (
-        <span className="flex h-9 items-center gap-2.5 rounded-lg border border-hairline bg-surface/60 pl-2 pr-2.5 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
+        <span className="flex h-9 items-center gap-2.5 rounded-lg border border-hairline bg-surface/60 ps-2 pe-2.5 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
           <span className="flex h-6 w-6 items-center justify-center rounded-md bg-accent-soft text-2xs font-semibold text-accent-foreground">
             {initials}
           </span>
@@ -38,7 +40,7 @@ export function OrgSwitcher() {
     >
       <div className="px-2 py-1.5">
         <p className="px-2 py-1.5 text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-          Active organization
+          {t("activeOrganization")}
         </p>
         <div className="flex w-full items-center gap-2.5 rounded-lg px-2 py-2">
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-soft text-2xs font-semibold text-accent-foreground">
@@ -52,9 +54,7 @@ export function OrgSwitcher() {
           </span>
           <Check className="h-4 w-4 text-accent-foreground" strokeWidth={2} />
         </div>
-        <p className="px-2 pb-1 pt-2 text-2xs text-foreground-muted">
-          Switching organizations requires signing in to that tenant.
-        </p>
+        <p className="px-2 pb-1 pt-2 text-2xs text-foreground-muted">{t("switchHint")}</p>
       </div>
     </Popover>
   );

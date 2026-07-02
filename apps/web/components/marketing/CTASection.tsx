@@ -1,4 +1,3 @@
-import type { Route } from "next";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
@@ -6,14 +5,14 @@ interface CTASectionProps {
   title: string;
   description: string;
   ctaLabel?: string;
-  ctaHref?: Route;
+  ctaHref?: string;
 }
 
 export function CTASection({
   title,
   description,
   ctaLabel = "Get started",
-  ctaHref = "/login" as Route,
+  ctaHref = "/login",
 }: CTASectionProps) {
   return (
     <section className="border-t border-hairline bg-canvas">

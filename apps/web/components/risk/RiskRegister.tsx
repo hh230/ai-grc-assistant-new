@@ -27,6 +27,7 @@ import {
   type Severity,
 } from "@/lib/risk/types";
 import { cn, formatDate } from "@/lib/utils";
+import { toneBarClasses, tonePillClasses, toneSolidClasses, type Tone } from "@/lib/design/tone";
 
 export interface RiskPermissions {
   canCreate: boolean;
@@ -35,12 +36,27 @@ export interface RiskPermissions {
   canDelete: boolean;
 }
 
-const SEVERITY_STYLE: Record<Severity, { label: string; className: string; bar: string }> = {
-  low: { label: "Low", className: "bg-success-soft text-success", bar: "bg-success" },
-  medium: { label: "Medium", className: "bg-warning-soft text-warning", bar: "bg-warning" },
-  high: { label: "High", className: "bg-danger-soft text-danger", bar: "bg-danger" },
-  critical: { label: "Critical", className: "bg-danger text-white", bar: "bg-danger" },
+const SEVERITY_LABEL: Record<Severity, string> = {
+  low: "Low",
+  medium: "Medium",
+  high: "High",
+  critical: "Critical",
 };
+
+/** Critical reads as a solid-fill badge (more urgent than the standard soft pill) — every
+ * other severity maps straight onto the shared tone vocabulary. */
+const SEVERITY_TONE: Record<Severity, Tone> = {
+  low: "success",
+  medium: "warning",
+  high: "danger",
+  critical: "danger",
+};
+
+function severityBadgeClass(severity: Severity): string {
+  return severity === "critical"
+    ? toneSolidClasses.danger
+    : tonePillClasses[SEVERITY_TONE[severity]];
+}
 
 const STATUS_LABEL: Record<RiskStatus, string> = {
   open: "Open",
@@ -57,15 +73,14 @@ const STATUS_ACTION_LABEL: Record<RiskStatus, string> = {
 };
 
 function SeverityBadge({ severity, score }: { severity: Severity; score: number }) {
-  const style = SEVERITY_STYLE[severity];
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-2xs font-medium",
-        style.className,
+        severityBadgeClass(severity),
       )}
     >
-      {style.label} · {score}
+      {SEVERITY_LABEL[severity]} · {score}
     </span>
   );
 }
@@ -133,11 +148,11 @@ export function RiskRegister(permissions: RiskPermissions) {
               return (
                 <div key={severity} className="flex items-center gap-2">
                   <span className="w-14 text-2xs text-foreground-muted">
-                    {SEVERITY_STYLE[severity].label}
+                    {SEVERITY_LABEL[severity]}
                   </span>
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
                     <div
-                      className={cn("h-full rounded-full", SEVERITY_STYLE[severity].bar)}
+                      className={cn("h-full rounded-full", toneBarClasses[SEVERITY_TONE[severity]])}
                       style={{ width: `${width}%` }}
                     />
                   </div>
@@ -180,7 +195,7 @@ export function RiskRegister(permissions: RiskPermissions) {
           <option value="all">All severities</option>
           {SEVERITIES.map((s) => (
             <option key={s} value={s}>
-              {SEVERITY_STYLE[s].label}
+              {SEVERITY_LABEL[s]}
             </option>
           ))}
         </select>

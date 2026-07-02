@@ -7,7 +7,7 @@ const toneColor: Record<RiskSlice["tone"], string> = {
   warning: "var(--warning)",
   danger: "var(--danger)",
   success: "var(--success)",
-  neutral: "rgba(255,255,255,0.22)",
+  neutral: "var(--neutral)",
 };
 
 const SIZE = 168;

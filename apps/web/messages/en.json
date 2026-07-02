@@ -4,5 +4,50 @@
     "language": "Language",
     "switchToArabic": "التبديل إلى العربية",
     "switchToEnglish": "Switch to English"
+  },
+  "nav": {
+    "brandTagline": "Governance · Risk · AI",
+    "badgeNew": "New",
+    "groups": {
+      "overview": "Overview",
+      "governance": "Governance",
+      "riskCompliance": "Risk & Compliance"
+    },
+    "items": {
+      "dashboard": "Executive Dashboard",
+      "aiAssistant": "AI Assistant",
+      "missions": "Missions",
+      "controls": "Controls",
+      "policies": "Policies",
+      "frameworks": "Frameworks",
+      "riskRegister": "Risk Register",
+      "assessments": "Assessments",
+      "evidence": "Evidence",
+      "reports": "Reports",
+      "settings": "Settings",
+      "help": "Help & Support"
+    }
+  },
+  "topbar": {
+    "newMission": "New mission",
+    "searchPlaceholder": "Search controls, risks, frameworks…",
+    "openMenu": "Open navigation menu",
+    "search": "Search"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "unread": "{count} unread",
+    "viewAll": "View all activity"
+  },
+  "orgSwitcher": {
+    "activeOrganization": "Active organization",
+    "switchHint": "Switching organizations requires signing in to that tenant."
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "security": "Security & access",
+    "signOut": "Sign out",
+    "signingOut": "Signing out…"
   }
 }

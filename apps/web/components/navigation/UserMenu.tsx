@@ -1,26 +1,28 @@
 "use client";
 
 import { ChevronDown, Loader2, LogOut, Settings, Shield, User } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Popover } from "@/components/ui/Popover";
 import { useSession } from "@/components/auth/SessionProvider";
 import { primaryRole, ROLE_META } from "@/lib/auth/roles";
 
 const MENU = [
-  { label: "Profile", icon: User },
-  { label: "Preferences", icon: Settings },
-  { label: "Security & access", icon: Shield },
-];
+  { key: "profile", icon: User },
+  { key: "preferences", icon: Settings },
+  { key: "security", icon: Shield },
+] as const;
 
 export function UserMenu() {
   const { user, signOut, isSigningOut } = useSession();
   const role = primaryRole(user.roles);
   const roleLabel = role ? ROLE_META[role].label : "Member";
+  const t = useTranslations("userMenu");
 
   return (
     <Popover
       width={248}
       trigger={() => (
-        <span className="flex h-9 items-center gap-2 rounded-lg border border-hairline bg-surface/60 py-1 pl-1 pr-2 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
+        <span className="flex h-9 items-center gap-2 rounded-lg border border-hairline bg-surface/60 py-1 ps-1 pe-2 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-accent/40 to-accent/10 text-2xs font-semibold text-accent-foreground">
             {user.initials}
           </span>
@@ -47,12 +49,12 @@ export function UserMenu() {
           const Icon = item.icon;
           return (
             <button
-              key={item.label}
+              key={item.key}
               type="button"
               className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-foreground-secondary transition-colors duration-150 hover:bg-white/[0.03] hover:text-foreground"
             >
               <Icon className="h-4 w-4 text-foreground-muted" strokeWidth={1.75} />
-              {item.label}
+              {t(item.key)}
             </button>
           );
         })}
@@ -69,7 +71,7 @@ export function UserMenu() {
           ) : (
             <LogOut className="h-4 w-4 text-foreground-muted" strokeWidth={1.75} />
           )}
-          {isSigningOut ? "Signing out…" : "Sign out"}
+          {isSigningOut ? t("signingOut") : t("signOut")}
         </button>
       </div>
     </Popover>

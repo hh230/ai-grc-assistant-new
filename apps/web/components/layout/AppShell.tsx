@@ -55,8 +55,11 @@ export function AppShell({ children }: AppShellProps) {
         />
         <div
           className={cn(
-            "absolute inset-y-0 left-0 shadow-elevated transition-transform duration-300 ease-out-soft",
-            mobileNavOpen ? "translate-x-0" : "-translate-x-full",
+            "absolute inset-y-0 start-0 shadow-elevated transition-transform duration-300 ease-out-soft",
+            // Slides in from the "start" edge (left in LTR, right in RTL) — `start-0`
+            // handles the resting position, but Tailwind has no logical translate utility,
+            // so the off-screen direction needs an explicit `rtl:` override.
+            mobileNavOpen ? "translate-x-0" : "-translate-x-full rtl:translate-x-full",
           )}
         >
           <Sidebar onNavigate={() => setMobileNavOpen(false)} />

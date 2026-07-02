@@ -292,7 +292,7 @@ export const RECENT_ACTIVITIES: Activity[] = [
   },
   {
     id: "e4",
-    actor: "AI Workspace",
+    actor: "AI Orchestrator",
     action: "analyzed 18 evidence artifacts for",
     target: "ISO 27001 SoA",
     kind: "ai",

@@ -37,6 +37,12 @@
 
   --danger: #b23a34;
   --danger-soft: rgba(178, 58, 52, 0.1);
+
+  /* Neutral tone (V2-P3 §4) — a warm taupe for categories/statuses with no semantic
+     success/warning/danger meaning. Replaces a leftover dark-theme rgba(255,255,255,.22)
+     that was nearly invisible on the light V2 background. */
+  --neutral: #a99a87;
+  --neutral-soft: rgba(169, 154, 135, 0.14);
 }
 
 @layer base {

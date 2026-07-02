@@ -65,7 +65,7 @@ export function Popover({
             "absolute z-50 mt-2 overflow-hidden rounded-xl border border-hairline-strong",
             "bg-surface-2/85 backdrop-blur-xl shadow-elevated",
             "origin-top",
-            align === "end" ? "right-0" : "left-0",
+            align === "end" ? "end-0" : "start-0",
             panelClassName,
           )}
         >

@@ -28,7 +28,7 @@ export function AiWorkspaceCard() {
         </div>
 
         <h2 className="mt-4 text-base font-semibold tracking-tight text-foreground">
-          AI Workspace
+          AI Orchestrator
         </h2>
         <p className="mt-1.5 text-sm leading-relaxed text-foreground-secondary">
           Orchestrate Knowledge, Compliance, Risk and Report agents to run governed missions — every

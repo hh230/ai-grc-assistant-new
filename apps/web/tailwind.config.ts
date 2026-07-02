@@ -51,6 +51,10 @@ const config: Config = {
           DEFAULT: "var(--danger)",
           soft: "var(--danger-soft)",
         },
+        neutral: {
+          DEFAULT: "var(--neutral)",
+          soft: "var(--neutral-soft)",
+        },
       },
       borderColor: {
         DEFAULT: "var(--border)",
@@ -67,8 +71,16 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
-        // Arabic locale stack, wired up when next-intl lands in V2-P2.
-        "sans-arabic": ["Tajawal", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Arabic locale stack (V2-P3 design proposal §5): IBM Plex Sans Arabic primary,
+        // Noto Sans Arabic fallback — both self-hosted via next/font, see lib/fonts.ts.
+        "sans-arabic": [
+          "var(--font-ibm-plex-sans-arabic)",
+          "var(--font-noto-sans-arabic)",
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
         mono: ["ui-monospace", "SF Mono", "SFMono-Regular", "JetBrains Mono", "Menlo", "monospace"],
       },
       fontSize: {

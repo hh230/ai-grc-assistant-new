@@ -1,8 +1,7 @@
-import type { Route } from "next";
 import { ShieldHalf } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
-const COLUMNS: { title: string; links: { label: string; href: Route }[] }[] = [
+const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Product",
     links: [

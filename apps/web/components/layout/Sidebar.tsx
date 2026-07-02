@@ -1,6 +1,7 @@
 "use client";
 
 import { ShieldHalf } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
 import {
@@ -15,11 +16,13 @@ import { cn } from "@/lib/utils";
 interface NavRowProps {
   item: NavLink;
   active: boolean;
+  label: string;
+  badgeLabel?: string;
   /** Invoked after navigation — used to close the mobile drawer. */
   onNavigate?: () => void;
 }
 
-function NavRow({ item, active, onNavigate }: NavRowProps) {
+function NavRow({ item, active, label, badgeLabel, onNavigate }: NavRowProps) {
   const Icon = item.icon;
   return (
     <Link
@@ -42,17 +45,17 @@ function NavRow({ item, active, onNavigate }: NavRowProps) {
         )}
         strokeWidth={1.75}
       />
-      <span className="truncate">{item.label}</span>
+      <span className="truncate">{label}</span>
       {item.badge && (
         <span
           className={cn(
-            "ml-auto rounded-full px-1.5 py-0.5 text-2xs font-medium",
+            "ms-auto rounded-full px-1.5 py-0.5 text-2xs font-medium",
             active || item.badge === "New"
               ? "bg-accent-soft text-accent-foreground"
               : "bg-white/[0.05] text-foreground-muted",
           )}
         >
-          {item.badge}
+          {badgeLabel ?? item.badge}
         </span>
       )}
     </Link>
@@ -68,6 +71,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
   const pathname = usePathname();
   const { user } = useSession();
   const roles = user.roles;
+  const t = useTranslations("nav");
 
   // Hide nav items (and any group left empty) the current role may not access.
   const groups = PRIMARY_NAV.map((group) => ({
@@ -77,7 +81,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
   const footerItems = FOOTER_NAV.filter((item) => canSeeNavItem(item, roles));
 
   return (
-    <aside className="flex h-full w-[248px] shrink-0 flex-col border-r border-hairline bg-canvas">
+    <aside className="flex h-full w-[248px] shrink-0 flex-col border-e border-hairline bg-canvas">
       {/* Brand — also the fastest route to the dashboard */}
       <Link href="/dashboard" onClick={onNavigate} className="flex h-16 items-center gap-2.5 px-5">
         <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-hairline-strong bg-surface-2 shadow-soft">
@@ -85,7 +89,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
         </div>
         <div className="leading-tight">
           <p className="text-sm font-semibold tracking-tight text-foreground">Sentinel GRC</p>
-          <p className="text-2xs text-foreground-muted">Governance · Risk · AI</p>
+          <p className="text-2xs text-foreground-muted">{t("brandTagline")}</p>
         </div>
       </Link>
 
@@ -94,15 +98,17 @@ export function Sidebar({ onNavigate }: SidebarProps) {
       {/* Primary navigation */}
       <nav className="scrollbar-thin flex-1 space-y-6 overflow-y-auto px-3 py-5">
         {groups.map((group) => (
-          <div key={group.label}>
+          <div key={group.labelKey}>
             <p className="px-2.5 pb-1.5 text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-              {group.label}
+              {t(`groups.${group.labelKey}`)}
             </p>
             <div className="space-y-0.5">
               {group.items.map((item) => (
                 <NavRow
                   key={item.href}
                   item={item}
+                  label={t(`items.${item.labelKey}`)}
+                  badgeLabel={item.badge === "New" ? t("badgeNew") : undefined}
                   active={isNavItemActive(pathname, item.href)}
                   onNavigate={onNavigate}
                 />
@@ -119,6 +125,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
             <NavRow
               key={item.href}
               item={item}
+              label={t(`items.${item.labelKey}`)}
               active={isNavItemActive(pathname, item.href)}
               onNavigate={onNavigate}
             />

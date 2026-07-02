@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { Route } from "next";
 import { Menu, ShieldHalf, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
+import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
-const LINKS: { label: string; href: Route }[] = [
+const LINKS: { label: string; href: string }[] = [
   { label: "Product", href: "/product" },
   { label: "Features", href: "/features" },
   { label: "Frameworks", href: "/frameworks-supported" },
@@ -49,7 +49,7 @@ export function MarketingNav() {
         </nav>
 
         <div className="ms-auto hidden items-center gap-2 lg:flex">
-          <LanguageSwitcherPlaceholder />
+          <LanguageSwitcher />
           <Link
             href="/login"
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
@@ -98,25 +98,12 @@ export function MarketingNav() {
             >
               Get started
             </Link>
+            <div className="mt-2">
+              <LanguageSwitcher />
+            </div>
           </nav>
         </div>
       )}
     </header>
-  );
-}
-
-/**
- * Reserves the switcher's position in the nav so V2-P2's real EN/AR toggle (next-intl)
- * drops in without a layout shift. Presentational only until locale routing lands.
- */
-function LanguageSwitcherPlaceholder() {
-  return (
-    <span
-      className="inline-flex h-9 items-center rounded-lg border border-hairline px-3 text-xs font-medium text-foreground-muted"
-      aria-hidden
-      title="Language switching lands in the next milestone"
-    >
-      EN
-    </span>
   );
 }

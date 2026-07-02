@@ -11,14 +11,15 @@ import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RECENT_ACTIVITIES, type Activity } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { toneIconClasses, type Tone } from "@/lib/design/tone";
 
-const kindMeta: Record<Activity["kind"], { icon: LucideIcon; tone: string }> = {
-  assessment: { icon: ClipboardCheck, tone: "text-success bg-success-soft" },
-  policy: { icon: FileCheck2, tone: "text-accent-foreground bg-accent-soft" },
-  risk: { icon: TriangleAlert, tone: "text-danger bg-danger-soft" },
-  ai: { icon: Sparkles, tone: "text-accent-foreground bg-accent-soft" },
-  evidence: { icon: FileUp, tone: "text-foreground-secondary bg-white/[0.05]" },
-  report: { icon: FileBarChart, tone: "text-warning bg-warning-soft" },
+const kindMeta: Record<Activity["kind"], { icon: LucideIcon; tone: Tone }> = {
+  assessment: { icon: ClipboardCheck, tone: "success" },
+  policy: { icon: FileCheck2, tone: "accent" },
+  risk: { icon: TriangleAlert, tone: "danger" },
+  ai: { icon: Sparkles, tone: "accent" },
+  evidence: { icon: FileUp, tone: "neutral" },
+  report: { icon: FileBarChart, tone: "warning" },
 };
 
 export function RecentActivities() {
@@ -53,7 +54,7 @@ export function RecentActivities() {
               <span
                 className={cn(
                   "relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg",
-                  meta.tone,
+                  toneIconClasses[meta.tone],
                 )}
               >
                 <Icon className="h-4 w-4" strokeWidth={1.75} />

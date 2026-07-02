@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import type { Route } from "next";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -8,8 +7,9 @@ interface HeroProps {
   eyebrow?: string;
   title: string;
   description: string;
-  primaryCta?: { label: string; href: Route };
-  secondaryCta?: { label: string; href: Route };
+  // Locale-agnostic logical path — see the comment on NavLink.href in lib/navigation.ts.
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
   children?: ReactNode;
   className?: string;
 }

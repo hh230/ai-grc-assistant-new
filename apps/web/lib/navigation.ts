@@ -1,4 +1,3 @@
-import type { Route } from "next";
 import {
   LayoutDashboard,
   ShieldCheck,
@@ -24,8 +23,18 @@ import { can, type Action, type ResourceType } from "@/lib/auth/permissions";
  */
 
 export interface NavLink {
+  /** English fallback label — kept for non-translated contexts (metadata, tests). */
   label: string;
-  href: Route;
+  /** Key into the `nav.items` next-intl namespace (messages/{locale}.json); Sidebar
+   * renders `t(labelKey)` so nav copy is locale-aware. */
+  labelKey: string;
+  /**
+   * Locale-agnostic logical path (e.g. "/dashboard") — rendered through `@/i18n/navigation`'s
+   * `Link`, which prefixes the current locale. Typed as `string`, not Next's `Route` brand:
+   * `typedRoutes` validates against the literal `/[locale]/...` file-system routes, which
+   * would force every nav href to be written with a hardcoded locale segment.
+   */
+  href: string;
   icon: LucideIcon;
   /** Small count/status pill (e.g. "7", "New"). Presentational only in P1. */
   badge?: string;
@@ -37,41 +46,74 @@ export interface NavLink {
 
 export interface NavGroup {
   label: string;
+  /** Key into the `nav.groups` next-intl namespace. */
+  labelKey: string;
   items: NavLink[];
 }
 
 export const PRIMARY_NAV: NavGroup[] = [
   {
     label: "Overview",
+    labelKey: "overview",
     items: [
-      { label: "Executive Dashboard", href: "/dashboard", icon: LayoutDashboard },
-      { label: "AI Workspace", href: "/workspace", icon: Sparkles, badge: "New" },
-      { label: "Missions", href: "/missions", icon: Workflow },
+      {
+        label: "Executive Dashboard",
+        labelKey: "dashboard",
+        href: "/dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        label: "AI Assistant",
+        labelKey: "aiAssistant",
+        href: "/workspace",
+        icon: Sparkles,
+        badge: "New",
+      },
+      { label: "Missions", labelKey: "missions", href: "/missions", icon: Workflow },
     ],
   },
   {
     label: "Governance",
+    labelKey: "governance",
     items: [
-      { label: "Controls", href: "/controls", icon: ShieldCheck },
-      { label: "Policies", href: "/policies", icon: FileText },
-      { label: "Frameworks", href: "/frameworks", icon: Library },
+      { label: "Controls", labelKey: "controls", href: "/controls", icon: ShieldCheck },
+      { label: "Policies", labelKey: "policies", href: "/policies", icon: FileText },
+      { label: "Frameworks", labelKey: "frameworks", href: "/frameworks", icon: Library },
     ],
   },
   {
     label: "Risk & Compliance",
+    labelKey: "riskCompliance",
     items: [
-      { label: "Risk Register", href: "/risk-register", icon: TriangleAlert, badge: "7" },
-      { label: "Assessments", href: "/assessments", icon: ClipboardList },
-      { label: "Evidence", href: "/evidence", icon: FolderArchive },
-      { label: "Reports", href: "/reports", icon: FileText },
+      {
+        label: "Risk Register",
+        labelKey: "riskRegister",
+        href: "/risk-register",
+        icon: TriangleAlert,
+        badge: "7",
+      },
+      {
+        label: "Assessments",
+        labelKey: "assessments",
+        href: "/assessments",
+        icon: ClipboardList,
+      },
+      { label: "Evidence", labelKey: "evidence", href: "/evidence", icon: FolderArchive },
+      { label: "Reports", labelKey: "reports", href: "/reports", icon: FileText },
     ],
   },
 ];
 
 export const FOOTER_NAV: NavLink[] = [
   // Workspace administration is restricted to owners and admins (matches the server guard).
-  { label: "Settings", href: "/settings", icon: Settings, requiredRoles: ["owner", "admin"] },
-  { label: "Help & Support", href: "/help", icon: LifeBuoy },
+  {
+    label: "Settings",
+    labelKey: "settings",
+    href: "/settings",
+    icon: Settings,
+    requiredRoles: ["owner", "admin"],
+  },
+  { label: "Help & Support", labelKey: "help", href: "/help", icon: LifeBuoy },
 ];
 
 /**

@@ -67,8 +67,12 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
-  // Run on everything except auth endpoints, Next internals, and static assets.
+  // Run on page routes only — never `/api/*`. API routes are not locale-prefixed pages
+  // (each handler does its own auth via `getActor()`/`requireSession()`); routing them
+  // through next-intl's locale negotiation was redirecting every call to
+  // `/{locale}/api/...`, a path with no matching route, breaking every client-side fetch
+  // app-wide (surfaced while capturing product screenshots for the marketing page).
   matcher: [
-    "/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],
 };

@@ -4,14 +4,13 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname } from "@/i18n/navigation";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
+import { CommandPalette } from "@/components/search/CommandPalette";
+import { useFocusTrap } from "@/lib/hooks/useFocusTrap";
 import { cn } from "@/lib/utils";
 
 interface AppShellProps {
   children: ReactNode;
 }
-
-const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
  * The workspace frame: a persistent left navigation, a top bar, and a scrolling
@@ -20,48 +19,27 @@ const FOCUSABLE_SELECTOR =
  */
 export function AppShell({ children }: AppShellProps) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
   const drawerRef = useRef<HTMLDivElement>(null);
-  const menuTriggerRef = useRef<Element | null>(null);
+  useFocusTrap(drawerRef, mobileNavOpen, () => setMobileNavOpen(false));
 
   // Close the drawer whenever the route changes (covers nav clicks and back/forward).
   useEffect(() => {
     setMobileNavOpen(false);
   }, [pathname]);
 
-  // While the drawer is open: move focus into it, trap Tab, allow Escape to dismiss,
-  // and restore focus to whatever opened it on close (same pattern as `Modal`).
+  // ⌘K / Ctrl+K opens the global command palette from anywhere in the workspace.
   useEffect(() => {
-    if (!mobileNavOpen) return;
-    menuTriggerRef.current = document.activeElement;
-    const drawer = drawerRef.current;
-    const focusable = drawer?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    focusable?.[0]?.focus();
-
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setMobileNavOpen(false);
-        return;
-      }
-      if (event.key !== "Tab" || !drawer) return;
-      const nodes = drawer.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-      const first = nodes[0];
-      const last = nodes[nodes.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
+        setSearchOpen(true);
       }
     }
     document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      if (menuTriggerRef.current instanceof HTMLElement) menuTriggerRef.current.focus();
-    };
-  }, [mobileNavOpen]);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -99,11 +77,13 @@ export function AppShell({ children }: AppShellProps) {
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col" aria-hidden={mobileNavOpen || undefined}>
-        <Topbar onMenuClick={() => setMobileNavOpen(true)} />
+        <Topbar onMenuClick={() => setMobileNavOpen(true)} onSearchClick={() => setSearchOpen(true)} />
         <main className="scrollbar-thin flex-1 overflow-y-auto">
           <div className="mx-auto w-full max-w-[1320px] px-4 py-7 sm:px-6">{children}</div>
         </main>
       </div>
+
+      <CommandPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }

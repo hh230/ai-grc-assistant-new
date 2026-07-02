@@ -11,9 +11,11 @@ import { UserMenu } from "@/components/navigation/UserMenu";
 interface TopbarProps {
   /** Opens the mobile navigation drawer (only shown below the `lg` breakpoint). */
   onMenuClick: () => void;
+  /** Opens the global command palette (also reachable via ⌘K / Ctrl+K anywhere). */
+  onSearchClick: () => void;
 }
 
-export function Topbar({ onMenuClick }: TopbarProps) {
+export function Topbar({ onMenuClick, onSearchClick }: TopbarProps) {
   const t = useTranslations("topbar");
 
   return (
@@ -32,7 +34,7 @@ export function Topbar({ onMenuClick }: TopbarProps) {
         <OrgSwitcher />
         <div className="mx-1 hidden h-5 w-px bg-hairline lg:block" />
         <div className="flex flex-1 justify-center lg:justify-start">
-          <SearchBar />
+          <SearchBar onClick={onSearchClick} />
         </div>
         <div className="flex items-center gap-2">
           <button

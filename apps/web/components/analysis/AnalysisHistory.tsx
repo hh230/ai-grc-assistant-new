@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { useAnalyses } from "@/hooks/useAnalyses";
 import { useDocuments } from "@/hooks/useDocuments";
@@ -136,7 +137,17 @@ export function AnalysisHistory() {
                     className="border-b border-hairline last:border-0 hover:bg-surface-elevated/60"
                   >
                     <td className="px-5 py-3">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <FavoriteButton
+                          item={{
+                            id: analysis.documentId,
+                            type: "document",
+                            title: analysis.fileName,
+                            subtitle: category ? DOCUMENT_CATEGORY_LABELS[category] : undefined,
+                            href: `/analysis?doc=${analysis.documentId}`,
+                          }}
+                          className="-ms-1.5"
+                        />
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
                           <FileText className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
                         </span>

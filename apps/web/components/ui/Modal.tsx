@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useFocusTrap } from "@/lib/hooks/useFocusTrap";
 
 interface ModalProps {
   open: boolean;
@@ -14,9 +15,6 @@ interface ModalProps {
   size?: "md" | "lg";
 }
 
-const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
 export function Modal({
   open,
   onClose,
@@ -27,39 +25,7 @@ export function Modal({
   size = "md",
 }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<Element | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    triggerRef.current = document.activeElement;
-    const panel = panelRef.current;
-    const focusable = panel?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    (focusable?.[0] ?? panel)?.focus();
-
-    function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !panel) return;
-      const nodes = panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-      const first = nodes[0];
-      const last = nodes[nodes.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      if (triggerRef.current instanceof HTMLElement) triggerRef.current.focus();
-    };
-  }, [open, onClose]);
+  useFocusTrap(panelRef, open, onClose);
 
   if (!open) return null;
 

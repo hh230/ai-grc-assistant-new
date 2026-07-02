@@ -1,11 +1,14 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2, Plus, ShieldAlert, Trash2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { ControlPicker } from "@/components/evidence/ControlPicker";
 import { getControl } from "@/lib/frameworks/catalog";
+import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import {
   useCreateRisk,
   useDeleteRisk,
@@ -89,10 +92,20 @@ const SEVERITIES: Severity[] = ["critical", "high", "medium", "low"];
 
 export function RiskRegister(permissions: RiskPermissions) {
   const { data: risks, isLoading } = useRisks();
+  const searchParams = useSearchParams();
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [creating, setCreating] = useState(false);
   const [detailId, setDetailId] = useState<string | null>(null);
+
+  // Deep-link support for Global Search results (`/risk-register?open=<id>`) — risks don't
+  // have their own route, only this list + detail-modal pattern, so a search result opens
+  // the modal instead of landing on a dead page.
+  useEffect(() => {
+    const openId = searchParams.get("open");
+    if (openId) setDetailId(openId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const stats = useMemo(() => {
     const list = risks ?? [];
@@ -253,10 +266,24 @@ export function RiskRegister(permissions: RiskPermissions) {
                     onClick={() => setDetailId(risk.id)}
                   >
                     <td className="px-5 py-3">
-                      <p className="font-medium text-foreground">{risk.title}</p>
-                      <p className="text-2xs text-foreground-muted">
-                        {risk.controlCount} mitigating controls
-                      </p>
+                      <div className="flex items-center gap-1.5">
+                        <FavoriteButton
+                          item={{
+                            id: risk.id,
+                            type: "risk",
+                            title: risk.title,
+                            subtitle: risk.ownerName,
+                            href: `/risk-register?open=${risk.id}`,
+                          }}
+                          className="-ms-1.5"
+                        />
+                        <div className="min-w-0">
+                          <p className="truncate font-medium text-foreground">{risk.title}</p>
+                          <p className="text-2xs text-foreground-muted">
+                            {risk.controlCount} mitigating controls
+                          </p>
+                        </div>
+                      </div>
                     </td>
                     <td className="px-3 py-3 capitalize text-foreground-secondary">
                       {risk.category.replace("_", " ")}
@@ -486,6 +513,17 @@ function RiskDetailModal({
   const remove = useDeleteRisk();
   const [error, setError] = useState<string | null>(null);
   const [plan, setPlan] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!risk) return;
+    recordVisit({
+      id: risk.id,
+      type: "risk",
+      title: risk.title,
+      subtitle: risk.ownerName,
+      href: `/risk-register?open=${risk.id}`,
+    });
+  }, [risk]);
 
   if (isLoading || !risk) {
     return (

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle2, FileText, Loader2, Plus, ShieldCheck, Trash2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { ControlPicker } from "@/components/evidence/ControlPicker";
 import {
   useCreatePolicy,
@@ -15,6 +17,7 @@ import {
 } from "@/hooks/usePolicies";
 import { getControl } from "@/lib/frameworks/catalog";
 import { POLICY_TRANSITIONS, type PolicyStatus, type PolicySummary } from "@/lib/policies/types";
+import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import { cn, formatDate } from "@/lib/utils";
 
 export interface PolicyPermissions {
@@ -54,8 +57,15 @@ export function PolicyStatusBadge({ status }: { status: PolicyStatus }) {
 
 export function PoliciesWorkspace(permissions: PolicyPermissions) {
   const { data: policies, isLoading } = usePolicies();
+  const searchParams = useSearchParams();
   const [creating, setCreating] = useState(false);
   const [detailId, setDetailId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const openId = searchParams.get("open");
+    if (openId) setDetailId(openId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="space-y-5">
@@ -111,19 +121,34 @@ export function PoliciesWorkspace(permissions: PolicyPermissions) {
 function PolicyRow({ policy, onOpen }: { policy: PolicySummary; onOpen: () => void }) {
   return (
     <Card>
-      <button type="button" onClick={onOpen} className="flex w-full items-center gap-3 text-start">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
-          <ShieldCheck className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium text-foreground">{policy.title}</p>
-          <p className="truncate text-2xs text-foreground-muted">
-            {policy.ownerName} · {policy.controlCount} controls · Updated{" "}
-            {formatDate(policy.updatedAt)}
-          </p>
-        </div>
-        <PolicyStatusBadge status={policy.status} />
-      </button>
+      <div className="flex w-full items-center gap-3">
+        <FavoriteButton
+          item={{
+            id: policy.id,
+            type: "policy",
+            title: policy.title,
+            subtitle: policy.ownerName,
+            href: `/policies?open=${policy.id}`,
+          }}
+        />
+        <button
+          type="button"
+          onClick={onOpen}
+          className="flex min-w-0 flex-1 items-center gap-3 text-start"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
+            <ShieldCheck className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-medium text-foreground">{policy.title}</p>
+            <p className="truncate text-2xs text-foreground-muted">
+              {policy.ownerName} · {policy.controlCount} controls · Updated{" "}
+              {formatDate(policy.updatedAt)}
+            </p>
+          </div>
+          <PolicyStatusBadge status={policy.status} />
+        </button>
+      </div>
     </Card>
   );
 }
@@ -246,6 +271,17 @@ function PolicyDetailModal({
   const [editingControls, setEditingControls] = useState(false);
   const [draftControls, setDraftControls] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!policy) return;
+    recordVisit({
+      id: policy.id,
+      type: "policy",
+      title: policy.title,
+      subtitle: policy.ownerName,
+      href: `/policies?open=${policy.id}`,
+    });
+  }, [policy]);
 
   if (isLoading || !policy) {
     return (

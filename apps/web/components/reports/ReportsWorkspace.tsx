@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   BarChart3,
   FileDown,
@@ -22,8 +23,17 @@ const ICON: Record<ReportKind, typeof BarChart3> = {
   risk: TriangleAlert,
 };
 
+function isReportKind(value: string | null): value is ReportKind {
+  return (REPORT_KINDS as readonly string[]).includes(value ?? "");
+}
+
 export function ReportsWorkspace() {
-  const [kind, setKind] = useState<ReportKind>("executive");
+  const searchParams = useSearchParams();
+  // Deep-link support for Global Search results (`/reports?kind=<kind>`).
+  const initialKind = searchParams.get("kind");
+  const [kind, setKind] = useState<ReportKind>(
+    isReportKind(initialKind) ? initialKind : "executive",
+  );
   const { data: report, isLoading, isError, error } = useReport(kind);
 
   return (

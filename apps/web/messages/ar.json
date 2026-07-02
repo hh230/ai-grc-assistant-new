@@ -364,5 +364,54 @@
       "viewer": "مشاهد"
     },
     "footer": "© {year} سنتينل GRC · إصدار المؤسسات"
+  },
+  "search": {
+    "title": "بحث",
+    "placeholder": "ابحث في المستندات والتحليلات والسياسات والمخاطر…",
+    "quickActions": "إجراءات سريعة",
+    "recentDocuments": "أحدث المستندات",
+    "recentAnalyses": "أحدث التحليلات",
+    "clearRecent": "مسح",
+    "emptyTitle": "لا توجد نتائج",
+    "emptyDescription": "لا توجد نتائج لـ “{query}”. جرّب مصطلح بحث آخر.",
+    "partialError": "قد تكون بعض النتائج غير متاحة حالياً.",
+    "close": "إغلاق البحث",
+    "hintNavigate": "تنقّل",
+    "hintOpen": "فتح",
+    "hintClose": "إغلاق",
+    "entities": {
+      "document": "المستندات",
+      "analysis": "التحليلات",
+      "policy": "السياسات",
+      "risk": "المخاطر",
+      "evidence": "الأدلة",
+      "report": "التقارير"
+    }
+  },
+  "workspace": {
+    "quickActions": {
+      "uploadDocument": "رفع مستند",
+      "newRisk": "خطر جديد",
+      "newPolicy": "سياسة جديدة",
+      "askAssistant": "اسأل المساعد الذكي",
+      "generateReport": "إنشاء تقرير"
+    },
+    "continueWorking": {
+      "title": "متابعة العمل",
+      "description": "استأنف من حيث توقفت",
+      "emptyTitle": "لم يتم عرض أي شيء بعد",
+      "emptyDescription": "تصفّح المستندات أو المخاطر أو السياسات لتظهر هنا."
+    },
+    "favorites": {
+      "title": "المفضلة",
+      "description": "العناصر التي قمت بتمييزها للوصول السريع",
+      "emptyTitle": "لا توجد عناصر مفضلة بعد",
+      "emptyDescription": "ميّز المستندات أو المخاطر أو السياسات لتثبيتها هنا.",
+      "count": "{count} محفوظ"
+    },
+    "favoriteButton": {
+      "add": "إضافة إلى المفضلة",
+      "remove": "إزالة من المفضلة"
+    }
   }
 }

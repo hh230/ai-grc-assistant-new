@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Download,
   FileText,
@@ -17,6 +18,7 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { ControlPicker } from "@/components/evidence/ControlPicker";
 import {
   useAddEvidenceVersion,
@@ -28,7 +30,8 @@ import {
 } from "@/hooks/useEvidence";
 import { getControl } from "@/lib/frameworks/catalog";
 import { EVIDENCE_ACCEPT } from "@/lib/evidence/validation";
-import type { EvidenceSummary } from "@/lib/evidence/types";
+import { currentVersion, type EvidenceSummary } from "@/lib/evidence/types";
+import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import { cn, formatBytes, formatDate } from "@/lib/utils";
 
 interface Permissions {
@@ -41,9 +44,16 @@ export function EvidenceWorkspace(permissions: Permissions) {
   const [search, setSearch] = useState("");
   const [debounced, setDebounced] = useState("");
   const { data: evidence, isLoading } = useEvidence({ search: debounced });
+  const searchParams = useSearchParams();
   const [adding, setAdding] = useState(false);
   const [detailId, setDetailId] = useState<string | null>(null);
   const deleteEvidence = useDeleteEvidence();
+
+  useEffect(() => {
+    const openId = searchParams.get("open");
+    if (openId) setDetailId(openId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Light debounce on the search box.
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -175,6 +185,15 @@ function EvidenceRow({
   const [confirming, setConfirming] = useState(false);
   return (
     <Card className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <FavoriteButton
+        item={{
+          id: item.id,
+          type: "evidence",
+          title: item.title,
+          subtitle: item.currentVersion?.fileName,
+          href: `/evidence?open=${item.id}`,
+        }}
+      />
       <button
         type="button"
         onClick={onOpen}
@@ -407,6 +426,17 @@ function EvidenceDetailModal({
   const [editingControls, setEditingControls] = useState(false);
   const [draftControls, setDraftControls] = useState<string[]>([]);
   const versionInput = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (!evidence) return;
+    recordVisit({
+      id: evidence.id,
+      type: "evidence",
+      title: evidence.title,
+      subtitle: currentVersion(evidence)?.fileName,
+      href: `/evidence?open=${evidence.id}`,
+    });
+  }, [evidence]);
 
   async function onPickVersion(file: File | undefined) {
     if (!file) return;

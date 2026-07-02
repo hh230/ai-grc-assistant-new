@@ -364,5 +364,54 @@
       "viewer": "Viewer"
     },
     "footer": "© {year} Sentinel GRC · Enterprise Edition"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search documents, analyses, policies, risks…",
+    "quickActions": "Quick actions",
+    "recentDocuments": "Recent documents",
+    "recentAnalyses": "Recent analyses",
+    "clearRecent": "Clear",
+    "emptyTitle": "No results found",
+    "emptyDescription": "No results for “{query}”. Try a different search term.",
+    "partialError": "Some results may be unavailable right now.",
+    "close": "Close search",
+    "hintNavigate": "Navigate",
+    "hintOpen": "Open",
+    "hintClose": "Close",
+    "entities": {
+      "document": "Documents",
+      "analysis": "Analyses",
+      "policy": "Policies",
+      "risk": "Risks",
+      "evidence": "Evidence",
+      "report": "Reports"
+    }
+  },
+  "workspace": {
+    "quickActions": {
+      "uploadDocument": "Upload document",
+      "newRisk": "New risk",
+      "newPolicy": "New policy",
+      "askAssistant": "Ask AI Assistant",
+      "generateReport": "Generate report"
+    },
+    "continueWorking": {
+      "title": "Continue working",
+      "description": "Pick up where you left off",
+      "emptyTitle": "Nothing viewed yet",
+      "emptyDescription": "Browse documents, risks, or policies to see them here."
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Items you’ve starred for quick access",
+      "emptyTitle": "No favorites yet",
+      "emptyDescription": "Star documents, risks, or policies to pin them here.",
+      "count": "{count} saved"
+    },
+    "favoriteButton": {
+      "add": "Add to favorites",
+      "remove": "Remove from favorites"
+    }
   }
 }

@@ -11,6 +11,7 @@ import { useAnalysisVersions, useStartAnalysis } from "@/hooks/useAnalyses";
 import { useDocuments } from "@/hooks/useDocuments";
 import { getAnalysisModule } from "@/lib/analysis/modules/registry";
 import type { AnalysisRecord } from "@/lib/analysis/types";
+import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import { formatNumber } from "@/lib/utils";
 
 const PIPELINE_STEPS = ["Parse", "Chunk", "Embed", "Index", "Assess", "Score"];
@@ -146,6 +147,17 @@ function ProcessedAnalysis({
   const { data: documents } = useDocuments();
   const category = documents?.find((doc) => doc.id === analysis.documentId)?.category;
   const Module = getAnalysisModule(category);
+
+  useEffect(() => {
+    recordVisit({
+      id: analysis.documentId,
+      type: "analysis",
+      title: analysis.title,
+      subtitle: `v${analysis.version}`,
+      href: `/analysis?doc=${analysis.documentId}`,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [analysis.id]);
 
   return (
     <div className="space-y-5">

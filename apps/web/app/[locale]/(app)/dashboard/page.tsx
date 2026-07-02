@@ -11,6 +11,8 @@ import { RecentAssessments } from "@/components/dashboard/RecentAssessments";
 import { AiWorkspaceCard } from "@/components/dashboard/AiWorkspaceCard";
 import { RecentActivities } from "@/components/dashboard/RecentActivities";
 import { ReportsSection } from "@/components/dashboard/ReportsSection";
+import { WorkspaceHub } from "@/components/dashboard/WorkspaceHub";
+import { FavoritesPanel } from "@/components/dashboard/FavoritesPanel";
 
 export const metadata: Metadata = {
   title: "Executive Dashboard · Sentinel GRC",
@@ -58,6 +60,18 @@ export default function ExecutiveDashboardPage() {
           </div>
           <div className="col-span-12 lg:col-span-5">
             <ReportsSection />
+          </div>
+        </div>
+
+        {/* Intelligent Workspace — Continue working / Quick Actions / Favorites
+            (design proposal §9). Purely additive: extends the page, doesn't touch
+            Bands 1-3 above. */}
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-12 lg:col-span-7">
+            <WorkspaceHub />
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <FavoritesPanel />
           </div>
         </div>
       </div>

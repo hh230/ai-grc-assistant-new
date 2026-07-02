@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Loader2, Lock, Mail, ShieldHalf, TriangleAlert } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { DEFAULT_AUTHENTICATED_PATH } from "@/lib/auth/config";
@@ -13,16 +14,17 @@ function safeNext(raw: string | null): string {
 }
 
 const DEMO_ACCOUNTS = [
-  { email: "owner@acme.test", role: "Owner" },
-  { email: "compliance@acme.test", role: "Compliance Manager" },
-  { email: "analyst@acme.test", role: "Analyst" },
-  { email: "viewer@acme.test", role: "Viewer" },
-];
+  { email: "owner@acme.test", roleKey: "owner" },
+  { email: "compliance@acme.test", roleKey: "complianceManager" },
+  { email: "analyst@acme.test", roleKey: "analyst" },
+  { email: "viewer@acme.test", roleKey: "viewer" },
+] as const;
 
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = safeNext(searchParams.get("next"));
+  const t = useTranslations("login");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,14 +43,14 @@ export function LoginForm() {
       });
       if (!response.ok) {
         const data = (await response.json().catch(() => ({}))) as { error?: string };
-        setError(data.error ?? "Sign in failed. Please try again.");
+        setError(data.error ?? t("signInFailed"));
         setIsSubmitting(false);
         return;
       }
       // Full navigation so the edge middleware sees the new cookie immediately.
       window.location.assign(next);
     } catch {
-      setError("Network error. Please check your connection and try again.");
+      setError(t("networkError"));
       setIsSubmitting(false);
     }
   }
@@ -66,11 +68,9 @@ export function LoginForm() {
           <ShieldHalf className="h-6 w-6 text-accent-foreground" strokeWidth={1.75} />
         </div>
         <h1 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
-          Sign in to Sentinel GRC
+          {t("title")}
         </h1>
-        <p className="mt-1 text-sm text-foreground-secondary">
-          Governance · Risk · Compliance · AI
-        </p>
+        <p className="mt-1 text-sm text-foreground-secondary">{t("subtitle")}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -86,11 +86,11 @@ export function LoginForm() {
 
         <label className="block">
           <span className="mb-1.5 block text-xs font-medium text-foreground-secondary">
-            Work email
+            {t("emailLabel")}
           </span>
           <span className="relative block">
             <Mail
-              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
+              className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
               strokeWidth={1.75}
             />
             <input
@@ -100,19 +100,19 @@ export function LoginForm() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
-              className="h-10 w-full rounded-lg border border-hairline bg-surface/60 pl-9 pr-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
+              placeholder={t("emailPlaceholder")}
+              className="h-10 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
             />
           </span>
         </label>
 
         <label className="block">
           <span className="mb-1.5 block text-xs font-medium text-foreground-secondary">
-            Password
+            {t("passwordLabel")}
           </span>
           <span className="relative block">
             <Lock
-              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
+              className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted"
               strokeWidth={1.75}
             />
             <input
@@ -123,7 +123,7 @@ export function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••••••"
-              className="h-10 w-full rounded-lg border border-hairline bg-surface/60 pl-9 pr-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
+              className="h-10 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
             />
           </span>
         </label>
@@ -136,11 +136,11 @@ export function LoginForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />
-              Signing in…
+              {t("signingIn")}
             </>
           ) : (
             <>
-              Sign in
+              {t("signIn")}
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </>
           )}
@@ -149,10 +149,10 @@ export function LoginForm() {
 
       <div className="mt-7 rounded-xl border border-hairline bg-surface/40 p-4">
         <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-          Demo accounts
+          {t("demoAccountsTitle")}
         </p>
         <p className="mt-1 text-xs text-foreground-muted">
-          Click to fill. Password:{" "}
+          {t("demoAccountsHint")}{" "}
           <span className="font-mono text-foreground-secondary">GrcDemo!2026</span>
         </p>
         <div className="mt-2.5 grid grid-cols-2 gap-1.5">
@@ -161,9 +161,11 @@ export function LoginForm() {
               key={account.email}
               type="button"
               onClick={() => fillDemo(account.email)}
-              className="rounded-lg border border-hairline bg-surface/60 px-2.5 py-1.5 text-left transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2"
+              className="rounded-lg border border-hairline bg-surface/60 px-2.5 py-1.5 text-start transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2"
             >
-              <span className="block truncate text-xs text-foreground">{account.role}</span>
+              <span className="block truncate text-xs text-foreground">
+                {t(`demoRoles.${account.roleKey}`)}
+              </span>
               <span className="block truncate text-2xs text-foreground-muted">{account.email}</span>
             </button>
           ))}

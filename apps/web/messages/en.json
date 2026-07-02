@@ -49,5 +49,165 @@
     "security": "Security & access",
     "signOut": "Sign out",
     "signingOut": "Signing out…"
+  },
+  "marketingNav": {
+    "product": "Product",
+    "features": "Features",
+    "frameworks": "Frameworks",
+    "howItWorks": "How it works",
+    "exampleReports": "Example reports",
+    "faq": "FAQ",
+    "getStarted": "Get started",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "marketingFooter": {
+    "tagline": "Governance, Risk, and Compliance — grounded, cited, and audit-ready.",
+    "columns": {
+      "product": {
+        "title": "Product",
+        "overview": "Overview",
+        "features": "Features",
+        "howItWorks": "How it works"
+      },
+      "compliance": {
+        "title": "Compliance",
+        "frameworksSupported": "Frameworks supported",
+        "exampleReports": "Example reports"
+      },
+      "company": {
+        "title": "Company",
+        "faq": "FAQ",
+        "signIn": "Sign in"
+      }
+    },
+    "copyright": "© {year} Sentinel GRC · Enterprise Edition"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Governance · Risk · Compliance",
+      "title": "Compliance work your auditors will trust",
+      "description": "Sentinel GRC helps Governance, Risk, Compliance, Privacy, and Legal teams author, map, and monitor controls across every framework you answer to — grounded in your own evidence, reviewed by your people.",
+      "primaryCta": "Get started",
+      "secondaryCta": "See how it works"
+    },
+    "trustedBy": {
+      "label": "Built for regulated industries across Saudi Arabia and the Gulf",
+      "banking": "Banking & Financial Services",
+      "healthcare": "Healthcare",
+      "government": "Government & Public Sector",
+      "telecom": "Telecommunications"
+    },
+    "why": {
+      "badge": "Why Sentinel GRC",
+      "title": "Manual compliance work doesn't scale — and it doesn't hold up under audit",
+      "description": "Spreadsheets and disconnected evidence make every audit a scramble. Sentinel GRC grounds every answer in your own documents and keeps a human decision behind every consequential change — so your posture is always current, and always defensible."
+    },
+    "features": {
+      "controlMapping": {
+        "title": "Control mapping across frameworks",
+        "description": "Map evidence and controls once, and see coverage across every framework you're held to — no duplicate work per regulator."
+      },
+      "groundedAnswers": {
+        "title": "Grounded, cited answers",
+        "description": "Every compliance claim traces back to your own documents and the framework text — no uncited guesses on matters that matter."
+      },
+      "governedMissions": {
+        "title": "Governed missions, not chat",
+        "description": "Gap analyses, evidence collection, and reporting run as trackable missions with a full audit trail, not a scrolling transcript."
+      },
+      "riskRegister": {
+        "title": "Risk register with real workflow",
+        "description": "Score, mitigate, and accept risk with human sign-off gates — risk acceptance always requires a qualified person's approval."
+      },
+      "askPosture": {
+        "title": "Ask your compliance posture",
+        "description": "Ask plain-language questions and get answers grounded in your evidence, with sources you can open and verify."
+      },
+      "auditReporting": {
+        "title": "Audit-ready reporting",
+        "description": "Generate executive, compliance, and risk reports on demand, exportable for auditors and leadership alike."
+      }
+    },
+    "screenshots": {
+      "title": "See it, not just hear about it",
+      "description": "A real look at the workspace your team will use every day.",
+      "dashboardCaption": "Executive dashboard — compliance and risk posture at a glance",
+      "analysisCaption": "Document analysis — grounded findings, scored and cited"
+    },
+    "howItWorks": {
+      "title": "From documents to audit-ready posture in four steps",
+      "step1": {
+        "title": "Bring your policies and evidence",
+        "description": "Upload what you already have — nothing needs reformatting first."
+      },
+      "step2": {
+        "title": "The platform reads and grounds them",
+        "description": "Documents are parsed and indexed against the frameworks you select."
+      },
+      "step3": {
+        "title": "Review coverage, gaps, and risk",
+        "description": "Every number traces back to a source document."
+      },
+      "step4": {
+        "title": "Act, approve, and report",
+        "description": "Close gaps and generate an audit-ready report with a clear sign-off trail."
+      },
+      "cta": "See the full walkthrough"
+    },
+    "frameworks": {
+      "title": "Built for the frameworks you're already held to",
+      "description": "Regional and international standards, mapped once and kept current.",
+      "cta": "See all supported frameworks"
+    },
+    "humanDecides": {
+      "title": "A human always decides",
+      "description": "The platform proposes, drafts, and analyzes — a qualified person on your team approves anything consequential, like a control sign-off or a risk acceptance.",
+      "cta": "Read the product overview"
+    },
+    "faq": {
+      "title": "Common questions",
+      "q1": {
+        "question": "Does Sentinel GRC replace our compliance team?",
+        "answer": "No. The platform is built as an assistant, not a replacement — it drafts, analyzes, and organizes work, but a qualified person on your team always reviews and approves anything consequential, like a policy publication or a risk acceptance."
+      },
+      "q2": {
+        "question": "Where does the AI get its answers from?",
+        "answer": "Every answer is grounded in your own uploaded documents and the compliance framework text — never a general-purpose guess. If the platform doesn't have enough evidence to answer confidently, it tells you that instead of making something up."
+      },
+      "q3": {
+        "question": "Is our data isolated from other organizations?",
+        "answer": "Yes. The platform is built multi-tenant from the ground up — every query, document, and AI retrieval is scoped strictly to your organization. Cross-tenant access isn't possible by design."
+      },
+      "q4": {
+        "question": "How do we get started?",
+        "answer": "Sign in, upload a policy or piece of evidence, and select the frameworks you're measured against. Coverage, gaps, and grounded answers are available within minutes."
+      },
+      "cta": "See all FAQs"
+    },
+    "cta": {
+      "title": "See your compliance posture clearly",
+      "description": "Start with your existing policies and evidence — Sentinel GRC grounds every answer in what you already have."
+    }
+  },
+  "login": {
+    "title": "Sign in to Sentinel GRC",
+    "subtitle": "Governance · Risk · Compliance · AI",
+    "signInFailed": "Sign in failed. Please try again.",
+    "networkError": "Network error. Please check your connection and try again.",
+    "emailLabel": "Work email",
+    "emailPlaceholder": "you@company.com",
+    "passwordLabel": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "demoAccountsTitle": "Demo accounts",
+    "demoAccountsHint": "Click to fill. Password:",
+    "demoRoles": {
+      "owner": "Owner",
+      "complianceManager": "Compliance Manager",
+      "analyst": "Analyst",
+      "viewer": "Viewer"
+    },
+    "footer": "© {year} Sentinel GRC · Enterprise Edition"
   }
 }

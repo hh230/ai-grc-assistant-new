@@ -2,22 +2,24 @@
 
 import { useState } from "react";
 import { Menu, ShieldHalf, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
-const LINKS: { label: string; href: string }[] = [
-  { label: "Product", href: "/product" },
-  { label: "Features", href: "/features" },
-  { label: "Frameworks", href: "/frameworks-supported" },
-  { label: "How it works", href: "/how-it-works" },
-  { label: "Example reports", href: "/sample-reports" },
-  { label: "FAQ", href: "/faq" },
-];
+const LINK_KEYS = [
+  { key: "product", href: "/product" },
+  { key: "features", href: "/features" },
+  { key: "frameworks", href: "/frameworks-supported" },
+  { key: "howItWorks", href: "/how-it-works" },
+  { key: "exampleReports", href: "/sample-reports" },
+  { key: "faq", href: "/faq" },
+] as const;
 
 export function MarketingNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const t = useTranslations("marketingNav");
 
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-xl">
@@ -32,7 +34,7 @@ export function MarketingNav() {
         </Link>
 
         <nav className="ms-4 hidden flex-1 items-center gap-1 lg:flex" aria-label="Main">
-          {LINKS.map((link) => (
+          {LINK_KEYS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -43,7 +45,7 @@ export function MarketingNav() {
                   : "text-foreground-secondary hover:bg-surface-2 hover:text-foreground",
               )}
             >
-              {link.label}
+              {t(link.key)}
             </Link>
           ))}
         </nav>
@@ -54,7 +56,7 @@ export function MarketingNav() {
             href="/login"
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
           >
-            Get started
+            {t("getStarted")}
           </Link>
         </div>
 
@@ -62,7 +64,7 @@ export function MarketingNav() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           className="ms-auto flex h-9 w-9 items-center justify-center rounded-lg border border-hairline bg-surface text-foreground-secondary lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t("closeMenu") : t("openMenu")}
           aria-expanded={open}
         >
           {open ? (
@@ -76,7 +78,7 @@ export function MarketingNav() {
       {open && (
         <div className="border-t border-hairline bg-background px-4 py-3 lg:hidden">
           <nav className="flex flex-col gap-0.5" aria-label="Main mobile">
-            {LINKS.map((link) => (
+            {LINK_KEYS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -88,7 +90,7 @@ export function MarketingNav() {
                     : "text-foreground-secondary hover:bg-surface-2 hover:text-foreground",
                 )}
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
             <Link
@@ -96,7 +98,7 @@ export function MarketingNav() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-accent text-sm font-medium text-white shadow-glow"
             >
-              Get started
+              {t("getStarted")}
             </Link>
             <div className="mt-2">
               <LanguageSwitcher />

@@ -1,32 +1,37 @@
+"use client";
+
 import { ShieldHalf } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
+const COLUMNS = [
   {
-    title: "Product",
+    key: "product",
     links: [
-      { label: "Overview", href: "/product" },
-      { label: "Features", href: "/features" },
-      { label: "How it works", href: "/how-it-works" },
+      { key: "overview", href: "/product" },
+      { key: "features", href: "/features" },
+      { key: "howItWorks", href: "/how-it-works" },
     ],
   },
   {
-    title: "Compliance",
+    key: "compliance",
     links: [
-      { label: "Frameworks supported", href: "/frameworks-supported" },
-      { label: "Example reports", href: "/sample-reports" },
+      { key: "frameworksSupported", href: "/frameworks-supported" },
+      { key: "exampleReports", href: "/sample-reports" },
     ],
   },
   {
-    title: "Company",
+    key: "company",
     links: [
-      { label: "FAQ", href: "/faq" },
-      { label: "Sign in", href: "/login" },
+      { key: "faq", href: "/faq" },
+      { key: "signIn", href: "/login" },
     ],
   },
-];
+] as const;
 
 export function MarketingFooter() {
+  const t = useTranslations("marketingFooter");
+
   return (
     <footer className="border-t border-hairline bg-canvas">
       <div className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6">
@@ -40,15 +45,13 @@ export function MarketingFooter() {
                 Sentinel GRC
               </span>
             </div>
-            <p className="mt-3 max-w-[220px] text-xs text-foreground-muted">
-              Governance, Risk, and Compliance — grounded, cited, and audit-ready.
-            </p>
+            <p className="mt-3 max-w-[220px] text-xs text-foreground-muted">{t("tagline")}</p>
           </div>
 
           {COLUMNS.map((column) => (
-            <div key={column.title}>
+            <div key={column.key}>
               <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-                {column.title}
+                {t(`columns.${column.key}.title`)}
               </p>
               <ul className="mt-3 space-y-2">
                 {column.links.map((link) => (
@@ -57,7 +60,7 @@ export function MarketingFooter() {
                       href={link.href}
                       className="text-sm text-foreground-secondary transition-colors duration-150 hover:text-foreground"
                     >
-                      {link.label}
+                      {t(`columns.${column.key}.${link.key}`)}
                     </Link>
                   </li>
                 ))}
@@ -68,7 +71,7 @@ export function MarketingFooter() {
 
         <div className="mt-12 border-t border-hairline pt-6">
           <p className="text-2xs text-foreground-muted">
-            © {new Date().getFullYear()} Sentinel GRC · Enterprise Edition
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
         </div>
       </div>

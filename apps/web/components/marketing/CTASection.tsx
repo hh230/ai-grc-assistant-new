@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 interface CTASectionProps {
@@ -8,12 +11,8 @@ interface CTASectionProps {
   ctaHref?: string;
 }
 
-export function CTASection({
-  title,
-  description,
-  ctaLabel = "Get started",
-  ctaHref = "/login",
-}: CTASectionProps) {
+export function CTASection({ title, description, ctaLabel, ctaHref = "/login" }: CTASectionProps) {
+  const t = useTranslations("marketingNav");
   return (
     <section className="border-t border-hairline bg-canvas">
       <div className="mx-auto max-w-[720px] px-4 py-20 text-center sm:px-6">
@@ -27,7 +26,7 @@ export function CTASection({
           href={ctaHref}
           className="mt-8 inline-flex h-11 items-center gap-1.5 rounded-lg bg-accent px-5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90"
         >
-          {ctaLabel}
+          {ctaLabel ?? t("getStarted")}
           <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />
         </Link>
       </div>

@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LoginForm } from "@/components/auth/LoginForm";
+import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 
 export const metadata: Metadata = {
   title: "Sign in · Sentinel GRC",
   description: "Sign in to the Sentinel GRC governance, risk, compliance and AI platform.",
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const t = await getTranslations("login");
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 py-12">
       {/* Ambient accent wash, matching the workspace's restrained warm palette. */}
@@ -18,17 +21,20 @@ export default function LoginPage() {
       />
       <Link
         href="/"
-        className="absolute left-6 top-6 text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
+        className="absolute start-6 top-6 text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
       >
         Sentinel GRC
       </Link>
+      <div className="absolute end-6 top-6">
+        <LanguageSwitcher />
+      </div>
       <div className="relative z-10 flex w-full justify-center">
         <Suspense fallback={null}>
           <LoginForm />
         </Suspense>
       </div>
       <p className="absolute bottom-6 text-2xs text-foreground-muted">
-        © {new Date().getFullYear()} Sentinel GRC · Enterprise Edition
+        {t("footer", { year: new Date().getFullYear() })}
       </p>
     </main>
   );

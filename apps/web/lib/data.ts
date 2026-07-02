@@ -49,7 +49,10 @@ export interface ProgressItem {
 }
 
 export interface RiskSlice {
+  /** English fallback label — kept for non-translated contexts. */
   label: string;
+  /** Key into the `dashboard.riskDistribution.categories` next-intl namespace. */
+  labelKey: string;
   value: number;
   tone: "accent" | "warning" | "danger" | "success" | "neutral";
 }
@@ -124,46 +127,46 @@ export const RISK_SCORE = {
 
 export const KPIS = [
   {
+    labelKey: "frameworksActive",
     label: "Frameworks active",
     value: "6",
-    sub: "3 regional · 3 international",
     trend: "flat" as Trend,
     delta: 0,
   },
   {
+    labelKey: "controlsMonitored",
     label: "Controls monitored",
     value: "1,248",
-    sub: "94% with linked evidence",
     trend: "up" as Trend,
     delta: 4.1,
   },
   {
+    labelKey: "openFindings",
     label: "Open findings",
     value: "23",
-    sub: "7 high · 11 medium · 5 low",
     trend: "down" as Trend,
     delta: 12.0,
   },
   {
+    labelKey: "aiReviews",
     label: "AI reviews this month",
     value: "412",
-    sub: "Contracts, policies & evidence",
     trend: "up" as Trend,
     delta: 28.0,
   },
 ];
 
-export const EXECUTIVE_SUMMARY = {
-  headline:
-    "Compliance posture is strengthening across all regulated entities, with residual risk trending down quarter-over-quarter.",
-  body: "Coverage against NCA ECC and ISO 27001 now exceeds 84%, and the PDPL readiness program is on track for its Q3 attestation. AI-assisted review cleared 412 artifacts this period, surfacing 7 high-priority findings now in remediation. No control sign-offs were auto-applied — every consequential change passed a human approval gate.",
-  stats: [
-    { label: "Audit-ready frameworks", value: "2 of 6" },
-    { label: "Evidence freshness", value: "94%" },
-    { label: "Mean time to remediate", value: "11 days" },
-    { label: "Next external audit", value: "Sep 2026" },
-  ],
-};
+/**
+ * Headline/body/footer live in the `dashboard.executiveSummary` next-intl namespace
+ * (narrative text, not data) — this keeps only the stat values, keyed for translated
+ * labels via `dashboard.executiveSummary.stats.<key>`.
+ */
+export const EXECUTIVE_SUMMARY_STATS = [
+  { key: "auditReadyFrameworks", value: "2 of 6" },
+  { key: "evidenceFreshness", value: "94%" },
+  { key: "meanTimeToRemediate", value: "11 days" },
+  { key: "nextExternalAudit", value: "Sep 2026" },
+];
 
 export const ACTIVE_FRAMEWORKS: ActiveFramework[] = [
   {
@@ -258,11 +261,11 @@ export const COMPLIANCE_PROGRESS: ProgressItem[] = [
 ];
 
 export const RISK_DISTRIBUTION: RiskSlice[] = [
-  { label: "Cybersecurity", value: 32, tone: "accent" },
-  { label: "Data Privacy", value: 24, tone: "warning" },
-  { label: "Third-Party", value: 18, tone: "danger" },
-  { label: "Operational", value: 15, tone: "success" },
-  { label: "Regulatory", value: 11, tone: "neutral" },
+  { label: "Cybersecurity", labelKey: "cybersecurity", value: 32, tone: "accent" },
+  { label: "Data Privacy", labelKey: "dataPrivacy", value: 24, tone: "warning" },
+  { label: "Third-Party", labelKey: "thirdParty", value: 18, tone: "danger" },
+  { label: "Operational", labelKey: "operational", value: 15, tone: "success" },
+  { label: "Regulatory", labelKey: "regulatory", value: 11, tone: "neutral" },
 ];
 
 export const RECENT_ACTIVITIES: Activity[] = [

@@ -4,6 +4,7 @@ import { ScoreCards } from "@/components/dashboard/ScoreCards";
 import { StatCards } from "@/components/dashboard/StatCards";
 import { ExecutiveSummary } from "@/components/dashboard/ExecutiveSummary";
 import { ActiveFrameworks } from "@/components/dashboard/ActiveFrameworks";
+import { NeedsAttention } from "@/components/dashboard/NeedsAttention";
 import { ComplianceProgress } from "@/components/dashboard/ComplianceProgress";
 import { RiskDistribution } from "@/components/dashboard/RiskDistribution";
 import { RecentAssessments } from "@/components/dashboard/RecentAssessments";
@@ -33,7 +34,10 @@ export default function ExecutiveDashboardPage() {
         {/* Active frameworks: NCA ECC · PDPL · ISO 27001 */}
         <ActiveFrameworks />
 
-        {/* Analytics & operational detail */}
+        {/* Band 2 — what needs a decision today, ranked danger-first */}
+        <NeedsAttention />
+
+        {/* Band 3 — analytics & operational detail */}
         <div className="grid grid-cols-12 gap-5">
           <div className="col-span-12 lg:col-span-7">
             <ComplianceProgress />

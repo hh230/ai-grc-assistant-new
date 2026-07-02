@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ClipboardCheck,
   FileCheck2,
@@ -7,6 +9,7 @@ import {
   FileBarChart,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RECENT_ACTIVITIES, type Activity } from "@/lib/data";
@@ -23,17 +26,19 @@ const kindMeta: Record<Activity["kind"], { icon: LucideIcon; tone: Tone }> = {
 };
 
 export function RecentActivities() {
+  const t = useTranslations("dashboard.recentActivities");
+
   return (
     <Card>
       <SectionHeader
-        title="Recent Activities"
-        description="Audit trail across agents and reviewers"
+        title={t("title")}
+        description={t("description")}
         action={
           <button
             type="button"
             className="text-2xs font-medium text-accent-foreground hover:underline"
           >
-            Full audit log
+            {t("fullAuditLog")}
           </button>
         }
       />
@@ -47,7 +52,7 @@ export function RecentActivities() {
             <li key={activity.id} className="relative flex gap-3.5 pb-4 last:pb-0">
               {!isLast && (
                 <span
-                  className="absolute left-[15px] top-8 h-[calc(100%-1.5rem)] w-px bg-hairline"
+                  className="absolute start-[15px] top-8 h-[calc(100%-1.5rem)] w-px bg-hairline"
                   aria-hidden
                 />
               )}

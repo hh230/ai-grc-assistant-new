@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RISK_DISTRIBUTION, RISK_SCORE, type RiskSlice } from "@/lib/data";
@@ -17,11 +20,13 @@ const CIRC = 2 * Math.PI * RADIUS;
 const GAP = 2; // px gap between slices for a refined, segmented look
 
 export function RiskDistribution() {
+  const t = useTranslations("dashboard.riskDistribution");
+  const tScoreCards = useTranslations("dashboard.scoreCards");
   let cumulative = 0;
 
   return (
     <Card>
-      <SectionHeader title="Risk Distribution" description="Residual exposure by category" />
+      <SectionHeader title={t("title")} description={t("description")} />
 
       <div className="mt-5 flex items-center gap-6">
         <div className="relative shrink-0" style={{ width: SIZE, height: SIZE }}>
@@ -51,7 +56,7 @@ export function RiskDistribution() {
               {RISK_SCORE.value}
             </span>
             <span className="text-2xs uppercase tracking-wider text-foreground-muted">
-              {RISK_SCORE.band}
+              {tScoreCards("riskBand")}
             </span>
           </div>
         </div>
@@ -64,7 +69,7 @@ export function RiskDistribution() {
                 style={{ backgroundColor: toneColor[slice.tone] }}
               />
               <span className="min-w-0 flex-1 truncate text-foreground-secondary">
-                {slice.label}
+                {t(`categories.${slice.labelKey}`)}
               </span>
               <span className="font-mono tabular-nums text-foreground">{slice.value}%</span>
             </li>

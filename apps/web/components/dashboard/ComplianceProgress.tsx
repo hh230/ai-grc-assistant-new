@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -5,15 +8,17 @@ import { TrendPill } from "@/components/ui/TrendPill";
 import { COMPLIANCE_PROGRESS } from "@/lib/data";
 
 export function ComplianceProgress() {
+  const t = useTranslations("dashboard.complianceProgress");
+
   return (
     <Card>
       <SectionHeader
-        title="Compliance Progress"
-        description="Coverage vs. target by framework"
+        title={t("title")}
+        description={t("description")}
         action={
           <span className="flex items-center gap-1.5 text-2xs text-foreground-muted">
             <span className="h-px w-3 bg-white/30" />
-            Target
+            {t("target")}
           </span>
         }
       />

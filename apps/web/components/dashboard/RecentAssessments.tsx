@@ -1,16 +1,17 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RECENT_ASSESSMENTS, type Assessment } from "@/lib/data";
 
-const statusMeta: Record<
-  Assessment["status"],
-  { label: string; tone: "success" | "accent" | "warning" }
-> = {
-  completed: { label: "Completed", tone: "success" },
-  in_review: { label: "In review", tone: "accent" },
-  in_progress: { label: "In progress", tone: "warning" },
-};
+const statusMeta: Record<Assessment["status"], { key: string; tone: "success" | "accent" | "warning" }> =
+  {
+    completed: { key: "completed", tone: "success" },
+    in_review: { key: "inReview", tone: "accent" },
+    in_progress: { key: "inProgress", tone: "warning" },
+  };
 
 function ScorePill({ score }: { score: number | null }) {
   if (score === null) {
@@ -21,18 +22,20 @@ function ScorePill({ score }: { score: number | null }) {
 }
 
 export function RecentAssessments() {
+  const t = useTranslations("dashboard.recentAssessments");
+
   return (
     <Card flush>
       <div className="p-5 pb-4">
         <SectionHeader
-          title="Recent Assessments"
-          description="Latest control reviews across frameworks"
+          title={t("title")}
+          description={t("description")}
           action={
             <button
               type="button"
               className="text-2xs font-medium text-accent-foreground hover:underline"
             >
-              View all
+              {t("viewAll")}
             </button>
           }
         />
@@ -40,11 +43,11 @@ export function RecentAssessments() {
 
       {/* Column header */}
       <div className="grid grid-cols-12 gap-3 border-y border-hairline px-5 py-2 text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-        <span className="col-span-6">Assessment</span>
-        <span className="col-span-2">Owner</span>
-        <span className="col-span-2 text-center">Status</span>
-        <span className="col-span-1 text-right">Score</span>
-        <span className="col-span-1 text-right">Updated</span>
+        <span className="col-span-6">{t("columns.assessment")}</span>
+        <span className="col-span-2">{t("columns.owner")}</span>
+        <span className="col-span-2 text-center">{t("columns.status")}</span>
+        <span className="col-span-1 text-end">{t("columns.score")}</span>
+        <span className="col-span-1 text-end">{t("columns.updated")}</span>
       </div>
 
       <div>
@@ -65,12 +68,12 @@ export function RecentAssessments() {
                 {a.owner}
               </span>
               <div className="col-span-2 flex justify-center">
-                <Badge tone={status.tone}>{status.label}</Badge>
+                <Badge tone={status.tone}>{t(`status.${status.key}`)}</Badge>
               </div>
-              <div className="col-span-1 text-right">
+              <div className="col-span-1 text-end">
                 <ScorePill score={a.score} />
               </div>
-              <span className="col-span-1 text-right text-2xs text-foreground-muted">
+              <span className="col-span-1 text-end text-2xs text-foreground-muted">
                 {a.updated}
               </span>
             </div>

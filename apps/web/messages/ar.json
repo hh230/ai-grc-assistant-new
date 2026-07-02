@@ -50,6 +50,126 @@
     "signOut": "تسجيل الخروج",
     "signingOut": "جارٍ تسجيل الخروج…"
   },
+  "dashboard": {
+    "needsAttention": {
+      "title": "يتطلب الانتباه",
+      "description": "عناصر تتطلب قرارًا اليوم",
+      "count": "{count} عناصر",
+      "frameworkGap": "تغطية {code} أقل من المستهدف",
+      "frameworkGapDetail": "التغطية {coverage}% · {remaining} ضوابط متبقية",
+      "riskExposure": "ارتفاع التعرض لمخاطر {category}",
+      "riskExposureDetail": "{value}% من المخاطر المتبقية",
+      "assessmentIncomplete": "{name} بانتظار الإكمال",
+      "assessmentIncompleteDetail": "المسؤول: {owner} · آخر تحديث {updated}"
+    },
+    "pageHeader": {
+      "title": "لوحة القيادة التنفيذية",
+      "subtitle": "الحوكمة والمخاطر والامتثال ووضع الذكاء الاصطناعي في الوقت الفعلي عبر جميع الجهات الخاضعة للتنظيم.",
+      "last90Days": "آخر 90 يومًا",
+      "export": "تصدير",
+      "uploadContract": "رفع عقد"
+    },
+    "scoreCards": {
+      "scoreCaption": "النتيجة",
+      "indexCaption": "المؤشر",
+      "complianceTitle": "نتيجة الامتثال الإجمالية",
+      "riskTitle": "نتيجة المخاطر الإجمالية",
+      "complianceCaption": "مرجّحة عبر 6 أطر نشطة",
+      "riskCaption": "مؤشر المخاطر المتبقية · كلما انخفض كان أفضل",
+      "onTrack": "على المسار الصحيح",
+      "target": "المستهدف {value}",
+      "riskBand": "معتدل",
+      "improvingQoQ": "تحسّن ربع سنوي"
+    },
+    "kpis": {
+      "frameworksActive": { "label": "الأطر النشطة", "sub": "3 إقليمية · 3 دولية" },
+      "controlsMonitored": { "label": "الضوابط المراقبة", "sub": "94% مرتبطة بأدلة" },
+      "openFindings": { "label": "النتائج المفتوحة", "sub": "7 عالية · 11 متوسطة · 5 منخفضة" },
+      "aiReviews": { "label": "مراجعات الذكاء الاصطناعي هذا الشهر", "sub": "العقود والسياسات والأدلة" }
+    },
+    "executiveSummary": {
+      "title": "الملخص التنفيذي",
+      "aiGenerated": "مُولّد بالذكاء الاصطناعي",
+      "headline": "يتعزز وضع الامتثال عبر جميع الجهات الخاضعة للتنظيم، مع تراجع المخاطر المتبقية على أساس ربع سنوي.",
+      "body": "تتجاوز التغطية مقابل NCA ECC وISO 27001 الآن 84%، وبرنامج جاهزية PDPL يسير وفق الخطة لاعتماد الربع الثالث. أزالت المراجعة المدعومة بالذكاء الاصطناعي 412 عنصرًا هذه الفترة، وكشفت عن 7 نتائج عالية الأولوية قيد المعالجة حاليًا. لم يُطبَّق أي اعتماد ضوابط تلقائيًا — فكل تغيير جوهري مرّ ببوابة موافقة بشرية.",
+      "footer": "مستند إلى 1,248 ضابطًا و412 عنصرًا تمت مراجعته · كل تغيير جوهري مرّ ببوابة موافقة بشرية.",
+      "stats": {
+        "auditReadyFrameworks": "الأطر الجاهزة للتدقيق",
+        "evidenceFreshness": "حداثة الأدلة",
+        "meanTimeToRemediate": "متوسط وقت المعالجة",
+        "nextExternalAudit": "التدقيق الخارجي القادم"
+      }
+    },
+    "activeFrameworks": {
+      "title": "الأطر النشطة",
+      "description": "معايير إقليمية ودولية قيد التقييم المستمر",
+      "viewAll": "عرض جميع {count}",
+      "coverage": "التغطية",
+      "controls": "ضوابط",
+      "status": {
+        "compliant": "ممتثل",
+        "inProgress": "قيد التنفيذ",
+        "atRisk": "معرّض للخطر"
+      }
+    },
+    "complianceProgress": {
+      "title": "تقدم الامتثال",
+      "description": "التغطية مقابل المستهدف حسب الإطار",
+      "target": "المستهدف"
+    },
+    "riskDistribution": {
+      "title": "توزيع المخاطر",
+      "description": "التعرض المتبقي حسب الفئة",
+      "categories": {
+        "cybersecurity": "الأمن السيبراني",
+        "dataPrivacy": "خصوصية البيانات",
+        "thirdParty": "الأطراف الثالثة",
+        "operational": "تشغيلية",
+        "regulatory": "تنظيمية"
+      }
+    },
+    "recentAssessments": {
+      "title": "التقييمات الأخيرة",
+      "description": "أحدث مراجعات الضوابط عبر الأطر",
+      "viewAll": "عرض الكل",
+      "columns": {
+        "assessment": "التقييم",
+        "owner": "المسؤول",
+        "status": "الحالة",
+        "score": "النتيجة",
+        "updated": "آخر تحديث"
+      },
+      "status": {
+        "completed": "مكتمل",
+        "inReview": "قيد المراجعة",
+        "inProgress": "قيد التنفيذ"
+      }
+    },
+    "aiWorkspaceCard": {
+      "title": "المنسّق الذكي",
+      "description": "نسّق وكلاء المعرفة والامتثال والمخاطر والتقارير لتنفيذ مهام محكومة — كل مخرج مدعوم بالأدلة، موثّق بالمصادر، وموافَق عليه من قِبل الإنسان.",
+      "agentsOnline": "{count} وكلاء متصلون",
+      "analyzeContract": "تحليل عقد",
+      "gapAnalysis": "تشغيل تحليل الفجوات عبر الأطر"
+    },
+    "recentActivities": {
+      "title": "الأنشطة الأخيرة",
+      "description": "سجل تدقيق عبر الوكلاء والمراجعين",
+      "fullAuditLog": "سجل التدقيق الكامل"
+    },
+    "reportsSection": {
+      "title": "التقارير",
+      "description": "مخرجات واعتمادات جاهزة للتدقيق",
+      "viewLibrary": "عرض المكتبة",
+      "downloadReport": "تحميل التقرير",
+      "viewReport": "عرض التقرير",
+      "status": {
+        "ready": "جاهز",
+        "scheduled": "مجدول",
+        "generating": "قيد الإنشاء"
+      }
+    }
+  },
   "marketingNav": {
     "product": "المنتج",
     "features": "الميزات",

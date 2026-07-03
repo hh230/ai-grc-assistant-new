@@ -482,36 +482,37 @@
   "sampleReportsPage": {
     "hero": {
       "eyebrow": "Example reports",
-      "title": "Audit-ready reports, generated on demand",
-      "description": "The same executive, compliance, and risk reports your workspace produces live — shown here with sample data so you can see the output before you sign in."
+      "title": "Clear reports to support governance and compliance decisions",
+      "description": "Transform governance, risk, and compliance data into structured reports that help monitor compliance status, identify gaps, support reviews, and enable better decision-making."
     },
-    "sampleBadge": "Sample",
+    "sampleBadge": "Sample Report",
     "reports": {
       "executive": {
         "title": "Executive Summary",
-        "kpi1": "Overall coverage",
-        "kpi2": "Open gaps",
-        "kpi3": "Frameworks tracked",
-        "narrative": "Sample data. Coverage improved across ISO 27001 and NCA ECC this quarter, driven by newly linked evidence for access-control and logging requirements. Twelve control gaps remain open, concentrated in vendor risk management."
+        "kpi1": "Alignment level",
+        "kpi2": "Identified gaps",
+        "kpi3": "Covered frameworks",
+        "narrative": "A comprehensive overview of governance and compliance status, including alignment level and key observations to support management decisions."
       },
       "compliance": {
-        "title": "Compliance Report",
-        "kpi1": "Controls covered",
-        "kpi2": "Evidence artifacts",
-        "kpi3": "Frameworks",
-        "narrative": "Sample data. Per-framework breakdown of covered vs. gap controls, with the evidence backing each covered control and a prioritized list of the highest-impact gaps to close next."
+        "title": "Compliance Assessment",
+        "kpi1": "Covered requirements",
+        "kpi2": "Items requiring review",
+        "kpi3": "Progress level",
+        "narrative": "An analysis showing how policies and controls align with selected frameworks while highlighting areas requiring follow-up."
       },
       "risk": {
-        "title": "Risk Report",
-        "kpi1": "Open risks",
-        "kpi2": "Average score",
-        "kpi3": "Critical",
-        "narrative": "Sample data. Inherent and residual scoring for every tracked risk, mitigation status, and ownership — ready to hand to leadership or an external auditor as-is."
+        "title": "Risk Analysis",
+        "kpi1": "Identified risks",
+        "kpi2": "Priority level",
+        "kpi3": "Remediation actions",
+        "narrative": "A structured view of risks related to governance and compliance activities to support assessment and monitoring."
       }
     },
     "cta": {
-      "title": "Generate this against your own evidence",
-      "description": "Every report above is built live from your coverage, evidence, and risk data once you sign in."
+      "title": "Create reports based on your organization’s data",
+      "description": "Rasheed uses the policies and documents provided by your organization to generate reports that help understand the current state and track improvement activities.",
+      "button": "Generate Reports"
     }
   },
   "aboutPage": {

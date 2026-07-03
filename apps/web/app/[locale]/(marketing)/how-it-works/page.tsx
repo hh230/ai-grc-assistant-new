@@ -58,7 +58,11 @@ export default async function HowItWorksPage() {
         </div>
       </section>
 
-      <CTASection title={t("cta.title")} description={t("cta.description")} />
+      <CTASection
+        title={t("cta.title")}
+        description={t("cta.description")}
+        ctaLabel={t("cta.button")}
+      />
     </>
   );
 }

@@ -417,30 +417,31 @@
   },
   "howItWorksPage": {
     "hero": {
-      "title": "From documents to audit-ready posture in four steps",
-      "description": "No new templates to learn — Rasheed works with the policies and evidence your team already maintains."
+      "title": "From assessment to more mature governance",
+      "description": "Rasheed helps organizations understand their governance, risk, and compliance readiness, analyze gaps, and organize improvement actions toward clearer and more sustainable management."
     },
     "steps": {
       "step1": {
-        "title": "Bring your policies and evidence",
-        "description": "Upload the documents you already have — policies, prior audit reports, contracts, and evidence artifacts. Nothing needs to be reformatted first."
+        "title": "Assess Current State and Readiness",
+        "description": "Start by analyzing current policies, documents, and controls to understand the maturity level of governance, risk, and compliance within your organization."
       },
       "step2": {
-        "title": "The platform reads and grounds them",
-        "description": "Your documents are parsed and indexed against the frameworks you select, so answers and coverage numbers are grounded in what you actually have — not a generic template."
+        "title": "Analyze Gaps and Risks",
+        "description": "Rasheed compares current practices with relevant frameworks and standards to identify gaps, risks, and improvement opportunities."
       },
       "step3": {
-        "title": "Review coverage, gaps, and risk",
-        "description": "See exactly which controls are covered, which are gaps, and how your risk register looks — with every number traceable back to a source document."
+        "title": "Manage Actions and Improvements",
+        "description": "Track remediation actions, policy updates, and control improvements to enhance governance maturity, reduce risks, and strengthen compliance."
       },
       "step4": {
-        "title": "Act, approve, and report",
-        "description": "Draft policies, close gaps, and accept risk with a clear sign-off trail, then generate an audit-ready report whenever you need one."
+        "title": "Continuous Monitoring and Decisions",
+        "description": "Review indicators and reports that help specialists and management monitor performance and make decisions based on clearer insights."
       }
     },
     "cta": {
-      "title": "Bring your first document in under a minute",
-      "description": "Sign in and upload a policy to see grounded coverage against your chosen framework."
+      "title": "Start managing GRC with greater clarity",
+      "description": "Use Rasheed to organize governance, risk, and compliance activities while connecting policies, controls, and reports in one workspace.",
+      "button": "Explore Rasheed"
     }
   },
   "faqPage": {

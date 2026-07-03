@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getActor } from "@/lib/auth/actor";
 import { errorResponse, unauthorized } from "@/lib/api/respond";
 import { ValidationError } from "@/lib/errors";
+import { getRequestLocale } from "@/lib/i18n/request-locale";
 import { buildReport } from "@/lib/reports/service";
 import { renderReportPdf } from "@/lib/reports/pdf";
 import { renderReportXlsx } from "@/lib/reports/xlsx";
@@ -29,7 +30,12 @@ export async function GET(request: Request, { params }: RouteContext): Promise<N
     }
     const format = new URL(request.url).searchParams.get("format") === "xlsx" ? "xlsx" : "pdf";
 
-    const report = await buildReport(actor, kind as ReportKind);
+    // PDF rendering uses pdf-lib's standard Latin fonts (CLAUDE.md §7 — Server Components /
+    // performance-friendly, no external rendering service); those fonts cannot encode Arabic
+    // glyphs, so the PDF is always rendered in English regardless of UI locale to avoid a
+    // broken export. The on-screen preview and the Excel export are fully localized.
+    const locale = format === "pdf" ? "en" : await getRequestLocale();
+    const report = await buildReport(actor, kind as ReportKind, locale);
     const bytes = format === "pdf" ? await renderReportPdf(report) : await renderReportXlsx(report);
     const date = new Date().toISOString().slice(0, 10);
     const fileName = `${kind}-report-${date}.${format}`;

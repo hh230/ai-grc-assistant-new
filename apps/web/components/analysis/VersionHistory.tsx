@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Loader2, Pencil, Trash2, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TrendPill } from "@/components/ui/TrendPill";
@@ -18,6 +19,7 @@ interface VersionHistoryProps {
 
 /** Score-delta comparison between consecutive versions — not a full document text diff. */
 export function VersionHistory({ documentId, versions, selectedId, onSelect }: VersionHistoryProps) {
+  const t = useTranslations("versionHistory");
   const rename = useRenameAnalysis(documentId);
   const del = useDeleteAnalysis(documentId);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -41,8 +43,8 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
     <Card flush>
       <div className="px-5 pt-4">
         <SectionHeader
-          title="Version history"
-          description={`${versions.length} analysis runs for this document — saved automatically`}
+          title={t("title")}
+          description={t("description", { count: versions.length })}
         />
       </div>
       <div className="mt-3 divide-y divide-hairline">
@@ -81,7 +83,7 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                     type="button"
                     onClick={() => commitEdit(version.id)}
                     className="flex h-7 w-7 items-center justify-center rounded-md text-success hover:bg-success-soft"
-                    aria-label="Save name"
+                    aria-label={t("saveName")}
                   >
                     <Check className="h-3.5 w-3.5" strokeWidth={2} />
                   </button>
@@ -89,7 +91,7 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                     type="button"
                     onClick={() => setEditingId(null)}
                     className="flex h-7 w-7 items-center justify-center rounded-md text-foreground-muted hover:bg-surface-elevated"
-                    aria-label="Cancel"
+                    aria-label={t("cancel")}
                   >
                     <X className="h-3.5 w-3.5" strokeWidth={2} />
                   </button>
@@ -115,7 +117,7 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                       trend={complianceDelta > 0 ? "up" : "down"}
                       value={Math.abs(complianceDelta)}
                       goodWhen="up"
-                      suffix=" compliance"
+                      suffix={t("complianceSuffix")}
                     />
                   )}
                   {riskDelta != null && riskDelta !== 0 && (
@@ -123,14 +125,14 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                       trend={riskDelta > 0 ? "up" : "down"}
                       value={Math.abs(riskDelta)}
                       goodWhen="down"
-                      suffix=" risk"
+                      suffix={t("riskSuffix")}
                     />
                   )}
                   <button
                     type="button"
                     onClick={() => startEdit(version)}
                     className="flex h-7 w-7 items-center justify-center rounded-md text-foreground-muted transition-colors duration-150 hover:bg-surface-elevated hover:text-foreground"
-                    aria-label="Rename"
+                    aria-label={t("rename")}
                   >
                     <Pencil className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </button>
@@ -150,14 +152,14 @@ export function VersionHistory({ documentId, versions, selectedId, onSelect }: V
                         ? "bg-danger-soft text-danger"
                         : "text-foreground-muted hover:bg-surface-elevated hover:text-foreground",
                     )}
-                    aria-label="Delete version"
+                    aria-label={t("deleteVersion")}
                   >
                     {del.isPending ? (
                       <Loader2 className="h-3.5 w-3.5 animate-spin" strokeWidth={1.75} />
                     ) : (
                       <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
                     )}
-                    {isConfirmingDelete && <span className="ms-1">Confirm</span>}
+                    {isConfirmingDelete && <span className="ms-1">{t("confirm")}</span>}
                   </button>
                 </div>
               )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, Loader2, Plus, ShieldAlert, Trash2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Modal } from "@/components/ui/Modal";
@@ -18,9 +19,8 @@ import {
   useUpdateRisk,
 } from "@/hooks/useRisks";
 import {
-  IMPACT_LABELS,
-  LIKELIHOOD_LABELS,
   RISK_CATEGORIES,
+  RISK_STATUSES,
   RISK_TRANSITIONS,
   scoreOf,
   severityOf,
@@ -39,13 +39,6 @@ export interface RiskPermissions {
   canDelete: boolean;
 }
 
-const SEVERITY_LABEL: Record<Severity, string> = {
-  low: "Low",
-  medium: "Medium",
-  high: "High",
-  critical: "Critical",
-};
-
 /** Critical reads as a solid-fill badge (more urgent than the standard soft pill) — every
  * other severity maps straight onto the shared tone vocabulary. */
 const SEVERITY_TONE: Record<Severity, Tone> = {
@@ -61,21 +54,10 @@ function severityBadgeClass(severity: Severity): string {
     : tonePillClasses[SEVERITY_TONE[severity]];
 }
 
-const STATUS_LABEL: Record<RiskStatus, string> = {
-  open: "Open",
-  mitigating: "Mitigating",
-  accepted: "Accepted",
-  closed: "Closed",
-};
-
-const STATUS_ACTION_LABEL: Record<RiskStatus, string> = {
-  open: "Reopen",
-  mitigating: "Start mitigation",
-  accepted: "Accept risk",
-  closed: "Close",
-};
+const SEVERITIES: Severity[] = ["critical", "high", "medium", "low"];
 
 function SeverityBadge({ severity, score }: { severity: Severity; score: number }) {
+  const t = useTranslations("riskRegister");
   return (
     <span
       className={cn(
@@ -83,14 +65,13 @@ function SeverityBadge({ severity, score }: { severity: Severity; score: number 
         severityBadgeClass(severity),
       )}
     >
-      {SEVERITY_LABEL[severity]} · {score}
+      {t(`severity.${severity}`)} · {score}
     </span>
   );
 }
 
-const SEVERITIES: Severity[] = ["critical", "high", "medium", "low"];
-
 export function RiskRegister(permissions: RiskPermissions) {
+  const t = useTranslations("riskRegister");
   const { data: risks, isLoading } = useRisks();
   const searchParams = useSearchParams();
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -141,18 +122,18 @@ export function RiskRegister(permissions: RiskPermissions) {
         <Card>
           <div className="flex items-center gap-2 text-foreground-muted">
             <ShieldAlert className="h-4 w-4" strokeWidth={1.75} />
-            <span className="text-2xs uppercase tracking-wider">Total risks</span>
+            <span className="text-2xs uppercase tracking-wider">{t("stats.totalRisks")}</span>
           </div>
           <p className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
             {stats.total}
           </p>
           <p className="mt-1 text-2xs text-foreground-muted">
-            {stats.openCount} active · {stats.acceptedCount} accepted
+            {t("stats.activeAccepted", { active: stats.openCount, accepted: stats.acceptedCount })}
           </p>
         </Card>
         <Card>
           <span className="text-2xs uppercase tracking-wider text-foreground-muted">
-            Severity distribution
+            {t("stats.severityDistribution")}
           </span>
           <div className="mt-3 space-y-1.5">
             {SEVERITIES.map((severity) => {
@@ -161,7 +142,7 @@ export function RiskRegister(permissions: RiskPermissions) {
               return (
                 <div key={severity} className="flex items-center gap-2">
                   <span className="w-14 text-2xs text-foreground-muted">
-                    {SEVERITY_LABEL[severity]}
+                    {t(`severity.${severity}`)}
                   </span>
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
                     <div
@@ -177,12 +158,12 @@ export function RiskRegister(permissions: RiskPermissions) {
         </Card>
         <Card>
           <span className="text-2xs uppercase tracking-wider text-foreground-muted">
-            Average inherent score
+            {t("stats.averageInherentScore")}
           </span>
           <p className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
             {stats.avgScore}
           </p>
-          <p className="mt-1 text-2xs text-foreground-muted">out of 25 (likelihood × impact)</p>
+          <p className="mt-1 text-2xs text-foreground-muted">{t("stats.outOf25")}</p>
         </Card>
       </div>
 
@@ -193,10 +174,10 @@ export function RiskRegister(permissions: RiskPermissions) {
           onChange={(e) => setStatusFilter(e.target.value)}
           className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary outline-none focus:border-hairline-strong"
         >
-          <option value="all">All statuses</option>
-          {Object.entries(STATUS_LABEL).map(([value, label]) => (
-            <option key={value} value={value}>
-              {label}
+          <option value="all">{t("filters.allStatuses")}</option>
+          {RISK_STATUSES.map((status) => (
+            <option key={status} value={status}>
+              {t(`status.${status}`)}
             </option>
           ))}
         </select>
@@ -205,10 +186,10 @@ export function RiskRegister(permissions: RiskPermissions) {
           onChange={(e) => setSeverityFilter(e.target.value)}
           className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary outline-none focus:border-hairline-strong"
         >
-          <option value="all">All severities</option>
+          <option value="all">{t("filters.allSeverities")}</option>
           {SEVERITIES.map((s) => (
             <option key={s} value={s}>
-              {SEVERITY_LABEL[s]}
+              {t(`severity.${s}`)}
             </option>
           ))}
         </select>
@@ -219,7 +200,7 @@ export function RiskRegister(permissions: RiskPermissions) {
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] sm:ms-auto"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
-            New risk
+            {t("newRisk")}
           </button>
         )}
       </div>
@@ -227,7 +208,7 @@ export function RiskRegister(permissions: RiskPermissions) {
       {isLoading ? (
         <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-          Loading risks…
+          {t("loadingRisks")}
         </Card>
       ) : filtered.length === 0 ? (
         <Card grain className="flex flex-col items-center gap-3 py-14 text-center">
@@ -235,13 +216,14 @@ export function RiskRegister(permissions: RiskPermissions) {
             <TriangleAlert className="h-5 w-5 text-foreground-muted" strokeWidth={1.75} />
           </div>
           <p className="text-sm font-medium text-foreground">
-            No risks{" "}
-            {statusFilter !== "all" || severityFilter !== "all" ? "match the filters" : "yet"}
+            {statusFilter !== "all" || severityFilter !== "all"
+              ? t("emptyState.titleFiltered")
+              : t("emptyState.titleEmpty")}
           </p>
           <p className="text-xs text-foreground-muted">
             {statusFilter !== "all" || severityFilter !== "all"
-              ? "Try a different status or severity filter."
-              : "Identify a risk and score it on the 5×5 matrix to get started."}
+              ? t("emptyState.hintFiltered")
+              : t("emptyState.hintEmpty")}
           </p>
         </Card>
       ) : (
@@ -250,12 +232,12 @@ export function RiskRegister(permissions: RiskPermissions) {
             <table className="w-full min-w-[720px] text-sm">
               <thead>
                 <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
-                  <th className="px-5 py-2.5 font-medium">Risk</th>
-                  <th className="px-3 py-2.5 font-medium">Category</th>
-                  <th className="px-3 py-2.5 font-medium">Inherent</th>
-                  <th className="px-3 py-2.5 font-medium">Residual</th>
-                  <th className="px-3 py-2.5 font-medium">Status</th>
-                  <th className="px-3 py-2.5 font-medium">Owner</th>
+                  <th className="px-5 py-2.5 font-medium">{t("table.risk")}</th>
+                  <th className="px-3 py-2.5 font-medium">{t("table.category")}</th>
+                  <th className="px-3 py-2.5 font-medium">{t("table.inherent")}</th>
+                  <th className="px-3 py-2.5 font-medium">{t("table.residual")}</th>
+                  <th className="px-3 py-2.5 font-medium">{t("table.status")}</th>
+                  <th className="px-3 py-2.5 font-medium">{t("table.owner")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -280,13 +262,13 @@ export function RiskRegister(permissions: RiskPermissions) {
                         <div className="min-w-0">
                           <p className="truncate font-medium text-foreground">{risk.title}</p>
                           <p className="text-2xs text-foreground-muted">
-                            {risk.controlCount} mitigating controls
+                            {t("mitigatingControlsCount", { count: risk.controlCount })}
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-3 py-3 capitalize text-foreground-secondary">
-                      {risk.category.replace("_", " ")}
+                    <td className="px-3 py-3 text-foreground-secondary">
+                      {t(`category.${risk.category}`)}
                     </td>
                     <td className="px-3 py-3">
                       <SeverityBadge severity={risk.severity} score={risk.inherentScore} />
@@ -303,7 +285,7 @@ export function RiskRegister(permissions: RiskPermissions) {
                     </td>
                     <td className="px-3 py-3">
                       <span className="text-2xs text-foreground-secondary">
-                        {STATUS_LABEL[risk.status]}
+                        {t(`status.${risk.status}`)}
                       </span>
                     </td>
                     <td className="px-3 py-3 text-foreground-secondary">{risk.ownerName}</td>
@@ -361,11 +343,12 @@ function ScaleSelect({
 }
 
 function ScorePreview({ likelihood, impact }: { likelihood: number; impact: number }) {
+  const t = useTranslations("riskRegister");
   const score = scoreOf(likelihood, impact);
   const severity = severityOf(score);
   return (
     <div className="flex items-center gap-2 rounded-lg border border-hairline bg-surface/40 px-3 py-2">
-      <span className="text-2xs text-foreground-muted">Score</span>
+      <span className="text-2xs text-foreground-muted">{t("score")}</span>
       <span className="text-sm font-semibold text-foreground">{score}</span>
       <SeverityBadge severity={severity} score={score} />
     </div>
@@ -373,6 +356,9 @@ function ScorePreview({ likelihood, impact }: { likelihood: number; impact: numb
 }
 
 function CreateRiskModal({ onClose }: { onClose: () => void }) {
+  const t = useTranslations("riskRegister");
+  const likelihoodLabels = t.raw("likelihoodLabels") as string[];
+  const impactLabels = t.raw("impactLabels") as string[];
   const create = useCreateRisk();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -386,7 +372,7 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     setError(null);
-    if (!title.trim()) return setError("A title is required.");
+    if (!title.trim()) return setError(t("errors.titleRequired"));
     try {
       await create.mutateAsync({
         title,
@@ -398,8 +384,8 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
         controlIds,
       });
       onClose();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to create risk.");
+    } catch {
+      setError(t("errors.createFailed"));
     }
   }
 
@@ -407,7 +393,7 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
     <Modal
       open
       onClose={onClose}
-      title="New risk"
+      title={t("modal.newRiskTitle")}
       size="lg"
       footer={
         <>
@@ -416,7 +402,7 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary hover:text-foreground"
           >
-            Cancel
+            {t("cancel")}
           </button>
           <button
             type="submit"
@@ -425,7 +411,7 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
           >
             {create.isPending && <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />}
-            Add to register
+            {t("addToRegister")}
           </button>
         </>
       }
@@ -438,16 +424,16 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
           </div>
         )}
         <label className="block">
-          <FieldLabel>Title</FieldLabel>
+          <FieldLabel>{t("form.title")}</FieldLabel>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className={cn(inputClass, "h-9")}
-            placeholder="e.g. Unpatched internet-facing servers"
+            placeholder={t("form.titlePlaceholder")}
           />
         </label>
         <label className="block">
-          <FieldLabel>Description</FieldLabel>
+          <FieldLabel>{t("form.description")}</FieldLabel>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -457,40 +443,40 @@ function CreateRiskModal({ onClose }: { onClose: () => void }) {
         </label>
         <div className="grid grid-cols-2 gap-3">
           <label className="block">
-            <FieldLabel>Category</FieldLabel>
+            <FieldLabel>{t("form.category")}</FieldLabel>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as RiskCategory)}
-              className={cn(inputClass, "h-9 capitalize")}
+              className={cn(inputClass, "h-9")}
             >
               {RISK_CATEGORIES.map((c) => (
                 <option key={c} value={c}>
-                  {c.replace("_", " ")}
+                  {t(`category.${c}`)}
                 </option>
               ))}
             </select>
           </label>
           <label className="block">
-            <FieldLabel>Owner</FieldLabel>
+            <FieldLabel>{t("form.owner")}</FieldLabel>
             <input
               value={ownerName}
               onChange={(e) => setOwnerName(e.target.value)}
               className={cn(inputClass, "h-9")}
-              placeholder="Defaults to you"
+              placeholder={t("form.ownerPlaceholder")}
             />
           </label>
           <label className="block">
-            <FieldLabel>Likelihood</FieldLabel>
-            <ScaleSelect value={likelihood} onChange={setLikelihood} labels={LIKELIHOOD_LABELS} />
+            <FieldLabel>{t("form.likelihood")}</FieldLabel>
+            <ScaleSelect value={likelihood} onChange={setLikelihood} labels={likelihoodLabels} />
           </label>
           <label className="block">
-            <FieldLabel>Impact</FieldLabel>
-            <ScaleSelect value={impact} onChange={setImpact} labels={IMPACT_LABELS} />
+            <FieldLabel>{t("form.impact")}</FieldLabel>
+            <ScaleSelect value={impact} onChange={setImpact} labels={impactLabels} />
           </label>
         </div>
         <ScorePreview likelihood={likelihood} impact={impact} />
         <div>
-          <FieldLabel>Mitigating controls</FieldLabel>
+          <FieldLabel>{t("form.mitigatingControls")}</FieldLabel>
           <ControlPicker value={controlIds} onChange={setControlIds} />
         </div>
       </form>
@@ -507,6 +493,9 @@ function RiskDetailModal({
   permissions: RiskPermissions;
   onClose: () => void;
 }) {
+  const t = useTranslations("riskRegister");
+  const likelihoodLabels = t.raw("likelihoodLabels") as string[];
+  const impactLabels = t.raw("impactLabels") as string[];
   const { data: risk, isLoading } = useRisk(id);
   const update = useUpdateRisk();
   const transition = useTransitionRisk();
@@ -527,10 +516,10 @@ function RiskDetailModal({
 
   if (isLoading || !risk) {
     return (
-      <Modal open onClose={onClose} title="Risk">
+      <Modal open onClose={onClose} title={t("modal.riskTitle")}>
         <div className="flex items-center justify-center gap-2 py-10 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-          Loading…
+          {t("loading")}
         </div>
       </Modal>
     );
@@ -544,8 +533,8 @@ function RiskDetailModal({
     setError(null);
     try {
       await transition.mutateAsync({ id, status });
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Transition failed.");
+    } catch {
+      setError(t("errors.transitionFailed"));
     }
   }
 
@@ -571,7 +560,7 @@ function RiskDetailModal({
               className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-hairline bg-surface/60 px-2.5 text-2xs font-medium text-foreground-muted hover:border-danger/40 hover:text-danger"
             >
               <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Delete
+              {t("delete")}
             </button>
           ) : (
             <span />
@@ -595,7 +584,7 @@ function RiskDetailModal({
                   )}
                 >
                   {isAccept && <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} />}
-                  {STATUS_ACTION_LABEL[status]}
+                  {t(`statusAction.${status}`)}
                 </button>
               );
             })}
@@ -611,16 +600,18 @@ function RiskDetailModal({
           </div>
         )}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-2xs capitalize text-foreground-secondary">
-            {risk.category.replace("_", " ")}
+          <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-2xs text-foreground-secondary">
+            {t(`category.${risk.category}`)}
           </span>
-          <span className="text-2xs text-foreground-muted">Owner: {risk.ownerName}</span>
           <span className="text-2xs text-foreground-muted">
-            Status: {STATUS_LABEL[risk.status]}
+            {t("ownerLabel", { name: risk.ownerName })}
+          </span>
+          <span className="text-2xs text-foreground-muted">
+            {t("statusLabel", { status: t(`status.${risk.status}`) })}
           </span>
           {risk.acceptedByName && (
             <span className="text-2xs text-warning">
-              Accepted by {risk.acceptedByName}
+              {t("acceptedBy", { name: risk.acceptedByName })}
               {risk.acceptedAt ? ` · ${formatDate(risk.acceptedAt)}` : ""}
             </span>
           )}
@@ -631,7 +622,9 @@ function RiskDetailModal({
 
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-lg border border-hairline bg-surface/40 p-3">
-            <p className="text-2xs uppercase tracking-wider text-foreground-muted">Inherent risk</p>
+            <p className="text-2xs uppercase tracking-wider text-foreground-muted">
+              {t("inherentRisk")}
+            </p>
             <div className="mt-2 flex items-center gap-2">
               <span className="text-2xl font-semibold text-foreground">{inherent}</span>
               <SeverityBadge severity={severityOf(inherent)} score={inherent} />
@@ -639,19 +632,19 @@ function RiskDetailModal({
             {permissions.canUpdate && (
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <label className="block">
-                  <FieldLabel>Likelihood</FieldLabel>
+                  <FieldLabel>{t("form.likelihood")}</FieldLabel>
                   <ScaleSelect
                     value={risk.likelihood}
                     onChange={(n) => update.mutate({ id, patch: { likelihood: n } })}
-                    labels={LIKELIHOOD_LABELS}
+                    labels={likelihoodLabels}
                   />
                 </label>
                 <label className="block">
-                  <FieldLabel>Impact</FieldLabel>
+                  <FieldLabel>{t("form.impact")}</FieldLabel>
                   <ScaleSelect
                     value={risk.impact}
                     onChange={(n) => update.mutate({ id, patch: { impact: n } })}
-                    labels={IMPACT_LABELS}
+                    labels={impactLabels}
                   />
                 </label>
               </div>
@@ -659,7 +652,7 @@ function RiskDetailModal({
           </div>
           <div className="rounded-lg border border-hairline bg-surface/40 p-3">
             <p className="text-2xs uppercase tracking-wider text-foreground-muted">
-              Residual risk (after controls)
+              {t("residualRisk")}
             </p>
             <div className="mt-2 flex items-center gap-2">
               {risk.residualLikelihood != null && risk.residualImpact != null ? (
@@ -673,25 +666,25 @@ function RiskDetailModal({
                   );
                 })()
               ) : (
-                <span className="text-sm text-foreground-muted">Not assessed</span>
+                <span className="text-sm text-foreground-muted">{t("notAssessed")}</span>
               )}
             </div>
             {permissions.canUpdate && (
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <label className="block">
-                  <FieldLabel>Likelihood</FieldLabel>
+                  <FieldLabel>{t("form.likelihood")}</FieldLabel>
                   <ScaleSelect
                     value={risk.residualLikelihood ?? risk.likelihood}
                     onChange={(n) => setResidual("residualLikelihood", n)}
-                    labels={LIKELIHOOD_LABELS}
+                    labels={likelihoodLabels}
                   />
                 </label>
                 <label className="block">
-                  <FieldLabel>Impact</FieldLabel>
+                  <FieldLabel>{t("form.impact")}</FieldLabel>
                   <ScaleSelect
                     value={risk.residualImpact ?? risk.impact}
                     onChange={(n) => setResidual("residualImpact", n)}
-                    labels={IMPACT_LABELS}
+                    labels={impactLabels}
                   />
                 </label>
               </div>
@@ -700,7 +693,7 @@ function RiskDetailModal({
         </div>
 
         <div>
-          <FieldLabel>Mitigation plan</FieldLabel>
+          <FieldLabel>{t("form.mitigationPlan")}</FieldLabel>
           {permissions.canUpdate ? (
             <>
               <textarea
@@ -708,7 +701,7 @@ function RiskDetailModal({
                 onChange={(e) => setPlan(e.target.value)}
                 rows={3}
                 className={cn(inputClass, "resize-none py-2")}
-                placeholder="Describe the planned mitigations…"
+                placeholder={t("form.mitigationPlanPlaceholder")}
               />
               {plan !== null && plan !== (risk.mitigationPlan ?? "") && (
                 <button
@@ -719,21 +712,21 @@ function RiskDetailModal({
                   }}
                   className="mt-2 inline-flex h-8 items-center gap-1 rounded-lg bg-accent px-2.5 text-2xs font-medium text-white"
                 >
-                  Save plan
+                  {t("savePlan")}
                 </button>
               )}
             </>
           ) : (
             <p className="whitespace-pre-wrap rounded-lg border border-hairline bg-surface/40 px-3 py-2 text-sm text-foreground-secondary">
-              {risk.mitigationPlan || "No mitigation plan."}
+              {risk.mitigationPlan || t("noMitigationPlan")}
             </p>
           )}
         </div>
 
         <div>
-          <FieldLabel>Mitigating controls</FieldLabel>
+          <FieldLabel>{t("form.mitigatingControls")}</FieldLabel>
           {risk.controlIds.length === 0 ? (
-            <p className="text-2xs text-foreground-muted">No mapped controls.</p>
+            <p className="text-2xs text-foreground-muted">{t("noLinkedControls")}</p>
           ) : (
             <div className="flex flex-wrap gap-1">
               {risk.controlIds.map((cid) => {

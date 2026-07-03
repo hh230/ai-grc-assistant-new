@@ -29,10 +29,28 @@ export interface AnalysisFinding {
   framework?: string;
 }
 
+/** A finding serious enough to threaten the business, an audit outcome, or the license to
+ *  operate — a curated subset of `findings`, each framed in terms of its business impact. */
+export interface CriticalRisk {
+  title: string;
+  detail: string;
+  severity: Severity;
+  businessImpact: string;
+  framework?: string;
+}
+
 export interface FrameworkCoverage {
   framework: string;
   assessment: string;
   alignment: Alignment;
+}
+
+/** A specific control/requirement area where the document falls short of a framework. */
+export interface Gap {
+  area: string;
+  description: string;
+  severity: Severity;
+  framework?: string;
 }
 
 /** AI-classified priority (like `severity`); the score fields on `AnalysisRecord` are
@@ -41,8 +59,22 @@ export interface Recommendation {
   change: string;
   reason: string;
   priority: Priority;
+  /** The measurable outcome expected from making this change. */
+  expectedImpact: string;
+  /** One of the known framework names, if this recommendation maps to one. */
+  relatedFramework?: string;
   /** Framework control id or a grounded citation into the source document. */
   reference?: string;
+}
+
+export interface OverallPriority {
+  level: Priority;
+  rationale: string;
+}
+
+export interface NextAction {
+  action: string;
+  priority: Priority;
 }
 
 export interface AnalysisRecord {
@@ -65,14 +97,23 @@ export interface AnalysisRecord {
   embeddingProvider?: string;
   chatProvider?: string;
 
-  // AI-grounded results
-  summary?: string;
+  // AI-grounded results — consulting-report structure (V2 Production Polish)
+  /** UI language the report was generated in ("ar" | "en"), for audit/reproducibility. */
+  locale?: string;
+  executiveSummary?: string;
+  complianceOverview?: string;
   findings: AnalysisFinding[];
+  criticalRisks: CriticalRisk[];
   frameworks: FrameworkCoverage[];
+  gaps: Gap[];
   keyTerms: string[];
   strengths: string[];
   weaknesses: string[];
   recommendations: Recommendation[];
+  businessImpact?: string;
+  overallPriority?: OverallPriority;
+  references: string[];
+  nextActions: NextAction[];
 
   // deterministically computed by lib/analysis/scoring — never LLM-generated
   complianceScore?: number;

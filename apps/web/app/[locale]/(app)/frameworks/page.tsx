@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ChevronRight, Library } from "lucide-react";
 import { Link, redirect } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
@@ -16,25 +16,23 @@ export default async function FrameworksPage() {
   const actor = await getActor();
   if (!actor) redirect({ href: LOGIN_PATH, locale: await getLocale() });
   const report = await computeCoverage(actor);
+  const t = await getTranslations("frameworksPage");
 
   return (
     <div>
       <header className="pb-7">
         <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-          Governance
+          {t("eyebrow")}
         </p>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">Frameworks</h1>
-        <p className="mt-1 max-w-2xl text-sm text-foreground-secondary">
-          Compliance frameworks and their control coverage, computed from the evidence linked to
-          each control.
-        </p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{t("title")}</h1>
+        <p className="mt-1 max-w-2xl text-sm text-foreground-secondary">{t("description")}</p>
       </header>
 
       <Card className="mb-5 flex flex-wrap items-center gap-6">
-        <Metric label="Frameworks" value={String(report.frameworks.length)} />
-        <Metric label="Total controls" value={String(report.overall.totalControls)} />
-        <Metric label="Controls covered" value={`${report.overall.coveredControls}`} />
-        <Metric label="Overall coverage" value={`${report.overall.coveragePct}%`} accent />
+        <Metric label={t("metricFrameworks")} value={String(report.frameworks.length)} />
+        <Metric label={t("metricTotalControls")} value={String(report.overall.totalControls)} />
+        <Metric label={t("metricControlsCovered")} value={`${report.overall.coveredControls}`} />
+        <Metric label={t("metricOverallCoverage")} value={`${report.overall.coveragePct}%`} accent />
         <div className="min-w-[160px] flex-1">
           <CoverageBar pct={report.overall.coveragePct} />
         </div>
@@ -62,7 +60,7 @@ export default async function FrameworksPage() {
               <p className="mt-3 line-clamp-1 text-xs text-foreground-muted">{framework.name}</p>
               <div className="mt-4 flex items-center justify-between text-xs">
                 <span className="text-foreground-secondary">
-                  {framework.covered}/{framework.total} controls
+                  {t("controlsFraction", { covered: framework.covered, total: framework.total })}
                 </span>
                 <span className="font-semibold text-foreground">{framework.coveragePct}%</span>
               </div>

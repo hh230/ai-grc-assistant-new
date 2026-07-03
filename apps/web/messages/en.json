@@ -66,6 +66,22 @@
       "assessmentIncomplete": "{name} awaiting completion",
       "assessmentIncompleteDetail": "Owner: {owner} · updated {updated}"
     },
+    "intelligentInsights": {
+      "title": "Your Workspace",
+      "description": "Signals from your own risks, documents, and analyses",
+      "badge": "Live",
+      "topRisk": "Highest-priority risk: {title}",
+      "topRiskDetail": "Inherent score {score} · {count} open risks in the register",
+      "documentsAwaiting": "{count} documents awaiting review",
+      "documentsAwaitingDetail": "Including \"{name}\" — run analysis to index it",
+      "recentlyAnalyzed": "Recently analyzed: {name}",
+      "recentlyAnalyzedDetail": "Compliance score {score}",
+      "trendUp": "Compliance trend improving by {delta} points",
+      "trendDown": "Compliance trend declining by {delta} points",
+      "trendDetail": "Across the last {count} scored analyses",
+      "highPriorityRecommendations": "{count} high-priority recommendations open",
+      "highPriorityRecommendationsDetail": "From recent document analyses — review and action them"
+    },
     "pageHeader": {
       "title": "Executive Dashboard",
       "subtitle": "Real-time governance, risk, compliance and AI posture across all regulated entities.",
@@ -413,5 +429,560 @@
       "add": "Add to favorites",
       "remove": "Remove from favorites"
     }
+  },
+  "analysisDetail": {
+    "loading": "Loading analysis…",
+    "emptyTitle": "This document hasn't been analyzed yet",
+    "emptyDescription": "Run the AI pipeline to parse, chunk, embed, index, assess, and score this document against your frameworks.",
+    "runAnalysis": "Run analysis",
+    "retryAnalysis": "Retry analysis",
+    "rerunAnalysis": "Re-run analysis",
+    "analyzing": "Analyzing \"{name}\"…",
+    "analyzingDescription": "Extracting text, embedding chunks, assessing coverage, and computing scores.",
+    "pipelineSteps": {
+      "parse": "Parse",
+      "chunk": "Chunk",
+      "embed": "Embed",
+      "index": "Index",
+      "assess": "Assess",
+      "score": "Score"
+    },
+    "analysisFailed": "Analysis failed",
+    "unexpectedError": "An unexpected error occurred.",
+    "metrics": {
+      "pages": "Pages",
+      "chunksIndexed": "Chunks indexed",
+      "characters": "Characters",
+      "findings": "Findings"
+    },
+    "analyzedBy": "Analyzed by {name}",
+    "durationSuffix": "{seconds}s",
+    "executiveSummary": "Executive summary",
+    "backToDocuments": "Back to documents"
+  },
+  "analysisHistory": {
+    "all": "All",
+    "emptyTitle": "No analyses yet",
+    "emptyDescription": "Upload a document and run analysis to see results here.",
+    "goToUploadCenter": "Go to Upload Center",
+    "columns": {
+      "document": "Document",
+      "category": "Category",
+      "status": "Status",
+      "versions": "Versions",
+      "findings": "Findings",
+      "analyzed": "Analyzed"
+    },
+    "ofCount": "of {count}",
+    "view": "View"
+  },
+  "versionHistory": {
+    "title": "Version history",
+    "description": "{count} analysis runs for this document — saved automatically",
+    "saveName": "Save name",
+    "cancel": "Cancel",
+    "complianceSuffix": " compliance",
+    "riskSuffix": " risk",
+    "rename": "Rename",
+    "deleteVersion": "Delete version",
+    "confirm": "Confirm"
+  },
+  "documentList": {
+    "loading": "Loading documents…",
+    "loadFailed": "Failed to load documents.",
+    "emptyTitle": "No documents yet",
+    "emptyDescription": "Upload a PDF or Word document to get started.",
+    "documents": "Documents",
+    "total": "{count} total",
+    "columns": {
+      "document": "Document",
+      "category": "Category",
+      "status": "Status",
+      "size": "Size",
+      "uploadedBy": "Uploaded by",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "analyzeDocument": "Analyze document",
+    "analyze": "Analyze",
+    "download": "Download",
+    "delete": "Delete",
+    "confirm": "Confirm"
+  },
+  "uploadCenter": {
+    "readOnlyNotice": "Your role has read-only access to the Upload Center. Uploading documents requires the Analyst, Compliance Manager, or Administrator role.",
+    "stepOneOfTwo": "Step 1 of 2",
+    "classifyHeading": "What kind of document is this?",
+    "classifyDescription": "Classification helps the AI pipeline target the right frameworks and findings.",
+    "continue": "Continue",
+    "changeCategory": "Change category",
+    "uploadDocumentsAriaLabel": "Upload documents",
+    "dropToUpload": "Drop to upload",
+    "dragAndDropDocuments": "Drag & drop documents",
+    "orText": "or",
+    "browseYourFiles": "browse your files",
+    "fileTypeHint": "PDF or Word (.doc, .docx) · up to {maxMb} MB each",
+    "uploaded": "Uploaded",
+    "alreadyExists": "Already exists",
+    "dismiss": "Dismiss",
+    "uploadFailed": "Upload failed."
+  },
+  "controlsExplorer": {
+    "searchPlaceholder": "Search controls…",
+    "allFrameworks": "All frameworks",
+    "allStatuses": "All statuses",
+    "statusCovered": "Covered",
+    "statusGaps": "Gaps",
+    "statusGap": "Gap",
+    "controlCount": "{count} controls",
+    "columnControl": "Control",
+    "columnFramework": "Framework",
+    "columnStatus": "Status",
+    "columnEvidence": "Evidence",
+    "evidenceButton": "Evidence",
+    "modalDefaultTitle": "Control evidence",
+    "loading": "Loading…",
+    "noEvidenceTitle": "No evidence linked",
+    "noEvidenceDescription": "This control is a coverage gap. Link evidence from the <link>Evidence</link> module.",
+    "download": "Download"
+  },
+  "controlsPage": {
+    "eyebrow": "Governance",
+    "title": "Controls",
+    "description": "Every control across your frameworks, with live coverage from linked evidence and the gaps that need attention.",
+    "coverageLabel": "Coverage",
+    "coverageSummary": "{covered} of {total} controls covered",
+    "openGapsLabel": "Open gaps",
+    "openGapsDescription": "controls with no linked evidence",
+    "evidenceArtifactsLabel": "Evidence artifacts",
+    "evidenceArtifactsSummary": "across {count} frameworks"
+  },
+  "frameworksPage": {
+    "eyebrow": "Governance",
+    "title": "Frameworks",
+    "description": "Compliance frameworks and their control coverage, computed from the evidence linked to each control.",
+    "metricFrameworks": "Frameworks",
+    "metricTotalControls": "Total controls",
+    "metricControlsCovered": "Controls covered",
+    "metricOverallCoverage": "Overall coverage",
+    "controlsFraction": "{covered}/{total} controls",
+    "allFrameworksLink": "All frameworks",
+    "controlsCoveredFraction": "{covered}/{total} controls covered",
+    "evidenceCount": "{count} evidence",
+    "statusGap": "Gap"
+  },
+  "documentCategories": {
+    "governance": "Governance",
+    "risk_register": "Risk Register",
+    "policies": "Policies",
+    "contracts": "Contracts",
+    "compliance": "Compliance",
+    "internal_audit": "Internal Audit",
+    "cybersecurity": "Cybersecurity",
+    "other": "Other",
+    "pickerLabel": "Document category"
+  },
+  "evidenceWorkspace": {
+    "searchPlaceholder": "Search evidence by title or tag…",
+    "addEvidence": "Add evidence",
+    "loading": "Loading evidence…",
+    "emptyTitle": "No evidence yet",
+    "emptyMatchingTitle": "No matching evidence",
+    "emptyHint": "Add an artifact and link it to the controls it supports.",
+    "emptyMatchingHint": "Try a different search.",
+    "noLinkedControls": "No linked controls",
+    "versionSize": "v{count} · {size}",
+    "updatedOn": "Updated {date}",
+    "downloadCurrentVersion": "Download current version",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "removeTag": "Remove {tag}",
+    "addTagsPlaceholder": "Add tags…",
+    "addEvidenceDescription": "Upload an artifact and link it to the controls it supports.",
+    "cancel": "Cancel",
+    "saveEvidence": "Save evidence",
+    "fieldTitle": "Title",
+    "fieldDescription": "Description (optional)",
+    "fieldTags": "Tags",
+    "fieldLinkedControls": "Linked controls",
+    "fieldFile": "File",
+    "titlePlaceholder": "e.g. Q2 access review export",
+    "fileHint": "PDF, Word, or image (PNG/JPG) · up to 25 MB",
+    "errorTitleRequired": "A title is required.",
+    "errorFileRequired": "Please choose a file.",
+    "errorAddFailed": "Something went wrong adding this evidence. Please try again.",
+    "evidenceFallbackTitle": "Evidence",
+    "loadingEllipsis": "Loading…",
+    "linkedControls": "Linked controls",
+    "edit": "Edit",
+    "saveLinks": "Save links",
+    "versionHistory": "Version history ({count})",
+    "newVersion": "New version",
+    "current": "current",
+    "download": "Download"
+  },
+  "placeholders": {
+    "missions": {
+      "eyebrow": "Overview",
+      "title": "Missions",
+      "description": "Track goal-directed GRC missions through their lifecycle, with plans, approval gates, and a full audit trail."
+    },
+    "assessments": {
+      "eyebrow": "Risk & Compliance",
+      "title": "Assessments",
+      "description": "Run gap analyses and coverage assessments against one or more frameworks, with confidence and provenance."
+    },
+    "help": {
+      "eyebrow": "Account",
+      "title": "Help & Support",
+      "description": "Find documentation, contact support, and learn how to get the most out of the platform."
+    },
+    "settings": {
+      "eyebrow": "Account",
+      "title": "Settings",
+      "description": "Manage organization preferences, members, and workspace configuration."
+    }
+  },
+  "placeholderPage": {
+    "comingSoon": "Coming soon",
+    "moduleNotice": "{title} is on its way — we're putting the finishing touches on this experience.",
+    "badge": "Coming soon"
+  },
+  "policiesWorkspace": {
+    "policyCount": "{count} policies",
+    "newPolicy": "New policy",
+    "loadingPolicies": "Loading policies…",
+    "loading": "Loading…",
+    "emptyTitle": "No policies yet",
+    "emptyDescription": "Author a policy and map it to the controls it governs.",
+    "status": {
+      "draft": "Draft",
+      "in_review": "In review",
+      "published": "Published",
+      "archived": "Archived"
+    },
+    "statusAction": {
+      "draft": "Move to draft",
+      "in_review": "Submit for review",
+      "published": "Publish",
+      "archived": "Archive"
+    },
+    "rowMeta": "{owner} · {count} controls · Updated {date}",
+    "policyModalTitle": "Policy",
+    "createDescription": "Drafts start in Draft and move through review before publication.",
+    "cancel": "Cancel",
+    "createDraft": "Create draft",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "saveBody": "Save body",
+    "saveLinks": "Save links",
+    "titleLabel": "Title",
+    "titlePlaceholder": "e.g. Access Control Policy",
+    "summaryLabel": "Summary",
+    "summaryPlaceholder": "One-line purpose",
+    "bodyLabel": "Body",
+    "bodyPlaceholder": "Policy text…",
+    "mappedControlsLabel": "Mapped controls",
+    "noBody": "No body.",
+    "noMappedControls": "No mapped controls.",
+    "ownerLabel": "Owner: {name}",
+    "publishedBy": "Published by {name}",
+    "titleRequired": "A title is required.",
+    "createError": "Something went wrong creating this policy. Please try again.",
+    "transitionError": "This action couldn't be completed. Please try again."
+  },
+  "reportsPage": {
+    "eyebrow": "Risk & Compliance",
+    "title": "Reports",
+    "description": "Audit-ready executive, compliance, and risk reports — aggregated from your live coverage, evidence, and risk data. Preview on screen, then export to PDF or Excel."
+  },
+  "reportsWorkspace": {
+    "kinds": {
+      "executive": {
+        "title": "Executive GRC Report",
+        "subtitle": "Governance, risk & compliance posture at a glance",
+        "description": "A leadership summary of compliance coverage, risk exposure, and control evidence."
+      },
+      "compliance": {
+        "title": "Compliance Report",
+        "subtitle": "Framework coverage and control assurance",
+        "description": "Per-framework control coverage, gaps, and the policies and evidence that support them."
+      },
+      "risk": {
+        "title": "Risk Report",
+        "subtitle": "Risk register, scoring, and treatment",
+        "description": "The full risk register with severity distribution, status, and acceptance decisions."
+      }
+    },
+    "exportPdf": "Export PDF",
+    "exportExcel": "Export Excel",
+    "loading": "Building report…",
+    "noRows": "No rows."
+  },
+  "riskRegister": {
+    "newRisk": "New risk",
+    "loadingRisks": "Loading risks…",
+    "loading": "Loading…",
+    "score": "Score",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "addToRegister": "Add to register",
+    "savePlan": "Save plan",
+    "noMitigationPlan": "No mitigation plan yet.",
+    "noLinkedControls": "No linked controls yet.",
+    "notAssessed": "Not assessed",
+    "inherentRisk": "Inherent risk",
+    "residualRisk": "Residual risk (after controls)",
+    "ownerLabel": "Owner: {name}",
+    "statusLabel": "Status: {status}",
+    "acceptedBy": "Accepted by {name}",
+    "mitigatingControlsCount": "{count} mitigating controls",
+    "stats": {
+      "totalRisks": "Total risks",
+      "activeAccepted": "{active} active · {accepted} accepted",
+      "severityDistribution": "Severity distribution",
+      "averageInherentScore": "Average inherent score",
+      "outOf25": "out of 25 (likelihood × impact)"
+    },
+    "filters": {
+      "allStatuses": "All statuses",
+      "allSeverities": "All severities"
+    },
+    "emptyState": {
+      "titleEmpty": "No risks yet",
+      "titleFiltered": "No risks match the filters",
+      "hintEmpty": "Identify a risk and score it on the 5×5 matrix to get started.",
+      "hintFiltered": "Try a different status or severity filter."
+    },
+    "table": {
+      "risk": "Risk",
+      "category": "Category",
+      "inherent": "Inherent",
+      "residual": "Residual",
+      "status": "Status",
+      "owner": "Owner"
+    },
+    "modal": {
+      "newRiskTitle": "New risk",
+      "riskTitle": "Risk"
+    },
+    "form": {
+      "title": "Title",
+      "titlePlaceholder": "e.g. Unpatched internet-facing servers",
+      "description": "Description",
+      "category": "Category",
+      "owner": "Owner",
+      "ownerPlaceholder": "Defaults to you",
+      "likelihood": "Likelihood",
+      "impact": "Impact",
+      "mitigatingControls": "Mitigating controls",
+      "mitigationPlan": "Mitigation plan",
+      "mitigationPlanPlaceholder": "Describe the planned mitigations…"
+    },
+    "errors": {
+      "titleRequired": "A title is required.",
+      "createFailed": "Something went wrong creating this risk. Please try again.",
+      "transitionFailed": "This action couldn't be completed. Please try again."
+    },
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "status": {
+      "open": "Open",
+      "mitigating": "Mitigating",
+      "accepted": "Accepted",
+      "closed": "Closed"
+    },
+    "statusAction": {
+      "open": "Reopen",
+      "mitigating": "Start mitigation",
+      "accepted": "Accept risk",
+      "closed": "Close"
+    },
+    "category": {
+      "cyber": "Cyber",
+      "compliance": "Compliance",
+      "privacy": "Privacy",
+      "operational": "Operational",
+      "third_party": "Third party",
+      "financial": "Financial"
+    },
+    "likelihoodLabels": [
+      "Rare",
+      "Unlikely",
+      "Possible",
+      "Likely",
+      "Almost certain"
+    ],
+    "impactLabels": [
+      "Negligible",
+      "Minor",
+      "Moderate",
+      "Major",
+      "Severe"
+    ]
+  },
+  "policiesPage": {
+    "eyebrow": "Governance",
+    "title": "Policies",
+    "description": "Author policies, map them to controls, and move them through review to publication. Publishing is a human-gated action restricted to owners, admins, and compliance managers."
+  },
+  "evidencePage": {
+    "eyebrow": "Risk & Compliance",
+    "title": "Evidence",
+    "description": "Collect and manage the artifacts that prove your controls are operating — tagged, version-controlled, and linked back to the controls they support."
+  },
+  "riskRegisterPage": {
+    "eyebrow": "Risk & Compliance",
+    "title": "Risk Register",
+    "description": "Identify, score, and track risks on a 5×5 matrix — with mitigating controls, residual scoring, and ownership. Accepting a risk is a human-gated decision."
+  },
+  "accessDeniedPage": {
+    "title": "Access denied",
+    "description": "Your role does not grant access to this area. If you believe this is a mistake, contact your workspace administrator.",
+    "backToDashboard": "Back to dashboard"
+  },
+  "uploadPage": {
+    "eyebrow": "Knowledge",
+    "title": "Upload Center",
+    "description": "Upload policies, evidence, contracts, and prior reports. Documents are stored in your tenant and prepared for AI analysis — parsing, chunking, embedding, and grounded retrieval."
+  },
+  "analysisPage": {
+    "allAnalyses": "All analyses",
+    "eyebrow": "AI",
+    "title": "Analysis",
+    "documentAnalysisTitle": "Document Analysis",
+    "description": "Run uploaded documents through the AI pipeline and review grounded findings and framework coverage.",
+    "documentAnalysisDescription": "AI assessment grounded in the document's own text — parsed, chunked, embedded, and indexed for retrieval."
+  },
+  "analysisScoreCards": {
+    "compliance": "Compliance",
+    "risk": "Risk",
+    "weightedAcrossFrameworks": "Weighted across resolved frameworks",
+    "maturityLevel": "{level} maturity",
+    "findings": "Findings",
+    "noFindings": "No findings recorded.",
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "info": "Info"
+    }
+  },
+  "analysisProgress": {
+    "fileSizeSuffix": "{size} · PDF document",
+    "complete": "Complete",
+    "analyzing": "Analyzing",
+    "analysisInProgress": "AI analysis in progress",
+    "done": "Done",
+    "running": "Running…",
+    "queued": "Queued",
+    "openingReport": "Opening Executive Report…",
+    "staySeconds": "This usually takes a few seconds. Please keep this tab open."
+  },
+  "duplicateDocumentDialog": {
+    "title": "Already uploaded and analyzed",
+    "description": "\"{fileName}\" has the exact same content as a document already in your workspace.",
+    "cancel": "Cancel",
+    "starting": "Starting…",
+    "rerunAnyway": "Re-run analysis anyway",
+    "openPrevious": "Open previous analysis",
+    "bodyText": "No new document was created — nothing was re-uploaded. You can open the existing analysis history, or re-run analysis if the scoring rules have changed since it was last analyzed."
+  },
+  "documentStatus": {
+    "uploaded": "Ready for analysis",
+    "queued": "Queued",
+    "processing": "Processing",
+    "processed": "Processed",
+    "failed": "Failed"
+  },
+  "strengthsWeaknesses": {
+    "strengthsTitle": "Strengths",
+    "strengthsDescription": "What the document already does well",
+    "weaknessesTitle": "Weaknesses",
+    "weaknessesDescription": "Gaps or omissions found in the text"
+  },
+  "frameworkChecks": {
+    "title": "Framework alignment",
+    "description": "Grounded assessment against each framework mentioned in the document",
+    "alignment": {
+      "strong": "Strong",
+      "partial": "Partial",
+      "gap": "Gap",
+      "unknown": "Unknown"
+    }
+  },
+  "recommendations": {
+    "title": "Recommended changes",
+    "description": "{count} grounded in the document's findings",
+    "reasonLabel": "Reason:",
+    "impactLabel": "Expected impact:",
+    "priority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
+  "findingsList": {
+    "title": "Findings",
+    "description": "{count} grounded in the document text",
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "info": "Info"
+    },
+    "relatesTo": "Relates to: {framework}"
+  },
+  "complianceOverview": {
+    "title": "Compliance overview",
+    "description": "Overall alignment across the frameworks referenced in this document"
+  },
+  "criticalRisks": {
+    "title": "Critical risks",
+    "description": "{count} findings serious enough to threaten the business or audit outcome",
+    "businessImpactLabel": "Business impact:",
+    "relatesTo": "Relates to: {framework}",
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "info": "Info"
+    }
+  },
+  "gapAnalysis": {
+    "title": "Gap analysis",
+    "description": "{count} specific areas where the document falls short of a framework requirement",
+    "relatesTo": "Relates to: {framework}"
+  },
+  "impactAndPriority": {
+    "businessImpactTitle": "Business impact",
+    "priorityTitle": "Priority",
+    "priority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
+  "references": {
+    "title": "References",
+    "description": "Framework controls and document sections cited in this analysis"
+  },
+  "nextActions": {
+    "title": "Next actions",
+    "description": "{count} concrete next steps to close the gaps above",
+    "priority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
+  "regions": {
+    "International": "International",
+    "Saudi Arabia": "Saudi Arabia"
   }
 }

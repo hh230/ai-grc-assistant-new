@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AlertTriangle, FileText, Loader2, RefreshCw, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
@@ -14,9 +15,10 @@ import type { AnalysisRecord } from "@/lib/analysis/types";
 import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import { formatNumber } from "@/lib/utils";
 
-const PIPELINE_STEPS = ["Parse", "Chunk", "Embed", "Index", "Assess", "Score"];
+const PIPELINE_STEP_KEYS = ["parse", "chunk", "embed", "index", "assess", "score"] as const;
 
 export function AnalysisDetail({ documentId, canRun }: { documentId: string; canRun: boolean }) {
+  const t = useTranslations("analysisDetail");
   const { data: versions, isLoading } = useAnalysisVersions(documentId);
   const start = useStartAnalysis(documentId);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -34,7 +36,7 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
     return (
       <Card className="flex items-center justify-center gap-2 py-16 text-sm text-foreground-muted">
         <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-        Loading analysis…
+        {t("loading")}
       </Card>
     );
   }
@@ -48,18 +50,17 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
         </div>
         <div className="space-y-1">
           <p className="text-sm font-medium text-foreground">
-            This document hasn’t been analyzed yet
+            {t("emptyTitle")}
           </p>
           <p className="max-w-sm text-xs text-foreground-muted">
-            Run the AI pipeline to parse, chunk, embed, index, assess, and score this document
-            against your frameworks.
+            {t("emptyDescription")}
           </p>
         </div>
         {canRun && (
           <RunButton
             onClick={() => start.mutate()}
             pending={start.isPending}
-            label="Run analysis"
+            label={t("runAnalysis")}
           />
         )}
         {start.isError && <p className="text-2xs text-danger">{(start.error as Error).message}</p>}
@@ -72,18 +73,18 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
       <Card grain className="flex flex-col items-center gap-4 py-16 text-center">
         <Loader2 className="h-7 w-7 animate-spin text-accent-foreground" strokeWidth={1.5} />
         <div className="space-y-1">
-          <p className="text-sm font-medium text-foreground">Analyzing “{selected.fileName}”…</p>
+          <p className="text-sm font-medium text-foreground">{t("analyzing", { name: selected.fileName })}</p>
           <p className="text-xs text-foreground-muted">
-            Extracting text, embedding chunks, assessing coverage, and computing scores.
+            {t("analyzingDescription")}
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-1.5 text-2xs text-foreground-muted">
-          {PIPELINE_STEPS.map((step) => (
+          {PIPELINE_STEP_KEYS.map((step) => (
             <span
               key={step}
               className="rounded-full border border-hairline bg-surface/60 px-2 py-0.5"
             >
-              {step}
+              {t(`pipelineSteps.${step}`)}
             </span>
           ))}
         </div>
@@ -98,16 +99,16 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
           <AlertTriangle className="h-5 w-5 text-danger" strokeWidth={1.75} />
         </div>
         <div className="space-y-1">
-          <p className="text-sm font-medium text-foreground">Analysis failed</p>
+          <p className="text-sm font-medium text-foreground">{t("analysisFailed")}</p>
           <p className="max-w-md text-xs text-danger">
-            {selected.error ?? "An unexpected error occurred."}
+            {selected.error ?? t("unexpectedError")}
           </p>
         </div>
         {canRun && (
           <RunButton
             onClick={() => start.mutate()}
             pending={start.isPending}
-            label="Retry analysis"
+            label={t("retryAnalysis")}
           />
         )}
       </Card>
@@ -140,6 +141,7 @@ function ProcessedAnalysis({
   onRerun: () => void;
   pending: boolean;
 }) {
+  const t = useTranslations("analysisDetail");
   // Adaptive-layout slot (design proposal §8/§12): selects the section set for this
   // document's category. Empty registry today, so every category renders the same
   // generic module DefaultModule already did — this lookup has zero visible effect
@@ -170,26 +172,26 @@ function ProcessedAnalysis({
             <div>
               <p className="text-sm font-semibold text-foreground">{analysis.title}</p>
               <p className="text-2xs text-foreground-muted">
-                Analyzed by {analysis.requestedByName}
-                {analysis.durationMs ? ` · ${(analysis.durationMs / 1000).toFixed(1)}s` : ""}
+                {t("analyzedBy", { name: analysis.requestedByName })}
+                {analysis.durationMs ? ` · ${t("durationSuffix", { seconds: (analysis.durationMs / 1000).toFixed(1) })}` : ""}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <DocumentStatusBadge status={analysis.status} />
             {canRun && (
-              <RunButton onClick={onRerun} pending={pending} label="Re-run analysis" compact />
+              <RunButton onClick={onRerun} pending={pending} label={t("rerunAnalysis")} compact />
             )}
           </div>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Metric
-            label="Pages"
+            label={t("metrics.pages")}
             value={analysis.pageCount ? formatNumber(analysis.pageCount) : "—"}
           />
-          <Metric label="Chunks indexed" value={formatNumber(analysis.chunkCount)} />
-          <Metric label="Characters" value={formatNumber(analysis.charCount)} />
-          <Metric label="Findings" value={formatNumber(analysis.findings.length)} />
+          <Metric label={t("metrics.chunksIndexed")} value={formatNumber(analysis.chunkCount)} />
+          <Metric label={t("metrics.characters")} value={formatNumber(analysis.charCount)} />
+          <Metric label={t("metrics.findings")} value={formatNumber(analysis.findings.length)} />
         </div>
       </Card>
 
@@ -200,13 +202,13 @@ function ProcessedAnalysis({
         findings={analysis.findings}
       />
 
-      {analysis.summary && (
+      {analysis.executiveSummary && (
         <Card>
           <h2 className="text-sm font-semibold tracking-tight text-foreground">
-            Executive summary
+            {t("executiveSummary")}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">
-            {analysis.summary}
+            {analysis.executiveSummary}
           </p>
           {analysis.keyTerms.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1.5">
@@ -231,7 +233,7 @@ function ProcessedAnalysis({
           className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
         >
           <FileText className="h-4 w-4" strokeWidth={1.75} />
-          Back to documents
+          {t("backToDocuments")}
         </Link>
       </div>
     </div>

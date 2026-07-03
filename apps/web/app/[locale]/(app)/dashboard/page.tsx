@@ -5,6 +5,7 @@ import { StatCards } from "@/components/dashboard/StatCards";
 import { ExecutiveSummary } from "@/components/dashboard/ExecutiveSummary";
 import { ActiveFrameworks } from "@/components/dashboard/ActiveFrameworks";
 import { NeedsAttention } from "@/components/dashboard/NeedsAttention";
+import { IntelligentInsights } from "@/components/dashboard/IntelligentInsights";
 import { ComplianceProgress } from "@/components/dashboard/ComplianceProgress";
 import { RiskDistribution } from "@/components/dashboard/RiskDistribution";
 import { RecentAssessments } from "@/components/dashboard/RecentAssessments";
@@ -38,6 +39,10 @@ export default function ExecutiveDashboardPage() {
 
         {/* Band 2 — what needs a decision today, ranked danger-first */}
         <NeedsAttention />
+
+        {/* Real-workspace signals — risks, documents, and analyses actually in this tenant's
+            data, distinct from the illustrative bands above. Renders nothing when empty. */}
+        <IntelligentInsights />
 
         {/* Band 3 — analytics & operational detail */}
         <div className="grid grid-cols-12 gap-5">

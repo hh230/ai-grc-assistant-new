@@ -11,11 +11,8 @@ import {
   TriangleAlert,
   type LucideIcon,
 } from "lucide-react";
-import {
-  DOCUMENT_CATEGORIES,
-  DOCUMENT_CATEGORY_LABELS,
-  type DocumentCategory,
-} from "@/lib/documents/types";
+import { useTranslations } from "next-intl";
+import { DOCUMENT_CATEGORIES, type DocumentCategory } from "@/lib/documents/types";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_ICONS: Record<DocumentCategory, LucideIcon> = {
@@ -36,8 +33,13 @@ interface CategoryPickerProps {
 
 /** Required classification step (V2-P2.5) — single-select grid of the 8 document categories. */
 export function CategoryPicker({ value, onChange }: CategoryPickerProps) {
+  const t = useTranslations("documentCategories");
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4" role="radiogroup" aria-label="Document category">
+    <div
+      className="grid grid-cols-2 gap-3 sm:grid-cols-4"
+      role="radiogroup"
+      aria-label={t("pickerLabel")}
+    >
       {DOCUMENT_CATEGORIES.map((category) => {
         const Icon = CATEGORY_ICONS[category];
         const selected = value === category;
@@ -71,7 +73,7 @@ export function CategoryPicker({ value, onChange }: CategoryPickerProps) {
                 selected ? "text-accent-foreground" : "text-foreground",
               )}
             >
-              {DOCUMENT_CATEGORY_LABELS[category]}
+              {t(category)}
             </span>
           </button>
         );

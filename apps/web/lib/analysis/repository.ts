@@ -10,7 +10,11 @@ import type {
   AnalysisFinding,
   AnalysisRecord,
   AnalysisStatus,
+  CriticalRisk,
   FrameworkCoverage,
+  Gap,
+  NextAction,
+  OverallPriority,
   Recommendation,
 } from "./types";
 
@@ -52,12 +56,20 @@ interface AnalysisRow {
   embedding_provider: string | null;
   chat_provider: string | null;
   summary: string | null;
+  compliance_overview: string | null;
   findings: AnalysisFinding[];
+  critical_risks: CriticalRisk[];
   frameworks: FrameworkCoverage[];
+  gaps: Gap[];
   key_terms: string[];
   strengths: string[];
   weaknesses: string[];
   recommendations: Recommendation[];
+  business_impact: string | null;
+  overall_priority: OverallPriority | null;
+  reference_list: string[];
+  next_actions: NextAction[];
+  locale: string | null;
   compliance_score: number | null;
   risk_score: number | null;
   maturity_level: string | null;
@@ -84,13 +96,21 @@ function toRecord(row: AnalysisRow): AnalysisRecord {
     chunkCount: row.chunk_count,
     embeddingProvider: row.embedding_provider ?? undefined,
     chatProvider: row.chat_provider ?? undefined,
-    summary: row.summary ?? undefined,
+    executiveSummary: row.summary ?? undefined,
+    complianceOverview: row.compliance_overview ?? undefined,
     findings: row.findings,
+    criticalRisks: row.critical_risks,
     frameworks: row.frameworks,
+    gaps: row.gaps,
     keyTerms: row.key_terms,
     strengths: row.strengths,
     weaknesses: row.weaknesses,
     recommendations: row.recommendations,
+    businessImpact: row.business_impact ?? undefined,
+    overallPriority: row.overall_priority ?? undefined,
+    references: row.reference_list,
+    nextActions: row.next_actions,
+    locale: row.locale ?? undefined,
     complianceScore: row.compliance_score ?? undefined,
     riskScore: row.risk_score ?? undefined,
     maturityLevel: row.maturity_level ?? undefined,
@@ -155,13 +175,15 @@ class PostgresAnalysisRepository implements AnalysisRepository {
     await getPool().query(
       `INSERT INTO analyses (
          id, document_id, tenant_id, file_name, title, version, status, error, char_count,
-         page_count, chunk_count, embedding_provider, chat_provider, summary, findings,
-         frameworks, key_terms, strengths, weaknesses, recommendations, compliance_score,
-         risk_score, maturity_level, requested_by_user_id, requested_by_name, created_at,
-         updated_at, completed_at, duration_ms
+         page_count, chunk_count, embedding_provider, chat_provider, summary,
+         compliance_overview, findings, critical_risks, frameworks, gaps, key_terms,
+         strengths, weaknesses, recommendations, business_impact, overall_priority,
+         reference_list, next_actions, locale, compliance_score, risk_score, maturity_level,
+         requested_by_user_id, requested_by_name, created_at, updated_at, completed_at,
+         duration_ms
        ) VALUES (
          $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,
-         $24,$25,$26,$27,$28,$29
+         $24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37
        )`,
       [
         record.id,
@@ -177,13 +199,21 @@ class PostgresAnalysisRepository implements AnalysisRepository {
         record.chunkCount,
         record.embeddingProvider ?? null,
         record.chatProvider ?? null,
-        record.summary ?? null,
+        record.executiveSummary ?? null,
+        record.complianceOverview ?? null,
         JSON.stringify(record.findings),
+        JSON.stringify(record.criticalRisks),
         JSON.stringify(record.frameworks),
+        JSON.stringify(record.gaps),
         JSON.stringify(record.keyTerms),
         JSON.stringify(record.strengths),
         JSON.stringify(record.weaknesses),
         JSON.stringify(record.recommendations),
+        record.businessImpact ?? null,
+        record.overallPriority ? JSON.stringify(record.overallPriority) : null,
+        JSON.stringify(record.references),
+        JSON.stringify(record.nextActions),
+        record.locale ?? null,
         record.complianceScore ?? null,
         record.riskScore ?? null,
         record.maturityLevel ?? null,
@@ -224,9 +254,12 @@ class PostgresAnalysisRepository implements AnalysisRepository {
         `UPDATE analyses SET
            file_name = $3, title = $4, status = $5, error = $6, char_count = $7,
            page_count = $8, chunk_count = $9, embedding_provider = $10, chat_provider = $11,
-           summary = $12, findings = $13, frameworks = $14, key_terms = $15, strengths = $16,
-           weaknesses = $17, recommendations = $18, compliance_score = $19, risk_score = $20,
-           maturity_level = $21, updated_at = $22, completed_at = $23, duration_ms = $24
+           summary = $12, compliance_overview = $13, findings = $14, critical_risks = $15,
+           frameworks = $16, gaps = $17, key_terms = $18, strengths = $19, weaknesses = $20,
+           recommendations = $21, business_impact = $22, overall_priority = $23,
+           reference_list = $24, next_actions = $25, locale = $26, compliance_score = $27,
+           risk_score = $28, maturity_level = $29, updated_at = $30, completed_at = $31,
+           duration_ms = $32
          WHERE tenant_id = $1 AND id = $2`,
         [
           tenantId,
@@ -240,13 +273,21 @@ class PostgresAnalysisRepository implements AnalysisRepository {
           updated.chunkCount,
           updated.embeddingProvider ?? null,
           updated.chatProvider ?? null,
-          updated.summary ?? null,
+          updated.executiveSummary ?? null,
+          updated.complianceOverview ?? null,
           JSON.stringify(updated.findings),
+          JSON.stringify(updated.criticalRisks),
           JSON.stringify(updated.frameworks),
+          JSON.stringify(updated.gaps),
           JSON.stringify(updated.keyTerms),
           JSON.stringify(updated.strengths),
           JSON.stringify(updated.weaknesses),
           JSON.stringify(updated.recommendations),
+          updated.businessImpact ?? null,
+          updated.overallPriority ? JSON.stringify(updated.overallPriority) : null,
+          JSON.stringify(updated.references),
+          JSON.stringify(updated.nextActions),
+          updated.locale ?? null,
           updated.complianceScore ?? null,
           updated.riskScore ?? null,
           updated.maturityLevel ?? null,

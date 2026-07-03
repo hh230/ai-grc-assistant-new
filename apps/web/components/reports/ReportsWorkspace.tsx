@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   BarChart3,
   FileDown,
@@ -14,7 +15,7 @@ import {
 import { Card } from "@/components/ui/Card";
 import { useReport } from "@/hooks/useReport";
 import { reportExportUrl } from "@/lib/reports/client";
-import { REPORT_KINDS, REPORT_META, type ReportKind } from "@/lib/reports/types";
+import { REPORT_KINDS, type ReportKind } from "@/lib/reports/types";
 import { cn } from "@/lib/utils";
 
 const ICON: Record<ReportKind, typeof BarChart3> = {
@@ -28,6 +29,7 @@ function isReportKind(value: string | null): value is ReportKind {
 }
 
 export function ReportsWorkspace() {
+  const t = useTranslations("reportsWorkspace");
   const searchParams = useSearchParams();
   // Deep-link support for Global Search results (`/reports?kind=<kind>`).
   const initialKind = searchParams.get("kind");
@@ -68,8 +70,12 @@ export function ReportsWorkspace() {
                   strokeWidth={1.75}
                 />
               </span>
-              <p className="mt-3 text-sm font-semibold text-foreground">{REPORT_META[k].title}</p>
-              <p className="mt-0.5 text-xs text-foreground-muted">{REPORT_META[k].description}</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">
+                {t(`kinds.${k}.title`)}
+              </p>
+              <p className="mt-0.5 text-xs text-foreground-muted">
+                {t(`kinds.${k}.description`)}
+              </p>
             </button>
           );
         })}
@@ -79,9 +85,9 @@ export function ReportsWorkspace() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-sm font-semibold tracking-tight text-foreground">
-              {REPORT_META[kind].title}
+              {t(`kinds.${kind}.title`)}
             </h2>
-            <p className="text-xs text-foreground-muted">{REPORT_META[kind].subtitle}</p>
+            <p className="text-xs text-foreground-muted">{t(`kinds.${kind}.subtitle`)}</p>
           </div>
           <div className="flex items-center gap-2">
             <a
@@ -89,14 +95,14 @@ export function ReportsWorkspace() {
               className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
             >
               <FileDown className="h-4 w-4" strokeWidth={1.75} />
-              Export PDF
+              {t("exportPdf")}
             </a>
             <a
               href={reportExportUrl(kind, "xlsx")}
               className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
             >
               <FileSpreadsheet className="h-4 w-4" strokeWidth={1.75} />
-              Export Excel
+              {t("exportExcel")}
             </a>
           </div>
         </div>
@@ -104,7 +110,7 @@ export function ReportsWorkspace() {
         {isLoading ? (
           <div className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
             <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-            Building report…
+            {t("loading")}
           </div>
         ) : isError ? (
           <p className="py-10 text-center text-sm text-danger">{(error as Error).message}</p>
@@ -156,7 +162,7 @@ export function ReportsWorkspace() {
                               colSpan={section.table.columns.length}
                               className="px-4 py-4 text-center text-xs text-foreground-muted"
                             >
-                              No rows.
+                              {t("noRows")}
                             </td>
                           </tr>
                         ) : (

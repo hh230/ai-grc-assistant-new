@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { AnalysisFinding, Severity } from "@/lib/analysis/types";
@@ -18,12 +21,13 @@ const SEVERITY_RAIL: Record<Severity, string> = {
 };
 
 export function FindingsList({ findings }: { findings: AnalysisFinding[] }) {
+  const t = useTranslations("findingsList");
   if (findings.length === 0) return null;
 
   return (
     <Card flush>
       <div className="px-5 pt-4">
-        <SectionHeader title="Findings" description={`${findings.length} grounded in the document text`} />
+        <SectionHeader title={t("title")} description={t("description", { count: findings.length })} />
       </div>
       <div className="mt-3 divide-y divide-hairline">
         {findings.map((finding, i) => (
@@ -34,16 +38,18 @@ export function FindingsList({ findings }: { findings: AnalysisFinding[] }) {
                 <p className="text-sm font-medium text-foreground">{finding.title}</p>
                 <span
                   className={cn(
-                    "shrink-0 rounded-full px-2 py-0.5 text-2xs font-medium capitalize",
+                    "shrink-0 rounded-full px-2 py-0.5 text-2xs font-medium",
                     SEVERITY_STYLES[finding.severity],
                   )}
                 >
-                  {finding.severity}
+                  {t(`severity.${finding.severity}`)}
                 </span>
               </div>
               <p className="mt-1 text-xs text-foreground-secondary">{finding.detail}</p>
               {finding.framework && (
-                <p className="mt-1.5 text-2xs text-foreground-muted">Relates to: {finding.framework}</p>
+                <p className="mt-1.5 text-2xs text-foreground-muted">
+                  {t("relatesTo", { framework: finding.framework })}
+                </p>
               )}
             </div>
           </div>

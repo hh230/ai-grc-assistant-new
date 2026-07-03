@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { FileText, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -10,14 +11,12 @@ import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { useAnalyses } from "@/hooks/useAnalyses";
 import { useDocuments } from "@/hooks/useDocuments";
-import {
-  DOCUMENT_CATEGORIES,
-  DOCUMENT_CATEGORY_LABELS,
-  type DocumentCategory,
-} from "@/lib/documents/types";
+import { DOCUMENT_CATEGORIES, type DocumentCategory } from "@/lib/documents/types";
 import { cn, formatDate, formatNumber } from "@/lib/utils";
 
 export function AnalysisHistory() {
+  const t = useTranslations("analysisHistory");
+  const tCategory = useTranslations("documentCategories");
   const { data: analyses, isLoading, isError, error } = useAnalyses();
   const { data: documents } = useDocuments();
   const [categoryFilter, setCategoryFilter] = useState<DocumentCategory | "all">("all");
@@ -66,9 +65,9 @@ export function AnalysisHistory() {
           <Sparkles className="h-5 w-5 text-foreground-muted" strokeWidth={1.75} />
         </div>
         <div className="space-y-1">
-          <p className="text-sm font-medium text-foreground">No analyses yet</p>
+          <p className="text-sm font-medium text-foreground">{t("emptyTitle")}</p>
           <p className="text-xs text-foreground-muted">
-            Upload a document and run analysis to see results here.
+            {t("emptyDescription")}
           </p>
         </div>
         <Link
@@ -76,7 +75,7 @@ export function AnalysisHistory() {
           className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
         >
           <FileText className="h-4 w-4" strokeWidth={1.75} />
-          Go to Upload Center
+          {t("goToUploadCenter")}
         </Link>
       </Card>
     );
@@ -95,7 +94,7 @@ export function AnalysisHistory() {
               : "border-hairline bg-surface text-foreground-secondary hover:border-hairline-strong",
           )}
         >
-          All
+          {t("all")}
         </button>
         {DOCUMENT_CATEGORIES.map((category) => (
           <button
@@ -109,7 +108,7 @@ export function AnalysisHistory() {
                 : "border-hairline bg-surface text-foreground-secondary hover:border-hairline-strong",
             )}
           >
-            {DOCUMENT_CATEGORY_LABELS[category]}
+            {tCategory(category)}
           </button>
         ))}
       </div>
@@ -119,12 +118,12 @@ export function AnalysisHistory() {
           <table className="w-full min-w-[720px] text-sm">
             <thead>
               <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
-                <th className="px-5 py-2.5 font-medium">Document</th>
-                <th className="px-3 py-2.5 font-medium">Category</th>
-                <th className="px-3 py-2.5 font-medium">Status</th>
-                <th className="px-3 py-2.5 font-medium">Versions</th>
-                <th className="px-3 py-2.5 font-medium">Findings</th>
-                <th className="px-3 py-2.5 font-medium">Analyzed</th>
+                <th className="px-5 py-2.5 font-medium">{t("columns.document")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columns.category")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columns.status")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columns.versions")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columns.findings")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columns.analyzed")}</th>
                 <th className="px-5 py-2.5 text-end font-medium" />
               </tr>
             </thead>
@@ -143,7 +142,7 @@ export function AnalysisHistory() {
                             id: analysis.documentId,
                             type: "document",
                             title: analysis.fileName,
-                            subtitle: category ? DOCUMENT_CATEGORY_LABELS[category] : undefined,
+                            subtitle: category ? tCategory(category) : undefined,
                             href: `/analysis?doc=${analysis.documentId}`,
                           }}
                           className="-ms-1.5"
@@ -157,7 +156,7 @@ export function AnalysisHistory() {
                       </div>
                     </td>
                     <td className="px-3 py-3">
-                      {category && <Badge tone="neutral">{DOCUMENT_CATEGORY_LABELS[category]}</Badge>}
+                      {category && <Badge tone="neutral">{tCategory(category)}</Badge>}
                     </td>
                     <td className="px-3 py-3">
                       <DocumentStatusBadge status={analysis.status} />
@@ -166,7 +165,7 @@ export function AnalysisHistory() {
                       v{analysis.version}
                       {analysis.versionCount > 1 && (
                         <span className="ms-1 text-2xs text-foreground-muted">
-                          of {analysis.versionCount}
+                          {t("ofCount", { count: analysis.versionCount })}
                         </span>
                       )}
                     </td>
@@ -181,7 +180,7 @@ export function AnalysisHistory() {
                         href={`/analysis?doc=${analysis.documentId}`}
                         className="inline-flex h-7 items-center gap-1 rounded-md border border-hairline bg-surface/60 px-2 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
                       >
-                        View
+                        {t("view")}
                       </Link>
                     </td>
                   </tr>

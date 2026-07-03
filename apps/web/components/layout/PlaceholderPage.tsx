@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 
 interface PlaceholderPageProps {
@@ -15,7 +16,9 @@ interface PlaceholderPageProps {
  * the shell feels complete and navigable while signalling that functionality is
  * intentionally deferred to a later roadmap phase.
  */
-export function PlaceholderPage({ eyebrow, title, description, icon: Icon }: PlaceholderPageProps) {
+export async function PlaceholderPage({ eyebrow, title, description, icon: Icon }: PlaceholderPageProps) {
+  const t = await getTranslations("placeholderPage");
+
   return (
     <div>
       <div className="pb-7">
@@ -31,15 +34,12 @@ export function PlaceholderPage({ eyebrow, title, description, icon: Icon }: Pla
           <Icon className="h-5 w-5 text-accent-foreground" strokeWidth={1.75} />
         </div>
         <div className="max-w-sm space-y-1.5">
-          <p className="text-sm font-medium text-foreground">This workspace is coming soon</p>
-          <p className="text-xs text-foreground-muted">
-            The {title} module is part of the product roadmap. The navigation, layout, and shell are
-            in place — functionality arrives in a later phase.
-          </p>
+          <p className="text-sm font-medium text-foreground">{t("comingSoon")}</p>
+          <p className="text-xs text-foreground-muted">{t("moduleNotice", { title })}</p>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-surface/60 px-2.5 py-1 text-2xs font-medium text-foreground-muted">
           <span className="h-1.5 w-1.5 rounded-full bg-warning" />
-          Placeholder · P1 shell
+          {t("badge")}
         </span>
       </Card>
     </div>

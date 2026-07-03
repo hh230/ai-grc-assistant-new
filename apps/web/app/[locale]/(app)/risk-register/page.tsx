@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { can } from "@/lib/auth/permissions";
 import { requireSession } from "@/lib/auth/server";
 import { RiskRegister } from "@/components/risk/RiskRegister";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export default async function RiskRegisterPage() {
   const session = await requireSession();
+  const t = await getTranslations("riskRegisterPage");
   const permissions = {
     canCreate: can(session.roles, "create", "risk"),
     canUpdate: can(session.roles, "update", "risk"),
@@ -20,15 +22,12 @@ export default async function RiskRegisterPage() {
     <div>
       <header className="pb-7">
         <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-          Risk &amp; Compliance
+          {t("eyebrow")}
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
-          Risk Register
+          {t("title")}
         </h1>
-        <p className="mt-1 max-w-2xl text-sm text-foreground-secondary">
-          Identify, score, and track risks on a 5×5 matrix — with mitigating controls, residual
-          scoring, and ownership. Accepting a risk is a human-gated decision.
-        </p>
+        <p className="mt-1 max-w-2xl text-sm text-foreground-secondary">{t("description")}</p>
       </header>
 
       <RiskRegister {...permissions} />

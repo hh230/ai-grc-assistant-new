@@ -35,27 +35,3 @@ export interface Report {
   kpis: ReportKpi[];
   sections: ReportSection[];
 }
-
-export const REPORT_META: Record<
-  ReportKind,
-  { title: string; subtitle: string; description: string }
-> = {
-  executive: {
-    title: "Executive GRC Report",
-    subtitle: "Governance, risk & compliance posture at a glance",
-    description:
-      "A leadership summary of compliance coverage, risk exposure, and control evidence.",
-  },
-  compliance: {
-    title: "Compliance Report",
-    subtitle: "Framework coverage and control assurance",
-    description:
-      "Per-framework control coverage, gaps, and the policies and evidence that support them.",
-  },
-  risk: {
-    title: "Risk Report",
-    subtitle: "Risk register, scoring, and treatment",
-    description:
-      "The full risk register with severity distribution, status, and acceptance decisions.",
-  },
-};

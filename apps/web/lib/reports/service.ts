@@ -12,15 +12,22 @@ import { listRisks } from "@/lib/risk/service";
 import { toRiskSummary, type Severity } from "@/lib/risk/types";
 import { evidenceRepository } from "@/lib/evidence/repository";
 import { policyRepository } from "@/lib/policies/repository";
-import { REPORT_META, type Report, type ReportKind } from "./types";
+import type { AppLocale } from "@/i18n/routing";
+import { getReportLabels, type ReportLabels } from "./i18n";
+import type { Report, ReportKind } from "./types";
 
 const SEVERITY_ORDER: Severity[] = ["critical", "high", "medium", "low"];
 
-export async function buildReport(actor: ActorContext, kind: ReportKind): Promise<Report> {
+export async function buildReport(
+  actor: ActorContext,
+  kind: ReportKind,
+  locale: AppLocale,
+): Promise<Report> {
   if (!can(actor.roles, "read", "report")) {
     throw new ForbiddenError("You are not permitted to view reports.");
   }
-  const meta = REPORT_META[kind];
+  const labels = getReportLabels(locale);
+  const meta = labels.meta[kind];
   const base: Omit<Report, "kpis" | "sections"> = {
     kind,
     title: meta.title,
@@ -30,12 +37,12 @@ export async function buildReport(actor: ActorContext, kind: ReportKind): Promis
     generatedBy: actor.userName,
   };
 
-  if (kind === "compliance") return { ...base, ...(await complianceContent(actor)) };
-  if (kind === "risk") return { ...base, ...(await riskContent(actor)) };
-  return { ...base, ...(await executiveContent(actor)) };
+  if (kind === "compliance") return { ...base, ...(await complianceContent(actor, labels)) };
+  if (kind === "risk") return { ...base, ...(await riskContent(actor, labels)) };
+  return { ...base, ...(await executiveContent(actor, labels)) };
 }
 
-async function executiveContent(actor: ActorContext) {
+async function executiveContent(actor: ActorContext, l: ReportLabels) {
   const coverage = await computeCoverage(actor);
   const risks = (await listRisks(actor)).map(toRiskSummary);
   const policies = await policyRepository.list(actor.tenantId);
@@ -49,19 +56,19 @@ async function executiveContent(actor: ActorContext) {
 
   return {
     kpis: [
-      { label: "Compliance coverage", value: `${coverage.overall.coveragePct}%` },
-      { label: "Control gaps", value: String(coverage.overall.gaps) },
-      { label: "Open risks", value: String(open) },
-      { label: "Critical risks", value: String(critical) },
-      { label: "Evidence artifacts", value: String(evidenceCount) },
-      { label: "Published policies", value: String(published) },
+      { label: l.kpis.complianceCoverage, value: `${coverage.overall.coveragePct}%` },
+      { label: l.kpis.controlGaps, value: String(coverage.overall.gaps) },
+      { label: l.kpis.openRisks, value: String(open) },
+      { label: l.kpis.criticalRisks, value: String(critical) },
+      { label: l.kpis.evidenceArtifacts, value: String(evidenceCount) },
+      { label: l.kpis.publishedPolicies, value: String(published) },
     ],
     sections: [
       {
-        heading: "Framework coverage",
+        heading: l.sections.frameworkCoverage,
         table: {
-          title: "Coverage by framework",
-          columns: ["Framework", "Controls", "Covered", "Coverage"],
+          title: l.tables.frameworkCoverageTitle,
+          columns: [l.columns.framework, l.columns.controls, l.columns.covered, l.columns.coverage],
           rows: coverage.frameworks.map((f) => [
             f.shortName,
             String(f.total),
@@ -71,16 +78,16 @@ async function executiveContent(actor: ActorContext) {
         },
       },
       {
-        heading: "Top risks by inherent score",
+        heading: l.sections.topRisks,
         table: {
-          title: "Highest-scoring risks",
-          columns: ["Risk", "Category", "Score", "Severity", "Status"],
+          title: l.tables.highestScoringRisks,
+          columns: [l.columns.risk, l.columns.category, l.columns.score, l.columns.severity, l.columns.status],
           rows: topRisks.map((r) => [
             r.title,
-            r.category,
+            l.riskCategory[r.category],
             String(r.inherentScore),
-            r.severity,
-            r.status,
+            l.severity[r.severity],
+            l.riskStatus[r.status],
           ]),
         },
       },
@@ -88,7 +95,7 @@ async function executiveContent(actor: ActorContext) {
   };
 }
 
-async function complianceContent(actor: ActorContext) {
+async function complianceContent(actor: ActorContext, l: ReportLabels) {
   const coverage = await computeCoverage(actor);
   const policies = await policyRepository.list(actor.tenantId);
 
@@ -98,20 +105,20 @@ async function complianceContent(actor: ActorContext) {
 
   return {
     kpis: [
-      { label: "Overall coverage", value: `${coverage.overall.coveragePct}%` },
+      { label: l.kpis.overallCoverage, value: `${coverage.overall.coveragePct}%` },
       {
-        label: "Controls covered",
+        label: l.kpis.controlsCovered,
         value: `${coverage.overall.coveredControls}/${coverage.overall.totalControls}`,
       },
-      { label: "Open gaps", value: String(coverage.overall.gaps) },
-      { label: "Policies", value: String(policies.length) },
+      { label: l.kpis.openGaps, value: String(coverage.overall.gaps) },
+      { label: l.kpis.policies, value: String(policies.length) },
     ],
     sections: [
       {
-        heading: "Coverage by framework",
+        heading: l.sections.frameworkCoverage,
         table: {
-          title: "Framework coverage",
-          columns: ["Framework", "Region", "Controls", "Covered", "Coverage"],
+          title: l.tables.frameworkCoverageTitle,
+          columns: [l.columns.framework, l.columns.region, l.columns.controls, l.columns.covered, l.columns.coverage],
           rows: coverage.frameworks.map((f) => [
             f.shortName,
             f.region,
@@ -122,22 +129,19 @@ async function complianceContent(actor: ActorContext) {
         },
       },
       {
-        heading: "Control gaps",
-        narrative:
-          gaps.length === 0
-            ? "No control gaps — every catalogued control has linked evidence."
-            : undefined,
+        heading: l.sections.controlGaps,
+        narrative: gaps.length === 0 ? l.tables.noControlGaps : undefined,
         table: {
-          title: "Controls without evidence",
-          columns: ["Framework", "Control", "Title"],
+          title: l.tables.controlsWithoutEvidence,
+          columns: [l.columns.framework, l.columns.control, l.columns.title],
           rows: gaps,
         },
       },
       {
-        heading: "Policies",
+        heading: l.sections.policyRegister,
         table: {
-          title: "Policy register",
-          columns: ["Policy", "Status", "Owner", "Mapped controls"],
+          title: l.tables.policyRegisterTitle,
+          columns: [l.columns.policy, l.columns.status, l.columns.owner, l.columns.mappedControls],
           rows: policies.map((p) => [p.title, p.status, p.ownerName, String(p.controlIds.length)]),
         },
       },
@@ -145,7 +149,7 @@ async function complianceContent(actor: ActorContext) {
   };
 }
 
-async function riskContent(actor: ActorContext) {
+async function riskContent(actor: ActorContext, l: ReportLabels) {
   const risks = (await listRisks(actor)).map(toRiskSummary);
 
   const bySeverity: Record<Severity, number> = { low: 0, medium: 0, high: 0, critical: 0 };
@@ -160,32 +164,39 @@ async function riskContent(actor: ActorContext) {
 
   return {
     kpis: [
-      { label: "Total risks", value: String(risks.length) },
-      { label: "Critical", value: String(bySeverity.critical) },
-      { label: "High", value: String(bySeverity.high) },
-      { label: "Accepted", value: String(byStatus["accepted"] ?? 0) },
-      { label: "Average score", value: String(avg) },
+      { label: l.kpis.totalRisks, value: String(risks.length) },
+      { label: l.kpis.critical, value: String(bySeverity.critical) },
+      { label: l.kpis.high, value: String(bySeverity.high) },
+      { label: l.kpis.accepted, value: String(byStatus["accepted"] ?? 0) },
+      { label: l.kpis.averageScore, value: String(avg) },
     ],
     sections: [
       {
-        heading: "Severity distribution",
+        heading: l.sections.severityDistribution,
         table: {
-          title: "Risks by severity",
-          columns: ["Severity", "Count"],
-          rows: SEVERITY_ORDER.map((s) => [s, String(bySeverity[s])]),
+          title: l.tables.risksBySeverity,
+          columns: [l.columns.severity, l.columns.count],
+          rows: SEVERITY_ORDER.map((s) => [l.severity[s], String(bySeverity[s])]),
         },
       },
       {
-        heading: "Risk register",
+        heading: l.sections.riskRegister,
         table: {
-          title: "All risks",
-          columns: ["Risk", "Category", "Inherent", "Residual", "Status", "Owner"],
+          title: l.tables.allRisks,
+          columns: [
+            l.columns.risk,
+            l.columns.category,
+            l.columns.inherent,
+            l.columns.residual,
+            l.columns.status,
+            l.columns.owner,
+          ],
           rows: risks.map((r) => [
             r.title,
-            r.category,
-            `${r.inherentScore} (${r.severity})`,
-            r.residualScore != null ? `${r.residualScore} (${r.residualSeverity})` : "—",
-            r.status,
+            l.riskCategory[r.category],
+            `${r.inherentScore} (${l.severity[r.severity]})`,
+            r.residualScore != null ? `${r.residualScore} (${l.severity[r.residualSeverity!]})` : "—",
+            l.riskStatus[r.status],
             r.ownerName,
           ]),
         },

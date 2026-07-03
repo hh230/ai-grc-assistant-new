@@ -11,6 +11,8 @@ import { can } from "@/lib/auth/permissions";
 import type { ActorContext } from "@/lib/auth/actor";
 import { getEmbeddingProvider, type ChatMessage } from "@/lib/ai";
 import { vectorStore } from "@/lib/analysis/vector-store";
+import { getRequestLocale } from "@/lib/i18n/request-locale";
+import type { AppLocale } from "@/i18n/routing";
 import { conversationRepository } from "./repository";
 import type { ChatMessageRecord, Citation, Conversation } from "./types";
 
@@ -88,7 +90,8 @@ export async function prepareTurn(
   );
 
   const citations = await retrieve(actor, userText);
-  const llmMessages = buildMessages(conversation.messages, citations, userText);
+  const locale = await getRequestLocale();
+  const llmMessages = buildMessages(conversation.messages, citations, userText, locale);
 
   return {
     conversation: { ...conversation, messages: [...conversation.messages, userMessage] },
@@ -134,6 +137,7 @@ function buildMessages(
   history: ChatMessageRecord[],
   citations: Citation[],
   userText: string,
+  locale: AppLocale,
 ): ChatMessage[] {
   const context =
     citations.length > 0
@@ -144,11 +148,18 @@ function buildMessages(
     {
       role: "system",
       content:
-        "You are the Sentinel GRC assistant, an expert in Governance, Risk & Compliance. Answer the " +
-        "user's question using ONLY the numbered context excerpts provided. Cite every claim inline " +
-        "with its source marker, e.g. [1] or [2]. If the context does not contain the answer, say you " +
-        "don't have enough information in the indexed knowledge base — never fabricate facts, control " +
-        "IDs, or citations. Be concise and precise.",
+        "You are the Sentinel GRC assistant — a senior Governance, Risk & Compliance advisor, " +
+        "not a general-purpose chatbot. Answer the user's question using ONLY the numbered context " +
+        "excerpts provided; cite every grounded claim inline with its source marker, e.g. [1] or " +
+        "[2]. If the context does not contain the answer, say plainly that you don't have enough " +
+        "information in the indexed knowledge base and suggest what to upload — never fabricate " +
+        "facts, control IDs, statistics, or citations, and never speculate on compliance matters. " +
+        "Structure substantive answers for an executive reader: lead with a direct, one-sentence " +
+        "answer, then supporting detail as short paragraphs or bullet points, citing sources inline. " +
+        "For a simple greeting or clarifying question, respond briefly and conversationally instead " +
+        "— do not force structure where it doesn't fit. Avoid generic AI filler phrasing (e.g. " +
+        '"it is important to note", "as an AI"). ' +
+        languageInstruction(locale),
     },
     { role: "system", content: `Context excerpts:\n\n${context}` },
   ];
@@ -158,6 +169,18 @@ function buildMessages(
   }
   messages.push({ role: "user", content: userText });
   return messages;
+}
+
+function languageInstruction(locale: AppLocale): string {
+  if (locale === "ar") {
+    return (
+      "Respond entirely in professional, formal Modern Standard Arabic (فصحى), in the tone of " +
+      "a senior GRC advisor — except for internationally recognized framework names/codes " +
+      "(e.g. ISO 27001, NIST CSF, PDPL, NCA ECC, SAMA, COBIT, COSO, CIS), which stay in English " +
+      "exactly as written."
+    );
+  }
+  return "Respond in professional, formal business English.";
 }
 
 function deriveTitle(text: string): string {

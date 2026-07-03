@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, CircleDashed, FileText, Loader2, Search } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 type StatusFilter = "all" | "covered" | "gap";
 
 export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
+  const t = useTranslations("controlsExplorer");
   const [frameworkId, setFrameworkId] = useState<string>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
   const [search, setSearch] = useState("");
@@ -46,7 +48,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search controls…"
+            placeholder={t("searchPlaceholder")}
             className="h-9 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none focus:border-hairline-strong"
           />
         </div>
@@ -55,7 +57,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
           onChange={(e) => setFrameworkId(e.target.value)}
           className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary outline-none focus:border-hairline-strong"
         >
-          <option value="all">All frameworks</option>
+          <option value="all">{t("allFrameworks")}</option>
           {coverage.frameworks.map((f) => (
             <option key={f.id} value={f.id}>
               {f.shortName}
@@ -67,11 +69,13 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
           onChange={(e) => setStatus(e.target.value as StatusFilter)}
           className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary outline-none focus:border-hairline-strong"
         >
-          <option value="all">All statuses</option>
-          <option value="covered">Covered</option>
-          <option value="gap">Gaps</option>
+          <option value="all">{t("allStatuses")}</option>
+          <option value="covered">{t("statusCovered")}</option>
+          <option value="gap">{t("statusGaps")}</option>
         </select>
-        <span className="text-2xs text-foreground-muted sm:ml-auto">{rows.length} controls</span>
+        <span className="text-2xs text-foreground-muted sm:ml-auto">
+          {t("controlCount", { count: rows.length })}
+        </span>
       </div>
 
       <Card flush>
@@ -79,10 +83,10 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
           <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="border-b border-hairline text-start text-2xs uppercase tracking-wider text-foreground-muted">
-                <th className="px-5 py-2.5 font-medium">Control</th>
-                <th className="px-3 py-2.5 font-medium">Framework</th>
-                <th className="px-3 py-2.5 font-medium">Status</th>
-                <th className="px-3 py-2.5 font-medium">Evidence</th>
+                <th className="px-5 py-2.5 font-medium">{t("columnControl")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columnFramework")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columnStatus")}</th>
+                <th className="px-3 py-2.5 font-medium">{t("columnEvidence")}</th>
                 <th className="px-5 py-2.5 text-end font-medium" />
               </tr>
             </thead>
@@ -115,7 +119,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
                       ) : (
                         <CircleDashed className="h-3 w-3" strokeWidth={2} />
                       )}
-                      {control.status === "covered" ? "Covered" : "Gap"}
+                      {control.status === "covered" ? t("statusCovered") : t("statusGap")}
                     </span>
                   </td>
                   <td className="px-3 py-3 text-foreground-secondary">{control.evidenceCount}</td>
@@ -125,7 +129,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
                       onClick={() => setActiveControl(control.id)}
                       className="rounded-md border border-hairline bg-surface/60 px-2 py-1 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
                     >
-                      Evidence
+                      {t("evidenceButton")}
                     </button>
                   </td>
                 </tr>
@@ -143,6 +147,7 @@ export function ControlsExplorer({ coverage }: { coverage: CoverageReport }) {
 }
 
 function ControlEvidenceModal({ controlId, onClose }: { controlId: string; onClose: () => void }) {
+  const t = useTranslations("controlsExplorer");
   const control = getControl(controlId);
   const { data: evidence, isLoading } = useEvidence({ controlId });
 
@@ -150,23 +155,25 @@ function ControlEvidenceModal({ controlId, onClose }: { controlId: string; onClo
     <Modal
       open
       onClose={onClose}
-      title={control ? `${control.code} · ${control.title}` : "Control evidence"}
+      title={control ? `${control.code} · ${control.title}` : t("modalDefaultTitle")}
       description={control?.frameworkShortName}
     >
       {isLoading ? (
         <div className="flex items-center justify-center gap-2 py-8 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-          Loading…
+          {t("loading")}
         </div>
       ) : !evidence || evidence.length === 0 ? (
         <div className="py-8 text-center">
-          <p className="text-sm font-medium text-foreground">No evidence linked</p>
+          <p className="text-sm font-medium text-foreground">{t("noEvidenceTitle")}</p>
           <p className="mt-1 text-xs text-foreground-muted">
-            This control is a coverage gap. Link evidence from the{" "}
-            <Link href="/evidence" className="text-accent-foreground hover:underline">
-              Evidence
-            </Link>{" "}
-            module.
+            {t.rich("noEvidenceDescription", {
+              link: (chunks) => (
+                <Link href="/evidence" className="text-accent-foreground hover:underline">
+                  {chunks}
+                </Link>
+              ),
+            })}
           </p>
         </div>
       ) : (
@@ -183,7 +190,7 @@ function ControlEvidenceModal({ controlId, onClose }: { controlId: string; onClo
                   href={`/api/evidence/${item.id}/versions/current/content?download`}
                   className="text-2xs text-accent-foreground hover:underline"
                 >
-                  Download
+                  {t("download")}
                 </a>
               )}
             </div>

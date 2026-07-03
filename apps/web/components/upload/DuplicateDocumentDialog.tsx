@@ -1,6 +1,7 @@
 "use client";
 
 import { Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Modal } from "@/components/ui/Modal";
 import { useStartAnalysis } from "@/hooks/useAnalyses";
@@ -17,6 +18,7 @@ interface DuplicateDocumentDialogProps {
  * scoring rules or the AI engine changed since the last run).
  */
 export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocumentDialogProps) {
+  const t = useTranslations("duplicateDocumentDialog");
   const router = useRouter();
   const start = useStartAnalysis(document?.id ?? "");
 
@@ -26,8 +28,8 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
     <Modal
       open
       onClose={onClose}
-      title="Already uploaded and analyzed"
-      description={`"${document.fileName}" has the exact same content as a document already in your workspace.`}
+      title={t("title")}
+      description={t("description", { fileName: document.fileName })}
       footer={
         <>
           <button
@@ -35,7 +37,7 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
             onClick={onClose}
             className="inline-flex h-9 items-center rounded-lg border border-hairline bg-surface px-3.5 text-sm text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
           >
-            Cancel
+            {t("cancel")}
           </button>
           <button
             type="button"
@@ -50,7 +52,7 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
             }}
             className="inline-flex h-9 items-center rounded-lg border border-hairline bg-surface px-3.5 text-sm font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground disabled:opacity-60"
           >
-            {start.isPending ? "Starting…" : "Re-run analysis anyway"}
+            {start.isPending ? t("starting") : t("rerunAnyway")}
           </button>
           <button
             type="button"
@@ -60,18 +62,14 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
             }}
             className="inline-flex h-9 items-center rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
-            Open previous analysis
+            {t("openPrevious")}
           </button>
         </>
       }
     >
       <div className="flex items-center gap-3 rounded-lg border border-hairline bg-surface/40 px-3 py-2.5">
         <Copy className="h-4 w-4 shrink-0 text-foreground-muted" strokeWidth={1.75} />
-        <p className="text-xs text-foreground-secondary">
-          No new document was created — nothing was re-uploaded. You can open the existing
-          analysis history, or re-run analysis if the AI engine or scoring rules have changed
-          since it was last analyzed.
-        </p>
+        <p className="text-xs text-foreground-secondary">{t("bodyText")}</p>
       </div>
     </Modal>
   );

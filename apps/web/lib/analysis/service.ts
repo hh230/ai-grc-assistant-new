@@ -15,9 +15,11 @@ import { getChatProvider, getEmbeddingProvider } from "@/lib/ai";
 import { blobStore } from "@/lib/storage/blob-store";
 import { documentRepository } from "@/lib/documents/repository";
 import { DOCUMENT_CATEGORY_LABELS } from "@/lib/documents/types";
+import { getRequestLocale } from "@/lib/i18n/request-locale";
+import type { AppLocale } from "@/i18n/routing";
 import { chunkText } from "./chunk";
 import { extractText } from "./extract";
-import { assessmentSchema, buildAssessmentPrompt, PROMPT_VERSION, type Assessment } from "./prompts/assess_grc_document.v2";
+import { assessmentSchema, buildAssessmentPrompt, PROMPT_VERSION, type Assessment } from "./prompts/assess_grc_document.v3";
 import { analysisRepository, type AnalysisWithVersionCount } from "./repository";
 import { computeComplianceScore, computeRiskScore, deriveMaturityLevel } from "./scoring";
 import { vectorStore } from "./vector-store";
@@ -93,6 +95,7 @@ export async function startAnalysis(
   if (!doc) throw new NotFoundError("Document not found.");
 
   const version = await analysisRepository.nextVersion(actor.tenantId, documentId);
+  const locale = await getRequestLocale();
   const now = new Date().toISOString();
   const record: AnalysisRecord = {
     id: randomUUID(),
@@ -102,14 +105,19 @@ export async function startAnalysis(
     title: `${doc.fileName} · v${version}`,
     version,
     status: "processing",
+    locale,
     charCount: 0,
     chunkCount: 0,
     findings: [],
+    criticalRisks: [],
     frameworks: [],
+    gaps: [],
     keyTerms: [],
     strengths: [],
     weaknesses: [],
     recommendations: [],
+    references: [],
+    nextActions: [],
     requestedByUserId: actor.userId,
     requestedByName: actor.userName,
     createdAt: now,
@@ -119,9 +127,17 @@ export async function startAnalysis(
   await documentRepository.updateStatus(actor.tenantId, documentId, "processing");
 
   // Background processing — do not block the request. Errors are captured as a failed status.
-  void runPipeline(actor, doc.id, record.id, doc.storageKey, doc.kind, doc.fileName, doc.category, Date.now()).catch(
-    (error) => markFailed(actor.tenantId, record.id, documentId, error),
-  );
+  void runPipeline(
+    actor,
+    doc.id,
+    record.id,
+    doc.storageKey,
+    doc.kind,
+    doc.fileName,
+    doc.category,
+    locale,
+    Date.now(),
+  ).catch((error) => markFailed(actor.tenantId, record.id, documentId, error));
 
   return record;
 }
@@ -134,6 +150,7 @@ async function runPipeline(
   kind: string,
   fileName: string,
   category: string,
+  locale: AppLocale,
   startedMs: number,
 ): Promise<void> {
   // 1. Extract
@@ -162,7 +179,7 @@ async function runPipeline(
   const chat = getChatProvider();
   const categoryLabel =
     DOCUMENT_CATEGORY_LABELS[category as keyof typeof DOCUMENT_CATEGORY_LABELS] ?? category;
-  const assessment = await assess(chat, fileName, text, categoryLabel);
+  const assessment = await assess(chat, fileName, text, categoryLabel, locale);
 
   // 6. Score (deterministic — computed from the assessment above, never LLM-generated)
   const complianceScore = computeComplianceScore(assessment.frameworks);
@@ -176,13 +193,20 @@ async function runPipeline(
     chunkCount: chunks.length,
     embeddingProvider: embedder.id,
     chatProvider: chat.id,
-    summary: assessment.summary,
+    executiveSummary: assessment.executiveSummary,
+    complianceOverview: assessment.complianceOverview,
     findings: assessment.findings,
+    criticalRisks: assessment.criticalRisks,
     frameworks: assessment.frameworks,
+    gaps: assessment.gaps,
     keyTerms: assessment.keyTerms,
     strengths: assessment.strengths,
     weaknesses: assessment.weaknesses,
     recommendations: assessment.recommendations,
+    businessImpact: assessment.businessImpact,
+    overallPriority: assessment.overallPriority,
+    references: assessment.references,
+    nextActions: assessment.nextActions,
     complianceScore,
     riskScore,
     maturityLevel,
@@ -208,31 +232,45 @@ async function assess(
   fileName: string,
   text: string,
   categoryLabel: string,
+  locale: AppLocale,
 ): Promise<Assessment> {
-  const messages = buildAssessmentPrompt({ fileName, text, categoryLabel });
+  const messages = buildAssessmentPrompt({ fileName, text, categoryLabel, locale });
 
   // Reasoning models spend completion budget on hidden reasoning before emitting JSON —
-  // give ample room so the structured result is not truncated to empty.
-  const raw = await chat.complete(messages, { json: true, maxTokens: 16000 });
+  // give ample room so the structured result is not truncated to empty. The v3 schema is
+  // larger (consulting-report sections) and Arabic output tokenizes less densely, so this
+  // budget is higher than v2's.
+  const raw = await chat.complete(messages, { json: true, maxTokens: 20000 });
+  const fallbackSummary =
+    locale === "ar" ? "تعذّر إنتاج ملخص لهذا التحليل." : "No summary produced.";
   const empty: Assessment = {
-    summary: "",
+    executiveSummary: "",
+    complianceOverview: "",
     keyTerms: [],
     findings: [],
+    criticalRisks: [],
     frameworks: [],
+    gaps: [],
     strengths: [],
     weaknesses: [],
     recommendations: [],
+    businessImpact: "",
+    overallPriority: { level: "medium", rationale: "" },
+    references: [],
+    nextActions: [],
   };
   let parsed: unknown;
   try {
     parsed = JSON.parse(raw);
   } catch {
     // The model returned non-JSON — degrade to a summary-only result rather than failing.
-    return { ...empty, summary: raw.slice(0, 600) || "No summary produced." };
+    return { ...empty, executiveSummary: raw.slice(0, 600) || fallbackSummary };
   }
   const result = assessmentSchema.safeParse(parsed);
   if (!result.success) {
-    return { ...empty, summary: "Analysis produced an unexpected format." };
+    const unexpectedFormat =
+      locale === "ar" ? "أنتج التحليل تنسيقًا غير متوقع." : "Analysis produced an unexpected format.";
+    return { ...empty, executiveSummary: unexpectedFormat };
   }
   return result.data;
 }

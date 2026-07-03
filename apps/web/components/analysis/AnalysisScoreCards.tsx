@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { ShieldCheck, TriangleAlert, Gauge } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -26,22 +29,28 @@ export function AnalysisScoreCards({
   maturityLevel,
   findings,
 }: AnalysisScoreCardsProps) {
+  const t = useTranslations("analysisScoreCards");
   const counts: Record<Severity, number> = { high: 0, medium: 0, low: 0, info: 0 };
   for (const finding of findings) counts[finding.severity] += 1;
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       <Card className="flex flex-col items-center gap-3 text-center">
-        <ScoreRing value={complianceScore ?? 0} tone="success" size={104} caption="Compliance" />
-        <p className="text-xs text-foreground-muted">Weighted across resolved frameworks</p>
+        <ScoreRing
+          value={complianceScore ?? 0}
+          tone="success"
+          size={104}
+          caption={t("compliance")}
+        />
+        <p className="text-xs text-foreground-muted">{t("weightedAcrossFrameworks")}</p>
       </Card>
 
       <Card className="flex flex-col items-center gap-3 text-center">
-        <ScoreRing value={riskScore ?? 0} tone="danger" size={104} caption="Risk" />
+        <ScoreRing value={riskScore ?? 0} tone="danger" size={104} caption={t("risk")} />
         {maturityLevel && (
           <Badge tone="accent">
             <Gauge className="h-3 w-3" strokeWidth={2} />
-            {maturityLevel} maturity
+            {t("maturityLevel", { level: maturityLevel })}
           </Badge>
         )}
       </Card>
@@ -49,8 +58,8 @@ export function AnalysisScoreCards({
       <Card className="flex flex-col justify-center gap-3">
         <div className="flex items-center gap-2">
           <ShieldCheck className="h-4 w-4 text-foreground-secondary" strokeWidth={1.75} />
-          <h3 className="text-sm font-semibold tracking-tight text-foreground">Findings</h3>
-          <span className="ml-auto text-lg font-semibold tracking-tight text-foreground">
+          <h3 className="text-sm font-semibold tracking-tight text-foreground">{t("findings")}</h3>
+          <span className="ms-auto text-lg font-semibold tracking-tight text-foreground">
             {findings.length}
           </span>
         </div>
@@ -61,18 +70,18 @@ export function AnalysisScoreCards({
               <div key={severity} className="flex items-center justify-between text-xs">
                 <span
                   className={cn(
-                    "inline-flex items-center gap-1.5 capitalize",
+                    "inline-flex items-center gap-1.5",
                     severity === "high" ? "text-danger" : "text-foreground-secondary",
                   )}
                 >
                   <TriangleAlert className="h-3 w-3" strokeWidth={2} />
-                  {severity}
+                  {t(`severity.${severity}`)}
                 </span>
                 <Badge tone={SEVERITY_TONE[severity]}>{counts[severity]}</Badge>
               </div>
             ))}
           {findings.length === 0 && (
-            <p className="text-xs text-foreground-muted">No findings recorded.</p>
+            <p className="text-xs text-foreground-muted">{t("noFindings")}</p>
           )}
         </div>
       </Card>

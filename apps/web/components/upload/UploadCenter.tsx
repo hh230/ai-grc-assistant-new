@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,7 +21,7 @@ import { DuplicateDocumentDialog } from "@/components/upload/DuplicateDocumentDi
 import { useRefreshDocuments } from "@/hooks/useDocuments";
 import { uploadDocument } from "@/lib/documents/client";
 import { ACCEPT_ATTRIBUTE, MAX_UPLOAD_BYTES, validateFileMeta } from "@/lib/documents/validation";
-import { DOCUMENT_CATEGORY_LABELS, type DocumentCategory, type DocumentDto } from "@/lib/documents/types";
+import type { DocumentCategory, DocumentDto } from "@/lib/documents/types";
 import { cn, formatBytes } from "@/lib/utils";
 
 interface UploadTask {
@@ -40,6 +41,8 @@ interface UploadCenterProps {
 const MAX_MB = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
 export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
+  const t = useTranslations("uploadCenter");
+  const tCategory = useTranslations("documentCategories");
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [step, setStep] = useState<"classify" | "upload">("classify");
   const [category, setCategory] = useState<DocumentCategory | null>(null);
@@ -95,7 +98,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
     } catch (error) {
       updateTask(id, {
         status: "error",
-        error: error instanceof Error ? error.message : "Upload failed.",
+        error: error instanceof Error ? error.message : t("uploadFailed"),
       });
     }
   }
@@ -121,8 +124,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
         <Card className="flex items-center gap-3 py-5">
           <Lock className="h-4 w-4 shrink-0 text-foreground-muted" strokeWidth={1.75} />
           <p className="text-sm text-foreground-secondary">
-            Your role has read-only access to the Upload Center. Uploading documents requires the
-            Analyst, Compliance Manager, or Administrator role.
+            {t("readOnlyNotice")}
           </p>
         </Card>
         <DocumentList canDelete={canDelete} />
@@ -136,13 +138,13 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
         <Card className="space-y-6 p-8">
           <div>
             <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-              Step 1 of 2
+              {t("stepOneOfTwo")}
             </p>
             <h2 className="mt-1 text-base font-semibold tracking-tight text-foreground">
-              What kind of document is this?
+              {t("classifyHeading")}
             </h2>
             <p className="mt-1 text-sm text-foreground-secondary">
-              Classification helps the AI pipeline target the right frameworks and findings.
+              {t("classifyDescription")}
             </p>
           </div>
           <CategoryPicker value={category} onChange={setCategory} />
@@ -153,7 +155,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
               onClick={() => setStep("upload")}
               className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] disabled:opacity-40"
             >
-              Continue
+              {t("continue")}
               <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />
             </button>
           </div>
@@ -167,17 +169,17 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
               className="inline-flex items-center gap-1.5 text-2xs font-medium text-foreground-muted transition-colors duration-150 hover:text-foreground-secondary"
             >
               <ArrowLeft className="h-3.5 w-3.5 flip-rtl" strokeWidth={1.75} />
-              Change category
+              {t("changeCategory")}
             </button>
             <span className="inline-flex items-center rounded-full border border-hairline bg-surface-2 px-3 py-1 text-2xs font-medium text-foreground-secondary">
-              {category ? DOCUMENT_CATEGORY_LABELS[category] : ""}
+              {category ? tCategory(category) : ""}
             </span>
           </div>
 
           <div
             role="button"
             tabIndex={0}
-            aria-label="Upload documents"
+            aria-label={t("uploadDocumentsAriaLabel")}
             onClick={() => inputRef.current?.click()}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -216,16 +218,16 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
               />
             </span>
             <h2 className="mt-4 text-base font-semibold tracking-tight text-foreground">
-              {dragging ? "Drop to upload" : "Drag & drop documents"}
+              {dragging ? t("dropToUpload") : t("dragAndDropDocuments")}
             </h2>
             <p className="mt-1 text-sm text-foreground-secondary">
-              or{" "}
+              {t("orText")}{" "}
               <span className="font-medium text-accent-foreground underline-offset-2 group-hover:underline">
-                browse your files
+                {t("browseYourFiles")}
               </span>
             </p>
             <p className="mt-3 text-2xs text-foreground-muted">
-              PDF or Word (.doc, .docx) · up to {MAX_MB} MB each
+              {t("fileTypeHint", { maxMb: MAX_MB })}
             </p>
             <input
               ref={inputRef}
@@ -255,6 +257,7 @@ export function UploadCenter({ canUpload, canDelete }: UploadCenterProps) {
 }
 
 function UploadTaskRow({ task, onDismiss }: { task: UploadTask; onDismiss: () => void }) {
+  const t = useTranslations("uploadCenter");
   return (
     <div className="flex items-center gap-3 rounded-xl border border-hairline bg-surface px-4 py-3">
       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-hairline bg-surface-2">
@@ -275,9 +278,9 @@ function UploadTaskRow({ task, onDismiss }: { task: UploadTask; onDismiss: () =>
             {task.status === "uploading"
               ? `${task.progress}%`
               : task.status === "done"
-                ? "Uploaded"
+                ? t("uploaded")
                 : task.status === "duplicate"
-                  ? "Already exists"
+                  ? t("alreadyExists")
                   : formatBytes(task.sizeBytes)}
           </span>
         </div>
@@ -304,7 +307,7 @@ function UploadTaskRow({ task, onDismiss }: { task: UploadTask; onDismiss: () =>
           type="button"
           onClick={onDismiss}
           className="shrink-0 rounded-md p-1 text-foreground-muted transition-colors duration-150 hover:text-foreground"
-          aria-label="Dismiss"
+          aria-label={t("dismiss")}
         >
           <X className="h-3.5 w-3.5" strokeWidth={1.75} />
         </button>

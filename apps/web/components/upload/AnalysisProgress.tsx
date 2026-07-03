@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Check, Loader2, FileText, Sparkles } from "lucide-react";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Badge } from "@/components/ui/Badge";
@@ -19,6 +22,7 @@ export function AnalysisProgress({
   fileSize,
   done,
 }: AnalysisProgressProps) {
+  const t = useTranslations("analysisProgress");
   const progress = Math.round((completed / steps.length) * 100);
 
   return (
@@ -30,10 +34,12 @@ export function AnalysisProgress({
         </span>
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-medium text-foreground">{fileName}</p>
-          <p className="mt-0.5 text-2xs text-foreground-muted">{fileSize} · PDF document</p>
+          <p className="mt-0.5 text-2xs text-foreground-muted">
+            {t("fileSizeSuffix", { size: fileSize })}
+          </p>
         </div>
         <Badge tone="accent" dot>
-          {done ? "Complete" : "Analyzing"}
+          {done ? t("complete") : t("analyzing")}
         </Badge>
       </div>
 
@@ -42,7 +48,7 @@ export function AnalysisProgress({
         <div className="flex items-center justify-between text-2xs text-foreground-muted">
           <span className="flex items-center gap-1.5">
             <Sparkles className="h-3.5 w-3.5 text-accent-foreground" strokeWidth={1.75} />
-            AI analysis in progress
+            {t("analysisInProgress")}
           </span>
           <span className="font-mono tabular-nums">{progress}%</span>
         </div>
@@ -86,7 +92,7 @@ export function AnalysisProgress({
                 {step}
               </span>
               <span className="text-2xs text-foreground-muted">
-                {state === "done" ? "Done" : state === "active" ? "Running…" : "Queued"}
+                {state === "done" ? t("done") : state === "active" ? t("running") : t("queued")}
               </span>
             </li>
           );
@@ -94,9 +100,7 @@ export function AnalysisProgress({
       </ol>
 
       <p className="mt-5 text-center text-2xs text-foreground-muted">
-        {done
-          ? "Opening Executive Report…"
-          : "This usually takes a few seconds. Please keep this tab open."}
+        {done ? t("openingReport") : t("staySeconds")}
       </p>
     </div>
   );

@@ -40,7 +40,11 @@
       "Bash(lsof -iTCP:3000 -sTCP:LISTEN -n -P)",
       "Bash(kill 46612 46618)",
       "Bash(xargs -I{} echo {})",
-      "Bash(cat middleware.ts)"
+      "Bash(cat middleware.ts)",
+      "Bash(xargs -I{} wc -l {})",
+      "Bash(cat apps/web/.claude/launch.json)",
+      "Bash(cat .claude/launch.json)",
+      "Bash(git add *)"
     ]
   }
 }

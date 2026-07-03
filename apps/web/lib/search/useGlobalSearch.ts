@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { useDocuments } from "@/hooks/useDocuments";
 import { useAnalyses } from "@/hooks/useAnalyses";
 import { usePolicies } from "@/hooks/usePolicies";
 import { useRisks } from "@/hooks/useRisks";
 import { useEvidence } from "@/hooks/useEvidence";
-import { DOCUMENT_CATEGORY_LABELS } from "@/lib/documents/types";
-import { REPORT_KINDS, REPORT_META } from "@/lib/reports/types";
+import { REPORT_KINDS } from "@/lib/reports/types";
 import type { SearchEntityType, SearchResultItem } from "./types";
 
 const MAX_PER_GROUP = 5;
@@ -49,19 +49,21 @@ export function useGlobalSearch(query: string): UseGlobalSearchResult {
   const policies = usePolicies();
   const risks = useRisks();
   const evidence = useEvidence({});
+  const tCategory = useTranslations("documentCategories");
+  const tReportKinds = useTranslations("reportsWorkspace.kinds");
 
   const groups = useMemo<SearchResultGroup[]>(() => {
     const q = query.trim();
     if (!q) return [];
 
     const documentItems: SearchResultItem[] = (documents.data ?? [])
-      .filter((doc) => matches(q, doc.fileName, DOCUMENT_CATEGORY_LABELS[doc.category]))
+      .filter((doc) => matches(q, doc.fileName, tCategory(doc.category)))
       .slice(0, MAX_PER_GROUP)
       .map((doc) => ({
         id: doc.id,
         type: "document" as const,
         title: doc.fileName,
-        subtitle: DOCUMENT_CATEGORY_LABELS[doc.category],
+        subtitle: tCategory(doc.category),
         href: `/analysis?doc=${doc.id}`,
       }));
 
@@ -110,12 +112,12 @@ export function useGlobalSearch(query: string): UseGlobalSearchResult {
       }));
 
     const reportItems: SearchResultItem[] = REPORT_KINDS.filter((kind) =>
-      matches(q, REPORT_META[kind].title, REPORT_META[kind].subtitle),
+      matches(q, tReportKinds(`${kind}.title`), tReportKinds(`${kind}.subtitle`)),
     ).map((kind) => ({
       id: kind,
       type: "report" as const,
-      title: REPORT_META[kind].title,
-      subtitle: REPORT_META[kind].subtitle,
+      title: tReportKinds(`${kind}.title`),
+      subtitle: tReportKinds(`${kind}.subtitle`),
       href: `/reports?kind=${kind}`,
     }));
 
@@ -127,7 +129,7 @@ export function useGlobalSearch(query: string): UseGlobalSearchResult {
       { type: "evidence" as const, items: evidenceItems },
       { type: "report" as const, items: reportItems },
     ].filter((group) => group.items.length > 0);
-  }, [query, documents.data, analyses.data, policies.data, risks.data, evidence.data]);
+  }, [query, documents.data, analyses.data, policies.data, risks.data, evidence.data, tCategory, tReportKinds]);
 
   const recentDocuments = useMemo<SearchResultItem[]>(
     () =>
@@ -138,10 +140,10 @@ export function useGlobalSearch(query: string): UseGlobalSearchResult {
           id: doc.id,
           type: "document" as const,
           title: doc.fileName,
-          subtitle: DOCUMENT_CATEGORY_LABELS[doc.category],
+          subtitle: tCategory(doc.category),
           href: `/analysis?doc=${doc.id}`,
         })),
-    [documents.data],
+    [documents.data, tCategory],
   );
 
   const recentAnalyses = useMemo<SearchResultItem[]>(

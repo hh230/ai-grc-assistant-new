@@ -66,6 +66,22 @@
       "assessmentIncomplete": "{name} بانتظار الإكمال",
       "assessmentIncompleteDetail": "المسؤول: {owner} · آخر تحديث {updated}"
     },
+    "intelligentInsights": {
+      "title": "مساحة عملك",
+      "description": "إشارات من مخاطرك ومستنداتك وتحليلاتك الفعلية",
+      "badge": "مباشر",
+      "topRisk": "أعلى المخاطر أولوية: {title}",
+      "topRiskDetail": "الدرجة الكامنة {score} · {count} مخاطر مفتوحة في السجل",
+      "documentsAwaiting": "{count} مستندات بانتظار المراجعة",
+      "documentsAwaitingDetail": "بما فيها \"{name}\" — شغّل التحليل لفهرستها",
+      "recentlyAnalyzed": "تم تحليله مؤخرًا: {name}",
+      "recentlyAnalyzedDetail": "درجة الامتثال {score}",
+      "trendUp": "اتجاه الامتثال يتحسن بمقدار {delta} نقطة",
+      "trendDown": "اتجاه الامتثال يتراجع بمقدار {delta} نقطة",
+      "trendDetail": "عبر آخر {count} تحليلات مُقيَّمة",
+      "highPriorityRecommendations": "{count} توصيات عالية الأولوية لم تُعالج بعد",
+      "highPriorityRecommendationsDetail": "من تحليلات المستندات الأخيرة — راجعها واتخذ إجراءً بشأنها"
+    },
     "pageHeader": {
       "title": "لوحة القيادة التنفيذية",
       "subtitle": "الحوكمة والمخاطر والامتثال ووضع الذكاء الاصطناعي في الوقت الفعلي عبر جميع الجهات الخاضعة للتنظيم.",
@@ -413,5 +429,560 @@
       "add": "إضافة إلى المفضلة",
       "remove": "إزالة من المفضلة"
     }
+  },
+  "analysisDetail": {
+    "loading": "جارٍ تحميل التحليل…",
+    "emptyTitle": "لم يتم تحليل هذا المستند بعد",
+    "emptyDescription": "شغّل خط أنابيب الذكاء الاصطناعي لتحليل المستند وتجزئته وفهرسته وتقييمه وتسجيل نتائجه مقابل أطر عملك.",
+    "runAnalysis": "تشغيل التحليل",
+    "retryAnalysis": "إعادة محاولة التحليل",
+    "rerunAnalysis": "إعادة تشغيل التحليل",
+    "analyzing": "جارٍ تحليل \"{name}\"…",
+    "analyzingDescription": "استخراج النص، وتضمين الأجزاء، وتقييم التغطية، واحتساب النتائج.",
+    "pipelineSteps": {
+      "parse": "تحليل نحوي",
+      "chunk": "تجزئة",
+      "embed": "تضمين",
+      "index": "فهرسة",
+      "assess": "تقييم",
+      "score": "تسجيل"
+    },
+    "analysisFailed": "فشل التحليل",
+    "unexpectedError": "حدث خطأ غير متوقع.",
+    "metrics": {
+      "pages": "الصفحات",
+      "chunksIndexed": "الأجزاء المفهرسة",
+      "characters": "الأحرف",
+      "findings": "النتائج"
+    },
+    "analyzedBy": "تم التحليل بواسطة {name}",
+    "durationSuffix": "{seconds} ثانية",
+    "executiveSummary": "الملخص التنفيذي",
+    "backToDocuments": "العودة إلى المستندات"
+  },
+  "analysisHistory": {
+    "all": "الكل",
+    "emptyTitle": "لا توجد تحليلات بعد",
+    "emptyDescription": "ارفع مستندًا وشغّل التحليل لعرض النتائج هنا.",
+    "goToUploadCenter": "الانتقال إلى مركز الرفع",
+    "columns": {
+      "document": "المستند",
+      "category": "الفئة",
+      "status": "الحالة",
+      "versions": "الإصدارات",
+      "findings": "النتائج",
+      "analyzed": "تاريخ التحليل"
+    },
+    "ofCount": "من {count}",
+    "view": "عرض"
+  },
+  "versionHistory": {
+    "title": "سجل الإصدارات",
+    "description": "{count} عملية تحليل لهذا المستند — تُحفظ تلقائيًا",
+    "saveName": "حفظ الاسم",
+    "cancel": "إلغاء",
+    "complianceSuffix": " الامتثال",
+    "riskSuffix": " المخاطر",
+    "rename": "إعادة تسمية",
+    "deleteVersion": "حذف الإصدار",
+    "confirm": "تأكيد"
+  },
+  "documentList": {
+    "loading": "جارٍ تحميل المستندات…",
+    "loadFailed": "تعذّر تحميل المستندات.",
+    "emptyTitle": "لا توجد مستندات بعد",
+    "emptyDescription": "ارفع ملف PDF أو Word للبدء.",
+    "documents": "المستندات",
+    "total": "{count} إجمالي",
+    "columns": {
+      "document": "المستند",
+      "category": "الفئة",
+      "status": "الحالة",
+      "size": "الحجم",
+      "uploadedBy": "تم الرفع بواسطة",
+      "date": "التاريخ",
+      "actions": "الإجراءات"
+    },
+    "analyzeDocument": "تحليل المستند",
+    "analyze": "تحليل",
+    "download": "تنزيل",
+    "delete": "حذف",
+    "confirm": "تأكيد"
+  },
+  "uploadCenter": {
+    "readOnlyNotice": "دورك يتيح الوصول للقراءة فقط في مركز الرفع. يتطلب رفع المستندات دور المحلل أو مدير الامتثال أو المسؤول.",
+    "stepOneOfTwo": "الخطوة 1 من 2",
+    "classifyHeading": "ما نوع هذا المستند؟",
+    "classifyDescription": "يساعد التصنيف خط أنابيب الذكاء الاصطناعي على استهداف الأطر والنتائج الصحيحة.",
+    "continue": "متابعة",
+    "changeCategory": "تغيير الفئة",
+    "uploadDocumentsAriaLabel": "رفع المستندات",
+    "dropToUpload": "أفلت هنا للرفع",
+    "dragAndDropDocuments": "اسحب وأفلت المستندات",
+    "orText": "أو",
+    "browseYourFiles": "تصفّح ملفاتك",
+    "fileTypeHint": "PDF أو Word (.doc، .docx) · حتى {maxMb} ميجابايت لكل ملف",
+    "uploaded": "تم الرفع",
+    "alreadyExists": "موجود مسبقًا",
+    "dismiss": "إغلاق",
+    "uploadFailed": "فشل الرفع."
+  },
+  "controlsExplorer": {
+    "searchPlaceholder": "البحث في الضوابط…",
+    "allFrameworks": "جميع الأطر",
+    "allStatuses": "جميع الحالات",
+    "statusCovered": "مغطّى",
+    "statusGaps": "الفجوات",
+    "statusGap": "فجوة",
+    "controlCount": "{count} ضابط",
+    "columnControl": "الضابط",
+    "columnFramework": "الإطار",
+    "columnStatus": "الحالة",
+    "columnEvidence": "الأدلة",
+    "evidenceButton": "الأدلة",
+    "modalDefaultTitle": "أدلة الضابط",
+    "loading": "جارٍ التحميل…",
+    "noEvidenceTitle": "لا توجد أدلة مرتبطة",
+    "noEvidenceDescription": "هذا الضابط يمثّل فجوة في التغطية. اربط الأدلة من وحدة <link>الأدلة</link>.",
+    "download": "تنزيل"
+  },
+  "controlsPage": {
+    "eyebrow": "الحوكمة",
+    "title": "الضوابط",
+    "description": "جميع الضوابط عبر أطر عملك، مع التغطية الحية المستندة إلى الأدلة المرتبطة والفجوات التي تحتاج إلى معالجة.",
+    "coverageLabel": "التغطية",
+    "coverageSummary": "{covered} من {total} ضابطًا مغطّى",
+    "openGapsLabel": "الفجوات المفتوحة",
+    "openGapsDescription": "ضوابط بلا أدلة مرتبطة",
+    "evidenceArtifactsLabel": "أدلة الإثبات",
+    "evidenceArtifactsSummary": "عبر {count} إطارًا"
+  },
+  "frameworksPage": {
+    "eyebrow": "الحوكمة",
+    "title": "الأطر",
+    "description": "أطر الامتثال وتغطية ضوابطها، محسوبة من الأدلة المرتبطة بكل ضابط.",
+    "metricFrameworks": "الأطر",
+    "metricTotalControls": "إجمالي الضوابط",
+    "metricControlsCovered": "الضوابط المغطّاة",
+    "metricOverallCoverage": "التغطية الإجمالية",
+    "controlsFraction": "{covered}/{total} ضابط",
+    "allFrameworksLink": "جميع الأطر",
+    "controlsCoveredFraction": "{covered}/{total} ضابط مغطّى",
+    "evidenceCount": "{count} دليل",
+    "statusGap": "فجوة"
+  },
+  "documentCategories": {
+    "governance": "الحوكمة",
+    "risk_register": "سجل المخاطر",
+    "policies": "السياسات",
+    "contracts": "العقود",
+    "compliance": "الامتثال",
+    "internal_audit": "التدقيق الداخلي",
+    "cybersecurity": "الأمن السيبراني",
+    "other": "أخرى",
+    "pickerLabel": "فئة المستند"
+  },
+  "evidenceWorkspace": {
+    "searchPlaceholder": "ابحث في الأدلة بالعنوان أو الوسم…",
+    "addEvidence": "إضافة دليل",
+    "loading": "جارٍ تحميل الأدلة…",
+    "emptyTitle": "لا توجد أدلة بعد",
+    "emptyMatchingTitle": "لا توجد أدلة مطابقة",
+    "emptyHint": "أضف دليلًا واربطه بالضوابط التي يدعمها.",
+    "emptyMatchingHint": "جرّب بحثًا مختلفًا.",
+    "noLinkedControls": "لا توجد ضوابط مرتبطة",
+    "versionSize": "الإصدار {count} · {size}",
+    "updatedOn": "آخر تحديث {date}",
+    "downloadCurrentVersion": "تنزيل الإصدار الحالي",
+    "delete": "حذف",
+    "confirm": "تأكيد",
+    "removeTag": "إزالة {tag}",
+    "addTagsPlaceholder": "إضافة وسوم…",
+    "addEvidenceDescription": "ارفع دليلًا واربطه بالضوابط التي يدعمها.",
+    "cancel": "إلغاء",
+    "saveEvidence": "حفظ الدليل",
+    "fieldTitle": "العنوان",
+    "fieldDescription": "الوصف (اختياري)",
+    "fieldTags": "الوسوم",
+    "fieldLinkedControls": "الضوابط المرتبطة",
+    "fieldFile": "الملف",
+    "titlePlaceholder": "مثال: مستخرج مراجعة الوصول للربع الثاني",
+    "fileHint": "PDF أو Word أو صورة (PNG/JPG) · حتى 25 ميجابايت",
+    "errorTitleRequired": "العنوان مطلوب.",
+    "errorFileRequired": "يرجى اختيار ملف.",
+    "errorAddFailed": "حدث خطأ أثناء إضافة الدليل. يرجى المحاولة مرة أخرى.",
+    "evidenceFallbackTitle": "الدليل",
+    "loadingEllipsis": "جارٍ التحميل…",
+    "linkedControls": "الضوابط المرتبطة",
+    "edit": "تعديل",
+    "saveLinks": "حفظ الروابط",
+    "versionHistory": "سجل الإصدارات ({count})",
+    "newVersion": "إصدار جديد",
+    "current": "الحالي",
+    "download": "تنزيل"
+  },
+  "placeholders": {
+    "missions": {
+      "eyebrow": "نظرة عامة",
+      "title": "المهام",
+      "description": "تتبّع مهام الحوكمة والمخاطر والامتثال الموجهة نحو الأهداف طوال دورة حياتها، مع الخطط ونقاط الموافقة وسجل تدقيق كامل."
+    },
+    "assessments": {
+      "eyebrow": "المخاطر والامتثال",
+      "title": "التقييمات",
+      "description": "أجرِ تحليلات الفجوات وتقييمات التغطية مقابل إطار عمل واحد أو أكثر، مع مستوى الثقة ومصدر الأدلة."
+    },
+    "help": {
+      "eyebrow": "الحساب",
+      "title": "المساعدة والدعم",
+      "description": "اطّلع على الوثائق، وتواصل مع الدعم، وتعرّف على كيفية الاستفادة القصوى من المنصة."
+    },
+    "settings": {
+      "eyebrow": "الحساب",
+      "title": "الإعدادات",
+      "description": "أدر تفضيلات المؤسسة والأعضاء وإعدادات مساحة العمل."
+    }
+  },
+  "placeholderPage": {
+    "comingSoon": "قريبًا",
+    "moduleNotice": "{title} في الطريق إليكم — نعمل حاليًا على إتمام هذه التجربة.",
+    "badge": "قريبًا"
+  },
+  "policiesWorkspace": {
+    "policyCount": "{count} سياسة",
+    "newPolicy": "سياسة جديدة",
+    "loadingPolicies": "جاري تحميل السياسات…",
+    "loading": "جاري التحميل…",
+    "emptyTitle": "لا توجد سياسات بعد",
+    "emptyDescription": "أنشئ سياسة واربطها بالضوابط التي تحكمها.",
+    "status": {
+      "draft": "مسودة",
+      "in_review": "قيد المراجعة",
+      "published": "منشورة",
+      "archived": "مؤرشفة"
+    },
+    "statusAction": {
+      "draft": "إعادة إلى المسودة",
+      "in_review": "إرسال للمراجعة",
+      "published": "نشر",
+      "archived": "أرشفة"
+    },
+    "rowMeta": "{owner} · {count} ضابط · آخر تحديث {date}",
+    "policyModalTitle": "السياسة",
+    "createDescription": "تبدأ المسودات كـ«مسودة» وتمر بمراحل المراجعة قبل النشر.",
+    "cancel": "إلغاء",
+    "createDraft": "إنشاء مسودة",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "saveBody": "حفظ النص",
+    "saveLinks": "حفظ الروابط",
+    "titleLabel": "العنوان",
+    "titlePlaceholder": "مثال: سياسة ضبط الوصول",
+    "summaryLabel": "الملخص",
+    "summaryPlaceholder": "وصف موجز للغرض",
+    "bodyLabel": "النص",
+    "bodyPlaceholder": "نص السياسة…",
+    "mappedControlsLabel": "الضوابط المرتبطة",
+    "noBody": "لا يوجد نص.",
+    "noMappedControls": "لا توجد ضوابط مرتبطة.",
+    "ownerLabel": "المالك: {name}",
+    "publishedBy": "نُشرت بواسطة {name}",
+    "titleRequired": "العنوان مطلوب.",
+    "createError": "حدث خطأ أثناء إنشاء هذه السياسة. يرجى المحاولة مرة أخرى.",
+    "transitionError": "تعذر إتمام هذا الإجراء. يرجى المحاولة مرة أخرى."
+  },
+  "reportsPage": {
+    "eyebrow": "المخاطر والامتثال",
+    "title": "التقارير",
+    "description": "تقارير تنفيذية وامتثالية ومخاطر جاهزة للتدقيق — مجمّعة من بيانات التغطية والأدلة والمخاطر الحيّة لديكم. عاينوها على الشاشة، ثم صدّروها بصيغة PDF أو Excel."
+  },
+  "reportsWorkspace": {
+    "kinds": {
+      "executive": {
+        "title": "التقرير التنفيذي للحوكمة والمخاطر والامتثال",
+        "subtitle": "نظرة شاملة على وضع الحوكمة والمخاطر والامتثال",
+        "description": "ملخص تنفيذي لتغطية الامتثال والتعرض للمخاطر وأدلة الضوابط."
+      },
+      "compliance": {
+        "title": "تقرير الامتثال",
+        "subtitle": "تغطية الأطر وضمان الضوابط",
+        "description": "تغطية الضوابط حسب كل إطار، والفجوات، والسياسات والأدلة الداعمة لها."
+      },
+      "risk": {
+        "title": "تقرير المخاطر",
+        "subtitle": "سجل المخاطر والتقييم والمعالجة",
+        "description": "سجل المخاطر الكامل مع توزيع درجات الخطورة والحالة وقرارات القبول."
+      }
+    },
+    "exportPdf": "تصدير PDF",
+    "exportExcel": "تصدير Excel",
+    "loading": "جارٍ إعداد التقرير…",
+    "noRows": "لا توجد بيانات."
+  },
+  "riskRegister": {
+    "newRisk": "خطر جديد",
+    "loadingRisks": "جارٍ تحميل المخاطر…",
+    "loading": "جارٍ التحميل…",
+    "score": "الدرجة",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "addToRegister": "إضافة إلى السجل",
+    "savePlan": "حفظ الخطة",
+    "noMitigationPlan": "لا توجد خطة تخفيف بعد.",
+    "noLinkedControls": "لا توجد ضوابط مرتبطة بعد.",
+    "notAssessed": "لم يتم التقييم بعد",
+    "inherentRisk": "الخطر الكامن",
+    "residualRisk": "الخطر المتبقي (بعد الضوابط)",
+    "ownerLabel": "المالك: {name}",
+    "statusLabel": "الحالة: {status}",
+    "acceptedBy": "تم القبول بواسطة {name}",
+    "mitigatingControlsCount": "{count} ضابط تخفيف",
+    "stats": {
+      "totalRisks": "إجمالي المخاطر",
+      "activeAccepted": "{active} نشط · {accepted} مقبول",
+      "severityDistribution": "توزيع الشدة",
+      "averageInherentScore": "متوسط الدرجة الكامنة",
+      "outOf25": "من أصل 25 (الاحتمالية × الأثر)"
+    },
+    "filters": {
+      "allStatuses": "جميع الحالات",
+      "allSeverities": "جميع درجات الشدة"
+    },
+    "emptyState": {
+      "titleEmpty": "لا توجد مخاطر بعد",
+      "titleFiltered": "لا توجد مخاطر مطابقة للمرشحات",
+      "hintEmpty": "حدّد خطرًا وقيّمه وفق مصفوفة 5×5 للبدء.",
+      "hintFiltered": "جرّب مرشح حالة أو شدة مختلفًا."
+    },
+    "table": {
+      "risk": "الخطر",
+      "category": "الفئة",
+      "inherent": "الكامن",
+      "residual": "المتبقي",
+      "status": "الحالة",
+      "owner": "المالك"
+    },
+    "modal": {
+      "newRiskTitle": "خطر جديد",
+      "riskTitle": "الخطر"
+    },
+    "form": {
+      "title": "العنوان",
+      "titlePlaceholder": "مثال: خوادم متصلة بالإنترنت دون تحديثات أمنية",
+      "description": "الوصف",
+      "category": "الفئة",
+      "owner": "المالك",
+      "ownerPlaceholder": "يُسند إليك افتراضيًا",
+      "likelihood": "الاحتمالية",
+      "impact": "الأثر",
+      "mitigatingControls": "ضوابط التخفيف",
+      "mitigationPlan": "خطة التخفيف",
+      "mitigationPlanPlaceholder": "صِف إجراءات التخفيف المخطط لها…"
+    },
+    "errors": {
+      "titleRequired": "العنوان مطلوب.",
+      "createFailed": "حدث خطأ أثناء إنشاء هذا الخطر. يرجى المحاولة مرة أخرى.",
+      "transitionFailed": "تعذّر إتمام هذا الإجراء. يرجى المحاولة مرة أخرى."
+    },
+    "severity": {
+      "low": "منخفضة",
+      "medium": "متوسطة",
+      "high": "عالية",
+      "critical": "حرجة"
+    },
+    "status": {
+      "open": "مفتوح",
+      "mitigating": "قيد التخفيف",
+      "accepted": "مقبول",
+      "closed": "مغلق"
+    },
+    "statusAction": {
+      "open": "إعادة الفتح",
+      "mitigating": "بدء التخفيف",
+      "accepted": "قبول الخطر",
+      "closed": "إغلاق"
+    },
+    "category": {
+      "cyber": "سيبراني",
+      "compliance": "امتثال",
+      "privacy": "خصوصية",
+      "operational": "تشغيلي",
+      "third_party": "طرف ثالث",
+      "financial": "مالي"
+    },
+    "likelihoodLabels": [
+      "نادر",
+      "غير مرجح",
+      "محتمل",
+      "مرجح",
+      "شبه مؤكد"
+    ],
+    "impactLabels": [
+      "ضئيل",
+      "بسيط",
+      "متوسط",
+      "كبير",
+      "جسيم"
+    ]
+  },
+  "policiesPage": {
+    "eyebrow": "الحوكمة",
+    "title": "السياسات",
+    "description": "أنشئ السياسات، واربطها بالضوابط، وانقلها عبر مراحل المراجعة حتى النشر. يُعد نشر السياسة إجراءً يتطلب موافقة بشرية، ويقتصر على المالكين والمسؤولين ومديري الامتثال."
+  },
+  "evidencePage": {
+    "eyebrow": "المخاطر والامتثال",
+    "title": "الأدلة",
+    "description": "اجمع الأدلة التي تثبت تفعيل ضوابطك وأدرها — موسومة، وموثّقة بالإصدارات، ومرتبطة بالضوابط التي تدعمها."
+  },
+  "riskRegisterPage": {
+    "eyebrow": "المخاطر والامتثال",
+    "title": "سجل المخاطر",
+    "description": "حدّد المخاطر وقيّمها وتتبعها وفق مصفوفة 5×5 — مع ضوابط التخفيف والتقييم المتبقي والمسؤولية. قبول الخطر إجراء يتطلب موافقة بشرية."
+  },
+  "accessDeniedPage": {
+    "title": "تم رفض الوصول",
+    "description": "دورك لا يمنحك صلاحية الوصول إلى هذه المنطقة. إذا كنت تعتقد أن هذا خطأ، تواصل مع مسؤول مساحة العمل لديك.",
+    "backToDashboard": "العودة إلى لوحة القيادة"
+  },
+  "uploadPage": {
+    "eyebrow": "المعرفة",
+    "title": "مركز الرفع",
+    "description": "ارفع السياسات والأدلة والعقود والتقارير السابقة. تُخزَّن المستندات ضمن مساحة مؤسستك وتُجهَّز للتحليل بالذكاء الاصطناعي — تحليلًا وتجزئةً وتضمينًا واسترجاعًا مرتكزًا على الأدلة."
+  },
+  "analysisPage": {
+    "allAnalyses": "جميع التحليلات",
+    "eyebrow": "الذكاء الاصطناعي",
+    "title": "التحليل",
+    "documentAnalysisTitle": "تحليل المستند",
+    "description": "شغّل المستندات المرفوعة عبر خط أنابيب الذكاء الاصطناعي، وراجع النتائج المرتكزة على الأدلة وتغطية الأطر.",
+    "documentAnalysisDescription": "تقييم بالذكاء الاصطناعي مرتكز على نص المستند نفسه — تم تحليله وتجزئته وتضمينه وفهرسته."
+  },
+  "analysisScoreCards": {
+    "compliance": "الامتثال",
+    "risk": "المخاطر",
+    "weightedAcrossFrameworks": "مرجّح عبر الأطر المكتملة",
+    "maturityLevel": "نضج {level}",
+    "findings": "النتائج",
+    "noFindings": "لا توجد نتائج مسجّلة.",
+    "severity": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة",
+      "info": "معلوماتية"
+    }
+  },
+  "analysisProgress": {
+    "fileSizeSuffix": "{size} · مستند PDF",
+    "complete": "مكتمل",
+    "analyzing": "قيد التحليل",
+    "analysisInProgress": "التحليل بالذكاء الاصطناعي قيد التقدم",
+    "done": "تم",
+    "running": "قيد التشغيل…",
+    "queued": "في الانتظار",
+    "openingReport": "جارٍ فتح التقرير التنفيذي…",
+    "staySeconds": "عادةً ما يستغرق هذا بضع ثوانٍ. يرجى إبقاء هذه النافذة مفتوحة."
+  },
+  "duplicateDocumentDialog": {
+    "title": "تم رفعه وتحليله مسبقًا",
+    "description": "«{fileName}» يحمل المحتوى نفسه تمامًا لمستند موجود بالفعل في مساحة عملك.",
+    "cancel": "إلغاء",
+    "starting": "جارٍ البدء…",
+    "rerunAnyway": "إعادة تشغيل التحليل رغم ذلك",
+    "openPrevious": "فتح التحليل السابق",
+    "bodyText": "لم يُنشأ أي مستند جديد — ولم يُرفع شيء مجددًا. يمكنك فتح سجل التحليل الحالي، أو إعادة تشغيل التحليل إذا كانت قواعد التقييم قد تغيّرت منذ آخر تحليل."
+  },
+  "documentStatus": {
+    "uploaded": "جاهز للتحليل",
+    "queued": "في الانتظار",
+    "processing": "قيد المعالجة",
+    "processed": "تمت المعالجة",
+    "failed": "فشل"
+  },
+  "strengthsWeaknesses": {
+    "strengthsTitle": "نقاط القوة",
+    "strengthsDescription": "ما يقوم به المستند بشكل جيد بالفعل",
+    "weaknessesTitle": "نقاط الضعف",
+    "weaknessesDescription": "الفجوات أو الإغفالات الموجودة في النص"
+  },
+  "frameworkChecks": {
+    "title": "التوافق مع الأطر",
+    "description": "تقييم مرتكز على الأدلة مقابل كل إطار مذكور في المستند",
+    "alignment": {
+      "strong": "قوي",
+      "partial": "جزئي",
+      "gap": "فجوة",
+      "unknown": "غير معروف"
+    }
+  },
+  "recommendations": {
+    "title": "التغييرات الموصى بها",
+    "description": "{count} مرتكزة على نتائج المستند",
+    "reasonLabel": "السبب:",
+    "impactLabel": "الأثر المتوقع:",
+    "priority": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    }
+  },
+  "findingsList": {
+    "title": "النتائج",
+    "description": "{count} مرتكزة على نص المستند",
+    "severity": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة",
+      "info": "معلوماتية"
+    },
+    "relatesTo": "يتعلق بـ: {framework}"
+  },
+  "complianceOverview": {
+    "title": "نظرة عامة على الامتثال",
+    "description": "التوافق العام مع الأطر المرجعية المذكورة في هذا المستند"
+  },
+  "criticalRisks": {
+    "title": "المخاطر الحرجة",
+    "description": "{count} نتائج جسيمة بما يكفي للتأثير على الأعمال أو نتيجة التدقيق",
+    "businessImpactLabel": "الأثر على الأعمال:",
+    "relatesTo": "يتعلق بـ: {framework}",
+    "severity": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة",
+      "info": "معلوماتية"
+    }
+  },
+  "gapAnalysis": {
+    "title": "تحليل الفجوات",
+    "description": "{count} مجالات محددة يقصر فيها المستند عن متطلبات أحد الأطر",
+    "relatesTo": "يتعلق بـ: {framework}"
+  },
+  "impactAndPriority": {
+    "businessImpactTitle": "الأثر على الأعمال",
+    "priorityTitle": "الأولوية",
+    "priority": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    }
+  },
+  "references": {
+    "title": "المراجع",
+    "description": "ضوابط الأطر وأقسام المستند المستشهد بها في هذا التحليل"
+  },
+  "nextActions": {
+    "title": "الخطوات التالية",
+    "description": "{count} خطوات عملية محددة لسد الفجوات أعلاه",
+    "priority": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    }
+  },
+  "regions": {
+    "International": "دولي",
+    "Saudi Arabia": "السعودية"
   }
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowLeft, CheckCircle2, CircleDashed } from "lucide-react";
 import { Link, redirect } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
@@ -21,6 +21,7 @@ export default async function FrameworkDetailPage({ params }: { params: Promise<
   const report = await computeCoverage(actor);
   const framework = findFrameworkCoverage(report, id);
   if (!framework) notFound();
+  const t = await getTranslations("frameworksPage");
 
   return (
     <div>
@@ -30,7 +31,7 @@ export default async function FrameworkDetailPage({ params }: { params: Promise<
           className="inline-flex items-center gap-1.5 text-2xs font-medium text-foreground-muted transition-colors duration-150 hover:text-foreground-secondary"
         >
           <ArrowLeft className="h-3.5 w-3.5" strokeWidth={1.75} />
-          All frameworks
+          {t("allFrameworksLink")}
         </Link>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
           {framework.name}
@@ -39,7 +40,7 @@ export default async function FrameworkDetailPage({ params }: { params: Promise<
         <div className="mt-4 max-w-md">
           <div className="flex items-center justify-between text-xs">
             <span className="text-foreground-secondary">
-              {framework.covered}/{framework.total} controls covered
+              {t("controlsCoveredFraction", { covered: framework.covered, total: framework.total })}
             </span>
             <span className="font-semibold text-foreground">{framework.coveragePct}%</span>
           </div>
@@ -73,7 +74,9 @@ export default async function FrameworkDetailPage({ params }: { params: Promise<
                     : "bg-white/[0.05] text-foreground-muted",
                 )}
               >
-                {control.evidenceCount > 0 ? `${control.evidenceCount} evidence` : "Gap"}
+                {control.evidenceCount > 0
+                  ? t("evidenceCount", { count: control.evidenceCount })
+                  : t("statusGap")}
               </span>
             </div>
           ))}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Download,
   FileText,
@@ -41,6 +42,7 @@ interface Permissions {
 }
 
 export function EvidenceWorkspace(permissions: Permissions) {
+  const t = useTranslations("evidenceWorkspace");
   const [search, setSearch] = useState("");
   const [debounced, setDebounced] = useState("");
   const { data: evidence, isLoading } = useEvidence({ search: debounced });
@@ -74,7 +76,7 @@ export function EvidenceWorkspace(permissions: Permissions) {
           <input
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search evidence by title or tag…"
+            placeholder={t("searchPlaceholder")}
             className="h-9 w-full rounded-lg border border-hairline bg-surface/60 ps-9 pe-3 text-sm text-foreground outline-none transition-colors duration-150 placeholder:text-foreground-muted focus:border-hairline-strong focus:bg-surface-2"
           />
         </div>
@@ -85,7 +87,7 @@ export function EvidenceWorkspace(permissions: Permissions) {
             className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
-            Add evidence
+            {t("addEvidence")}
           </button>
         )}
       </div>
@@ -93,7 +95,7 @@ export function EvidenceWorkspace(permissions: Permissions) {
       {isLoading ? (
         <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-          Loading evidence…
+          {t("loading")}
         </Card>
       ) : !evidence || evidence.length === 0 ? (
         <Card grain className="flex flex-col items-center gap-3 py-14 text-center">
@@ -102,12 +104,10 @@ export function EvidenceWorkspace(permissions: Permissions) {
           </div>
           <div className="space-y-1">
             <p className="text-sm font-medium text-foreground">
-              {debounced ? "No matching evidence" : "No evidence yet"}
+              {debounced ? t("emptyMatchingTitle") : t("emptyTitle")}
             </p>
             <p className="text-xs text-foreground-muted">
-              {debounced
-                ? "Try a different search."
-                : "Add an artifact and link it to the controls it supports."}
+              {debounced ? t("emptyMatchingHint") : t("emptyHint")}
             </p>
           </div>
         </Card>
@@ -147,8 +147,9 @@ function KindIcon({ kind }: { kind: string }) {
 }
 
 function ControlChips({ controlIds }: { controlIds: string[] }) {
+  const t = useTranslations("evidenceWorkspace");
   if (controlIds.length === 0)
-    return <span className="text-2xs text-foreground-muted">No linked controls</span>;
+    return <span className="text-2xs text-foreground-muted">{t("noLinkedControls")}</span>;
   return (
     <div className="flex flex-wrap gap-1">
       {controlIds.slice(0, 5).map((id) => {
@@ -182,6 +183,7 @@ function EvidenceRow({
   onOpen: () => void;
   onDelete: () => void;
 }) {
+  const t = useTranslations("evidenceWorkspace");
   const [confirming, setConfirming] = useState(false);
   return (
     <Card className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -210,10 +212,14 @@ function EvidenceRow({
       <div className="flex items-center gap-4 sm:gap-6">
         <div className="hidden text-end sm:block">
           <p className="text-2xs text-foreground-muted">
-            v{item.versionCount} ·{" "}
-            {item.currentVersion ? formatBytes(item.currentVersion.sizeBytes) : "—"}
+            {t("versionSize", {
+              count: item.versionCount,
+              size: item.currentVersion ? formatBytes(item.currentVersion.sizeBytes) : "—",
+            })}
           </p>
-          <p className="text-2xs text-foreground-muted">Updated {formatDate(item.updatedAt)}</p>
+          <p className="text-2xs text-foreground-muted">
+            {t("updatedOn", { date: formatDate(item.updatedAt) })}
+          </p>
         </div>
         {item.tags.length > 0 && (
           <div className="hidden items-center gap-1 md:flex">
@@ -228,7 +234,7 @@ function EvidenceRow({
             <a
               href={`/api/evidence/${item.id}/versions/current/content?download`}
               className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-hairline bg-surface/60 text-foreground-muted transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
-              title="Download current version"
+              title={t("downloadCurrentVersion")}
             >
               <Download className="h-3.5 w-3.5" strokeWidth={1.75} />
             </a>
@@ -249,10 +255,10 @@ function EvidenceRow({
                   ? "border-danger/40 bg-danger-soft text-danger"
                   : "border-hairline bg-surface/60 text-foreground-muted hover:border-hairline-strong hover:text-foreground",
               )}
-              title="Delete"
+              title={t("delete")}
             >
               <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
-              {confirming && <span className="ms-1">Confirm</span>}
+              {confirming && <span className="ms-1">{t("confirm")}</span>}
             </button>
           )}
         </div>
@@ -262,6 +268,7 @@ function EvidenceRow({
 }
 
 function TagInput({ tags, onChange }: { tags: string[]; onChange: (tags: string[]) => void }) {
+  const t = useTranslations("evidenceWorkspace");
   const [draft, setDraft] = useState("");
   function commit() {
     const value = draft.trim().toLowerCase();
@@ -286,8 +293,8 @@ function TagInput({ tags, onChange }: { tags: string[]; onChange: (tags: string[
           {tag}
           <button
             type="button"
-            onClick={() => onChange(tags.filter((t) => t !== tag))}
-            aria-label={`Remove ${tag}`}
+            onClick={() => onChange(tags.filter((existing) => existing !== tag))}
+            aria-label={t("removeTag", { tag })}
           >
             <X className="h-3 w-3" strokeWidth={2} />
           </button>
@@ -298,7 +305,7 @@ function TagInput({ tags, onChange }: { tags: string[]; onChange: (tags: string[
         onChange={(e) => setDraft(e.target.value)}
         onKeyDown={onKeyDown}
         onBlur={commit}
-        placeholder={tags.length ? "" : "Add tags…"}
+        placeholder={tags.length ? "" : t("addTagsPlaceholder")}
         className="min-w-[80px] flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-foreground-muted"
       />
     </div>
@@ -312,6 +319,7 @@ function FieldLabel({ children }: { children: React.ReactNode }) {
 }
 
 function AddEvidenceModal({ onClose }: { onClose: () => void }) {
+  const t = useTranslations("evidenceWorkspace");
   const create = useCreateEvidence();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -323,13 +331,13 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     setError(null);
-    if (!title.trim()) return setError("A title is required.");
-    if (!file) return setError("Please choose a file.");
+    if (!title.trim()) return setError(t("errorTitleRequired"));
+    if (!file) return setError(t("errorFileRequired"));
     try {
       await create.mutateAsync({ title, description, tags, controlIds, file });
       onClose();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to add evidence.");
+    } catch {
+      setError(t("errorAddFailed"));
     }
   }
 
@@ -337,8 +345,8 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
     <Modal
       open
       onClose={onClose}
-      title="Add evidence"
-      description="Upload an artifact and link it to the controls it supports."
+      title={t("addEvidence")}
+      description={t("addEvidenceDescription")}
       size="lg"
       footer={
         <>
@@ -347,7 +355,7 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             className="h-9 rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground-secondary hover:text-foreground"
           >
-            Cancel
+            {t("cancel")}
           </button>
           <button
             type="submit"
@@ -356,7 +364,7 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3.5 text-sm font-medium text-white shadow-glow hover:opacity-90 disabled:opacity-60"
           >
             {create.isPending && <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} />}
-            Save evidence
+            {t("saveEvidence")}
           </button>
         </>
       }
@@ -369,16 +377,16 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
           </div>
         )}
         <label className="block">
-          <FieldLabel>Title</FieldLabel>
+          <FieldLabel>{t("fieldTitle")}</FieldLabel>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Q2 access review export"
+            placeholder={t("titlePlaceholder")}
             className="h-9 w-full rounded-lg border border-hairline bg-surface/60 px-3 text-sm text-foreground outline-none focus:border-hairline-strong"
           />
         </label>
         <label className="block">
-          <FieldLabel>Description (optional)</FieldLabel>
+          <FieldLabel>{t("fieldDescription")}</FieldLabel>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -387,24 +395,22 @@ function AddEvidenceModal({ onClose }: { onClose: () => void }) {
           />
         </label>
         <div>
-          <FieldLabel>Tags</FieldLabel>
+          <FieldLabel>{t("fieldTags")}</FieldLabel>
           <TagInput tags={tags} onChange={setTags} />
         </div>
         <div>
-          <FieldLabel>Linked controls</FieldLabel>
+          <FieldLabel>{t("fieldLinkedControls")}</FieldLabel>
           <ControlPicker value={controlIds} onChange={setControlIds} />
         </div>
         <div>
-          <FieldLabel>File</FieldLabel>
+          <FieldLabel>{t("fieldFile")}</FieldLabel>
           <input
             type="file"
             accept={EVIDENCE_ACCEPT}
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
             className="block w-full text-sm text-foreground-secondary file:me-3 file:rounded-lg file:border-0 file:bg-surface-2 file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:bg-surface-hover"
           />
-          <p className="mt-1 text-2xs text-foreground-muted">
-            PDF, Word, or image (PNG/JPG) · up to 25 MB
-          </p>
+          <p className="mt-1 text-2xs text-foreground-muted">{t("fileHint")}</p>
         </div>
       </form>
     </Modal>
@@ -420,6 +426,7 @@ function EvidenceDetailModal({
   permissions: Permissions;
   onClose: () => void;
 }) {
+  const t = useTranslations("evidenceWorkspace");
   const { data: evidence, isLoading } = useEvidenceItem(id);
   const addVersion = useAddEvidenceVersion();
   const updateEvidence = useUpdateEvidence();
@@ -444,11 +451,11 @@ function EvidenceDetailModal({
   }
 
   return (
-    <Modal open onClose={onClose} title={evidence?.title ?? "Evidence"} size="lg">
+    <Modal open onClose={onClose} title={evidence?.title ?? t("evidenceFallbackTitle")} size="lg">
       {isLoading || !evidence ? (
         <div className="flex items-center justify-center gap-2 py-10 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
-          Loading…
+          {t("loadingEllipsis")}
         </div>
       ) : (
         <div className="space-y-5">
@@ -458,7 +465,9 @@ function EvidenceDetailModal({
 
           <div>
             <div className="mb-1.5 flex items-center justify-between">
-              <p className="text-xs font-medium text-foreground-secondary">Linked controls</p>
+              <p className="text-xs font-medium text-foreground-secondary">
+                {t("linkedControls")}
+              </p>
               {permissions.canUpdate && !editingControls && (
                 <button
                   type="button"
@@ -468,7 +477,7 @@ function EvidenceDetailModal({
                   }}
                   className="text-2xs text-accent-foreground hover:underline"
                 >
-                  Edit
+                  {t("edit")}
                 </button>
               )}
             </div>
@@ -481,7 +490,7 @@ function EvidenceDetailModal({
                     onClick={() => setEditingControls(false)}
                     className="h-8 rounded-lg border border-hairline px-2.5 text-2xs text-foreground-secondary"
                   >
-                    Cancel
+                    {t("cancel")}
                   </button>
                   <button
                     type="button"
@@ -497,7 +506,7 @@ function EvidenceDetailModal({
                     {updateEvidence.isPending && (
                       <Loader2 className="h-3 w-3 animate-spin" strokeWidth={2} />
                     )}
-                    Save links
+                    {t("saveLinks")}
                   </button>
                 </div>
               </div>
@@ -510,7 +519,7 @@ function EvidenceDetailModal({
             <div className="mb-2 flex items-center justify-between">
               <p className="flex items-center gap-1.5 text-xs font-medium text-foreground-secondary">
                 <History className="h-3.5 w-3.5" strokeWidth={1.75} />
-                Version history ({evidence.versions.length})
+                {t("versionHistory", { count: evidence.versions.length })}
               </p>
               {permissions.canUpdate && (
                 <>
@@ -525,7 +534,7 @@ function EvidenceDetailModal({
                     ) : (
                       <Upload className="h-3.5 w-3.5" strokeWidth={1.75} />
                     )}
-                    New version
+                    {t("newVersion")}
                   </button>
                   <input
                     ref={versionInput}
@@ -554,13 +563,13 @@ function EvidenceDetailModal({
                     <p className="text-2xs text-foreground-muted">
                       {formatBytes(version.sizeBytes)} · {version.uploadedByName} ·{" "}
                       {formatDate(version.createdAt)}
-                      {version.id === evidence.currentVersionId && " · current"}
+                      {version.id === evidence.currentVersionId && ` · ${t("current")}`}
                     </p>
                   </div>
                   <a
                     href={`/api/evidence/${id}/versions/${version.id}/content?download`}
                     className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-hairline bg-surface/60 text-foreground-muted hover:border-hairline-strong hover:text-foreground"
-                    title="Download"
+                    title={t("download")}
                   >
                     <Download className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </a>

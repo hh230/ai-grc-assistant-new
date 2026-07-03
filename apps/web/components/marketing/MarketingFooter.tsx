@@ -6,21 +6,25 @@ import { Link } from "@/i18n/navigation";
 
 const COLUMNS = [
   {
-    key: "product",
+    key: "platform",
     links: [
-      { key: "overview", href: "/product" },
+      { key: "about", href: "/about" },
       { key: "features", href: "/features" },
       { key: "howItWorks", href: "/how-it-works" },
     ],
   },
   {
     key: "compliance",
-    links: [{ key: "exampleReports", href: "/sample-reports" }],
+    links: [
+      { key: "frameworksSupported", href: "/frameworks-supported" },
+      { key: "reports", href: "/sample-reports" },
+    ],
   },
   {
     key: "company",
     links: [
       { key: "faq", href: "/faq" },
+      { key: "contact", href: "/contact" },
       { key: "signIn", href: "/login" },
     ],
   },

@@ -21,12 +21,13 @@ export const ACCESS_DENIED_PATH = "/access-denied";
  */
 export const PUBLIC_MARKETING_PATHS = [
   "/",
-  "/product",
+  "/about",
   "/features",
   "/frameworks-supported",
   "/how-it-works",
   "/sample-reports",
   "/faq",
+  "/contact",
 ] as const;
 export const JWT_ISSUER = "grc-web";
 

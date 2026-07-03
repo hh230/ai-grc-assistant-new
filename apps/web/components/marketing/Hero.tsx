@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 interface HeroProps {
   eyebrow?: string;
   title: string;
+  /** Optional short tagline rendered between the title and the description. */
+  subtitle?: string;
   description: string;
   // Locale-agnostic logical path — see the comment on NavLink.href in lib/navigation.ts.
   primaryCta?: { label: string; href: string };
@@ -17,6 +19,7 @@ interface HeroProps {
 export function Hero({
   eyebrow,
   title,
+  subtitle,
   description,
   primaryCta,
   secondaryCta,
@@ -38,6 +41,11 @@ export function Hero({
         <h1 className="text-balance mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {title}
         </h1>
+        {subtitle && (
+          <p className="text-balance mx-auto mt-3 max-w-[620px] text-lg font-medium text-foreground-secondary sm:text-xl">
+            {subtitle}
+          </p>
+        )}
         <p className="text-balance mx-auto mt-5 max-w-[620px] text-base leading-relaxed text-foreground-secondary sm:text-lg">
           {description}
         </p>

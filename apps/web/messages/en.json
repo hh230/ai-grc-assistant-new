@@ -222,12 +222,14 @@
     }
   },
   "marketingNav": {
-    "product": "Product",
+    "home": "Home",
+    "about": "About Rasheed",
     "features": "Features",
-    "frameworks": "Frameworks",
-    "howItWorks": "How it works",
-    "exampleReports": "Example reports",
+    "frameworks": "Frameworks & Standards",
+    "howItWorks": "How It Works",
+    "reports": "Reports",
     "faq": "FAQ",
+    "contact": "Contact Us",
     "getStarted": "Get started",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -235,20 +237,21 @@
   "marketingFooter": {
     "tagline": "Governance, Risk, and Compliance — grounded, cited, and audit-ready.",
     "columns": {
-      "product": {
-        "title": "Product",
-        "overview": "Overview",
+      "platform": {
+        "title": "Platform",
+        "about": "About Rasheed",
         "features": "Features",
         "howItWorks": "How it works"
       },
       "compliance": {
         "title": "Compliance",
         "frameworksSupported": "Frameworks supported",
-        "exampleReports": "Example reports"
+        "reports": "Reports"
       },
       "company": {
         "title": "Company",
         "faq": "FAQ",
+        "contact": "Contact us",
         "signIn": "Sign in"
       }
     },
@@ -335,7 +338,7 @@
     "humanDecides": {
       "title": "A human always decides",
       "description": "The platform proposes, drafts, and analyzes — a qualified person on your team approves anything consequential, like a control sign-off or a risk acceptance.",
-      "cta": "Read the product overview"
+      "cta": "Learn more about Rasheed"
     },
     "faq": {
       "title": "Common questions",
@@ -511,28 +514,41 @@
       "description": "Every report above is built live from your coverage, evidence, and risk data once you sign in."
     }
   },
-  "productPage": {
+  "aboutPage": {
     "hero": {
-      "title": "One platform for governance, risk, and compliance work",
-      "description": "Rasheed connects your controls, policies, evidence, and risk register to the frameworks you're measured against — and keeps every step traceable."
+      "title": "Why Rasheed?",
+      "subtitle": "A clearer way to manage Governance, Risk, and Compliance",
+      "description": "Rasheed brings policies, controls, risks, and evidence together into one unified workspace, helping organizations understand their compliance position, prioritize actions, and make decisions based on clearer insights."
     },
-    "sections": {
-      "missions": {
-        "title": "Work runs as governed missions",
-        "description": "Instead of open-ended chat, every piece of compliance work — a gap analysis, an evidence sweep, a questionnaire response — runs as a mission with a clear goal, a visible plan, and a full history of what happened and why. You can see exactly what a mission is doing at any point, and step in whenever you need to."
+    "cards": {
+      "organizing": {
+        "title": "Organizing Governance and Compliance Operations",
+        "description": "Rasheed helps transform policies, requirements, and compliance-related tasks into trackable workflows with clear ownership, status visibility, and progress stages."
       },
-      "grounded": {
-        "title": "Every answer is grounded and cited",
-        "description": "The platform never guesses on compliance matters. Answers are built from your own policies, evidence, and the framework text itself, and every claim carries a citation back to its source. If the evidence isn't there, the platform says so instead of filling the gap with a plausible-sounding answer."
+      "analysis": {
+        "title": "Reference-Based Analysis",
+        "description": "Rasheed analyzes organizational documents and relevant frameworks while linking insights back to their sources to support review and verification activities."
       },
-      "human": {
-        "title": "A human approves anything consequential",
-        "description": "Drafting a policy, proposing a control mapping, or flagging a risk is something the platform can do on its own. Publishing that policy, accepting that risk, or signing off a control always requires a qualified person on your team to review the evidence and approve it explicitly."
+      "expertise": {
+        "title": "Expertise Drives Decisions",
+        "description": "Rasheed supports professionals with analysis, organization, and recommendations while keeping final review and critical decisions in the hands of qualified experts."
       }
     },
     "cta": {
-      "title": "Ready to see it against your own evidence?",
-      "description": "Sign in with a demo workspace to explore missions, coverage, and reporting first-hand."
+      "title": "Move from tracking compliance to managing it with clarity",
+      "description": "Discover how Rasheed helps your organization connect policies, risks, controls, and requirements within one unified system supporting governance and compliance activities.",
+      "button": "Explore Rasheed"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "description": "Reach out to the Rasheed team to learn how we can support your governance, risk, and compliance work."
+    },
+    "emailLabel": "Email us at",
+    "cta": {
+      "title": "Ready to see Rasheed in action?",
+      "description": "Sign in to explore a demo workspace, or write to us with your questions."
     }
   },
   "featuresPage": {

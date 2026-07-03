@@ -8,11 +8,12 @@ import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
 const LINK_KEYS = [
-  { key: "product", href: "/product" },
-  { key: "features", href: "/features" },
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
   { key: "howItWorks", href: "/how-it-works" },
-  { key: "exampleReports", href: "/sample-reports" },
-  { key: "faq", href: "/faq" },
+  { key: "frameworks", href: "/frameworks-supported" },
+  { key: "reports", href: "/sample-reports" },
+  { key: "contact", href: "/contact" },
 ] as const;
 
 export function MarketingNav() {

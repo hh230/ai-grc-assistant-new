@@ -204,7 +204,7 @@ export default async function MarketingHomePage() {
             </p>
           </div>
           <Link
-            href="/product"
+            href="/about"
             className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg border border-hairline bg-surface px-4 text-sm font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
           >
             {t("humanDecides.cta")}

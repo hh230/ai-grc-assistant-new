@@ -600,14 +600,15 @@
   },
   "frameworksSupportedPage": {
     "hero": {
-      "eyebrow": "Frameworks",
-      "title": "Built for regional and international regulators alike",
-      "description": "Map one set of controls and evidence against every framework you're held to — Rasheed's framework engine adds new standards without changing how you work."
+      "eyebrow": "Examples of frameworks and standards",
+      "title": "Manage governance and compliance across different frameworks and standards",
+      "description": "Rasheed supports working with various governance, risk, and compliance frameworks, enabling organizations to align policies and controls according to the frameworks and standards they follow."
     },
-    "footerNote": "Don't see a framework you need? The framework engine represents every standard as structured data, so new frameworks are added without any change to how your controls, evidence, or reports work.",
+    "footerNote": "These are examples of selected frameworks and standards. Rasheed can work with additional frameworks and requirements based on each organization’s needs.",
     "cta": {
-      "title": "See your coverage across every framework at once",
-      "description": "Sign in to view live coverage percentages, gaps, and evidence for your own workspace."
+      "title": "Connect governance and compliance frameworks in one place",
+      "description": "Rasheed helps organize requirements and controls from different frameworks and connect them with policies and evidence to provide clearer visibility into compliance status.",
+      "button": "Get Started"
     }
   },
   "login": {

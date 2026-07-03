@@ -53,7 +53,11 @@ export default async function FrameworksSupportedPage() {
         </p>
       </section>
 
-      <CTASection title={t("cta.title")} description={t("cta.description")} />
+      <CTASection
+        title={t("cta.title")}
+        description={t("cta.description")}
+        ctaLabel={t("cta.button")}
+      />
     </>
   );
 }

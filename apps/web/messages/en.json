@@ -543,12 +543,13 @@
   "contactPage": {
     "hero": {
       "title": "Contact Us",
-      "description": "Reach out to the Rasheed team to learn how we can support your governance, risk, and compliance work."
+      "description": "For inquiries and requests, you can contact the Rasheed team through the channels below."
     },
-    "emailLabel": "Email us at",
+    "emailLabel": "Contact us by email",
     "cta": {
-      "title": "Ready to see Rasheed in action?",
-      "description": "Sign in to explore a demo workspace, or write to us with your questions."
+      "title": "Have a question about Rasheed?",
+      "description": "We welcome your inquiries and feedback. Our specialized team will get back to you.",
+      "button": "Contact Us"
     }
   },
   "featuresPage": {

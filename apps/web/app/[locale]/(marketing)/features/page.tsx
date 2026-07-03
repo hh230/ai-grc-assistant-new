@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import {
   ShieldCheck,
   FileText,
@@ -18,72 +19,35 @@ export const metadata: Metadata = {
   description: "Every feature of the Sentinel GRC governance, risk, and compliance workspace.",
 };
 
-const FEATURES = [
-  {
-    icon: ShieldCheck,
-    title: "Controls",
-    description:
-      "A live view of every control across your frameworks, its coverage status, and the evidence backing it.",
-  },
-  {
-    icon: FileText,
-    title: "Policies",
-    description:
-      "Author and review policies with a clear draft → review → published workflow and control mapping.",
-  },
-  {
-    icon: Library,
-    title: "Frameworks",
-    description:
-      "Coverage and gaps tracked per framework, with cross-framework mapping so one piece of evidence can satisfy several regulators at once.",
-  },
-  {
-    icon: TriangleAlert,
-    title: "Risk register",
-    description:
-      "Score risks with a standard likelihood × impact matrix, track mitigation, and require sign-off before any risk is accepted.",
-  },
-  {
-    icon: FolderArchive,
-    title: "Evidence",
-    description:
-      "Upload, tag, and version evidence, and link it directly to the controls and policies it supports.",
-  },
-  {
-    icon: MessageSquareText,
-    title: "AI workspace",
-    description:
-      "Ask questions about your compliance posture in plain language and get grounded, cited answers.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Assessments",
-    description: "Run gap analyses and coverage assessments against any supported framework.",
-  },
-  {
-    icon: FileBarChart,
-    title: "Reports",
-    description:
-      "Generate executive, compliance, and risk reports on demand, ready to export for auditors and leadership.",
-  },
+const FEATURE_ITEMS = [
+  { icon: ShieldCheck, key: "controls" },
+  { icon: FileText, key: "policies" },
+  { icon: Library, key: "frameworks" },
+  { icon: TriangleAlert, key: "riskRegister" },
+  { icon: FolderArchive, key: "evidence" },
+  { icon: MessageSquareText, key: "aiWorkspace" },
+  { icon: ClipboardList, key: "assessments" },
+  { icon: FileBarChart, key: "reports" },
 ] as const;
 
-export default function FeaturesPage() {
+export default async function FeaturesPage() {
+  const t = await getTranslations("featuresPage");
+
+  const features = FEATURE_ITEMS.map(({ icon, key }) => ({
+    icon,
+    title: t(`items.${key}.title`),
+    description: t(`items.${key}.description`),
+  }));
+
   return (
     <>
-      <Hero
-        title="Everything your compliance team needs in one workspace"
-        description="Controls, policies, risk, evidence, and reporting — connected, not scattered across spreadsheets and email threads."
-      />
+      <Hero title={t("hero.title")} description={t("hero.description")} />
 
       <section className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6">
-        <FeatureGrid items={FEATURES} />
+        <FeatureGrid items={features} />
       </section>
 
-      <CTASection
-        title="See it running against real evidence"
-        description="Every feature above is grounded in your own documents from the moment you sign in."
-      />
+      <CTASection title={t("cta.title")} description={t("cta.description")} />
     </>
   );
 }

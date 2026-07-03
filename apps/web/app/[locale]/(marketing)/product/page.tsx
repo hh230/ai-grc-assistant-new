@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Workflow, FileSearch, UserCheck } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { CTASection } from "@/components/marketing/CTASection";
@@ -10,37 +11,27 @@ export const metadata: Metadata = {
     "How Sentinel GRC organizes compliance work into governed missions, grounds every answer in evidence, and keeps a human in charge of consequential decisions.",
 };
 
-const SECTIONS = [
-  {
-    icon: Workflow,
-    title: "Work runs as governed missions",
-    description:
-      "Instead of open-ended chat, every piece of compliance work — a gap analysis, an evidence sweep, a questionnaire response — runs as a mission with a clear goal, a visible plan, and a full history of what happened and why. You can see exactly what a mission is doing at any point, and step in whenever you need to.",
-  },
-  {
-    icon: FileSearch,
-    title: "Every answer is grounded and cited",
-    description:
-      "The platform never guesses on compliance matters. Answers are built from your own policies, evidence, and the framework text itself, and every claim carries a citation back to its source. If the evidence isn't there, the platform says so instead of filling the gap with a plausible-sounding answer.",
-  },
-  {
-    icon: UserCheck,
-    title: "A human approves anything consequential",
-    description:
-      "Drafting a policy, proposing a control mapping, or flagging a risk is something the platform can do on its own. Publishing that policy, accepting that risk, or signing off a control always requires a qualified person on your team to review the evidence and approve it explicitly.",
-  },
+const SECTION_ITEMS = [
+  { icon: Workflow, key: "missions" },
+  { icon: FileSearch, key: "grounded" },
+  { icon: UserCheck, key: "human" },
 ] as const;
 
-export default function ProductOverviewPage() {
+export default async function ProductOverviewPage() {
+  const t = await getTranslations("productPage");
+
+  const sections = SECTION_ITEMS.map(({ icon, key }) => ({
+    icon,
+    title: t(`sections.${key}.title`),
+    description: t(`sections.${key}.description`),
+  }));
+
   return (
     <>
-      <Hero
-        title="One platform for governance, risk, and compliance work"
-        description="Sentinel GRC connects your controls, policies, evidence, and risk register to the frameworks you're measured against — and keeps every step traceable."
-      />
+      <Hero title={t("hero.title")} description={t("hero.description")} />
 
       <section className="mx-auto max-w-[900px] space-y-16 px-4 py-20 sm:px-6">
-        {SECTIONS.map((section, index) => {
+        {sections.map((section, index) => {
           const Icon = section.icon;
           return (
             <div
@@ -71,10 +62,7 @@ export default function ProductOverviewPage() {
         })}
       </section>
 
-      <CTASection
-        title="Ready to see it against your own evidence?"
-        description="Sign in with a demo workspace to explore missions, coverage, and reporting first-hand."
-      />
+      <CTASection title={t("cta.title")} description={t("cta.description")} />
     </>
   );
 }

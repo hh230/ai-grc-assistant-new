@@ -48,6 +48,7 @@ const FAQ_KEYS = ["q1", "q2", "q3", "q4"] as const;
 
 export default async function MarketingHomePage() {
   const t = await getTranslations("home");
+  const tFrameworks = await getTranslations("marketingFrameworks");
 
   const features = FEATURE_ITEMS.map(({ icon, key }) => ({
     icon,
@@ -182,7 +183,9 @@ export default async function MarketingHomePage() {
                 className="rounded-xl border border-hairline bg-surface px-4 py-3.5 text-center shadow-soft"
               >
                 <p className="text-sm font-semibold text-foreground">{fw.shortName}</p>
-                <p className="mt-0.5 truncate text-2xs text-foreground-muted">{fw.name}</p>
+                <p className="mt-0.5 truncate text-2xs text-foreground-muted">
+                  {tFrameworks(`${fw.key}.name`)}
+                </p>
               </div>
             ))}
           </div>

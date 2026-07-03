@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Upload, Search, ShieldCheck, FileBarChart } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { CTASection } from "@/components/marketing/CTASection";
@@ -10,48 +11,30 @@ export const metadata: Metadata = {
     "How Sentinel GRC turns your policies and evidence into grounded coverage, risk, and reporting.",
 };
 
-const STEPS = [
-  {
-    icon: Upload,
-    step: "1",
-    title: "Bring your policies and evidence",
-    description:
-      "Upload the documents you already have — policies, prior audit reports, contracts, and evidence artifacts. Nothing needs to be reformatted first.",
-  },
-  {
-    icon: Search,
-    step: "2",
-    title: "The platform reads and grounds them",
-    description:
-      "Your documents are parsed and indexed against the frameworks you select, so answers and coverage numbers are grounded in what you actually have — not a generic template.",
-  },
-  {
-    icon: ShieldCheck,
-    step: "3",
-    title: "Review coverage, gaps, and risk",
-    description:
-      "See exactly which controls are covered, which are gaps, and how your risk register looks — with every number traceable back to a source document.",
-  },
-  {
-    icon: FileBarChart,
-    step: "4",
-    title: "Act, approve, and report",
-    description:
-      "Draft policies, close gaps, and accept risk with a clear sign-off trail, then generate an audit-ready report whenever you need one.",
-  },
+const STEP_ITEMS = [
+  { icon: Upload, key: "step1" },
+  { icon: Search, key: "step2" },
+  { icon: ShieldCheck, key: "step3" },
+  { icon: FileBarChart, key: "step4" },
 ] as const;
 
-export default function HowItWorksPage() {
+export default async function HowItWorksPage() {
+  const t = await getTranslations("howItWorksPage");
+
+  const steps = STEP_ITEMS.map(({ icon, key }, i) => ({
+    icon,
+    step: String(i + 1),
+    title: t(`steps.${key}.title`),
+    description: t(`steps.${key}.description`),
+  }));
+
   return (
     <>
-      <Hero
-        title="From documents to audit-ready posture in four steps"
-        description="No new templates to learn — Sentinel GRC works with the policies and evidence your team already maintains."
-      />
+      <Hero title={t("hero.title")} description={t("hero.description")} />
 
       <section className="mx-auto max-w-[900px] px-4 py-20 sm:px-6">
         <div className="space-y-4">
-          {STEPS.map((item) => {
+          {steps.map((item) => {
             const Icon = item.icon;
             return (
               <Card key={item.step} className="flex items-start gap-5 p-7">
@@ -75,10 +58,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Bring your first document in under a minute"
-        description="Sign in and upload a policy to see grounded coverage against your chosen framework."
-      />
+      <CTASection title={t("cta.title")} description={t("cta.description")} />
     </>
   );
 }

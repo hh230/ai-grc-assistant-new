@@ -361,6 +361,227 @@
       "description": "Start with your existing policies and evidence — Sentinel GRC grounds every answer in what you already have."
     }
   },
+  "marketingFrameworks": {
+    "ncaEcc": {
+      "name": "Essential Cybersecurity Controls",
+      "region": "Saudi Arabia",
+      "description": "The National Cybersecurity Authority's baseline cybersecurity controls."
+    },
+    "sama": {
+      "name": "SAMA Cybersecurity Framework",
+      "region": "Saudi Arabia",
+      "description": "Saudi Central Bank cybersecurity and compliance requirements for the financial sector."
+    },
+    "pdpl": {
+      "name": "Personal Data Protection Law",
+      "region": "Saudi Arabia",
+      "description": "Saudi Arabia's personal data protection and privacy regulation."
+    },
+    "iso27001": {
+      "name": "ISO/IEC 27001:2022",
+      "region": "International",
+      "description": "The international standard for information security management systems."
+    },
+    "nistCsf": {
+      "name": "NIST Cybersecurity Framework",
+      "region": "International",
+      "description": "A risk-based framework for managing cybersecurity outcomes."
+    },
+    "cisControls": {
+      "name": "CIS Critical Security Controls",
+      "region": "International",
+      "description": "Prioritized safeguards to mitigate the most common cyber attacks."
+    },
+    "cobit": {
+      "name": "COBIT",
+      "region": "International",
+      "description": "Governance and management framework for enterprise IT."
+    },
+    "coso": {
+      "name": "COSO Internal Control Framework",
+      "region": "International",
+      "description": "Internal control and enterprise risk management framework."
+    }
+  },
+  "howItWorksPage": {
+    "hero": {
+      "title": "From documents to audit-ready posture in four steps",
+      "description": "No new templates to learn — Sentinel GRC works with the policies and evidence your team already maintains."
+    },
+    "steps": {
+      "step1": {
+        "title": "Bring your policies and evidence",
+        "description": "Upload the documents you already have — policies, prior audit reports, contracts, and evidence artifacts. Nothing needs to be reformatted first."
+      },
+      "step2": {
+        "title": "The platform reads and grounds them",
+        "description": "Your documents are parsed and indexed against the frameworks you select, so answers and coverage numbers are grounded in what you actually have — not a generic template."
+      },
+      "step3": {
+        "title": "Review coverage, gaps, and risk",
+        "description": "See exactly which controls are covered, which are gaps, and how your risk register looks — with every number traceable back to a source document."
+      },
+      "step4": {
+        "title": "Act, approve, and report",
+        "description": "Draft policies, close gaps, and accept risk with a clear sign-off trail, then generate an audit-ready report whenever you need one."
+      }
+    },
+    "cta": {
+      "title": "Bring your first document in under a minute",
+      "description": "Sign in and upload a policy to see grounded coverage against your chosen framework."
+    }
+  },
+  "faqPage": {
+    "hero": {
+      "title": "Frequently asked questions",
+      "description": "If your question isn't answered here, reach out and we'll walk you through it directly."
+    },
+    "items": {
+      "q1": {
+        "question": "Does Sentinel GRC replace our compliance team?",
+        "answer": "No. The platform is built as an assistant, not a replacement — it drafts, analyzes, and organizes work, but a qualified person on your team always reviews and approves anything consequential, like a policy publication or a risk acceptance."
+      },
+      "q2": {
+        "question": "Where does the AI get its answers from?",
+        "answer": "Every answer is grounded in your own uploaded documents and the compliance framework text — never a general-purpose guess. If the platform doesn't have enough evidence to answer confidently, it tells you that instead of making something up."
+      },
+      "q3": {
+        "question": "Which frameworks are supported?",
+        "answer": "Both regional and international standards, including NCA ECC, SAMA, and PDPL for Saudi Arabia, and ISO 27001, NIST CSF, CIS Controls, COBIT, and COSO internationally. New frameworks are added as configuration, not custom development."
+      },
+      "q4": {
+        "question": "Is our data isolated from other organizations?",
+        "answer": "Yes. The platform is built multi-tenant from the ground up — every query, document, and AI retrieval is scoped strictly to your organization. Cross-tenant access isn't possible by design."
+      },
+      "q5": {
+        "question": "Can we see how an AI-generated answer was produced?",
+        "answer": "Yes. Every AI-driven answer or recommendation is traceable back to the source documents and framework references it used, along with who approved any resulting action and when — built for external audit review."
+      },
+      "q6": {
+        "question": "How do we get started?",
+        "answer": "Sign in, upload a policy or piece of evidence, and select the frameworks you're measured against. Coverage, gaps, and grounded answers are available within minutes."
+      }
+    },
+    "cta": {
+      "title": "Still have questions?",
+      "description": "Sign in to explore a demo workspace, or reach out to talk through your specific frameworks and requirements."
+    }
+  },
+  "sampleReportsPage": {
+    "hero": {
+      "eyebrow": "Example reports",
+      "title": "Audit-ready reports, generated on demand",
+      "description": "The same executive, compliance, and risk reports your workspace produces live — shown here with sample data so you can see the output before you sign in."
+    },
+    "sampleBadge": "Sample",
+    "reports": {
+      "executive": {
+        "title": "Executive Summary",
+        "kpi1": "Overall coverage",
+        "kpi2": "Open gaps",
+        "kpi3": "Frameworks tracked",
+        "narrative": "Sample data. Coverage improved across ISO 27001 and NCA ECC this quarter, driven by newly linked evidence for access-control and logging requirements. Twelve control gaps remain open, concentrated in vendor risk management."
+      },
+      "compliance": {
+        "title": "Compliance Report",
+        "kpi1": "Controls covered",
+        "kpi2": "Evidence artifacts",
+        "kpi3": "Frameworks",
+        "narrative": "Sample data. Per-framework breakdown of covered vs. gap controls, with the evidence backing each covered control and a prioritized list of the highest-impact gaps to close next."
+      },
+      "risk": {
+        "title": "Risk Report",
+        "kpi1": "Open risks",
+        "kpi2": "Average score",
+        "kpi3": "Critical",
+        "narrative": "Sample data. Inherent and residual scoring for every tracked risk, mitigation status, and ownership — ready to hand to leadership or an external auditor as-is."
+      }
+    },
+    "cta": {
+      "title": "Generate this against your own evidence",
+      "description": "Every report above is built live from your coverage, evidence, and risk data once you sign in."
+    }
+  },
+  "productPage": {
+    "hero": {
+      "title": "One platform for governance, risk, and compliance work",
+      "description": "Sentinel GRC connects your controls, policies, evidence, and risk register to the frameworks you're measured against — and keeps every step traceable."
+    },
+    "sections": {
+      "missions": {
+        "title": "Work runs as governed missions",
+        "description": "Instead of open-ended chat, every piece of compliance work — a gap analysis, an evidence sweep, a questionnaire response — runs as a mission with a clear goal, a visible plan, and a full history of what happened and why. You can see exactly what a mission is doing at any point, and step in whenever you need to."
+      },
+      "grounded": {
+        "title": "Every answer is grounded and cited",
+        "description": "The platform never guesses on compliance matters. Answers are built from your own policies, evidence, and the framework text itself, and every claim carries a citation back to its source. If the evidence isn't there, the platform says so instead of filling the gap with a plausible-sounding answer."
+      },
+      "human": {
+        "title": "A human approves anything consequential",
+        "description": "Drafting a policy, proposing a control mapping, or flagging a risk is something the platform can do on its own. Publishing that policy, accepting that risk, or signing off a control always requires a qualified person on your team to review the evidence and approve it explicitly."
+      }
+    },
+    "cta": {
+      "title": "Ready to see it against your own evidence?",
+      "description": "Sign in with a demo workspace to explore missions, coverage, and reporting first-hand."
+    }
+  },
+  "featuresPage": {
+    "hero": {
+      "title": "Everything your compliance team needs in one workspace",
+      "description": "Controls, policies, risk, evidence, and reporting — connected, not scattered across spreadsheets and email threads."
+    },
+    "items": {
+      "controls": {
+        "title": "Controls",
+        "description": "A live view of every control across your frameworks, its coverage status, and the evidence backing it."
+      },
+      "policies": {
+        "title": "Policies",
+        "description": "Author and review policies with a clear draft → review → published workflow and control mapping."
+      },
+      "frameworks": {
+        "title": "Frameworks",
+        "description": "Coverage and gaps tracked per framework, with cross-framework mapping so one piece of evidence can satisfy several regulators at once."
+      },
+      "riskRegister": {
+        "title": "Risk register",
+        "description": "Score risks with a standard likelihood × impact matrix, track mitigation, and require sign-off before any risk is accepted."
+      },
+      "evidence": {
+        "title": "Evidence",
+        "description": "Upload, tag, and version evidence, and link it directly to the controls and policies it supports."
+      },
+      "aiWorkspace": {
+        "title": "AI workspace",
+        "description": "Ask questions about your compliance posture in plain language and get grounded, cited answers."
+      },
+      "assessments": {
+        "title": "Assessments",
+        "description": "Run gap analyses and coverage assessments against any supported framework."
+      },
+      "reports": {
+        "title": "Reports",
+        "description": "Generate executive, compliance, and risk reports on demand, ready to export for auditors and leadership."
+      }
+    },
+    "cta": {
+      "title": "See it running against real evidence",
+      "description": "Every feature above is grounded in your own documents from the moment you sign in."
+    }
+  },
+  "frameworksSupportedPage": {
+    "hero": {
+      "eyebrow": "Frameworks",
+      "title": "Built for regional and international regulators alike",
+      "description": "Map one set of controls and evidence against every framework you're held to — Sentinel GRC's framework engine adds new standards without changing how you work."
+    },
+    "footerNote": "Don't see a framework you need? The framework engine represents every standard as structured data, so new frameworks are added without any change to how your controls, evidence, or reports work.",
+    "cta": {
+      "title": "See your coverage across every framework at once",
+      "description": "Sign in to view live coverage percentages, gaps, and evidence for your own workspace."
+    }
+  },
   "login": {
     "title": "Sign in to Sentinel GRC",
     "subtitle": "Governance · Risk · Compliance · AI",

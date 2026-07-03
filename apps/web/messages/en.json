@@ -600,10 +600,10 @@
   },
   "frameworksSupportedPage": {
     "hero": {
-      "eyebrow": "Examples of frameworks and standards",
       "title": "Manage governance and compliance across different frameworks and standards",
       "description": "Rasheed supports working with various governance, risk, and compliance frameworks, enabling organizations to align policies and controls according to the frameworks and standards they follow."
     },
+    "cardsLabel": "Examples of frameworks and standards",
     "footerNote": "These are examples of selected frameworks and standards. Rasheed can work with additional frameworks and requirements based on each organization’s needs.",
     "cta": {
       "title": "Connect governance and compliance frameworks in one place",

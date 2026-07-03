@@ -19,14 +19,16 @@ export default async function FrameworksSupportedPage() {
 
   return (
     <>
-      <Hero
-        eyebrow={t("hero.eyebrow")}
-        title={t("hero.title")}
-        description={t("hero.description")}
-      />
+      <Hero title={t("hero.title")} description={t("hero.description")} />
 
       <section className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="text-center">
+          <span className="inline-flex items-center rounded-full border border-gold/30 bg-gold-soft px-3 py-1 text-2xs font-medium text-accent">
+            {t("cardsLabel")}
+          </span>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SUPPORTED_FRAMEWORKS.map((fw) => (
             <Card key={fw.shortName} className="p-7">
               <div className="flex items-start justify-between gap-3">

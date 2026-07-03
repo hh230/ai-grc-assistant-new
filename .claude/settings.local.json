@@ -44,7 +44,8 @@
       "Bash(xargs -I{} wc -l {})",
       "Bash(cat apps/web/.claude/launch.json)",
       "Bash(cat .claude/launch.json)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(node -e ' *)"
     ]
   }
 }

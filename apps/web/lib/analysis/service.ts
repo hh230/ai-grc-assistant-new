@@ -16,10 +16,18 @@ import { blobStore } from "@/lib/storage/blob-store";
 import { documentRepository } from "@/lib/documents/repository";
 import { DOCUMENT_CATEGORY_LABELS } from "@/lib/documents/types";
 import { getRequestLocale } from "@/lib/i18n/request-locale";
+import { missingArabic } from "@/lib/i18n/text";
+import { logger } from "@/lib/observability/logger";
 import type { AppLocale } from "@/i18n/routing";
 import { chunkText } from "./chunk";
 import { extractText } from "./extract";
-import { assessmentSchema, buildAssessmentPrompt, PROMPT_VERSION, type Assessment } from "./prompts/assess_grc_document.v3";
+import {
+  assessmentSchema,
+  buildAssessmentPrompt,
+  narrativeFieldsOf,
+  PROMPT_VERSION,
+  type Assessment,
+} from "./prompts/assess_grc_document.v3";
 import { analysisRepository, type AnalysisWithVersionCount } from "./repository";
 import { computeComplianceScore, computeRiskScore, deriveMaturityLevel } from "./scoring";
 import { vectorStore } from "./vector-store";
@@ -227,6 +235,11 @@ async function markFailed(
   await documentRepository.updateStatus(tenantId, documentId, "failed", message);
 }
 
+type AttemptResult =
+  | { ok: true; data: Assessment }
+  | { ok: false; reason: "parse"; raw: string }
+  | { ok: false; reason: "schema" };
+
 async function assess(
   chat: ReturnType<typeof getChatProvider>,
   fileName: string,
@@ -234,15 +247,10 @@ async function assess(
   categoryLabel: string,
   locale: AppLocale,
 ): Promise<Assessment> {
-  const messages = buildAssessmentPrompt({ fileName, text, categoryLabel, locale });
-
-  // Reasoning models spend completion budget on hidden reasoning before emitting JSON —
-  // give ample room so the structured result is not truncated to empty. The v3 schema is
-  // larger (consulting-report sections) and Arabic output tokenizes less densely, so this
-  // budget is higher than v2's.
-  const raw = await chat.complete(messages, { json: true, maxTokens: 20000 });
   const fallbackSummary =
     locale === "ar" ? "تعذّر إنتاج ملخص لهذا التحليل." : "No summary produced.";
+  const unexpectedFormat =
+    locale === "ar" ? "أنتج التحليل تنسيقًا غير متوقع." : "Analysis produced an unexpected format.";
   const empty: Assessment = {
     executiveSummary: "",
     complianceOverview: "",
@@ -259,20 +267,52 @@ async function assess(
     references: [],
     nextActions: [],
   };
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(raw);
-  } catch {
+
+  async function attempt(retry: boolean): Promise<AttemptResult> {
+    const messages = buildAssessmentPrompt({ fileName, text, categoryLabel, locale, retry });
+    // Reasoning models spend completion budget on hidden reasoning before emitting JSON —
+    // give ample room so the structured result is not truncated to empty. The v3 schema is
+    // larger (consulting-report sections) and Arabic output tokenizes less densely, so this
+    // budget is higher than v2's.
+    const raw = await chat.complete(messages, { json: true, maxTokens: 20000 });
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return { ok: false, reason: "parse", raw };
+    }
+    const result = assessmentSchema.safeParse(parsed);
+    return result.success ? { ok: true, data: result.data } : { ok: false, reason: "schema" };
+  }
+
+  const first = await attempt(false);
+  if (first.ok && locale === "ar" && missingArabic(narrativeFieldsOf(first.data))) {
+    // The model produced valid JSON but drifted to English despite the language directive —
+    // a known reliability gap with `response_format: json_object` (see prompt file). Never
+    // translate the existing result: regenerate from the source document so every field is
+    // grounded and in Arabic together, not a patched-up mix.
+    logger.warn("assessment_language_drift_retry", { fileName, promptVersion: PROMPT_VERSION });
+    const retried = await attempt(true);
+    if (retried.ok) {
+      if (missingArabic(narrativeFieldsOf(retried.data))) {
+        logger.error("assessment_language_drift_unresolved", undefined, {
+          fileName,
+          promptVersion: PROMPT_VERSION,
+        });
+      }
+      return retried.data;
+    }
+    // Retry failed outright (non-JSON/bad schema) — fall through to the first attempt's
+    // (English-drifted) result rather than losing the analysis entirely.
+    return first.data;
+  }
+  if (first.ok) return first.data;
+
+  if (first.reason === "parse") {
     // The model returned non-JSON — degrade to a summary-only result rather than failing.
-    return { ...empty, executiveSummary: raw.slice(0, 600) || fallbackSummary };
+    return { ...empty, executiveSummary: first.raw.slice(0, 600) || fallbackSummary };
   }
-  const result = assessmentSchema.safeParse(parsed);
-  if (!result.success) {
-    const unexpectedFormat =
-      locale === "ar" ? "أنتج التحليل تنسيقًا غير متوقع." : "Analysis produced an unexpected format.";
-    return { ...empty, executiveSummary: unexpectedFormat };
-  }
-  return result.data;
+  return { ...empty, executiveSummary: unexpectedFormat };
 }
 
 /** Exposed for observability/tests — confirms which prompt version produced a given result. */

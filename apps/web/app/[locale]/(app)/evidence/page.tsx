@@ -5,7 +5,7 @@ import { requireSession } from "@/lib/auth/server";
 import { EvidenceWorkspace } from "@/components/evidence/EvidenceWorkspace";
 
 export const metadata: Metadata = {
-  title: "Evidence · Sentinel GRC",
+  title: "Evidence · Rasheed",
 };
 
 export default async function EvidencePage() {

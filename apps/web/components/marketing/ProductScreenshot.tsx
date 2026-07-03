@@ -20,7 +20,7 @@ export function ProductScreenshot({
   src,
   alt,
   caption,
-  url = "app.sentinelgrc.com",
+  url = "app.rasheed.sa",
   width,
   height,
   className,

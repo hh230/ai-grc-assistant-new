@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import {
   ShieldCheck,
   FileSearch,
@@ -23,7 +23,7 @@ import { CTASection } from "@/components/marketing/CTASection";
 import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
-  title: "Sentinel GRC — Governance, Risk & Compliance, grounded and audit-ready",
+  title: "Rasheed — Governance, Risk & Compliance, grounded and audit-ready",
   description:
     "An AI-assisted platform for Governance, Risk, Compliance, Privacy, and Legal teams — every answer grounded in your evidence, cited, and reviewed by a human before it counts.",
 };
@@ -44,11 +44,12 @@ const STEP_ITEMS = [
   { icon: FileBarChart2, key: "step4" },
 ] as const;
 
-const FAQ_KEYS = ["q1", "q2", "q3", "q4"] as const;
+const FAQ_KEYS = ["q1", "q2", "q3", "q4", "q5", "q6"] as const;
 
 export default async function MarketingHomePage() {
   const t = await getTranslations("home");
   const tFrameworks = await getTranslations("marketingFrameworks");
+  const locale = await getLocale();
 
   const features = FEATURE_ITEMS.map(({ icon, key }) => ({
     icon,
@@ -109,15 +110,15 @@ export default async function MarketingHomePage() {
           </div>
           <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
             <ProductScreenshot
-              src="/marketing/dashboard.png"
-              alt="Sentinel GRC executive dashboard showing compliance and risk scores, active frameworks, and an AI-generated executive summary"
+              src={`/marketing/dashboard-${locale}.png`}
+              alt="Rasheed executive dashboard showing compliance and risk scores, active frameworks, and an AI-generated executive summary"
               caption={t("screenshots.dashboardCaption")}
               width={1440}
               height={760}
             />
             <ProductScreenshot
-              src="/marketing/analysis.png"
-              alt="Sentinel GRC document analysis showing compliance and risk scores, findings by severity, and an AI-generated executive summary with citations"
+              src={`/marketing/analysis-${locale}.png`}
+              alt="Rasheed document analysis showing compliance and risk scores, findings by severity, and an AI-generated executive summary with citations"
               caption={t("screenshots.analysisCaption")}
               width={1440}
               height={900}
@@ -188,15 +189,6 @@ export default async function MarketingHomePage() {
                 </p>
               </div>
             ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/frameworks-supported"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-foreground hover:underline"
-            >
-              {t("frameworks.cta")}
-              <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />
-            </Link>
           </div>
         </div>
       </section>

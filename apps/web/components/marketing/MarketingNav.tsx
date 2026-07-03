@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 const LINK_KEYS = [
   { key: "product", href: "/product" },
   { key: "features", href: "/features" },
-  { key: "frameworks", href: "/frameworks-supported" },
   { key: "howItWorks", href: "/how-it-works" },
   { key: "exampleReports", href: "/sample-reports" },
   { key: "faq", href: "/faq" },
@@ -20,6 +19,7 @@ export function MarketingNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const t = useTranslations("marketingNav");
+  const tCommon = useTranslations("common");
 
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-xl">
@@ -29,7 +29,7 @@ export function MarketingNav() {
             <ShieldHalf className="h-[18px] w-[18px] text-accent" strokeWidth={1.75} />
           </div>
           <span className="text-sm font-semibold tracking-tight text-foreground">
-            Sentinel GRC
+            {tCommon("appName")}
           </span>
         </Link>
 

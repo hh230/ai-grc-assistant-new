@@ -4,7 +4,7 @@ import { requireSession } from "@/lib/auth/server";
 import { ReportsWorkspace } from "@/components/reports/ReportsWorkspace";
 
 export const metadata: Metadata = {
-  title: "Reports · Sentinel GRC",
+  title: "Reports · Rasheed",
 };
 
 export default async function ReportsPage() {

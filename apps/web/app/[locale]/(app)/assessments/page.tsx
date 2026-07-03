@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Assessments · Sentinel GRC",
+  title: "Assessments · Rasheed",
 };
 
 export default async function AssessmentsPage() {

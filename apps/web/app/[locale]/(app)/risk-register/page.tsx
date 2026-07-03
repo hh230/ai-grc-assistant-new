@@ -5,7 +5,7 @@ import { requireSession } from "@/lib/auth/server";
 import { RiskRegister } from "@/components/risk/RiskRegister";
 
 export const metadata: Metadata = {
-  title: "Risk Register · Sentinel GRC",
+  title: "Risk Register · Rasheed",
 };
 
 export default async function RiskRegisterPage() {

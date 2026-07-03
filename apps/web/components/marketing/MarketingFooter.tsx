@@ -15,10 +15,7 @@ const COLUMNS = [
   },
   {
     key: "compliance",
-    links: [
-      { key: "frameworksSupported", href: "/frameworks-supported" },
-      { key: "exampleReports", href: "/sample-reports" },
-    ],
+    links: [{ key: "exampleReports", href: "/sample-reports" }],
   },
   {
     key: "company",
@@ -31,6 +28,7 @@ const COLUMNS = [
 
 export function MarketingFooter() {
   const t = useTranslations("marketingFooter");
+  const tCommon = useTranslations("common");
 
   return (
     <footer className="border-t border-hairline bg-canvas">
@@ -42,7 +40,7 @@ export function MarketingFooter() {
                 <ShieldHalf className="h-[18px] w-[18px] text-accent" strokeWidth={1.75} />
               </div>
               <span className="text-sm font-semibold tracking-tight text-foreground">
-                Sentinel GRC
+                {tCommon("appName")}
               </span>
             </div>
             <p className="mt-3 max-w-[220px] text-xs text-foreground-muted">{t("tagline")}</p>

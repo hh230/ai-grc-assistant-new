@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sentinel GRC",
+  title: "Rasheed",
   description:
     "Enterprise Governance, Risk, Compliance and AI platform — real-time posture across regulated frameworks.",
 };

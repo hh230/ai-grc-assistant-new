@@ -1,19 +1,21 @@
 "use client";
 
-import { Landmark, HeartPulse, Building2, Radio } from "lucide-react";
+import { Rocket, Building, Building2, Landmark, HeartHandshake } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 /**
  * Pre-launch credibility strip (V2-P3 design proposal §7): no real customer logos exist
  * yet, so this launches as sector/credibility framing instead — swap to real customer
- * logos (same visual treatment) once available.
+ * logos (same visual treatment) once available. Organization-size framing (V2.5 Rasheed
+ * brand transition) rather than industry-sector framing.
  */
 const SECTOR_ICONS = [
-  { key: "banking", icon: Landmark },
-  { key: "healthcare", icon: HeartPulse },
-  { key: "government", icon: Building2 },
-  { key: "telecom", icon: Radio },
+  { key: "startups", icon: Rocket },
+  { key: "midSize", icon: Building },
+  { key: "enterprise", icon: Building2 },
+  { key: "government", icon: Landmark },
+  { key: "nonprofit", icon: HeartHandshake },
 ] as const;
 
 interface TrustedByStripProps {

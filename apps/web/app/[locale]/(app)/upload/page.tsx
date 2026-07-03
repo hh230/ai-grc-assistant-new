@@ -5,7 +5,7 @@ import { requireSession } from "@/lib/auth/server";
 import { UploadCenter } from "@/components/upload/UploadCenter";
 
 export const metadata: Metadata = {
-  title: "Upload Center · Sentinel GRC",
+  title: "Upload Center · Rasheed",
 };
 
 export default async function UploadCenterPage() {

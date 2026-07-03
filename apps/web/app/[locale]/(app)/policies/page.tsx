@@ -5,7 +5,7 @@ import { requireSession } from "@/lib/auth/server";
 import { PoliciesWorkspace } from "@/components/policies/PoliciesWorkspace";
 
 export const metadata: Metadata = {
-  title: "Policies · Sentinel GRC",
+  title: "Policies · Rasheed",
 };
 
 export default async function PoliciesPage() {

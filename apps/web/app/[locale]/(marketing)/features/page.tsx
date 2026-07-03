@@ -15,8 +15,8 @@ import { FeatureGrid } from "@/components/marketing/FeatureGrid";
 import { CTASection } from "@/components/marketing/CTASection";
 
 export const metadata: Metadata = {
-  title: "Features · Sentinel GRC",
-  description: "Every feature of the Sentinel GRC governance, risk, and compliance workspace.",
+  title: "Features · Rasheed",
+  description: "Every feature of the Rasheed governance, risk, and compliance workspace.",
 };
 
 const FEATURE_ITEMS = [

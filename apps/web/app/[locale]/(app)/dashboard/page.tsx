@@ -16,7 +16,7 @@ import { WorkspaceHub } from "@/components/dashboard/WorkspaceHub";
 import { FavoritesPanel } from "@/components/dashboard/FavoritesPanel";
 
 export const metadata: Metadata = {
-  title: "Executive Dashboard · Sentinel GRC",
+  title: "Executive Dashboard · Rasheed",
 };
 
 export default function ExecutiveDashboardPage() {

@@ -5,7 +5,7 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 import { requireRoles } from "@/lib/auth/server";
 
 export const metadata: Metadata = {
-  title: "Settings · Sentinel GRC",
+  title: "Settings · Rasheed",
 };
 
 // Workspace administration is restricted to owners and admins (server-enforced RBAC).

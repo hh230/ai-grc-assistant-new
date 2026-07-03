@@ -22,7 +22,7 @@ function sheetName(heading: string, index: number): string {
 
 export async function renderReportXlsx(report: Report): Promise<Buffer> {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = "Sentinel GRC";
+  workbook.creator = "Rasheed";
   workbook.created = new Date(report.generatedAt);
 
   const summary = workbook.addWorksheet("Summary");

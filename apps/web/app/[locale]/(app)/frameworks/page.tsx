@@ -9,7 +9,7 @@ import { getActor } from "@/lib/auth/actor";
 import { computeCoverage } from "@/lib/governance/coverage";
 
 export const metadata: Metadata = {
-  title: "Frameworks · Sentinel GRC",
+  title: "Frameworks · Rasheed",
 };
 
 export default async function FrameworksPage() {

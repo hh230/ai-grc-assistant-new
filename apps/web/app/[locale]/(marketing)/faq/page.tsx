@@ -5,8 +5,8 @@ import { FAQAccordion } from "@/components/marketing/FAQAccordion";
 import { CTASection } from "@/components/marketing/CTASection";
 
 export const metadata: Metadata = {
-  title: "FAQ · Sentinel GRC",
-  description: "Answers to common questions about Sentinel GRC — data handling, human oversight, frameworks, and getting started.",
+  title: "FAQ · Rasheed",
+  description: "Answers to common questions about Rasheed — data handling, human oversight, frameworks, and getting started.",
 };
 
 const FAQ_KEYS = ["q1", "q2", "q3", "q4", "q5", "q6"] as const;

@@ -4,7 +4,7 @@ import { requireSession } from "@/lib/auth/server";
 import { ChatWorkspace } from "@/components/chat/ChatWorkspace";
 
 export const metadata: Metadata = {
-  title: "AI Assistant · Sentinel GRC",
+  title: "AI Assistant · Rasheed",
 };
 
 export default async function WorkspacePage() {

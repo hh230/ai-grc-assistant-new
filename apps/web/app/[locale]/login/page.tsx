@@ -6,12 +6,13 @@ import { LoginForm } from "@/components/auth/LoginForm";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 
 export const metadata: Metadata = {
-  title: "Sign in · Sentinel GRC",
-  description: "Sign in to the Sentinel GRC governance, risk, compliance and AI platform.",
+  title: "Sign in · Rasheed",
+  description: "Sign in to the Rasheed governance, risk, compliance and AI platform.",
 };
 
 export default async function LoginPage() {
   const t = await getTranslations("login");
+  const tCommon = await getTranslations("common");
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 py-12">
       {/* Ambient accent wash, matching the workspace's restrained warm palette. */}
@@ -23,7 +24,7 @@ export default async function LoginPage() {
         href="/"
         className="absolute start-6 top-6 text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
       >
-        Sentinel GRC
+        {tCommon("appName")}
       </Link>
       <div className="absolute end-6 top-6">
         <LanguageSwitcher />

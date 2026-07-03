@@ -6,9 +6,9 @@ import { CTASection } from "@/components/marketing/CTASection";
 import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
-  title: "How It Works · Sentinel GRC",
+  title: "How It Works · Rasheed",
   description:
-    "How Sentinel GRC turns your policies and evidence into grounded coverage, risk, and reporting.",
+    "How Rasheed turns your policies and evidence into grounded coverage, risk, and reporting.",
 };
 
 const STEP_ITEMS = [

@@ -11,7 +11,7 @@ import { computeCoverage, findFrameworkCoverage } from "@/lib/governance/coverag
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Framework · Sentinel GRC",
+  title: "Framework · Rasheed",
 };
 
 export default async function FrameworkDetailPage({ params }: { params: Promise<{ id: string }> }) {

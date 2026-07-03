@@ -8,7 +8,7 @@ import { AnalysisDetail } from "@/components/analysis/AnalysisDetail";
 import { AnalysisHistory } from "@/components/analysis/AnalysisHistory";
 
 export const metadata: Metadata = {
-  title: "Analysis · Sentinel GRC",
+  title: "Analysis · Rasheed",
 };
 
 export default async function AnalysisPage({

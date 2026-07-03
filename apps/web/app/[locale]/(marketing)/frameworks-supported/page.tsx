@@ -8,9 +8,9 @@ import { Badge } from "@/components/ui/Badge";
 import { SUPPORTED_FRAMEWORKS } from "@/components/marketing/FrameworkLogoStrip";
 
 export const metadata: Metadata = {
-  title: "Frameworks Supported · Sentinel GRC",
+  title: "Frameworks Supported · Rasheed",
   description:
-    "Regional and international compliance frameworks Sentinel GRC maps controls and evidence against, including NCA ECC, SAMA, PDPL, ISO 27001, and NIST CSF.",
+    "Regional and international compliance frameworks Rasheed maps controls and evidence against, including NCA ECC, SAMA, PDPL, ISO 27001, and NIST CSF.",
 };
 
 export default async function FrameworksSupportedPage() {

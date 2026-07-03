@@ -72,6 +72,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
   const { user } = useSession();
   const roles = user.roles;
   const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
 
   // Hide nav items (and any group left empty) the current role may not access.
   const groups = PRIMARY_NAV.map((group) => ({
@@ -88,7 +89,9 @@ export function Sidebar({ onNavigate }: SidebarProps) {
           <ShieldHalf className="h-[18px] w-[18px] text-accent-foreground" strokeWidth={1.75} />
         </div>
         <div className="leading-tight">
-          <p className="text-sm font-semibold tracking-tight text-foreground">Sentinel GRC</p>
+          <p className="text-sm font-semibold tracking-tight text-foreground">
+            {tCommon("appName")}
+          </p>
           <p className="text-2xs text-foreground-muted">{t("brandTagline")}</p>
         </div>
       </Link>

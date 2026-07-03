@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Sentinel GRC",
+    "appName": "Rasheed",
     "language": "Language",
     "switchToArabic": "التبديل إلى العربية",
     "switchToEnglish": "Switch to English"
@@ -252,27 +252,28 @@
         "signIn": "Sign in"
       }
     },
-    "copyright": "© {year} Sentinel GRC · Enterprise Edition"
+    "copyright": "© {year} Rasheed · Enterprise Edition"
   },
   "home": {
     "hero": {
       "eyebrow": "Governance · Risk · Compliance",
       "title": "Compliance work your auditors will trust",
-      "description": "Sentinel GRC helps Governance, Risk, Compliance, Privacy, and Legal teams author, map, and monitor controls across every framework you answer to — grounded in your own evidence, reviewed by your people.",
+      "description": "Rasheed helps Governance, Risk, Compliance, Privacy, and Legal teams author, map, and monitor controls across every framework you answer to — grounded in your own evidence, reviewed by your people.",
       "primaryCta": "Get started",
       "secondaryCta": "See how it works"
     },
     "trustedBy": {
-      "label": "Built for regulated industries across Saudi Arabia and the Gulf",
-      "banking": "Banking & Financial Services",
-      "healthcare": "Healthcare",
-      "government": "Government & Public Sector",
-      "telecom": "Telecommunications"
+      "label": "Built to help organizations of every size manage governance, risk, and compliance clearly and efficiently",
+      "startups": "Startups",
+      "midSize": "Mid-Size Companies",
+      "enterprise": "Large Enterprises",
+      "government": "Government Entities",
+      "nonprofit": "Non-Profit Organizations"
     },
     "why": {
-      "badge": "Why Sentinel GRC",
+      "badge": "Why Rasheed",
       "title": "Manual compliance work doesn't scale — and it doesn't hold up under audit",
-      "description": "Spreadsheets and disconnected evidence make every audit a scramble. Sentinel GRC grounds every answer in your own documents and keeps a human decision behind every consequential change — so your posture is always current, and always defensible."
+      "description": "Spreadsheets and disconnected evidence make every audit a scramble. Rasheed grounds every answer in your own documents and keeps a human decision behind every consequential change — so your posture is always current, and always defensible."
     },
     "features": {
       "controlMapping": {
@@ -339,7 +340,7 @@
     "faq": {
       "title": "Common questions",
       "q1": {
-        "question": "Does Sentinel GRC replace our compliance team?",
+        "question": "Does Rasheed replace our compliance team?",
         "answer": "No. The platform is built as an assistant, not a replacement — it drafts, analyzes, and organizes work, but a qualified person on your team always reviews and approves anything consequential, like a policy publication or a risk acceptance."
       },
       "q2": {
@@ -354,11 +355,19 @@
         "question": "How do we get started?",
         "answer": "Sign in, upload a policy or piece of evidence, and select the frameworks you're measured against. Coverage, gaps, and grounded answers are available within minutes."
       },
+      "q5": {
+        "question": "Which document types can be analyzed?",
+        "answer": "Rasheed works with internal policies, procedures, risk registers, contracts, controls, evidence, and other governance and compliance documents."
+      },
+      "q6": {
+        "question": "Does Rasheed support multiple frameworks and standards?",
+        "answer": "Yes — Rasheed helps align your policies and controls with frameworks and requirements such as ISO 27001, NCA ECC, PDPL, and other relevant standards."
+      },
       "cta": "See all FAQs"
     },
     "cta": {
       "title": "See your compliance posture clearly",
-      "description": "Start with your existing policies and evidence — Sentinel GRC grounds every answer in what you already have."
+      "description": "Start with your existing policies and evidence — Rasheed grounds every answer in what you already have."
     }
   },
   "marketingFrameworks": {
@@ -406,7 +415,7 @@
   "howItWorksPage": {
     "hero": {
       "title": "From documents to audit-ready posture in four steps",
-      "description": "No new templates to learn — Sentinel GRC works with the policies and evidence your team already maintains."
+      "description": "No new templates to learn — Rasheed works with the policies and evidence your team already maintains."
     },
     "steps": {
       "step1": {
@@ -438,7 +447,7 @@
     },
     "items": {
       "q1": {
-        "question": "Does Sentinel GRC replace our compliance team?",
+        "question": "Does Rasheed replace our compliance team?",
         "answer": "No. The platform is built as an assistant, not a replacement — it drafts, analyzes, and organizes work, but a qualified person on your team always reviews and approves anything consequential, like a policy publication or a risk acceptance."
       },
       "q2": {
@@ -505,7 +514,7 @@
   "productPage": {
     "hero": {
       "title": "One platform for governance, risk, and compliance work",
-      "description": "Sentinel GRC connects your controls, policies, evidence, and risk register to the frameworks you're measured against — and keeps every step traceable."
+      "description": "Rasheed connects your controls, policies, evidence, and risk register to the frameworks you're measured against — and keeps every step traceable."
     },
     "sections": {
       "missions": {
@@ -574,7 +583,7 @@
     "hero": {
       "eyebrow": "Frameworks",
       "title": "Built for regional and international regulators alike",
-      "description": "Map one set of controls and evidence against every framework you're held to — Sentinel GRC's framework engine adds new standards without changing how you work."
+      "description": "Map one set of controls and evidence against every framework you're held to — Rasheed's framework engine adds new standards without changing how you work."
     },
     "footerNote": "Don't see a framework you need? The framework engine represents every standard as structured data, so new frameworks are added without any change to how your controls, evidence, or reports work.",
     "cta": {
@@ -583,7 +592,7 @@
     }
   },
   "login": {
-    "title": "Sign in to Sentinel GRC",
+    "title": "Sign in to Rasheed",
     "subtitle": "Governance · Risk · Compliance · AI",
     "signInFailed": "Sign in failed. Please try again.",
     "networkError": "Network error. Please check your connection and try again.",
@@ -600,7 +609,7 @@
       "analyst": "Analyst",
       "viewer": "Viewer"
     },
-    "footer": "© {year} Sentinel GRC · Enterprise Edition"
+    "footer": "© {year} Rasheed · Enterprise Edition"
   },
   "search": {
     "title": "Search",

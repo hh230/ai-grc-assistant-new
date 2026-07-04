@@ -187,6 +187,8 @@
       "viewAll": "عرض جميع {count}",
       "coverage": "التغطية",
       "controls": "ضوابط",
+      "emptyTitle": "لا توجد أطر تم تقييمها بعد",
+      "emptyDescription": "اربط الأدلة بالضوابط لبدء تتبع تغطية الأطر لهذه المنشأة.",
       "status": {
         "compliant": "ممتثل",
         "inProgress": "قيد التنفيذ",
@@ -213,6 +215,8 @@
       "title": "التقييمات الأخيرة",
       "description": "أحدث مراجعات الضوابط عبر الأطر",
       "viewAll": "عرض الكل",
+      "emptyTitle": "لا توجد تقييمات بعد",
+      "emptyDescription": "ارفع مستندًا وشغّل تحليلاً ليظهر هنا.",
       "columns": {
         "assessment": "التقييم",
         "owner": "المسؤول",
@@ -222,8 +226,8 @@
       },
       "status": {
         "completed": "مكتمل",
-        "inReview": "قيد المراجعة",
-        "inProgress": "قيد التنفيذ"
+        "inProgress": "قيد التنفيذ",
+        "failed": "فشل"
       }
     },
     "aiWorkspaceCard": {
@@ -235,19 +239,40 @@
     },
     "recentActivities": {
       "title": "الأنشطة الأخيرة",
-      "description": "سجل تدقيق عبر الوكلاء والمراجعين",
-      "fullAuditLog": "سجل التدقيق الكامل"
+      "description": "نشاط حقيقي عبر المستندات والتحليلات والسياسات والمخاطر",
+      "emptyTitle": "لا يوجد نشاط بعد",
+      "emptyDescription": "ستظهر هنا عمليات الرفع، والتحليلات المكتملة، والسياسات المنشورة، والمخاطر المقبولة.",
+      "actions": {
+        "documentUploaded": "رفع",
+        "analysisCompleted": "أكمل تحليل",
+        "analysisFailed": "فشل تحليل",
+        "policyPublished": "نشر سياسة",
+        "riskAccepted": "قبل مخاطرة"
+      }
     },
     "reportsSection": {
       "title": "التقارير",
       "description": "مخرجات واعتمادات جاهزة للتدقيق",
       "viewLibrary": "عرض المكتبة",
       "downloadReport": "تحميل التقرير",
-      "viewReport": "عرض التقرير",
+      "emptyTitle": "لا توجد تقارير متاحة بعد",
+      "emptyDescription": "تصبح التقارير متاحة عندما يكون لدى هذه المنشأة مستندات أو سياسات أو مخاطر مسجّلة.",
       "status": {
-        "ready": "جاهز",
-        "scheduled": "مجدول",
-        "generating": "قيد الإنشاء"
+        "ready": "جاهز"
+      },
+      "kinds": {
+        "executive": {
+          "title": "تقرير الحوكمة والمخاطر والامتثال التنفيذي",
+          "description": "نظرة عامة على وضع الحوكمة والمخاطر والامتثال"
+        },
+        "compliance": {
+          "title": "تقرير الامتثال",
+          "description": "تغطية الأطر وضمان الضوابط"
+        },
+        "risk": {
+          "title": "تقرير المخاطر",
+          "description": "سجل المخاطر والتقييم والمعالجة"
+        }
       }
     }
   },

@@ -187,6 +187,8 @@
       "viewAll": "View all {count}",
       "coverage": "Coverage",
       "controls": "controls",
+      "emptyTitle": "No frameworks assessed yet",
+      "emptyDescription": "Link evidence to controls to start tracking framework coverage for this organization.",
       "status": {
         "compliant": "Compliant",
         "inProgress": "In progress",
@@ -213,6 +215,8 @@
       "title": "Recent Assessments",
       "description": "Latest control reviews across frameworks",
       "viewAll": "View all",
+      "emptyTitle": "No assessments yet",
+      "emptyDescription": "Upload a document and run an analysis to see it appear here.",
       "columns": {
         "assessment": "Assessment",
         "owner": "Owner",
@@ -222,8 +226,8 @@
       },
       "status": {
         "completed": "Completed",
-        "inReview": "In review",
-        "inProgress": "In progress"
+        "inProgress": "In progress",
+        "failed": "Failed"
       }
     },
     "aiWorkspaceCard": {
@@ -235,19 +239,40 @@
     },
     "recentActivities": {
       "title": "Recent Activities",
-      "description": "Audit trail across agents and reviewers",
-      "fullAuditLog": "Full audit log"
+      "description": "Real activity across documents, analyses, policies, and risks",
+      "emptyTitle": "No activity yet",
+      "emptyDescription": "Uploads, completed analyses, published policies, and accepted risks will appear here.",
+      "actions": {
+        "documentUploaded": "uploaded",
+        "analysisCompleted": "completed analysis of",
+        "analysisFailed": "analysis failed for",
+        "policyPublished": "published policy",
+        "riskAccepted": "accepted risk"
+      }
     },
     "reportsSection": {
       "title": "Reports",
       "description": "Audit-ready deliverables & attestations",
       "viewLibrary": "View library",
       "downloadReport": "Download report",
-      "viewReport": "View report",
+      "emptyTitle": "No reports available yet",
+      "emptyDescription": "Reports become available once this organization has documents, policies, or risks in place.",
       "status": {
-        "ready": "Ready",
-        "scheduled": "Scheduled",
-        "generating": "Generating"
+        "ready": "Ready"
+      },
+      "kinds": {
+        "executive": {
+          "title": "Executive GRC Report",
+          "description": "Governance, risk & compliance posture at a glance"
+        },
+        "compliance": {
+          "title": "Compliance Report",
+          "description": "Framework coverage and control assurance"
+        },
+        "risk": {
+          "title": "Risk Report",
+          "description": "Risk register, scoring, and treatment"
+        }
       }
     }
   },

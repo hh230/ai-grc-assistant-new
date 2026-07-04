@@ -22,8 +22,9 @@ interface PopoverProps {
 
 /**
  * Lightweight popover: opens on click, closes on outside-click or Escape.
- * Glassmorphism is applied here (a floating overlay) where it is appropriate —
- * not on the underlying content cards.
+ * The panel uses a fully solid background (no transparency) so overlaid text stays
+ * readable regardless of what's behind it — every dropdown/menu in the app renders
+ * through this one component, so fixing it here fixes all of them.
  */
 export function Popover({
   trigger,
@@ -72,7 +73,7 @@ export function Popover({
           style={{ width }}
           className={cn(
             "absolute z-50 mt-2 overflow-hidden rounded-xl border border-hairline-strong",
-            "bg-surface-2/85 backdrop-blur-xl shadow-elevated",
+            "bg-surface-elevated shadow-elevated",
             "origin-top",
             align === "end" ? "end-0" : "start-0",
             panelClassName,

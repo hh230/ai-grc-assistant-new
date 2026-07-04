@@ -42,9 +42,28 @@
     "menuLabelUnread": "Notifications, {count} unread"
   },
   "orgSwitcher": {
-    "activeOrganization": "Active organization",
-    "switchHint": "Switching organizations requires signing in to that tenant.",
-    "menuLabel": "Switch organization, current: {organization}"
+    "switcherTrigger": "Switch organization",
+    "yourOrganizations": "Your organizations",
+    "loading": "Loading organizations…",
+    "noOrganizations": "You don't belong to any organization yet.",
+    "addOrganization": "Add organization",
+    "menuLabel": "Switch organization, current: {organization}",
+    "createModal": {
+      "title": "Add organization",
+      "description": "Create a new organization workspace. You'll automatically switch into it.",
+      "cancel": "Cancel",
+      "save": "Save",
+      "requiredError": "Company name, type, and activity/industry are all required.",
+      "genericError": "Could not create the organization. Please try again.",
+      "form": {
+        "name": "Company name",
+        "namePlaceholder": "e.g. Acme Financial Group",
+        "orgType": "Company type",
+        "orgTypePlaceholder": "e.g. Enterprise, Government entity, Non-profit",
+        "industry": "Company activity / industry",
+        "industryPlaceholder": "e.g. Banking, Healthcare, Retail"
+      }
+    }
   },
   "userMenu": {
     "profile": "Profile",
@@ -83,23 +102,39 @@
       "highPriorityRecommendationsDetail": "From recent document analyses — review and action them"
     },
     "pageHeader": {
-      "title": "Executive Dashboard",
-      "subtitle": "Real-time governance, risk, compliance and AI posture across all regulated entities.",
+      "title": "Governance, Risk & Compliance Summary",
+      "subtitle": "Analysis and assessment results in one place, showing compliance indicators, risks, controls status, and policies linked to selected frameworks.",
+      "last7Days": "Last 7 days",
+      "last30Days": "Last 30 days",
       "last90Days": "Last 90 days",
+      "rangeMenuLabel": "Select date range",
       "export": "Export",
-      "uploadContract": "Upload contract"
+      "uploadContract": "Add Document"
     },
     "scoreCards": {
       "scoreCaption": "Score",
       "indexCaption": "Index",
-      "complianceTitle": "Overall Compliance Score",
-      "riskTitle": "Overall Risk Score",
-      "complianceCaption": "Weighted across 6 active frameworks",
-      "riskCaption": "Residual risk index · lower is better",
-      "onTrack": "On track",
-      "target": "Target {value}",
+      "complianceTitle": "Compliance Level",
+      "riskTitle": "Risk Level",
+      "riskCaption": "Displays the risk status identified and analyzed based on available data and documents.",
+      "noDataYet": "No analyses yet. Upload and analyze a document to see this organization's compliance and risk level.",
+      "documentsAnalyzed": "{count, plural, one {# document analyzed} other {# documents analyzed}}",
+      "recommendation": {
+        "veryLow": "Compliance level is very low. We recommend reviewing policies and controls and addressing the identified gaps to improve the organization's compliance level.",
+        "medium": "There is a moderate compliance level, with opportunities for improvement and addressing some gaps.",
+        "high": "Compliance level is good. It's important to continue monitoring and continuous improvement."
+      },
+      "band": {
+        "veryLow": "Very low",
+        "medium": "Medium",
+        "high": "Good"
+      },
       "riskBand": "Moderate",
-      "improvingQoQ": "Improving QoQ"
+      "riskBandLabel": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      }
     },
     "kpis": {
       "frameworksActive": {
@@ -120,16 +155,30 @@
       }
     },
     "executiveSummary": {
-      "title": "Executive Summary",
+      "title": "Analysis Results Summary",
       "aiGenerated": "AI generated",
-      "headline": "Compliance posture is strengthening across all regulated entities, with residual risk trending down quarter-over-quarter.",
-      "body": "Coverage against NCA ECC and ISO 27001 now exceeds 84%, and the PDPL readiness program is on track for its Q3 attestation. AI-assisted review cleared 412 artifacts this period, surfacing 7 high-priority findings now in remediation. No control sign-offs were auto-applied — every consequential change passed a human approval gate.",
-      "footer": "Grounded in 1,248 controls and 412 reviewed artifacts · every consequential change passed a human approval gate.",
+      "description": "Displays the main findings extracted from assessments, including compliance level, gaps, risks, and actions requiring follow-up.",
+      "emptyState": "No analyses yet for this organization in the selected date range. Upload and analyze a document to generate a results summary.",
+      "headline": "Compliance level is {compliance} and risk level is {risk}, based on this organization's analyzed documents.",
+      "body": "{count, plural, one {# document was} other {# documents were}} analyzed across {frameworks, plural, one {# framework} other {# frameworks}}, surfacing {gaps, plural, one {# gap} other {# gaps}} and {recommendations, plural, one {# high-priority recommendation} other {# high-priority recommendations}} now awaiting review. No control sign-offs were auto-applied — every consequential change passed a human approval gate.",
+      "footer": "Grounded in {count, plural, one {# analyzed document} other {# analyzed documents}} for this organization · every consequential change passed a human approval gate.",
+      "complianceLabel": {
+        "veryLow": "very low",
+        "medium": "medium",
+        "high": "good",
+        "none": "not yet scored"
+      },
+      "riskLabel": {
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "none": "not yet scored"
+      },
       "stats": {
-        "auditReadyFrameworks": "Audit-ready frameworks",
-        "evidenceFreshness": "Evidence freshness",
-        "meanTimeToRemediate": "Mean time to remediate",
-        "nextExternalAudit": "Next external audit"
+        "documentsAnalyzed": "Documents analyzed",
+        "frameworksAssessed": "Frameworks assessed",
+        "identifiedGaps": "Identified gaps",
+        "highPriorityActions": "High-priority actions"
       }
     },
     "activeFrameworks": {

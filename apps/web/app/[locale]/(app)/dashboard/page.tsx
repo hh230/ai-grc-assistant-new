@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { parseDashboardRange } from "@/lib/dashboard/metrics";
 import { PageHeader } from "@/components/dashboard/PageHeader";
 import { ScoreCards } from "@/components/dashboard/ScoreCards";
 import { StatCards } from "@/components/dashboard/StatCards";
@@ -16,23 +17,30 @@ import { WorkspaceHub } from "@/components/dashboard/WorkspaceHub";
 import { FavoritesPanel } from "@/components/dashboard/FavoritesPanel";
 
 export const metadata: Metadata = {
-  title: "Executive Dashboard · Rasheed",
+  title: "Governance, Risk & Compliance Summary · Rasheed",
 };
 
-export default function ExecutiveDashboardPage() {
+export default async function ExecutiveDashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ range?: string }>;
+}) {
+  const { range } = await searchParams;
+  const rangeDays = parseDashboardRange(range);
+
   return (
     <>
-      <PageHeader />
+      <PageHeader rangeDays={rangeDays} />
 
       <div className="space-y-7">
         {/* Overall Compliance & Risk scores */}
-        <ScoreCards />
+        <ScoreCards rangeDays={rangeDays} />
 
         {/* Headline KPIs */}
         <StatCards />
 
         {/* AI-generated narrative */}
-        <ExecutiveSummary />
+        <ExecutiveSummary rangeDays={rangeDays} />
 
         {/* Active frameworks: NCA ECC · PDPL · ISO 27001 */}
         <ActiveFrameworks />

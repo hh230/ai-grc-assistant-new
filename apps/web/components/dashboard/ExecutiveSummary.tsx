@@ -2,10 +2,23 @@ import { Sparkles } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { EXECUTIVE_SUMMARY_STATS } from "@/lib/data";
+import { getActor } from "@/lib/auth/actor";
+import { getDashboardMetrics, type DashboardRangeDays } from "@/lib/dashboard/metrics";
 
-export async function ExecutiveSummary() {
+export async function ExecutiveSummary({ rangeDays }: { rangeDays: DashboardRangeDays }) {
   const t = await getTranslations("dashboard.executiveSummary");
+  const actor = await getActor();
+  if (!actor) return null;
+
+  const metrics = await getDashboardMetrics(actor, rangeDays);
+  const hasData = metrics.documentsAnalyzedCount > 0;
+
+  const stats = [
+    { key: "documentsAnalyzed", value: String(metrics.documentsAnalyzedCount) },
+    { key: "frameworksAssessed", value: String(metrics.frameworksUsed.length) },
+    { key: "identifiedGaps", value: String(metrics.topGaps.length) },
+    { key: "highPriorityActions", value: String(metrics.topRecommendations.length) },
+  ];
 
   return (
     <Card grain className="overflow-hidden">
@@ -24,15 +37,33 @@ export async function ExecutiveSummary() {
           </Badge>
         </div>
 
-        <p className="mt-4 max-w-3xl text-balance text-[15px] leading-relaxed text-foreground">
-          {t("headline")}
-        </p>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground-secondary">
-          {t("body")}
-        </p>
+        <p className="mt-2 max-w-3xl text-xs text-foreground-muted">{t("description")}</p>
+
+        {hasData ? (
+          <>
+            <p className="mt-4 max-w-3xl text-balance text-[15px] leading-relaxed text-foreground">
+              {t("headline", {
+                compliance: t(`complianceLabel.${metrics.complianceBand}`),
+                risk: t(`riskLabel.${metrics.riskBand}`),
+              })}
+            </p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground-secondary">
+              {t("body", {
+                count: metrics.documentsAnalyzedCount,
+                gaps: metrics.topGaps.length,
+                recommendations: metrics.topRecommendations.length,
+                frameworks: metrics.frameworksUsed.length,
+              })}
+            </p>
+          </>
+        ) : (
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground-secondary">
+            {t("emptyState")}
+          </p>
+        )}
 
         <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-hairline bg-hairline lg:grid-cols-4">
-          {EXECUTIVE_SUMMARY_STATS.map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.key} className="bg-surface px-4 py-3.5">
               <p className="text-2xs uppercase tracking-wider text-foreground-muted">
                 {t(`stats.${stat.key}`)}
@@ -44,7 +75,9 @@ export async function ExecutiveSummary() {
           ))}
         </div>
 
-        <p className="mt-4 text-2xs text-foreground-muted">{t("footer")}</p>
+        <p className="mt-4 text-2xs text-foreground-muted">
+          {t("footer", { count: metrics.documentsAnalyzedCount })}
+        </p>
       </div>
     </Card>
   );

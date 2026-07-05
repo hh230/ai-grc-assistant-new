@@ -33,6 +33,7 @@ members = [
   "packages/regulatory-crawlers",
   "packages/policy-hunter",
   "packages/policy-analyst",
+  "packages/policy-builder",
   "packages/events",
   "packages/plugins",
   "packages/observability",
@@ -65,6 +66,7 @@ grc-regulatory-intelligence-adapters = { workspace = true }
 grc-regulatory-crawlers = { workspace = true }
 grc-policy-hunter = { workspace = true }
 grc-policy-analyst = { workspace = true }
+grc-policy-builder = { workspace = true }
 grc-events = { workspace = true }
 grc-plugins = { workspace = true }
 grc-observability = { workspace = true }

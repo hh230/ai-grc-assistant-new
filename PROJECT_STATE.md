@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (23 accepted) — `docs/adr/`
+## 3. ADRs (24 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -147,6 +147,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0021 | Policy Analyst Agent (PI-P4): a read-only, deterministic (no LLM) policy-quality agent (`packages/policy-analyst`) — analyzes one policy's completeness (7 required sections), regulatory alignment (recall-scored coverage vs. confirmed obligations), internal consistency (unclear ownership/ambiguous language/conflicting cadences), and freshness (stale policy/policy older than a linked regulation), through one Tool-Registry-audited Tool (`review_policy_quality.v1`) |
 | 0022 | Policy Intelligence API exposure (PI-P5): `apps/api`'s `web_runtime.py` now registers Policy Hunter's and Policy Analyst's three Tools on the live Tool Registry; a new `routers/policy_intelligence.py` exposes `GET /policy-intelligence/obligations`, `/coverage-gaps`, and `/policies/{id}/quality-review` — each authorized via the existing RBAC `Action.READ`/`ResourceType.POLICY` gate, executed through `PolicyHunterAgent`/`PolicyAnalystAgent`, and unconditionally audited by the same Tool Registry as every other Tool call |
 | 0023 | Policy Intelligence frontend (PI-P6): `apps/web`'s first real call to `apps/api` — `lib/policyIntelligence/service.ts` proxies to PI-P5's endpoints using `ActorContext.apiToken` (the PI-P0-era bridge, unused until now), exposed via `app/api/policy-intelligence/*` Route Handlers and a three-tab `/policy-intelligence` workspace page (Obligations, Coverage Gaps, Quality Review); `apps/api` remains the sole authorization source of truth, no business logic is duplicated in TypeScript |
+| 0024 | Policy Builder Agent (PI-P7): a read-only, deterministic (no LLM) drafting agent (`packages/policy-builder`) — turns one confirmed regulatory obligation into a starter policy draft (a template: the Purpose section quotes the obligation with a citation, the other six required sections are explicit `[Human input required]` placeholders), through one Tool-Registry-audited Tool (`draft_policy_from_obligation.v1`); has no write path at all — human approval before any policy change is structural, not a runtime check, since a human must save the proposal through the existing, unchanged `submit-for-review`/`approve`/`publish` workflow |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -315,6 +316,11 @@ ai-grc-assistant/
 │  │                     consistency/freshness via review_policy_quality.v1,
 │  │                     PolicyAnalystAgent (ADR-0021; 21 tests) — wired into apps/api's Tool
 │  │                     Registry in PI-P5 (ADR-0022)
+│  ├─ policy-builder/    grc_policy_builder/      ✅ PI-P7 read-only, deterministic (no LLM)
+│  │                     drafting agent: draft_policy_from_obligation.v1 (a template — quotes
+│  │                     the obligation in Purpose, six other sections are explicit
+│  │                     placeholders), PolicyBuilderAgent (ADR-0024; 13 tests); no write
+│  │                     path — not yet wired into apps/api or apps/web
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -500,7 +506,8 @@ PYTHONPATH=packages/domain:packages/services:packages/persistence \
 
 # Policy Intelligence PI-P0 (ADR-0017) + PI-P1 Regulatory Intelligence (ADR-0018) +
 # PI-P2 Regulatory Connectors/Crawlers (ADR-0019) + PI-P3 Policy Hunter Agent (ADR-0020) +
-# PI-P4 Policy Analyst Agent (ADR-0021) + PI-P5 Policy Intelligence API exposure (ADR-0022).
+# PI-P4 Policy Analyst Agent (ADR-0021) + PI-P5 Policy Intelligence API exposure (ADR-0022) +
+# PI-P6 Policy Intelligence frontend (ADR-0023) + PI-P7 Policy Builder Agent (ADR-0024).
 #
 # `pyproject.toml` now declares `[tool.uv.sources]` for every internal package (a newer uv
 # release requires each workspace member named explicitly, not just listed under
@@ -541,6 +548,12 @@ PYTHONPATH=packages/domain:packages/tools:packages/policy-hunter \
 # and PolicyAnalystAgent, all against in-memory fakes (no DB, no network; 21 tests):
 PYTHONPATH=packages/domain:packages/tools:packages/policy-analyst \
   python -m pytest packages/policy-analyst/tests -q
+# Policy Builder (PI-P7) — deterministic, no-LLM drafting engine (a template: Purpose quotes
+# the obligation, six other required sections are explicit placeholders) plus its
+# Tool-Registry-audited Tool and PolicyBuilderAgent, all against in-memory fakes (no DB, no
+# network, no write path at all; 13 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/policy-builder \
+  python -m pytest packages/policy-builder/tests -q
 # Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now
 # registers Policy Hunter's/Policy Analyst's three Tools on the live Tool Registry and
 # routers/policy_intelligence.py exposes them as GET /policy-intelligence/{obligations,

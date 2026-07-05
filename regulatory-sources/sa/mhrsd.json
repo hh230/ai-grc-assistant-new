@@ -1,0 +1,10 @@
+{
+  "source_id": "sa-mhrsd",
+  "regulator_name": "Ministry of Human Resources and Social Development (MHRSD)",
+  "jurisdiction": "SA",
+  "language": "ar",
+  "base_url": "https://hrsd.gov.sa",
+  "source_type": "website",
+  "polling_frequency": "weekly",
+  "enabled": true
+}

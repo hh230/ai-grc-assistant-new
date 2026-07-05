@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (17 accepted) — `docs/adr/`
+## 3. ADRs (21 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -141,6 +141,10 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0015 | Audit & traceability (AI transparency) |
 | 0016 | Workspace model (Workspace-first UX) |
 | 0017 | Policy Intelligence AI runtime: real Tool Registry, roster extension, apps/web-Postgres persistence bridge (`packages/persistence-web`) — `apps/api`/`apps/worker` become the real AI runtime, reading/writing apps/web's live schema; no second database |
+| 0018 | Regulatory Intelligence engine (PI-P1): pure obligation split/classify pipeline (`packages/regulatory-intelligence`), Tool-audited LLM classification (`packages/regulatory-intelligence-adapters`), platform-scope storage (`regulatory_raw_documents`/`regulatory_obligations`) — the connector→raw→extract→classify→store pipeline that will feed Policy Hunter |
+| 0019 | Regulatory Connectors / Crawlers (PI-P2): source registry as config (`/regulatory-sources`), polite web crawling (`packages/regulatory-crawlers` — robots.txt, rate limiting, HTML/PDF/text normalization), change detection, and `RegulatoryCrawlerRunner` orchestration — the discovery/fetch stage feeding the PI-P1 engine; 6 initial Saudi sources (SAMA, CMA, NCA, SDAIA, MHRSD, ZATCA) |
+| 0020 | Policy Hunter Agent (PI-P3): a read-only, deterministic (no LLM) coverage-gap agent (`packages/policy-hunter`) — compares confirmed regulatory obligations against tenant policies via word-overlap matching, reports `missing_required_policy`/`outdated_policy`/`incomplete_coverage`/`unmapped_regulatory_obligation` findings with full evidence, through two Tool-Registry-audited Tools (`list_applicable_obligations.v1`, `scan_policy_coverage_gaps.v1`) |
+| 0021 | Policy Analyst Agent (PI-P4): a read-only, deterministic (no LLM) policy-quality agent (`packages/policy-analyst`) — analyzes one policy's completeness (7 required sections), regulatory alignment (recall-scored coverage vs. confirmed obligations), internal consistency (unclear ownership/ambiguous language/conflicting cadences), and freshness (stale policy/policy older than a linked regulation), through one Tool-Registry-audited Tool (`review_policy_quality.v1`) |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -281,8 +285,25 @@ ai-grc-assistant/
 │  │  ├─ contracts/ db/ models/ mappers/ repositories/ migrations/
 │  │  ├─ unit_of_work.py · outbox.py · alembic.ini · tests/
 │  ├─ persistence-web/ grc_persistence_web/ ✅ Adapters against apps/web's live Postgres schema
-│  │                     (ai_tool_invocations, policies, policy_missions) — ADR-0017; not a
-│  │                     second database, and independent of packages/persistence above
+│  │                     (ai_tool_invocations, policies, policy_missions, regulatory_raw_documents,
+│  │                     regulatory_obligations) — ADR-0017/0018/0019; not a second database,
+│  │                     and independent of packages/persistence above
+│  ├─ regulatory-intelligence/ grc_regulatory_intelligence/ ✅ PI-P1 pure engine: split→classify
+│  │                     obligation pipeline; PI-P2 adds source registry/config loader,
+│  │                     RegulatoryDocumentInput, change detection, CrawlerPort — zero external
+│  │                     deps throughout (ADR-0018/0019; 24 tests)
+│  ├─ regulatory-intelligence-adapters/ grc_regulatory_intelligence_adapters/ ✅ PI-P1 connectors,
+│  │                     rule-based extractor, Tool-audited LLM classifier (ADR-0018; 15 tests)
+│  ├─ regulatory-crawlers/ grc_regulatory_crawlers/ ✅ PI-P2 ingestion layer: robots.txt +
+│  │                     rate-limited HTTP crawler, HTML/PDF/text normalization,
+│  │                     RegulatoryCrawlerRunner orchestrator, observability (ADR-0019; 27 tests)
+│  ├─ policy-hunter/     grc_policy_hunter/       ✅ PI-P3 read-only, deterministic (no LLM)
+│  │                     coverage-gap agent: list_applicable_obligations.v1 +
+│  │                     scan_policy_coverage_gaps.v1 Tools, PolicyHunterAgent (ADR-0020; 15 tests)
+│  ├─ policy-analyst/    grc_policy_analyst/      ✅ PI-P4 read-only, deterministic (no LLM)
+│  │                     policy-quality agent: completeness/regulatory alignment/internal
+│  │                     consistency/freshness via review_policy_quality.v1,
+│  │                     PolicyAnalystAgent (ADR-0021; 21 tests)
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -294,8 +315,10 @@ ai-grc-assistant/
 │  ├─ events/ plugins/ observability/ security/ config/            (scaffold only)
 │  ├─ ui/ contracts/ i18n/  (TypeScript; scaffold only)
 ├─ frameworks/      framework definitions as data (schema + per-framework folders)
+├─ regulatory-sources/ regulatory source definitions as data (PI-P2, ADR-0019) — sa/{sama,cma,
+│                   nca,sdaia,mhrsd,zatca}.json
 ├─ prompts/         versioned prompt artifacts (empty)
-├─ docs/            architecture/ (+ persistence report) · adr/ (17) · onboarding/ · runbooks/
+├─ docs/            architecture/ (+ persistence report) · adr/ (21) · onboarding/ · runbooks/
 ├─ infra/ docker/ config/ scripts/ tests/ .github/
 ├─ CLAUDE.md · README.md · PROJECT_STATE.md (this file)
 └─ workspace manifests: pnpm-workspace.yaml · turbo.json · pyproject.toml · Makefile
@@ -463,6 +486,40 @@ cd packages && PYTHONPATH=domain:services:persistence python -c "import grc_pers
 # Persistence tests (hermetic, async SQLite; set TEST_DATABASE_URL for Postgres parity)
 PYTHONPATH=packages/domain:packages/services:packages/persistence \
   python -m pytest packages/persistence/tests -q
+
+# Policy Intelligence PI-P0 (ADR-0017) + PI-P1 Regulatory Intelligence (ADR-0018) +
+# PI-P2 Regulatory Connectors/Crawlers (ADR-0019) + PI-P3 Policy Hunter Agent (ADR-0020) +
+# PI-P4 Policy Analyst Agent (ADR-0021).
+# Tool Registry (5 tests):
+PYTHONPATH=packages/domain:packages/tools python -m pytest packages/tools/tests -q
+# apps/web-Postgres bridge, incl. regulatory repositories + change-detection queries (15
+# tests; needs a reachable Postgres — apply apps/web/lib/db/migrations first via
+# `pnpm --filter web db:migrate`; skips cleanly if TEST_DATABASE_URL/DATABASE_URL is not
+# reachable):
+PYTHONPATH=packages/domain:packages/tools:packages/persistence-web \
+  python -m pytest packages/persistence-web/tests -q
+# Pure Regulatory Intelligence engine — zero external deps, no DB, no network. Includes the
+# PI-P2 source registry/config loader and the 6 Saudi source config files (24 tests):
+PYTHONPATH=packages/regulatory-intelligence python -m pytest packages/regulatory-intelligence/tests -q
+# Regulatory Intelligence adapters — connectors, rule-based extractor, Tool-audited LLM
+# classifier (deterministic fake chat model, no network/key; 15 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/llm:packages/regulatory-intelligence:packages/regulatory-intelligence-adapters \
+  python -m pytest packages/regulatory-intelligence-adapters/tests -q
+# Regulatory Crawlers (PI-P2) — robots.txt, rate limiting, HTML/PDF/text normalization, and
+# RegulatoryCrawlerRunner, all against a fake HTTP transport (no network; 27 tests). `pypdf`
+# is the one third-party dependency this package adds.
+PYTHONPATH=packages/regulatory-intelligence:packages/regulatory-crawlers \
+  python -m pytest packages/regulatory-crawlers/tests -q
+# Policy Hunter (PI-P3) — deterministic, no-LLM coverage-gap matching engine plus its two
+# Tool-Registry-audited Tools and PolicyHunterAgent, all against in-memory fakes (no DB,
+# no network; 15 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/policy-hunter \
+  python -m pytest packages/policy-hunter/tests -q
+# Policy Analyst (PI-P4) — deterministic, no-LLM policy-quality engine (completeness,
+# regulatory alignment, internal consistency, freshness) plus its Tool-Registry-audited Tool
+# and PolicyAnalystAgent, all against in-memory fakes (no DB, no network; 21 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/policy-analyst \
+  python -m pytest packages/policy-analyst/tests -q
 
 # Lint / format
 python -m ruff check packages/domain/grc_domain packages/services/grc_services \

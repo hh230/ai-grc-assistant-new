@@ -230,6 +230,38 @@ binding) · `Superseded` · `Rejected`.
 
 ---
 
+## ADL-0010 — Regulatory Connectors / Crawlers subsystem (Policy Intelligence PI-P2)
+
+- **Date:** 2026-07-06
+- **Status:** **Accepted** (built under direct Product Owner instruction this session; not
+  part of the 2026-06-27 Handbook-roadmap audit this log otherwise records — see note below)
+- **Decision:** Record `packages/regulatory-crawlers` (a new adapters package: polite HTTP
+  crawling — robots.txt, per-host rate limiting, HTML/PDF/text normalization — plus
+  `RegulatoryCrawlerRunner` orchestration and `CrawlObserver` observability) and the
+  extensions to `packages/regulatory-intelligence` it depends on (`RegulatorySource`/
+  `RegulatorySourceRegistry`/`source_config` loader, `RegulatoryDocumentInput`,
+  `change_detection`, `CrawlerPort`) as an accepted architectural addition to the Policy
+  Intelligence line of work (ADR-0017, ADR-0018). Full rationale in
+  [ADR-0019](./docs/adr/0019-regulatory-connectors-and-crawlers.md).
+- **Reason:** This is new, Product-Owner-directed capability (PI-P2), not a correction to the
+  Handbook-roadmap track this log otherwise audits — recorded here because it was explicitly
+  requested, alongside its ADR, so the ADL index stays a complete map of accepted decisions
+  rather than silently diverging from what actually shipped.
+- **Alternatives:** see ADR-0019 (in-core byte extraction, a direct `grc_persistence_web`
+  dependency, and adding `beautifulsoup4`/`lxml` were all considered and rejected there).
+- **Impact:** Regulatory sources are now onboarded as `/regulatory-sources/*.json` config,
+  never a code change (mirrors ADL's own framework-as-data precedent, extended to
+  regulators). 6 Saudi sources onboarded (SAMA, CMA, NCA, SDAIA, MHRSD, ZATCA). No schema
+  change beyond one supporting index
+  (`0017_regulatory_documents_url_index.sql`) — PI-P1's schema already modeled document
+  versions as immutable rows. Nothing is scheduled to run automatically; `apps/worker` wiring
+  remains a later, separate decision.
+- **Reversibility:** High — `packages/regulatory-crawlers` is additive and structurally
+  decoupled from persistence (Protocol-based), so it can be replaced or removed without
+  touching `packages/regulatory-intelligence`'s pure engine or `grc_persistence_web`'s schema.
+
+---
+
 *Living log. Entries are `Proposed` until the Product Owner approves them; approval flips the
 status to `Accepted` and triggers any required `docs/adr/` companion. Supersede, never
 silently edit, an `Accepted` entry.*

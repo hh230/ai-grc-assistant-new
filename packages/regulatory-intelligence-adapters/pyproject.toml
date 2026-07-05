@@ -1,0 +1,19 @@
+[project]
+name = "grc-regulatory-intelligence-adapters"
+version = "0.0.0"
+description = "Regulatory Intelligence engine: concrete adapters — connectors, a rule-based obligation splitter, and an LLM classifier Tool registered/audited through grc_tools. Implements grc_regulatory_intelligence's ports; never imported back by the pure engine."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-domain",
+  "grc-regulatory-intelligence",
+  "grc-tools",
+  "grc-llm",
+  "pydantic>=2.9.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_regulatory_intelligence_adapters"]

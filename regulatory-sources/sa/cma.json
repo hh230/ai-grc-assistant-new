@@ -1,0 +1,10 @@
+{
+  "source_id": "sa-cma",
+  "regulator_name": "Capital Market Authority (CMA)",
+  "jurisdiction": "SA",
+  "language": "ar",
+  "base_url": "https://cma.org.sa",
+  "source_type": "website",
+  "polling_frequency": "weekly",
+  "enabled": true
+}

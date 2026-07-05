@@ -12,6 +12,12 @@ from .invocations import PostgresToolInvocationRecorder
 from .missions import MissionRecord, MissionStepRecord, PolicyMissionStore
 from .policies import PolicyRecord, PolicyRepository
 from .pool import Database, normalize_dsn
+from .regulatory import (
+    RegulatoryObligationRecord,
+    RegulatoryObligationRepository,
+    RegulatoryRawDocumentRecord,
+    RegulatoryRawDocumentRepository,
+)
 
 __all__ = [
     "Database",
@@ -22,4 +28,8 @@ __all__ = [
     "PolicyMissionStore",
     "MissionRecord",
     "MissionStepRecord",
+    "RegulatoryRawDocumentRepository",
+    "RegulatoryRawDocumentRecord",
+    "RegulatoryObligationRepository",
+    "RegulatoryObligationRecord",
 ]

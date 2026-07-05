@@ -1,0 +1,16 @@
+[project]
+name = "grc-regulatory-crawlers"
+version = "0.0.0"
+description = "Regulatory Intelligence ingestion layer (PI-P2): source-registry-driven web crawlers, change detection wiring, observability, and the RegulatoryCrawlerRunner orchestrator — the connector-to-raw-document discovery/fetch stage feeding grc_regulatory_intelligence."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-regulatory-intelligence",
+  "pypdf>=5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_regulatory_crawlers"]

@@ -1,0 +1,10 @@
+{
+  "source_id": "sa-sdaia",
+  "regulator_name": "Saudi Data & AI Authority (SDAIA)",
+  "jurisdiction": "SA",
+  "language": "ar",
+  "base_url": "https://sdaia.gov.sa",
+  "source_type": "website",
+  "polling_frequency": "weekly",
+  "enabled": true
+}

@@ -1,0 +1,10 @@
+{
+  "source_id": "sa-nca",
+  "regulator_name": "National Cybersecurity Authority (NCA)",
+  "jurisdiction": "SA",
+  "language": "ar",
+  "base_url": "https://nca.gov.sa",
+  "source_type": "website",
+  "polling_frequency": "weekly",
+  "enabled": true
+}

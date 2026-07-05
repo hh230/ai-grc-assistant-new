@@ -1,0 +1,10 @@
+{
+  "source_id": "sa-sama",
+  "regulator_name": "Saudi Central Bank (SAMA)",
+  "jurisdiction": "SA",
+  "language": "ar",
+  "base_url": "https://www.sama.gov.sa",
+  "source_type": "website",
+  "polling_frequency": "weekly",
+  "enabled": true
+}

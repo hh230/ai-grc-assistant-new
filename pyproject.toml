@@ -27,6 +27,7 @@ members = [
   "packages/extraction-adapters",
   "packages/knowledge-graph",
   "packages/persistence",
+  "packages/persistence-web",
   "packages/events",
   "packages/plugins",
   "packages/observability",
@@ -78,6 +79,11 @@ strict = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 namespace_packages = true
+
+# asyncpg ships no inline type stubs/py.typed marker (an upstream packaging gap, not ours).
+[[tool.mypy.overrides]]
+module = "asyncpg.*"
+ignore_missing_imports = true
 
 # ---------- Pytest ----------
 [tool.pytest.ini_options]

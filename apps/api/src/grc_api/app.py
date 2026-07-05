@@ -26,6 +26,7 @@ from .middleware import (
 from .observability import configure_logging, get_logger
 from .routers.health import router as health_router
 from .settings import Settings, get_settings
+from .web_runtime import close_web_database
 
 API_VERSION = "1.0.0"
 
@@ -65,6 +66,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         _logger.info("api_startup", extra={"environment": settings.app_env})
         yield
+        # A no-op if the Policy Intelligence web-Postgres pool was never lazily created
+        # (see web_runtime.py) — most tests never touch it.
+        await close_web_database(app)
         _logger.info("api_shutdown")
 
     app = FastAPI(

@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (16 accepted) — `docs/adr/`
+## 3. ADRs (17 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -140,6 +140,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0014 | Security principles & multi-tenancy |
 | 0015 | Audit & traceability (AI transparency) |
 | 0016 | Workspace model (Workspace-first UX) |
+| 0017 | Policy Intelligence AI runtime: real Tool Registry, roster extension, apps/web-Postgres persistence bridge (`packages/persistence-web`) — `apps/api`/`apps/worker` become the real AI runtime, reading/writing apps/web's live schema; no second database |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -269,13 +270,19 @@ from the same metadata (portable `JSON`/`JSONB` type). Full design rationale liv
 ```
 ai-grc-assistant/
 ├─ apps/            web (✅ self-contained full-stack app; own API routes + PostgreSQL/pgvector)
-│                   api · orchestrator · workflow · worker          (scaffold only; no logic)
+│                   api (real FastAPI app + routers + Orchestrator wiring; now also the
+│                        Policy Intelligence AI runtime — ADR-0017, web_runtime.py)
+│                   orchestrator · workflow (scaffold only) · worker (scaffold; scheduled
+│                        Policy Intelligence jobs land here in a later phase)
 ├─ packages/
 │  ├─ domain/       grc_domain/        ◑ Domain Layer (pure; knowledge+extraction tested, rest unverified)
 │  ├─ services/     grc_services/      ◑ Application Layer (depends on domain only; 0 tests — unverified)
 │  ├─ persistence/  grc_persistence/   ✅ Infrastructure / Persistence (test-verified; depends on domain + services)
 │  │  ├─ contracts/ db/ models/ mappers/ repositories/ migrations/
 │  │  ├─ unit_of_work.py · outbox.py · alembic.ini · tests/
+│  ├─ persistence-web/ grc_persistence_web/ ✅ Adapters against apps/web's live Postgres schema
+│  │                     (ai_tool_invocations, policies, policy_missions) — ADR-0017; not a
+│  │                     second database, and independent of packages/persistence above
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -283,12 +290,12 @@ ai-grc-assistant/
 │  ├─ rag/                grc_rag/                 ✅ M9 search · M10 retrieval/semantic · M11 RAG (27 tests)
 │  ├─ llm/                grc_llm/                 ✅ provider abstraction + OpenAI adapter + fakes (7 tests)
 │  ├─ agents/             grc_agents/              ✅ M12 agent roster + AI Orchestrator (13 tests)
-│  ├─ tools/ events/
-│  │  plugins/ observability/ security/ config/                    (scaffold only)
+│  ├─ tools/              grc_tools/               ✅ Tool contract + Registry (ADR-0006 implemented; 5 tests)
+│  ├─ events/ plugins/ observability/ security/ config/            (scaffold only)
 │  ├─ ui/ contracts/ i18n/  (TypeScript; scaffold only)
 ├─ frameworks/      framework definitions as data (schema + per-framework folders)
 ├─ prompts/         versioned prompt artifacts (empty)
-├─ docs/            architecture/ (+ persistence report) · adr/ (16) · onboarding/ · runbooks/
+├─ docs/            architecture/ (+ persistence report) · adr/ (17) · onboarding/ · runbooks/
 ├─ infra/ docker/ config/ scripts/ tests/ .github/
 ├─ CLAUDE.md · README.md · PROJECT_STATE.md (this file)
 └─ workspace manifests: pnpm-workspace.yaml · turbo.json · pyproject.toml · Makefile

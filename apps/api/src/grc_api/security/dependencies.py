@@ -15,13 +15,16 @@ from fastapi import Depends, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from grc_agents.orchestrator import Orchestrator
 from grc_domain.shared.value_objects import TraceContext
+from grc_persistence_web import PolicyMissionStore, PolicyRepository
 from grc_services.shared.authorization import AuthorizationService
 from grc_services.shared.bus import CommandBus, QueryBus
 from grc_services.shared.context import ExecutionContext, Principal
+from grc_tools import ToolRegistry
 
 from ..container import AppContainer
 from ..middleware.errors import AuthenticationError
 from ..observability import bind_request_context, current_request_context
+from ..web_runtime import get_policy_mission_store, get_policy_repository, get_tool_registry
 
 _bearer = HTTPBearer(auto_error=False, description="Bearer token (OIDC/JWT in production).")
 
@@ -84,6 +87,29 @@ def get_authz(
     return container.authz
 
 
+# ---- Policy Intelligence: wired against apps/web's live Postgres, not the gated store_backend
+# above (see web_runtime.py for why this connection is created lazily per-request). ----
+async def get_web_tool_registry(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> ToolRegistry:
+    return await get_tool_registry(request.app, container.settings.database_url)
+
+
+async def get_web_policy_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> PolicyRepository:
+    return await get_policy_repository(request.app, container.settings.database_url)
+
+
+async def get_web_policy_mission_store(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> PolicyMissionStore:
+    return await get_policy_mission_store(request.app, container.settings.database_url)
+
+
 # Convenience aliases for concise router signatures.
 CurrentPrincipal = Annotated[Principal, Depends(get_principal)]
 Context = Annotated[ExecutionContext, Depends(get_execution_context)]
@@ -91,3 +117,6 @@ Commands = Annotated[CommandBus, Depends(get_command_bus)]
 Queries = Annotated[QueryBus, Depends(get_query_bus)]
 OrchestratorDep = Annotated[Orchestrator, Depends(get_orchestrator)]
 Authz = Annotated[AuthorizationService, Depends(get_authz)]
+WebToolRegistry = Annotated[ToolRegistry, Depends(get_web_tool_registry)]
+WebPolicyRepository = Annotated[PolicyRepository, Depends(get_web_policy_repository)]
+WebPolicyMissionStore = Annotated[PolicyMissionStore, Depends(get_web_policy_mission_store)]

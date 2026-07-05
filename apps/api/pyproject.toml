@@ -3,7 +3,14 @@ name = "grc-app-api"
 version = "0.0.0"
 description = "FastAPI interface layer (REST/GraphQL). Wiring only — no routers yet."
 requires-python = ">=3.12"
-dependencies = ["fastapi>=0.115.0", "uvicorn[standard]>=0.30.0", "pydantic>=2.9.0", "pydantic-settings>=2.5.0"]
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic>=2.9.0",
+  "pydantic-settings>=2.5.0",
+  "grc-tools",
+  "grc-persistence-web",
+]
 
 [build-system]
 requires = ["hatchling"]

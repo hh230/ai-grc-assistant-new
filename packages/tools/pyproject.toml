@@ -3,7 +3,7 @@ name = "grc-tools"
 version = "0.0.0"
 description = "Tools (first-class business capabilities) and the Tool Registry."
 requires-python = ">=3.12"
-dependencies = []
+dependencies = ["grc-domain", "pydantic>=2.9.0"]
 
 [build-system]
 requires = ["hatchling"]

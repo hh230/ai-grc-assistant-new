@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface PopoverProps {
@@ -18,6 +18,14 @@ interface PopoverProps {
    * instead of the trigger's visible text.
    */
   ariaLabel?: string;
+  /**
+   * Controlled open state — pass this + `onOpenChange` when a caller needs to close the
+   * panel programmatically (e.g. before opening a Modal that a menu item triggers, so the
+   * panel doesn't stay open behind/beside the dialog). Omit both for the default
+   * uncontrolled behavior (click-to-toggle, outside-click/Escape to close).
+   */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 /**
@@ -33,9 +41,21 @@ export function Popover({
   width = 288,
   panelClassName,
   ariaLabel,
+  open: controlledOpen,
+  onOpenChange,
 }: PopoverProps) {
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
   const rootRef = useRef<HTMLDivElement>(null);
+
+  const setOpen = useCallback(
+    (value: boolean) => {
+      if (!isControlled) setInternalOpen(value);
+      onOpenChange?.(value);
+    },
+    [isControlled, onOpenChange],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -53,13 +73,13 @@ export function Popover({
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [open, setOpen]);
 
   return (
     <div ref={rootRef} className="relative">
       <button
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => setOpen(!open)}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={ariaLabel}

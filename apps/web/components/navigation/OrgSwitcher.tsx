@@ -22,6 +22,7 @@ export function OrgSwitcher() {
   const { data, isLoading } = useOrganizations();
   const [switchingId, setSwitchingId] = useState<string | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
+  const [switcherOpen, setSwitcherOpen] = useState(false);
 
   const organizations = data?.organizations ?? [];
   const initials = monogram(user.organizationName);
@@ -42,6 +43,8 @@ export function OrgSwitcher() {
       <Popover
         align="start"
         width={288}
+        open={switcherOpen}
+        onOpenChange={setSwitcherOpen}
         ariaLabel={t("menuLabel", { organization: user.organizationName })}
         trigger={() => (
           <span className="flex h-9 items-center gap-2.5 rounded-lg border border-hairline bg-surface/60 ps-2 pe-2.5 transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2">
@@ -103,7 +106,11 @@ export function OrgSwitcher() {
           <div className="mt-1 border-t border-hairline pt-1">
             <button
               type="button"
-              onClick={() => setCreateOpen(true)}
+              onClick={() => {
+                // Close the switcher popover so it doesn't linger open behind the modal.
+                setSwitcherOpen(false);
+                setCreateOpen(true);
+              }}
               className="flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-start text-sm text-foreground-secondary transition-colors duration-150 hover:bg-surface hover:text-foreground"
             >
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-dashed border-hairline-strong">

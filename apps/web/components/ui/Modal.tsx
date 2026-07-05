@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useFocusTrap } from "@/lib/hooks/useFocusTrap";
@@ -27,9 +28,21 @@ export function Modal({
   const panelRef = useRef<HTMLDivElement>(null);
   useFocusTrap(panelRef, open, onClose);
 
-  if (!open) return null;
+  // Portals to document.body so the modal always covers the full viewport, regardless of
+  // where it's invoked from. Without this, a modal rendered inside an ancestor that sets
+  // `backdrop-filter`/`filter`/`transform` (e.g. Topbar's `backdrop-blur-xl`) would have its
+  // `fixed inset-0` positioning scoped to that ancestor's box instead of the viewport — it
+  // renders as a small panel pinned to that ancestor (the top nav) rather than a centered,
+  // full-screen dialog. Mounting only after the initial client render avoids an SSR mismatch
+  // (document.body doesn't exist on the server).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  return (
+  if (!open || !mounted) return null;
+
+  return createPortal(
+    // z-[60] is deliberately above Popover's z-50 (components/ui/Popover.tsx) so a modal
+    // always renders above any open dropdown/menu — keep it higher if either scale changes.
     <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto p-4 sm:p-6">
       <div
         className="animate-modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm"
@@ -68,6 +81,7 @@ export function Modal({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

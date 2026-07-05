@@ -27,12 +27,41 @@ from grc_persistence_web import (
     PolicyMissionStore,
     PolicyRepository,
     PostgresToolInvocationRecorder,
+    RegulatoryObligationRepository,
+    RegulatoryRawDocumentRepository,
 )
+from grc_policy_analyst import ReviewPolicyQualityTool
+from grc_policy_hunter import ListApplicableObligationsTool, ScanPolicyCoverageGapsTool
 from grc_tools import ToolRegistry
 
 
 class WebRuntimeNotConfiguredError(RuntimeError):
     """``DATABASE_URL`` is not set — Policy Intelligence needs a connection to apps/web's schema."""
+
+
+def _register_policy_intelligence_tools(registry: ToolRegistry, database: Database) -> None:
+    """Register Policy Hunter's and Policy Analyst's Tools (PI-P3/PI-P4) against apps/web's
+    live schema. Called exactly once per process, right after a fresh ``ToolRegistry`` is
+    built — ``ToolRegistry.register`` itself would raise on a second call for the same
+    name/version, so this must never run twice against the same registry instance.
+    """
+    obligations = RegulatoryObligationRepository(database)
+    raw_documents = RegulatoryRawDocumentRepository(database)
+    policies = PolicyRepository(database)
+
+    registry.register(
+        ListApplicableObligationsTool(obligations=obligations, raw_documents=raw_documents)
+    )
+    registry.register(
+        ScanPolicyCoverageGapsTool(
+            obligations=obligations, raw_documents=raw_documents, policies=policies
+        )
+    )
+    registry.register(
+        ReviewPolicyQualityTool(
+            policies=policies, obligations=obligations, raw_documents=raw_documents
+        )
+    )
 
 
 async def get_web_database(app: FastAPI, database_url: str) -> Database:
@@ -60,6 +89,7 @@ async def get_tool_registry(app: FastAPI, database_url: str) -> ToolRegistry:
         return existing
     database = await get_web_database(app, database_url)
     registry = ToolRegistry(recorder=PostgresToolInvocationRecorder(database))
+    _register_policy_intelligence_tools(registry, database)
     app.state.tool_registry = registry
     return registry
 

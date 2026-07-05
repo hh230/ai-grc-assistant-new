@@ -8,7 +8,11 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 
 import pytest
-from grc_policy_analyst import PolicyAnalystAgent, ReviewPolicyQualityTool
+from grc_policy_analyst import (
+    PolicyAnalystAgent,
+    ReviewPolicyQualityOutput,
+    ReviewPolicyQualityTool,
+)
 from grc_policy_analyst.exceptions import PolicyNotFoundError
 from grc_tools import (
     ToolCaller,
@@ -173,6 +177,7 @@ async def test_review_policy_quality_reports_no_findings_for_a_complete_covered_
         _context(),
     )
 
+    assert isinstance(output, ReviewPolicyQualityOutput)
     assert output.policy_id == "pol-1"
     assert output.findings == []
     assert output.obligations_considered == 1  # only the confirmed obligation
@@ -200,6 +205,7 @@ async def test_review_policy_quality_only_considers_confirmed_obligations() -> N
         _context(),
     )
 
+    assert isinstance(output, ReviewPolicyQualityOutput)
     assert output.obligations_considered == 1  # ob-2 is pending_review and excluded
 
 

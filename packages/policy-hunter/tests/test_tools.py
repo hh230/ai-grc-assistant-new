@@ -8,8 +8,10 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 
 from grc_policy_hunter import (
+    ListApplicableObligationsOutput,
     ListApplicableObligationsTool,
     PolicyHunterAgent,
+    ScanPolicyCoverageGapsOutput,
     ScanPolicyCoverageGapsTool,
 )
 from grc_tools import (
@@ -160,6 +162,7 @@ async def test_list_applicable_obligations_only_returns_confirmed_and_is_audited
         "list_applicable_obligations", "1.0.0", {"control_domain": None}, _context()
     )
 
+    assert isinstance(output, ListApplicableObligationsOutput)
     assert [o.obligation_id for o in output.obligations] == ["ob-1"]  # ob-2 is pending_review
     assert output.obligations[0].citation == "sa-sama#ob-1"
     assert len(recorder.entries) == 1
@@ -178,6 +181,7 @@ async def test_list_applicable_obligations_filters_by_control_domain() -> None:
         "list_applicable_obligations", "1.0.0", {"control_domain": "data_protection"}, _context()
     )
 
+    assert isinstance(output, ListApplicableObligationsOutput)
     assert output.obligations == []  # ob-2 matches the domain but isn't confirmed
 
 
@@ -198,6 +202,7 @@ async def test_scan_policy_coverage_gaps_reports_only_gaps_and_is_audited() -> N
         _context(),
     )
 
+    assert isinstance(output, ScanPolicyCoverageGapsOutput)
     assert output.obligations_scanned == 1  # only the confirmed one
     assert output.findings == []  # the one confirmed obligation is covered by pol-1
     assert len(recorder.entries) == 1
@@ -219,6 +224,8 @@ async def test_scan_policy_coverage_gaps_for_a_tenant_with_no_policies_reports_a
         {"tenant_id": "tenant-with-no-policies", "control_domain": None},
         _context(tenant_id="tenant-with-no-policies"),
     )
+
+    assert isinstance(output, ScanPolicyCoverageGapsOutput)
 
     assert output.policies_considered == 0
     assert len(output.findings) == 1

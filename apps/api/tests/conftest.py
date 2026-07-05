@@ -7,12 +7,20 @@ in-memory store and the deterministic fake LLM — no network, no database, no s
 from __future__ import annotations
 
 import json
+import sys
 from collections.abc import AsyncIterator
+from pathlib import Path
 
 import httpx
 import pytest
 from grc_api.app import create_app
 from grc_api.settings import Settings
+
+# Under the repo-wide `--import-mode=importlib` pytest config, a bare `from conftest import auth`
+# (used by sibling test modules) resolves against whichever same-named `tests` package happens to
+# be cached first in `sys.modules` when the whole monorepo suite runs together — many packages
+# have a `tests/` directory. Putting this directory on `sys.path` sidesteps that collision.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 # Deterministic principals across two tenants and several roles.
 TOKENS = {

@@ -16,6 +16,8 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from grc_agents.orchestrator import Orchestrator
 from grc_domain.shared.value_objects import TraceContext
 from grc_persistence_web import PolicyMissionStore, PolicyRepository
+from grc_policy_analyst import PolicyAnalystAgent
+from grc_policy_hunter import PolicyHunterAgent
 from grc_services.shared.authorization import AuthorizationService
 from grc_services.shared.bus import CommandBus, QueryBus
 from grc_services.shared.context import ExecutionContext, Principal
@@ -110,6 +112,18 @@ async def get_web_policy_mission_store(
     return await get_policy_mission_store(request.app, container.settings.database_url)
 
 
+async def get_policy_hunter_agent(
+    registry: Annotated[ToolRegistry, Depends(get_web_tool_registry)],
+) -> PolicyHunterAgent:
+    return PolicyHunterAgent(registry)
+
+
+async def get_policy_analyst_agent(
+    registry: Annotated[ToolRegistry, Depends(get_web_tool_registry)],
+) -> PolicyAnalystAgent:
+    return PolicyAnalystAgent(registry)
+
+
 # Convenience aliases for concise router signatures.
 CurrentPrincipal = Annotated[Principal, Depends(get_principal)]
 Context = Annotated[ExecutionContext, Depends(get_execution_context)]
@@ -120,3 +134,5 @@ Authz = Annotated[AuthorizationService, Depends(get_authz)]
 WebToolRegistry = Annotated[ToolRegistry, Depends(get_web_tool_registry)]
 WebPolicyRepository = Annotated[PolicyRepository, Depends(get_web_policy_repository)]
 WebPolicyMissionStore = Annotated[PolicyMissionStore, Depends(get_web_policy_mission_store)]
+PolicyHunterAgentDep = Annotated[PolicyHunterAgent, Depends(get_policy_hunter_agent)]
+PolicyAnalystAgentDep = Annotated[PolicyAnalystAgent, Depends(get_policy_analyst_agent)]

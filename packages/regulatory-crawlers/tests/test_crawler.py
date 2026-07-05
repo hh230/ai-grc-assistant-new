@@ -5,6 +5,7 @@ server."""
 from __future__ import annotations
 
 import pytest
+from _fakes import FakeHttpFetcher
 from grc_regulatory_crawlers import HttpRegulatoryCrawler, HttpResponse, PoliteRateLimiter
 from grc_regulatory_crawlers.exceptions import CrawlerFetchError
 from grc_regulatory_intelligence import (
@@ -14,9 +15,7 @@ from grc_regulatory_intelligence import (
     RegulatorySource,
     SourceType,
 )
-
-from ._fakes import FakeHttpFetcher
-from .test_pdf_extraction import _minimal_pdf
+from test_pdf_extraction import _minimal_pdf
 
 _ALLOW_ALL_ROBOTS = HttpResponse(
     status=200, content_type="text/plain", body=b"User-agent: *\nAllow: /\n"

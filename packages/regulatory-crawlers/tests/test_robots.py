@@ -3,10 +3,9 @@ one, and defaults to allow where it doesn't (many regulator sites publish none a
 
 from __future__ import annotations
 
+from _fakes import FakeHttpFetcher
 from grc_regulatory_crawlers import HttpResponse, RobotsChecker
 from grc_regulatory_crawlers.exceptions import CrawlerFetchError
-
-from ._fakes import FakeHttpFetcher
 
 
 async def test_allows_when_robots_txt_is_unreachable() -> None:

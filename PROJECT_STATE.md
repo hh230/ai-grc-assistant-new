@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (21 accepted) — `docs/adr/`
+## 3. ADRs (22 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -145,6 +145,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0019 | Regulatory Connectors / Crawlers (PI-P2): source registry as config (`/regulatory-sources`), polite web crawling (`packages/regulatory-crawlers` — robots.txt, rate limiting, HTML/PDF/text normalization), change detection, and `RegulatoryCrawlerRunner` orchestration — the discovery/fetch stage feeding the PI-P1 engine; 6 initial Saudi sources (SAMA, CMA, NCA, SDAIA, MHRSD, ZATCA) |
 | 0020 | Policy Hunter Agent (PI-P3): a read-only, deterministic (no LLM) coverage-gap agent (`packages/policy-hunter`) — compares confirmed regulatory obligations against tenant policies via word-overlap matching, reports `missing_required_policy`/`outdated_policy`/`incomplete_coverage`/`unmapped_regulatory_obligation` findings with full evidence, through two Tool-Registry-audited Tools (`list_applicable_obligations.v1`, `scan_policy_coverage_gaps.v1`) |
 | 0021 | Policy Analyst Agent (PI-P4): a read-only, deterministic (no LLM) policy-quality agent (`packages/policy-analyst`) — analyzes one policy's completeness (7 required sections), regulatory alignment (recall-scored coverage vs. confirmed obligations), internal consistency (unclear ownership/ambiguous language/conflicting cadences), and freshness (stale policy/policy older than a linked regulation), through one Tool-Registry-audited Tool (`review_policy_quality.v1`) |
+| 0022 | Policy Intelligence API exposure (PI-P5): `apps/api`'s `web_runtime.py` now registers Policy Hunter's and Policy Analyst's three Tools on the live Tool Registry; a new `routers/policy_intelligence.py` exposes `GET /policy-intelligence/obligations`, `/coverage-gaps`, and `/policies/{id}/quality-review` — each authorized via the existing RBAC `Action.READ`/`ResourceType.POLICY` gate, executed through `PolicyHunterAgent`/`PolicyAnalystAgent`, and unconditionally audited by the same Tool Registry as every other Tool call |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -275,7 +276,9 @@ from the same metadata (portable `JSON`/`JSONB` type). Full design rationale liv
 ai-grc-assistant/
 ├─ apps/            web (✅ self-contained full-stack app; own API routes + PostgreSQL/pgvector)
 │                   api (real FastAPI app + routers + Orchestrator wiring; now also the
-│                        Policy Intelligence AI runtime — ADR-0017, web_runtime.py)
+│                        Policy Intelligence AI runtime — ADR-0017, web_runtime.py; PI-P5
+│                        (ADR-0022) exposes Policy Hunter/Analyst over HTTP:
+│                        routers/policy_intelligence.py)
 │                   orchestrator · workflow (scaffold only) · worker (scaffold; scheduled
 │                        Policy Intelligence jobs land here in a later phase)
 ├─ packages/
@@ -299,11 +302,13 @@ ai-grc-assistant/
 │  │                     RegulatoryCrawlerRunner orchestrator, observability (ADR-0019; 27 tests)
 │  ├─ policy-hunter/     grc_policy_hunter/       ✅ PI-P3 read-only, deterministic (no LLM)
 │  │                     coverage-gap agent: list_applicable_obligations.v1 +
-│  │                     scan_policy_coverage_gaps.v1 Tools, PolicyHunterAgent (ADR-0020; 15 tests)
+│  │                     scan_policy_coverage_gaps.v1 Tools, PolicyHunterAgent (ADR-0020; 15
+│  │                     tests) — wired into apps/api's Tool Registry in PI-P5 (ADR-0022)
 │  ├─ policy-analyst/    grc_policy_analyst/      ✅ PI-P4 read-only, deterministic (no LLM)
 │  │                     policy-quality agent: completeness/regulatory alignment/internal
 │  │                     consistency/freshness via review_policy_quality.v1,
-│  │                     PolicyAnalystAgent (ADR-0021; 21 tests)
+│  │                     PolicyAnalystAgent (ADR-0021; 21 tests) — wired into apps/api's Tool
+│  │                     Registry in PI-P5 (ADR-0022)
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -318,7 +323,7 @@ ai-grc-assistant/
 ├─ regulatory-sources/ regulatory source definitions as data (PI-P2, ADR-0019) — sa/{sama,cma,
 │                   nca,sdaia,mhrsd,zatca}.json
 ├─ prompts/         versioned prompt artifacts (empty)
-├─ docs/            architecture/ (+ persistence report) · adr/ (21) · onboarding/ · runbooks/
+├─ docs/            architecture/ (+ persistence report) · adr/ (22) · onboarding/ · runbooks/
 ├─ infra/ docker/ config/ scripts/ tests/ .github/
 ├─ CLAUDE.md · README.md · PROJECT_STATE.md (this file)
 └─ workspace manifests: pnpm-workspace.yaml · turbo.json · pyproject.toml · Makefile
@@ -489,7 +494,17 @@ PYTHONPATH=packages/domain:packages/services:packages/persistence \
 
 # Policy Intelligence PI-P0 (ADR-0017) + PI-P1 Regulatory Intelligence (ADR-0018) +
 # PI-P2 Regulatory Connectors/Crawlers (ADR-0019) + PI-P3 Policy Hunter Agent (ADR-0020) +
-# PI-P4 Policy Analyst Agent (ADR-0021).
+# PI-P4 Policy Analyst Agent (ADR-0021) + PI-P5 Policy Intelligence API exposure (ADR-0022).
+#
+# `pyproject.toml` now declares `[tool.uv.sources]` for every internal package (a newer uv
+# release requires each workspace member named explicitly, not just listed under
+# `[tool.uv.workspace] members`) and `--import-mode=importlib` (many packages have a same-named
+# `tests/` directory, which otherwise collide when the whole suite runs together). With those
+# in place, `uv sync --all-packages` + `uv run pytest` runs the *entire* monorepo suite in one
+# invocation — the manual per-package `PYTHONPATH=...` commands below still work but are no
+# longer required. `packages/persistence/tests` is the one pre-existing exception: it still
+# fails to import (`IngestionStatus` moved in `grc_domain.knowledge.enums`), unrelated to Policy
+# Intelligence and already tracked as ADL-0008-gated, 0-test debt.
 # Tool Registry (5 tests):
 PYTHONPATH=packages/domain:packages/tools python -m pytest packages/tools/tests -q
 # apps/web-Postgres bridge, incl. regulatory repositories + change-detection queries (15
@@ -520,6 +535,13 @@ PYTHONPATH=packages/domain:packages/tools:packages/policy-hunter \
 # and PolicyAnalystAgent, all against in-memory fakes (no DB, no network; 21 tests):
 PYTHONPATH=packages/domain:packages/tools:packages/policy-analyst \
   python -m pytest packages/policy-analyst/tests -q
+# Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now
+# registers Policy Hunter's/Policy Analyst's three Tools on the live Tool Registry and
+# routers/policy_intelligence.py exposes them as GET /policy-intelligence/{obligations,
+# coverage-gaps,policies/{id}/quality-review}; needs a reachable Postgres with apps/web's
+# migrations applied (skips cleanly otherwise; 8 tests):
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
+  uv run pytest apps/api/tests/test_policy_intelligence.py -q
 
 # Lint / format
 python -m ruff check packages/domain/grc_domain packages/services/grc_services \

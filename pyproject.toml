@@ -40,6 +40,37 @@ members = [
   "packages/config",
 ]
 
+# Every internal package is a workspace member; this newer uv release requires each one to be
+# named explicitly here (it no longer infers workspace sourcing just from name matching), even
+# though `[tool.uv.workspace] members` already lists every checkout path.
+[tool.uv.sources]
+grc-app-api = { workspace = true }
+grc-app-orchestrator = { workspace = true }
+grc-app-workflow = { workspace = true }
+grc-app-worker = { workspace = true }
+grc-agents = { workspace = true }
+grc-tools = { workspace = true }
+grc-rag = { workspace = true }
+grc-framework-engine = { workspace = true }
+grc-llm = { workspace = true }
+grc-services = { workspace = true }
+grc-domain = { workspace = true }
+grc-extraction = { workspace = true }
+grc-extraction-adapters = { workspace = true }
+grc-knowledge-graph = { workspace = true }
+grc-persistence = { workspace = true }
+grc-persistence-web = { workspace = true }
+grc-regulatory-intelligence = { workspace = true }
+grc-regulatory-intelligence-adapters = { workspace = true }
+grc-regulatory-crawlers = { workspace = true }
+grc-policy-hunter = { workspace = true }
+grc-policy-analyst = { workspace = true }
+grc-events = { workspace = true }
+grc-plugins = { workspace = true }
+grc-observability = { workspace = true }
+grc-security = { workspace = true }
+grc-config = { workspace = true }
+
 [dependency-groups]
 dev = [
   "ruff>=0.6.0",
@@ -95,3 +126,6 @@ ignore_missing_imports = true
 asyncio_mode = "auto"
 testpaths = ["apps", "packages", "tests"]
 python_files = ["test_*.py", "*_test.py"]
+# Many packages have a `tests/` directory; without importlib mode pytest collides on the
+# repeated top-level module name "tests" once more than one such package has an `__init__.py`.
+addopts = "--import-mode=importlib"

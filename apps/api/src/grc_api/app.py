@@ -46,6 +46,13 @@ _OPENAPI_TAGS = [
     {"name": "frameworks", "description": "Compliance frameworks (data, not code) and versions."},
     {"name": "controls", "description": "Customer control implementations and framework mappings."},
     {"name": "policies", "description": "Policy authoring lifecycle: draft → review → publish."},
+    {
+        "name": "policy-intelligence",
+        "description": (
+            "Policy Hunter/Analyst — read-only regulatory coverage-gap and "
+            "policy-quality reporting."
+        ),
+    },
     {"name": "risks", "description": "Risk identification, assessment, treatment, acceptance."},
     {"name": "assessments", "description": "Framework assessments and coverage results."},
     {"name": "evidence", "description": "Evidence collection, validation, and control linkage."},

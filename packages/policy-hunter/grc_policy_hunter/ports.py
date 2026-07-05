@@ -9,34 +9,54 @@ so the Tools in ``tools.py`` can depend on them without this package importing
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from datetime import datetime
 from typing import Protocol
 
 
 class ObligationRecord(Protocol):
-    """Matches ``grc_persistence_web.RegulatoryObligationRecord`` structurally."""
+    """Matches ``grc_persistence_web.RegulatoryObligationRecord`` structurally.
 
-    id: str
-    raw_document_id: str
-    obligation_text: str
-    obligation_type: str
-    control_domain: str
-    suggested_policy_title: str
-    severity: str
-    confidence: float
-    classification_status: str
+    Declared as read-only ``@property`` members, not plain attributes: every concrete
+    implementation (``grc_persistence_web``'s records, and this suite's test fakes) is a
+    frozen dataclass, and mypy only accepts a frozen (read-only) attribute as satisfying a
+    ``Protocol`` member that is itself declared read-only.
+    """
+
+    @property
+    def id(self) -> str: ...
+    @property
+    def raw_document_id(self) -> str: ...
+    @property
+    def obligation_text(self) -> str: ...
+    @property
+    def obligation_type(self) -> str: ...
+    @property
+    def control_domain(self) -> str: ...
+    @property
+    def suggested_policy_title(self) -> str: ...
+    @property
+    def severity(self) -> str: ...
+    @property
+    def confidence(self) -> float: ...
+    @property
+    def classification_status(self) -> str: ...
 
 
 class ObligationStore(Protocol):
-    async def list_by_status(self, classification_status: str) -> list[ObligationRecord]: ...
+    async def list_by_status(self, classification_status: str) -> Sequence[ObligationRecord]: ...
 
 
 class RawDocumentRecord(Protocol):
-    """Matches ``grc_persistence_web.RegulatoryRawDocumentRecord`` structurally."""
+    """Matches ``grc_persistence_web.RegulatoryRawDocumentRecord`` structurally (read-only,
+    see ``ObligationRecord``)."""
 
-    source_id: str
-    url: str
-    fetched_at: datetime
+    @property
+    def source_id(self) -> str: ...
+    @property
+    def url(self) -> str: ...
+    @property
+    def fetched_at(self) -> datetime: ...
 
 
 class RawDocumentStore(Protocol):
@@ -44,14 +64,20 @@ class RawDocumentStore(Protocol):
 
 
 class PolicyRecord(Protocol):
-    """Matches ``grc_persistence_web.PolicyRecord`` structurally."""
+    """Matches ``grc_persistence_web.PolicyRecord`` structurally (read-only, see
+    ``ObligationRecord``)."""
 
-    id: str
-    title: str
-    summary: str | None
-    status: str
-    updated_at: datetime
+    @property
+    def id(self) -> str: ...
+    @property
+    def title(self) -> str: ...
+    @property
+    def summary(self) -> str | None: ...
+    @property
+    def status(self) -> str: ...
+    @property
+    def updated_at(self) -> datetime: ...
 
 
 class PolicyStore(Protocol):
-    async def list(self, tenant_id: str) -> list[PolicyRecord]: ...
+    async def list(self, tenant_id: str) -> Sequence[PolicyRecord]: ...

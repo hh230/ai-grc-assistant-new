@@ -31,3 +31,12 @@ export class NotFoundError extends AppError {
     super(404, message, "not_found");
   }
 }
+
+/** A downstream service (e.g. the `apps/api` FastAPI backend) failed or returned an
+ * unexpected shape. Distinct from the errors above, which describe *this* app rejecting the
+ * request — an `UpstreamError` means the request was valid but the proxied call itself broke. */
+export class UpstreamError extends AppError {
+  constructor(message = "The backend service is unavailable.") {
+    super(502, message, "upstream_error");
+  }
+}

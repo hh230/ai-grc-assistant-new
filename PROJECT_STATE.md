@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (22 accepted) — `docs/adr/`
+## 3. ADRs (23 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -146,6 +146,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0020 | Policy Hunter Agent (PI-P3): a read-only, deterministic (no LLM) coverage-gap agent (`packages/policy-hunter`) — compares confirmed regulatory obligations against tenant policies via word-overlap matching, reports `missing_required_policy`/`outdated_policy`/`incomplete_coverage`/`unmapped_regulatory_obligation` findings with full evidence, through two Tool-Registry-audited Tools (`list_applicable_obligations.v1`, `scan_policy_coverage_gaps.v1`) |
 | 0021 | Policy Analyst Agent (PI-P4): a read-only, deterministic (no LLM) policy-quality agent (`packages/policy-analyst`) — analyzes one policy's completeness (7 required sections), regulatory alignment (recall-scored coverage vs. confirmed obligations), internal consistency (unclear ownership/ambiguous language/conflicting cadences), and freshness (stale policy/policy older than a linked regulation), through one Tool-Registry-audited Tool (`review_policy_quality.v1`) |
 | 0022 | Policy Intelligence API exposure (PI-P5): `apps/api`'s `web_runtime.py` now registers Policy Hunter's and Policy Analyst's three Tools on the live Tool Registry; a new `routers/policy_intelligence.py` exposes `GET /policy-intelligence/obligations`, `/coverage-gaps`, and `/policies/{id}/quality-review` — each authorized via the existing RBAC `Action.READ`/`ResourceType.POLICY` gate, executed through `PolicyHunterAgent`/`PolicyAnalystAgent`, and unconditionally audited by the same Tool Registry as every other Tool call |
+| 0023 | Policy Intelligence frontend (PI-P6): `apps/web`'s first real call to `apps/api` — `lib/policyIntelligence/service.ts` proxies to PI-P5's endpoints using `ActorContext.apiToken` (the PI-P0-era bridge, unused until now), exposed via `app/api/policy-intelligence/*` Route Handlers and a three-tab `/policy-intelligence` workspace page (Obligations, Coverage Gaps, Quality Review); `apps/api` remains the sole authorization source of truth, no business logic is duplicated in TypeScript |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -274,7 +275,12 @@ from the same metadata (portable `JSON`/`JSONB` type). Full design rationale liv
 
 ```
 ai-grc-assistant/
-├─ apps/            web (✅ self-contained full-stack app; own API routes + PostgreSQL/pgvector)
+├─ apps/            web (✅ self-contained full-stack app; own API routes + PostgreSQL/pgvector;
+│                        PI-P6 (ADR-0023) adds its first real call to apps/api —
+│                        lib/policyIntelligence/service.ts proxies to PI-P5's endpoints via
+│                        ActorContext.apiToken; app/api/policy-intelligence/* Route Handlers;
+│                        /policy-intelligence workspace page — obligations, coverage gaps,
+│                        quality review)
 │                   api (real FastAPI app + routers + Orchestrator wiring; now also the
 │                        Policy Intelligence AI runtime — ADR-0017, web_runtime.py; PI-P5
 │                        (ADR-0022) exposes Policy Hunter/Analyst over HTTP:
@@ -542,6 +548,13 @@ PYTHONPATH=packages/domain:packages/tools:packages/policy-analyst \
 # migrations applied (skips cleanly otherwise; 8 tests):
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
   uv run pytest apps/api/tests/test_policy_intelligence.py -q
+
+# Policy Intelligence frontend (PI-P6, ADR-0023) — apps/web's proxy to the PI-P5 endpoints
+# (lib/policyIntelligence/service.ts) plus the /policy-intelligence workspace page. The one
+# integration check exercises the real proxy against a real apps/api + Postgres and skips
+# cleanly if apps/api isn't reachable (same convention as arabicAnalysis.eval.ts):
+uv run uvicorn grc_api.app:create_app --factory --port 8000 &  # from the repo root
+pnpm --filter @grc/web exec tsx tests/eval/policyIntelligence.eval.ts
 
 # Lint / format
 python -m ruff check packages/domain/grc_domain packages/services/grc_services \

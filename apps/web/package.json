@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "tsx tests/eval/arabicAnalysis.eval.ts",
+    "test": "tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts",
     "db:migrate": "node scripts/db-migrate.mjs",
     "db:migrate-data": "node scripts/migrate-file-data.mjs"
   },

@@ -10,6 +10,7 @@ import {
   Workflow,
   Settings,
   LifeBuoy,
+  Radar,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/auth/roles";
@@ -78,6 +79,13 @@ export const PRIMARY_NAV: NavGroup[] = [
     items: [
       { label: "Controls", labelKey: "controls", href: "/controls", icon: ShieldCheck },
       { label: "Policies", labelKey: "policies", href: "/policies", icon: FileText },
+      {
+        label: "Policy Intelligence",
+        labelKey: "policyIntelligence",
+        href: "/policy-intelligence",
+        icon: Radar,
+        requiredPermission: { action: "read", resource: "policy" },
+      },
       { label: "Frameworks", labelKey: "frameworks", href: "/frameworks", icon: Library },
     ],
   },

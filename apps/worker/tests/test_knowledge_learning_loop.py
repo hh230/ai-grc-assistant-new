@@ -84,6 +84,7 @@ def test_worker_settings_from_env_reads_overrides() -> None:
 class _FakeOutcome:
     question_id: str
     stored: bool
+    error: str | None = None
 
 
 class FakeRunner:
@@ -130,6 +131,39 @@ async def test_run_forever_ticks_then_stops_when_signalled_during_the_poll_wait(
     await task
 
     assert runner.call_count >= 1
+
+
+class FakeRunHistory:
+    def __init__(self) -> None:
+        self.calls: list[dict[str, object]] = []
+
+    async def record_run(self, **kwargs: object) -> None:
+        self.calls.append(kwargs)
+
+
+async def test_run_forever_records_run_history_when_a_cycle_ran() -> None:
+    runner = FakeRunner()
+    worker = _worker(runner)
+    stop_event = asyncio.Event()
+    run_history = FakeRunHistory()
+
+    async def _stop_after_first_tick() -> None:
+        await asyncio.sleep(0)
+        stop_event.set()
+
+    task = asyncio.create_task(_stop_after_first_tick())
+    await run_forever(
+        worker, poll_interval_seconds=0.01, stop_event=stop_event, run_history=run_history
+    )
+    await task
+
+    assert len(run_history.calls) >= 1
+    call = run_history.calls[0]
+    assert call["reason"] == "due"
+    assert call["questions_considered"] == worker.questions_count
+    assert call["gaps_detected"] == 1
+    assert call["items_saved"] == 1
+    assert call["error_count"] == 0
 
 
 async def test_run_forever_survives_a_tick_that_raises() -> None:

@@ -27,6 +27,7 @@ from grc_knowledge_research import (
     ResearchCrawlerPort,
 )
 from grc_knowledge_research_adapters import KnowledgeGapResearchRunner
+from grc_knowledge_worker import WorkerEvent
 
 _NOW = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
@@ -116,12 +117,26 @@ class InMemoryKnowledgeItemStore:
         self.upsert_calls.append(kwargs)
 
 
+class FakeEventSink:
+    def __init__(self) -> None:
+        self.events: list[WorkerEvent] = []
+
+    async def record(self, event: WorkerEvent) -> None:
+        self.events.append(event)
+
+
 def _runner(
-    *, crawler: FakeCrawler, extractor: FakeExtractor, store: InMemoryKnowledgeItemStore
+    *,
+    crawler: FakeCrawler,
+    extractor: FakeExtractor,
+    store: InMemoryKnowledgeItemStore,
+    event_sink: FakeEventSink | None = None,
 ) -> KnowledgeGapResearchRunner:
     engine = KnowledgeDiscoveryEngine(extractor=extractor, id_factory=lambda: "item-1")
     coordinator = ResearchCoordinator(crawler=crawler, discovery_engine=engine, clock=lambda: _NOW)
-    return KnowledgeGapResearchRunner(catalog=_CATALOG, coordinator=coordinator, store=store)
+    return KnowledgeGapResearchRunner(
+        catalog=_CATALOG, coordinator=coordinator, store=store, event_sink=event_sink
+    )
 
 
 async def test_a_missing_question_is_researched_and_stored() -> None:
@@ -244,3 +259,61 @@ async def test_a_storage_failure_is_isolated_and_reported_not_raised() -> None:
 
     assert outcomes[0].stored is False
     assert outcomes[0].error == "database unavailable"
+
+
+async def test_a_successful_run_emits_the_full_activity_timeline() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE, text="vendor contracts must include audit rights", fetched_at=_NOW
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FakeExtractor(
+        {
+            excerpt.text: KnowledgeAnswer(
+                answer="Audit rights.", applicable_context="Any vendor.", confidence=0.9
+            )
+        }
+    )
+    store = InMemoryKnowledgeItemStore()
+    sink = FakeEventSink()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store, event_sink=sink)
+
+    await runner.run((_QUESTION,), now=_NOW)
+
+    assert [event.event_type.value for event in sink.events] == [
+        "questions_loaded",
+        "gap_detected",
+        "source_searched",
+        "knowledge_discovered",
+        "item_saved",
+    ]
+    assert all(event.occurred_at == _NOW for event in sink.events)
+    assert sink.events[1].question_id == _QUESTION.question_id
+
+
+async def test_a_storage_failure_emits_an_error_event_instead_of_item_saved() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE, text="vendor contracts must include audit rights", fetched_at=_NOW
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FakeExtractor(
+        {
+            excerpt.text: KnowledgeAnswer(
+                answer="Audit rights.", applicable_context="Any vendor.", confidence=0.9
+            )
+        }
+    )
+    store = InMemoryKnowledgeItemStore(fail_upsert=True)
+    sink = FakeEventSink()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store, event_sink=sink)
+
+    await runner.run((_QUESTION,), now=_NOW)
+
+    assert [event.event_type.value for event in sink.events] == [
+        "questions_loaded",
+        "gap_detected",
+        "source_searched",
+        "knowledge_discovered",
+        "error",
+    ]

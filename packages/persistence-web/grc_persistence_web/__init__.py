@@ -19,6 +19,14 @@ from .regulatory import (
     RegulatoryRawDocumentRecord,
     RegulatoryRawDocumentRepository,
 )
+from .worker_control import (
+    WorkerControlRecord,
+    WorkerControlRepository,
+    WorkerEventRecord,
+    WorkerEventRepository,
+    WorkerRunHistoryRepository,
+    WorkerRunRecord,
+)
 
 __all__ = [
     "Database",
@@ -35,4 +43,10 @@ __all__ = [
     "RegulatoryObligationRecord",
     "KnowledgeItemRepository",
     "KnowledgeItemRecord",
+    "WorkerControlRepository",
+    "WorkerControlRecord",
+    "WorkerRunHistoryRepository",
+    "WorkerRunRecord",
+    "WorkerEventRepository",
+    "WorkerEventRecord",
 ]

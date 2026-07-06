@@ -34,6 +34,9 @@ export const RESOURCE_TYPES = [
   "agent",
   "plugin",
   "audit",
+  // The Autonomous Knowledge Worker's admin control surface (Knowledge Intelligence KI-P5,
+  // ADR-0029) — never granted to `OPERATIONAL`/`CATALOG` below, platform administrators only.
+  "knowledge_worker",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 

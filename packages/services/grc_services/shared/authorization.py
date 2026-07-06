@@ -38,6 +38,10 @@ class ResourceType(str, Enum):
     AGENT = "agent"
     PLUGIN = "plugin"
     AUDIT = "audit"
+    # The Autonomous Knowledge Worker's admin control surface (Knowledge Intelligence KI-P5,
+    # ADR-0029): status, activity timeline, schedule, and manual trigger. Deliberately never
+    # added to `_OPERATIONAL`/`_CATALOG` below — platform administrators only.
+    KNOWLEDGE_WORKER = "knowledge_worker"
 
 
 class AuthorizationService(ABC):

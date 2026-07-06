@@ -3,7 +3,7 @@ name = "grc-persistence-web"
 version = "0.0.0"
 description = "Adapters against apps/web's live PostgreSQL schema — the AI runtime's only database."
 requires-python = ">=3.12"
-dependencies = ["asyncpg>=0.29", "grc-tools"]
+dependencies = ["asyncpg>=0.29", "grc-tools", "grc-knowledge-worker"]
 
 [build-system]
 requires = ["hatchling"]

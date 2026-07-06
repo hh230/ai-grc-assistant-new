@@ -15,7 +15,14 @@ from fastapi import Depends, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from grc_agents.orchestrator import Orchestrator
 from grc_domain.shared.value_objects import TraceContext
-from grc_persistence_web import PolicyMissionStore, PolicyRepository
+from grc_persistence_web import (
+    KnowledgeItemRepository,
+    PolicyMissionStore,
+    PolicyRepository,
+    WorkerControlRepository,
+    WorkerEventRepository,
+    WorkerRunHistoryRepository,
+)
 from grc_policy_analyst import PolicyAnalystAgent
 from grc_policy_hunter import PolicyHunterAgent
 from grc_services.shared.authorization import AuthorizationService
@@ -26,7 +33,15 @@ from grc_tools import ToolRegistry
 from ..container import AppContainer
 from ..middleware.errors import AuthenticationError
 from ..observability import bind_request_context, current_request_context
-from ..web_runtime import get_policy_mission_store, get_policy_repository, get_tool_registry
+from ..web_runtime import (
+    get_policy_mission_store,
+    get_policy_repository,
+    get_tool_registry,
+    get_web_knowledge_item_repository,
+    get_worker_control_repository,
+    get_worker_event_repository,
+    get_worker_run_history_repository,
+)
 
 _bearer = HTTPBearer(auto_error=False, description="Bearer token (OIDC/JWT in production).")
 
@@ -112,6 +127,34 @@ async def get_web_policy_mission_store(
     return await get_policy_mission_store(request.app, container.settings.database_url)
 
 
+async def get_web_worker_control_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> WorkerControlRepository:
+    return await get_worker_control_repository(request.app, container.settings.database_url)
+
+
+async def get_web_worker_run_history_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> WorkerRunHistoryRepository:
+    return await get_worker_run_history_repository(request.app, container.settings.database_url)
+
+
+async def get_web_worker_event_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> WorkerEventRepository:
+    return await get_worker_event_repository(request.app, container.settings.database_url)
+
+
+async def get_web_knowledge_item_repository_dep(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> KnowledgeItemRepository:
+    return await get_web_knowledge_item_repository(request.app, container.settings.database_url)
+
+
 async def get_policy_hunter_agent(
     registry: Annotated[ToolRegistry, Depends(get_web_tool_registry)],
 ) -> PolicyHunterAgent:
@@ -136,3 +179,15 @@ WebPolicyRepository = Annotated[PolicyRepository, Depends(get_web_policy_reposit
 WebPolicyMissionStore = Annotated[PolicyMissionStore, Depends(get_web_policy_mission_store)]
 PolicyHunterAgentDep = Annotated[PolicyHunterAgent, Depends(get_policy_hunter_agent)]
 PolicyAnalystAgentDep = Annotated[PolicyAnalystAgent, Depends(get_policy_analyst_agent)]
+WebWorkerControlRepository = Annotated[
+    WorkerControlRepository, Depends(get_web_worker_control_repository)
+]
+WebWorkerRunHistoryRepository = Annotated[
+    WorkerRunHistoryRepository, Depends(get_web_worker_run_history_repository)
+]
+WebWorkerEventRepository = Annotated[
+    WorkerEventRepository, Depends(get_web_worker_event_repository)
+]
+WebKnowledgeItemRepository = Annotated[
+    KnowledgeItemRepository, Depends(get_web_knowledge_item_repository_dep)
+]

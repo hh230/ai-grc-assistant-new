@@ -28,6 +28,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Protocol
 
 from grc_knowledge_intelligence import KnowledgeDiscoveryEngine, KnowledgeQuestion, build_catalog
 from grc_knowledge_intelligence_adapters import LlmKnowledgeExtractor, SynthesizeKnowledgeAnswerTool
@@ -44,7 +45,14 @@ from grc_knowledge_worker import (
     combine_question_sources,
 )
 from grc_llm import ChatModel, OpenAIChatModel, OpenAISettings
-from grc_persistence_web import Database, KnowledgeItemRepository, PostgresToolInvocationRecorder
+from grc_persistence_web import (
+    Database,
+    KnowledgeItemRepository,
+    PostgresToolInvocationRecorder,
+    WorkerControlRepository,
+    WorkerEventRepository,
+    WorkerRunHistoryRepository,
+)
 from grc_regulatory_crawlers.http_fetcher import UrllibHttpFetcher
 from grc_tools import ToolCaller, ToolContext, ToolRegistry
 
@@ -174,7 +182,11 @@ def build_worker(
 ) -> AutonomousKnowledgeWorker:
     """Assemble the real learning loop: the Tool-audited LLM extractor, the polite HTTP
     research crawler, the (unmodified) gap-research runner, and the scheduler — every piece
-    reused exactly as KI-P1/KI-P2/KI-P3/KI-P4 built it, nothing reimplemented here."""
+    reused exactly as KI-P1/KI-P2/KI-P3/KI-P4 built it, nothing reimplemented here. KI-P5
+    (ADR-0029) additionally wires the Postgres-backed ``WorkerControlRepository`` (so an
+    admin's enable/disable/interval/manual-trigger changes take effect on the next poll) and
+    ``WorkerEventRepository`` (the activity timeline both this worker and the gap-research
+    runner report through) — the same ``database`` connection, no new pool."""
     questions = load_questions(settings.data_root)
     catalog = load_trusted_sources(settings.data_root)
 
@@ -184,15 +196,38 @@ def build_worker(
     discovery_engine = KnowledgeDiscoveryEngine(extractor=extractor)
     crawler = HttpResearchCrawler(UrllibHttpFetcher())
     coordinator = ResearchCoordinator(crawler=crawler, discovery_engine=discovery_engine)
+    events = WorkerEventRepository(database)
     runner = KnowledgeGapResearchRunner(
-        catalog=catalog, coordinator=coordinator, store=KnowledgeItemRepository(database)
+        catalog=catalog,
+        coordinator=coordinator,
+        store=KnowledgeItemRepository(database),
+        event_sink=events,
     )
 
     return AutonomousKnowledgeWorker(
         questions=questions,
         runner=runner,
         scheduler=LearningCycleScheduler(interval=settings.cycle_interval),
+        control=WorkerControlRepository(database),
+        event_sink=events,
     )
+
+
+class RunHistoryPort(Protocol):
+    """Matches ``grc_persistence_web.WorkerRunHistoryRepository.record_run`` structurally, so
+    ``run_forever`` can be exercised in tests against a fake with no real database."""
+
+    async def record_run(
+        self,
+        *,
+        reason: str,
+        started_at: datetime,
+        completed_at: datetime,
+        questions_considered: int,
+        gaps_detected: int,
+        items_saved: int,
+        error_count: int,
+    ) -> object: ...
 
 
 async def run_forever(
@@ -200,6 +235,7 @@ async def run_forever(
     *,
     poll_interval_seconds: float,
     stop_event: asyncio.Event,
+    run_history: RunHistoryPort | None = None,
 ) -> None:
     """The real "repeat" step. Unlike the pure package's bounded, test-oriented
     ``run_loop``, this is genuinely unbounded and fail-safe at the process boundary
@@ -207,7 +243,10 @@ async def run_forever(
     (e.g. the database connection itself dropping) is logged and the loop continues at the
     next poll rather than crashing the whole worker process. Waits on ``stop_event`` instead of
     a plain sleep so SIGINT/SIGTERM can interrupt a poll immediately rather than waiting out a
-    full interval.
+    full interval. When ``run_history`` is injected (KI-P5, ADR-0029), every cycle that
+    actually ran is additionally recorded there for the Control Center's "last run"/"next
+    run" status and Learning Reports — best-effort: a failure recording history is logged,
+    never allowed to break the loop that already did the real work.
     """
     while not stop_event.is_set():
         now = datetime.now(timezone.utc)
@@ -222,6 +261,21 @@ async def run_forever(
                     len(outcome.outcomes),
                     outcome.stored_count,
                 )
+                if run_history is not None:
+                    try:
+                        await run_history.record_run(
+                            reason=outcome.reason,
+                            started_at=outcome.started_at,
+                            completed_at=datetime.now(timezone.utc),
+                            questions_considered=worker.questions_count,
+                            gaps_detected=len(outcome.outcomes),
+                            items_saved=outcome.stored_count,
+                            error_count=sum(
+                                1 for result in outcome.outcomes if result.error is not None
+                            ),
+                        )
+                    except Exception:  # noqa: BLE001 - recording history must not break the loop
+                        logger.exception("failed to record knowledge worker run history")
             else:
                 logger.debug("knowledge worker cycle skipped: %s", outcome.reason)
 
@@ -251,7 +305,10 @@ async def main() -> None:
     )
     try:
         await run_forever(
-            worker, poll_interval_seconds=settings.poll_interval_seconds, stop_event=stop_event
+            worker,
+            poll_interval_seconds=settings.poll_interval_seconds,
+            stop_event=stop_event,
+            run_history=WorkerRunHistoryRepository(database),
         )
     finally:
         await database.close()

@@ -24,11 +24,15 @@ import asyncio
 from fastapi import FastAPI
 from grc_persistence_web import (
     Database,
+    KnowledgeItemRepository,
     PolicyMissionStore,
     PolicyRepository,
     PostgresToolInvocationRecorder,
     RegulatoryObligationRepository,
     RegulatoryRawDocumentRepository,
+    WorkerControlRepository,
+    WorkerEventRepository,
+    WorkerRunHistoryRepository,
 )
 from grc_policy_analyst import ReviewPolicyQualityTool
 from grc_policy_hunter import ListApplicableObligationsTool, ScanPolicyCoverageGapsTool
@@ -102,6 +106,30 @@ async def get_policy_repository(app: FastAPI, database_url: str) -> PolicyReposi
 async def get_policy_mission_store(app: FastAPI, database_url: str) -> PolicyMissionStore:
     database = await get_web_database(app, database_url)
     return PolicyMissionStore(database)
+
+
+async def get_worker_control_repository(app: FastAPI, database_url: str) -> WorkerControlRepository:
+    database = await get_web_database(app, database_url)
+    return WorkerControlRepository(database)
+
+
+async def get_worker_run_history_repository(
+    app: FastAPI, database_url: str
+) -> WorkerRunHistoryRepository:
+    database = await get_web_database(app, database_url)
+    return WorkerRunHistoryRepository(database)
+
+
+async def get_worker_event_repository(app: FastAPI, database_url: str) -> WorkerEventRepository:
+    database = await get_web_database(app, database_url)
+    return WorkerEventRepository(database)
+
+
+async def get_web_knowledge_item_repository(
+    app: FastAPI, database_url: str
+) -> KnowledgeItemRepository:
+    database = await get_web_database(app, database_url)
+    return KnowledgeItemRepository(database)
 
 
 async def close_web_database(app: FastAPI) -> None:

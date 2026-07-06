@@ -152,6 +152,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0026 | Autonomous Knowledge Research (KI-P2): closes KI-P1's named fetching gap — a curated, authority-ranked trusted-source catalog (`/trusted-sources`), a pure Research Planner/Coordinator (`packages/knowledge-research`) that reuses `grc_regulatory_crawlers`'s HTTP primitives (never a second crawler) and the unmodified `KnowledgeDiscoveryEngine`, and a `KnowledgeGapResearchRunner` (`packages/knowledge-research-adapters`) tying gap detection, research, and the existing idempotent upsert together end to end; no new Tool — every synthesis call still flows through `synthesize_knowledge_answer`; no schema change, UI, or scheduling |
 | 0027 | Domain Ontology Engine (KI-P3): a structured GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy (`/ontology`, 37 topics across 7 domains + 6 contract types with 38 categorized clauses), a pure package (`packages/knowledge-ontology`) with deterministic, template-based question generation (additive to and disjoint from the hand-curated catalog), missing-clause detection, and a fixed six-member relationship vocabulary (one kind derived from contract-type data, five illustrated by curated example edges); one verified trusted-source addition (NIST CSF) — no unverifiable sources added; no LLM decisions, no new Tool, no UI/API |
 | 0028 | Autonomous Knowledge Worker (KI-P4): closes ADR-0019/25/26/27's repeated "no scheduling" deferral — a pure `LearningCycleScheduler` + `combine_question_sources` (merges KI-P1's catalog with KI-P3's ontology-generated questions) in a new package (`packages/knowledge-worker`), an `AutonomousKnowledgeWorker` runner/orchestrator (`tick`/bounded `run_loop`) that drives the *unmodified* KI-P2 `KnowledgeGapResearchRunner` via a structural Protocol (no new dependency, no new Tool); and the project's first real, always-on composition root — `apps/worker/src/grc_worker/knowledge_learning_loop.py` — wiring a real Postgres `KnowledgeItemRepository`, a real `OpenAIChatModel` behind the already-registered `synthesize_knowledge_answer.v1` Tool, and a real `HttpResearchCrawler`, driven by a genuine infinite loop with SIGINT/SIGTERM shutdown; found and fixed two pre-existing mypy-strict Protocol gaps in `grc_knowledge_research_adapters` (frozen-dataclass vs. plain-attribute Protocol members; invariant `list` vs. covariant `Sequence`) surfaced only once a real caller exercised them |
+| 0029 | AI Worker Control Center (KI-P5): closes ADR-0028's "no durable last_run_at... no API endpoint, no UI" deferral — optional `WorkerControlPort`/`WorkerEventSink` seams added to `packages/knowledge-worker` (zero behavior change when omitted) so an admin's enable/disable/interval/manual-trigger change takes effect on the next poll; `KnowledgeGapResearchRunner` (KI-P2) now emits the same timeline events during research; three new platform-scope tables (`worker_control` singleton, `worker_run_history`, `worker_events` — one unified append-only table serving both the activity timeline and the admin-action audit trail); a new `ResourceType.KNOWLEDGE_WORKER` in the RBAC matrix (`OWNER`/`ADMIN` full control, `AUDITOR` read-only via its existing blanket grant, everyone else 403); six new `apps/api` endpoints (`GET /status`,`/events`,`/runs`,`/reports`, `POST /schedule`,`/trigger`) modeled on Policy Intelligence's router; and a real `/ai-worker` admin page (status card, schedule control, "Run Learning Now", activity timeline, learning reports) — verified live end-to-end in the browser, not just against tests |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -340,7 +341,8 @@ ai-grc-assistant/
 │  ├─ knowledge-research-adapters/ grc_knowledge_research_adapters/ ✅ KI-P2 HttpResearchCrawler
 │  │                     (built from grc_regulatory_crawlers primitives), trusted-source catalog
 │  │                     loader, KnowledgeGapResearchRunner tying gap detection→research→storage
-│  │                     together (ADR-0026; 22 tests) — no new Tool, no scheduling yet
+│  │                     together (ADR-0026; 24 tests incl. KI-P5's optional activity-timeline
+│  │                     event emission, ADR-0029) — no new Tool, no scheduling yet
 │  ├─ knowledge-ontology/ grc_knowledge_ontology/ ✅ KI-P3 Domain Ontology Engine: Topic/
 │  │                     ContractType/Clause/Relationship models (reads /ontology/*.json),
 │  │                     deterministic template-based question generation, missing-clause
@@ -350,10 +352,15 @@ ai-grc-assistant/
 │  │                     pure LearningCycleScheduler (scheduler.py), and
 │  │                     AutonomousKnowledgeWorker's tick()/bounded run_loop() driving the
 │  │                     unmodified KI-P2 KnowledgeGapResearchRunner via a structural Protocol
-│  │                     (ADR-0028; 17 tests) — apps/worker/src/grc_worker/
-│  │                     knowledge_learning_loop.py is the real composition root (9 more
-│  │                     tests) wiring real Postgres/OpenAI/HTTP behind it, driven by a real
-│  │                     infinite loop with SIGINT/SIGTERM shutdown
+│  │                     (ADR-0028; 26 tests incl. KI-P5's control.py/events.py seams) —
+│  │                     apps/worker/src/grc_worker/knowledge_learning_loop.py is the real
+│  │                     composition root (10 tests) wiring real Postgres/OpenAI/HTTP behind
+│  │                     it plus (KI-P5, ADR-0029) WorkerControlRepository/
+│  │                     WorkerEventRepository/WorkerRunHistoryRepository, driven by a real
+│  │                     infinite loop with SIGINT/SIGTERM shutdown. KI-P5 also added
+│  │                     `worker_control`/`worker_run_history`/`worker_events` to
+│  │                     persistence-web (5 tests), `apps/api/routers/knowledge_worker.py`
+│  │                     (9 tests) and apps/web's admin-only `/ai-worker` page
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -611,18 +618,45 @@ PYTHONPATH=packages/domain:packages/tools:packages/llm:packages/knowledge-intell
 PYTHONPATH=packages/domain:packages/tools:packages/persistence-web \
   python -m pytest packages/persistence-web/tests/test_knowledge.py -q
 # Autonomous Knowledge Worker (KI-P4, ADR-0028) — pure question-merge + scheduler + tick/
-# run_loop orchestration, zero external deps, no DB, no network (17 tests):
+# run_loop orchestration, plus KI-P5's (ADR-0029) optional WorkerControlPort/WorkerEventSink
+# seams: disabled/manual-trigger/dynamic-interval tick behavior and cycle_started/completed/
+# error event emission; zero external deps, no DB, no network (26 tests):
 PYTHONPATH=packages/knowledge-intelligence:packages/knowledge-ontology:packages/knowledge-worker \
   python -m pytest packages/knowledge-worker/tests -q
+# Knowledge Research adapters (KI-P2, ADR-0026) — KnowledgeGapResearchRunner's gap detection/
+# research/storage, plus KI-P5's (ADR-0029) activity-timeline event emission
+# (questions_loaded/gap_detected/source_searched/knowledge_discovered/item_saved/error), all
+# against fake crawler/extractor/store doubles (24 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/llm:packages/knowledge-intelligence:packages/knowledge-research:packages/knowledge-research-adapters:packages/knowledge-worker \
+  python -m pytest packages/knowledge-research-adapters/tests -q
 # Knowledge Worker composition root (KI-P4, ADR-0028) — real data loading (no network) and
-# environment-driven configuration/fail-fast paths, plus run_forever's stop/skip/tick/
-# survive-an-exception semantics against a fake runner; no real DB/HTTP/LLM call in this
-# suite (9 tests):
+# environment-driven configuration/fail-fast paths, run_forever's stop/skip/tick/
+# survive-an-exception semantics against a fake runner, and (KI-P5, ADR-0029) run-history
+# recording after a cycle ran; no real DB/HTTP/LLM call in this suite (10 tests):
 uv run pytest apps/worker/tests -q
 # Run the real, always-on process (manual/ops verification — not part of the automated
 # suite; see apps/worker/README.md):
 #   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
 #   OPENAI_API_KEY=sk-... uv run python -m grc_worker.knowledge_learning_loop
+
+# AI Worker Control Center persistence (KI-P5, ADR-0029) — WorkerControlRepository/
+# WorkerRunHistoryRepository/WorkerEventRepository against apps/web's live
+# `worker_control`/`worker_run_history`/`worker_events` tables (needs a reachable Postgres
+# with apps/web's migrations applied — apply 0019_worker_control.sql via
+# `pnpm --filter web db:migrate`; skips cleanly otherwise; 5 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/persistence-web \
+  python -m pytest packages/persistence-web/tests/test_worker_control.py -q
+# AI Worker Control Center API (KI-P5, ADR-0029) — apps/api's routers/knowledge_worker.py:
+# status/events/runs/reports/schedule/trigger, RBAC (owner/admin full control, auditor
+# read-only, everyone else 403); needs a reachable Postgres with apps/web's migrations
+# applied (skips cleanly otherwise; 9 tests):
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
+  uv run pytest apps/api/tests/test_knowledge_worker.py -q
+# AI Worker Control Center frontend (KI-P5, ADR-0029) — apps/web's /ai-worker admin page
+# (requireRoles("owner","admin")) plus its /api/knowledge-worker/* proxy routes; verified
+# manually end-to-end in the browser this session (status/schedule-toggle/manual-trigger all
+# round-tripped through Postgres); no automated eval suite added yet:
+pnpm --filter @grc/web typecheck && pnpm --filter @grc/web lint
 
 # Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now
 # registers Policy Hunter's/Policy Analyst's three Tools on the live Tool Registry and

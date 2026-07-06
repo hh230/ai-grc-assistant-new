@@ -13,6 +13,15 @@ potentially long-running batch operation (Workflow-Engine-shaped), not a single
 request/response capability; the one real LLM step it triggers, ``synthesize_knowledge_answer``
 (via the injected ``ResearchCoordinator``'s ``KnowledgeDiscoveryEngine``), is already a
 registered, audited Tool.
+
+KI-P5 (ADR-0029): this runner is where "questions loaded", "gap detected", "trusted sources
+searched", "knowledge discovered", and "item saved" actually happen, so it is the natural
+place to emit the Admin AI Worker Control Center's activity-timeline events — an optional
+``event_sink`` (``grc_knowledge_worker.WorkerEventSink``, the one dependency this package adds
+beyond KI-P2's own; a one-way, acyclic dependency since ``grc_knowledge_worker`` never imports
+this package). Every event is an operational fact (a count, a status, a source name), never a
+model's raw reasoning (CLAUDE.md §19). Omitting ``event_sink`` leaves every existing caller
+and test unchanged.
 """
 
 from __future__ import annotations
@@ -40,6 +49,7 @@ from grc_knowledge_research import (
     ResearchStatus,
     build_research_plan,
 )
+from grc_knowledge_worker import WorkerEvent, WorkerEventSink, WorkerEventType
 
 
 class StoredKnowledgeItem(Protocol):
@@ -139,10 +149,28 @@ class KnowledgeGapResearchRunner:
         catalog: tuple[CatalogedSource, ...],
         coordinator: ResearchCoordinator,
         store: KnowledgeItemStore,
+        event_sink: WorkerEventSink | None = None,
     ) -> None:
         self._catalog = catalog
         self._coordinator = coordinator
         self._store = store
+        self._event_sink = event_sink
+
+    async def _emit(
+        self,
+        event_type: WorkerEventType,
+        message: str,
+        *,
+        now: datetime,
+        question_id: str | None = None,
+    ) -> None:
+        if self._event_sink is None:
+            return
+        await self._event_sink.record(
+            WorkerEvent(
+                event_type=event_type, message=message, occurred_at=now, question_id=question_id
+            )
+        )
 
     async def run(
         self, questions: tuple[KnowledgeQuestion, ...], *, now: datetime
@@ -150,13 +178,24 @@ class KnowledgeGapResearchRunner:
         existing_rows = await self._store.list_all()
         existing_items = tuple(_to_knowledge_item(row) for row in existing_rows)
         findings = detect_gaps(questions, existing_items, now=now)
+        await self._emit(
+            WorkerEventType.QUESTIONS_LOADED,
+            f"Loaded {len(questions)} question(s) to check for knowledge gaps",
+            now=now,
+        )
 
         outcomes = []
         for finding in actionable_gaps(findings):
-            outcomes.append(await self._research_one(finding))
+            await self._emit(
+                WorkerEventType.GAP_DETECTED,
+                f"Gap detected ({finding.status.value}): {finding.question.question}",
+                now=now,
+                question_id=finding.question.question_id,
+            )
+            outcomes.append(await self._research_one(finding, now=now))
         return tuple(outcomes)
 
-    async def _research_one(self, finding: GapFinding) -> GapResearchOutcome:
+    async def _research_one(self, finding: GapFinding, *, now: datetime) -> GapResearchOutcome:
         question = finding.question
         try:
             plan = build_research_plan(question, self._catalog)
@@ -164,6 +203,12 @@ class KnowledgeGapResearchRunner:
         except (
             Exception
         ) as exc:  # noqa: BLE001 - fail-safe: one question's failure never blocks another's
+            await self._emit(
+                WorkerEventType.ERROR,
+                f"Research failed: {exc}",
+                now=now,
+                question_id=question.question_id,
+            )
             return GapResearchOutcome(
                 question_id=question.question_id,
                 gap_status=finding.status.value,
@@ -171,6 +216,13 @@ class KnowledgeGapResearchRunner:
                 stored=False,
                 error=str(exc),
             )
+
+        await self._emit(
+            WorkerEventType.SOURCE_SEARCHED,
+            f"Searched {len(result.attempts)} trusted source(s)",
+            now=now,
+            question_id=question.question_id,
+        )
 
         if (
             result.status is not ResearchStatus.FOUND
@@ -185,6 +237,12 @@ class KnowledgeGapResearchRunner:
             )
 
         item = result.item
+        await self._emit(
+            WorkerEventType.KNOWLEDGE_DISCOVERED,
+            f"Knowledge discovered from {item.source.name} (confidence {item.confidence:.2f})",
+            now=now,
+            question_id=question.question_id,
+        )
         try:
             await self._store.upsert(
                 id=str(uuid.uuid4()),
@@ -204,6 +262,12 @@ class KnowledgeGapResearchRunner:
                 version_hash=result.version_hash,
             )
         except Exception as exc:  # noqa: BLE001 - fail-safe: a storage failure is isolated too
+            await self._emit(
+                WorkerEventType.ERROR,
+                f"Storage failed: {exc}",
+                now=now,
+                question_id=question.question_id,
+            )
             return GapResearchOutcome(
                 question_id=question.question_id,
                 gap_status=finding.status.value,
@@ -212,6 +276,12 @@ class KnowledgeGapResearchRunner:
                 error=str(exc),
             )
 
+        await self._emit(
+            WorkerEventType.ITEM_SAVED,
+            f"Saved knowledge item for: {question.question}",
+            now=now,
+            question_id=question.question_id,
+        )
         return GapResearchOutcome(
             question_id=question.question_id,
             gap_status=finding.status.value,

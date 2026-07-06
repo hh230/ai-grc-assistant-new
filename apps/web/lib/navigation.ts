@@ -11,6 +11,7 @@ import {
   Settings,
   LifeBuoy,
   Radar,
+  Bot,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/auth/roles";
@@ -113,6 +114,14 @@ export const PRIMARY_NAV: NavGroup[] = [
 ];
 
 export const FOOTER_NAV: NavLink[] = [
+  // Admin-only (matches the server guard on the page itself — CLAUDE.md §20).
+  {
+    label: "AI Worker",
+    labelKey: "aiWorker",
+    href: "/ai-worker",
+    icon: Bot,
+    requiredRoles: ["owner", "admin"],
+  },
   // Workspace administration is restricted to owners and admins (matches the server guard).
   {
     label: "Settings",

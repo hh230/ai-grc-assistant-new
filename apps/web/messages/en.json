@@ -26,7 +26,8 @@
       "evidence": "Evidence",
       "reports": "Reports",
       "settings": "Settings",
-      "help": "Help & Support"
+      "help": "Help & Support",
+      "aiWorker": "AI Worker"
     }
   },
   "topbar": {
@@ -1385,5 +1386,61 @@
   "regions": {
     "International": "International",
     "Saudi Arabia": "Saudi Arabia"
+  },
+  "aiWorkerPage": {
+    "eyebrow": "Administration",
+    "title": "AI Worker Control Center",
+    "description": "Monitor and control the Autonomous Knowledge Worker: its schedule, activity timeline, and the shared GRC knowledge base it maintains. Admin-only."
+  },
+  "aiWorkerWorkspace": {
+    "status": {
+      "eyebrow": "Worker status",
+      "running": "Running",
+      "stopped": "Stopped",
+      "cycleInProgress": "Cycle in progress",
+      "currentTask": "Current task",
+      "interval": "Interval",
+      "intervalHours": "Every {hours} hour(s)",
+      "lastRun": "Last run",
+      "nextRun": "Next run",
+      "lastRunReason": "Last run reason",
+      "never": "Never",
+      "dueNow": "Due now",
+      "manualTriggerPending": "Manual run pending",
+      "reason": {
+        "due": "Scheduled",
+        "manual": "Manual"
+      }
+    },
+    "schedule": {
+      "title": "Learning schedule",
+      "description": "Enable or disable the worker and set how often it checks for knowledge gaps.",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "intervalLabel": "Run every",
+      "hours": "hours",
+      "save": "Save"
+    },
+    "trigger": {
+      "label": "Run Learning Now",
+      "pending": "Run requested…"
+    },
+    "timeline": {
+      "title": "Activity timeline",
+      "description": "What the worker is doing — operational events only, no internal model reasoning.",
+      "emptyTitle": "No activity yet"
+    },
+    "reports": {
+      "title": "Learning reports",
+      "description": "Knowledge base coverage by verification status.",
+      "stats": {
+        "totalItems": "Total knowledge items",
+        "addedThisCycle": "Added this cycle",
+        "updated": "Updated",
+        "needsReview": "Needs review",
+        "verified": "Verified",
+        "outdated": "Outdated"
+      }
+    }
   }
 }

@@ -52,6 +52,7 @@ source = { virtual = "." }
 [package.dev-dependencies]
 dev = [
     { name = "black" },
+    { name = "httpx" },
     { name = "mypy" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
@@ -63,6 +64,7 @@ dev = [
 [package.metadata.requires-dev]
 dev = [
     { name = "black", specifier = ">=24.8.0" },
+    { name = "httpx", specifier = ">=0.27.0" },
     { name = "mypy", specifier = ">=1.11.0" },
     { name = "pytest", specifier = ">=8.3.0" },
     { name = "pytest-asyncio", specifier = ">=0.24.0" },
@@ -506,6 +508,7 @@ source = { editable = "packages/knowledge-research-adapters" }
 dependencies = [
     { name = "grc-knowledge-intelligence" },
     { name = "grc-knowledge-research" },
+    { name = "grc-knowledge-worker" },
     { name = "grc-regulatory-crawlers" },
 ]
 
@@ -513,6 +516,7 @@ dependencies = [
 requires-dist = [
     { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
     { name = "grc-knowledge-research", editable = "packages/knowledge-research" },
+    { name = "grc-knowledge-worker", editable = "packages/knowledge-worker" },
     { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
 ]
 
@@ -597,12 +601,14 @@ version = "0.0.0"
 source = { editable = "packages/persistence-web" }
 dependencies = [
     { name = "asyncpg" },
+    { name = "grc-knowledge-worker" },
     { name = "grc-tools" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "asyncpg", specifier = ">=0.29" },
+    { name = "grc-knowledge-worker", editable = "packages/knowledge-worker" },
     { name = "grc-tools", editable = "packages/tools" },
 ]
 

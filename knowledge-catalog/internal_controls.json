@@ -1,0 +1,20 @@
+{
+  "domain": "internal_controls",
+  "questions": [
+    {
+      "question_id": "internal_controls.third_party_risk_controls",
+      "category": "control_requirements",
+      "question": "What controls are required for third-party risk management?"
+    },
+    {
+      "question_id": "internal_controls.financial_reporting_controls",
+      "category": "control_requirements",
+      "question": "What internal controls should exist over financial reporting?"
+    },
+    {
+      "question_id": "internal_controls.segregation_of_duties",
+      "category": "control_design",
+      "question": "How should segregation of duties be enforced in critical processes?"
+    }
+  ]
+}

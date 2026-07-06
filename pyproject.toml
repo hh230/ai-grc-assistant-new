@@ -34,6 +34,8 @@ members = [
   "packages/policy-hunter",
   "packages/policy-analyst",
   "packages/policy-builder",
+  "packages/knowledge-intelligence",
+  "packages/knowledge-intelligence-adapters",
   "packages/events",
   "packages/plugins",
   "packages/observability",
@@ -67,6 +69,8 @@ grc-regulatory-crawlers = { workspace = true }
 grc-policy-hunter = { workspace = true }
 grc-policy-analyst = { workspace = true }
 grc-policy-builder = { workspace = true }
+grc-knowledge-intelligence = { workspace = true }
+grc-knowledge-intelligence-adapters = { workspace = true }
 grc-events = { workspace = true }
 grc-plugins = { workspace = true }
 grc-observability = { workspace = true }

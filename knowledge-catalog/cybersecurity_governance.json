@@ -1,0 +1,20 @@
+{
+  "domain": "cybersecurity_governance",
+  "questions": [
+    {
+      "question_id": "cybersecurity_governance.critical_system_controls",
+      "category": "control_requirements",
+      "question": "What cybersecurity controls are required for critical systems?"
+    },
+    {
+      "question_id": "cybersecurity_governance.incident_response_plan_structure",
+      "category": "incident_response",
+      "question": "What is the expected structure of an incident response plan?"
+    },
+    {
+      "question_id": "cybersecurity_governance.framework_alignment",
+      "category": "framework_alignment",
+      "question": "What cybersecurity governance framework should an organization align to?"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "domain": "policies_procedures",
+  "questions": [
+    {
+      "question_id": "policies_procedures.required_policy_set",
+      "category": "policy_requirements",
+      "question": "What policies should an organization maintain?"
+    },
+    {
+      "question_id": "policies_procedures.review_cadence",
+      "category": "policy_lifecycle",
+      "question": "How often should policies be reviewed and updated?"
+    },
+    {
+      "question_id": "policies_procedures.approval_workflow",
+      "category": "policy_lifecycle",
+      "question": "What approval workflow should govern policy publication?"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "domain": "vendor_management",
+  "questions": [
+    {
+      "question_id": "vendor_management.onboarding_due_diligence",
+      "category": "due_diligence",
+      "question": "What due diligence should be performed before onboarding a vendor?"
+    },
+    {
+      "question_id": "vendor_management.ongoing_monitoring",
+      "category": "vendor_monitoring",
+      "question": "What ongoing monitoring should apply to critical vendors?"
+    },
+    {
+      "question_id": "vendor_management.high_risk_classification",
+      "category": "vendor_risk_classification",
+      "question": "What criteria classify a vendor as high-risk?"
+    }
+  ]
+}

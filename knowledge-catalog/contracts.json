@@ -1,0 +1,20 @@
+{
+  "domain": "contracts",
+  "questions": [
+    {
+      "question_id": "contracts.vendor_contract_clauses",
+      "category": "contract_requirements",
+      "question": "What clauses should exist in a vendor contract?"
+    },
+    {
+      "question_id": "contracts.data_processing_agreement_clauses",
+      "category": "contract_requirements",
+      "question": "What data protection clauses should be included in a data processing agreement?"
+    },
+    {
+      "question_id": "contracts.termination_and_exit_clauses",
+      "category": "contract_requirements",
+      "question": "What termination and exit clauses should a vendor contract include?"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "domain": "compliance",
+  "questions": [
+    {
+      "question_id": "compliance.evidence_of_compliance",
+      "category": "compliance_evidence",
+      "question": "What evidence proves compliance with a specific regulatory requirement?"
+    },
+    {
+      "question_id": "compliance.regulatory_change_tracking",
+      "category": "regulatory_change_management",
+      "question": "What is the process for tracking regulatory changes relevant to compliance obligations?"
+    },
+    {
+      "question_id": "compliance.monitoring_activities",
+      "category": "compliance_monitoring",
+      "question": "What compliance monitoring activities should be performed periodically?"
+    }
+  ]
+}

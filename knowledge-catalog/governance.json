@@ -1,0 +1,20 @@
+{
+  "domain": "governance",
+  "questions": [
+    {
+      "question_id": "governance.oversight_structure",
+      "category": "governance_structure",
+      "question": "What governance structures should an organization maintain to oversee GRC activities?"
+    },
+    {
+      "question_id": "governance.board_cybersecurity_role",
+      "category": "board_responsibilities",
+      "question": "What roles and responsibilities should a board have in cybersecurity governance?"
+    },
+    {
+      "question_id": "governance.governance_policies",
+      "category": "policy_requirements",
+      "question": "What policies should an organization maintain to demonstrate effective governance?"
+    }
+  ]
+}

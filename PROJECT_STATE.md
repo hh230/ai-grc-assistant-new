@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (24 accepted) — `docs/adr/`
+## 3. ADRs (25 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -148,6 +148,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0022 | Policy Intelligence API exposure (PI-P5): `apps/api`'s `web_runtime.py` now registers Policy Hunter's and Policy Analyst's three Tools on the live Tool Registry; a new `routers/policy_intelligence.py` exposes `GET /policy-intelligence/obligations`, `/coverage-gaps`, and `/policies/{id}/quality-review` — each authorized via the existing RBAC `Action.READ`/`ResourceType.POLICY` gate, executed through `PolicyHunterAgent`/`PolicyAnalystAgent`, and unconditionally audited by the same Tool Registry as every other Tool call |
 | 0023 | Policy Intelligence frontend (PI-P6): `apps/web`'s first real call to `apps/api` — `lib/policyIntelligence/service.ts` proxies to PI-P5's endpoints using `ActorContext.apiToken` (the PI-P0-era bridge, unused until now), exposed via `app/api/policy-intelligence/*` Route Handlers and a three-tab `/policy-intelligence` workspace page (Obligations, Coverage Gaps, Quality Review); `apps/api` remains the sole authorization source of truth, no business logic is duplicated in TypeScript |
 | 0024 | Policy Builder Agent (PI-P7): a read-only, deterministic (no LLM) drafting agent (`packages/policy-builder`) — turns one confirmed regulatory obligation into a starter policy draft (a template: the Purpose section quotes the obligation with a citation, the other six required sections are explicit `[Human input required]` placeholders), through one Tool-Registry-audited Tool (`draft_policy_from_obligation.v1`); has no write path at all — human approval before any policy change is structural, not a runtime check, since a human must save the proposal through the existing, unchanged `submit-for-review`/`approve`/`publish` workflow |
+| 0025 | Autonomous Knowledge Engine (KI-P1): a catalog-driven Knowledge Question Generator (`/knowledge-catalog`, 33 questions across 11 GRC/legal domains), a deterministic Knowledge Gap Detector (`packages/knowledge-intelligence`), and a Tool-audited LLM synthesis step (`packages/knowledge-intelligence-adapters`, `synthesize_knowledge_answer.v1`) that grounds every answer in one already-fetched trusted-source excerpt — never the model's own knowledge; new platform-scope `knowledge_items` storage (`grc_persistence_web.KnowledgeItemRepository`) whose idempotent upsert never resets an already-verified item's status; no live trusted-source fetching, consumer wiring, API/UI, or scheduling yet — all named future work |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -296,8 +297,8 @@ ai-grc-assistant/
 │  │  ├─ unit_of_work.py · outbox.py · alembic.ini · tests/
 │  ├─ persistence-web/ grc_persistence_web/ ✅ Adapters against apps/web's live Postgres schema
 │  │                     (ai_tool_invocations, policies, policy_missions, regulatory_raw_documents,
-│  │                     regulatory_obligations) — ADR-0017/0018/0019; not a second database,
-│  │                     and independent of packages/persistence above
+│  │                     regulatory_obligations, knowledge_items) — ADR-0017/0018/0019/0025;
+│  │                     not a second database, and independent of packages/persistence above
 │  ├─ regulatory-intelligence/ grc_regulatory_intelligence/ ✅ PI-P1 pure engine: split→classify
 │  │                     obligation pipeline; PI-P2 adds source registry/config loader,
 │  │                     RegulatoryDocumentInput, change detection, CrawlerPort — zero external
@@ -321,6 +322,15 @@ ai-grc-assistant/
 │  │                     the obligation in Purpose, six other sections are explicit
 │  │                     placeholders), PolicyBuilderAgent (ADR-0024; 13 tests); no write
 │  │                     path — not yet wired into apps/api or apps/web
+│  ├─ knowledge-intelligence/ grc_knowledge_intelligence/ ✅ KI-P1 pure engine: catalog-driven
+│  │                     Knowledge Question Generator (question_catalog.py, reads
+│  │                     /knowledge-catalog/*.json), deterministic Knowledge Gap Detector
+│  │                     (gap_detection.py), KnowledgeDiscoveryEngine (ADR-0025; 22 tests) —
+│  │                     distinct from knowledge-graph/ below (M8, unrelated older roadmap)
+│  ├─ knowledge-intelligence-adapters/ grc_knowledge_intelligence_adapters/ ✅ KI-P1
+│  │                     Tool-audited LLM synthesis: synthesize_knowledge_answer.v1, grounded
+│  │                     strictly in a given trusted-source excerpt (ADR-0025; 6 tests); no
+│  │                     live trusted-source fetching yet — reuses regulatory-crawlers later
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -334,8 +344,10 @@ ai-grc-assistant/
 ├─ frameworks/      framework definitions as data (schema + per-framework folders)
 ├─ regulatory-sources/ regulatory source definitions as data (PI-P2, ADR-0019) — sa/{sama,cma,
 │                   nca,sdaia,mhrsd,zatca}.json
+├─ knowledge-catalog/ GRC/compliance/legal question catalog as data (KI-P1, ADR-0025) — one
+│                   JSON file per KnowledgeDomain, 33 questions across 11 domains
 ├─ prompts/         versioned prompt artifacts (empty)
-├─ docs/            architecture/ (+ persistence report) · adr/ (22) · onboarding/ · runbooks/
+├─ docs/            architecture/ (+ persistence report) · adr/ (25) · onboarding/ · runbooks/
 ├─ infra/ docker/ config/ scripts/ tests/ .github/
 ├─ CLAUDE.md · README.md · PROJECT_STATE.md (this file)
 └─ workspace manifests: pnpm-workspace.yaml · turbo.json · pyproject.toml · Makefile
@@ -507,7 +519,8 @@ PYTHONPATH=packages/domain:packages/services:packages/persistence \
 # Policy Intelligence PI-P0 (ADR-0017) + PI-P1 Regulatory Intelligence (ADR-0018) +
 # PI-P2 Regulatory Connectors/Crawlers (ADR-0019) + PI-P3 Policy Hunter Agent (ADR-0020) +
 # PI-P4 Policy Analyst Agent (ADR-0021) + PI-P5 Policy Intelligence API exposure (ADR-0022) +
-# PI-P6 Policy Intelligence frontend (ADR-0023) + PI-P7 Policy Builder Agent (ADR-0024).
+# PI-P6 Policy Intelligence frontend (ADR-0023) + PI-P7 Policy Builder Agent (ADR-0024) +
+# KI-P1 Autonomous Knowledge Engine (ADR-0025).
 #
 # `pyproject.toml` now declares `[tool.uv.sources]` for every internal package (a newer uv
 # release requires each workspace member named explicitly, not just listed under
@@ -554,6 +567,19 @@ PYTHONPATH=packages/domain:packages/tools:packages/policy-analyst \
 # network, no write path at all; 13 tests):
 PYTHONPATH=packages/domain:packages/tools:packages/policy-builder \
   python -m pytest packages/policy-builder/tests -q
+# Autonomous Knowledge Engine (KI-P1) — catalog-driven Question Generator + deterministic Gap
+# Detector + KnowledgeDiscoveryEngine, zero external deps, no DB, no network (22 tests):
+PYTHONPATH=packages/knowledge-intelligence python -m pytest packages/knowledge-intelligence/tests -q
+# Knowledge Intelligence adapters — Tool-audited LLM synthesis grounded strictly in a given
+# trusted-source excerpt (deterministic fake chat model, no network/key; 6 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/llm:packages/knowledge-intelligence:packages/knowledge-intelligence-adapters \
+  python -m pytest packages/knowledge-intelligence-adapters/tests -q
+# Knowledge Engine storage (KI-P1, ADR-0025) — KnowledgeItemRepository against apps/web's live
+# `knowledge_items` table: idempotent upsert never resets an already-verified item's status
+# (needs a reachable Postgres with apps/web's migrations applied; skips cleanly otherwise;
+# 6 tests):
+PYTHONPATH=packages/domain:packages/tools:packages/persistence-web \
+  python -m pytest packages/persistence-web/tests/test_knowledge.py -q
 # Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now
 # registers Policy Hunter's/Policy Analyst's three Tools on the live Tool Registry and
 # routers/policy_intelligence.py exposes them as GET /policy-intelligence/{obligations,

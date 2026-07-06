@@ -9,6 +9,7 @@ migrations.
 from __future__ import annotations
 
 from .invocations import PostgresToolInvocationRecorder
+from .knowledge import KnowledgeItemRecord, KnowledgeItemRepository
 from .missions import MissionRecord, MissionStepRecord, PolicyMissionStore
 from .policies import PolicyRecord, PolicyRepository
 from .pool import Database, normalize_dsn
@@ -32,4 +33,6 @@ __all__ = [
     "RegulatoryRawDocumentRecord",
     "RegulatoryObligationRepository",
     "RegulatoryObligationRecord",
+    "KnowledgeItemRepository",
+    "KnowledgeItemRecord",
 ]

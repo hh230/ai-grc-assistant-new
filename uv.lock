@@ -21,6 +21,8 @@ members = [
     "grc-extraction-adapters",
     "grc-framework-engine",
     "grc-knowledge-graph",
+    "grc-knowledge-intelligence",
+    "grc-knowledge-intelligence-adapters",
     "grc-llm",
     "grc-observability",
     "grc-persistence",
@@ -422,6 +424,32 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [{ name = "grc-domain", editable = "packages/domain" }]
+
+[[package]]
+name = "grc-knowledge-intelligence"
+version = "0.0.0"
+source = { editable = "packages/knowledge-intelligence" }
+
+[[package]]
+name = "grc-knowledge-intelligence-adapters"
+version = "0.0.0"
+source = { editable = "packages/knowledge-intelligence-adapters" }
+dependencies = [
+    { name = "grc-domain" },
+    { name = "grc-knowledge-intelligence" },
+    { name = "grc-llm" },
+    { name = "grc-tools" },
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grc-domain", editable = "packages/domain" },
+    { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
+    { name = "grc-llm", editable = "packages/llm" },
+    { name = "grc-tools", editable = "packages/tools" },
+    { name = "pydantic", specifier = ">=2.9.0" },
+]
 
 [[package]]
 name = "grc-llm"

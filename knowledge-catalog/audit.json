@@ -1,0 +1,20 @@
+{
+  "domain": "audit",
+  "questions": [
+    {
+      "question_id": "audit.documentation_retention",
+      "category": "audit_evidence",
+      "question": "What documentation should be retained to support an internal audit?"
+    },
+    {
+      "question_id": "audit.cybersecurity_audit_scope",
+      "category": "audit_scope",
+      "question": "What is the appropriate scope for a cybersecurity audit?"
+    },
+    {
+      "question_id": "audit.frequency_high_risk_areas",
+      "category": "audit_planning",
+      "question": "How often should internal audits be performed for high-risk areas?"
+    }
+  ]
+}

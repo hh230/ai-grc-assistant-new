@@ -1,0 +1,20 @@
+{
+  "domain": "data_protection",
+  "questions": [
+    {
+      "question_id": "data_protection.personal_data_processing_requirements",
+      "category": "data_processing",
+      "question": "What are the requirements for processing personal data under applicable data protection law?"
+    },
+    {
+      "question_id": "data_protection.data_subject_rights",
+      "category": "data_subject_rights",
+      "question": "What rights do data subjects have and how should they be fulfilled?"
+    },
+    {
+      "question_id": "data_protection.breach_notification_obligations",
+      "category": "incident_notification",
+      "question": "What breach notification obligations apply when personal data is compromised?"
+    }
+  ]
+}

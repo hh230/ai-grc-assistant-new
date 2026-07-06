@@ -1,0 +1,20 @@
+{
+  "domain": "regulatory_obligations",
+  "questions": [
+    {
+      "question_id": "regulatory_obligations.obligations_from_circular",
+      "category": "obligation_identification",
+      "question": "What obligations arise from a specific regulatory circular?"
+    },
+    {
+      "question_id": "regulatory_obligations.compliance_deadline",
+      "category": "obligation_timing",
+      "question": "What is the deadline for compliance with a newly issued regulation?"
+    },
+    {
+      "question_id": "regulatory_obligations.non_compliance_penalties",
+      "category": "enforcement",
+      "question": "What penalties apply for non-compliance with a regulatory obligation?"
+    }
+  ]
+}

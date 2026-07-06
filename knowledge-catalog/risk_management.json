@@ -1,0 +1,20 @@
+{
+  "domain": "risk_management",
+  "questions": [
+    {
+      "question_id": "risk_management.process_risk_identification",
+      "category": "risk_identification",
+      "question": "What risks apply to a given business process?"
+    },
+    {
+      "question_id": "risk_management.third_party_assessment_methodology",
+      "category": "risk_assessment",
+      "question": "What is an appropriate risk assessment methodology for third-party risk?"
+    },
+    {
+      "question_id": "risk_management.risk_appetite_definition",
+      "category": "risk_appetite",
+      "question": "How should risk appetite be defined and documented?"
+    }
+  ]
+}

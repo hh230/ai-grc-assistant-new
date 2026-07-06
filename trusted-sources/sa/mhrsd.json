@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-mhrsd",
+  "name": "Ministry of Human Resources and Social Development (MHRSD)",
+  "source_type": "government_regulator",
+  "url": "https://hrsd.gov.sa",
+  "jurisdiction": "SA",
+  "domains": ["regulatory_obligations"]
+}

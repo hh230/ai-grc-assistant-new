@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-cma",
+  "name": "Capital Market Authority (CMA)",
+  "source_type": "government_regulator",
+  "url": "https://cma.org.sa",
+  "jurisdiction": "SA",
+  "domains": ["governance", "regulatory_obligations"]
+}

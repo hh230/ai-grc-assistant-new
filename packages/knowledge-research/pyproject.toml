@@ -1,0 +1,15 @@
+[project]
+name = "grc-knowledge-research"
+version = "0.0.0"
+description = "Autonomous Knowledge Research (Knowledge Intelligence KI-P2): the pure pipeline that plans, ranks, and coordinates trusted-source-grounded research to close a Knowledge Gap Detector finding, reusing grc_knowledge_intelligence's KnowledgeDiscoveryEngine unmodified. No third-party dependencies — the concrete Tool-audited crawler/catalog adapters live in grc_knowledge_research_adapters."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-knowledge-intelligence",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_knowledge_research"]

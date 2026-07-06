@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-sdaia",
+  "name": "Saudi Data & AI Authority (SDAIA)",
+  "source_type": "government_regulator",
+  "url": "https://sdaia.gov.sa",
+  "jurisdiction": "SA",
+  "domains": ["data_protection", "regulatory_obligations"]
+}

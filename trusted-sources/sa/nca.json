@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-nca",
+  "name": "National Cybersecurity Authority (NCA)",
+  "source_type": "government_regulator",
+  "url": "https://nca.gov.sa",
+  "jurisdiction": "SA",
+  "domains": ["cybersecurity_governance", "regulatory_obligations"]
+}

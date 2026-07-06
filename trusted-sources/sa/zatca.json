@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-zatca",
+  "name": "Zakat, Tax and Customs Authority (ZATCA)",
+  "source_type": "government_regulator",
+  "url": "https://zatca.gov.sa",
+  "jurisdiction": "SA",
+  "domains": ["regulatory_obligations"]
+}

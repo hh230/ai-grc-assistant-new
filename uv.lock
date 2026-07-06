@@ -23,6 +23,8 @@ members = [
     "grc-knowledge-graph",
     "grc-knowledge-intelligence",
     "grc-knowledge-intelligence-adapters",
+    "grc-knowledge-research",
+    "grc-knowledge-research-adapters",
     "grc-llm",
     "grc-observability",
     "grc-persistence",
@@ -449,6 +451,34 @@ requires-dist = [
     { name = "grc-llm", editable = "packages/llm" },
     { name = "grc-tools", editable = "packages/tools" },
     { name = "pydantic", specifier = ">=2.9.0" },
+]
+
+[[package]]
+name = "grc-knowledge-research"
+version = "0.0.0"
+source = { editable = "packages/knowledge-research" }
+dependencies = [
+    { name = "grc-knowledge-intelligence" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" }]
+
+[[package]]
+name = "grc-knowledge-research-adapters"
+version = "0.0.0"
+source = { editable = "packages/knowledge-research-adapters" }
+dependencies = [
+    { name = "grc-knowledge-intelligence" },
+    { name = "grc-knowledge-research" },
+    { name = "grc-regulatory-crawlers" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
+    { name = "grc-knowledge-research", editable = "packages/knowledge-research" },
+    { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
 ]
 
 [[package]]

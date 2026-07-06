@@ -1,0 +1,17 @@
+[project]
+name = "grc-knowledge-research-adapters"
+version = "0.0.0"
+description = "Autonomous Knowledge Research (Knowledge Intelligence KI-P2): the concrete HTTP crawler, curated trusted-source catalog loader, and the KnowledgeGapResearchRunner that ties gap detection, research, and storage together. Reuses grc_regulatory_crawlers' polite, robots.txt-respecting primitives rather than a second crawler."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-knowledge-intelligence",
+  "grc-knowledge-research",
+  "grc-regulatory-crawlers",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_knowledge_research_adapters"]

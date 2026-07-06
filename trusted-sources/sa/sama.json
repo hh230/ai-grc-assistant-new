@@ -1,0 +1,8 @@
+{
+  "source_id": "sa-sama",
+  "name": "Saudi Central Bank (SAMA)",
+  "source_type": "government_regulator",
+  "url": "https://www.sama.gov.sa",
+  "jurisdiction": "SA",
+  "domains": ["governance", "risk_management", "regulatory_obligations"]
+}

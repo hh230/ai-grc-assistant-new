@@ -1,0 +1,8 @@
+{
+  "source_id": "us-nist-csf",
+  "name": "National Institute of Standards and Technology (NIST) — Cybersecurity Framework",
+  "source_type": "standards_body",
+  "url": "https://www.nist.gov/cyberframework",
+  "jurisdiction": "US",
+  "domains": ["cybersecurity_governance", "risk_management"]
+}

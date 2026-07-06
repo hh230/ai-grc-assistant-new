@@ -1,0 +1,325 @@
+{
+  "domain": "contracts",
+  "contract_types": [
+    {
+      "contract_type_id": "nda",
+      "name": "NDA",
+      "description": "Non-disclosure agreement governing the exchange of confidential information between two or more parties.",
+      "aliases": ["non-disclosure agreement", "confidentiality agreement"],
+      "tags": ["confidentiality"],
+      "clauses": [
+        {
+          "clause_id": "definition_of_confidential_information",
+          "name": "Definition of Confidential Information",
+          "category": "required",
+          "description": "Defines what information is treated as confidential and what is expressly excluded (e.g. already public, independently developed).",
+          "negotiation_points": ["scope of what counts as confidential", "carve-outs for independently developed information"]
+        },
+        {
+          "clause_id": "term_and_duration",
+          "name": "Term and Duration",
+          "category": "required",
+          "description": "States how long the agreement, and the confidentiality obligation itself, remains in force.",
+          "negotiation_points": ["length of the confidentiality survival period after termination"]
+        },
+        {
+          "clause_id": "permitted_use",
+          "name": "Permitted Use",
+          "category": "required",
+          "description": "Limits use of the disclosed information to an agreed purpose only.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "return_or_destruction_of_information",
+          "name": "Return or Destruction of Information",
+          "category": "protective",
+          "description": "Requires the receiving party to return or destroy confidential information at the end of the relationship.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "non_solicitation",
+          "name": "Non-Solicitation",
+          "category": "risk",
+          "description": "Restricts one party from soliciting the other's employees or customers — a common source of unbalanced risk if scoped too broadly.",
+          "negotiation_points": ["duration and scope of the restriction", "whether it covers unsolicited applications"]
+        },
+        {
+          "clause_id": "remedies_and_injunctive_relief",
+          "name": "Remedies and Injunctive Relief",
+          "category": "protective",
+          "description": "Confirms that a breach may cause irreparable harm and entitles the disclosing party to seek injunctive relief in addition to damages.",
+          "negotiation_points": []
+        }
+      ]
+    },
+    {
+      "contract_type_id": "vendor_agreement",
+      "name": "vendor agreement",
+      "description": "Agreement governing the supply of goods or services by a vendor to the organization.",
+      "aliases": ["supplier agreement", "vendor contract"],
+      "tags": ["vendor", "third-party"],
+      "clauses": [
+        {
+          "clause_id": "scope_of_services",
+          "name": "Scope of Services",
+          "category": "required",
+          "description": "Defines precisely what the vendor is obligated to deliver.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "service_levels",
+          "name": "Service Levels",
+          "category": "required",
+          "description": "Sets measurable performance standards (e.g. uptime, response times) and remedies for missing them.",
+          "negotiation_points": ["service credit amounts", "measurement methodology"]
+        },
+        {
+          "clause_id": "data_protection_and_confidentiality",
+          "name": "Data Protection and Confidentiality",
+          "category": "required",
+          "description": "Obligates the vendor to protect the organization's data and confidential information to a defined standard.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "audit_rights",
+          "name": "Audit Rights",
+          "category": "protective",
+          "description": "Gives the organization the right to audit the vendor's compliance with the agreement, including security controls.",
+          "negotiation_points": ["frequency of audits", "advance notice period"]
+        },
+        {
+          "clause_id": "indemnification",
+          "name": "Indemnification",
+          "category": "risk",
+          "description": "Allocates responsibility for third-party claims arising from the vendor's performance — an unbalanced indemnity can expose the organization to open-ended liability.",
+          "negotiation_points": ["mutuality of indemnification", "carve-outs and caps"]
+        },
+        {
+          "clause_id": "limitation_of_liability",
+          "name": "Limitation of Liability",
+          "category": "risk",
+          "description": "Caps each party's financial exposure under the agreement — a low cap can leave the organization under-protected relative to its actual exposure.",
+          "negotiation_points": ["cap amount relative to contract value", "exclusions from the cap (e.g. confidentiality breach, gross negligence)"]
+        },
+        {
+          "clause_id": "termination_for_convenience",
+          "name": "Termination for Convenience",
+          "category": "required",
+          "description": "Allows either party to end the agreement without cause on notice.",
+          "negotiation_points": ["notice period length"]
+        }
+      ]
+    },
+    {
+      "contract_type_id": "saas_agreement",
+      "name": "SaaS agreement",
+      "description": "Agreement governing subscription access to a vendor's cloud-hosted software.",
+      "aliases": ["software as a service agreement", "cloud subscription agreement"],
+      "tags": ["saas", "technology", "vendor"],
+      "clauses": [
+        {
+          "clause_id": "service_availability_and_uptime",
+          "name": "Service Availability and Uptime",
+          "category": "required",
+          "description": "Commits the vendor to a minimum uptime percentage, typically backed by service credits.",
+          "negotiation_points": ["uptime percentage", "scheduled maintenance exclusions"]
+        },
+        {
+          "clause_id": "data_ownership",
+          "name": "Data Ownership",
+          "category": "required",
+          "description": "Confirms the organization retains ownership of its own data hosted in the service.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "data_security_and_breach_notification",
+          "name": "Data Security and Breach Notification",
+          "category": "required",
+          "description": "Requires defined security controls and a specific timeframe for notifying the organization of a data breach.",
+          "negotiation_points": ["breach notification timeframe"]
+        },
+        {
+          "clause_id": "subprocessors",
+          "name": "Subprocessors",
+          "category": "risk",
+          "description": "Governs the vendor's use of its own subcontractors to process the organization's data — a source of hidden third-party risk if not disclosed and controlled.",
+          "negotiation_points": ["right to object to a new subprocessor", "subprocessor list disclosure"]
+        },
+        {
+          "clause_id": "limitation_of_liability",
+          "name": "Limitation of Liability",
+          "category": "risk",
+          "description": "Caps the vendor's liability for service failures or data incidents.",
+          "negotiation_points": ["cap amount", "carve-outs for data breach liability"]
+        },
+        {
+          "clause_id": "termination_and_data_return",
+          "name": "Termination and Data Return",
+          "category": "required",
+          "description": "Sets out how the organization's data is returned or deleted, and in what format, once the subscription ends.",
+          "negotiation_points": ["data export format", "post-termination data retention period"]
+        },
+        {
+          "clause_id": "intellectual_property_license",
+          "name": "Intellectual Property License",
+          "category": "protective",
+          "description": "Clarifies that the organization receives only a license to use the software, not ownership of the underlying IP.",
+          "negotiation_points": []
+        }
+      ]
+    },
+    {
+      "contract_type_id": "employment_contract",
+      "name": "employment contract",
+      "description": "Agreement governing the terms of an individual's employment with the organization.",
+      "aliases": ["employment agreement"],
+      "tags": ["employment", "hr"],
+      "clauses": [
+        {
+          "clause_id": "job_duties_and_reporting_line",
+          "name": "Job Duties and Reporting Line",
+          "category": "required",
+          "description": "Describes the employee's role, responsibilities, and who they report to.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "compensation_and_benefits",
+          "name": "Compensation and Benefits",
+          "category": "required",
+          "description": "States salary, bonus structure, and benefits entitlements.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "confidentiality",
+          "name": "Confidentiality",
+          "category": "protective",
+          "description": "Protects the organization's confidential information and trade secrets during and after employment.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "intellectual_property_assignment",
+          "name": "Intellectual Property Assignment",
+          "category": "protective",
+          "description": "Assigns to the organization any IP the employee creates within the scope of their employment.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "non_compete",
+          "name": "Non-Compete",
+          "category": "risk",
+          "description": "Restricts the employee from working for a competitor for a period after leaving — enforceability and scope vary significantly by jurisdiction.",
+          "negotiation_points": ["duration", "geographic scope", "enforceability under local law"]
+        },
+        {
+          "clause_id": "termination_and_notice_period",
+          "name": "Termination and Notice Period",
+          "category": "required",
+          "description": "Sets out how the employment relationship may be ended and the required notice.",
+          "negotiation_points": ["notice period length", "grounds for immediate termination"]
+        }
+      ]
+    },
+    {
+      "contract_type_id": "service_agreement",
+      "name": "service agreement",
+      "description": "General agreement for the provision of professional or operational services.",
+      "aliases": ["services agreement", "master services agreement"],
+      "tags": ["services"],
+      "clauses": [
+        {
+          "clause_id": "scope_of_work",
+          "name": "Scope of Work",
+          "category": "required",
+          "description": "Defines the specific services to be performed, often via a statement of work.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "acceptance_criteria",
+          "name": "Acceptance Criteria",
+          "category": "required",
+          "description": "Defines the standard the deliverables must meet before they are accepted and paid for.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "payment_terms",
+          "name": "Payment Terms",
+          "category": "required",
+          "description": "States pricing, invoicing schedule, and payment due dates.",
+          "negotiation_points": ["payment due period", "late payment interest"]
+        },
+        {
+          "clause_id": "warranty",
+          "name": "Warranty",
+          "category": "protective",
+          "description": "Warrants that the services will be performed to a professional standard and, if defective, will be corrected.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "limitation_of_liability",
+          "name": "Limitation of Liability",
+          "category": "risk",
+          "description": "Caps the provider's liability for losses arising from the services.",
+          "negotiation_points": ["cap amount", "exclusions for gross negligence or willful misconduct"]
+        },
+        {
+          "clause_id": "termination",
+          "name": "Termination",
+          "category": "required",
+          "description": "Sets out the grounds and process for ending the agreement, including for breach.",
+          "negotiation_points": ["cure period before termination for breach"]
+        }
+      ]
+    },
+    {
+      "contract_type_id": "procurement_contract",
+      "name": "procurement contract",
+      "description": "Agreement for the purchase of goods, equipment, or supplies.",
+      "aliases": ["purchase agreement", "supply contract"],
+      "tags": ["procurement"],
+      "clauses": [
+        {
+          "clause_id": "specifications_and_deliverables",
+          "name": "Specifications and Deliverables",
+          "category": "required",
+          "description": "Defines the exact goods to be delivered, including quantity, quality, and technical specifications.",
+          "negotiation_points": []
+        },
+        {
+          "clause_id": "pricing_and_payment_terms",
+          "name": "Pricing and Payment Terms",
+          "category": "required",
+          "description": "States unit pricing, total contract value, and payment schedule.",
+          "negotiation_points": ["price adjustment mechanism for long-term contracts"]
+        },
+        {
+          "clause_id": "delivery_and_inspection",
+          "name": "Delivery and Inspection",
+          "category": "required",
+          "description": "Sets delivery timelines, location, and the organization's right to inspect goods before acceptance.",
+          "negotiation_points": ["inspection period length"]
+        },
+        {
+          "clause_id": "warranty_and_quality",
+          "name": "Warranty and Quality",
+          "category": "protective",
+          "description": "Warrants that delivered goods conform to specification and are free from defects for a defined period.",
+          "negotiation_points": ["warranty period length"]
+        },
+        {
+          "clause_id": "indemnification",
+          "name": "Indemnification",
+          "category": "risk",
+          "description": "Allocates responsibility for third-party claims arising from defective or non-conforming goods.",
+          "negotiation_points": ["mutuality and cap on indemnification"]
+        },
+        {
+          "clause_id": "termination_for_default",
+          "name": "Termination for Default",
+          "category": "required",
+          "description": "Allows the organization to terminate if the supplier fails to deliver conforming goods on time.",
+          "negotiation_points": ["cure period before termination"]
+        }
+      ]
+    }
+  ]
+}

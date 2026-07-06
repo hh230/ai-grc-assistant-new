@@ -1,0 +1,61 @@
+{
+  "domain": "risk_management",
+  "topics": [
+    {
+      "topic_id": "enterprise_risk_management",
+      "name": "enterprise risk management",
+      "description": "The organization-wide program for identifying, assessing, and managing risk across all business units and risk categories.",
+      "aliases": ["ERM"],
+      "tags": ["risk", "enterprise"],
+      "related_topic_ids": ["risk_assessment", "risk_treatment"]
+    },
+    {
+      "topic_id": "operational_risk",
+      "name": "operational risk",
+      "description": "Risk arising from failed or inadequate internal processes, people, systems, or external events.",
+      "aliases": ["op risk"],
+      "tags": ["risk", "operations"],
+      "related_topic_ids": ["enterprise_risk_management", "risk_assessment"]
+    },
+    {
+      "topic_id": "third_party_risk",
+      "name": "third-party risk",
+      "description": "Risk introduced by vendors, suppliers, and other external parties the organization depends on.",
+      "aliases": ["vendor risk", "supplier risk", "third-party risk management"],
+      "tags": ["risk", "third-party", "vendor"],
+      "related_topic_ids": ["technology_risk", "compliance_risk"]
+    },
+    {
+      "topic_id": "technology_risk",
+      "name": "technology risk",
+      "description": "Risk arising from the organization's technology, infrastructure, and system dependencies.",
+      "aliases": ["IT risk"],
+      "tags": ["risk", "technology"],
+      "related_topic_ids": ["third_party_risk", "operational_risk"]
+    },
+    {
+      "topic_id": "compliance_risk",
+      "name": "compliance risk",
+      "description": "Risk of legal or regulatory sanction, financial loss, or reputational damage from failing to comply with obligations.",
+      "aliases": ["regulatory risk"],
+      "tags": ["risk", "compliance"],
+      "related_topic_ids": ["third_party_risk", "risk_assessment"]
+    },
+    {
+      "topic_id": "risk_assessment",
+      "name": "risk assessment",
+      "description": "The process of identifying and evaluating the likelihood and impact of risks.",
+      "aliases": ["risk identification", "risk evaluation"],
+      "tags": ["risk", "assessment"],
+      "related_topic_ids": ["risk_treatment", "enterprise_risk_management"]
+    },
+    {
+      "topic_id": "risk_treatment",
+      "name": "risk treatment",
+      "description": "The process of selecting and implementing measures to modify (mitigate, transfer, avoid, or accept) an assessed risk.",
+      "aliases": ["risk mitigation", "risk response"],
+      "tags": ["risk", "treatment"],
+      "related_topic_ids": ["risk_assessment"]
+    }
+  ]
+}

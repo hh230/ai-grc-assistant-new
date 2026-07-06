@@ -1,0 +1,45 @@
+{
+  "domain": "compliance",
+  "topics": [
+    {
+      "topic_id": "regulatory_mapping",
+      "name": "regulatory mapping",
+      "description": "Mapping applicable laws, regulations, and standards to the organization's controls and policies.",
+      "aliases": ["regulatory inventory"],
+      "tags": ["compliance", "mapping"],
+      "related_topic_ids": ["obligation_management"]
+    },
+    {
+      "topic_id": "obligation_management",
+      "name": "obligation management",
+      "description": "Tracking specific compliance obligations derived from applicable regulations through to fulfillment.",
+      "aliases": ["obligations register"],
+      "tags": ["compliance", "obligations"],
+      "related_topic_ids": ["regulatory_mapping", "compliance_monitoring"]
+    },
+    {
+      "topic_id": "compliance_monitoring",
+      "name": "compliance monitoring",
+      "description": "Ongoing monitoring activities that confirm obligations continue to be met over time.",
+      "aliases": ["ongoing compliance monitoring"],
+      "tags": ["compliance", "monitoring"],
+      "related_topic_ids": ["obligation_management", "control_testing"]
+    },
+    {
+      "topic_id": "evidence_management",
+      "name": "evidence management",
+      "description": "Collecting, organizing, and retaining evidence that demonstrates compliance and control operation.",
+      "aliases": ["compliance evidence"],
+      "tags": ["compliance", "evidence"],
+      "related_topic_ids": ["control_testing"]
+    },
+    {
+      "topic_id": "control_testing",
+      "name": "control testing",
+      "description": "Testing controls to confirm they are designed appropriately and operating effectively.",
+      "aliases": ["compliance testing"],
+      "tags": ["compliance", "testing"],
+      "related_topic_ids": ["evidence_management", "compliance_monitoring"]
+    }
+  ]
+}

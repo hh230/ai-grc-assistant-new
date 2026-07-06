@@ -25,10 +25,17 @@ Intelligence (`/regulatory-sources/sa`) — NCA, SAMA, CMA, SDAIA, MHRSD, ZATCA 
 with their already-verified, real URLs, tagged with the knowledge domains their mandate
 plausibly covers (e.g. NCA → cybersecurity governance; SDAIA → data protection). See `sa/`.
 
+**International standards bodies (KI-P3, ADR-0027):** `us/nist.json` — NIST's Cybersecurity
+Framework page (`nist.gov/cyberframework`), fetched and confirmed live during KI-P3 before
+being added. **ISO was deliberately not added**: its site returns HTTP 403 to the automated
+fetch tool available in that session, so it could not be independently confirmed live —
+"only add sources when verifiable" means verified in-session, not assumed from general
+knowledge. Adding it is future work once it can actually be verified (e.g. via a browser).
+
 **Deliberately narrow for now.** Several `KnowledgeDomain`s (contracts, vendor management,
 internal controls, audit, policies & procedures) have no cataloged source yet: this catalog
-does not invent international standards-body URLs (ISO, NIST, ...) that haven't been
-independently verified. A question in an uncataloged domain simply yields an empty research
-plan — reported as insufficient evidence, never guessed at from an unverified source. Growing
-coverage into these domains is ongoing editorial work (add a reviewed JSON file), not a
-code change — the same posture ADR-0025 already took for the question catalog itself.
+does not invent sources that haven't been independently verified. A question in an
+uncataloged domain simply yields an empty research plan — reported as insufficient evidence,
+never guessed at from an unverified source. Growing coverage into these domains is ongoing
+editorial work (add a reviewed JSON file, verified before it's added), not a code change —
+the same posture ADR-0025 already took for the question catalog itself.

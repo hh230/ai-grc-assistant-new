@@ -1,0 +1,45 @@
+{
+  "domain": "cybersecurity_governance",
+  "topics": [
+    {
+      "topic_id": "security_policies",
+      "name": "security policies",
+      "description": "The documented policies that establish the organization's cybersecurity requirements and expectations.",
+      "aliases": ["information security policies"],
+      "tags": ["cybersecurity", "policy"],
+      "related_topic_ids": ["access_control"]
+    },
+    {
+      "topic_id": "access_control",
+      "name": "access control",
+      "description": "Controls that govern who may access systems and data, and under what conditions (authentication, authorization, least privilege).",
+      "aliases": ["identity and access management", "IAM"],
+      "tags": ["cybersecurity", "access"],
+      "related_topic_ids": ["security_policies", "asset_management"]
+    },
+    {
+      "topic_id": "incident_response",
+      "name": "incident response",
+      "description": "The organization's process for detecting, responding to, and recovering from cybersecurity incidents.",
+      "aliases": ["cyber incident response", "IR"],
+      "tags": ["cybersecurity", "incident response"],
+      "related_topic_ids": ["asset_management"]
+    },
+    {
+      "topic_id": "asset_management",
+      "name": "asset management",
+      "description": "Inventorying and classifying information assets and systems so they can be appropriately protected.",
+      "aliases": ["IT asset management", "asset inventory"],
+      "tags": ["cybersecurity", "assets"],
+      "related_topic_ids": ["access_control", "incident_response"]
+    },
+    {
+      "topic_id": "third_party_cybersecurity",
+      "name": "third-party cybersecurity",
+      "description": "Managing the cybersecurity risk that vendors and other third parties introduce through their access to systems or data.",
+      "aliases": ["vendor cybersecurity", "supply chain cybersecurity"],
+      "tags": ["cybersecurity", "third-party"],
+      "related_topic_ids": ["asset_management"]
+    }
+  ]
+}

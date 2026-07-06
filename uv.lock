@@ -23,6 +23,7 @@ members = [
     "grc-knowledge-graph",
     "grc-knowledge-intelligence",
     "grc-knowledge-intelligence-adapters",
+    "grc-knowledge-ontology",
     "grc-knowledge-research",
     "grc-knowledge-research-adapters",
     "grc-llm",
@@ -452,6 +453,17 @@ requires-dist = [
     { name = "grc-tools", editable = "packages/tools" },
     { name = "pydantic", specifier = ">=2.9.0" },
 ]
+
+[[package]]
+name = "grc-knowledge-ontology"
+version = "0.0.0"
+source = { editable = "packages/knowledge-ontology" }
+dependencies = [
+    { name = "grc-knowledge-intelligence" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" }]
 
 [[package]]
 name = "grc-knowledge-research"

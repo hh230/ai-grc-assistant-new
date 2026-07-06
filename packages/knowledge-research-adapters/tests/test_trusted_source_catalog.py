@@ -105,3 +105,13 @@ def test_the_real_trusted_sources_directory_loads_cleanly() -> None:
     assert len(catalog) == len(files)
     source_ids = [cataloged.source.source_id for cataloged in catalog]
     assert len(source_ids) == len(set(source_ids))
+
+
+def test_every_real_trusted_source_url_is_https() -> None:
+    """A minimal, cheap safety check on every curated entry (KI-P3, ADR-0027): a trusted
+    source is never onboarded over plain, unencrypted HTTP."""
+    files = tuple(sorted(_TRUSTED_SOURCES_DIR.glob("*/*.json")))
+    catalog = build_trusted_source_catalog(files)
+
+    for cataloged in catalog:
+        assert cataloged.source.url.startswith("https://"), cataloged.source.source_id

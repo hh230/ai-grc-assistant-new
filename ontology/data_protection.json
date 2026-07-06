@@ -1,0 +1,45 @@
+{
+  "domain": "data_protection",
+  "topics": [
+    {
+      "topic_id": "personal_data",
+      "name": "personal data",
+      "description": "Information relating to an identified or identifiable natural person that the organization collects or handles.",
+      "aliases": ["personal information", "PII"],
+      "tags": ["privacy", "data protection"],
+      "related_topic_ids": ["processing_activities"]
+    },
+    {
+      "topic_id": "processing_activities",
+      "name": "processing activities",
+      "description": "The operations performed on personal data (collection, storage, use, disclosure, deletion) and their documented purposes.",
+      "aliases": ["records of processing activities", "ROPA"],
+      "tags": ["privacy", "processing"],
+      "related_topic_ids": ["personal_data", "consent"]
+    },
+    {
+      "topic_id": "consent",
+      "name": "consent",
+      "description": "The lawful basis of obtaining and recording a data subject's agreement to specific processing of their personal data.",
+      "aliases": ["data subject consent"],
+      "tags": ["privacy", "consent"],
+      "related_topic_ids": ["processing_activities"]
+    },
+    {
+      "topic_id": "retention",
+      "name": "data retention",
+      "description": "How long personal data is kept before it is deleted or anonymized, and the policy governing that schedule.",
+      "aliases": ["retention schedule", "data retention policy"],
+      "tags": ["privacy", "retention"],
+      "related_topic_ids": ["personal_data"]
+    },
+    {
+      "topic_id": "data_sharing",
+      "name": "data sharing",
+      "description": "Disclosing or transferring personal data to third parties or across borders, and the safeguards that apply.",
+      "aliases": ["data transfer", "cross-border data transfer"],
+      "tags": ["privacy", "data sharing"],
+      "related_topic_ids": ["processing_activities", "retention"]
+    }
+  ]
+}

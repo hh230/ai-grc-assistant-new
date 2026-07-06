@@ -149,6 +149,8 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0023 | Policy Intelligence frontend (PI-P6): `apps/web`'s first real call to `apps/api` — `lib/policyIntelligence/service.ts` proxies to PI-P5's endpoints using `ActorContext.apiToken` (the PI-P0-era bridge, unused until now), exposed via `app/api/policy-intelligence/*` Route Handlers and a three-tab `/policy-intelligence` workspace page (Obligations, Coverage Gaps, Quality Review); `apps/api` remains the sole authorization source of truth, no business logic is duplicated in TypeScript |
 | 0024 | Policy Builder Agent (PI-P7): a read-only, deterministic (no LLM) drafting agent (`packages/policy-builder`) — turns one confirmed regulatory obligation into a starter policy draft (a template: the Purpose section quotes the obligation with a citation, the other six required sections are explicit `[Human input required]` placeholders), through one Tool-Registry-audited Tool (`draft_policy_from_obligation.v1`); has no write path at all — human approval before any policy change is structural, not a runtime check, since a human must save the proposal through the existing, unchanged `submit-for-review`/`approve`/`publish` workflow |
 | 0025 | Autonomous Knowledge Engine (KI-P1): a catalog-driven Knowledge Question Generator (`/knowledge-catalog`, 33 questions across 11 GRC/legal domains), a deterministic Knowledge Gap Detector (`packages/knowledge-intelligence`), and a Tool-audited LLM synthesis step (`packages/knowledge-intelligence-adapters`, `synthesize_knowledge_answer.v1`) that grounds every answer in one already-fetched trusted-source excerpt — never the model's own knowledge; new platform-scope `knowledge_items` storage (`grc_persistence_web.KnowledgeItemRepository`) whose idempotent upsert never resets an already-verified item's status; no live trusted-source fetching, consumer wiring, API/UI, or scheduling yet — all named future work |
+| 0026 | Autonomous Knowledge Research (KI-P2): closes KI-P1's named fetching gap — a curated, authority-ranked trusted-source catalog (`/trusted-sources`), a pure Research Planner/Coordinator (`packages/knowledge-research`) that reuses `grc_regulatory_crawlers`'s HTTP primitives (never a second crawler) and the unmodified `KnowledgeDiscoveryEngine`, and a `KnowledgeGapResearchRunner` (`packages/knowledge-research-adapters`) tying gap detection, research, and the existing idempotent upsert together end to end; no new Tool — every synthesis call still flows through `synthesize_knowledge_answer`; no schema change, UI, or scheduling |
+| 0027 | Domain Ontology Engine (KI-P3): a structured GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy (`/ontology`, 37 topics across 7 domains + 6 contract types with 38 categorized clauses), a pure package (`packages/knowledge-ontology`) with deterministic, template-based question generation (additive to and disjoint from the hand-curated catalog), missing-clause detection, and a fixed six-member relationship vocabulary (one kind derived from contract-type data, five illustrated by curated example edges); one verified trusted-source addition (NIST CSF) — no unverifiable sources added; no LLM decisions, no new Tool, no UI/API |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -331,6 +333,17 @@ ai-grc-assistant/
 │  │                     Tool-audited LLM synthesis: synthesize_knowledge_answer.v1, grounded
 │  │                     strictly in a given trusted-source excerpt (ADR-0025; 6 tests); no
 │  │                     live trusted-source fetching yet — reuses regulatory-crawlers later
+│  ├─ knowledge-research/ grc_knowledge_research/ ✅ KI-P2 pure engine: curated-catalog Research
+│  │                     Planner (planning.py), word-overlap relevance ranking, ResearchCoordinator
+│  │                     reusing KnowledgeDiscoveryEngine unmodified (ADR-0026; 16 tests)
+│  ├─ knowledge-research-adapters/ grc_knowledge_research_adapters/ ✅ KI-P2 HttpResearchCrawler
+│  │                     (built from grc_regulatory_crawlers primitives), trusted-source catalog
+│  │                     loader, KnowledgeGapResearchRunner tying gap detection→research→storage
+│  │                     together (ADR-0026; 22 tests) — no new Tool, no scheduling yet
+│  ├─ knowledge-ontology/ grc_knowledge_ontology/ ✅ KI-P3 Domain Ontology Engine: Topic/
+│  │                     ContractType/Clause/Relationship models (reads /ontology/*.json),
+│  │                     deterministic template-based question generation, missing-clause
+│  │                     detection (ADR-0027; 27 tests) — no LLM decisions, no new Tool
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -346,8 +359,15 @@ ai-grc-assistant/
 │                   nca,sdaia,mhrsd,zatca}.json
 ├─ knowledge-catalog/ GRC/compliance/legal question catalog as data (KI-P1, ADR-0025) — one
 │                   JSON file per KnowledgeDomain, 33 questions across 11 domains
+├─ trusted-sources/ curated, authority-typed research catalog as data (KI-P2/KI-P3, ADR-0026/
+│                   0027) — sa/{sama,cma,nca,sdaia,mhrsd,zatca}.json (reused, verified regulator
+│                   URLs) + us/nist.json (verified live in KI-P3); ISO deliberately not added
+│                   (could not be verified live — see ADR-0027)
+├─ ontology/        GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy as data (KI-P3,
+│                   ADR-0027) — one JSON file per domain (37 topics across 7 domains),
+│                   contracts.json (6 contract types, 38 categorized clauses), relationships.json
 ├─ prompts/         versioned prompt artifacts (empty)
-├─ docs/            architecture/ (+ persistence report) · adr/ (25) · onboarding/ · runbooks/
+├─ docs/            architecture/ (+ persistence report) · adr/ (27) · onboarding/ · runbooks/
 ├─ infra/ docker/ config/ scripts/ tests/ .github/
 ├─ CLAUDE.md · README.md · PROJECT_STATE.md (this file)
 └─ workspace manifests: pnpm-workspace.yaml · turbo.json · pyproject.toml · Makefile

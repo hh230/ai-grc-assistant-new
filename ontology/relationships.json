@@ -1,0 +1,108 @@
+{
+  "relationships": [
+    {
+      "relationship_type": "requirement_to_control",
+      "subject_id": "requirement.least_privilege_access",
+      "subject_label": "Least-privilege access requirement",
+      "object_id": "control.role_based_access_control",
+      "object_label": "Role-based access control",
+      "description": "A least-privilege access requirement is typically satisfied by implementing role-based access control that limits each user to only the access their role needs."
+    },
+    {
+      "relationship_type": "requirement_to_control",
+      "subject_id": "requirement.data_encryption_at_rest",
+      "subject_label": "Encrypt data at rest requirement",
+      "object_id": "control.disk_and_database_encryption",
+      "object_label": "Disk and database encryption",
+      "description": "A requirement to encrypt data at rest is satisfied by a control that enforces disk- or database-level encryption for stored data."
+    },
+    {
+      "relationship_type": "requirement_to_control",
+      "subject_id": "requirement.segregation_of_duties",
+      "subject_label": "Segregation of duties requirement",
+      "object_id": "control.dual_approval_workflow",
+      "object_label": "Dual-approval workflow",
+      "description": "A segregation-of-duties requirement is satisfied by a control requiring two different individuals to initiate and approve a sensitive transaction."
+    },
+    {
+      "relationship_type": "control_to_evidence",
+      "subject_id": "control.role_based_access_control",
+      "subject_label": "Role-based access control",
+      "object_id": "evidence.access_review_report",
+      "object_label": "Periodic access review report",
+      "description": "A role-based access control's operation is evidenced by a periodic access review report showing granted access matches assigned roles."
+    },
+    {
+      "relationship_type": "control_to_evidence",
+      "subject_id": "control.disk_and_database_encryption",
+      "subject_label": "Disk and database encryption",
+      "object_id": "evidence.encryption_configuration_scan",
+      "object_label": "Encryption configuration scan result",
+      "description": "An encryption control's operation is evidenced by a configuration scan confirming encryption is enabled on the relevant systems."
+    },
+    {
+      "relationship_type": "control_to_evidence",
+      "subject_id": "control.dual_approval_workflow",
+      "subject_label": "Dual-approval workflow",
+      "object_id": "evidence.approval_workflow_log",
+      "object_label": "Approval workflow audit log",
+      "description": "A dual-approval control's operation is evidenced by an audit log showing two distinct approvers for each transaction sampled."
+    },
+    {
+      "relationship_type": "risk_to_control",
+      "subject_id": "risk.unauthorized_access",
+      "subject_label": "Unauthorized access to systems or data",
+      "object_id": "control.role_based_access_control",
+      "object_label": "Role-based access control",
+      "description": "The risk of unauthorized access is mitigated by role-based access control limiting who can reach a system or dataset."
+    },
+    {
+      "relationship_type": "risk_to_control",
+      "subject_id": "risk.third_party_data_breach",
+      "subject_label": "Third-party data breach",
+      "object_id": "control.vendor_security_assessment",
+      "object_label": "Vendor security assessment",
+      "description": "The risk of a third-party data breach is mitigated by assessing a vendor's security posture before and during the relationship."
+    },
+    {
+      "relationship_type": "risk_to_control",
+      "subject_id": "risk.fraudulent_transaction",
+      "subject_label": "Fraudulent transaction",
+      "object_id": "control.dual_approval_workflow",
+      "object_label": "Dual-approval workflow",
+      "description": "The risk of a fraudulent transaction is mitigated by requiring dual approval before a transaction is executed."
+    },
+    {
+      "relationship_type": "regulation_to_obligation",
+      "subject_id": "regulation.nca_ecc",
+      "subject_label": "NCA Essential Cybersecurity Controls",
+      "object_id": "obligation.encrypt_sensitive_data",
+      "object_label": "Encrypt sensitive data in transit and at rest",
+      "description": "The NCA Essential Cybersecurity Controls impose an obligation to encrypt sensitive data both in transit and at rest."
+    },
+    {
+      "relationship_type": "regulation_to_obligation",
+      "subject_id": "regulation.pdpl",
+      "subject_label": "Saudi Personal Data Protection Law (PDPL)",
+      "object_id": "obligation.obtain_data_subject_consent",
+      "object_label": "Obtain data subject consent before processing",
+      "description": "The PDPL imposes an obligation to obtain a data subject's consent (or another lawful basis) before processing their personal data."
+    },
+    {
+      "relationship_type": "policy_to_requirement",
+      "subject_id": "policy.access_control_policy",
+      "subject_label": "Access Control Policy",
+      "object_id": "requirement.least_privilege_access",
+      "object_label": "Least-privilege access requirement",
+      "description": "An organization's Access Control Policy is the document through which the least-privilege access requirement is formally established."
+    },
+    {
+      "relationship_type": "policy_to_requirement",
+      "subject_id": "policy.data_retention_policy",
+      "subject_label": "Data Retention Policy",
+      "object_id": "requirement.defined_retention_period",
+      "object_label": "Defined data retention period requirement",
+      "description": "An organization's Data Retention Policy is the document through which a defined retention period requirement is formally established."
+    }
+  ]
+}

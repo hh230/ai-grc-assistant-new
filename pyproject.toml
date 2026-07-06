@@ -38,6 +38,7 @@ members = [
   "packages/knowledge-intelligence-adapters",
   "packages/knowledge-research",
   "packages/knowledge-research-adapters",
+  "packages/knowledge-ontology",
   "packages/events",
   "packages/plugins",
   "packages/observability",
@@ -75,6 +76,7 @@ grc-knowledge-intelligence = { workspace = true }
 grc-knowledge-intelligence-adapters = { workspace = true }
 grc-knowledge-research = { workspace = true }
 grc-knowledge-research-adapters = { workspace = true }
+grc-knowledge-ontology = { workspace = true }
 grc-events = { workspace = true }
 grc-plugins = { workspace = true }
 grc-observability = { workspace = true }

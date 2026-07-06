@@ -1,0 +1,53 @@
+{
+  "domain": "governance",
+  "topics": [
+    {
+      "topic_id": "board_governance",
+      "name": "board governance",
+      "description": "How the board oversees organizational strategy, risk appetite, and management performance.",
+      "aliases": ["board oversight", "board of directors governance"],
+      "tags": ["governance", "board"],
+      "related_topic_ids": ["committees", "accountability_models"]
+    },
+    {
+      "topic_id": "committees",
+      "name": "governance committees",
+      "description": "Standing board or management committees (audit, risk, nomination, remuneration) that exercise delegated oversight.",
+      "aliases": ["board committees"],
+      "tags": ["governance", "board", "committees"],
+      "related_topic_ids": ["board_governance", "delegation_of_authority"]
+    },
+    {
+      "topic_id": "delegation_of_authority",
+      "name": "delegation of authority",
+      "description": "How decision-making authority is formally delegated from the board down through management, with limits and escalation thresholds.",
+      "aliases": ["authority matrix", "delegation of authority matrix"],
+      "tags": ["governance", "authority"],
+      "related_topic_ids": ["decision_rights", "accountability_models"]
+    },
+    {
+      "topic_id": "policies_framework",
+      "name": "policies framework",
+      "description": "The structure that governs how organizational policies are authored, approved, communicated, and kept current.",
+      "aliases": ["policy governance framework"],
+      "tags": ["governance", "policy"],
+      "related_topic_ids": ["board_governance"]
+    },
+    {
+      "topic_id": "decision_rights",
+      "name": "decision rights",
+      "description": "Who is authorized to make which classes of organizational decisions, and under what conditions.",
+      "aliases": ["decision-making authority"],
+      "tags": ["governance", "authority"],
+      "related_topic_ids": ["delegation_of_authority", "accountability_models"]
+    },
+    {
+      "topic_id": "accountability_models",
+      "name": "accountability models",
+      "description": "How responsibility and accountability for outcomes are assigned and tracked across roles (e.g. RACI-style models).",
+      "aliases": ["accountability framework", "RACI model"],
+      "tags": ["governance", "accountability"],
+      "related_topic_ids": ["decision_rights", "board_governance"]
+    }
+  ]
+}

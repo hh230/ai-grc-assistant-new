@@ -1,0 +1,15 @@
+[project]
+name = "grc-knowledge-ontology"
+version = "0.0.0"
+description = "Domain Ontology Engine (Knowledge Intelligence KI-P3): a structured GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy (topics, contract types and clauses, cross-cutting relationships) and a deterministic question generator that expands the KI-P1 question catalog from it. No third-party dependencies beyond grc-knowledge-intelligence (itself dependency-free)."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-knowledge-intelligence",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_knowledge_ontology"]

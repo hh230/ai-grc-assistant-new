@@ -1,0 +1,45 @@
+{
+  "domain": "internal_controls",
+  "topics": [
+    {
+      "topic_id": "preventive_controls",
+      "name": "preventive controls",
+      "description": "Controls designed to stop an undesired event from occurring in the first place.",
+      "aliases": ["preventative controls"],
+      "tags": ["controls", "preventive"],
+      "related_topic_ids": ["control_ownership", "control_effectiveness"]
+    },
+    {
+      "topic_id": "detective_controls",
+      "name": "detective controls",
+      "description": "Controls designed to identify an undesired event after it has occurred.",
+      "aliases": [],
+      "tags": ["controls", "detective"],
+      "related_topic_ids": ["corrective_controls", "control_effectiveness"]
+    },
+    {
+      "topic_id": "corrective_controls",
+      "name": "corrective controls",
+      "description": "Controls designed to remediate the impact of an undesired event once it has been detected.",
+      "aliases": ["remedial controls"],
+      "tags": ["controls", "corrective"],
+      "related_topic_ids": ["detective_controls"]
+    },
+    {
+      "topic_id": "control_ownership",
+      "name": "control ownership",
+      "description": "Assigning a named, accountable owner responsible for a control's design and ongoing operation.",
+      "aliases": ["control accountability"],
+      "tags": ["controls", "ownership"],
+      "related_topic_ids": ["preventive_controls", "control_effectiveness"]
+    },
+    {
+      "topic_id": "control_effectiveness",
+      "name": "control effectiveness",
+      "description": "Assessing whether a control is achieving its intended risk-mitigation outcome.",
+      "aliases": ["control performance"],
+      "tags": ["controls", "effectiveness"],
+      "related_topic_ids": ["control_ownership"]
+    }
+  ]
+}

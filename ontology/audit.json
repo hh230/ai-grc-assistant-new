@@ -1,0 +1,37 @@
+{
+  "domain": "audit",
+  "topics": [
+    {
+      "topic_id": "audit_planning",
+      "name": "audit planning",
+      "description": "Defining the scope, objectives, resourcing, and schedule of an internal or external audit.",
+      "aliases": ["audit scoping"],
+      "tags": ["audit", "planning"],
+      "related_topic_ids": ["audit_evidence"]
+    },
+    {
+      "topic_id": "audit_evidence",
+      "name": "audit evidence",
+      "description": "The documentation and data an auditor collects and evaluates to support audit conclusions.",
+      "aliases": ["audit documentation"],
+      "tags": ["audit", "evidence"],
+      "related_topic_ids": ["audit_planning", "findings"]
+    },
+    {
+      "topic_id": "findings",
+      "name": "audit findings",
+      "description": "Deficiencies or observations identified during an audit that require management attention.",
+      "aliases": ["audit observations"],
+      "tags": ["audit", "findings"],
+      "related_topic_ids": ["audit_evidence", "remediation_tracking"]
+    },
+    {
+      "topic_id": "remediation_tracking",
+      "name": "remediation tracking",
+      "description": "Tracking corrective action plans for audit findings through to closure.",
+      "aliases": ["corrective action tracking", "CAP tracking"],
+      "tags": ["audit", "remediation"],
+      "related_topic_ids": ["findings"]
+    }
+  ]
+}

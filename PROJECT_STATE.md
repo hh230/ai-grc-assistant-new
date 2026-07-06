@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (25 accepted) — `docs/adr/`
+## 3. ADRs (28 accepted) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -151,6 +151,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0025 | Autonomous Knowledge Engine (KI-P1): a catalog-driven Knowledge Question Generator (`/knowledge-catalog`, 33 questions across 11 GRC/legal domains), a deterministic Knowledge Gap Detector (`packages/knowledge-intelligence`), and a Tool-audited LLM synthesis step (`packages/knowledge-intelligence-adapters`, `synthesize_knowledge_answer.v1`) that grounds every answer in one already-fetched trusted-source excerpt — never the model's own knowledge; new platform-scope `knowledge_items` storage (`grc_persistence_web.KnowledgeItemRepository`) whose idempotent upsert never resets an already-verified item's status; no live trusted-source fetching, consumer wiring, API/UI, or scheduling yet — all named future work |
 | 0026 | Autonomous Knowledge Research (KI-P2): closes KI-P1's named fetching gap — a curated, authority-ranked trusted-source catalog (`/trusted-sources`), a pure Research Planner/Coordinator (`packages/knowledge-research`) that reuses `grc_regulatory_crawlers`'s HTTP primitives (never a second crawler) and the unmodified `KnowledgeDiscoveryEngine`, and a `KnowledgeGapResearchRunner` (`packages/knowledge-research-adapters`) tying gap detection, research, and the existing idempotent upsert together end to end; no new Tool — every synthesis call still flows through `synthesize_knowledge_answer`; no schema change, UI, or scheduling |
 | 0027 | Domain Ontology Engine (KI-P3): a structured GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy (`/ontology`, 37 topics across 7 domains + 6 contract types with 38 categorized clauses), a pure package (`packages/knowledge-ontology`) with deterministic, template-based question generation (additive to and disjoint from the hand-curated catalog), missing-clause detection, and a fixed six-member relationship vocabulary (one kind derived from contract-type data, five illustrated by curated example edges); one verified trusted-source addition (NIST CSF) — no unverifiable sources added; no LLM decisions, no new Tool, no UI/API |
+| 0028 | Autonomous Knowledge Worker (KI-P4): closes ADR-0019/25/26/27's repeated "no scheduling" deferral — a pure `LearningCycleScheduler` + `combine_question_sources` (merges KI-P1's catalog with KI-P3's ontology-generated questions) in a new package (`packages/knowledge-worker`), an `AutonomousKnowledgeWorker` runner/orchestrator (`tick`/bounded `run_loop`) that drives the *unmodified* KI-P2 `KnowledgeGapResearchRunner` via a structural Protocol (no new dependency, no new Tool); and the project's first real, always-on composition root — `apps/worker/src/grc_worker/knowledge_learning_loop.py` — wiring a real Postgres `KnowledgeItemRepository`, a real `OpenAIChatModel` behind the already-registered `synthesize_knowledge_answer.v1` Tool, and a real `HttpResearchCrawler`, driven by a genuine infinite loop with SIGINT/SIGTERM shutdown; found and fixed two pre-existing mypy-strict Protocol gaps in `grc_knowledge_research_adapters` (frozen-dataclass vs. plain-attribute Protocol members; invariant `list` vs. covariant `Sequence`) surfaced only once a real caller exercised them |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -344,6 +345,15 @@ ai-grc-assistant/
 │  │                     ContractType/Clause/Relationship models (reads /ontology/*.json),
 │  │                     deterministic template-based question generation, missing-clause
 │  │                     detection (ADR-0027; 27 tests) — no LLM decisions, no new Tool
+│  ├─ knowledge-worker/   grc_knowledge_worker/    ✅ KI-P4 Autonomous Learning Loop: merges
+│  │                     KI-P1 catalog + KI-P3 ontology questions (question_sources.py), a
+│  │                     pure LearningCycleScheduler (scheduler.py), and
+│  │                     AutonomousKnowledgeWorker's tick()/bounded run_loop() driving the
+│  │                     unmodified KI-P2 KnowledgeGapResearchRunner via a structural Protocol
+│  │                     (ADR-0028; 17 tests) — apps/worker/src/grc_worker/
+│  │                     knowledge_learning_loop.py is the real composition root (9 more
+│  │                     tests) wiring real Postgres/OpenAI/HTTP behind it, driven by a real
+│  │                     infinite loop with SIGINT/SIGTERM shutdown
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -600,6 +610,20 @@ PYTHONPATH=packages/domain:packages/tools:packages/llm:packages/knowledge-intell
 # 6 tests):
 PYTHONPATH=packages/domain:packages/tools:packages/persistence-web \
   python -m pytest packages/persistence-web/tests/test_knowledge.py -q
+# Autonomous Knowledge Worker (KI-P4, ADR-0028) — pure question-merge + scheduler + tick/
+# run_loop orchestration, zero external deps, no DB, no network (17 tests):
+PYTHONPATH=packages/knowledge-intelligence:packages/knowledge-ontology:packages/knowledge-worker \
+  python -m pytest packages/knowledge-worker/tests -q
+# Knowledge Worker composition root (KI-P4, ADR-0028) — real data loading (no network) and
+# environment-driven configuration/fail-fast paths, plus run_forever's stop/skip/tick/
+# survive-an-exception semantics against a fake runner; no real DB/HTTP/LLM call in this
+# suite (9 tests):
+uv run pytest apps/worker/tests -q
+# Run the real, always-on process (manual/ops verification — not part of the automated
+# suite; see apps/worker/README.md):
+#   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
+#   OPENAI_API_KEY=sk-... uv run python -m grc_worker.knowledge_learning_loop
+
 # Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now
 # registers Policy Hunter's/Policy Analyst's three Tools on the live Tool Registry and
 # routers/policy_intelligence.py exposes them as GET /policy-intelligence/{obligations,

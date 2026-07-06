@@ -1,9 +1,21 @@
 [project]
 name = "grc-app-worker"
 version = "0.0.0"
-description = "Background and scheduled jobs runner; event consumers."
+description = "Background and scheduled jobs runner; event consumers. First real job: the KI-P4 Knowledge Worker (knowledge_learning_loop.py)."
 requires-python = ">=3.12"
-dependencies = ["pydantic>=2.9.0"]
+dependencies = [
+  "pydantic>=2.9.0",
+  "grc-tools",
+  "grc-llm",
+  "grc-persistence-web",
+  "grc-regulatory-crawlers",
+  "grc-knowledge-intelligence",
+  "grc-knowledge-intelligence-adapters",
+  "grc-knowledge-ontology",
+  "grc-knowledge-research",
+  "grc-knowledge-research-adapters",
+  "grc-knowledge-worker",
+]
 
 [build-system]
 requires = ["hatchling"]

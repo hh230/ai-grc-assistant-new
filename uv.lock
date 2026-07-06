@@ -26,6 +26,7 @@ members = [
     "grc-knowledge-ontology",
     "grc-knowledge-research",
     "grc-knowledge-research-adapters",
+    "grc-knowledge-worker",
     "grc-llm",
     "grc-observability",
     "grc-persistence",
@@ -348,11 +349,33 @@ name = "grc-app-worker"
 version = "0.0.0"
 source = { editable = "apps/worker" }
 dependencies = [
+    { name = "grc-knowledge-intelligence" },
+    { name = "grc-knowledge-intelligence-adapters" },
+    { name = "grc-knowledge-ontology" },
+    { name = "grc-knowledge-research" },
+    { name = "grc-knowledge-research-adapters" },
+    { name = "grc-knowledge-worker" },
+    { name = "grc-llm" },
+    { name = "grc-persistence-web" },
+    { name = "grc-regulatory-crawlers" },
+    { name = "grc-tools" },
     { name = "pydantic" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pydantic", specifier = ">=2.9.0" }]
+requires-dist = [
+    { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
+    { name = "grc-knowledge-intelligence-adapters", editable = "packages/knowledge-intelligence-adapters" },
+    { name = "grc-knowledge-ontology", editable = "packages/knowledge-ontology" },
+    { name = "grc-knowledge-research", editable = "packages/knowledge-research" },
+    { name = "grc-knowledge-research-adapters", editable = "packages/knowledge-research-adapters" },
+    { name = "grc-knowledge-worker", editable = "packages/knowledge-worker" },
+    { name = "grc-llm", editable = "packages/llm" },
+    { name = "grc-persistence-web", editable = "packages/persistence-web" },
+    { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
+    { name = "grc-tools", editable = "packages/tools" },
+    { name = "pydantic", specifier = ">=2.9.0" },
+]
 
 [[package]]
 name = "grc-app-workflow"
@@ -491,6 +514,21 @@ requires-dist = [
     { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
     { name = "grc-knowledge-research", editable = "packages/knowledge-research" },
     { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
+]
+
+[[package]]
+name = "grc-knowledge-worker"
+version = "0.0.0"
+source = { editable = "packages/knowledge-worker" }
+dependencies = [
+    { name = "grc-knowledge-intelligence" },
+    { name = "grc-knowledge-ontology" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grc-knowledge-intelligence", editable = "packages/knowledge-intelligence" },
+    { name = "grc-knowledge-ontology", editable = "packages/knowledge-ontology" },
 ]
 
 [[package]]

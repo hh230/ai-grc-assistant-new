@@ -18,6 +18,7 @@ registered, audited Tool.
 from __future__ import annotations
 
 import uuid
+from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Protocol
@@ -43,31 +44,56 @@ from grc_knowledge_research import (
 
 class StoredKnowledgeItem(Protocol):
     """The shape one row from ``KnowledgeItemStore.list_all()`` must have — satisfied
-    structurally by ``grc_persistence_web.KnowledgeItemRecord`` without importing it."""
+    structurally by ``grc_persistence_web.KnowledgeItemRecord`` without importing it.
+    Declared as read-only properties (not plain attributes): ``KnowledgeItemRecord`` is a
+    frozen dataclass, and mypy only accepts a frozen (read-only) field as matching a Protocol
+    member declared the same way — a plain mutable attribute here would reject every frozen
+    implementer, including the real one.
+    """
 
-    id: str
-    question_id: str
-    question: str
-    answer: str
-    domain: str
-    category: str
-    applicable_context: str
-    source_id: str
-    source_name: str
-    source_type: str
-    source_url: str
-    jurisdiction: str
-    citation: str
-    confidence: float
-    status: str
-    last_verified: datetime | None
-    version: int
+    @property
+    def id(self) -> str: ...
+    @property
+    def question_id(self) -> str: ...
+    @property
+    def question(self) -> str: ...
+    @property
+    def answer(self) -> str: ...
+    @property
+    def domain(self) -> str: ...
+    @property
+    def category(self) -> str: ...
+    @property
+    def applicable_context(self) -> str: ...
+    @property
+    def source_id(self) -> str: ...
+    @property
+    def source_name(self) -> str: ...
+    @property
+    def source_type(self) -> str: ...
+    @property
+    def source_url(self) -> str: ...
+    @property
+    def jurisdiction(self) -> str: ...
+    @property
+    def citation(self) -> str: ...
+    @property
+    def confidence(self) -> float: ...
+    @property
+    def status(self) -> str: ...
+    @property
+    def last_verified(self) -> datetime | None: ...
+    @property
+    def version(self) -> int: ...
 
 
 class KnowledgeItemStore(Protocol):
-    """Structural port matching ``grc_persistence_web.KnowledgeItemRepository``."""
+    """Structural port matching ``grc_persistence_web.KnowledgeItemRepository``. ``list_all``
+    is typed to return a ``Sequence`` (covariant), not a ``list`` (invariant), so a concrete
+    ``list[KnowledgeItemRecord]`` — a subtype of ``StoredKnowledgeItem``, not the same type —
+    satisfies this port under mypy strict."""
 
-    async def list_all(self) -> list[StoredKnowledgeItem]: ...
+    async def list_all(self) -> Sequence[StoredKnowledgeItem]: ...
 
     async def upsert(
         self,

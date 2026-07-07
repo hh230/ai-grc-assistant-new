@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Get in touch with the Rasheed team about your governance, risk, and compliance needs.",
 };
 
-const CONTACT_EMAIL = "contact@rasheed.sa";
+const CONTACT_EMAIL = "m.alsayyar@outlook.sa";
 
 export default async function ContactPage() {
   const t = await getTranslations("contactPage");

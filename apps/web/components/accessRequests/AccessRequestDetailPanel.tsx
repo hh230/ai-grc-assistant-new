@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Copy, Loader2, X } from "lucide-react";
+import { Check, Copy, Loader2, Mail, TriangleAlert, X } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { useApproveAccessRequest, useRejectAccessRequest } from "@/hooks/useAccessRequests";
@@ -20,6 +20,7 @@ export function AccessRequestDetailPanel({ request, onClose }: AccessRequestDeta
   const rejectMutation = useRejectAccessRequest();
   const [invitedRole, setInvitedRole] = useState<InvitedRole>("owner");
   const [inviteLink, setInviteLink] = useState<string | null>(null);
+  const [emailSent, setEmailSent] = useState(false);
   const [rejected, setRejected] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -34,6 +35,7 @@ export function AccessRequestDetailPanel({ request, onClose }: AccessRequestDeta
   const handleApprove = async () => {
     const result = await approveMutation.mutateAsync({ id: request.id, invitedRole });
     setInviteLink(result.inviteLink);
+    setEmailSent(result.emailSent);
   };
 
   const handleReject = async () => {
@@ -106,6 +108,17 @@ export function AccessRequestDetailPanel({ request, onClose }: AccessRequestDeta
               </button>
             </div>
             <p className="mt-2 text-2xs text-foreground-muted">{t("inviteLinkHint")}</p>
+            {emailSent ? (
+              <p className="mt-3 flex items-center gap-1.5 text-2xs text-success">
+                <Mail className="h-3.5 w-3.5" strokeWidth={1.75} />
+                {t("emailSent", { email: request.email })}
+              </p>
+            ) : (
+              <p className="mt-3 flex items-center gap-1.5 text-2xs text-warning">
+                <TriangleAlert className="h-3.5 w-3.5" strokeWidth={1.75} />
+                {t("emailNotSent")}
+              </p>
+            )}
           </div>
         ) : !rejected ? (
           <label className="block">

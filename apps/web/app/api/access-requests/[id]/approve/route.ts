@@ -9,9 +9,9 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-/** Approve a pending access request — creates a one-time invitation for the requester.
- * No email integration yet (ADR-0034 "Known limitations"): the invite link is returned here
- * for the admin to copy and send manually. */
+/** Approve a pending access request — creates a one-time invitation for the requester and
+ * emails them the invite link (KI-P9 Resend integration). The link is also returned here so
+ * the admin can copy/resend it manually — a mail-provider failure never hides it. */
 export async function POST(request: Request, { params }: RouteContext): Promise<NextResponse> {
   try {
     const actor = await requireAdminActor();
@@ -25,16 +25,13 @@ export async function POST(request: Request, { params }: RouteContext): Promise<
       body = {};
     }
 
-    const result = await approveAccessRequest(actor, id, body);
-    const inviteLink = new URL(
-      `/accept-invite?token=${encodeURIComponent(result.token)}`,
-      new URL(request.url).origin,
-    ).toString();
+    const result = await approveAccessRequest(actor, id, body, new URL(request.url).origin);
 
     return NextResponse.json({
       accessRequest: result.accessRequest,
-      inviteLink,
+      inviteLink: result.inviteLink,
       expiresAt: result.invitation.expiresAt,
+      emailSent: result.emailSent,
     });
   } catch (error) {
     return errorResponse(error);

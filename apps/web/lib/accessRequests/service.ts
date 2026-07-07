@@ -10,6 +10,7 @@ import type { ActorContext } from "@/lib/auth/actor";
 import { NotFoundError, ValidationError } from "@/lib/errors";
 import { INVITED_ROLES, type InvitedRole } from "@/lib/invitations/types";
 import { createInvitation, type CreatedInvitation } from "@/lib/invitations/service";
+import { sendInvitationEmail } from "@/lib/email";
 import { accessRequestRepository } from "./repository";
 import type { AccessRequest, AccessRequestStatus } from "./types";
 
@@ -70,12 +71,21 @@ export interface ApproveAccessRequestResult {
   invitation: CreatedInvitation["invitation"];
   /** The raw invite token — surface once, in this response, for the admin to copy/send. */
   token: string;
+  inviteLink: string;
+  /** Whether the invitation email actually went out. The admin-visible copyable link is the
+   * fallback: a mail-provider failure must never block approval or hide the link. */
+  emailSent: boolean;
 }
 
+/** `baseUrl` (e.g. `https://app.rasheed.sa`, no trailing slash) is supplied by the route
+ * handler from the incoming request's own origin — this service has no request context of
+ * its own. Used both for the admin-facing copyable link and the emailed one, so they're
+ * always identical. */
 export async function approveAccessRequest(
   actor: ActorContext,
   id: string,
   input: unknown,
+  baseUrl: string,
 ): Promise<ApproveAccessRequestResult> {
   const request = await loadPendingOrThrow(id);
   const parsed = approveAccessRequestSchema.safeParse(input ?? {});
@@ -91,10 +101,22 @@ export async function approveAccessRequest(
     accessRequestId: request.id,
   });
 
+  const inviteLink = new URL(
+    `/accept-invite?token=${encodeURIComponent(token)}`,
+    baseUrl,
+  ).toString();
+
+  const emailResult = await sendInvitationEmail(request.email, {
+    name: request.name,
+    inviteLink,
+  });
+
   return {
     accessRequest: { ...request, status: "approved", reviewedAt: now, reviewedBy: actor.userId },
     invitation,
     token,
+    inviteLink,
+    emailSent: emailResult.success,
   };
 }
 

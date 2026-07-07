@@ -89,12 +89,22 @@ async function main(): Promise<void> {
     });
     assert(duplicate.id === accessRequest.id, "a duplicate pending request must not be created");
 
-    // 2. Admin approval creates an invite.
-    const approval = await approveAccessRequest(adminActor, accessRequest.id, {
-      invitedRole: "owner",
-    });
+    // 2. Admin approval creates an invite (and attempts to email it — Resend isn't
+    // configured in this test environment, so `emailSent` is expected to be false; the
+    // approval itself must still succeed, which is exactly the fail-safe behavior being
+    // exercised here).
+    const approval = await approveAccessRequest(
+      adminActor,
+      accessRequest.id,
+      { invitedRole: "owner" },
+      "http://localhost:3000",
+    );
     assert(approval.accessRequest.status === "approved", "approval must flip status to approved");
     assert(approval.token.length >= 32, "the raw invite token must be a real random value");
+    assert(
+      approval.inviteLink.includes(approval.token),
+      "the returned invite link must carry the raw token",
+    );
 
     const preview = await previewInvitation(approval.token);
     assert(preview.email === testEmail, "invite preview must carry the requester's email");
@@ -103,7 +113,13 @@ async function main(): Promise<void> {
 
     // Approving an already-reviewed request must be rejected.
     await assertThrows(
-      () => approveAccessRequest(adminActor, accessRequest.id, { invitedRole: "owner" }),
+      () =>
+        approveAccessRequest(
+          adminActor,
+          accessRequest.id,
+          { invitedRole: "owner" },
+          "http://localhost:3000",
+        ),
       "re-approving an already-approved request must fail",
     );
 

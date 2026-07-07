@@ -1492,7 +1492,9 @@
       "copied": "Copied",
       "approve": "Approve",
       "reject": "Reject",
-      "close": "Close"
+      "close": "Close",
+      "emailSent": "Invitation email sent to {email}.",
+      "emailNotSent": "Could not send the invitation email automatically — copy the link above and send it manually."
     }
   },
   "requestAccessPage": {

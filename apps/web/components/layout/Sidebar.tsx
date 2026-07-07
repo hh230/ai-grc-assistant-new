@@ -1,6 +1,5 @@
 "use client";
 
-import { ShieldHalf } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
@@ -84,12 +83,9 @@ export function Sidebar({ onNavigate }: SidebarProps) {
   return (
     <aside className="flex h-full w-[248px] shrink-0 flex-col border-e border-hairline bg-canvas">
       {/* Brand — also the fastest route to the dashboard */}
-      <Link href="/dashboard" onClick={onNavigate} className="flex h-16 items-center gap-2.5 px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-hairline-strong bg-surface-2 shadow-soft">
-          <ShieldHalf className="h-[18px] w-[18px] text-accent-foreground" strokeWidth={1.75} />
-        </div>
+      <Link href="/dashboard" onClick={onNavigate} className="flex h-16 items-center px-5">
         <div className="leading-tight">
-          <p className="text-sm font-semibold tracking-tight text-foreground">
+          <p className="text-xl font-bold tracking-tight text-foreground">
             {tCommon("appName")}
           </p>
           <p className="text-2xs text-foreground-muted">{t("brandTagline")}</p>

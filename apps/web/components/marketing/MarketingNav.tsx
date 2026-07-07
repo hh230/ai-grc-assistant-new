@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, ShieldHalf, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
@@ -25,11 +25,8 @@ export function MarketingNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-hairline-strong bg-surface-2 shadow-soft">
-            <ShieldHalf className="h-[18px] w-[18px] text-accent" strokeWidth={1.75} />
-          </div>
-          <span className="text-sm font-semibold tracking-tight text-foreground">
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <span className="text-xl font-bold tracking-tight text-foreground">
             {tCommon("appName")}
           </span>
         </Link>

@@ -101,7 +101,8 @@
       "Bash(pnpm lint *)",
       "Bash(pnpm typecheck *)",
       "Bash(npx prettier *)",
-      "Bash(DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc uv run pytest packages/knowledge-worker/tests packages/knowledge-research-adapters/tests packages/persistence-web/tests apps/worker/tests apps/api/tests -q)"
+      "Bash(DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc uv run pytest packages/knowledge-worker/tests packages/knowledge-research-adapters/tests packages/persistence-web/tests apps/worker/tests apps/api/tests -q)",
+      "Bash(brew list *)"
     ]
   }
 }

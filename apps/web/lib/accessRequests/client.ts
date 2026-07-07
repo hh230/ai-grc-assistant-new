@@ -37,6 +37,7 @@ export interface ApproveAccessRequestResponse {
   accessRequest: AccessRequest;
   inviteLink: string;
   expiresAt: string;
+  emailSent: boolean;
 }
 
 export async function approveAccessRequest(

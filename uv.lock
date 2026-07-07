@@ -36,6 +36,8 @@ members = [
     "grc-policy-builder",
     "grc-policy-hunter",
     "grc-rag",
+    "grc-regulation-ingestion",
+    "grc-regulation-ingestion-adapters",
     "grc-regulatory-crawlers",
     "grc-regulatory-intelligence",
     "grc-regulatory-intelligence-adapters",
@@ -362,6 +364,7 @@ dependencies = [
     { name = "grc-regulatory-crawlers" },
     { name = "grc-tools" },
     { name = "pydantic" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -377,6 +380,7 @@ requires-dist = [
     { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
     { name = "grc-tools", editable = "packages/tools" },
     { name = "pydantic", specifier = ">=2.9.0" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
 ]
 
 [[package]]
@@ -678,16 +682,48 @@ requires-dist = [
 ]
 
 [[package]]
+name = "grc-regulation-ingestion"
+version = "0.0.0"
+source = { editable = "packages/regulation-ingestion" }
+dependencies = [
+    { name = "grc-knowledge-worker" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "grc-knowledge-worker", editable = "packages/knowledge-worker" }]
+
+[[package]]
+name = "grc-regulation-ingestion-adapters"
+version = "0.0.0"
+source = { editable = "packages/regulation-ingestion-adapters" }
+dependencies = [
+    { name = "grc-knowledge-worker" },
+    { name = "grc-regulation-ingestion" },
+    { name = "grc-regulatory-crawlers" },
+    { name = "pypdf" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grc-knowledge-worker", editable = "packages/knowledge-worker" },
+    { name = "grc-regulation-ingestion", editable = "packages/regulation-ingestion" },
+    { name = "grc-regulatory-crawlers", editable = "packages/regulatory-crawlers" },
+    { name = "pypdf", specifier = ">=4.0.0" },
+]
+
+[[package]]
 name = "grc-regulatory-crawlers"
 version = "0.0.0"
 source = { editable = "packages/regulatory-crawlers" }
 dependencies = [
+    { name = "certifi" },
     { name = "grc-regulatory-intelligence" },
     { name = "pypdf" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "certifi", specifier = ">=2024.0.0" },
     { name = "grc-regulatory-intelligence", editable = "packages/regulatory-intelligence" },
     { name = "pypdf", specifier = ">=5.0" },
 ]

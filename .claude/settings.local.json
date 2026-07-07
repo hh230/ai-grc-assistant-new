@@ -84,7 +84,24 @@
       "Bash(PYTHONPATH=packages/domain:packages/tools:packages/policy-hunter .venv/bin/python -m mypy packages/policy-hunter/grc_policy_hunter)",
       "Bash(.venv/bin/python -m ruff check packages/policy-hunter)",
       "Bash(PYTHONPATH=packages/policy-analyst .venv/bin/python -c \"import grc_policy_analyst.quality_engine; print\\('ok'\\)\")",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/aigrc?schema=public\" uv run pytest apps/api/tests/test_policy_intelligence.py -q)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/aigrc?schema=public\" uv run pytest -q --ignore=packages/persistence/tests)",
+      "Bash(uv run *)",
+      "Bash(git stash *)",
+      "Bash(awk '{print $2}')",
+      "Bash(grep '\\\\.py$')",
+      "Bash(git check-ignore *)",
+      "Bash(mkdir -p \"/Users/mohamedalsayyar/Claude/Projects/AI GRC Assistant/apps/web/app/api/policy-intelligence/obligations\" \\\\ *)",
+      "Bash(npx next *)",
+      "Bash(grep -v \"^$\")",
+      "Bash(npx tsc *)",
+      "Bash(xargs cat)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/aigrc\" uv run pytest apps/api/tests/test_knowledge_worker.py -q)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm typecheck *)",
+      "Bash(npx prettier *)",
+      "Bash(DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc uv run pytest packages/knowledge-worker/tests packages/knowledge-research-adapters/tests packages/persistence-web/tests apps/worker/tests apps/api/tests -q)"
     ]
   }
 }

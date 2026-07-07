@@ -167,6 +167,40 @@ async def test_upsert_with_changed_version_hash_bumps_version_and_resets_status(
         await _cleanup(database, question_id)
 
 
+async def test_upsert_accepts_needs_review_status_with_no_last_verified(
+    database: Database,
+) -> None:
+    """KI-P5 follow-up: a below-confidence-threshold discovery is stored as 'needs_review',
+    not discarded — and, unlike 'verified'/'outdated', this status legitimately carries no
+    last_verified timestamp (nobody has looked at it yet)."""
+    question_id = _unique_question_id()
+    repository = KnowledgeItemRepository(database)
+    try:
+        created = await repository.upsert(
+            id=str(uuid.uuid4()),
+            question_id=question_id,
+            question="What clauses should exist in a vendor contract?",
+            answer="Vendor contracts should probably include audit rights.",
+            domain="vendor_management",
+            category="contract_requirements",
+            applicable_context="Any vendor contract involving data processing.",
+            source_id="sa-sama",
+            source_name="Saudi Central Bank (SAMA)",
+            source_type="government_regulator",
+            source_url="https://www.sama.gov.sa",
+            jurisdiction="SA",
+            citation="sa-sama#" + question_id,
+            confidence=0.3,
+            version_hash="hash-v1",
+            status="needs_review",
+        )
+
+        assert created.status == "needs_review"
+        assert created.last_verified is None
+    finally:
+        await _cleanup(database, question_id)
+
+
 async def test_list_by_status_and_list_all(database: Database) -> None:
     question_id = _unique_question_id()
     repository = KnowledgeItemRepository(database)

@@ -13,6 +13,18 @@ from .knowledge import KnowledgeItemRecord, KnowledgeItemRepository
 from .missions import MissionRecord, MissionStepRecord, PolicyMissionStore
 from .policies import PolicyRecord, PolicyRepository
 from .pool import Database, normalize_dsn
+from .regulations import (
+    NewRegulationSection,
+    RegulationDocumentRecord,
+    RegulationDocumentRepository,
+    RegulationSectionRecord,
+    RegulationSectionRepository,
+    RegulationSourceRecord,
+    RegulationSourceRepository,
+    RegulationSourceVersionRecord,
+    RegulationSourceVersionRepository,
+    SectionEmbeddingCandidate,
+)
 from .regulatory import (
     RegulatoryObligationRecord,
     RegulatoryObligationRepository,
@@ -49,4 +61,14 @@ __all__ = [
     "WorkerRunRecord",
     "WorkerEventRepository",
     "WorkerEventRecord",
+    "RegulationSourceRepository",
+    "RegulationSourceRecord",
+    "RegulationSourceVersionRepository",
+    "RegulationSourceVersionRecord",
+    "RegulationDocumentRepository",
+    "RegulationDocumentRecord",
+    "RegulationSectionRepository",
+    "RegulationSectionRecord",
+    "NewRegulationSection",
+    "SectionEmbeddingCandidate",
 ]

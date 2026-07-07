@@ -10,12 +10,41 @@ touches the network, using only the standard library (no new third-party HTTP de
 from __future__ import annotations
 
 import asyncio
+import ssl
 import urllib.request
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from importlib import resources
 from urllib.error import URLError
 
+import certifi
+
 from .exceptions import CrawlerFetchError
+
+
+def _build_ssl_context() -> ssl.SSLContext:
+    """Built once, from certifi's CA bundle rather than relying on
+    ``ssl.create_default_context()``'s platform default: several CPython builds (notably
+    python.org's macOS installer and some standalone/uv-managed builds) don't link to the OS
+    trust store at all, so a real, correctly publicly-CA-signed site fails verification purely
+    for environment reasons — reproducible in a container the same way it is here.
+
+    ``_ca_supplement.pem`` additionally covers a real server-misconfiguration case found live
+    against the Saudi Board of Experts legal portal (``laws.boe.gov.sa``): its TLS handshake
+    sends only the leaf certificate, omitting the DigiCert intermediate CA a compliant server
+    should include — most browsers paper over this via out-of-band AIA chasing, which Python's
+    ``ssl`` module does not do. The missing intermediate is a well-known, public DigiCert
+    certificate (fetched once from DigiCert's own official ``cacerts.digicert.com`` repository,
+    verified by its published SHA-256 fingerprint, and vendored here) — not a workaround that
+    weakens verification, just the chain the server should have sent itself.
+    """
+    context = ssl.create_default_context(cafile=certifi.where())
+    supplement = resources.files(__package__).joinpath("_ca_supplement.pem").read_text()
+    context.load_verify_locations(cadata=supplement)
+    return context
+
+
+_SSL_CONTEXT = _build_ssl_context()
 
 
 @dataclass(frozen=True)
@@ -55,7 +84,7 @@ class UrllibHttpFetcher(HttpFetcher):
         request = urllib.request.Request(url, headers={"User-Agent": user_agent})
         try:
             with urllib.request.urlopen(  # noqa: S310 - scheme checked above
-                request, timeout=self._timeout_seconds
+                request, timeout=self._timeout_seconds, context=_SSL_CONTEXT
             ) as response:
                 body: bytes = response.read()
                 content_type = response.headers.get("Content-Type", "")

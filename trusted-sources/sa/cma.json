@@ -4,5 +4,5 @@
   "source_type": "government_regulator",
   "url": "https://cma.org.sa",
   "jurisdiction": "SA",
-  "domains": ["governance", "regulatory_obligations"]
+  "domains": ["governance", "regulatory_obligations", "internal_controls", "audit", "compliance"]
 }

@@ -36,6 +36,15 @@ def score_relevance(question_text: str, candidate_text: str) -> float:
     return len(question_tokens & candidate_tokens) / len(question_tokens)
 
 
+def _candidate_text(ref: DiscoveredDocumentRef) -> str:
+    """Both the link title *and* its URL, not title-only-if-present: ``_WORD_RE`` only
+    recognizes ASCII words, so a non-English title (common on bilingual regulator sites,
+    e.g. an Arabic nav label) tokenizes to nothing and would otherwise silently drop that
+    candidate's only real relevance signal — its URL slug, which is routinely still in
+    English/transliterated even when the title is not (e.g. ``/ar/regulatory-documents/``)."""
+    return f"{ref.title or ''} {ref.url}"
+
+
 def rank_refs(
     question: KnowledgeQuestion, refs: Sequence[DiscoveredDocumentRef]
 ) -> tuple[DiscoveredDocumentRef, ...]:
@@ -44,7 +53,7 @@ def rank_refs(
     a random one, so a plan's document order is reproducible for audit."""
     scored = sorted(
         refs,
-        key=lambda ref: score_relevance(question.question, ref.title or ref.url),
+        key=lambda ref: score_relevance(question.question, _candidate_text(ref)),
         reverse=True,
     )
     return tuple(scored)

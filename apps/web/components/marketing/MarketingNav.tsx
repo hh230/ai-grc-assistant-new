@@ -55,9 +55,15 @@ export function MarketingNav() {
           <LanguageSwitcher />
           <Link
             href="/login"
+            className="inline-flex h-9 items-center rounded-lg border border-hairline px-4 text-sm font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
+          >
+            {t("signIn")}
+          </Link>
+          <Link
+            href="/request-access"
             className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
           >
-            {t("getStarted")}
+            {t("requestAccess")}
           </Link>
         </div>
 
@@ -97,9 +103,16 @@ export function MarketingNav() {
             <Link
               href="/login"
               onClick={() => setOpen(false)}
+              className="mt-2 inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border border-hairline text-sm font-medium text-foreground-secondary"
+            >
+              {t("signIn")}
+            </Link>
+            <Link
+              href="/request-access"
+              onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-accent text-sm font-medium text-white shadow-glow"
             >
-              {t("getStarted")}
+              {t("requestAccess")}
             </Link>
             <div className="mt-2">
               <LanguageSwitcher />

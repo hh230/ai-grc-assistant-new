@@ -11,7 +11,12 @@ interface CTASectionProps {
   ctaHref?: string;
 }
 
-export function CTASection({ title, description, ctaLabel, ctaHref = "/login" }: CTASectionProps) {
+export function CTASection({
+  title,
+  description,
+  ctaLabel,
+  ctaHref = "/request-access",
+}: CTASectionProps) {
   const t = useTranslations("marketingNav");
   return (
     <section className="border-t border-hairline bg-canvas">
@@ -26,7 +31,7 @@ export function CTASection({ title, description, ctaLabel, ctaHref = "/login" }:
           href={ctaHref}
           className="mt-8 inline-flex h-11 items-center gap-1.5 rounded-lg bg-accent px-5 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
         >
-          {ctaLabel ?? t("getStarted")}
+          {ctaLabel ?? t("requestAccess")}
           <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={1.75} />
         </Link>
       </div>

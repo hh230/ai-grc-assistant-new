@@ -9,9 +9,10 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts",
+    "test": "tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts && tsx tests/eval/accessOnboarding.eval.ts",
     "db:migrate": "node scripts/db-migrate.mjs",
-    "db:migrate-data": "node scripts/migrate-file-data.mjs"
+    "db:migrate-data": "node scripts/migrate-file-data.mjs",
+    "db:create-admin": "node scripts/create-admin.mjs"
   },
   "dependencies": {
     "@grc/contracts": "workspace:*",

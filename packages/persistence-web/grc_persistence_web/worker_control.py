@@ -113,19 +113,27 @@ def _to_event_record(row: object) -> WorkerEventRecord:
 
 
 class WorkerControlRepository:
-    """Implements ``grc_knowledge_worker.WorkerControlPort`` against the `worker_control`
+    """Implements ``grc_knowledge_worker.WorkerControlPort`` against a worker control
     singleton row, plus the admin-facing writes (enable/disable, interval, manual trigger) the
-    Control Center's API needs."""
+    Control Center's API needs.
+
+    ``table`` defaults to `worker_control` (the Knowledge Worker's own, KI-P5) but can name any
+    other table with the identical shape — e.g. `regulation_worker_control` (KI-P6) — so the
+    Regulation Ingestion Pipeline gets its own independent enable/interval/manual-trigger state
+    through the exact same class and `WorkerControlPort` contract, never a second one, while
+    never sharing a row (and therefore a cadence) with the Knowledge Worker."""
 
     _ID = "default"
 
-    def __init__(self, database: Database) -> None:
+    def __init__(self, database: Database, *, table: str = "worker_control") -> None:
         self._database = database
+        self._table = table
 
     async def _get_row(self) -> WorkerControlRecord:
         async with self._database.pool.acquire() as connection:
             row = await connection.fetchrow(
-                f"SELECT {_CONTROL_COLUMNS} FROM worker_control WHERE id = $1", self._ID
+                f"SELECT {_CONTROL_COLUMNS} FROM {self._table} WHERE id = $1",  # noqa: S608
+                self._ID,
             )
         assert row is not None  # noqa: S101 - the migration seeds this singleton row
         return _to_control_record(row)
@@ -139,7 +147,7 @@ class WorkerControlRepository:
     async def clear_manual_trigger(self) -> None:
         async with self._database.pool.acquire() as connection:
             await connection.execute(
-                "UPDATE worker_control SET manual_trigger_requested_at = NULL, "
+                f"UPDATE {self._table} SET manual_trigger_requested_at = NULL, "  # noqa: S608
                 "updated_at = now() WHERE id = $1",
                 self._ID,
             )
@@ -148,10 +156,10 @@ class WorkerControlRepository:
         async with self._database.pool.acquire() as connection:
             row = await connection.fetchrow(
                 f"""
-                UPDATE worker_control SET enabled = $2, updated_at = now(), updated_by = $3
+                UPDATE {self._table} SET enabled = $2, updated_at = now(), updated_by = $3
                 WHERE id = $1
                 RETURNING {_CONTROL_COLUMNS}
-                """,
+                """,  # noqa: S608
                 self._ID,
                 enabled,
                 updated_by,
@@ -165,10 +173,10 @@ class WorkerControlRepository:
         async with self._database.pool.acquire() as connection:
             row = await connection.fetchrow(
                 f"""
-                UPDATE worker_control SET interval_hours = $2, updated_at = now(), updated_by = $3
+                UPDATE {self._table} SET interval_hours = $2, updated_at = now(), updated_by = $3
                 WHERE id = $1
                 RETURNING {_CONTROL_COLUMNS}
-                """,
+                """,  # noqa: S608
                 self._ID,
                 interval_hours,
                 updated_by,
@@ -180,11 +188,11 @@ class WorkerControlRepository:
         async with self._database.pool.acquire() as connection:
             row = await connection.fetchrow(
                 f"""
-                UPDATE worker_control
+                UPDATE {self._table}
                 SET manual_trigger_requested_at = now(), updated_at = now(), updated_by = $2
                 WHERE id = $1
                 RETURNING {_CONTROL_COLUMNS}
-                """,
+                """,  # noqa: S608
                 self._ID,
                 updated_by,
             )

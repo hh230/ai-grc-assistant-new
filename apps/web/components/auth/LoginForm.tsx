@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Loader2, Lock, Mail, ShieldHalf, TriangleAlert } from "lucide-react";
-import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { DEFAULT_AUTHENTICATED_PATH } from "@/lib/auth/config";
 
 /** Restrict post-login redirects to in-app paths to prevent open-redirect abuse. */
@@ -13,15 +13,7 @@ function safeNext(raw: string | null): string {
   return raw;
 }
 
-const DEMO_ACCOUNTS = [
-  { email: "owner@acme.test", roleKey: "owner" },
-  { email: "compliance@acme.test", roleKey: "complianceManager" },
-  { email: "analyst@acme.test", roleKey: "analyst" },
-  { email: "viewer@acme.test", roleKey: "viewer" },
-] as const;
-
 export function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const next = safeNext(searchParams.get("next"));
   const t = useTranslations("login");
@@ -53,12 +45,6 @@ export function LoginForm() {
       setError(t("networkError"));
       setIsSubmitting(false);
     }
-  }
-
-  function fillDemo(demoEmail: string) {
-    setEmail(demoEmail);
-    setPassword("GrcDemo!2026");
-    setError(null);
   }
 
   return (
@@ -147,30 +133,12 @@ export function LoginForm() {
         </button>
       </form>
 
-      <div className="mt-7 rounded-xl border border-hairline bg-surface/40 p-4">
-        <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
-          {t("demoAccountsTitle")}
-        </p>
-        <p className="mt-1 text-xs text-foreground-muted">
-          {t("demoAccountsHint")}{" "}
-          <span className="font-mono text-foreground-secondary">GrcDemo!2026</span>
-        </p>
-        <div className="mt-2.5 grid grid-cols-2 gap-1.5">
-          {DEMO_ACCOUNTS.map((account) => (
-            <button
-              key={account.email}
-              type="button"
-              onClick={() => fillDemo(account.email)}
-              className="rounded-lg border border-hairline bg-surface/60 px-2.5 py-1.5 text-start transition-colors duration-150 hover:border-hairline-strong hover:bg-surface-2"
-            >
-              <span className="block truncate text-xs text-foreground">
-                {t(`demoRoles.${account.roleKey}`)}
-              </span>
-              <span className="block truncate text-2xs text-foreground-muted">{account.email}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <p className="mt-7 text-center text-sm text-foreground-secondary">
+        {t("noAccount")}{" "}
+        <Link href="/request-access" className="font-medium text-accent-foreground hover:underline">
+          {t("requestAccess")}
+        </Link>
+      </p>
     </div>
   );
 }

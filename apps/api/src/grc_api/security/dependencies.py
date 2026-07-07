@@ -15,10 +15,15 @@ from fastapi import Depends, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from grc_agents.orchestrator import Orchestrator
 from grc_domain.shared.value_objects import TraceContext
+from grc_llm import EmbeddingModel
 from grc_persistence_web import (
     KnowledgeItemRepository,
     PolicyMissionStore,
     PolicyRepository,
+    RegulationDocumentRepository,
+    RegulationSectionRepository,
+    RegulationSourceRepository,
+    RegulationSourceVersionRepository,
     WorkerControlRepository,
     WorkerEventRepository,
     WorkerRunHistoryRepository,
@@ -36,6 +41,10 @@ from ..observability import bind_request_context, current_request_context
 from ..web_runtime import (
     get_policy_mission_store,
     get_policy_repository,
+    get_regulation_document_repository,
+    get_regulation_section_repository,
+    get_regulation_source_repository,
+    get_regulation_source_version_repository,
     get_tool_registry,
     get_web_knowledge_item_repository,
     get_worker_control_repository,
@@ -104,6 +113,12 @@ def get_authz(
     return container.authz
 
 
+def get_embedding_model(
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> EmbeddingModel:
+    return container.embedding_model
+
+
 # ---- Policy Intelligence: wired against apps/web's live Postgres, not the gated store_backend
 # above (see web_runtime.py for why this connection is created lazily per-request). ----
 async def get_web_tool_registry(
@@ -155,6 +170,36 @@ async def get_web_knowledge_item_repository_dep(
     return await get_web_knowledge_item_repository(request.app, container.settings.database_url)
 
 
+async def get_web_regulation_source_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> RegulationSourceRepository:
+    return await get_regulation_source_repository(request.app, container.settings.database_url)
+
+
+async def get_web_regulation_source_version_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> RegulationSourceVersionRepository:
+    return await get_regulation_source_version_repository(
+        request.app, container.settings.database_url
+    )
+
+
+async def get_web_regulation_document_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> RegulationDocumentRepository:
+    return await get_regulation_document_repository(request.app, container.settings.database_url)
+
+
+async def get_web_regulation_section_repository(
+    request: Request,
+    container: Annotated[AppContainer, Depends(get_container)],
+) -> RegulationSectionRepository:
+    return await get_regulation_section_repository(request.app, container.settings.database_url)
+
+
 async def get_policy_hunter_agent(
     registry: Annotated[ToolRegistry, Depends(get_web_tool_registry)],
 ) -> PolicyHunterAgent:
@@ -174,6 +219,7 @@ Commands = Annotated[CommandBus, Depends(get_command_bus)]
 Queries = Annotated[QueryBus, Depends(get_query_bus)]
 OrchestratorDep = Annotated[Orchestrator, Depends(get_orchestrator)]
 Authz = Annotated[AuthorizationService, Depends(get_authz)]
+EmbeddingModelDep = Annotated[EmbeddingModel, Depends(get_embedding_model)]
 WebToolRegistry = Annotated[ToolRegistry, Depends(get_web_tool_registry)]
 WebPolicyRepository = Annotated[PolicyRepository, Depends(get_web_policy_repository)]
 WebPolicyMissionStore = Annotated[PolicyMissionStore, Depends(get_web_policy_mission_store)]
@@ -190,4 +236,16 @@ WebWorkerEventRepository = Annotated[
 ]
 WebKnowledgeItemRepository = Annotated[
     KnowledgeItemRepository, Depends(get_web_knowledge_item_repository_dep)
+]
+WebRegulationSourceRepository = Annotated[
+    RegulationSourceRepository, Depends(get_web_regulation_source_repository)
+]
+WebRegulationSourceVersionRepository = Annotated[
+    RegulationSourceVersionRepository, Depends(get_web_regulation_source_version_repository)
+]
+WebRegulationDocumentRepository = Annotated[
+    RegulationDocumentRepository, Depends(get_web_regulation_document_repository)
+]
+WebRegulationSectionRepository = Annotated[
+    RegulationSectionRepository, Depends(get_web_regulation_section_repository)
 ]

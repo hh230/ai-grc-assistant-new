@@ -1,0 +1,15 @@
+[project]
+name = "grc-regulation-ingestion"
+version = "0.0.0"
+description = "Saudi Regulations Ingestion Pipeline (Knowledge Intelligence KI-P6): the pure orchestrator tying a fixed learning-cycle scheduler to an injected fetch/parse/store runner over the Saudi regulations catalog. Reuses grc_knowledge_worker's LearningCycleScheduler/WorkerControlPort/WorkerEventSink directly rather than reimplementing a parallel worker vocabulary. No third-party dependencies beyond grc-knowledge-worker; no I/O of its own."
+requires-python = ">=3.12"
+dependencies = [
+  "grc-knowledge-worker",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_regulation_ingestion"]

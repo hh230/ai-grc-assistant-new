@@ -4,5 +4,13 @@
   "source_type": "government_regulator",
   "url": "https://www.sama.gov.sa",
   "jurisdiction": "SA",
-  "domains": ["governance", "risk_management", "regulatory_obligations"]
+  "domains": [
+    "governance",
+    "risk_management",
+    "regulatory_obligations",
+    "compliance",
+    "internal_controls",
+    "audit",
+    "vendor_management"
+  ]
 }

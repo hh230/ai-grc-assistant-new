@@ -1,14 +1,15 @@
 """Unit tests for KnowledgeDocument and KnowledgeSection child entities."""
+
 from __future__ import annotations
 
 import pytest
-
 from grc_domain.knowledge import (
     ContentHash,
     DocumentFormat,
     KnowledgeDocument,
     KnowledgeSection,
     KnowledgeSectionNotFound,
+    LocalizedText,
     PageRange,
     SectionType,
     StorageLocator,
@@ -131,4 +132,17 @@ def test_section_create_defaults() -> None:
     )
     assert section.position == 0
     assert section.title is None
+    assert section.text is None
     assert section.parent_section_id is None
+
+
+def test_section_create_carries_bilingual_text() -> None:
+    section = KnowledgeSection.create(
+        id=KnowledgeSectionId("sec-1"),
+        document_id=DOC,
+        anchor=StructuralAnchor(SectionType.ARTICLE, "5"),
+        text=LocalizedText.from_mapping({"ar": "نص المادة الخامسة", "en": "Text of Article 5"}),
+    )
+    assert section.text is not None
+    assert section.text.get("ar") == "نص المادة الخامسة"
+    assert section.text.get("en") == "Text of Article 5"

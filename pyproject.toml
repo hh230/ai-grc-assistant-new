@@ -40,6 +40,8 @@ members = [
   "packages/knowledge-research-adapters",
   "packages/knowledge-ontology",
   "packages/knowledge-worker",
+  "packages/regulation-ingestion",
+  "packages/regulation-ingestion-adapters",
   "packages/events",
   "packages/plugins",
   "packages/observability",
@@ -79,6 +81,8 @@ grc-knowledge-research = { workspace = true }
 grc-knowledge-research-adapters = { workspace = true }
 grc-knowledge-ontology = { workspace = true }
 grc-knowledge-worker = { workspace = true }
+grc-regulation-ingestion = { workspace = true }
+grc-regulation-ingestion-adapters = { workspace = true }
 grc-events = { workspace = true }
 grc-plugins = { workspace = true }
 grc-observability = { workspace = true }

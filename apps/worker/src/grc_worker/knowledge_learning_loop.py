@@ -30,6 +30,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Protocol
 
+from dotenv import load_dotenv
 from grc_knowledge_intelligence import KnowledgeDiscoveryEngine, KnowledgeQuestion, build_catalog
 from grc_knowledge_intelligence_adapters import LlmKnowledgeExtractor, SynthesizeKnowledgeAnswerTool
 from grc_knowledge_ontology import build_ontology
@@ -60,6 +61,8 @@ logger = logging.getLogger("grc_worker.knowledge_learning_loop")
 
 _DEFAULT_CYCLE_INTERVAL_HOURS = 24.0
 _DEFAULT_POLL_INTERVAL_SECONDS = 3600.0
+_DEFAULT_MAX_SOURCES = 3
+_DEFAULT_MAX_DOCUMENTS_PER_SOURCE = 8
 
 # The one capability this process invokes through the Tool Registry, permission-gated exactly
 # like every other caller of ``synthesize_knowledge_answer`` (ADR-0025).
@@ -77,6 +80,20 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[4]
 
 
+def _load_dev_env() -> None:
+    """Load the repo-root ``.env`` into ``os.environ`` — the same file apps/api's
+    ``pydantic_settings.BaseSettings(env_file=".env")`` already reads, so this process needs
+    the same ``DATABASE_URL``/``OPENAI_API_KEY`` apps/api uses rather than a second,
+    independently-maintained copy. Unlike apps/api, this composition root has no framework
+    doing this implicitly, and never did — ``WorkerSettings.from_env``/``OpenAISettings
+    .from_env`` only ever read ``os.environ`` directly, so a real deployment's actual
+    environment variables always take precedence (``override=False``): this only *fills gaps*
+    a real environment leaves unset, never overrides one. A no-op if no ``.env`` file exists
+    (e.g. a production container that sets real environment variables and ships no dotenv
+    file at all)."""
+    load_dotenv(_repo_root() / ".env", override=False)
+
+
 @dataclass(frozen=True)
 class WorkerSettings:
     """Everything the composition root needs from the environment. Fails fast (CLAUDE.md §22)
@@ -87,6 +104,8 @@ class WorkerSettings:
     data_root: Path
     cycle_interval: timedelta
     poll_interval_seconds: float
+    max_sources: int
+    max_documents_per_source: int
 
     @classmethod
     def from_env(cls, env: Mapping[str, str] | None = None) -> WorkerSettings:
@@ -116,11 +135,27 @@ class WorkerSettings:
                 str(_DEFAULT_POLL_INTERVAL_SECONDS),
             )
         )
+        # A bare trusted-source homepage routinely discovers dozens of links (a real
+        # regulator's own nav, not a test fixture) — ``grc_knowledge_research``'s own default
+        # of 3 was sized for a curated, pre-filtered candidate list, not "whatever a homepage
+        # happens to link to". Raised here, at the composition root, rather than in the
+        # shared package's own default, so other/future callers keep the conservative default.
+        max_sources = int(
+            environ.get("GRC_KNOWLEDGE_WORKER_MAX_SOURCES", str(_DEFAULT_MAX_SOURCES))
+        )
+        max_documents_per_source = int(
+            environ.get(
+                "GRC_KNOWLEDGE_WORKER_MAX_DOCUMENTS_PER_SOURCE",
+                str(_DEFAULT_MAX_DOCUMENTS_PER_SOURCE),
+            )
+        )
         return cls(
             database_url=database_url,
             data_root=data_root,
             cycle_interval=cycle_interval,
             poll_interval_seconds=poll_interval_seconds,
+            max_sources=max_sources,
+            max_documents_per_source=max_documents_per_source,
         )
 
 
@@ -195,7 +230,12 @@ def build_worker(
     extractor = LlmKnowledgeExtractor(registry, context=_tool_context())
     discovery_engine = KnowledgeDiscoveryEngine(extractor=extractor)
     crawler = HttpResearchCrawler(UrllibHttpFetcher())
-    coordinator = ResearchCoordinator(crawler=crawler, discovery_engine=discovery_engine)
+    coordinator = ResearchCoordinator(
+        crawler=crawler,
+        discovery_engine=discovery_engine,
+        max_sources=settings.max_sources,
+        max_documents_per_source=settings.max_documents_per_source,
+    )
     events = WorkerEventRepository(database)
     runner = KnowledgeGapResearchRunner(
         catalog=catalog,
@@ -287,6 +327,7 @@ async def run_forever(
 
 async def main() -> None:
     logging.basicConfig(level=logging.INFO)
+    _load_dev_env()
     settings = WorkerSettings.from_env()
 
     database = await Database.connect(settings.database_url)

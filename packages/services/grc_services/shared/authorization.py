@@ -42,6 +42,11 @@ class ResourceType(str, Enum):
     # ADR-0029): status, activity timeline, schedule, and manual trigger. Deliberately never
     # added to `_OPERATIONAL`/`_CATALOG` below — platform administrators only.
     KNOWLEDGE_WORKER = "knowledge_worker"
+    # The Saudi Regulations review queue (Knowledge Intelligence KI-P7, ADR-0031): pending
+    # regulation versions awaiting admin approve/reject before embeddings are generated.
+    # Deliberately never added to `_OPERATIONAL`/`_CATALOG` below — platform administrators
+    # only decide what enters the knowledge base, mirroring `KNOWLEDGE_WORKER` exactly.
+    REGULATION_REVIEW = "regulation_review"
 
 
 class AuthorizationService(ABC):

@@ -22,10 +22,22 @@ beyond KI-P2's own; a one-way, acyclic dependency since ``grc_knowledge_worker``
 this package). Every event is an operational fact (a count, a status, a source name), never a
 model's raw reasoning (CLAUDE.md §19). Omitting ``event_sink`` leaves every existing caller
 and test unchanged.
+
+Two additions found necessary once this pipeline ran against real trusted sources rather than
+test fakes (KI-P5 follow-up): (1) a bounded retry around one question's whole research
+attempt, since a transient failure (a single slow LLM call timing out) should not permanently
+give up on a question for the rest of the cycle the way a genuine, reproducible "nothing here
+addresses this" never should; (2) a medium-confidence item is still stored — rejecting it
+outright would throw away real, if imperfect, grounded research — but flagged
+``needs_review`` rather than ``discovered``, so a human knows to look at it first (CLAUDE.md
+§9: propose, don't silently auto-confirm). Every stage now also logs at the process level
+(not just the DB timeline), since diagnosing "why does nothing get saved" needs to be
+possible without a database query.
 """
 
 from __future__ import annotations
 
+import logging
 import uuid
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -50,6 +62,19 @@ from grc_knowledge_research import (
     build_research_plan,
 )
 from grc_knowledge_worker import WorkerEvent, WorkerEventSink, WorkerEventType
+
+logger = logging.getLogger(__name__)
+
+# Below this, an accepted (confidence > 0) answer is still real, grounded research — not
+# garbage — but shaky enough that a human should look at it before anyone treats it as
+# settled, rather than silently blending it in alongside confidently-grounded answers.
+DEFAULT_NEEDS_REVIEW_BELOW_CONFIDENCE = 0.6
+
+# One retry gives a transient failure (a single slow LLM call timing out, a dropped
+# connection) a second chance without masking a genuinely reproducible defect: a plan that
+# fails the same way twice in a row is almost certainly not going to succeed on a third
+# identical attempt, so this stays small rather than papering over a real problem.
+DEFAULT_MAX_RESEARCH_ATTEMPTS = 2
 
 
 class StoredKnowledgeItem(Protocol):
@@ -123,6 +148,7 @@ class KnowledgeItemStore(Protocol):
         citation: str,
         confidence: float,
         version_hash: str,
+        status: str = "discovered",
     ) -> object: ...
 
 
@@ -150,11 +176,17 @@ class KnowledgeGapResearchRunner:
         coordinator: ResearchCoordinator,
         store: KnowledgeItemStore,
         event_sink: WorkerEventSink | None = None,
+        needs_review_below_confidence: float = DEFAULT_NEEDS_REVIEW_BELOW_CONFIDENCE,
+        max_research_attempts: int = DEFAULT_MAX_RESEARCH_ATTEMPTS,
     ) -> None:
+        if max_research_attempts < 1:
+            raise ValueError("max_research_attempts must be at least 1")
         self._catalog = catalog
         self._coordinator = coordinator
         self._store = store
         self._event_sink = event_sink
+        self._needs_review_below_confidence = needs_review_below_confidence
+        self._max_research_attempts = max_research_attempts
 
     async def _emit(
         self,
@@ -178,6 +210,13 @@ class KnowledgeGapResearchRunner:
         existing_rows = await self._store.list_all()
         existing_items = tuple(_to_knowledge_item(row) for row in existing_rows)
         findings = detect_gaps(questions, existing_items, now=now)
+        actionable = actionable_gaps(findings)
+        logger.info(
+            "research.cycle_started questions=%d existing_items=%d actionable_gaps=%d",
+            len(questions),
+            len(existing_items),
+            len(actionable),
+        )
         await self._emit(
             WorkerEventType.QUESTIONS_LOADED,
             f"Loaded {len(questions)} question(s) to check for knowledge gaps",
@@ -185,7 +224,7 @@ class KnowledgeGapResearchRunner:
         )
 
         outcomes = []
-        for finding in actionable_gaps(findings):
+        for finding in actionable:
             await self._emit(
                 WorkerEventType.GAP_DETECTED,
                 f"Gap detected ({finding.status.value}): {finding.question.question}",
@@ -197,15 +236,34 @@ class KnowledgeGapResearchRunner:
 
     async def _research_one(self, finding: GapFinding, *, now: datetime) -> GapResearchOutcome:
         question = finding.question
-        try:
-            plan = build_research_plan(question, self._catalog)
-            result = await self._coordinator.research(plan)
-        except (
-            Exception
-        ) as exc:  # noqa: BLE001 - fail-safe: one question's failure never blocks another's
+        plan = build_research_plan(question, self._catalog)
+        logger.info(
+            "research.plan_built question_id=%s catalog_sources=%d",
+            question.question_id,
+            len(plan.steps),
+        )
+
+        result = None
+        last_error: Exception | None = None
+        for attempt in range(1, self._max_research_attempts + 1):
+            try:
+                result = await self._coordinator.research(plan)
+                last_error = None
+                break
+            except Exception as exc:  # noqa: BLE001 - retried below; genuinely exhausted after
+                last_error = exc
+                logger.warning(
+                    "research.attempt_failed question_id=%s attempt=%d/%d error=%s",
+                    question.question_id,
+                    attempt,
+                    self._max_research_attempts,
+                    exc,
+                )
+
+        if last_error is not None or result is None:
             await self._emit(
                 WorkerEventType.ERROR,
-                f"Research failed: {exc}",
+                f"Research failed after {self._max_research_attempts} attempt(s): {last_error}",
                 now=now,
                 question_id=question.question_id,
             )
@@ -214,9 +272,15 @@ class KnowledgeGapResearchRunner:
                 gap_status=finding.status.value,
                 research_status="error",
                 stored=False,
-                error=str(exc),
+                error=str(last_error),
             )
 
+        logger.info(
+            "research.sources_searched question_id=%s attempts=%d status=%s",
+            question.question_id,
+            len(result.attempts),
+            result.status.value,
+        )
         await self._emit(
             WorkerEventType.SOURCE_SEARCHED,
             f"Searched {len(result.attempts)} trusted source(s)",
@@ -229,6 +293,11 @@ class KnowledgeGapResearchRunner:
             or result.item is None
             or result.version_hash is None
         ):
+            logger.info(
+                "research.no_knowledge_found question_id=%s status=%s",
+                question.question_id,
+                result.status.value,
+            )
             return GapResearchOutcome(
                 question_id=question.question_id,
                 gap_status=finding.status.value,
@@ -237,11 +306,29 @@ class KnowledgeGapResearchRunner:
             )
 
         item = result.item
+        logger.info(
+            "research.extraction_result question_id=%s source=%s confidence=%.2f",
+            question.question_id,
+            item.source.name,
+            item.confidence,
+        )
         await self._emit(
             WorkerEventType.KNOWLEDGE_DISCOVERED,
             f"Knowledge discovered from {item.source.name} (confidence {item.confidence:.2f})",
             now=now,
             question_id=question.question_id,
+        )
+
+        status = (
+            "needs_review"
+            if item.confidence < self._needs_review_below_confidence
+            else "discovered"
+        )
+        logger.info(
+            "research.save_attempt question_id=%s status=%s confidence=%.2f",
+            question.question_id,
+            status,
+            item.confidence,
         )
         try:
             await self._store.upsert(
@@ -260,8 +347,10 @@ class KnowledgeGapResearchRunner:
                 citation=item.citation,
                 confidence=item.confidence,
                 version_hash=result.version_hash,
+                status=status,
             )
         except Exception as exc:  # noqa: BLE001 - fail-safe: a storage failure is isolated too
+            logger.error("research.save_failed question_id=%s error=%s", question.question_id, exc)
             await self._emit(
                 WorkerEventType.ERROR,
                 f"Storage failed: {exc}",
@@ -276,9 +365,10 @@ class KnowledgeGapResearchRunner:
                 error=str(exc),
             )
 
+        logger.info("research.save_success question_id=%s status=%s", question.question_id, status)
         await self._emit(
             WorkerEventType.ITEM_SAVED,
-            f"Saved knowledge item for: {question.question}",
+            f"Saved knowledge item ({status}) for: {question.question}",
             now=now,
             question_id=question.question_id,
         )

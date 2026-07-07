@@ -22,7 +22,7 @@ from grc_agents import (
     RiskAgent,
     WorkflowAgent,
 )
-from grc_llm import ChatModel, FakeChatModel
+from grc_llm import ChatModel, EmbeddingModel, FakeChatModel, FakeEmbeddingModel
 from grc_llm.settings import OpenAISettings
 
 from .observability import get_logger
@@ -48,6 +48,25 @@ def build_chat_model(settings: Settings) -> ChatModel:
         return OpenAIChatModel(openai_settings)
     _logger.info("llm_provider_selected", extra={"provider": "fake"})
     return FakeChatModel(default_response=_FAKE_RESPONSE)
+
+
+def build_embedding_model(settings: Settings) -> EmbeddingModel:
+    """Select the embedding model from the same ``llm_provider`` switch ``build_chat_model``
+    uses (Knowledge Intelligence KI-P7, ADR-0031: regulation-section embeddings generated only
+    after admin approval). Fails fast if OpenAI is selected without a key.
+
+    The fake model's dimension is pinned to 3072 to match `regulation_sections.embedding`'s
+    fixed `vector(3072)` column width (OpenAI text-embedding-3-large) — the same dimension the
+    real provider produces, so tests exercise the real write path end to end.
+    """
+    if settings.llm_provider == "openai":
+        openai_settings = OpenAISettings.from_env()  # raises if OPENAI_API_KEY is absent
+        from grc_llm import OpenAIEmbeddingModel
+
+        _logger.info("embedding_provider_selected", extra={"provider": "openai"})
+        return OpenAIEmbeddingModel(openai_settings)
+    _logger.info("embedding_provider_selected", extra={"provider": "fake"})
+    return FakeEmbeddingModel(dimension=3072)
 
 
 def build_orchestrator(settings: Settings) -> Orchestrator:

@@ -75,8 +75,8 @@ export default async function MarketingHomePage() {
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}
         description={t("hero.description")}
-        primaryCta={{ label: t("hero.primaryCta"), href: "/login" }}
-        secondaryCta={{ label: t("hero.secondaryCta"), href: "/how-it-works" }}
+        primaryCta={{ label: t("hero.primaryCta"), href: "/request-access" }}
+        secondaryCta={{ label: t("hero.secondaryCta"), href: "/login" }}
       />
 
       <section className="mx-auto max-w-[1200px] px-4 pb-16 pt-2 sm:px-6">

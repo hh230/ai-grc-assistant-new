@@ -27,7 +27,9 @@
       "reports": "التقارير",
       "settings": "الإعدادات",
       "help": "المساعدة والدعم",
-      "aiWorker": "العامل الذكي"
+      "aiWorker": "العامل الذكي",
+      "regulationReview": "مراجعة الأنظمة",
+      "accessRequests": "طلبات الوصول"
     }
   },
   "topbar": {
@@ -306,9 +308,10 @@
     "reports": "التقارير",
     "faq": "الأسئلة الشائعة",
     "contact": "تواصل معنا",
-    "getStarted": "ابدأ الآن",
     "openMenu": "فتح القائمة",
-    "closeMenu": "إغلاق القائمة"
+    "closeMenu": "إغلاق القائمة",
+    "signIn": "تسجيل الدخول",
+    "requestAccess": "طلب الوصول"
   },
   "marketingFooter": {
     "tagline": "الحوكمة والمخاطر والامتثال — موثقة بالمصادر وجاهزة للتدقيق.",
@@ -338,8 +341,8 @@
       "eyebrow": "الحوكمة · المخاطر · الامتثال",
       "title": "حوكمة أوضح، وامتثال أكثر رشداً.",
       "description": "يساعد رشيد المنشآت على إدارة الحوكمة والمخاطر والامتثال بوضوح أكبر، من خلال تحليل السياسات والوثائق، تحديد الفجوات، ومواءمة المتطلبات التنظيمية لدعم قرارات أكثر دقة وثقة.",
-      "primaryCta": "ابدأ الآن",
-      "secondaryCta": "تعرّف على آلية العمل"
+      "primaryCta": "اطلب الوصول",
+      "secondaryCta": "تسجيل الدخول"
     },
     "trustedBy": {
       "label": "مصمم لتمكين المنشآت من إدارة الحوكمة والمخاطر والامتثال بوضوح وكفاءة",
@@ -697,15 +700,9 @@
     "passwordLabel": "كلمة المرور",
     "signIn": "تسجيل الدخول",
     "signingIn": "جارٍ تسجيل الدخول…",
-    "demoAccountsTitle": "حسابات تجريبية",
-    "demoAccountsHint": "انقر للتعبئة. كلمة المرور:",
-    "demoRoles": {
-      "owner": "المالك",
-      "complianceManager": "مدير الامتثال",
-      "analyst": "محلل",
-      "viewer": "مشاهد"
-    },
-    "footer": "© {year} رشيد · إصدار المؤسسات"
+    "footer": "© {year} رشيد · إصدار المؤسسات",
+    "noAccount": "ليس لديك وصول بعد؟",
+    "requestAccess": "اطلب الوصول"
   },
   "search": {
     "title": "بحث",
@@ -1442,5 +1439,99 @@
         "outdated": "قديم"
       }
     }
+  },
+  "regulationReviewPage": {
+    "eyebrow": "الإدارة",
+    "title": "مراجعة الأنظمة",
+    "description": "راجع الأنظمة السعودية التي جلبها خط الاستيعاب قبل دخولها إلى قاعدة المعرفة المشتركة. الموافقة على نسخة تُولّد تضمينات (embeddings) أقسامها؛ والرفض يتجاهلها. للمسؤولين فقط."
+  },
+  "regulationReviewWorkspace": {
+    "pendingList": {
+      "eyebrow": "بانتظار الموافقة",
+      "title": "الأنظمة المعلّقة",
+      "statusPending": "بانتظار المراجعة",
+      "empty": "لا يوجد شيء بانتظار المراجعة حاليًا."
+    },
+    "detail": {
+      "empty": "اختر نظامًا معلّقًا لمراجعة محتواه المستخرج.",
+      "versionLabel": "النسخة",
+      "articleCount": "عدد المواد",
+      "officialCitation": "الاستناد الرسمي",
+      "approve": "موافقة",
+      "reject": "رفض",
+      "approvedFeedback": "تمت الموافقة — تم تضمين {embedded} قسم/أقسام، وفشل {failed}."
+    }
+  },
+  "accessRequestsPage": {
+    "eyebrow": "الإدارة",
+    "title": "طلبات الوصول",
+    "description": "راجع طلبات الأشخاص الراغبين في الانضمام إلى رشيد. الموافقة على طلب تُنشئ دعوة لمرة واحدة؛ الرفض يُلغي الطلب. للمسؤولين فقط."
+  },
+  "accessRequestsWorkspace": {
+    "list": {
+      "eyebrow": "بانتظار الموافقة",
+      "title": "الطلبات المعلّقة",
+      "statusPending": "قيد المراجعة",
+      "empty": "لا توجد طلبات بانتظار المراجعة حاليًا."
+    },
+    "detail": {
+      "empty": "اختر طلبًا معلّقًا لمراجعته.",
+      "statusPending": "معلّق",
+      "statusApproved": "تمت الموافقة",
+      "statusRejected": "مرفوض",
+      "messageLabel": "الرسالة",
+      "roleLabel": "الدور الممنوح",
+      "roles": {
+        "owner": "مالك",
+        "admin": "مسؤول",
+        "member": "عضو"
+      },
+      "inviteLinkLabel": "رابط الدعوة",
+      "inviteLinkHint": "انسخ هذا الرابط وأرسله لمقدّم الطلب — تنتهي صلاحيته خلال 7 أيام ويمكن استخدامه مرة واحدة.",
+      "copy": "نسخ",
+      "copied": "تم النسخ",
+      "approve": "موافقة",
+      "reject": "رفض",
+      "close": "إغلاق"
+    }
+  },
+  "requestAccessPage": {
+    "hero": {
+      "title": "اطلب الوصول إلى رشيد",
+      "description": "أخبرنا عنك وعن مؤسستك. يراجع أحد المسؤولين كل طلب ويرسل رابط دعوة عبر البريد الإلكتروني."
+    },
+    "form": {
+      "nameLabel": "الاسم الكامل",
+      "namePlaceholder": "سارة أحمد",
+      "emailLabel": "البريد الإلكتروني للعمل",
+      "emailPlaceholder": "you@company.com",
+      "organizationLabel": "اسم المؤسسة / الشركة",
+      "organizationPlaceholder": "شركة المثال",
+      "roleLabel": "المسمى الوظيفي / الدور",
+      "rolePlaceholder": "رئيس الامتثال",
+      "messageLabel": "سبب طلب الوصول (اختياري)",
+      "messagePlaceholder": "بضع كلمات حول كيفية استخدامك المتوقع لرشيد.",
+      "submit": "إرسال الطلب",
+      "submitting": "جارٍ الإرسال…",
+      "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "successTitle": "تم استلام الطلب",
+      "successDescription": "شكرًا لك — سنراجع طلبك ونرسل رابط دعوة عبر البريد الإلكتروني بمجرد الموافقة عليه."
+    }
+  },
+  "acceptInvitePage": {
+    "title": "إعداد حسابك",
+    "subtitle": "الحوكمة · المخاطر · الامتثال · الذكاء الاصطناعي",
+    "loading": "جارٍ التحقق من دعوتك…",
+    "missingToken": "رابط الدعوة هذا يفتقد إلى الرمز.",
+    "invalidToken": "رابط الدعوة هذا غير صالح.",
+    "invitedAs": "تمت دعوتك باسم {email}",
+    "nameLabel": "اسمك",
+    "namePlaceholder": "سارة أحمد",
+    "passwordLabel": "كلمة المرور",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+    "submit": "إنشاء الحساب",
+    "submitting": "جارٍ إنشاء الحساب…",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   }
 }

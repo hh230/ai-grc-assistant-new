@@ -7,6 +7,14 @@ per `question_id` (enforced by a `UNIQUE` constraint): a re-discovery replaces t
 answer and bumps `version` rather than accumulating a full history table. `upsert` is
 idempotent on `version_hash` — re-running discovery over an unchanged source excerpt never
 duplicates work or resets an already-verified item's status.
+
+KI-P5 follow-up (ADR-0025 §6 revised): a fresh discovery's own `status` is now the caller's
+choice between `'discovered'` (the original default) and `'needs_review'` — a real, if
+imperfect, grounded answer is still worth keeping rather than discarding, but a
+below-confidence-threshold one should not look indistinguishable from a confidently-grounded
+one. Moving a `KnowledgeItem` to `'verified'` or `'outdated'` still requires an explicit human
+decision via `set_verification_status` — only the *initial* AI-assigned status now has two
+possible values instead of one.
 """
 
 from __future__ import annotations
@@ -100,14 +108,16 @@ class KnowledgeItemRepository:
         citation: str,
         confidence: float,
         version_hash: str,
+        status: str = "discovered",
     ) -> KnowledgeItemRecord:
         """Insert the first discovery for this question, or — if one already exists —
-        overwrite it with fresh content and bump ``version`` (resetting ``status`` to
-        ``discovered`` and clearing ``last_verified``/``verified_by``, since a changed answer
-        needs a human's attention again). A re-discovery whose ``version_hash`` exactly
-        matches the current row is a no-op: it returns the existing row unchanged, including
-        its verification status — re-running discovery over unchanged source text must never
-        undo a human's prior verification.
+        overwrite it with fresh content and bump ``version`` (resetting to the given
+        ``status`` — ``'discovered'`` or ``'needs_review'``, never a human-only status like
+        ``'verified'``/``'outdated'`` — and clearing ``last_verified``/``verified_by``, since a
+        changed answer needs a human's attention again regardless of confidence). A
+        re-discovery whose ``version_hash`` exactly matches the current row is a no-op: it
+        returns the existing row unchanged, including its verification status — re-running
+        discovery over unchanged source text must never undo a human's prior verification.
         """
         async with self._database.pool.acquire() as connection, connection.transaction():
             existing = await connection.fetchrow(
@@ -123,9 +133,9 @@ class KnowledgeItemRepository:
                         INSERT INTO knowledge_items (
                           id, question_id, question, answer, domain, category,
                           applicable_context, source_id, source_name, source_type, source_url,
-                          jurisdiction, citation, confidence, version_hash
+                          jurisdiction, citation, confidence, version_hash, status
                         ) VALUES (
-                          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15
+                          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16
                         )
                         RETURNING {_COLUMNS}
                         """,
@@ -144,6 +154,7 @@ class KnowledgeItemRepository:
                     citation,
                     confidence,
                     version_hash,
+                    status,
                 )
             else:
                 row = await connection.fetchrow(
@@ -153,7 +164,7 @@ class KnowledgeItemRepository:
                           applicable_context = $6, source_id = $7, source_name = $8,
                           source_type = $9, source_url = $10, jurisdiction = $11,
                           citation = $12, confidence = $13, version_hash = $14,
-                          status = 'discovered', last_verified = NULL, verified_by = NULL,
+                          status = $15, last_verified = NULL, verified_by = NULL,
                           version = knowledge_items.version + 1, updated_at = now()
                         WHERE question_id = $1
                         RETURNING {_COLUMNS}
@@ -172,6 +183,7 @@ class KnowledgeItemRepository:
                     citation,
                     confidence,
                     version_hash,
+                    status,
                 )
         assert row is not None  # noqa: S101 - RETURNING always yields the affected row
         return _to_record(row)

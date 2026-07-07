@@ -19,6 +19,18 @@
       "runtimeExecutable": "uv",
       "runtimeArgs": ["run", "uvicorn", "grc_api.app:create_app", "--factory", "--port", "8000"],
       "port": 8000
+    },
+    {
+      "name": "worker-dev",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "python", "-m", "grc_worker.knowledge_learning_loop"],
+      "port": 8090
+    },
+    {
+      "name": "regulation-ingestion-dev",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "python", "-m", "grc_worker.regulation_ingestion_loop"],
+      "port": 8091
     }
   ]
 }

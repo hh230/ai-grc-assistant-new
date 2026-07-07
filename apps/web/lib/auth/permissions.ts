@@ -37,6 +37,12 @@ export const RESOURCE_TYPES = [
   // The Autonomous Knowledge Worker's admin control surface (Knowledge Intelligence KI-P5,
   // ADR-0029) — never granted to `OPERATIONAL`/`CATALOG` below, platform administrators only.
   "knowledge_worker",
+  // The Saudi Regulations review queue (Knowledge Intelligence KI-P7, ADR-0031) — never
+  // granted to `OPERATIONAL`/`CATALOG` below, platform administrators only.
+  "regulation_review",
+  // Invite-based onboarding's access-request review queue (KI-P9, ADR-0034) — never granted
+  // to `OPERATIONAL`/`CATALOG` below, platform administrators only.
+  "access_request",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 

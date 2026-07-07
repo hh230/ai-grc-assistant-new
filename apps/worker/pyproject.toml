@@ -5,6 +5,7 @@ description = "Background and scheduled jobs runner; event consumers. First real
 requires-python = ">=3.12"
 dependencies = [
   "pydantic>=2.9.0",
+  "python-dotenv>=1.0.0",
   "grc-tools",
   "grc-llm",
   "grc-persistence-web",

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from grc_services.shared.context import Principal
 
-from .ai import build_orchestrator
+from .ai import build_embedding_model, build_orchestrator
 from .container import AppContainer
 from .observability import get_logger
 from .runtime import (
@@ -82,6 +82,7 @@ def build_container(settings: Settings) -> AppContainer:
     query_bus = InProcessQueryBus(uow_factory=uow_factory, authz=authz, registry=registry)
     authenticator = build_authenticator(settings)
     orchestrator = build_orchestrator(settings)
+    embedding_model = build_embedding_model(settings)
 
     _logger.info(
         "container_built",
@@ -100,6 +101,7 @@ def build_container(settings: Settings) -> AppContainer:
         authz=authz,
         events=events,
         orchestrator=orchestrator,
+        embedding_model=embedding_model,
         database=database,
         llm_provider=settings.llm_provider,
         registered_commands=len(registry.commands),

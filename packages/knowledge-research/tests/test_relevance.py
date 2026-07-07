@@ -43,3 +43,18 @@ def test_rank_refs_falls_back_to_url_when_title_is_missing() -> None:
     ranked = rank_refs(_QUESTION, (ref,))
 
     assert ranked == (ref,)
+
+
+def test_rank_refs_still_uses_the_url_when_the_title_is_in_another_language() -> None:
+    """A bilingual regulator site's real nav titles are often not in the question's
+    language (e.g. Arabic) — ``_WORD_RE`` only recognizes ASCII words, so a non-English
+    title alone tokenizes to nothing. The URL slug is routinely still English/transliterated
+    and must not be discarded just because a (irrelevant, untranslatable) title exists."""
+    off_topic = DiscoveredDocumentRef(url="https://example.gov/ar/news/", title="الأخبار")
+    on_topic = DiscoveredDocumentRef(
+        url="https://example.gov/ar/vendor-contract-clauses/", title="متطلبات العقود"
+    )
+
+    ranked = rank_refs(_QUESTION, (off_topic, on_topic))
+
+    assert ranked == (on_topic, off_topic)

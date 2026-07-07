@@ -59,7 +59,7 @@
 | Item | Status | Evidence |
 |------|--------|----------|
 | Application / Services layer (all 14 contexts) | **Implemented / Unverified** | `packages/services/grc_services/` (~4,093 LOC); **0 tests** |
-| Web application (`apps/web`) | **Implemented — self-contained full-stack app** (2026-07-02) | Own Next.js API routes (`apps/web/app/api/**`) implement auth, documents, analysis/RAG, chat, evidence, policies, risk, reports — independent of `apps/api`/the Python Orchestrator. Persistence: PostgreSQL via `lib/db/**` (raw SQL + `pg`), migrations in `lib/db/migrations/`, document-chunk embeddings in pgvector (`vector(3072)`, OpenAI `text-embedding-3-large`, cosine `<=>` retrieval). Every repository (documents/evidence/analyses/document_chunks/conversations/policies/risks) is a tenant-scoped Postgres adapter behind a port; object bytes stay on the filesystem `BlobStore` port. See `apps/web/README.md`. |
+| Web application (`apps/web`) | **Implemented — self-contained full-stack app** (2026-07-07) | Own Next.js API routes (`apps/web/app/api/**`) implement auth, documents, analysis/RAG, chat, evidence, policies, risk, reports — independent of `apps/api`/the Python Orchestrator. Persistence: PostgreSQL via `lib/db/**` (raw SQL + `pg`), migrations in `lib/db/migrations/`, document-chunk embeddings in pgvector (`vector(3072)`, OpenAI `text-embedding-3-large`, cosine `<=>` retrieval). Every repository (documents/evidence/analyses/document_chunks/conversations/policies/risks) is a tenant-scoped Postgres adapter behind a port; object bytes stay on the filesystem `BlobStore` port. **Auth is now real, not demo** (KI-P9, ADR-0034): a Postgres-backed `users` table + invite-based request-access → approve → accept onboarding replaced the hardcoded `SEED_USERS`/shared-password demo directory; bootstrap the first account with `npm run db:create-admin`. See `apps/web/README.md`. |
 
 > **"Implemented / Unverified"** means code exists but lacks the passing tests + architectural
 > review that Evidence-First (§12.11) requires to call a layer *Completed* — see
@@ -120,7 +120,7 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 
 ---
 
-## 3. ADRs (28 accepted) — `docs/adr/`
+## 3. ADRs (31 accepted, 1 Proposed) — `docs/adr/`
 
 | ADR | Decision |
 |-----|----------|
@@ -153,6 +153,10 @@ The **eight architectural pillars** (CLAUDE.md §3), binding on every change:
 | 0027 | Domain Ontology Engine (KI-P3): a structured GRC/Compliance/Governance/Risk/Legal/Contracts taxonomy (`/ontology`, 37 topics across 7 domains + 6 contract types with 38 categorized clauses), a pure package (`packages/knowledge-ontology`) with deterministic, template-based question generation (additive to and disjoint from the hand-curated catalog), missing-clause detection, and a fixed six-member relationship vocabulary (one kind derived from contract-type data, five illustrated by curated example edges); one verified trusted-source addition (NIST CSF) — no unverifiable sources added; no LLM decisions, no new Tool, no UI/API |
 | 0028 | Autonomous Knowledge Worker (KI-P4): closes ADR-0019/25/26/27's repeated "no scheduling" deferral — a pure `LearningCycleScheduler` + `combine_question_sources` (merges KI-P1's catalog with KI-P3's ontology-generated questions) in a new package (`packages/knowledge-worker`), an `AutonomousKnowledgeWorker` runner/orchestrator (`tick`/bounded `run_loop`) that drives the *unmodified* KI-P2 `KnowledgeGapResearchRunner` via a structural Protocol (no new dependency, no new Tool); and the project's first real, always-on composition root — `apps/worker/src/grc_worker/knowledge_learning_loop.py` — wiring a real Postgres `KnowledgeItemRepository`, a real `OpenAIChatModel` behind the already-registered `synthesize_knowledge_answer.v1` Tool, and a real `HttpResearchCrawler`, driven by a genuine infinite loop with SIGINT/SIGTERM shutdown; found and fixed two pre-existing mypy-strict Protocol gaps in `grc_knowledge_research_adapters` (frozen-dataclass vs. plain-attribute Protocol members; invariant `list` vs. covariant `Sequence`) surfaced only once a real caller exercised them |
 | 0029 | AI Worker Control Center (KI-P5): closes ADR-0028's "no durable last_run_at... no API endpoint, no UI" deferral — optional `WorkerControlPort`/`WorkerEventSink` seams added to `packages/knowledge-worker` (zero behavior change when omitted) so an admin's enable/disable/interval/manual-trigger change takes effect on the next poll; `KnowledgeGapResearchRunner` (KI-P2) now emits the same timeline events during research; three new platform-scope tables (`worker_control` singleton, `worker_run_history`, `worker_events` — one unified append-only table serving both the activity timeline and the admin-action audit trail); a new `ResourceType.KNOWLEDGE_WORKER` in the RBAC matrix (`OWNER`/`ADMIN` full control, `AUDITOR` read-only via its existing blanket grant, everyone else 403); six new `apps/api` endpoints (`GET /status`,`/events`,`/runs`,`/reports`, `POST /schedule`,`/trigger`) modeled on Policy Intelligence's router; and a real `/ai-worker` admin page (status card, schedule control, "Run Learning Now", activity timeline, learning reports) — verified live end-to-end in the browser, not just against tests |
+| 0030 | Saudi Regulations Ingestion Pipeline (KI-P6): a Google Drive regulation-index PDF is ingested as a **catalog** (`packages/regulation-ingestion-adapters`'s `parse_regulation_index` reads its `/Annots` link annotations — 387 real links to `laws.boe.gov.sa`), each linked Board of Experts law page is fetched and deterministically parsed (no LLM) into chapters/articles/amendments (`parse_boe_page`, never splitting one article across two sections; found and fixed a real parsing trap where an article's own code is repeated under its `تعديلات المادة` amendment block); persists through **new Postgres repositories for `grc_domain.knowledge`'s previously-unpersisted rich model** (`KnowledgeSource → KnowledgeSourceVersion → KnowledgeDocument → KnowledgeSection`, new tables `regulation_sources`/`regulation_source_versions`/`regulation_documents`/`regulation_sections`, `packages/persistence-web/grc_persistence_web/regulations.py`) rather than the flat `knowledge_items` table — every version stored `status = 'in_review'` (pending_review), no approval/embedding/RAG exposure in this phase (KI-P7 follow-up); a second, independent composition root (`apps/worker/src/grc_worker/regulation_ingestion_loop.py`, its own `regulation_worker_control` row via `WorkerControlRepository`'s newly-generalized `table` parameter) mirrors KI-P4/P5's worker skeleton exactly; verified live end-to-end against the real Drive file and the real BOE portal (Basic Law of Governance: 9 chapters, 35 articles, real Arabic text traced to the fetched page); found and fixed a real-environment SSL gap in the shared `grc_regulatory_crawlers.UrllibHttpFetcher` (BOE's server omits its intermediate CA; fixed by vendoring the official, fingerprint-verified DigiCert intermediate alongside `certifi`, not by disabling verification) and two new mypy-strict Protocol gaps (invariant `list` return vs. covariant `Sequence`; a Protocol parameter satisfied only when the concrete implementation's own parameter type is itself a Protocol, not a concrete dataclass) |
+| 0031 | Regulation Review & Embeddings (KI-P7): closes ADR-0030's named "no approval/embedding/RAG exposure" deferral — four additive `persistence-web` methods (`get_by_id` on sources/versions, `list_needing_embedding`/`set_embedding` on sections, idempotent on a retry); a new `ResourceType.REGULATION_REVIEW` mirroring `KNOWLEDGE_WORKER` exactly (OWNER/ADMIN decide, AUDITOR read-only, everyone else 403); four new `apps/api` endpoints (`GET /pending`,`/{version_id}`, `POST /{version_id}/approve`,`/reject`) that run embedding generation synchronously inside `approve` via a new `build_embedding_model` (same `llm_provider` switch as `build_chat_model`: `OpenAIEmbeddingModel` in production, `FakeEmbeddingModel` in dev/tests) — one document's embedding failure is logged/counted, never blocks another or leaves the version un-approved; a real `/regulation-review` admin page mirroring `/ai-worker` exactly — verified live end-to-end in the browser against the real 60-regulation pending queue from ADR-0030's live BOE crawl (approved "نظام الوكالات التجارية," 12 sections embedded; rejected a second regulation), not just against tests. Deliberately does **not** touch `grc_rag`, any retrieval/search code path, or KI-P5 — confirmed unmodified; the retrieval-priority merge this would eventually feed is tracked separately (ADR-0032, Proposed) |
+| 0032 | Retrieval Priority Merge (Proposed, not implemented): records the intended internal-regulations-DB → trusted-source-research → LLM-fallback retrieval priority named repeatedly by the Product Owner across KI-P6/KI-P7, explicitly deferred out of KI-P7's scope into its own follow-up rather than folded into the approval-workflow change — no code, a design-questions record only (mirrors ADL-0008's "deferred, needs a dedicated pass" pattern) |
+| 0034 | Invite-Based Access & Organization Onboarding (KI-P9): replaces `apps/web`'s hardcoded `SEED_USERS` demo directory and shared demo password with a real, Postgres-backed identity store (`users`, `access_requests`, `invitations` — migration `0024_access_onboarding.sql`) and a public request-access → owner/admin-approval → one-time invitation → account-creation flow; new `/access-requests` admin page (mirrors `/regulation-review`), public `/request-access` and `/accept-invite` pages; demo login UI removed outright; a new `scripts/create-admin.mjs` bootstraps the first platform owner since there is no public signup. Scoped to Authentication/Users/Organizations/Invitations/Access-Requests only — RAG, the Knowledge Worker, and the Regulations ingestion/review pipeline (ADR 0025–0032) are unmodified. Named limitation: invited users get a placeholder `apiToken`, so they cannot yet call `apps/api`-backed features (Policy Intelligence, Regulation Review, AI Worker) until a real web-session-to-backend-principal bridge is built (out of scope here) |
 
 Any change to the pillars, the Tool contract, the agent roster, the Framework Engine
 model, or the Mission Lifecycle **requires a new ADR** and a CLAUDE.md update. ADRs are
@@ -301,8 +305,13 @@ ai-grc-assistant/
 │  │  ├─ unit_of_work.py · outbox.py · alembic.ini · tests/
 │  ├─ persistence-web/ grc_persistence_web/ ✅ Adapters against apps/web's live Postgres schema
 │  │                     (ai_tool_invocations, policies, policy_missions, regulatory_raw_documents,
-│  │                     regulatory_obligations, knowledge_items) — ADR-0017/0018/0019/0025;
-│  │                     not a second database, and independent of packages/persistence above
+│  │                     regulatory_obligations, knowledge_items, worker_control/worker_run_history/
+│  │                     worker_events, regulation_sources/regulation_source_versions/
+│  │                     regulation_documents/regulation_sections — the first Postgres persistence
+│  │                     for grc_domain.knowledge's own rich model, ADR-0030, plus KI-P7's
+│  │                     (ADR-0031) get_by_id/list_needing_embedding/set_embedding — 6 tests) —
+│  │                     ADR-0017/0018/0019/0025/0029/0030/0031; not a second database, and
+│  │                     independent of packages/persistence above
 │  ├─ regulatory-intelligence/ grc_regulatory_intelligence/ ✅ PI-P1 pure engine: split→classify
 │  │                     obligation pipeline; PI-P2 adds source registry/config loader,
 │  │                     RegulatoryDocumentInput, change detection, CrawlerPort — zero external
@@ -361,6 +370,17 @@ ai-grc-assistant/
 │  │                     `worker_control`/`worker_run_history`/`worker_events` to
 │  │                     persistence-web (5 tests), `apps/api/routers/knowledge_worker.py`
 │  │                     (9 tests) and apps/web's admin-only `/ai-worker` page
+│  ├─ regulation-ingestion/ grc_regulation_ingestion/ ✅ KI-P6 pure worker: RegulationCatalogEntry
+│  │                     + AutonomousRegulationIngestionWorker, same tick()/scheduler/control/
+│  │                     event-sink shape as grc_knowledge_worker, reusing LearningCycleScheduler
+│  │                     directly rather than redeclaring it (ADR-0030; 5 tests)
+│  ├─ regulation-ingestion-adapters/ grc_regulation_ingestion_adapters/ ✅ KI-P6 real I/O:
+│  │                     DriveIndexCatalogSource/parse_regulation_index (reads a Google Drive
+│  │                     PDF's /Annots link annotations), parse_boe_page (deterministic, no-LLM
+│  │                     Arabic chapter/article/amendment splitter for laws.boe.gov.sa, never
+│  │                     splitting one article across two sections), BoeRegulationPageFetcher,
+│  │                     RegulationGapRunner (fetch→parse→store, one regulation's failure never
+│  │                     blocks the next) (ADR-0030; 8 tests)
 │  ├─ extraction/        grc_extraction/          ✅ M6 engine: ports + pipeline coordinator (10 tests)
 │  ├─ extraction-adapters/ grc_extraction_adapters/ ✅ M6 rule-based adapters + composition (17 tests)
 │  ├─ framework-engine/   grc_framework_engine/    ✅ M7 loader + catalog + seed data (22 tests)
@@ -656,6 +676,33 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
 # (requireRoles("owner","admin")) plus its /api/knowledge-worker/* proxy routes; verified
 # manually end-to-end in the browser this session (status/schedule-toggle/manual-trigger all
 # round-tripped through Postgres); no automated eval suite added yet:
+pnpm --filter @grc/web typecheck && pnpm --filter @grc/web lint
+
+# Saudi Regulations Ingestion Pipeline (KI-P6, ADR-0030) — pure worker (tick/schedule/
+# event-emission, mirroring grc_knowledge_worker's own suite; 5 tests):
+uv run pytest packages/regulation-ingestion -q
+# Real I/O adapters — Drive catalog PDF link extraction, deterministic BOE Arabic
+# chapter/article/amendment parsing incl. the amendment-restatement trap (8 tests):
+uv run pytest packages/regulation-ingestion-adapters -q
+# Regulation persistence (KI-P6/KI-P7, ADR-0030/0031) — RegulationSource/Version/Document/
+# Section repositories incl. list_needing_embedding/set_embedding, against apps/web's live
+# schema (needs a reachable Postgres with apps/web's migrations applied — 0021/0022/0023;
+# skips cleanly otherwise; 6 tests):
+uv run pytest packages/persistence-web/tests/test_regulations.py -q
+# Run the real, always-on regulation ingestion process (manual/ops verification; needs
+# DATABASE_URL and GRC_REGULATION_INDEX_DRIVE_FILE_ID — see .env):
+#   uv run python -m grc_worker.regulation_ingestion_loop
+
+# Regulation Review & Embeddings (KI-P7, ADR-0031) — apps/api's routers/regulation_review.py:
+# pending/detail/approve (incl. embedding generation via the fake embedding model)/reject,
+# RBAC (owner/admin decide, auditor read-only, everyone else 403); needs a reachable Postgres
+# with apps/web's migrations applied (skips cleanly otherwise; 9 tests):
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aigrc?schema=public \
+  uv run pytest apps/api/tests/test_regulation_review.py -q
+# Regulation Review frontend (KI-P7, ADR-0031) — apps/web's /regulation-review admin page
+# (requireRoles("owner","admin")) plus its /api/regulation-review/* proxy routes; verified
+# manually end-to-end in the browser this session (pending list/detail/approve/reject all
+# round-tripped through Postgres, including real embedding generation on approve):
 pnpm --filter @grc/web typecheck && pnpm --filter @grc/web lint
 
 # Policy Intelligence API exposure (PI-P5, ADR-0022) — apps/api's web_runtime.py now

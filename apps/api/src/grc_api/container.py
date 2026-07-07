@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from grc_agents.orchestrator import Orchestrator
+from grc_llm import EmbeddingModel
 from grc_services.shared.authorization import AuthorizationService
 from grc_services.shared.bus import CommandBus, QueryBus
 
@@ -28,6 +29,7 @@ class AppContainer:
     authz: AuthorizationService
     events: LoggingEventDispatcher
     orchestrator: Orchestrator
+    embedding_model: EmbeddingModel
     database: InMemoryDatabase | None
     llm_provider: str
     registered_commands: int

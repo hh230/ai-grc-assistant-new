@@ -12,6 +12,8 @@ import {
   LifeBuoy,
   Radar,
   Bot,
+  Gavel,
+  UserCheck,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/auth/roles";
@@ -120,6 +122,20 @@ export const FOOTER_NAV: NavLink[] = [
     labelKey: "aiWorker",
     href: "/ai-worker",
     icon: Bot,
+    requiredRoles: ["owner", "admin"],
+  },
+  {
+    label: "Regulation Review",
+    labelKey: "regulationReview",
+    href: "/regulation-review",
+    icon: Gavel,
+    requiredRoles: ["owner", "admin"],
+  },
+  {
+    label: "Access Requests",
+    labelKey: "accessRequests",
+    href: "/access-requests",
+    icon: UserCheck,
     requiredRoles: ["owner", "admin"],
   },
   // Workspace administration is restricted to owners and admins (matches the server guard).

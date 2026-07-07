@@ -4,5 +4,10 @@
   "source_type": "standards_body",
   "url": "https://www.nist.gov/cyberframework",
   "jurisdiction": "US",
-  "domains": ["cybersecurity_governance", "risk_management"]
+  "domains": [
+    "cybersecurity_governance",
+    "risk_management",
+    "policies_procedures",
+    "vendor_management"
+  ]
 }

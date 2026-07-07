@@ -4,5 +4,5 @@
   "source_type": "government_regulator",
   "url": "https://hrsd.gov.sa",
   "jurisdiction": "SA",
-  "domains": ["regulatory_obligations"]
+  "domains": ["regulatory_obligations", "contracts"]
 }

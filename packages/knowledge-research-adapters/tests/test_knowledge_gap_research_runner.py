@@ -128,7 +128,7 @@ class FakeEventSink:
 def _runner(
     *,
     crawler: FakeCrawler,
-    extractor: FakeExtractor,
+    extractor: KnowledgeExtractorPort,
     store: InMemoryKnowledgeItemStore,
     event_sink: FakeEventSink | None = None,
 ) -> KnowledgeGapResearchRunner:
@@ -317,3 +317,107 @@ async def test_a_storage_failure_emits_an_error_event_instead_of_item_saved() ->
         "knowledge_discovered",
         "error",
     ]
+
+
+class FlakyExtractor(KnowledgeExtractorPort):
+    """Raises a raw (non-``KnowledgeExtractionError``) exception the first ``fail_times``
+    calls, then succeeds — simulating a transient failure (e.g. an LLM call timing out) that
+    a real, non-``KnowledgeExtractionError`` exception propagates all the way out of
+    ``ResearchCoordinator.research()``, exactly as observed live against a real OpenAI call."""
+
+    def __init__(self, answer: KnowledgeAnswer, *, fail_times: int) -> None:
+        self._answer = answer
+        self._fail_times = fail_times
+        self.call_count = 0
+
+    async def extract(self, question: KnowledgeQuestion, excerpt: SourceExcerpt) -> KnowledgeAnswer:
+        self.call_count += 1
+        if self.call_count <= self._fail_times:
+            raise TimeoutError("transient network error")
+        return self._answer
+
+
+async def test_a_transient_failure_is_retried_and_then_succeeds() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE, text="vendor contracts must include audit rights", fetched_at=_NOW
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FlakyExtractor(
+        KnowledgeAnswer(answer="Audit rights.", applicable_context="Any vendor.", confidence=0.9),
+        fail_times=1,
+    )
+    store = InMemoryKnowledgeItemStore()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store)
+
+    outcomes = await runner.run((_QUESTION,), now=_NOW)
+
+    assert extractor.call_count == 2
+    assert outcomes[0].stored is True
+    assert outcomes[0].error is None
+
+
+async def test_a_transient_failure_reports_error_once_retries_are_exhausted() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE, text="vendor contracts must include audit rights", fetched_at=_NOW
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FlakyExtractor(
+        KnowledgeAnswer(answer="Audit rights.", applicable_context="Any vendor.", confidence=0.9),
+        fail_times=99,
+    )
+    store = InMemoryKnowledgeItemStore()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store)
+
+    outcomes = await runner.run((_QUESTION,), now=_NOW)
+
+    assert extractor.call_count == 2  # DEFAULT_MAX_RESEARCH_ATTEMPTS
+    assert outcomes[0].stored is False
+    assert outcomes[0].research_status == "error"
+    assert "transient network error" in (outcomes[0].error or "")
+
+
+async def test_a_below_threshold_confidence_item_is_saved_as_needs_review_not_discarded() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE,
+        text="vendor contracts should probably include audit rights",
+        fetched_at=_NOW,
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FakeExtractor(
+        {
+            excerpt.text: KnowledgeAnswer(
+                answer="Maybe audit rights.", applicable_context="Any vendor.", confidence=0.3
+            )
+        }
+    )
+    store = InMemoryKnowledgeItemStore()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store)
+
+    outcomes = await runner.run((_QUESTION,), now=_NOW)
+
+    assert outcomes[0].stored is True
+    assert store.upsert_calls[0]["status"] == "needs_review"
+
+
+async def test_a_confident_item_is_still_saved_as_discovered() -> None:
+    ref = DiscoveredDocumentRef(url="https://nca.gov.sa/contracts")
+    excerpt = SourceExcerpt(
+        source=_SOURCE, text="vendor contracts must include audit rights", fetched_at=_NOW
+    )
+    crawler = FakeCrawler(refs_and_excerpts={"sa-nca": (ref, excerpt)})
+    extractor = FakeExtractor(
+        {
+            excerpt.text: KnowledgeAnswer(
+                answer="Audit rights.", applicable_context="Any vendor.", confidence=0.9
+            )
+        }
+    )
+    store = InMemoryKnowledgeItemStore()
+    runner = _runner(crawler=crawler, extractor=extractor, store=store)
+
+    await runner.run((_QUESTION,), now=_NOW)
+
+    assert store.upsert_calls[0]["status"] == "discovered"

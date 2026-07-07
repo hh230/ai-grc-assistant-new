@@ -127,7 +127,10 @@ async def test_event_repository_records_worker_events_and_admin_actions(
     database: Database,
 ) -> None:
     repository = WorkerEventRepository(database)
-    occurred_at = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    # `now`, not a fixed historical date: `list_recent` orders by `occurred_at DESC LIMIT n`,
+    # and a real, currently-running worker may have already written far more than `n` rows
+    # with genuinely recent timestamps — a fixed old timestamp would fall out of the window.
+    occurred_at = datetime.now(timezone.utc)
     question_id = f"test.{uuid.uuid4()}"
     actor_user_id = f"test-admin-{uuid.uuid4()}"
     try:

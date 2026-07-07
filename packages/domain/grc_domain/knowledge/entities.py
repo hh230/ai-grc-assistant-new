@@ -133,13 +133,17 @@ _CURATION_TRANSITIONS: dict[CurationStatus, frozenset[CurationStatus]] = {
 class KnowledgeSection(Entity):
     """A structural unit (article/clause/section) within a document — the citation anchor.
 
-    Phase 1 models structure only; extracted text and chunks attach in a later phase.
+    ``text`` (KI-P6) is the section's own extracted content, in as many languages as were
+    extracted for it (a bilingual regulation article carries both) — the "later phase" this
+    class's own docstring originally deferred. Still no chunking/embedding concern here: a
+    section's ``text`` is the whole legal unit (e.g. one article) verbatim, never split.
     """
 
     id: KnowledgeSectionId
     document_id: KnowledgeDocumentId
     anchor: StructuralAnchor
     title: LocalizedText | None = None
+    text: LocalizedText | None = None
     position: int = 0
     page_range: PageRange | None = None
     parent_section_id: KnowledgeSectionId | None = None
@@ -152,6 +156,7 @@ class KnowledgeSection(Entity):
         document_id: KnowledgeDocumentId,
         anchor: StructuralAnchor,
         title: LocalizedText | None = None,
+        text: LocalizedText | None = None,
         position: int = 0,
         page_range: PageRange | None = None,
         parent_section_id: KnowledgeSectionId | None = None,
@@ -163,6 +168,7 @@ class KnowledgeSection(Entity):
             document_id=document_id,
             anchor=anchor,
             title=title,
+            text=text,
             position=position,
             page_range=page_range,
             parent_section_id=parent_section_id,

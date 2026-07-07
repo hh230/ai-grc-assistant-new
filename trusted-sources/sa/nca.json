@@ -4,5 +4,11 @@
   "source_type": "government_regulator",
   "url": "https://nca.gov.sa",
   "jurisdiction": "SA",
-  "domains": ["cybersecurity_governance", "regulatory_obligations"]
+  "domains": [
+    "cybersecurity_governance",
+    "regulatory_obligations",
+    "audit",
+    "vendor_management",
+    "policies_procedures"
+  ]
 }

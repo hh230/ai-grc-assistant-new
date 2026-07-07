@@ -65,6 +65,8 @@ def test_worker_settings_from_env_uses_defaults() -> None:
     assert settings.data_root == _repo_root()
     assert settings.cycle_interval == timedelta(hours=24)
     assert settings.poll_interval_seconds == 3600.0
+    assert settings.max_sources == 3
+    assert settings.max_documents_per_source == 8
 
 
 def test_worker_settings_from_env_reads_overrides() -> None:
@@ -73,11 +75,15 @@ def test_worker_settings_from_env_reads_overrides() -> None:
             "DATABASE_URL": "postgresql://u:p@localhost/db",
             "GRC_KNOWLEDGE_WORKER_CYCLE_INTERVAL_HOURS": "12",
             "GRC_KNOWLEDGE_WORKER_POLL_INTERVAL_SECONDS": "60",
+            "GRC_KNOWLEDGE_WORKER_MAX_SOURCES": "5",
+            "GRC_KNOWLEDGE_WORKER_MAX_DOCUMENTS_PER_SOURCE": "15",
         }
     )
 
     assert settings.cycle_interval == timedelta(hours=12)
     assert settings.poll_interval_seconds == 60.0
+    assert settings.max_sources == 5
+    assert settings.max_documents_per_source == 15
 
 
 @dataclass(frozen=True)

@@ -27,7 +27,9 @@
       "reports": "Reports",
       "settings": "Settings",
       "help": "Help & Support",
-      "aiWorker": "AI Worker"
+      "aiWorker": "AI Worker",
+      "regulationReview": "Regulation Review",
+      "accessRequests": "Access Requests"
     }
   },
   "topbar": {
@@ -306,9 +308,10 @@
     "reports": "Reports",
     "faq": "FAQ",
     "contact": "Contact Us",
-    "getStarted": "Get started",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "signIn": "Sign in",
+    "requestAccess": "Request Access"
   },
   "marketingFooter": {
     "tagline": "Governance, Risk, and Compliance — grounded, cited, and audit-ready.",
@@ -338,8 +341,8 @@
       "eyebrow": "Governance · Risk · Compliance",
       "title": "Compliance work your auditors will trust",
       "description": "Rasheed helps Governance, Risk, Compliance, Privacy, and Legal teams author, map, and monitor controls across every framework you answer to — grounded in your own evidence, reviewed by your people.",
-      "primaryCta": "Get started",
-      "secondaryCta": "See how it works"
+      "primaryCta": "Request access",
+      "secondaryCta": "Sign in"
     },
     "trustedBy": {
       "label": "Built to help organizations of every size manage governance, risk, and compliance clearly and efficiently",
@@ -697,15 +700,9 @@
     "passwordLabel": "Password",
     "signIn": "Sign in",
     "signingIn": "Signing in…",
-    "demoAccountsTitle": "Demo accounts",
-    "demoAccountsHint": "Click to fill. Password:",
-    "demoRoles": {
-      "owner": "Owner",
-      "complianceManager": "Compliance Manager",
-      "analyst": "Analyst",
-      "viewer": "Viewer"
-    },
-    "footer": "© {year} Rasheed · Enterprise Edition"
+    "footer": "© {year} Rasheed · Enterprise Edition",
+    "noAccount": "Don't have access yet?",
+    "requestAccess": "Request access"
   },
   "search": {
     "title": "Search",
@@ -1442,5 +1439,99 @@
         "outdated": "Outdated"
       }
     }
+  },
+  "regulationReviewPage": {
+    "eyebrow": "Administration",
+    "title": "Regulation Review",
+    "description": "Review Saudi regulations fetched by the ingestion pipeline before they enter the shared knowledge base. Approving a version generates its section embeddings; rejecting discards it. Admin-only."
+  },
+  "regulationReviewWorkspace": {
+    "pendingList": {
+      "eyebrow": "Awaiting approval",
+      "title": "Pending regulations",
+      "statusPending": "Pending review",
+      "empty": "Nothing is waiting for review right now."
+    },
+    "detail": {
+      "empty": "Select a pending regulation to review its extracted content.",
+      "versionLabel": "Version",
+      "articleCount": "Articles",
+      "officialCitation": "Official citation",
+      "approve": "Approve",
+      "reject": "Reject",
+      "approvedFeedback": "Approved — {embedded} section(s) embedded, {failed} failed."
+    }
+  },
+  "accessRequestsPage": {
+    "eyebrow": "Administration",
+    "title": "Access Requests",
+    "description": "Review requests from people asking to join Rasheed. Approving one creates a one-time invitation; rejecting discards it. Admin-only."
+  },
+  "accessRequestsWorkspace": {
+    "list": {
+      "eyebrow": "Awaiting approval",
+      "title": "Pending requests",
+      "statusPending": "Pending review",
+      "empty": "Nothing is waiting for review right now."
+    },
+    "detail": {
+      "empty": "Select a pending request to review it.",
+      "statusPending": "Pending",
+      "statusApproved": "Approved",
+      "statusRejected": "Rejected",
+      "messageLabel": "Message",
+      "roleLabel": "Role to grant",
+      "roles": {
+        "owner": "Owner",
+        "admin": "Administrator",
+        "member": "Member"
+      },
+      "inviteLinkLabel": "Invite link",
+      "inviteLinkHint": "Copy this link and send it to the requester — it expires in 7 days and can be used once.",
+      "copy": "Copy",
+      "copied": "Copied",
+      "approve": "Approve",
+      "reject": "Reject",
+      "close": "Close"
+    }
+  },
+  "requestAccessPage": {
+    "hero": {
+      "title": "Request access to Rasheed",
+      "description": "Tell us about you and your organization. An administrator reviews every request and sends an invite link by email."
+    },
+    "form": {
+      "nameLabel": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "emailLabel": "Work email",
+      "emailPlaceholder": "you@company.com",
+      "organizationLabel": "Organization / company name",
+      "organizationPlaceholder": "Acme Corporation",
+      "roleLabel": "Job title / role",
+      "rolePlaceholder": "Head of Compliance",
+      "messageLabel": "Reason for access (optional)",
+      "messagePlaceholder": "A few words about what you'd like to use Rasheed for.",
+      "submit": "Submit request",
+      "submitting": "Submitting…",
+      "genericError": "Something went wrong. Please try again.",
+      "successTitle": "Request received",
+      "successDescription": "Thank you — we'll review your request and email an invite link once it's approved."
+    }
+  },
+  "acceptInvitePage": {
+    "title": "Set up your account",
+    "subtitle": "Governance · Risk · Compliance · AI",
+    "loading": "Checking your invite…",
+    "missingToken": "This invite link is missing its token.",
+    "invalidToken": "This invite link is invalid.",
+    "invitedAs": "Invited as {email}",
+    "nameLabel": "Your name",
+    "namePlaceholder": "Jane Doe",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "passwordMismatch": "Passwords do not match.",
+    "submit": "Create account",
+    "submitting": "Creating account…",
+    "genericError": "Something went wrong. Please try again."
   }
 }

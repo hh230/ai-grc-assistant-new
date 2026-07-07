@@ -28,6 +28,10 @@ from grc_persistence_web import (
     PolicyMissionStore,
     PolicyRepository,
     PostgresToolInvocationRecorder,
+    RegulationDocumentRepository,
+    RegulationSectionRepository,
+    RegulationSourceRepository,
+    RegulationSourceVersionRepository,
     RegulatoryObligationRepository,
     RegulatoryRawDocumentRepository,
     WorkerControlRepository,
@@ -130,6 +134,34 @@ async def get_web_knowledge_item_repository(
 ) -> KnowledgeItemRepository:
     database = await get_web_database(app, database_url)
     return KnowledgeItemRepository(database)
+
+
+async def get_regulation_source_repository(
+    app: FastAPI, database_url: str
+) -> RegulationSourceRepository:
+    database = await get_web_database(app, database_url)
+    return RegulationSourceRepository(database)
+
+
+async def get_regulation_source_version_repository(
+    app: FastAPI, database_url: str
+) -> RegulationSourceVersionRepository:
+    database = await get_web_database(app, database_url)
+    return RegulationSourceVersionRepository(database)
+
+
+async def get_regulation_document_repository(
+    app: FastAPI, database_url: str
+) -> RegulationDocumentRepository:
+    database = await get_web_database(app, database_url)
+    return RegulationDocumentRepository(database)
+
+
+async def get_regulation_section_repository(
+    app: FastAPI, database_url: str
+) -> RegulationSectionRepository:
+    database = await get_web_database(app, database_url)
+    return RegulationSectionRepository(database)
 
 
 async def close_web_database(app: FastAPI) -> None:

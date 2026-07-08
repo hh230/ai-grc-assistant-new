@@ -44,6 +44,24 @@ const nextConfig = {
   // Keep heavy CJS/native document parsers out of the webpack server bundle — they are
   // required at runtime from node_modules instead (fixes pdfjs/mammoth bundling errors).
   serverExternalPackages: ["pdf-parse", "mammoth", "exceljs", "pdf-lib"],
+  // pdfjs-dist (pdf-parse's engine) loads its @napi-rs/canvas DOMMatrix polyfill via a
+  // dynamic `require()` wrapped in try/catch, which Next's file tracer can't see statically
+  // — without this, the platform-specific native binary (a sibling optionalDependency, not
+  // nested under @napi-rs/canvas itself) is silently dropped from the deployment bundle.
+  outputFileTracingIncludes: {
+    "/api/documents/[id]/analyze": [
+      "../../node_modules/.pnpm/@napi-rs+canvas*/node_modules/@napi-rs/**",
+      // pdfjs-dist resolves @napi-rs/canvas via its own optionalDependency symlink (pnpm
+      // links it under pdfjs-dist's own node_modules), not through apps/web's — without
+      // this, that specific link is missing from the standalone bundle even though the
+      // package above is present, and require("@napi-rs/canvas") still fails to resolve.
+      "../../node_modules/.pnpm/pdfjs-dist@*/node_modules/@napi-rs/**",
+      // pdf.worker.mjs is loaded via a computed `new URL(...)` at runtime, not a static
+      // import, so the tracer misses it — without it, PDFParse fails with "Setting up fake
+      // worker failed" even though pdf.mjs itself is present.
+      "../../node_modules/.pnpm/pdfjs-dist@*/node_modules/pdfjs-dist/legacy/build/**",
+    ],
+  },
   // Do not leak the framework version.
   poweredByHeader: false,
   async headers() {

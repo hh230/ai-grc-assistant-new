@@ -32,6 +32,9 @@ importers:
       '@grc/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@napi-rs/canvas':
+        specifier: ^0.1.80
+        version: 0.1.80
       '@tanstack/react-query':
         specifier: ^5.56.0
         version: 5.101.1(react@19.2.7)

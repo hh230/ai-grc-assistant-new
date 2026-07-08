@@ -80,42 +80,53 @@ export function ChatWorkspace() {
     let accumulated = "";
     let citations: Citation[] = [];
 
-    await streamChat(
-      { conversationId: activeId, message: trimmed },
-      {
-        onMeta: (meta) => {
-          citations = meta.citations;
-          setStreamingCitations(meta.citations);
-          setActiveId(meta.conversationId);
-          refreshConversations();
+    const appendAssistantMessage = () => {
+      setMessages((current) => [
+        ...current,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: accumulated || t("noResponse"),
+          citations,
+          createdAt: new Date().toISOString(),
         },
-        onDelta: (delta) => {
-          accumulated += delta;
-          setStreamingText(accumulated);
+      ]);
+    };
+
+    try {
+      await streamChat(
+        { conversationId: activeId, message: trimmed },
+        {
+          onMeta: (meta) => {
+            citations = meta.citations;
+            setStreamingCitations(meta.citations);
+            setActiveId(meta.conversationId);
+            refreshConversations();
+          },
+          onDelta: (delta) => {
+            accumulated += delta;
+            setStreamingText(accumulated);
+          },
+          onDone: () => {
+            appendAssistantMessage();
+            refreshConversations();
+          },
+          onError: (message) => {
+            // Keep whatever the assistant managed to say before the failure — a partial
+            // grounded answer plus a visible error beats silently discarding it.
+            if (accumulated) appendAssistantMessage();
+            setError(message);
+          },
         },
-        onDone: () => {
-          setMessages((current) => [
-            ...current,
-            {
-              id: crypto.randomUUID(),
-              role: "assistant",
-              content: accumulated || t("noResponse"),
-              citations,
-              createdAt: new Date().toISOString(),
-            },
-          ]);
-          setStreaming(false);
-          setStreamingText("");
-          setStreamingCitations([]);
-          refreshConversations();
-        },
-        onError: (message) => {
-          setError(message);
-          setStreaming(false);
-          setStreamingText("");
-        },
-      },
-    );
+      );
+    } catch {
+      setError(t("unexpectedError"));
+    } finally {
+      // The composer must never stay locked, no matter how the stream ended.
+      setStreaming(false);
+      setStreamingText("");
+      setStreamingCitations([]);
+    }
   }
 
   function onComposerKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {

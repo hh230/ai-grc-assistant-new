@@ -292,6 +292,7 @@
     "emptyTitle": "Ask your GRC knowledge base",
     "emptyDescription": "Grounded answers from your uploaded documents, with citations to the source.",
     "noResponse": "(No response.)",
+    "unexpectedError": "Something went wrong while contacting the assistant. Please try again.",
     "suggestions": {
       "accessControl": "Summarize our access control policy.",
       "frameworksCovered": "Which frameworks does our documentation cover?",

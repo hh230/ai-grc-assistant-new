@@ -42,47 +42,80 @@ export async function streamChat(
   handlers: ChatStreamHandlers,
   signal?: AbortSignal,
 ): Promise<void> {
-  let response: Response;
+  // The stream must always end in exactly one terminal callback (onDone | onError) —
+  // the composer's loading state has nothing else to reset it, so a stream that just
+  // stops (function timeout, proxy idle-timeout, network drop) would otherwise leave
+  // the UI spinning forever. This wrapper collapses every way a stream can end —
+  // server-sent done/error lines, transport exceptions, or silent truncation — into
+  // that single guarantee.
+  let terminated = false;
+  const finishDone = () => {
+    if (terminated) return;
+    terminated = true;
+    handlers.onDone();
+  };
+  const finishError = (message: string) => {
+    if (terminated) return;
+    terminated = true;
+    handlers.onError(message);
+  };
+
   try {
-    response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-      signal,
-    });
-  } catch {
-    handlers.onError("Network error contacting the assistant.");
-    return;
-  }
+    let response: Response;
+    try {
+      response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal,
+      });
+    } catch {
+      finishError("Network error contacting the assistant.");
+      return;
+    }
 
-  if (!response.ok || !response.body) {
-    handlers.onError(await parseError(response));
-    return;
-  }
+    if (!response.ok || !response.body) {
+      finishError(await parseError(response));
+      return;
+    }
 
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = "";
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
 
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split("\n");
-    buffer = lines.pop() ?? "";
-    for (const line of lines) {
+    const dispatch = (line: string) => {
       const trimmed = line.trim();
-      if (!trimmed) continue;
+      if (!trimmed) return;
       let event: { type: string; [key: string]: unknown };
       try {
         event = JSON.parse(trimmed);
       } catch {
-        continue;
+        return;
       }
       if (event.type === "meta") handlers.onMeta(event as unknown as ChatMeta);
       else if (event.type === "delta") handlers.onDelta(event.text as string);
-      else if (event.type === "done") handlers.onDone();
-      else if (event.type === "error") handlers.onError(event.error as string);
+      else if (event.type === "done") finishDone();
+      else if (event.type === "error") finishError(event.error as string);
+    };
+
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) dispatch(line);
     }
+    // A final line without a trailing newline would otherwise be dropped silently.
+    buffer += decoder.decode();
+    dispatch(buffer);
+
+    finishError("The connection was interrupted before the assistant finished.");
+  } catch (error) {
+    finishError(
+      error instanceof Error && error.name === "AbortError"
+        ? "The request was cancelled."
+        : "The connection to the assistant was lost.",
+    );
   }
 }

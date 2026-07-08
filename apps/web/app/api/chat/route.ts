@@ -6,6 +6,10 @@ import { getChatProvider } from "@/lib/ai";
 import { finalizeTurn, prepareTurn } from "@/lib/chat/service";
 
 export const runtime = "nodejs";
+// A full grounded gpt-5 turn (retrieval + reasoning + a long streamed answer) can take a
+// few minutes; without this the platform's default duration can kill the function
+// mid-stream, truncating the NDJSON stream with no terminating event.
+export const maxDuration = 300;
 
 const chatSchema = z.object({
   conversationId: z.string().nullish(),
@@ -37,8 +41,21 @@ export async function POST(request: Request): Promise<Response> {
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
-      const send = (event: unknown) =>
-        controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
+      let closed = false;
+      const send = (event: unknown) => {
+        if (closed) return;
+        try {
+          controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
+        } catch {
+          // The consumer disconnected (tab closed, connection dropped) — stop writing.
+          closed = true;
+        }
+      };
+      // gpt-5 is a reasoning model: after `meta` it can go 30s+ without emitting a single
+      // token. Idle-timeout proxies kill exactly that kind of silent stream, truncating it
+      // with no terminating event — periodic pings keep bytes flowing until real deltas
+      // arrive. The client ignores unknown event types.
+      const keepAlive = setInterval(() => send({ type: "ping" }), 15_000);
       try {
         send({
           type: "meta",
@@ -71,7 +88,13 @@ export async function POST(request: Request): Promise<Response> {
           error: error instanceof Error ? error.message : "The assistant failed to respond.",
         });
       } finally {
-        controller.close();
+        clearInterval(keepAlive);
+        closed = true;
+        try {
+          controller.close();
+        } catch {
+          // Already cancelled by the consumer.
+        }
       }
     },
   });

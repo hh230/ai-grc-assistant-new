@@ -113,9 +113,11 @@ export function ChatWorkspace() {
           },
           onError: (message) => {
             // Keep whatever the assistant managed to say before the failure — a partial
-            // grounded answer plus a visible error beats silently discarding it.
+            // grounded answer plus a visible error beats silently discarding it. An empty
+            // message means the server sanitized an internal/upstream error — fall back to
+            // the localized, Arabic-aware generic copy rather than showing nothing.
             if (accumulated) appendAssistantMessage();
-            setError(message);
+            setError(message || t("unexpectedError"));
           },
         },
       );

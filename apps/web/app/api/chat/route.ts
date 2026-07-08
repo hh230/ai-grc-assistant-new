@@ -2,8 +2,9 @@ import { z } from "zod";
 import { getActor } from "@/lib/auth/actor";
 import { errorResponse, unauthorized } from "@/lib/api/respond";
 import { ValidationError } from "@/lib/errors";
-import { getChatProvider } from "@/lib/ai";
+import { AiProviderError, getChatProvider } from "@/lib/ai";
 import { finalizeTurn, prepareTurn } from "@/lib/chat/service";
+import { logger } from "@/lib/observability/logger";
 
 export const runtime = "nodejs";
 // A full grounded gpt-5 turn (retrieval + reasoning + a long streamed answer) can take a
@@ -83,9 +84,19 @@ export async function POST(request: Request): Promise<Response> {
         await finalizeTurn(actor, conversation.id, full, citations);
         send({ type: "done" });
       } catch (error) {
+        // Full detail (including any raw upstream AI-provider response body) goes to
+        // server logs only. `AiProviderError` messages can echo upstream text and must
+        // never reach a user; send an empty string so the client renders its own
+        // localized, Arabic-aware fallback copy instead of an internal error string.
+        logger.error("chat_stream_failed", error, { conversationId: conversation.id });
         send({
           type: "error",
-          error: error instanceof Error ? error.message : "The assistant failed to respond.",
+          error:
+            error instanceof AiProviderError
+              ? ""
+              : error instanceof Error
+                ? error.message
+                : "The assistant failed to respond.",
         });
       } finally {
         clearInterval(keepAlive);

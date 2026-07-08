@@ -25,6 +25,10 @@ htmlcov/
 .env.*
 !.env.example
 
+# Local Claude Code settings — personal machine config, may contain sensitive
+# command allowlist entries typed during a session. Never share/commit.
+.claude/settings.local.json
+
 # ---- OS / editor ----
 .DS_Store
 Thumbs.db

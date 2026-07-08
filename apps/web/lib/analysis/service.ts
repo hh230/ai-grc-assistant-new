@@ -15,7 +15,7 @@ import { waitUntil } from "@vercel/functions";
 import { ForbiddenError, NotFoundError } from "@/lib/errors";
 import { can } from "@/lib/auth/permissions";
 import type { ActorContext } from "@/lib/auth/actor";
-import { getChatProvider, getEmbeddingProvider } from "@/lib/ai";
+import { AiProviderError, getChatProvider, getEmbeddingProvider } from "@/lib/ai";
 import { blobStore } from "@/lib/storage/blob-store";
 import { documentRepository } from "@/lib/documents/repository";
 import { DOCUMENT_CATEGORY_LABELS } from "@/lib/documents/types";
@@ -248,7 +248,17 @@ async function markFailed(
   documentId: string,
   error: unknown,
 ): Promise<void> {
-  const message = error instanceof Error ? error.message : "Analysis failed.";
+  // Full detail (including any upstream AI-provider response body) goes to server logs
+  // only. `AiProviderError` messages can echo raw upstream text and must never reach a
+  // user; leaving `error` unset here lets the UI show its own localized, Arabic-aware
+  // fallback copy instead of an internal error string.
+  logger.error("analysis_pipeline_failed", error, { tenantId, analysisId, documentId });
+  const message =
+    error instanceof AiProviderError
+      ? undefined
+      : error instanceof Error
+        ? error.message
+        : "Analysis failed.";
   await analysisRepository.patch(tenantId, analysisId, { status: "failed", error: message });
   await documentRepository.updateStatus(tenantId, documentId, "failed", message);
 }

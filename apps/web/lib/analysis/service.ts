@@ -2,12 +2,16 @@
  * Analysis pipeline service — orchestrates extract → chunk → embed → index → assess → score,
  * with explicit status transitions and fail-safe error handling. `startAnalysis` returns
  * immediately after inserting a new version row and runs the pipeline in the background (the
- * seam for a durable queue/worker in production); the UI polls for status. V2-P2.5: every run
- * creates a new version instead of overwriting the previous one.
+ * seam for a durable queue/worker in production); the UI polls for status. Registered with
+ * `waitUntil` (not a bare un-awaited call) so Vercel's serverless runtime keeps the function
+ * instance alive until the pipeline settles — otherwise the platform can freeze/terminate the
+ * instance the moment the request's response is sent, silently abandoning the pipeline
+ * mid-flight. V2-P2.5: every run creates a new version instead of overwriting the previous one.
  * Node-only.
  */
 
 import { randomUUID } from "node:crypto";
+import { waitUntil } from "@vercel/functions";
 import { ForbiddenError, NotFoundError } from "@/lib/errors";
 import { can } from "@/lib/auth/permissions";
 import type { ActorContext } from "@/lib/auth/actor";
@@ -134,18 +138,21 @@ export async function startAnalysis(
   await analysisRepository.insert(record);
   await documentRepository.updateStatus(actor.tenantId, documentId, "processing");
 
-  // Background processing — do not block the request. Errors are captured as a failed status.
-  void runPipeline(
-    actor,
-    doc.id,
-    record.id,
-    doc.storageKey,
-    doc.kind,
-    doc.fileName,
-    doc.category,
-    locale,
-    Date.now(),
-  ).catch((error) => markFailed(actor.tenantId, record.id, documentId, error));
+  // Background processing — do not block the request, but keep the serverless instance
+  // alive via waitUntil until it settles. Errors are captured as a failed status.
+  waitUntil(
+    runPipeline(
+      actor,
+      doc.id,
+      record.id,
+      doc.storageKey,
+      doc.kind,
+      doc.fileName,
+      doc.category,
+      locale,
+      Date.now(),
+    ).catch((error) => markFailed(actor.tenantId, record.id, documentId, error)),
+  );
 
   return record;
 }

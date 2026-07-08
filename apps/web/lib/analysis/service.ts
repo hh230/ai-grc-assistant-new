@@ -33,9 +33,10 @@ import {
   type Assessment,
 } from "./prompts/assess_grc_document.v3";
 import { analysisRepository, type AnalysisWithVersionCount } from "./repository";
+import { assertDailyAnalysisAllowance, getDailyAnalysisUsage } from "./usage";
 import { computeComplianceScore, computeRiskScore, deriveMaturityLevel } from "./scoring";
 import { vectorStore } from "./vector-store";
-import type { AnalysisRecord } from "./types";
+import type { AnalysisRecord, AnalysisUsage } from "./types";
 
 function assertRead(actor: ActorContext): void {
   if (!can(actor.roles, "read", "knowledge_source")) {
@@ -46,6 +47,11 @@ function assertRead(actor: ActorContext): void {
 export async function listAnalyses(actor: ActorContext): Promise<AnalysisWithVersionCount[]> {
   assertRead(actor);
   return analysisRepository.listLatestPerDocument(actor.tenantId);
+}
+
+/** The current user's remaining beta analysis budget for today (read-only). */
+export async function getAnalysisUsage(actor: ActorContext): Promise<AnalysisUsage> {
+  return getDailyAnalysisUsage(actor.userId);
 }
 
 export async function listAnalysisVersions(
@@ -103,6 +109,11 @@ export async function startAnalysis(
   if (!can(actor.roles, "execute", "knowledge_source")) {
     throw new ForbiddenError("You are not permitted to run analysis.");
   }
+  // Beta usage gate: enforced here — the single chokepoint every caller of the analysis
+  // pipeline (API, UI, workflow, jobs, tests) passes through — so the daily per-user limit
+  // holds regardless of how the run was triggered. Checked before any document lookup or
+  // write so a rate-limited request does nothing consequential.
+  await assertDailyAnalysisAllowance(actor.userId);
   const doc = await documentRepository.get(actor.tenantId, documentId);
   if (!doc) throw new NotFoundError("Document not found.");
 

@@ -4,7 +4,7 @@ import { Copy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Modal } from "@/components/ui/Modal";
-import { useStartAnalysis } from "@/hooks/useAnalyses";
+import { useAnalysisUsage, useStartAnalysis } from "@/hooks/useAnalyses";
 import type { DocumentDto } from "@/lib/documents/types";
 
 interface DuplicateDocumentDialogProps {
@@ -19,8 +19,11 @@ interface DuplicateDocumentDialogProps {
  */
 export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocumentDialogProps) {
   const t = useTranslations("duplicateDocumentDialog");
+  const tAnalysis = useTranslations("analysisDetail");
   const router = useRouter();
   const start = useStartAnalysis(document?.id ?? "");
+  const { data: usage } = useAnalysisUsage();
+  const atLimit = usage ? usage.remaining <= 0 : false;
 
   if (!document) return null;
 
@@ -41,7 +44,7 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
           </button>
           <button
             type="button"
-            disabled={start.isPending}
+            disabled={start.isPending || atLimit}
             onClick={() => {
               start.mutate(undefined, {
                 onSuccess: () => {
@@ -71,6 +74,11 @@ export function DuplicateDocumentDialog({ document, onClose }: DuplicateDocument
         <Copy className="h-4 w-4 shrink-0 text-foreground-muted" strokeWidth={1.75} />
         <p className="text-xs text-foreground-secondary">{t("bodyText")}</p>
       </div>
+      {atLimit && usage && (
+        <p className="mt-3 rounded-lg border border-warning/30 bg-warning-soft px-3 py-2 text-2xs text-warning">
+          {tAnalysis("limitReached", { limit: usage.limit })}
+        </p>
+      )}
     </Modal>
   );
 }

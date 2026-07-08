@@ -8,20 +8,66 @@ import { Card } from "@/components/ui/Card";
 import { DocumentStatusBadge } from "@/components/documents/DocumentStatusBadge";
 import { AnalysisScoreCards } from "@/components/analysis/AnalysisScoreCards";
 import { VersionHistory } from "@/components/analysis/VersionHistory";
-import { useAnalysisVersions, useStartAnalysis } from "@/hooks/useAnalyses";
+import { useAnalysisUsage, useAnalysisVersions, useStartAnalysis } from "@/hooks/useAnalyses";
 import { useDocuments } from "@/hooks/useDocuments";
+import { ApiError } from "@/lib/analysis/client";
 import { getAnalysisModule } from "@/lib/analysis/modules/registry";
-import type { AnalysisRecord } from "@/lib/analysis/types";
+import {
+  BETA_DAILY_LIMIT_CODE,
+  type AnalysisRecord,
+  type AnalysisUsage,
+} from "@/lib/analysis/types";
 import { recordVisit } from "@/lib/workspace/recentlyViewed";
 import { formatNumber } from "@/lib/utils";
 
 const PIPELINE_STEP_KEYS = ["parse", "chunk", "embed", "index", "assess", "score"] as const;
 
+/** True once the user has spent their whole daily beta budget. `undefined` usage (still
+ * loading / failed to load) is treated as "not at limit" so the button stays usable — the
+ * server enforces the real limit regardless. */
+function isAtLimit(usage: AnalysisUsage | undefined): boolean {
+  return usage ? usage.remaining <= 0 : false;
+}
+
+/** The daily-limit banner + a "N of M left today" counter, shown next to the run controls. */
+function UsageNotice({ usage }: { usage: AnalysisUsage | undefined }) {
+  const t = useTranslations("analysisDetail");
+  if (!usage) return null;
+  if (usage.remaining <= 0) {
+    return (
+      <p className="max-w-sm rounded-lg border border-warning/30 bg-warning-soft px-3 py-2 text-2xs text-warning">
+        {t("limitReached", { limit: usage.limit })}
+      </p>
+    );
+  }
+  return (
+    <p className="text-2xs text-foreground-muted">
+      {t("remainingToday", { count: usage.remaining, limit: usage.limit })}
+    </p>
+  );
+}
+
+/** Render a failed start: the localized "try again tomorrow" copy when the server rejected
+ * the run for the beta limit, otherwise the raw error message. */
+function useStartErrorMessage() {
+  const t = useTranslations("analysisDetail");
+  return (error: unknown, usage: AnalysisUsage | undefined): string => {
+    if (error instanceof ApiError && error.code === BETA_DAILY_LIMIT_CODE) {
+      return t("limitReached", { limit: usage?.limit ?? 3 });
+    }
+    return error instanceof Error ? error.message : t("unexpectedError");
+  };
+}
+
 export function AnalysisDetail({ documentId, canRun }: { documentId: string; canRun: boolean }) {
   const t = useTranslations("analysisDetail");
   const { data: versions, isLoading } = useAnalysisVersions(documentId);
+  const { data: usage } = useAnalysisUsage();
   const start = useStartAnalysis(documentId);
+  const startErrorMessage = useStartErrorMessage();
   const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const atLimit = isAtLimit(usage);
 
   const latest = versions?.[0] ?? null;
   const selected = versions?.find((v) => v.id === selectedId) ?? latest;
@@ -60,10 +106,14 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
           <RunButton
             onClick={() => start.mutate()}
             pending={start.isPending}
+            disabled={atLimit}
             label={t("runAnalysis")}
           />
         )}
-        {start.isError && <p className="text-2xs text-danger">{(start.error as Error).message}</p>}
+        {canRun && <UsageNotice usage={usage} />}
+        {start.isError && (
+          <p className="text-2xs text-danger">{startErrorMessage(start.error, usage)}</p>
+        )}
       </Card>
     );
   }
@@ -108,8 +158,13 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
           <RunButton
             onClick={() => start.mutate()}
             pending={start.isPending}
+            disabled={atLimit}
             label={t("retryAnalysis")}
           />
+        )}
+        {canRun && <UsageNotice usage={usage} />}
+        {start.isError && (
+          <p className="text-2xs text-danger">{startErrorMessage(start.error, usage)}</p>
         )}
       </Card>
     );
@@ -117,7 +172,15 @@ export function AnalysisDetail({ documentId, canRun }: { documentId: string; can
 
   return (
     <div className="space-y-5">
-      <ProcessedAnalysis analysis={selected} canRun={canRun} onRerun={() => start.mutate()} pending={start.isPending} />
+      <ProcessedAnalysis
+        analysis={selected}
+        canRun={canRun}
+        onRerun={() => start.mutate()}
+        pending={start.isPending}
+        atLimit={atLimit}
+        usage={usage}
+        startError={start.isError ? startErrorMessage(start.error, usage) : null}
+      />
       {versions && versions.length > 1 && (
         <VersionHistory
           documentId={documentId}
@@ -135,11 +198,17 @@ function ProcessedAnalysis({
   canRun,
   onRerun,
   pending,
+  atLimit,
+  usage,
+  startError,
 }: {
   analysis: AnalysisRecord;
   canRun: boolean;
   onRerun: () => void;
   pending: boolean;
+  atLimit: boolean;
+  usage: AnalysisUsage | undefined;
+  startError: string | null;
 }) {
   const t = useTranslations("analysisDetail");
   // Adaptive-layout slot (design proposal §8/§12): selects the section set for this
@@ -177,11 +246,21 @@ function ProcessedAnalysis({
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <DocumentStatusBadge status={analysis.status} />
-            {canRun && (
-              <RunButton onClick={onRerun} pending={pending} label={t("rerunAnalysis")} compact />
-            )}
+          <div className="flex flex-col items-end gap-1.5">
+            <div className="flex items-center gap-2">
+              <DocumentStatusBadge status={analysis.status} />
+              {canRun && (
+                <RunButton
+                  onClick={onRerun}
+                  pending={pending}
+                  disabled={atLimit}
+                  label={t("rerunAnalysis")}
+                  compact
+                />
+              )}
+            </div>
+            {canRun && <UsageNotice usage={usage} />}
+            {startError && <p className="text-2xs text-danger">{startError}</p>}
           </div>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -254,17 +333,19 @@ function RunButton({
   pending,
   label,
   compact = false,
+  disabled = false,
 }: {
   onClick: () => void;
   pending: boolean;
   label: string;
   compact?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={pending}
+      disabled={pending || disabled}
       className={
         compact
           ? "inline-flex h-8 items-center gap-1.5 rounded-lg border border-hairline bg-surface px-2.5 text-2xs font-medium text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground disabled:opacity-60"

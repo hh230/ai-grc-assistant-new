@@ -7,6 +7,24 @@
 export const ANALYSIS_STATUSES = ["queued", "processing", "processed", "failed"] as const;
 export type AnalysisStatus = (typeof ANALYSIS_STATUSES)[number];
 
+/** Stable API error code returned when a user exceeds the beta daily analysis limit. The UI
+ * keys off it to render the localized "try again tomorrow" message. Client-safe (no server
+ * imports), so both the browser and the server-only usage module can reference it. */
+export const BETA_DAILY_LIMIT_CODE = "beta_daily_limit";
+
+/** Beta usage budget for the current user: how many document analyses they may still start
+ * today. Surfaced to the UI (remaining counter + button gating) and enforced server-side. */
+export interface AnalysisUsage {
+  /** Daily allowance (the beta limit). */
+  limit: number;
+  /** Analyses this user has already started today. */
+  used: number;
+  /** Analyses still allowed today — always `max(0, limit - used)`. */
+  remaining: number;
+  /** ISO timestamp when the counter resets (the start of the next day). */
+  resetsAt: string;
+}
+
 export type Severity = "high" | "medium" | "low" | "info";
 export type Alignment = "strong" | "partial" | "gap" | "unknown";
 export type Priority = "high" | "medium" | "low";

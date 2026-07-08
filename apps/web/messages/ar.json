@@ -773,6 +773,8 @@
     },
     "analysisFailed": "فشل التحليل",
     "unexpectedError": "حدث خطأ غير متوقع.",
+    "remainingToday": "متبقٍ لديك {count} من {limit} تحليلات اليوم",
+    "limitReached": "وصلت للحد التجريبي اليومي ({limit} مستندات). يمكنك المحاولة مرة أخرى غدًا.",
     "metrics": {
       "pages": "الصفحات",
       "chunksIndexed": "الأجزاء المفهرسة",

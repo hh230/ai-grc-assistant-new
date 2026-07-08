@@ -773,6 +773,8 @@
     },
     "analysisFailed": "Analysis failed",
     "unexpectedError": "An unexpected error occurred.",
+    "remainingToday": "{count} of {limit} analyses left today",
+    "limitReached": "You've reached the daily beta limit ({limit} documents). Please try again tomorrow.",
     "metrics": {
       "pages": "Pages",
       "chunksIndexed": "Chunks indexed",

@@ -5,8 +5,7 @@
   "description": "AI GRC Assistant — Workspace-first UX (Next.js App Router). Scaffold only.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "postbuild": "node scripts/fix-standalone-canvas.mjs",
+    "build": "next build && node scripts/fix-standalone-canvas.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",

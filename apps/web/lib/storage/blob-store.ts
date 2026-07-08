@@ -1,13 +1,15 @@
 /**
- * Blob storage behind a port — the seam for object storage. The shipped adapter writes to
- * the local filesystem under `STORAGE_DIR`; a production deployment binds an S3/GCS adapter
- * implementing the same interface without touching callers (CLAUDE.md §6 #5, §17).
- * Node-only.
+ * Blob storage behind a port — the seam for object storage. Local filesystem under
+ * `STORAGE_DIR` for dev (Vercel's serverless functions have a read-only filesystem, so this
+ * adapter cannot back production); Vercel Blob when `BLOB_READ_WRITE_TOKEN` is configured
+ * (CLAUDE.md §6 #5, §17). Same interface either way — callers never touch either provider
+ * directly. Node-only.
  */
 
 import { createHash } from "node:crypto";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { del, put, get as blobGet } from "@vercel/blob";
 
 export interface BlobStore {
   put(key: string, data: Buffer): Promise<void>;
@@ -44,7 +46,29 @@ class FileSystemBlobStore implements BlobStore {
   }
 }
 
-export const blobStore: BlobStore = new FileSystemBlobStore();
+// Documents/evidence are private tenant data — never the 'public' access level, which
+// serves blobs over an unauthenticated CDN URL.
+const BLOB_ACCESS = "private" as const;
+
+class VercelBlobStore implements BlobStore {
+  async put(key: string, data: Buffer): Promise<void> {
+    await put(key, data, { access: BLOB_ACCESS, addRandomSuffix: false, allowOverwrite: true });
+  }
+
+  async get(key: string): Promise<Buffer> {
+    const result = await blobGet(key, { access: BLOB_ACCESS });
+    if (!result) throw new Error(`Blob not found: ${key}`);
+    return Buffer.from(await new Response(result.stream).arrayBuffer());
+  }
+
+  async delete(key: string): Promise<void> {
+    await del(key);
+  }
+}
+
+export const blobStore: BlobStore = process.env.BLOB_READ_WRITE_TOKEN
+  ? new VercelBlobStore()
+  : new FileSystemBlobStore();
 
 /** Stable content-addressable storage key for a tenant's blob. */
 export function makeStorageKey(tenantId: string, documentId: string): string {

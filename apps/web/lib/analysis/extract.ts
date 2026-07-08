@@ -5,7 +5,6 @@
  */
 
 import mammoth from "mammoth";
-import { PDFParse } from "pdf-parse";
 
 export interface ExtractedText {
   text: string;
@@ -28,6 +27,10 @@ export async function extractText(kind: string, bytes: Buffer): Promise<Extracte
 }
 
 async function extractPdf(bytes: Buffer): Promise<ExtractedText> {
+  // Loaded lazily: pdf-parse's engine (pdfjs-dist) throws at import time when the optional
+  // @napi-rs/canvas polyfill isn't installed, so any module that merely imports this file
+  // (e.g. for other exports of lib/analysis/service.ts) must not pay that cost eagerly.
+  const { PDFParse } = await import("pdf-parse");
   const parser = new PDFParse({ data: new Uint8Array(bytes) });
   try {
     const result = await parser.getText();

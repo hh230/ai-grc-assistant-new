@@ -1,10 +1,12 @@
 /**
- * Text extraction from uploaded documents. PDF via pdf-parse (pdfjs under the hood), DOCX
- * via mammoth. Behind a single `extractText` dispatch so the pipeline is format-agnostic.
- * Node-only.
+ * Text extraction from uploaded documents. PDF via unpdf (a pdf.js build compiled for
+ * serverless — pure text extraction, no canvas/DOMMatrix dependency, unlike pdf-parse's
+ * default Node build), DOCX via mammoth. Behind a single `extractText` dispatch so the
+ * pipeline is format-agnostic. Node-only.
  */
 
 import mammoth from "mammoth";
+import { extractText as extractPdfText, getDocumentProxy } from "unpdf";
 
 export interface ExtractedText {
   text: string;
@@ -27,17 +29,9 @@ export async function extractText(kind: string, bytes: Buffer): Promise<Extracte
 }
 
 async function extractPdf(bytes: Buffer): Promise<ExtractedText> {
-  // Loaded lazily: pdf-parse's engine (pdfjs-dist) throws at import time when the optional
-  // @napi-rs/canvas polyfill isn't installed, so any module that merely imports this file
-  // (e.g. for other exports of lib/analysis/service.ts) must not pay that cost eagerly.
-  const { PDFParse } = await import("pdf-parse");
-  const parser = new PDFParse({ data: new Uint8Array(bytes) });
-  try {
-    const result = await parser.getText();
-    return { text: normalize(result.text), pageCount: result.pages?.length };
-  } finally {
-    await parser.destroy();
-  }
+  const pdf = await getDocumentProxy(new Uint8Array(bytes));
+  const { totalPages, text } = await extractPdfText(pdf, { mergePages: true });
+  return { text: normalize(text), pageCount: totalPages };
 }
 
 async function extractDocx(bytes: Buffer): Promise<ExtractedText> {

@@ -5,7 +5,7 @@
   "description": "AI GRC Assistant — Workspace-first UX (Next.js App Router). Scaffold only.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/fix-standalone-canvas.mjs",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
@@ -18,7 +18,6 @@
     "@grc/contracts": "workspace:*",
     "@grc/i18n": "workspace:*",
     "@grc/ui": "workspace:*",
-    "@napi-rs/canvas": "^0.1.80",
     "@tanstack/react-query": "^5.56.0",
     "@vercel/blob": "^2.6.1",
     "@vercel/functions": "^3.7.5",
@@ -28,11 +27,11 @@
     "mammoth": "^1.12.0",
     "next": "^15.0.0",
     "next-intl": "^4.13.1",
-    "pdf-parse": "^2.4.5",
     "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resend": "^6.17.1",
+    "unpdf": "^1.6.2",
     "zod": "^4.4.3"
   },
   "devDependencies": {

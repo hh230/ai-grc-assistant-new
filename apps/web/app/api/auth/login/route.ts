@@ -34,7 +34,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   // Throttle by client + email to slow credential stuffing without blocking real users.
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   const rateKey = `${ip}:${email.toLowerCase()}`;
-  const limit = checkRateLimit(rateKey);
+  const limit = await checkRateLimit(rateKey);
   if (!limit.allowed) {
     return NextResponse.json(
       { error: "Too many attempts. Please try again shortly." },
@@ -53,7 +53,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: INVALID_CREDENTIALS }, { status: 401 });
   }
 
-  resetRateLimit(rateKey);
+  await resetRateLimit(rateKey);
 
   const payload: SessionPayload = {
     userId: user.userId,

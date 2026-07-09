@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-    const limit = checkRateLimit(`access-request:${ip}`);
+    const limit = await checkRateLimit(`access-request:${ip}`);
     if (!limit.allowed) {
       return NextResponse.json(
         { error: "Too many requests. Please try again shortly." },

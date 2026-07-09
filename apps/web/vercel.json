@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "app/api/chat/route.ts": {
+      "memory": 1536
+    },
+    "app/api/documents/[id]/analyze/route.ts": {
+      "memory": 1536
+    }
+  }
+}

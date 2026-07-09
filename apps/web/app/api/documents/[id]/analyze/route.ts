@@ -4,6 +4,11 @@ import { errorResponse, unauthorized } from "@/lib/api/respond";
 import { startAnalysis } from "@/lib/analysis/service";
 
 export const runtime = "nodejs";
+// The response returns immediately, but the pipeline keeps running in the background via
+// `waitUntil` (see analysis/service.ts) — Vercel bounds `waitUntil` work by the invoking
+// function's own `maxDuration`, so this must cover the pipeline's real worst case (extract +
+// embed + up to two LLM assessment attempts), not just the fast initial response.
+export const maxDuration = 300;
 
 interface RouteContext {
   params: Promise<{ id: string }>;

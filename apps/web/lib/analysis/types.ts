@@ -12,6 +12,10 @@ export type AnalysisStatus = (typeof ANALYSIS_STATUSES)[number];
  * imports), so both the browser and the server-only usage module can reference it. */
 export const BETA_DAILY_LIMIT_CODE = "beta_daily_limit";
 
+/** Stable API error code for the tenant-wide daily analysis cap — distinct from the per-user
+ * one above so the UI can tell "you're rate-limited" from "your whole organization is". */
+export const TENANT_DAILY_LIMIT_CODE = "tenant_daily_limit";
+
 /** Beta usage budget for the current user: how many document analyses they may still start
  * today. Surfaced to the UI (remaining counter + button gating) and enforced server-side. */
 export interface AnalysisUsage {

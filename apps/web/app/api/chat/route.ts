@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getActor } from "@/lib/auth/actor";
 import { errorResponse, unauthorized } from "@/lib/api/respond";
+import { checkRateLimit } from "@/lib/auth/rate-limit";
 import { ValidationError } from "@/lib/errors";
 import { AiProviderError, getChatProvider } from "@/lib/ai";
 import { finalizeTurn, prepareTurn } from "@/lib/chat/service";
@@ -17,6 +18,14 @@ const chatSchema = z.object({
   message: z.string().trim().min(1).max(8000),
 });
 
+// This is the app's main LLM-cost/abuse surface: unlike the analysis pipeline (which has a
+// per-user daily quota), chat has no business-level cap, so both a per-user and a coarser
+// per-tenant window guard against one user or one tenant driving unbounded model spend.
+const USER_WINDOW_MS = 5 * 60_000;
+const USER_MAX_MESSAGES = 20;
+const TENANT_WINDOW_MS = 5 * 60_000;
+const TENANT_MAX_MESSAGES = 100;
+
 /**
  * RAG chat. Retrieves grounding, then streams the assistant answer as newline-delimited
  * JSON events: a `meta` event (conversationId + citations), many `delta` events, then `done`.
@@ -26,6 +35,30 @@ const chatSchema = z.object({
 export async function POST(request: Request): Promise<Response> {
   const actor = await getActor();
   if (!actor) return unauthorized();
+
+  const userLimit = await checkRateLimit(`chat:user:${actor.userId}`, {
+    windowMs: USER_WINDOW_MS,
+    maxAttempts: USER_MAX_MESSAGES,
+  });
+  const tenantLimit = userLimit.allowed
+    ? await checkRateLimit(`chat:tenant:${actor.tenantId}`, {
+        windowMs: TENANT_WINDOW_MS,
+        maxAttempts: TENANT_MAX_MESSAGES,
+      })
+    : userLimit;
+  if (!userLimit.allowed || !tenantLimit.allowed) {
+    const retryAfterSeconds = Math.max(userLimit.retryAfterSeconds, tenantLimit.retryAfterSeconds);
+    return new Response(
+      JSON.stringify({ error: "Too many messages. Please try again shortly." }),
+      {
+        status: 429,
+        headers: {
+          "Content-Type": "application/json",
+          "Retry-After": String(retryAfterSeconds),
+        },
+      },
+    );
+  }
 
   let prepared;
   try {

@@ -1,4 +1,5 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 
@@ -53,4 +54,14 @@ const nextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+// Uploads source maps to Sentry at build time when SENTRY_ORG/SENTRY_PROJECT/SENTRY_AUTH_TOKEN
+// are set (CI/Vercel prod build only); silently skipped otherwise, so local/dev builds are
+// unaffected. `silent: true` avoids noisy Sentry CLI output on every dev build.
+export default withSentryConfig(withNextIntl(nextConfig), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  silent: true,
+  widenClientFileUpload: false,
+  telemetry: false,
+});

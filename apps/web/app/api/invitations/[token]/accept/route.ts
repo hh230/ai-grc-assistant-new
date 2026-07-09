@@ -18,7 +18,7 @@ interface RouteContext {
 export async function POST(request: Request, { params }: RouteContext): Promise<NextResponse> {
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-    const limit = checkRateLimit(`accept-invite:${ip}`);
+    const limit = await checkRateLimit(`accept-invite:${ip}`);
     if (!limit.allowed) {
       return NextResponse.json(
         { error: "Too many attempts. Please try again shortly." },

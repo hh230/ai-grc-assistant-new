@@ -17,6 +17,7 @@
  */
 
 import { Pool } from "pg";
+import { logger } from "@/lib/observability/logger";
 
 let pool: Pool | null = null;
 
@@ -76,7 +77,7 @@ export function getPool(): Pool {
     // handed to a different session) surfaces as an `error` on the idle client, which
     // otherwise crashes the process — same class of fix as any long-lived pg.Pool.
     pool.on("error", (error) => {
-      console.error("Unexpected error on idle Postgres client", error);
+      logger.error("postgres_idle_client_error", error);
     });
   }
   return pool;

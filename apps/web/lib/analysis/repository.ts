@@ -39,6 +39,15 @@ export interface AnalysisRepository {
   ): Promise<AnalysisRecord | null>;
   delete(tenantId: string, analysisId: string): Promise<void>;
   deleteAllForDocument(tenantId: string, documentId: string): Promise<void>;
+  /** Flips any analysis stuck on "processing" past `olderThan` to "failed" — the backstop for
+   * a run whose serverless instance was killed outright (no in-process code runs after that,
+   * so nothing could otherwise mark it failed). Returns the affected document ids so the
+   * caller can reconcile `documents.status` too. */
+  failStaleProcessing(
+    tenantId: string,
+    olderThan: Date,
+    message: string,
+  ): Promise<{ id: string; documentId: string }[]>;
 }
 
 interface AnalysisRow {
@@ -318,6 +327,20 @@ class PostgresAnalysisRepository implements AnalysisRepository {
       tenantId,
       documentId,
     ]);
+  }
+
+  async failStaleProcessing(
+    tenantId: string,
+    olderThan: Date,
+    message: string,
+  ): Promise<{ id: string; documentId: string }[]> {
+    const { rows } = await getPool().query<{ id: string; document_id: string }>(
+      `UPDATE analyses SET status = 'failed', error = $3, updated_at = now()
+       WHERE tenant_id = $1 AND status = 'processing' AND updated_at < $2
+       RETURNING id, document_id`,
+      [tenantId, olderThan.toISOString(), message],
+    );
+    return rows.map((row) => ({ id: row.id, documentId: row.document_id }));
   }
 }
 

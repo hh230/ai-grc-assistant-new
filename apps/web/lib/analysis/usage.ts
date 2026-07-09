@@ -13,10 +13,15 @@
 
 import { getPool } from "@/lib/db/pool";
 import { RateLimitError } from "@/lib/errors";
-import { BETA_DAILY_LIMIT_CODE, type AnalysisUsage } from "./types";
+import { BETA_DAILY_LIMIT_CODE, TENANT_DAILY_LIMIT_CODE, type AnalysisUsage } from "./types";
 
 /** Beta allowance: document analyses a single user may start per day. */
 export const BETA_DAILY_ANALYSIS_LIMIT = 3;
+
+/** Tenant-wide allowance: document analyses an entire organization may start per day,
+ * regardless of how many users it has — caps aggregate cost/load per tenant on top of the
+ * per-user limit above. */
+export const TENANT_DAILY_ANALYSIS_LIMIT = 20;
 
 /**
  * Timezone the daily window is anchored to. The product is KSA-first (NCA ECC, SAMA, PDPL),
@@ -98,4 +103,30 @@ export async function assertDailyAnalysisAllowance(userId: string): Promise<Anal
     );
   }
   return usage;
+}
+
+/** How many analyses this tenant (across all its users) has started today. */
+async function getTenantDailyAnalysisUsage(tenantId: string, now: Date = new Date()) {
+  const dayStart = startOfUsageDay(now);
+  const { rows } = await getPool().query<{ used: string }>(
+    `SELECT count(*)::text AS used
+       FROM analyses
+      WHERE tenant_id = $1
+        AND created_at >= $2`,
+    [tenantId, dayStart.toISOString()],
+  );
+  return Number(rows[0]?.used ?? 0);
+}
+
+/** Throw a 429 `RateLimitError` (code {@link TENANT_DAILY_LIMIT_CODE}) if this tenant, across
+ * all of its users, has no analyses left today. Complements the per-user gate above — caps
+ * aggregate load even if no single user has hit their own limit. */
+export async function assertTenantDailyAnalysisAllowance(tenantId: string): Promise<void> {
+  const used = await getTenantDailyAnalysisUsage(tenantId);
+  if (used >= TENANT_DAILY_ANALYSIS_LIMIT) {
+    throw new RateLimitError(
+      `This organization's daily analysis limit has been reached (${TENANT_DAILY_ANALYSIS_LIMIT} documents).`,
+      TENANT_DAILY_LIMIT_CODE,
+    );
+  }
 }

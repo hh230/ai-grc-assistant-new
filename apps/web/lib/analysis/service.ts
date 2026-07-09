@@ -12,9 +12,10 @@
 
 import { randomUUID } from "node:crypto";
 import { waitUntil } from "@vercel/functions";
-import { ForbiddenError, NotFoundError } from "@/lib/errors";
+import { ForbiddenError, NotFoundError, RateLimitError } from "@/lib/errors";
 import { can } from "@/lib/auth/permissions";
 import type { ActorContext } from "@/lib/auth/actor";
+import { checkRateLimit } from "@/lib/auth/rate-limit";
 import { AiProviderError, getChatProvider, getEmbeddingProvider } from "@/lib/ai";
 import { blobStore } from "@/lib/storage/blob-store";
 import { documentRepository } from "@/lib/documents/repository";
@@ -33,10 +34,19 @@ import {
   type Assessment,
 } from "./prompts/assess_grc_document.v3";
 import { analysisRepository, type AnalysisWithVersionCount } from "./repository";
-import { assertDailyAnalysisAllowance, getDailyAnalysisUsage } from "./usage";
+import {
+  assertDailyAnalysisAllowance,
+  assertTenantDailyAnalysisAllowance,
+  getDailyAnalysisUsage,
+} from "./usage";
 import { computeComplianceScore, computeRiskScore, deriveMaturityLevel } from "./scoring";
 import { vectorStore } from "./vector-store";
 import type { AnalysisRecord, AnalysisUsage } from "./types";
+
+// Burst guard on top of the daily quotas below — stops rapid repeat-clicking from hammering
+// the DB/pipeline before the daily-limit check even has a chance to matter.
+const START_ANALYSIS_WINDOW_MS = 60 * 60_000;
+const START_ANALYSIS_MAX_PER_HOUR = 10;
 
 function assertRead(actor: ActorContext): void {
   if (!can(actor.roles, "read", "knowledge_source")) {
@@ -44,8 +54,33 @@ function assertRead(actor: ActorContext): void {
   }
 }
 
+// Matches the analyze route's `maxDuration` (extract + embed + up to two LLM assessment
+// attempts) plus a grace margin. A run still "processing" past this point had its serverless
+// instance killed outright — no in-process code (not even a `.catch`) runs after that, so
+// nothing else would ever flip it out of "processing". This is the backstop for that case,
+// checked lazily wherever a tenant's analyses are read or a new one is about to start, rather
+// than requiring a separate cron/worker.
+const STALE_PROCESSING_TIMEOUT_MS = 360_000;
+
+async function reconcileStaleAnalyses(tenantId: string): Promise<void> {
+  const cutoff = new Date(Date.now() - STALE_PROCESSING_TIMEOUT_MS);
+  const stale = await analysisRepository.failStaleProcessing(
+    tenantId,
+    cutoff,
+    "Analysis timed out and was marked as failed.",
+  );
+  if (stale.length === 0) return;
+  logger.warn("stale_analyses_reconciled", { tenantId, count: stale.length });
+  await Promise.all(
+    stale.map((row) =>
+      documentRepository.updateStatus(tenantId, row.documentId, "failed", "Analysis timed out."),
+    ),
+  );
+}
+
 export async function listAnalyses(actor: ActorContext): Promise<AnalysisWithVersionCount[]> {
   assertRead(actor);
+  await reconcileStaleAnalyses(actor.tenantId);
   return analysisRepository.listLatestPerDocument(actor.tenantId);
 }
 
@@ -59,6 +94,7 @@ export async function listAnalysisVersions(
   documentId: string,
 ): Promise<AnalysisRecord[]> {
   assertRead(actor);
+  await reconcileStaleAnalyses(actor.tenantId);
   return analysisRepository.listVersions(actor.tenantId, documentId);
 }
 
@@ -68,6 +104,7 @@ export async function getAnalysis(
   analysisId: string,
 ): Promise<AnalysisRecord | null> {
   assertRead(actor);
+  await reconcileStaleAnalyses(actor.tenantId);
   return analysisRepository.get(actor.tenantId, analysisId);
 }
 
@@ -77,6 +114,7 @@ export async function getLatestAnalysis(
   documentId: string,
 ): Promise<AnalysisRecord | null> {
   assertRead(actor);
+  await reconcileStaleAnalyses(actor.tenantId);
   return analysisRepository.getLatest(actor.tenantId, documentId);
 }
 
@@ -109,11 +147,23 @@ export async function startAnalysis(
   if (!can(actor.roles, "execute", "knowledge_source")) {
     throw new ForbiddenError("You are not permitted to run analysis.");
   }
-  // Beta usage gate: enforced here — the single chokepoint every caller of the analysis
-  // pipeline (API, UI, workflow, jobs, tests) passes through — so the daily per-user limit
-  // holds regardless of how the run was triggered. Checked before any document lookup or
-  // write so a rate-limited request does nothing consequential.
+  await reconcileStaleAnalyses(actor.tenantId);
+
+  // Burst guard, then the daily quotas — all enforced here, the single chokepoint every
+  // caller of the analysis pipeline (API, UI, workflow, jobs, tests) passes through, so the
+  // limits hold regardless of how the run was triggered. Checked before any document lookup
+  // or write so a throttled request does nothing consequential.
+  const burst = await checkRateLimit(`analyze:${actor.userId}`, {
+    windowMs: START_ANALYSIS_WINDOW_MS,
+    maxAttempts: START_ANALYSIS_MAX_PER_HOUR,
+  });
+  if (!burst.allowed) {
+    throw new RateLimitError("Too many analysis requests. Please try again shortly.");
+  }
+  // Beta usage gate (per-user daily quota).
   await assertDailyAnalysisAllowance(actor.userId);
+  // Tenant-wide daily quota — caps aggregate load even if no single user has hit their own.
+  await assertTenantDailyAnalysisAllowance(actor.tenantId);
   const doc = await documentRepository.get(actor.tenantId, documentId);
   if (!doc) throw new NotFoundError("Document not found.");
 

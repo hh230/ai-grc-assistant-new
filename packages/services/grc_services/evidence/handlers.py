@@ -28,7 +28,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, evidence_id: EvidenceId)
 
 
 class CollectEvidenceHandler(TransactionalCommandHandler[CollectEvidence, EvidenceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: CollectEvidence, context: ExecutionContext, uow: UnitOfWork
+    ) -> EvidenceDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.EVIDENCE)
         evidence = Evidence.collect(
             id=EvidenceId.generate(),
@@ -42,7 +44,9 @@ class CollectEvidenceHandler(TransactionalCommandHandler[CollectEvidence, Eviden
 
 
 class ValidateEvidenceHandler(TransactionalCommandHandler[ValidateEvidence, EvidenceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: ValidateEvidence, context: ExecutionContext, uow: UnitOfWork
+    ) -> EvidenceDTO:
         await self._authz.ensure_can(
             context, Action.APPROVE, ResourceType.EVIDENCE, str(command.evidence_id)
         )
@@ -53,7 +57,9 @@ class ValidateEvidenceHandler(TransactionalCommandHandler[ValidateEvidence, Evid
 
 
 class RejectEvidenceHandler(TransactionalCommandHandler[RejectEvidence, EvidenceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RejectEvidence, context: ExecutionContext, uow: UnitOfWork
+    ) -> EvidenceDTO:
         await self._authz.ensure_can(
             context, Action.APPROVE, ResourceType.EVIDENCE, str(command.evidence_id)
         )
@@ -64,7 +70,9 @@ class RejectEvidenceHandler(TransactionalCommandHandler[RejectEvidence, Evidence
 
 
 class LinkEvidenceToControlHandler(TransactionalCommandHandler[LinkEvidenceToControl, EvidenceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: LinkEvidenceToControl, context: ExecutionContext, uow: UnitOfWork
+    ) -> EvidenceDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.EVIDENCE, str(command.evidence_id)
         )
@@ -75,7 +83,9 @@ class LinkEvidenceToControlHandler(TransactionalCommandHandler[LinkEvidenceToCon
 
 
 class GetEvidenceHandler(QueryHandler[GetEvidence, EvidenceDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetEvidence, context: ExecutionContext
+    ) -> EvidenceDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.EVIDENCE, str(query.evidence_id)
         )
@@ -87,7 +97,9 @@ class GetEvidenceHandler(QueryHandler[GetEvidence, EvidenceDTO]):
 
 
 class ListEvidenceForControlHandler(QueryHandler[ListEvidenceForControl, list[EvidenceDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListEvidenceForControl, context: ExecutionContext
+    ) -> list[EvidenceDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.EVIDENCE)
         async with self._uow as uow:
             items = await uow.evidence.list_for_control(context.organization_id, query.control_id)

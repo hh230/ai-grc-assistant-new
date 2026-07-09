@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -20,4 +22,4 @@ class ReportModel(AggregateRootMixin, Base):
     status: Mapped[str] = mapped_column(String(32), nullable=False)
     source_mission_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
     source_assessment_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    sections: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
+    sections: Mapped[list[dict[str, Any]]] = mapped_column(JSONColumn, nullable=False, default=list)

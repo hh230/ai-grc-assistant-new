@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from grc_domain.knowledge import (
     ContentHash,
     DefinitionPayload,

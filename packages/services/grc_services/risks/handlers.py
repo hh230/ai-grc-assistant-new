@@ -23,7 +23,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, risk_id: RiskId) -> Risk
 
 
 class IdentifyRiskHandler(TransactionalCommandHandler[IdentifyRisk, RiskDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: IdentifyRisk, context: ExecutionContext, uow: UnitOfWork
+    ) -> RiskDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.RISK)
         risk = Risk.identify(
             id=RiskId.generate(),
@@ -38,7 +40,9 @@ class IdentifyRiskHandler(TransactionalCommandHandler[IdentifyRisk, RiskDTO]):
 
 
 class AssessRiskHandler(TransactionalCommandHandler[AssessRisk, RiskDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: AssessRisk, context: ExecutionContext, uow: UnitOfWork
+    ) -> RiskDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.RISK, str(command.risk_id)
         )
@@ -49,7 +53,9 @@ class AssessRiskHandler(TransactionalCommandHandler[AssessRisk, RiskDTO]):
 
 
 class PlanRiskTreatmentHandler(TransactionalCommandHandler[PlanRiskTreatment, RiskDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: PlanRiskTreatment, context: ExecutionContext, uow: UnitOfWork
+    ) -> RiskDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.RISK, str(command.risk_id)
         )
@@ -60,7 +66,9 @@ class PlanRiskTreatmentHandler(TransactionalCommandHandler[PlanRiskTreatment, Ri
 
 
 class AcceptRiskHandler(TransactionalCommandHandler[AcceptRisk, RiskDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: AcceptRisk, context: ExecutionContext, uow: UnitOfWork
+    ) -> RiskDTO:
         # Risk acceptance is consequential — requires APPROVE authority.
         await self._authz.ensure_can(
             context, Action.APPROVE, ResourceType.RISK, str(command.risk_id)
@@ -72,7 +80,9 @@ class AcceptRiskHandler(TransactionalCommandHandler[AcceptRisk, RiskDTO]):
 
 
 class CloseRiskHandler(TransactionalCommandHandler[CloseRisk, RiskDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: CloseRisk, context: ExecutionContext, uow: UnitOfWork
+    ) -> RiskDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.RISK, str(command.risk_id)
         )
@@ -83,7 +93,9 @@ class CloseRiskHandler(TransactionalCommandHandler[CloseRisk, RiskDTO]):
 
 
 class GetRiskHandler(QueryHandler[GetRisk, RiskDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetRisk, context: ExecutionContext
+    ) -> RiskDTO:
         await self._authz.ensure_can(context, Action.READ, ResourceType.RISK, str(query.risk_id))
         async with self._uow as uow:
             risk = await uow.risks.get(context.organization_id, query.risk_id)
@@ -93,7 +105,9 @@ class GetRiskHandler(QueryHandler[GetRisk, RiskDTO]):
 
 
 class ListRisksHandler(QueryHandler[ListRisks, list[RiskDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListRisks, context: ExecutionContext
+    ) -> list[RiskDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.RISK)
         async with self._uow as uow:
             items = await uow.risks.list_for_organization(context.organization_id)

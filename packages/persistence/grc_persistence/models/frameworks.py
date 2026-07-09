@@ -9,6 +9,7 @@ from the framework's domain ``version_label``).
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Any
 
 from sqlalchemy import DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -26,7 +27,7 @@ class FrameworkModel(Base):
     region: Mapped[str | None] = mapped_column(String(16), nullable=True)
     languages: Mapped[list[str]] = mapped_column(JSONColumn, nullable=False, default=list)
     status: Mapped[str] = mapped_column(String(32), nullable=False)
-    controls: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
+    controls: Mapped[list[dict[str, Any]]] = mapped_column(JSONColumn, nullable=False, default=list)
     row_version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
@@ -39,4 +40,6 @@ class FrameworkMappingSetModel(AggregateRootMixin, Base):
 
     source_framework_id: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     target_framework_id: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
-    correspondences: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
+    correspondences: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONColumn, nullable=False, default=list
+    )

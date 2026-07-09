@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -22,5 +24,9 @@ class PolicyModel(AggregateRootMixin, Base):
     policy_version: Mapped[int] = mapped_column(Integer, nullable=False)
     approved_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     linked_control_ids: Mapped[list[str]] = mapped_column(JSONColumn, nullable=False, default=list)
-    framework_controls: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
-    citations: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
+    framework_controls: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONColumn, nullable=False, default=list
+    )
+    citations: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONColumn, nullable=False, default=list
+    )

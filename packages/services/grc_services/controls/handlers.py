@@ -29,7 +29,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, control_id: ControlId) -
 
 
 class CreateControlHandler(TransactionalCommandHandler[CreateControl, ControlDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: CreateControl, context: ExecutionContext, uow: UnitOfWork
+    ) -> ControlDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.CONTROL)
         control = Control.create(
             id=ControlId.generate(),
@@ -44,7 +46,9 @@ class CreateControlHandler(TransactionalCommandHandler[CreateControl, ControlDTO
 
 
 class MapControlToFrameworkHandler(TransactionalCommandHandler[MapControlToFramework, ControlDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: MapControlToFramework, context: ExecutionContext, uow: UnitOfWork
+    ) -> ControlDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.CONTROL, str(command.control_id)
         )
@@ -60,7 +64,9 @@ class MapControlToFrameworkHandler(TransactionalCommandHandler[MapControlToFrame
 
 
 class LinkControlEvidenceHandler(TransactionalCommandHandler[LinkControlEvidence, ControlDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: LinkControlEvidence, context: ExecutionContext, uow: UnitOfWork
+    ) -> ControlDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.CONTROL, str(command.control_id)
         )
@@ -73,7 +79,9 @@ class LinkControlEvidenceHandler(TransactionalCommandHandler[LinkControlEvidence
 class SetControlImplementationStatusHandler(
     TransactionalCommandHandler[SetControlImplementationStatus, ControlDTO]
 ):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: SetControlImplementationStatus, context: ExecutionContext, uow: UnitOfWork
+    ) -> ControlDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.CONTROL, str(command.control_id)
         )
@@ -84,7 +92,9 @@ class SetControlImplementationStatusHandler(
 
 
 class GetControlHandler(QueryHandler[GetControl, ControlDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetControl, context: ExecutionContext
+    ) -> ControlDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.CONTROL, str(query.control_id)
         )
@@ -96,7 +106,9 @@ class GetControlHandler(QueryHandler[GetControl, ControlDTO]):
 
 
 class ListControlsForWorkspaceHandler(QueryHandler[ListControlsForWorkspace, list[ControlDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListControlsForWorkspace, context: ExecutionContext
+    ) -> list[ControlDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.CONTROL)
         async with self._uow as uow:
             items = await uow.controls.list_for_workspace(

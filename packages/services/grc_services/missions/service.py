@@ -35,48 +35,54 @@ class MissionApplicationService:
     ) -> None:
         self._uow, self._events, self._authz = uow, events, authz
 
-    def _cmd(self, handler_cls: type) -> object:
-        return handler_cls(self._uow, self._events, self._authz)
-
-    def _qry(self, handler_cls: type) -> object:
-        return handler_cls(self._uow, self._authz)
-
     async def create(self, command: c.CreateMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(CreateMissionHandler).handle(command, ctx)
+        handler = CreateMissionHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def plan(self, command: c.PlanMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(PlanMissionHandler).handle(command, ctx)
+        handler = PlanMissionHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def start(self, command: c.StartMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(StartMissionHandler).handle(command, ctx)
+        handler = StartMissionHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def start_step(self, command: c.StartStep, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(StartStepHandler).handle(command, ctx)
+        handler = StartStepHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def request_approval(
         self, command: c.RequestStepApproval, ctx: ExecutionContext
     ) -> MissionDTO:
-        return await self._cmd(RequestStepApprovalHandler).handle(command, ctx)
+        handler = RequestStepApprovalHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def approve_gate(self, command: c.ApproveGate, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(ApproveGateHandler).handle(command, ctx)
+        handler = ApproveGateHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def reject_gate(self, command: c.RejectGate, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(RejectGateHandler).handle(command, ctx)
+        handler = RejectGateHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def complete_step(self, command: c.CompleteStep, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(CompleteStepHandler).handle(command, ctx)
+        handler = CompleteStepHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def complete(self, command: c.CompleteMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(CompleteMissionHandler).handle(command, ctx)
+        handler = CompleteMissionHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def cancel(self, command: c.CancelMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._cmd(CancelMissionHandler).handle(command, ctx)
+        handler = CancelMissionHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def get(self, query: q.GetMission, ctx: ExecutionContext) -> MissionDTO:
-        return await self._qry(GetMissionHandler).handle(query, ctx)
+        handler = GetMissionHandler(self._uow, self._authz)
+        return await handler.handle(query, ctx)
 
     async def list_for_workspace(
         self, query: q.ListMissionsForWorkspace, ctx: ExecutionContext
     ) -> list[MissionSummaryDTO]:
-        return await self._qry(ListMissionsForWorkspaceHandler).handle(query, ctx)
+        handler = ListMissionsForWorkspaceHandler(self._uow, self._authz)
+        return await handler.handle(query, ctx)

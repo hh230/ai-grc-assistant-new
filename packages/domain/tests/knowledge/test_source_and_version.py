@@ -4,7 +4,6 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 import pytest
-
 from grc_domain.knowledge import (
     ContentHash,
     DocumentFormat,
@@ -139,7 +138,9 @@ def test_full_publish_path() -> None:
     assert version.approval is not None and version.approval.actor == APPROVER
 
     version.publish(effective_from=T2023)
-    assert version.status is VersionStatus.PUBLISHED
+    # mypy narrows version.status to the previous assert's literal and doesn't see that
+    # publish() mutates it via _transition(); this is a real state change at runtime.
+    assert version.status == VersionStatus.PUBLISHED  # type: ignore[comparison-overlap]
     assert version.publication_date is not None
     assert version.effective_range is not None and version.effective_range.start == T2023
     assert version.applies_at(T2024) is True
@@ -208,7 +209,9 @@ def test_withdraw_then_archive() -> None:
     version.withdraw(reason="repealed")
     assert version.status is VersionStatus.WITHDRAWN
     version.archive()
-    assert version.status is VersionStatus.ARCHIVED
+    # mypy narrows version.status to the previous assert's literal and doesn't see that
+    # archive() mutates it via _transition(); this is a real state change at runtime.
+    assert version.status == VersionStatus.ARCHIVED  # type: ignore[comparison-overlap]
 
 
 def test_withdraw_requires_reason() -> None:

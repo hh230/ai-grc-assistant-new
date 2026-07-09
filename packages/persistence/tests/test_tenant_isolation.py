@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 from grc_domain.shared.identifiers import ControlId, OrganizationId, WorkspaceId
+from grc_persistence import SqlAlchemyUnitOfWork
 from grc_persistence.models import OutboxMessageModel
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from ._builders import make_control, make_mission, make_org
 
 
-async def test_cross_tenant_get_returns_none(uow_factory) -> None:
+async def test_cross_tenant_get_returns_none(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork],
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org("org-a"))
         await uow.organizations.add(make_org("org-b"))
@@ -25,7 +31,9 @@ async def test_cross_tenant_get_returns_none(uow_factory) -> None:
     assert cross is None
 
 
-async def test_cross_tenant_list_is_empty(uow_factory) -> None:
+async def test_cross_tenant_list_is_empty(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork],
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org("org-a"))
         await uow.organizations.add(make_org("org-b"))
@@ -41,7 +49,9 @@ async def test_cross_tenant_list_is_empty(uow_factory) -> None:
     assert cross == []
 
 
-async def test_outbox_rows_carry_owning_tenant(uow_factory, engine) -> None:
+async def test_outbox_rows_carry_owning_tenant(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork], engine: AsyncEngine
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org("org-a"))
         await uow.controls.add(make_control(org_id="org-a", control_id="ctl-a"))

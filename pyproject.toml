@@ -134,6 +134,7 @@ strict = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 namespace_packages = true
+explicit_package_bases = true
 
 # asyncpg ships no inline type stubs/py.typed marker (an upstream packaging gap, not ours).
 [[tool.mypy.overrides]]

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -20,5 +22,7 @@ class ControlModel(AggregateRootMixin, Base):
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     owner_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
     implementation_status: Mapped[str] = mapped_column(String(32), nullable=False)
-    framework_controls: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
+    framework_controls: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONColumn, nullable=False, default=list
+    )
     evidence_ids: Mapped[list[str]] = mapped_column(JSONColumn, nullable=False, default=list)

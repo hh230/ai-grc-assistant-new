@@ -24,8 +24,9 @@ def main() -> None:
     spec = app.openapi()
     output = Path(__file__).parent / "openapi.json"
     output.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    http_methods = {"get", "post", "put", "delete", "patch"}
     operations = sum(
-        1 for item in spec["paths"].values() for method in item if method in {"get", "post", "put", "delete", "patch"}
+        1 for item in spec["paths"].values() for method in item if method in http_methods
     )
     print(f"wrote {output} ({len(spec['paths'])} paths, {operations} operations)")
 

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import cast
+
 import httpx
 from conftest import auth
 
@@ -11,7 +13,7 @@ async def _create_workspace(client: httpx.AsyncClient, token: str) -> str:
         "/api/v1/workspaces", json={"name": "Compliance WS"}, headers=auth(token)
     )
     assert response.status_code == 201
-    return response.json()["id"]
+    return cast(str, response.json()["id"])
 
 
 async def test_full_mission_lifecycle_with_human_gate(client: httpx.AsyncClient) -> None:

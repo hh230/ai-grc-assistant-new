@@ -5,6 +5,9 @@ from __future__ import annotations
 from grc_domain.controls.entities import Control
 from grc_domain.frameworks.entities import Framework
 from grc_domain.frameworks.value_objects import FrameworkControl, FrameworkVersion, Requirement
+from grc_domain.knowledge.entities import KnowledgeSource
+from grc_domain.knowledge.enums import DocumentType, KnowledgeDomain
+from grc_domain.knowledge.value_objects import KnowledgeScope, LocalizedText
 from grc_domain.missions.entities import Mission, MissionStep
 from grc_domain.missions.value_objects import MissionGoal
 from grc_domain.policies.entities import Policy
@@ -108,3 +111,19 @@ def make_mission(
     )
     mission.plan([MissionStep(id=MissionStepId(sid), name=sid.upper()) for sid in step_ids])
     return mission
+
+
+def make_knowledge_source(
+    source_id: str = "src-1", *, scope: KnowledgeScope | None = None
+) -> KnowledgeSource:
+    return KnowledgeSource.register(
+        id=KnowledgeSourceId(source_id),
+        scope=scope or KnowledgeScope.global_(),
+        short_code="ISO-27001",
+        title=LocalizedText(entries=(("en", "ISO/IEC 27001"), ("ar", "آيزو 27001"))),
+        authority="ISO",
+        jurisdiction="international",
+        knowledge_domain=KnowledgeDomain.STANDARDS_FRAMEWORKS,
+        document_type=DocumentType.STANDARD,
+        tags=("iso", "information-security"),
+    )

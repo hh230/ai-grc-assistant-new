@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass
+from typing import Self
 
 
 @dataclass(frozen=True)
@@ -20,7 +21,7 @@ class EntityId:
             raise ValueError("EntityId value must be a non-empty string")
 
     @classmethod
-    def generate(cls) -> EntityId:
+    def generate(cls) -> Self:
         """Generate a new random identifier (UUID4)."""
         return cls(str(uuid.uuid4()))
 

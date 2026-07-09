@@ -8,6 +8,7 @@ from grc_domain.shared.identifiers import PluginId
 from grc_domain.shared.value_objects import SemanticVersion
 
 from ..shared.authorization import Action, ResourceType
+from ..shared.context import ExecutionContext
 from ..shared.exceptions import ResourceNotFoundError
 from ..shared.handlers import QueryHandler, TransactionalCommandHandler
 from ..shared.unit_of_work import UnitOfWork
@@ -24,7 +25,9 @@ async def _load(uow: UnitOfWork, plugin_id: PluginId) -> PluginDescriptor:
 
 
 class InstallPluginHandler(TransactionalCommandHandler[InstallPlugin, PluginDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: InstallPlugin, context: ExecutionContext, uow: UnitOfWork
+    ) -> PluginDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.PLUGIN)
         plugin = PluginDescriptor.install(
             id=PluginId.generate(),
@@ -41,7 +44,9 @@ class InstallPluginHandler(TransactionalCommandHandler[InstallPlugin, PluginDTO]
 
 
 class EnablePluginHandler(TransactionalCommandHandler[EnablePlugin, PluginDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: EnablePlugin, context: ExecutionContext, uow: UnitOfWork
+    ) -> PluginDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.PLUGIN, str(command.plugin_id)
         )
@@ -52,7 +57,9 @@ class EnablePluginHandler(TransactionalCommandHandler[EnablePlugin, PluginDTO]):
 
 
 class DisablePluginHandler(TransactionalCommandHandler[DisablePlugin, PluginDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: DisablePlugin, context: ExecutionContext, uow: UnitOfWork
+    ) -> PluginDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.PLUGIN, str(command.plugin_id)
         )
@@ -63,7 +70,9 @@ class DisablePluginHandler(TransactionalCommandHandler[DisablePlugin, PluginDTO]
 
 
 class GetPluginHandler(QueryHandler[GetPlugin, PluginDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetPlugin, context: ExecutionContext
+    ) -> PluginDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.PLUGIN, str(query.plugin_id)
         )
@@ -75,7 +84,9 @@ class GetPluginHandler(QueryHandler[GetPlugin, PluginDTO]):
 
 
 class ListPluginsHandler(QueryHandler[ListPlugins, list[PluginDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListPlugins, context: ExecutionContext
+    ) -> list[PluginDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.PLUGIN)
         async with self._uow as uow:
             items = await uow.plugins.list_installed()

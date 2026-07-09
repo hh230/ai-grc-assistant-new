@@ -2,13 +2,13 @@
 from __future__ import annotations
 
 import pytest
-
 from grc_domain.knowledge import (
     CanonicalKnowledgeObject,
     ControlPayload,
     CurationStatus,
     DefinitionPayload,
     KnowledgeObject,
+    KnowledgeObjectPayload,
     KnowledgeObjectType,
     KnowledgeScope,
     NormativeStrength,
@@ -39,7 +39,7 @@ PROV = ProvenanceRecord(source_version_id=VER)
 def make_object(
     *,
     object_type: KnowledgeObjectType = KnowledgeObjectType.REQUIREMENT,
-    payload=None,
+    payload: KnowledgeObjectPayload | None = None,
 ) -> KnowledgeObject:
     return KnowledgeObject.extract(
         id=OBJ,

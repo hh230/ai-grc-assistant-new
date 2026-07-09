@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts && tsx tests/eval/accessOnboarding.eval.ts && tsx tests/eval/analysisQuota.eval.ts && tsx tests/eval/teamInvitation.eval.ts",
     "db:migrate": "node scripts/db-migrate.mjs",
@@ -36,6 +36,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@types/node": "^22.5.0",
     "@types/pg": "^8.11.10",
     "@types/react": "^19.0.0",

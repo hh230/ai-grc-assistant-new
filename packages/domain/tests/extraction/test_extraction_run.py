@@ -104,7 +104,9 @@ def test_full_run_to_completion() -> None:
     )
     run.complete_stage(stage=ExtractionStage.PERSIST)
     run.await_review()
-    assert run.status is ExtractionRunStatus.AWAITING_REVIEW
+    # mypy narrows run.status to the previous assert's literal and doesn't see that
+    # await_review() mutates it via _transition(); this is a real state change at runtime.
+    assert run.status == ExtractionRunStatus.AWAITING_REVIEW  # type: ignore[comparison-overlap]
 
     run.complete()
     assert run.status is ExtractionRunStatus.COMPLETED
@@ -162,7 +164,9 @@ def test_fail_then_resume() -> None:
     assert any(isinstance(e, ExtractionRunFailed) for e in run.pending_events)
 
     run.resume()
-    assert run.status is ExtractionRunStatus.RUNNING
+    # mypy narrows run.status to the previous assert's literal and doesn't see that
+    # resume() mutates it via _transition(); this is a real state change at runtime.
+    assert run.status == ExtractionRunStatus.RUNNING  # type: ignore[comparison-overlap]
     assert run.error is None
     assert any(isinstance(e, ExtractionRunResumed) for e in run.pending_events)
 

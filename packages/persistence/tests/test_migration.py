@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import pathlib
 
+import pytest
 from alembic import command
 from alembic.config import Config
 from grc_persistence.models import Base
@@ -24,7 +25,9 @@ def _config() -> Config:
     return cfg
 
 
-def test_migration_builds_and_drops_full_schema(tmp_path, monkeypatch) -> None:
+def test_migration_builds_and_drops_full_schema(
+    tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     db_path = tmp_path / "migration.db"
     url = f"sqlite:///{db_path}"
     monkeypatch.setenv("ALEMBIC_DATABASE_URL", url)

@@ -8,6 +8,8 @@ domain ordering of each collection.
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -69,7 +71,7 @@ class MissionApprovalGateModel(TimestampMixin, Base):
     )
     position: Mapped[int] = mapped_column(Integer, nullable=False)
     step_id: Mapped[str] = mapped_column(String(255), nullable=False)
-    proposed_action: Mapped[dict] = mapped_column(JSONColumn, nullable=False)
+    proposed_action: Mapped[dict[str, Any]] = mapped_column(JSONColumn, nullable=False)
     decision: Mapped[str] = mapped_column(String(32), nullable=False)
     decided_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     rejection_reason: Mapped[str | None] = mapped_column(Text, nullable=True)

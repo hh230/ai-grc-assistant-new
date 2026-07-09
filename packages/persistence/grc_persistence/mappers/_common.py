@@ -8,6 +8,7 @@ here, so the per-aggregate mappers stay focused on assembling rows. Sets are enc
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from typing import Any
 
 from grc_domain.assessments.enums import CoverageLevel
 from grc_domain.assessments.value_objects import ControlAssessmentResult, CoverageSummary
@@ -20,6 +21,7 @@ from grc_domain.frameworks.value_objects import (
     FrameworkControlRef,
     Requirement,
 )
+from grc_domain.knowledge.value_objects import LocalizedText
 from grc_domain.missions.value_objects import ProposedAction
 from grc_domain.platform.value_objects import Permission, SchemaRef, VersionRange
 from grc_domain.reporting.value_objects import ReportSection
@@ -50,15 +52,26 @@ def aware(value: datetime) -> datetime:
     return value.astimezone(timezone.utc)
 
 
-def encode_id_set(values: set) -> list[str]:
+def encode_id_set(values: set[Any]) -> list[str]:
     """Encode a set of typed ids as a sorted list of strings (deterministic)."""
     return sorted(str(value) for value in values)
+
+
+# --- LocalizedText --------------------------------------------------------------------
+
+
+def encode_localized_text(value: LocalizedText) -> list[dict[str, str]]:
+    return [{"language": language, "text": text} for language, text in value.entries]
+
+
+def decode_localized_text(data: list[dict[str, str]]) -> LocalizedText:
+    return LocalizedText(entries=tuple((entry["language"], entry["text"]) for entry in data))
 
 
 # --- Citation -----------------------------------------------------------------------
 
 
-def encode_citation(citation: Citation) -> dict:
+def encode_citation(citation: Citation) -> dict[str, Any]:
     return {
         "source_id": str(citation.source_id),
         "locator": citation.locator,
@@ -66,7 +79,7 @@ def encode_citation(citation: Citation) -> dict:
     }
 
 
-def decode_citation(data: dict) -> Citation:
+def decode_citation(data: dict[str, Any]) -> Citation:
     return Citation(
         source_id=KnowledgeSourceId(data["source_id"]),
         locator=data["locator"],
@@ -74,30 +87,30 @@ def decode_citation(data: dict) -> Citation:
     )
 
 
-def encode_citations(citations: tuple[Citation, ...]) -> list[dict]:
+def encode_citations(citations: tuple[Citation, ...]) -> list[dict[str, Any]]:
     return [encode_citation(citation) for citation in citations]
 
 
-def decode_citations(data: list[dict]) -> tuple[Citation, ...]:
+def decode_citations(data: list[dict[str, Any]]) -> tuple[Citation, ...]:
     return tuple(decode_citation(item) for item in data)
 
 
 # --- SemanticVersion / SchemaRef / VersionRange / Permission ------------------------
 
 
-def encode_schema_ref(ref: SchemaRef | None) -> dict | None:
+def encode_schema_ref(ref: SchemaRef | None) -> dict[str, Any] | None:
     if ref is None:
         return None
     return {"name": ref.name, "version": str(ref.version)}
 
 
-def decode_schema_ref(data: dict | None) -> SchemaRef | None:
+def decode_schema_ref(data: dict[str, Any] | None) -> SchemaRef | None:
     if data is None:
         return None
     return SchemaRef(name=data["name"], version=SemanticVersion.parse(data["version"]))
 
 
-def encode_version_range(value: VersionRange | None) -> dict | None:
+def encode_version_range(value: VersionRange | None) -> dict[str, Any] | None:
     if value is None:
         return None
     return {
@@ -106,7 +119,7 @@ def encode_version_range(value: VersionRange | None) -> dict | None:
     }
 
 
-def decode_version_range(data: dict | None) -> VersionRange | None:
+def decode_version_range(data: dict[str, Any] | None) -> VersionRange | None:
     if data is None:
         return None
     maximum = data.get("maximum")
@@ -127,35 +140,35 @@ def decode_permissions(data: list[str]) -> frozenset[Permission]:
 # --- FrameworkControlRef ------------------------------------------------------------
 
 
-def encode_framework_control_ref(ref: FrameworkControlRef) -> dict:
+def encode_framework_control_ref(ref: FrameworkControlRef) -> dict[str, Any]:
     return {
         "framework_id": str(ref.framework_id),
         "framework_control_id": str(ref.framework_control_id),
     }
 
 
-def decode_framework_control_ref(data: dict) -> FrameworkControlRef:
+def decode_framework_control_ref(data: dict[str, Any]) -> FrameworkControlRef:
     return FrameworkControlRef(
         framework_id=FrameworkId(data["framework_id"]),
         framework_control_id=FrameworkControlId(data["framework_control_id"]),
     )
 
 
-def encode_framework_control_refs(refs: set[FrameworkControlRef]) -> list[dict]:
+def encode_framework_control_refs(refs: set[FrameworkControlRef]) -> list[dict[str, Any]]:
     return sorted(
         (encode_framework_control_ref(ref) for ref in refs),
         key=lambda item: (item["framework_id"], item["framework_control_id"]),
     )
 
 
-def decode_framework_control_refs(data: list[dict]) -> set[FrameworkControlRef]:
+def decode_framework_control_refs(data: list[dict[str, Any]]) -> set[FrameworkControlRef]:
     return {decode_framework_control_ref(item) for item in data}
 
 
 # --- FrameworkControl (definition data) ---------------------------------------------
 
 
-def encode_framework_control(control: FrameworkControl) -> dict:
+def encode_framework_control(control: FrameworkControl) -> dict[str, Any]:
     return {
         "id": str(control.id),
         "code": control.code,
@@ -168,7 +181,7 @@ def encode_framework_control(control: FrameworkControl) -> dict:
     }
 
 
-def decode_framework_control(data: dict) -> FrameworkControl:
+def decode_framework_control(data: dict[str, Any]) -> FrameworkControl:
     return FrameworkControl(
         id=FrameworkControlId(data["id"]),
         code=data["code"],
@@ -187,7 +200,7 @@ def decode_framework_control(data: dict) -> FrameworkControl:
 # --- ControlCorrespondence ----------------------------------------------------------
 
 
-def encode_correspondence(correspondence: ControlCorrespondence) -> dict:
+def encode_correspondence(correspondence: ControlCorrespondence) -> dict[str, Any]:
     return {
         "source": encode_framework_control_ref(correspondence.source),
         "target": encode_framework_control_ref(correspondence.target),
@@ -195,7 +208,7 @@ def encode_correspondence(correspondence: ControlCorrespondence) -> dict:
     }
 
 
-def decode_correspondence(data: dict) -> ControlCorrespondence:
+def decode_correspondence(data: dict[str, Any]) -> ControlCorrespondence:
     return ControlCorrespondence(
         source=decode_framework_control_ref(data["source"]),
         target=decode_framework_control_ref(data["target"]),
@@ -206,7 +219,7 @@ def decode_correspondence(data: dict) -> ControlCorrespondence:
 # --- RiskScore ----------------------------------------------------------------------
 
 
-def encode_risk_score(score: RiskScore | None) -> dict | None:
+def encode_risk_score(score: RiskScore | None) -> dict[str, Any] | None:
     if score is None:
         return None
     return {
@@ -217,7 +230,7 @@ def encode_risk_score(score: RiskScore | None) -> dict | None:
     }
 
 
-def decode_risk_score(data: dict | None) -> RiskScore | None:
+def decode_risk_score(data: dict[str, Any] | None) -> RiskScore | None:
     if data is None:
         return None
     return RiskScore(
@@ -231,7 +244,7 @@ def decode_risk_score(data: dict | None) -> RiskScore | None:
 # --- Assessment value objects -------------------------------------------------------
 
 
-def encode_assessment_result(result: ControlAssessmentResult) -> dict:
+def encode_assessment_result(result: ControlAssessmentResult) -> dict[str, Any]:
     return {
         "framework_control_id": str(result.framework_control_id),
         "coverage": result.coverage.value,
@@ -246,7 +259,7 @@ def encode_assessment_result(result: ControlAssessmentResult) -> dict:
     }
 
 
-def decode_assessment_result(data: dict) -> ControlAssessmentResult:
+def decode_assessment_result(data: dict[str, Any]) -> ControlAssessmentResult:
     satisfied = data.get("satisfied_by_control_id")
     confidence = data.get("confidence")
     return ControlAssessmentResult(
@@ -259,7 +272,7 @@ def decode_assessment_result(data: dict) -> ControlAssessmentResult:
     )
 
 
-def encode_coverage_summary(summary: CoverageSummary | None) -> dict | None:
+def encode_coverage_summary(summary: CoverageSummary | None) -> dict[str, Any] | None:
     if summary is None:
         return None
     return {
@@ -271,7 +284,7 @@ def encode_coverage_summary(summary: CoverageSummary | None) -> dict | None:
     }
 
 
-def decode_coverage_summary(data: dict | None) -> CoverageSummary | None:
+def decode_coverage_summary(data: dict[str, Any] | None) -> CoverageSummary | None:
     if data is None:
         return None
     return CoverageSummary(
@@ -286,7 +299,7 @@ def decode_coverage_summary(data: dict | None) -> CoverageSummary | None:
 # --- ReportSection ------------------------------------------------------------------
 
 
-def encode_report_section(section: ReportSection) -> dict:
+def encode_report_section(section: ReportSection) -> dict[str, Any]:
     return {
         "heading": section.heading,
         "body": section.body,
@@ -294,7 +307,7 @@ def encode_report_section(section: ReportSection) -> dict:
     }
 
 
-def decode_report_section(data: dict) -> ReportSection:
+def decode_report_section(data: dict[str, Any]) -> ReportSection:
     return ReportSection(
         heading=data["heading"],
         body=data["body"],
@@ -305,14 +318,14 @@ def decode_report_section(data: dict) -> ReportSection:
 # --- ProposedAction (mission gate) --------------------------------------------------
 
 
-def encode_proposed_action(action: ProposedAction) -> dict:
+def encode_proposed_action(action: ProposedAction) -> dict[str, Any]:
     return {
         "description": action.description,
         "citations": encode_citations(action.citations),
     }
 
 
-def decode_proposed_action(data: dict) -> ProposedAction:
+def decode_proposed_action(data: dict[str, Any]) -> ProposedAction:
     return ProposedAction(
         description=data["description"],
         citations=decode_citations(data.get("citations", [])),
@@ -322,7 +335,7 @@ def decode_proposed_action(data: dict) -> ProposedAction:
 # --- Audit value objects ------------------------------------------------------------
 
 
-def encode_actor(actor: Actor) -> dict:
+def encode_actor(actor: Actor) -> dict[str, Any]:
     return {
         "kind": actor.kind.value,
         "reference": actor.reference,
@@ -330,7 +343,7 @@ def encode_actor(actor: Actor) -> dict:
     }
 
 
-def decode_actor(data: dict) -> Actor:
+def decode_actor(data: dict[str, Any]) -> Actor:
     return Actor(
         kind=ActorKind(data["kind"]),
         reference=data.get("reference"),
@@ -338,19 +351,19 @@ def decode_actor(data: dict) -> Actor:
     )
 
 
-def encode_trace(trace: TraceContext | None) -> dict | None:
+def encode_trace(trace: TraceContext | None) -> dict[str, Any] | None:
     if trace is None:
         return None
     return {"trace_id": trace.trace_id, "span_id": trace.span_id}
 
 
-def decode_trace(data: dict | None) -> TraceContext | None:
+def decode_trace(data: dict[str, Any] | None) -> TraceContext | None:
     if data is None:
         return None
     return TraceContext(trace_id=data["trace_id"], span_id=data.get("span_id"))
 
 
-def encode_ai_call(trace: AiCallTrace | None) -> dict | None:
+def encode_ai_call(trace: AiCallTrace | None) -> dict[str, Any] | None:
     if trace is None:
         return None
     return {
@@ -365,7 +378,7 @@ def encode_ai_call(trace: AiCallTrace | None) -> dict | None:
     }
 
 
-def decode_ai_call(data: dict | None) -> AiCallTrace | None:
+def decode_ai_call(data: dict[str, Any] | None) -> AiCallTrace | None:
     if data is None:
         return None
     return AiCallTrace(

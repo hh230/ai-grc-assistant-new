@@ -30,7 +30,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, policy_id: PolicyId) -> 
 
 
 class DraftPolicyHandler(TransactionalCommandHandler[DraftPolicy, PolicyDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: DraftPolicy, context: ExecutionContext, uow: UnitOfWork
+    ) -> PolicyDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.POLICY)
         policy = Policy.draft(
             id=PolicyId.generate(),
@@ -44,7 +46,9 @@ class DraftPolicyHandler(TransactionalCommandHandler[DraftPolicy, PolicyDTO]):
 
 
 class SubmitPolicyForReviewHandler(TransactionalCommandHandler[SubmitPolicyForReview, PolicyDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: SubmitPolicyForReview, context: ExecutionContext, uow: UnitOfWork
+    ) -> PolicyDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.POLICY, str(command.policy_id)
         )
@@ -55,7 +59,9 @@ class SubmitPolicyForReviewHandler(TransactionalCommandHandler[SubmitPolicyForRe
 
 
 class ApprovePolicyHandler(TransactionalCommandHandler[ApprovePolicy, PolicyDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: ApprovePolicy, context: ExecutionContext, uow: UnitOfWork
+    ) -> PolicyDTO:
         await self._authz.ensure_can(
             context, Action.APPROVE, ResourceType.POLICY, str(command.policy_id)
         )
@@ -66,7 +72,9 @@ class ApprovePolicyHandler(TransactionalCommandHandler[ApprovePolicy, PolicyDTO]
 
 
 class PublishPolicyHandler(TransactionalCommandHandler[PublishPolicy, PolicyDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: PublishPolicy, context: ExecutionContext, uow: UnitOfWork
+    ) -> PolicyDTO:
         await self._authz.ensure_can(
             context, Action.PUBLISH, ResourceType.POLICY, str(command.policy_id)
         )
@@ -77,7 +85,9 @@ class PublishPolicyHandler(TransactionalCommandHandler[PublishPolicy, PolicyDTO]
 
 
 class RetirePolicyHandler(TransactionalCommandHandler[RetirePolicy, PolicyDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RetirePolicy, context: ExecutionContext, uow: UnitOfWork
+    ) -> PolicyDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.POLICY, str(command.policy_id)
         )
@@ -88,7 +98,9 @@ class RetirePolicyHandler(TransactionalCommandHandler[RetirePolicy, PolicyDTO]):
 
 
 class GetPolicyHandler(QueryHandler[GetPolicy, PolicyDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetPolicy, context: ExecutionContext
+    ) -> PolicyDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.POLICY, str(query.policy_id)
         )
@@ -100,7 +112,9 @@ class GetPolicyHandler(QueryHandler[GetPolicy, PolicyDTO]):
 
 
 class ListPoliciesHandler(QueryHandler[ListPolicies, list[PolicyDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListPolicies, context: ExecutionContext
+    ) -> list[PolicyDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.POLICY)
         async with self._uow as uow:
             items = await uow.policies.list_for_organization(context.organization_id)

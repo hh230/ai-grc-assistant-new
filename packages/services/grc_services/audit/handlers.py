@@ -7,15 +7,19 @@ from grc_domain.shared.identifiers import AuditRecordId
 from grc_domain.shared.value_objects import Actor, ActorKind, TraceContext
 
 from ..shared.authorization import Action, ResourceType
+from ..shared.context import ExecutionContext
 from ..shared.exceptions import ResourceNotFoundError
 from ..shared.handlers import QueryHandler, TransactionalCommandHandler
+from ..shared.unit_of_work import UnitOfWork
 from .commands import RecordAuditEntry
 from .dtos import AuditRecordDTO
 from .queries import GetAuditRecord, QueryAuditTrail
 
 
 class RecordAuditEntryHandler(TransactionalCommandHandler[RecordAuditEntry, AuditRecordDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RecordAuditEntry, context: ExecutionContext, uow: UnitOfWork
+    ) -> AuditRecordDTO:
         # Recording an audit entry is itself an audited, authorized action.
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.AUDIT)
         trace: TraceContext | None = context.trace
@@ -36,7 +40,9 @@ class RecordAuditEntryHandler(TransactionalCommandHandler[RecordAuditEntry, Audi
 
 
 class GetAuditRecordHandler(QueryHandler[GetAuditRecord, AuditRecordDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetAuditRecord, context: ExecutionContext
+    ) -> AuditRecordDTO:
         await self._authz.ensure_can(context, Action.READ, ResourceType.AUDIT, str(query.record_id))
         async with self._uow as uow:
             record = await uow.audit.get(context.organization_id, query.record_id)
@@ -46,7 +52,9 @@ class GetAuditRecordHandler(QueryHandler[GetAuditRecord, AuditRecordDTO]):
 
 
 class QueryAuditTrailHandler(QueryHandler[QueryAuditTrail, list[AuditRecordDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: QueryAuditTrail, context: ExecutionContext
+    ) -> list[AuditRecordDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.AUDIT)
         async with self._uow as uow:
             records = await uow.audit.query(

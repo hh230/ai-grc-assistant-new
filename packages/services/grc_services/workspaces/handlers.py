@@ -28,7 +28,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, workspace_id: WorkspaceI
 
 
 class CreateWorkspaceHandler(TransactionalCommandHandler[CreateWorkspace, WorkspaceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: CreateWorkspace, context: ExecutionContext, uow: UnitOfWork
+    ) -> WorkspaceDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.WORKSPACE)
         ws = Workspace.create(
             id=WorkspaceId.generate(),
@@ -42,7 +44,9 @@ class CreateWorkspaceHandler(TransactionalCommandHandler[CreateWorkspace, Worksp
 
 
 class AddWorkspaceMemberHandler(TransactionalCommandHandler[AddWorkspaceMember, WorkspaceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: AddWorkspaceMember, context: ExecutionContext, uow: UnitOfWork
+    ) -> WorkspaceDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.WORKSPACE, str(command.workspace_id)
         )
@@ -55,7 +59,9 @@ class AddWorkspaceMemberHandler(TransactionalCommandHandler[AddWorkspaceMember, 
 class RemoveWorkspaceMemberHandler(
     TransactionalCommandHandler[RemoveWorkspaceMember, WorkspaceDTO]
 ):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RemoveWorkspaceMember, context: ExecutionContext, uow: UnitOfWork
+    ) -> WorkspaceDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.WORKSPACE, str(command.workspace_id)
         )
@@ -66,7 +72,9 @@ class RemoveWorkspaceMemberHandler(
 
 
 class ArchiveWorkspaceHandler(TransactionalCommandHandler[ArchiveWorkspace, WorkspaceDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: ArchiveWorkspace, context: ExecutionContext, uow: UnitOfWork
+    ) -> WorkspaceDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.WORKSPACE, str(command.workspace_id)
         )
@@ -77,7 +85,9 @@ class ArchiveWorkspaceHandler(TransactionalCommandHandler[ArchiveWorkspace, Work
 
 
 class GetWorkspaceHandler(QueryHandler[GetWorkspace, WorkspaceDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetWorkspace, context: ExecutionContext
+    ) -> WorkspaceDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.WORKSPACE, str(query.workspace_id)
         )
@@ -89,7 +99,9 @@ class GetWorkspaceHandler(QueryHandler[GetWorkspace, WorkspaceDTO]):
 
 
 class ListWorkspacesHandler(QueryHandler[ListWorkspaces, list[WorkspaceDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListWorkspaces, context: ExecutionContext
+    ) -> list[WorkspaceDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.WORKSPACE)
         async with self._uow as uow:
             items = await uow.workspaces.list_for_organization(context.organization_id)

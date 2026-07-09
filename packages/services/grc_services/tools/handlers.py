@@ -8,15 +8,19 @@ from grc_domain.shared.identifiers import ToolId
 from grc_domain.shared.value_objects import SemanticVersion
 
 from ..shared.authorization import Action, ResourceType
+from ..shared.context import ExecutionContext
 from ..shared.exceptions import ResourceNotFoundError
 from ..shared.handlers import QueryHandler, TransactionalCommandHandler
+from ..shared.unit_of_work import UnitOfWork
 from .commands import DeprecateTool, RegisterTool
 from .dtos import ToolDTO
 from .queries import GetTool, ListActiveTools
 
 
 class RegisterToolHandler(TransactionalCommandHandler[RegisterTool, ToolDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RegisterTool, context: ExecutionContext, uow: UnitOfWork
+    ) -> ToolDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.TOOL)
         tool = ToolDescriptor.register(
             id=ToolId.generate(),
@@ -33,7 +37,9 @@ class RegisterToolHandler(TransactionalCommandHandler[RegisterTool, ToolDTO]):
 
 
 class DeprecateToolHandler(TransactionalCommandHandler[DeprecateTool, ToolDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: DeprecateTool, context: ExecutionContext, uow: UnitOfWork
+    ) -> ToolDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.TOOL, str(command.tool_id)
         )
@@ -46,7 +52,9 @@ class DeprecateToolHandler(TransactionalCommandHandler[DeprecateTool, ToolDTO]):
 
 
 class GetToolHandler(QueryHandler[GetTool, ToolDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetTool, context: ExecutionContext
+    ) -> ToolDTO:
         await self._authz.ensure_can(context, Action.READ, ResourceType.TOOL, str(query.tool_id))
         async with self._uow as uow:
             tool = await uow.tools.get(query.tool_id)
@@ -56,7 +64,9 @@ class GetToolHandler(QueryHandler[GetTool, ToolDTO]):
 
 
 class ListActiveToolsHandler(QueryHandler[ListActiveTools, list[ToolDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListActiveTools, context: ExecutionContext
+    ) -> list[ToolDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.TOOL)
         async with self._uow as uow:
             items = await uow.tools.list_active()

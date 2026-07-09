@@ -7,22 +7,28 @@ transaction as the aggregate change (a rejected commit leaves no outbox rows beh
 
 from __future__ import annotations
 
+from collections.abc import Callable, Sequence
+
 import pytest
 from grc_domain.risks.enums import RiskImpact, RiskLikelihood
 from grc_domain.shared.identifiers import OrganizationId, RiskId
+from grc_persistence import SqlAlchemyUnitOfWork
 from grc_persistence.models import OutboxMessageModel
 from grc_services.shared.exceptions import ConcurrencyError
-from sqlalchemy import func, select
+from sqlalchemy import RowMapping, func, select
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from ._builders import make_mission, make_org, make_risk
 
 
-async def _outbox(engine):
+async def _outbox(engine: AsyncEngine) -> Sequence[RowMapping]:
     async with engine.connect() as conn:
         return (await conn.execute(select(OutboxMessageModel))).mappings().all()
 
 
-async def test_events_are_captured_as_outbox_rows(uow_factory, engine) -> None:
+async def test_events_are_captured_as_outbox_rows(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork], engine: AsyncEngine
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         await uow.missions.add(make_mission(step_ids=("step-a",)))
@@ -41,7 +47,9 @@ async def test_events_are_captured_as_outbox_rows(uow_factory, engine) -> None:
     assert created["payload"]["workspace_id"] == "ws-1"
 
 
-async def test_new_outbox_rows_are_unpublished(uow_factory, engine) -> None:
+async def test_new_outbox_rows_are_unpublished(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork], engine: AsyncEngine
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         uow.collect_new_events()
@@ -52,7 +60,9 @@ async def test_new_outbox_rows_are_unpublished(uow_factory, engine) -> None:
     assert all(row["published_at"] is None for row in rows)
 
 
-async def test_rejected_commit_writes_no_outbox_rows(uow_factory, engine) -> None:
+async def test_rejected_commit_writes_no_outbox_rows(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork], engine: AsyncEngine
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         await uow.risks.add(make_risk())
@@ -67,6 +77,8 @@ async def test_rejected_commit_writes_no_outbox_rows(uow_factory, engine) -> Non
     await second.begin()
     a = await first.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
     b = await second.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
+    assert a is not None
+    assert b is not None
 
     a.assess(likelihood=RiskLikelihood.LIKELY, impact=RiskImpact.MAJOR)
     await first.risks.save(a)
@@ -84,7 +96,9 @@ async def test_rejected_commit_writes_no_outbox_rows(uow_factory, engine) -> Non
     assert sum(1 for r in rows if r["event_type"] == "RiskAssessed") == 1
 
 
-async def test_outbox_count_matches_collected_events(uow_factory, engine) -> None:
+async def test_outbox_count_matches_collected_events(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork], engine: AsyncEngine
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         recorded = uow.collect_new_events()

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -20,5 +22,5 @@ class AssessmentModel(AggregateRootMixin, Base):
     framework_version_label: Mapped[str] = mapped_column(String(64), nullable=False)
     assessment_type: Mapped[str] = mapped_column(String(32), nullable=False)
     status: Mapped[str] = mapped_column(String(32), nullable=False)
-    results: Mapped[list[dict]] = mapped_column(JSONColumn, nullable=False, default=list)
-    summary: Mapped[dict | None] = mapped_column(JSONColumn, nullable=True)
+    results: Mapped[list[dict[str, Any]]] = mapped_column(JSONColumn, nullable=False, default=list)
+    summary: Mapped[dict[str, Any] | None] = mapped_column(JSONColumn, nullable=True)

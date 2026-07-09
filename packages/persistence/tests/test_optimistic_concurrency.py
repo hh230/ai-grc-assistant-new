@@ -8,15 +8,18 @@ SQLAlchemy's ``StaleDataError`` into the application's ``ConcurrencyError``.
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 import pytest
 from grc_domain.risks.enums import RiskImpact, RiskLikelihood
 from grc_domain.shared.identifiers import MissionId, OrganizationId, RiskId
+from grc_persistence import SqlAlchemyUnitOfWork
 from grc_services.shared.exceptions import ConcurrencyError
 
 from ._builders import make_mission, make_org, make_risk
 
 
-async def test_concurrent_writes_conflict(uow_factory) -> None:
+async def test_concurrent_writes_conflict(uow_factory: Callable[[], SqlAlchemyUnitOfWork]) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         await uow.risks.add(make_risk())
@@ -29,6 +32,8 @@ async def test_concurrent_writes_conflict(uow_factory) -> None:
 
     risk_a = await first.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
     risk_b = await second.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
+    assert risk_a is not None
+    assert risk_b is not None
 
     # Client A commits first.
     risk_a.assess(likelihood=RiskLikelihood.LIKELY, impact=RiskImpact.MAJOR)
@@ -44,7 +49,9 @@ async def test_concurrent_writes_conflict(uow_factory) -> None:
         await second.commit()
 
 
-async def test_conflict_leaves_first_writers_state(uow_factory) -> None:
+async def test_conflict_leaves_first_writers_state(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork],
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         await uow.risks.add(make_risk())
@@ -56,6 +63,8 @@ async def test_conflict_leaves_first_writers_state(uow_factory) -> None:
     await second.begin()
     a = await first.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
     b = await second.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
+    assert a is not None
+    assert b is not None
 
     a.assess(likelihood=RiskLikelihood.ALMOST_CERTAIN, impact=RiskImpact.SEVERE)
     await first.risks.save(a)
@@ -71,10 +80,14 @@ async def test_conflict_leaves_first_writers_state(uow_factory) -> None:
     async with (uow := uow_factory()):
         risk = await uow.risks.get(OrganizationId("org-1"), RiskId("risk-1"))
     # The winner's assessment survives; the loser's was rolled back.
+    assert risk is not None
+    assert risk.score is not None
     assert risk.score.value == RiskLikelihood.ALMOST_CERTAIN.value * RiskImpact.SEVERE.value
 
 
-async def test_concurrent_mission_writes_conflict(uow_factory) -> None:
+async def test_concurrent_mission_writes_conflict(
+    uow_factory: Callable[[], SqlAlchemyUnitOfWork],
+) -> None:
     async with (uow := uow_factory()):
         await uow.organizations.add(make_org())
         await uow.missions.add(make_mission(step_ids=("step-a",)))
@@ -86,6 +99,8 @@ async def test_concurrent_mission_writes_conflict(uow_factory) -> None:
     await second.begin()
     m_a = await first.missions.get(OrganizationId("org-1"), MissionId("mission-1"))
     m_b = await second.missions.get(OrganizationId("org-1"), MissionId("mission-1"))
+    assert m_a is not None
+    assert m_b is not None
 
     m_a.start()
     await first.missions.save(m_a)

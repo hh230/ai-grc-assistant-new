@@ -30,7 +30,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, assessment_id: Assessmen
 
 
 class PlanAssessmentHandler(TransactionalCommandHandler[PlanAssessment, AssessmentDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: PlanAssessment, context: ExecutionContext, uow: UnitOfWork
+    ) -> AssessmentDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.ASSESSMENT)
         assessment = Assessment.plan(
             id=AssessmentId.generate(),
@@ -45,7 +47,9 @@ class PlanAssessmentHandler(TransactionalCommandHandler[PlanAssessment, Assessme
 
 
 class StartAssessmentHandler(TransactionalCommandHandler[StartAssessment, AssessmentDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: StartAssessment, context: ExecutionContext, uow: UnitOfWork
+    ) -> AssessmentDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.ASSESSMENT, str(command.assessment_id)
         )
@@ -58,7 +62,9 @@ class StartAssessmentHandler(TransactionalCommandHandler[StartAssessment, Assess
 class RecordAssessmentResultHandler(
     TransactionalCommandHandler[RecordAssessmentResult, AssessmentDTO]
 ):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RecordAssessmentResult, context: ExecutionContext, uow: UnitOfWork
+    ) -> AssessmentDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.ASSESSMENT, str(command.assessment_id)
         )
@@ -76,7 +82,9 @@ class RecordAssessmentResultHandler(
 
 
 class CompleteAssessmentHandler(TransactionalCommandHandler[CompleteAssessment, AssessmentDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: CompleteAssessment, context: ExecutionContext, uow: UnitOfWork
+    ) -> AssessmentDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.ASSESSMENT, str(command.assessment_id)
         )
@@ -87,7 +95,9 @@ class CompleteAssessmentHandler(TransactionalCommandHandler[CompleteAssessment, 
 
 
 class GetAssessmentHandler(QueryHandler[GetAssessment, AssessmentDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetAssessment, context: ExecutionContext
+    ) -> AssessmentDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.ASSESSMENT, str(query.assessment_id)
         )
@@ -99,7 +109,9 @@ class GetAssessmentHandler(QueryHandler[GetAssessment, AssessmentDTO]):
 
 
 class ListAssessmentsHandler(QueryHandler[ListAssessments, list[AssessmentDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListAssessments, context: ExecutionContext
+    ) -> list[AssessmentDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.ASSESSMENT)
         async with self._uow as uow:
             items = await uow.assessments.list_for_organization(context.organization_id)

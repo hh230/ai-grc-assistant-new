@@ -9,18 +9,23 @@ mechanics so the concrete repositories contain almost nothing but their *queries
 from __future__ import annotations
 
 from collections.abc import Callable
-from typing import Generic, TypeVar
+from typing import Any, Generic, Protocol, TypeVar
 
 from grc_services.shared.exceptions import ConcurrencyError
-from sqlalchemy import ColumnElement, select
+from sqlalchemy import ColumnElement, ColumnExpressionArgument, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..contracts.cache import CacheKey, RepositoryCache
 from ..contracts.mapper import AggregateMapper
 from ..contracts.tracking import AggregateTracker
 
+
+class _HasTablename(Protocol):
+    __tablename__: str
+
+
 D = TypeVar("D")
-M = TypeVar("M")
+M = TypeVar("M", bound=_HasTablename)
 
 
 class SqlAlchemyAggregateRepository(Generic[D, M]):
@@ -60,7 +65,7 @@ class SqlAlchemyAggregateRepository(Generic[D, M]):
         return result.scalar_one_or_none()
 
     async def _fetch_all(
-        self, *where: ColumnElement[bool], order_by: ColumnElement | None = None
+        self, *where: ColumnElement[bool], order_by: ColumnExpressionArgument[Any] | None = None
     ) -> list[M]:
         stmt = select(self._model).where(*where)
         if order_by is not None:
@@ -87,7 +92,7 @@ class SqlAlchemyAggregateRepository(Generic[D, M]):
         return aggregate
 
     async def _list_by(
-        self, *where: ColumnElement[bool], order_by: ColumnElement | None = None
+        self, *where: ColumnElement[bool], order_by: ColumnExpressionArgument[Any] | None = None
     ) -> list[D]:
         rows = await self._fetch_all(*where, order_by=order_by)
         return [self._materialize(model) for model in rows]

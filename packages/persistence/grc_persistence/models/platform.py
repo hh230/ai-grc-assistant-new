@@ -5,6 +5,8 @@ These are global catalog entries — not tenant-scoped — so they carry no ``or
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import Boolean, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -24,8 +26,8 @@ class ToolDescriptorModel(AggregateRootMixin, Base):
     required_permissions: Mapped[list[str]] = mapped_column(
         JSONColumn, nullable=False, default=list
     )
-    input_schema: Mapped[dict | None] = mapped_column(JSONColumn, nullable=True)
-    output_schema: Mapped[dict | None] = mapped_column(JSONColumn, nullable=True)
+    input_schema: Mapped[dict[str, Any] | None] = mapped_column(JSONColumn, nullable=True)
+    output_schema: Mapped[dict[str, Any] | None] = mapped_column(JSONColumn, nullable=True)
 
 
 class AgentDescriptorModel(AggregateRootMixin, Base):
@@ -49,4 +51,4 @@ class PluginDescriptorModel(AggregateRootMixin, Base):
     required_permissions: Mapped[list[str]] = mapped_column(
         JSONColumn, nullable=False, default=list
     )
-    compatibility: Mapped[dict | None] = mapped_column(JSONColumn, nullable=True)
+    compatibility: Mapped[dict[str, Any] | None] = mapped_column(JSONColumn, nullable=True)

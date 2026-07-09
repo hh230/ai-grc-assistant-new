@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
-      - run: uv sync
+      - run: uv sync --all-packages
       - run: uv run ruff check .
-      - run: uv run mypy .
+      - run: ./scripts/ci/mypy-workspace.sh
       - run: uv run pytest

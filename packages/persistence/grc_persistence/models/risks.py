@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -20,7 +22,7 @@ class RiskModel(AggregateRootMixin, Base):
     category: Mapped[str | None] = mapped_column(String(255), nullable=True)
     owner_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
     status: Mapped[str] = mapped_column(String(32), nullable=False)
-    score: Mapped[dict | None] = mapped_column(JSONColumn, nullable=True)
+    score: Mapped[dict[str, Any] | None] = mapped_column(JSONColumn, nullable=True)
     treatment: Mapped[str | None] = mapped_column(String(32), nullable=True)
     accepted_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     acceptance_rationale: Mapped[str | None] = mapped_column(Text, nullable=True)

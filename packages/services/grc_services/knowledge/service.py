@@ -10,11 +10,8 @@ from . import commands as c
 from . import queries as q
 from .dtos import KnowledgeSourceDTO
 from .handlers import (
-    BeginIngestionHandler,
     GetKnowledgeSourceHandler,
     ListKnowledgeSourcesHandler,
-    MarkIngestionFailedHandler,
-    MarkIngestionIndexedHandler,
     RegisterKnowledgeSourceHandler,
 )
 
@@ -28,30 +25,8 @@ class KnowledgeApplicationService:
     async def register(
         self, command: c.RegisterKnowledgeSource, ctx: ExecutionContext
     ) -> KnowledgeSourceDTO:
-        return await RegisterKnowledgeSourceHandler(self._uow, self._events, self._authz).handle(
-            command, ctx
-        )
-
-    async def begin_ingestion(
-        self, command: c.BeginIngestion, ctx: ExecutionContext
-    ) -> KnowledgeSourceDTO:
-        return await BeginIngestionHandler(self._uow, self._events, self._authz).handle(
-            command, ctx
-        )
-
-    async def mark_indexed(
-        self, command: c.MarkIngestionIndexed, ctx: ExecutionContext
-    ) -> KnowledgeSourceDTO:
-        return await MarkIngestionIndexedHandler(self._uow, self._events, self._authz).handle(
-            command, ctx
-        )
-
-    async def mark_failed(
-        self, command: c.MarkIngestionFailed, ctx: ExecutionContext
-    ) -> KnowledgeSourceDTO:
-        return await MarkIngestionFailedHandler(self._uow, self._events, self._authz).handle(
-            command, ctx
-        )
+        handler = RegisterKnowledgeSourceHandler(self._uow, self._events, self._authz)
+        return await handler.handle(command, ctx)
 
     async def get(self, query: q.GetKnowledgeSource, ctx: ExecutionContext) -> KnowledgeSourceDTO:
         return await GetKnowledgeSourceHandler(self._uow, self._authz).handle(query, ctx)

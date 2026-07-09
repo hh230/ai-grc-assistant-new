@@ -23,7 +23,9 @@ async def _load(uow: UnitOfWork, ctx: ExecutionContext, report_id: ReportId) -> 
 
 
 class RequestReportHandler(TransactionalCommandHandler[RequestReport, ReportDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: RequestReport, context: ExecutionContext, uow: UnitOfWork
+    ) -> ReportDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.REPORT)
         report = Report.request(
             id=ReportId.generate(),
@@ -38,7 +40,9 @@ class RequestReportHandler(TransactionalCommandHandler[RequestReport, ReportDTO]
 
 
 class AttachReportContentHandler(TransactionalCommandHandler[AttachReportContent, ReportDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: AttachReportContent, context: ExecutionContext, uow: UnitOfWork
+    ) -> ReportDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.REPORT, str(command.report_id)
         )
@@ -49,7 +53,9 @@ class AttachReportContentHandler(TransactionalCommandHandler[AttachReportContent
 
 
 class FinalizeReportHandler(TransactionalCommandHandler[FinalizeReport, ReportDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: FinalizeReport, context: ExecutionContext, uow: UnitOfWork
+    ) -> ReportDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.REPORT, str(command.report_id)
         )
@@ -60,7 +66,9 @@ class FinalizeReportHandler(TransactionalCommandHandler[FinalizeReport, ReportDT
 
 
 class PublishReportHandler(TransactionalCommandHandler[PublishReport, ReportDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: PublishReport, context: ExecutionContext, uow: UnitOfWork
+    ) -> ReportDTO:
         await self._authz.ensure_can(
             context, Action.PUBLISH, ResourceType.REPORT, str(command.report_id)
         )
@@ -71,7 +79,9 @@ class PublishReportHandler(TransactionalCommandHandler[PublishReport, ReportDTO]
 
 
 class GetReportHandler(QueryHandler[GetReport, ReportDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetReport, context: ExecutionContext
+    ) -> ReportDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.REPORT, str(query.report_id)
         )
@@ -83,7 +93,9 @@ class GetReportHandler(QueryHandler[GetReport, ReportDTO]):
 
 
 class ListReportsHandler(QueryHandler[ListReports, list[ReportDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListReports, context: ExecutionContext
+    ) -> list[ReportDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.REPORT)
         async with self._uow as uow:
             items = await uow.reports.list_for_organization(context.organization_id)

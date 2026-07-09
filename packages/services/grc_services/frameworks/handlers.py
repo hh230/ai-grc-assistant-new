@@ -10,15 +10,19 @@ from grc_domain.frameworks.entities import Framework
 from grc_domain.frameworks.value_objects import FrameworkVersion
 
 from ..shared.authorization import Action, ResourceType
+from ..shared.context import ExecutionContext
 from ..shared.exceptions import ResourceNotFoundError
 from ..shared.handlers import QueryHandler, TransactionalCommandHandler
+from ..shared.unit_of_work import UnitOfWork
 from .commands import DeprecateFramework, ImportFramework, PublishFramework
 from .dtos import FrameworkDTO
 from .queries import GetFramework, ListPublishedFrameworks
 
 
 class ImportFrameworkHandler(TransactionalCommandHandler[ImportFramework, FrameworkDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: ImportFramework, context: ExecutionContext, uow: UnitOfWork
+    ) -> FrameworkDTO:
         await self._authz.ensure_can(context, Action.CREATE, ResourceType.FRAMEWORK)
         framework = Framework.import_definition(
             id=command.framework_id,
@@ -33,7 +37,9 @@ class ImportFrameworkHandler(TransactionalCommandHandler[ImportFramework, Framew
 
 
 class PublishFrameworkHandler(TransactionalCommandHandler[PublishFramework, FrameworkDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: PublishFramework, context: ExecutionContext, uow: UnitOfWork
+    ) -> FrameworkDTO:
         await self._authz.ensure_can(
             context, Action.PUBLISH, ResourceType.FRAMEWORK, str(command.framework_id)
         )
@@ -48,7 +54,9 @@ class PublishFrameworkHandler(TransactionalCommandHandler[PublishFramework, Fram
 
 
 class DeprecateFrameworkHandler(TransactionalCommandHandler[DeprecateFramework, FrameworkDTO]):
-    async def _execute(self, command, context, uow):  # type: ignore[override]
+    async def _execute(
+        self, command: DeprecateFramework, context: ExecutionContext, uow: UnitOfWork
+    ) -> FrameworkDTO:
         await self._authz.ensure_can(
             context, Action.UPDATE, ResourceType.FRAMEWORK, str(command.framework_id)
         )
@@ -63,7 +71,9 @@ class DeprecateFrameworkHandler(TransactionalCommandHandler[DeprecateFramework, 
 
 
 class GetFrameworkHandler(QueryHandler[GetFramework, FrameworkDTO]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: GetFramework, context: ExecutionContext
+    ) -> FrameworkDTO:
         await self._authz.ensure_can(
             context, Action.READ, ResourceType.FRAMEWORK, str(query.framework_id)
         )
@@ -77,7 +87,9 @@ class GetFrameworkHandler(QueryHandler[GetFramework, FrameworkDTO]):
 
 
 class ListPublishedFrameworksHandler(QueryHandler[ListPublishedFrameworks, list[FrameworkDTO]]):
-    async def handle(self, query, context):  # type: ignore[override]
+    async def handle(
+        self, query: ListPublishedFrameworks, context: ExecutionContext
+    ) -> list[FrameworkDTO]:
         await self._authz.ensure_can(context, Action.READ, ResourceType.FRAMEWORK)
         async with self._uow as uow:
             items = await uow.frameworks.list_published()

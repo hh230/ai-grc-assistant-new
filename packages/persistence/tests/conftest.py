@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import AsyncIterator, Callable
+from pathlib import Path
 
 import pytest
 import pytest_asyncio
@@ -20,7 +21,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 
 @pytest_asyncio.fixture
-async def engine(tmp_path) -> AsyncIterator[AsyncEngine]:
+async def engine(tmp_path: Path) -> AsyncIterator[AsyncEngine]:
     url = os.environ.get("TEST_DATABASE_URL") or f"sqlite+aiosqlite:///{tmp_path / 'grc.db'}"
     eng = create_engine(url)
     async with eng.begin() as conn:

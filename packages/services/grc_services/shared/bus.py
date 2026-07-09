@@ -7,6 +7,7 @@ Buses route a message to its handler and convert raised `ApplicationError`s into
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import Any
 
 from .context import ExecutionContext
 from .messages import Command, Query
@@ -15,9 +16,9 @@ from .result import Result
 
 class CommandBus(ABC):
     @abstractmethod
-    async def dispatch(self, command: Command, context: ExecutionContext) -> Result: ...
+    async def dispatch(self, command: Command, context: ExecutionContext) -> Result[Any]: ...
 
 
 class QueryBus(ABC):
     @abstractmethod
-    async def ask(self, query: Query, context: ExecutionContext) -> Result: ...
+    async def ask(self, query: Query, context: ExecutionContext) -> Result[Any]: ...

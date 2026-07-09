@@ -8,6 +8,7 @@ relay select unpublished rows with an index-friendly predicate.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Any
 
 from sqlalchemy import DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -24,7 +25,7 @@ class OutboxMessageModel(Base):
     aggregate_type: Mapped[str] = mapped_column(String(255), nullable=False)
     aggregate_id: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     organization_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
-    payload: Mapped[dict] = mapped_column(JSONColumn, nullable=False)
+    payload: Mapped[dict[str, Any]] = mapped_column(JSONColumn, nullable=False)
     occurred_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     published_at: Mapped[datetime | None] = mapped_column(

@@ -13,6 +13,12 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
+const eslintConfig = [
+  // `next lint` excluded these automatically; plain `eslint` (see package.json's "lint"
+  // script) does not, so it must be told explicitly — otherwise it lints compiled/minified
+  // build output as if it were source.
+  { ignores: [".next/**", "node_modules/**"] },
+  ...compat.extends("next/core-web-vitals"),
+];
 
 export default eslintConfig;

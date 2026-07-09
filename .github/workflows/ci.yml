@@ -18,6 +18,13 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm build
+        env:
+          # next build only needs these to exist, not to be live — no route in this app
+          # fetches from the DB/AI provider at build time (everything's dynamically
+          # rendered), but Next.js still evaluates module-level code during the build.
+          AUTH_SECRET: ci-build-placeholder-not-a-real-secret-000000000000
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aigrc
 
   python:
     runs-on: ubuntu-latest

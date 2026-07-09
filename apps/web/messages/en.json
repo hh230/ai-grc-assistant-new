@@ -969,6 +969,53 @@
       "description": "Manage organization preferences, members, and workspace configuration."
     }
   },
+  "teamManagement": {
+    "title": "Team",
+    "subtitle": "Everyone with access to this organization's workspace.",
+    "inviteButton": "Invite member",
+    "loading": "Loading team…",
+    "loadError": "Couldn't load your team. Please try again.",
+    "table": {
+      "member": "Member",
+      "role": "Role",
+      "status": "Status",
+      "since": "Since"
+    },
+    "statusActive": "Active",
+    "statusPending": "Pending",
+    "roles": {
+      "owner": "Owner",
+      "admin": "Administrator",
+      "member": "Member",
+      "compliance_manager": "Compliance Manager",
+      "risk_manager": "Risk Manager",
+      "analyst": "Analyst",
+      "auditor": "Auditor",
+      "viewer": "Viewer"
+    },
+    "modal": {
+      "inviteTitle": "Invite a teammate",
+      "successTitle": "Invitation sent"
+    },
+    "form": {
+      "email": "Work email",
+      "emailPlaceholder": "colleague@company.com",
+      "role": "Role"
+    },
+    "errors": {
+      "emailRequired": "An email address is required.",
+      "inviteFailed": "Something went wrong sending the invite. Please try again."
+    },
+    "sendInvite": "Send invite",
+    "cancel": "Cancel",
+    "done": "Done",
+    "inviteLinkLabel": "Invite link",
+    "inviteLinkHint": "Copy this link and send it to your teammate — it expires in 7 days and can be used once.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "emailSent": "Invitation email sent to {email}.",
+    "emailNotSent": "Couldn't send the invitation email — share the link above instead."
+  },
   "placeholderPage": {
     "comingSoon": "Coming soon",
     "moduleNotice": "{title} is on its way — we're putting the finishing touches on this experience.",

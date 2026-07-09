@@ -1,13 +1,36 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchMyOrganizations } from "@/lib/organizations/client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  fetchMyOrganizations,
+  fetchOrganizationTeam,
+  inviteTeamMember,
+  type InviteTeamMemberResponse,
+} from "@/lib/organizations/client";
+import type { OrganizationTeam } from "@/lib/organizations/types";
+import type { InvitedRole } from "@/lib/invitations/types";
 
 const ORGANIZATIONS_KEY = ["organizations"] as const;
+const TEAM_KEY = ["organizations", "team"] as const;
 
 export function useOrganizations() {
   return useQuery({
     queryKey: ORGANIZATIONS_KEY,
     queryFn: fetchMyOrganizations,
+  });
+}
+
+export function useOrganizationTeam() {
+  return useQuery<OrganizationTeam>({
+    queryKey: TEAM_KEY,
+    queryFn: fetchOrganizationTeam,
+  });
+}
+
+export function useInviteTeamMember() {
+  const queryClient = useQueryClient();
+  return useMutation<InviteTeamMemberResponse, Error, { email: string; invitedRole: InvitedRole }>({
+    mutationFn: ({ email, invitedRole }) => inviteTeamMember(email, invitedRole),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: TEAM_KEY }),
   });
 }

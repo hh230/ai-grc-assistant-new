@@ -156,6 +156,7 @@ async function main(): Promise<void> {
       expiresAt: new Date(Date.now() - 1000).toISOString(), // already in the past
       usedAt: null,
       accessRequestId: null,
+      organizationId: null,
       createdAt: new Date().toISOString(),
     });
     await assertThrows(

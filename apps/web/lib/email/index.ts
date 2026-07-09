@@ -10,6 +10,10 @@
 
 import { sendEmail, type SendEmailResult } from "./service";
 import { renderInvitationEmail, type InvitationEmailParams } from "./templates/invitation";
+import {
+  renderTeamInvitationEmail,
+  type TeamInvitationEmailParams,
+} from "./templates/team-invitation";
 
 export { sendEmail, type SendEmailResult } from "./service";
 
@@ -18,5 +22,13 @@ export async function sendInvitationEmail(
   params: InvitationEmailParams,
 ): Promise<SendEmailResult> {
   const { subject, html, text } = renderInvitationEmail(params);
+  return sendEmail({ to, subject, html, text });
+}
+
+export async function sendTeamInvitationEmail(
+  to: string,
+  params: TeamInvitationEmailParams,
+): Promise<SendEmailResult> {
+  const { subject, html, text } = renderTeamInvitationEmail(params);
   return sendEmail({ to, subject, html, text });
 }

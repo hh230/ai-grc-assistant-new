@@ -969,6 +969,53 @@
       "description": "أدر تفضيلات المؤسسة والأعضاء وإعدادات مساحة العمل."
     }
   },
+  "teamManagement": {
+    "title": "الفريق",
+    "subtitle": "كل من لديه صلاحية الوصول إلى مساحة عمل هذه المؤسسة.",
+    "inviteButton": "دعوة عضو",
+    "loading": "جارٍ تحميل الفريق…",
+    "loadError": "تعذّر تحميل بيانات الفريق. حاول مرة أخرى.",
+    "table": {
+      "member": "العضو",
+      "role": "الدور",
+      "status": "الحالة",
+      "since": "منذ"
+    },
+    "statusActive": "نشط",
+    "statusPending": "قيد الانتظار",
+    "roles": {
+      "owner": "المالك",
+      "admin": "المسؤول",
+      "member": "عضو",
+      "compliance_manager": "مدير الامتثال",
+      "risk_manager": "مدير المخاطر",
+      "analyst": "محلل",
+      "auditor": "مدقق",
+      "viewer": "مشاهد"
+    },
+    "modal": {
+      "inviteTitle": "دعوة زميل",
+      "successTitle": "تم إرسال الدعوة"
+    },
+    "form": {
+      "email": "البريد الإلكتروني للعمل",
+      "emailPlaceholder": "colleague@company.com",
+      "role": "الدور"
+    },
+    "errors": {
+      "emailRequired": "البريد الإلكتروني مطلوب.",
+      "inviteFailed": "حدث خطأ أثناء إرسال الدعوة. حاول مرة أخرى."
+    },
+    "sendInvite": "إرسال الدعوة",
+    "cancel": "إلغاء",
+    "done": "تم",
+    "inviteLinkLabel": "رابط الدعوة",
+    "inviteLinkHint": "انسخ هذا الرابط وأرسله إلى زميلك — تنتهي صلاحيته خلال 7 أيام ويمكن استخدامه مرة واحدة.",
+    "copy": "نسخ",
+    "copied": "تم النسخ",
+    "emailSent": "تم إرسال بريد الدعوة إلى {email}.",
+    "emailNotSent": "تعذّر إرسال بريد الدعوة — شارك الرابط أعلاه بدلاً من ذلك."
+  },
   "placeholderPage": {
     "comingSoon": "قريبًا",
     "moduleNotice": "{title} في الطريق إليكم — نعمل حاليًا على إتمام هذه التجربة.",

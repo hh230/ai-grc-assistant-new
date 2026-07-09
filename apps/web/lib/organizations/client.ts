@@ -1,6 +1,7 @@
 /** Browser-side organizations API client. */
 
-import type { OrganizationMembership } from "./types";
+import type { InvitedRole } from "@/lib/invitations/types";
+import type { OrganizationMembership, OrganizationTeam } from "./types";
 
 async function parseError(response: Response): Promise<string> {
   const data = (await response.json().catch(() => ({}))) as { error?: string };
@@ -40,4 +41,29 @@ export async function switchOrganization(organizationId: string): Promise<void> 
     body: JSON.stringify({ organizationId }),
   });
   if (!response.ok) throw new Error(await parseError(response));
+}
+
+export async function fetchOrganizationTeam(): Promise<OrganizationTeam> {
+  const response = await fetch("/api/organizations/members", { cache: "no-store" });
+  if (!response.ok) throw new Error(await parseError(response));
+  return (await response.json()) as OrganizationTeam;
+}
+
+export interface InviteTeamMemberResponse {
+  inviteLink: string;
+  expiresAt: string;
+  emailSent: boolean;
+}
+
+export async function inviteTeamMember(
+  email: string,
+  invitedRole: InvitedRole,
+): Promise<InviteTeamMemberResponse> {
+  const response = await fetch("/api/organizations/invitations", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, invitedRole }),
+  });
+  if (!response.ok) throw new Error(await parseError(response));
+  return (await response.json()) as InviteTeamMemberResponse;
 }

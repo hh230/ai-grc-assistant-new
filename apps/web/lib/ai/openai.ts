@@ -28,7 +28,12 @@ const EMBEDDING_DIMENSIONS: Record<string, number> = {
 
 // Non-streaming calls: bounded by a hard timeout, retried once on a transient failure.
 const EMBED_TIMEOUT_MS = Number(process.env.OPENAI_EMBED_TIMEOUT_MS ?? 60_000);
-const CHAT_TIMEOUT_MS = Number(process.env.OPENAI_CHAT_TIMEOUT_MS ?? 90_000);
+// A non-streaming structured assessment (assess() in analysis/service.ts, up to 20k
+// max_completion_tokens on a reasoning model) can legitimately run well past 90s — observed
+// in practice via arabicAnalysis.eval.ts timing out at exactly the old 90s bound on a normal,
+// eventually-successful call. 180s leaves headroom for genuine reasoning time without
+// papering over a real hang (still far short of the analyze route's 300s maxDuration).
+const CHAT_TIMEOUT_MS = Number(process.env.OPENAI_CHAT_TIMEOUT_MS ?? 180_000);
 // Streaming calls run far longer in total (a reasoning model can legitimately take minutes),
 // so they're bounded by inactivity instead of total duration: aborted only if no chunk (not
 // even a keep-alive event) arrives for this long.

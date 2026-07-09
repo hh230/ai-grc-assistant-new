@@ -6,7 +6,7 @@
  */
 
 import { getPool } from "@/lib/db/pool";
-import type { Organization, OrganizationMembership } from "./types";
+import type { Organization, OrganizationMember, OrganizationMembership } from "./types";
 
 export interface OrganizationRepository {
   listForUser(userId: string): Promise<OrganizationMembership[]>;
@@ -15,6 +15,8 @@ export interface OrganizationRepository {
   isMember(userId: string, organizationId: string): Promise<boolean>;
   create(org: Organization): Promise<Organization>;
   addMember(userId: string, organizationId: string, role: string): Promise<void>;
+  /** Every real member of one organization, for the Settings > Team page. */
+  listMembers(organizationId: string): Promise<OrganizationMember[]>;
 }
 
 interface OrganizationRow {
@@ -95,6 +97,30 @@ class PostgresOrganizationRepository implements OrganizationRepository {
        ON CONFLICT (user_id, organization_id) DO NOTHING`,
       [userId, organizationId, role],
     );
+  }
+
+  async listMembers(organizationId: string): Promise<OrganizationMember[]> {
+    const { rows } = await getPool().query<{
+      user_id: string;
+      name: string;
+      email: string;
+      role: string;
+      created_at: Date;
+    }>(
+      `SELECT u.id AS user_id, u.name, u.email, m.role, m.created_at
+         FROM user_organizations m
+         JOIN users u ON u.id = m.user_id
+        WHERE m.organization_id = $1
+        ORDER BY m.created_at ASC`,
+      [organizationId],
+    );
+    return rows.map((row) => ({
+      userId: row.user_id,
+      name: row.name,
+      email: row.email,
+      role: row.role,
+      joinedAt: row.created_at.toISOString(),
+    }));
   }
 }
 

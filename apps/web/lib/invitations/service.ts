@@ -22,6 +22,8 @@ export interface CreateInvitationInput {
   organizationName: string;
   invitedRole: InvitedRole;
   accessRequestId?: string | null;
+  /** Set only for a team invite — see `Invitation.organizationId`. */
+  organizationId?: string | null;
 }
 
 export interface CreatedInvitation {
@@ -45,6 +47,7 @@ export async function createInvitation(
     expiresAt: expiresAt.toISOString(),
     usedAt: null,
     accessRequestId: input.accessRequestId ?? null,
+    organizationId: input.organizationId ?? null,
     createdAt: now.toISOString(),
   };
   await invitationRepository.create(invitation);
@@ -93,11 +96,15 @@ export interface AcceptedInvitation {
   role: UserRole;
 }
 
-/** Creates the organization + user + membership and marks the invitation used, all in one
- * transaction with a row lock on the invitation (`FOR UPDATE`) so two requests racing on the
- * same token cannot both succeed — one-time use is enforced under concurrency, not just by
- * the earlier read in `loadValidInvitation` (CLAUDE.md §9, idempotent/retry-safe consequential
- * actions). */
+/** Creates the user (+ a new organization, unless this is a team invite for an existing one)
+ * and marks the invitation used, all in one transaction with a row lock on the invitation
+ * (`FOR UPDATE`) so two requests racing on the same token cannot both succeed — one-time use
+ * is enforced under concurrency, not just by the earlier read in `loadValidInvitation`
+ * (CLAUDE.md §9, idempotent/retry-safe consequential actions).
+ *
+ * Branches on `invitation.organizationId`: unset means the original KI-P9 flow (a brand-new
+ * organization is created here); set means a team invite (lib/organizations/service.ts
+ * #inviteTeamMember) — the user joins that existing organization and no new one is created. */
 export async function acceptInvitation(
   token: string,
   input: unknown,
@@ -108,9 +115,10 @@ export async function acceptInvitation(
   }
 
   const invitation = await loadValidInvitation(token);
+  const isTeamInvite = Boolean(invitation.organizationId);
   const passwordHash = await hashPassword(parsed.data.password);
   const userId = randomUUID();
-  const organizationId = randomUUID();
+  const organizationId = invitation.organizationId ?? randomUUID();
   const now = new Date().toISOString();
   const role = mapInvitedRoleToUserRole(invitation.invitedRole);
 
@@ -138,11 +146,13 @@ export async function acceptInvitation(
        VALUES ($1, $2, $3, $4, $5)`,
       [userId, invitation.email, parsed.data.name, passwordHash, now],
     );
-    await client.query(
-      `INSERT INTO organizations (id, name, org_type, industry, created_by_user_id, created_at)
-       VALUES ($1, $2, $3, $4, $5, $6)`,
-      [organizationId, invitation.organizationName, "Unspecified", "Unspecified", userId, now],
-    );
+    if (!isTeamInvite) {
+      await client.query(
+        `INSERT INTO organizations (id, name, org_type, industry, created_by_user_id, created_at)
+         VALUES ($1, $2, $3, $4, $5, $6)`,
+        [organizationId, invitation.organizationName, "Unspecified", "Unspecified", userId, now],
+      );
+    }
     await client.query(
       `INSERT INTO user_organizations (user_id, organization_id, role) VALUES ($1, $2, $3)`,
       [userId, organizationId, role],

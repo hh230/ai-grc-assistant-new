@@ -89,7 +89,10 @@ export async function approveAccessRequest(
 ): Promise<ApproveAccessRequestResult> {
   const request = await loadPendingOrThrow(id);
   const parsed = approveAccessRequestSchema.safeParse(input ?? {});
-  const invitedRole: InvitedRole = parsed.success ? parsed.data.invitedRole : "owner";
+  if (!parsed.success) {
+    throw new ValidationError(parsed.error.issues[0]?.message ?? "Invalid invited role.");
+  }
+  const invitedRole: InvitedRole = parsed.data.invitedRole;
 
   const now = new Date().toISOString();
   await accessRequestRepository.updateStatus(id, "approved", actor.userId, now);

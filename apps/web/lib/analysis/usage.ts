@@ -3,10 +3,14 @@
  * analyses per calendar day. Enforced server-side (see `startAnalysis` in ./service) and
  * surfaced to the UI via /api/analyses/usage.
  *
- * The count comes straight from the `analyses` table: every analysis run — completed OR
- * started-then-failed — inserts exactly one row stamped with `requested_by_user_id` and
- * `created_at`, so counting a user's rows since the start of the current day is an exact,
- * self-resetting daily counter with no extra table or bookkeeping. Scoped by user id, not
+ * The count comes straight from the `analyses` table, filtered to `status <> 'failed'`: every
+ * run inserts exactly one row stamped with `requested_by_user_id` and `created_at`, starting
+ * as "processing". That row counts against the quota immediately — a *reservation* — so a
+ * burst of concurrent requests can't all start before any of them resolve and blow past the
+ * limit. If the run succeeds, the row becomes "processed" and the slot is permanently spent.
+ * If it fails (AI provider error, timeout, infrastructure failure — anything `markFailed` in
+ * ./service handles), the row becomes "failed" and drops out of the count on the very next
+ * check, releasing the reservation so the user can immediately retry. Scoped by user id, not
  * tenant or browser session, so switching organizations does not reset the budget.
  * Node-only (reads the DB pool).
  */
@@ -67,7 +71,8 @@ function startOfUsageDay(now: Date): Date {
   return new Date(wallMidnightUtc - timeZoneOffsetMs(now, USAGE_TIME_ZONE));
 }
 
-/** How many analyses this user has started today, and how many they have left. */
+/** How many analyses this user has started today (excluding failed runs — see the module
+ * docstring), and how many they have left. */
 export async function getDailyAnalysisUsage(
   userId: string,
   now: Date = new Date(),
@@ -77,7 +82,8 @@ export async function getDailyAnalysisUsage(
     `SELECT count(*)::text AS used
        FROM analyses
       WHERE requested_by_user_id = $1
-        AND created_at >= $2`,
+        AND created_at >= $2
+        AND status <> 'failed'`,
     [userId, dayStart.toISOString()],
   );
   const used = Number(rows[0]?.used ?? 0);
@@ -105,14 +111,16 @@ export async function assertDailyAnalysisAllowance(userId: string): Promise<Anal
   return usage;
 }
 
-/** How many analyses this tenant (across all its users) has started today. */
+/** How many analyses this tenant (across all its users) has started today, excluding failed
+ * runs — same reservation semantics as the per-user count above. */
 async function getTenantDailyAnalysisUsage(tenantId: string, now: Date = new Date()) {
   const dayStart = startOfUsageDay(now);
   const { rows } = await getPool().query<{ used: string }>(
     `SELECT count(*)::text AS used
        FROM analyses
       WHERE tenant_id = $1
-        AND created_at >= $2`,
+        AND created_at >= $2
+        AND status <> 'failed'`,
     [tenantId, dayStart.toISOString()],
   );
   return Number(rows[0]?.used ?? 0);

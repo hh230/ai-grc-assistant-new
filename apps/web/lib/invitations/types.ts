@@ -20,6 +20,11 @@ export interface Invitation {
   expiresAt: string;
   usedAt: string | null;
   accessRequestId: string | null;
+  /** Set only for a team invite (an owner/admin inviting someone into their existing
+   * organization) — `acceptInvitation` joins this org instead of creating a new one. Null for
+   * the original "brand-new organization" flow, where `organizationName` is just a label
+   * until acceptance creates the real row. */
+  organizationId: string | null;
   createdAt: string;
 }
 

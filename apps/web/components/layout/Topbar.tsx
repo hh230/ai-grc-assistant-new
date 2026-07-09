@@ -2,6 +2,7 @@
 
 import { Menu, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SearchBar } from "@/components/navigation/SearchBar";
 import { OrgSwitcher } from "@/components/navigation/OrgSwitcher";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
@@ -37,13 +38,13 @@ export function Topbar({ onMenuClick, onSearchClick }: TopbarProps) {
           <SearchBar onClick={onSearchClick} />
         </div>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="hidden h-9 items-center gap-1.5 rounded-lg bg-foreground px-3 text-sm font-medium text-background transition-opacity duration-150 hover:opacity-90 sm:inline-flex"
+          <Link
+            href="/upload"
+            className="hidden h-9 items-center gap-1.5 rounded-lg bg-foreground px-3 text-sm font-medium text-background transition-opacity duration-150 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
           >
             <Plus className="h-4 w-4" strokeWidth={2} />
             {t("newMission")}
-          </button>
+          </Link>
           <LanguageSwitcher />
           <NotificationsMenu />
           <UserMenu />

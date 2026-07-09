@@ -24,8 +24,10 @@ export const BETA_DAILY_ANALYSIS_LIMIT = 3;
 
 /** Tenant-wide allowance: document analyses an entire organization may start per day,
  * regardless of how many users it has — caps aggregate cost/load per tenant on top of the
- * per-user limit above. */
-export const TENANT_DAILY_ANALYSIS_LIMIT = 20;
+ * per-user limit above. Deliberately not a multiple of the per-user limit: adding more users
+ * to an org does not grant more org-wide quota (3 users each getting their own 3/day would
+ * already exceed this on day one), so this is a real, independent cap, not just "seats × 3". */
+export const TENANT_DAILY_ANALYSIS_LIMIT = 10;
 
 /**
  * Timezone the daily window is anchored to. The product is KSA-first (NCA ECC, SAMA, PDPL),

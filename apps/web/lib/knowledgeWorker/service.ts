@@ -40,6 +40,7 @@ async function callKnowledgeWorkerApi<T>(
   method: "GET" | "POST",
   path: string,
   body?: unknown,
+  options: { onUnreachable?: "error" | "warn" } = {},
 ): Promise<T> {
   const url = new URL(`/api/v1/knowledge-worker${path}`, apiBaseUrl());
 
@@ -55,8 +56,20 @@ async function callKnowledgeWorkerApi<T>(
       cache: "no-store",
     });
   } catch (error) {
-    logger.error("knowledge_worker_upstream_unreachable", { url: url.toString(), error });
-    throw new UpstreamError("Could not reach the AI Worker Control Center backend.");
+    // "warn" is for read-only call sites that degrade gracefully when the backend isn't
+    // deployed in this environment (see getLearningReports) — logged, but not reported to
+    // Sentry (logger.error is the only level that reports; see logger.ts). Consequential
+    // calls (schedule/trigger) keep the default "error" so a live backend actually going
+    // unreachable still alerts.
+    if (options.onUnreachable === "warn") {
+      logger.warn("knowledge_worker_upstream_unreachable", {
+        url: url.toString(),
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    } else {
+      logger.error("knowledge_worker_upstream_unreachable", error, { url: url.toString() });
+    }
+    throw new UpstreamError("Could not reach the AI Worker Control Center backend.", true);
   }
 
   if (!response.ok) {
@@ -140,7 +153,18 @@ export async function listWorkerEvents(
   limit?: number,
 ): Promise<WorkerEvent[]> {
   const path = limit ? `/events?limit=${encodeURIComponent(String(limit))}` : "/events";
-  const dtos = await callKnowledgeWorkerApi<WorkerEventDto[]>(actor, "GET", path);
+  let dtos: WorkerEventDto[];
+  try {
+    dtos = await callKnowledgeWorkerApi<WorkerEventDto[]>(actor, "GET", path, undefined, {
+      onUnreachable: "warn",
+    });
+  } catch (error) {
+    // Pure activity-audit list — an unreachable backend degrades to "no recent activity"
+    // instead of failing the whole workspace page (see the graceful-degradation policy on
+    // UpstreamError in lib/errors.ts).
+    if (error instanceof UpstreamError && error.unreachable) return [];
+    throw error;
+  }
   return dtos.map(toWorkerEvent);
 }
 
@@ -170,7 +194,16 @@ function toWorkerRun(dto: WorkerRunDto): WorkerRun {
 
 export async function listWorkerRuns(actor: ActorContext, limit?: number): Promise<WorkerRun[]> {
   const path = limit ? `/runs?limit=${encodeURIComponent(String(limit))}` : "/runs";
-  const dtos = await callKnowledgeWorkerApi<WorkerRunDto[]>(actor, "GET", path);
+  let dtos: WorkerRunDto[];
+  try {
+    dtos = await callKnowledgeWorkerApi<WorkerRunDto[]>(actor, "GET", path, undefined, {
+      onUnreachable: "warn",
+    });
+  } catch (error) {
+    // Pure run-history list — same graceful-degradation policy as listWorkerEvents above.
+    if (error instanceof UpstreamError && error.unreachable) return [];
+    throw error;
+  }
   return dtos.map(toWorkerRun);
 }
 
@@ -184,8 +217,30 @@ interface LearningReportsDto {
   updated: number;
 }
 
+const EMPTY_LEARNING_REPORTS: LearningReports = {
+  totalItems: 0,
+  verified: 0,
+  needsReview: 0,
+  outdated: 0,
+  discovered: 0,
+  addedThisCycle: 0,
+  updated: 0,
+};
+
 export async function getLearningReports(actor: ActorContext): Promise<LearningReports> {
-  const dto = await callKnowledgeWorkerApi<LearningReportsDto>(actor, "GET", "/reports");
+  let dto: LearningReportsDto;
+  try {
+    dto = await callKnowledgeWorkerApi<LearningReportsDto>(actor, "GET", "/reports", undefined, {
+      onUnreachable: "warn",
+    });
+  } catch (error) {
+    // The backend not being reachable (e.g. apps/api isn't deployed in this environment) is a
+    // known, expected condition for this read-only report — degrade to all-zero counts instead
+    // of failing the whole workspace page. A genuinely misbehaving (but reachable) backend
+    // still throws below, since that's worth alerting on.
+    if (error instanceof UpstreamError && error.unreachable) return EMPTY_LEARNING_REPORTS;
+    throw error;
+  }
   return {
     totalItems: dto.total_items,
     verified: dto.verified,

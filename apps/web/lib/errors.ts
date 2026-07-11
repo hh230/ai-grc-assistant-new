@@ -32,11 +32,36 @@ export class NotFoundError extends AppError {
   }
 }
 
-/** A downstream service (e.g. the `apps/api` FastAPI backend) failed or returned an
+/**
+ * A downstream service (e.g. the `apps/api` FastAPI backend) failed or returned an
  * unexpected shape. Distinct from the errors above, which describe *this* app rejecting the
- * request — an `UpstreamError` means the request was valid but the proxied call itself broke. */
+ * request — an `UpstreamError` means the request was valid but the proxied call itself broke.
+ *
+ * `unreachable` distinguishes "could not even connect" (e.g. `apps/api` isn't deployed in this
+ * environment — see `NEXT_PUBLIC_API_BASE_URL`) from "connected but the backend returned an
+ * error." Every `lib/*\/service.ts` module that proxies to `apps/api` (`regulationReview`,
+ * `knowledgeWorker`, `policyIntelligence`) follows the same `call<X>Api` helper shape: a fetch
+ * failure throws `new UpstreamError(message, true)`.
+ *
+ * **Graceful-degradation policy** (apply this consistently to any new proxy call site):
+ * - Read-only lists and optional dashboard/statistics widgets MAY catch an `unreachable`
+ *   `UpstreamError` and fall back to their existing empty/default response — but only when
+ *   that empty state reads as neutral ("nothing here yet"), never as a positive claim (e.g. a
+ *   compliance scan's "no gaps found" or "no issues found" is NOT a safe fallback, since it
+ *   would misrepresent an unreachable check as a clean result). The call site's `call<X>Api`
+ *   invocation should pass `{ onUnreachable: "warn" }` so the failure logs at `warn` (not
+ *   `error`) and does not report to Sentry — see `logger.ts`.
+ * - Status/control-plane reads that feed a mutating decision (e.g. a trigger button's
+ *   enabled state), single-record detail views, scan/review results with a compliance
+ *   meaning, and every mutating operation (create/update/delete/approve/reject/trigger) MUST
+ *   keep the default `error` logging and continue to throw — losing that failure would be
+ *   dangerous or misleading.
+ */
 export class UpstreamError extends AppError {
-  constructor(message = "The backend service is unavailable.") {
+  constructor(
+    message = "The backend service is unavailable.",
+    readonly unreachable = false,
+  ) {
     super(502, message, "upstream_error");
   }
 }

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام العمل ولوائحه التنفيذية.pdf",
+  "filename": "نظام العمل ولوائحه التنفيذية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام العمل ولوائحه التنفيذية.pdf",
+  "size_bytes": 2268369,
+  "last_modified": "2026-06-26T19:24:07.585242+00:00",
+  "checksum_sha256": "f9434f4fb293bba2e41345533f5d6180dceb8e3e6a52d63f2048ff1b83b1481f",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 134,
+  "character_count": 163213,
+  "extraction_duration": 7.9086649579694495,
+  "parsed_at": "2026-07-12T16:11:44.770748+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 383,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.03177591599524021,
+  "chunked_at": "2026-07-12T16:11:44.811982+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,1569 @@
+ Operational Technology Cybersecurity
+Controls Methodology and Mapping Annex
+)OTCCMM -1: 2022(
+Sharing Notice: White
+Document Classification: PublicDisclaimer: The following methodology  will be governed by and 
+implemented in accordance with the laws of the Kingdom of 
+Saudi Arabia, and must be subject to the exclusive jurisdiction 
+of the courts of the Kingdom of Saudi Arabia. Therefore, the 
+Arabic version will be the binding language for all matters 
+relating to the meaning or interpretation of this document.In the Name of Allah, 
+The Most Gracious, 
+The Most MercifulOTCC Methodology and Mapping AnnexSharing Indicator: White
+6
+Document Classification: Public
+Traffic Light Protocol (TLP):
+This marking protocol is widely used around the world. It has four colors (traffic lights):
+Red – Personal, Confidential and for Intended Recipient only
+Amber – Restricted Sharing
+Green – Sharing within the Same Community
+White – No Restriction
+The recipient has no rights to share information classified in red with any 
+person outside the defined range of recipients either inside or outside the 
+organization, beyond the scope specified for receipt.
+The recipient may share information classified in amber only with intended 
+recipients inside the organization and with recipients who are required to take 
+action related to the shared information.
+The recipient may share information classified in green with other recipients 
+inside the organization or outside it within the same sector or related to the 
+organization. However, it is not allowed to exchange or publish this information 
+on public channels.Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+7
+Document Classification: Public
+8
+8
+10
+13
+14
+16
+18
+14
+ 
+10
+11
+13
+16
+Table of Contents
+Design Principles of the Operational Technology Cybersecurity Controls
+Relationship to International Standards 
+Design Methodology of Operational Technology Cybersecurity Controls )OTCC-
+1:2022(
+OTCC Main Domains and Subdomains
+Relationship Between OTCC and ECC Domain 5
+Assigning OTCC Controls & Subcontrols Levels  
+International Standards Mapping to OTCC Controls          
+                      
+     
+Table of Table
+Table 1: Relationship Between OTCC and ECC Domain 5
+Table of Figures
+Figure 1: Overlapping Scope of OTCC and ECC 
+Figure 2: Main Domain and Subdomain Relationship between OTCC and ECC
+Figure 3: Main Domains and Subdomains of OTCC
+Figure 4. Main Steps to Apply Operational Technology Cybersecurity Controls OTCC Methodology and Mapping AnnexSharing Indicator: White
+8
+Document Classification: Public
+Design Principles of the  Operational Technology Cybersecurity 
+Controls )OTCC(
+The Operational Technology Cybersecurity Controls (OTCC) has been developed 
+to provide more specific controls for OT/ICS systems. The OTCC document is an 
+extension to the ECC-1:2018 cybersecurity controls. Thus, applicable organizations 
+must comply with ECC controls first, and then comply with the additional controls 
+provided by the OTCC-1:2022 document.
+The following principles were taken into account while developing the OTCC 
+document :
+• The security requirements stated in the OTCC document are an extension to the 
+security requirements in the ECC controls. 
+• The OTCC cybersecurity controls leverage existing work that has been practiced 
+by other leading countries or international standards in OT/ICS fields.
+• The OTCC cybersecurity controls were mapped to international documents in 
+order to allow organizations to make use of international practices.
+Relationship to International Standards
+The following international standards, regulations, and guidelines related to OT/ICS 
+environments were utilized as the foundation when developing the OTCC document:
+• ISA/IEC 62443 Series on Security for industrial automation and control systems 
+(IACS), specifically:
+ ◼ 62443-2-1, Draft 3, Edit 8 Committee Draft for Vote (Approved), Security 
+program requirements for IACS asset owners.
+ ◼ 62443-3-2:2020, Security risk assessment for system design.
+ ◼ 62443-3-3:2013, System security requirements and security levels.
+• US National Institute of Standards and Technology (NIST), Framework 
+for Improving Critical Infrastructure Cybersecurity, also called the NIST 
+Cybersecurity Framework (CSF).
+• US NIST Special Publication (SP) 800-53 rev4, Security and Privacy Controls for Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+9
+Document Classification: Public
+Federal Information Systems and Organizations.
+• US NIST SP 800-82 rev 2, Guide to Industrial Control System (ICS) Security.
+• 104 - Norwegian Oil and Gas Recommended guidelines for information security 
+baseline requirements for process control, safety and support ICT systems (NOG 
+104).
+• North American Electric Reliability Corporation (NERC) Critical Infrastructure 
+Protection (CIP) version 6.
+• US Department of Energy (DoE) Cybersecurity Capability Maturity Model 
+(C2M2).OTCC Methodology and Mapping AnnexSharing Indicator: White
+10
+Document Classification: Public
+Design Methodology of Operational Technology Cybersecurity 
+Controls )OTCC-1:2022(
+Relationship to Essential Cybersecurity Controls (ECC-
+1:2018)
+Operational Technology Cybersecurity Controls (OTCC-1:2022) is an extension of 
+Essential Cybersecurity Controls (ECC-1:2018). Figure 1 below shows that OTCC 
+implementation starts after ECC implementation and compliance.
+Figure 1: Overlapping Scope of OTCC and ECC
+The main domains and subdomains of ECC and OTCC are aligned in a similar 
+structure. Four of the five ECC main domains are in the OTCC. In addition, 20 
+subdomains of the ECC subdomains are OTCC subdomains with additional OT 
+specific contorols. (shown in light grey in Figure 2). One new subdomain was added 
+to the OTCC document (shown in dark blue in Figure 2). Two subdomains were 
+modified in the OTCC document (shown in light blue in Figure 2). Four ECC 
+subdomains do not have specific controls for OT/ICS environments (shown in grey in 
+Figure 2).
+ Essential
+ Cybersecurity
+Controls )ECC
+ Operational Technology
+Cybersecurity Controls
+)OTCC(
+(Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+11
+Document Classification: Public
+Cybersecurity
+Governance
+Cybersecurity Policies and 
+Procedures
+Cybersecurity 
+Roles and 
+Responsibilities
+Cybersecurity Risk 
+Management
+Cybersecurity 
+in Industrial 
+Control 
+System Project 
+Management
+Cybersecurity 
+in Change 
+Management
+Compliance 
+with 
+Cybersecurity 
+Standards, 
+Law and 
+Regulations
+Periodical 
+Cybersecurity 
+Review and 
+Audit
+Cybersecurity in Human 
+Resources
+Cybersecurity 
+Awareness 
+and Training 
+Program
+Cybersecurity
+Defense
+Asset 
+Management
+Identity 
+and Access 
+Management
+System and 
+Processing 
+Facility 
+Protection
+Email 
+Protection
+Network 
+Security 
+Management
+Mobile 
+Devices 
+Security
+Data and 
+Information 
+Protection
+Cryptography Backup and Recovery 
+Management Vulnerabilities Management
+Penetration 
+Testing
+Cybersecurity 
+Event 
+Logs and 
+Monitoring 
+Management
+Cybersecurity 
+Incident 
+and Threat 
+Management
+Physical Security
+Web 
+Application 
+Security
+Cybersecurity
+Resilience Cybersecurity Resilience Aspects of Business Continuity Management (BCM)
+Third-Party
+Cybersecurity Third-Party Cybersecurity Cloud Computing and Hosting 
+Cybersecurity
+ECC and OTCC
+Subdomains
+ECC and OTCC 
+modified Subdomains
+New OTCC 
+Subdomains
+ECC Subdomains without 
+additional OTCC 
+     Figure 2: Relationship between OTCC and ECC Main Domains and SubdomainsOTCC Methodology and Mapping AnnexSharing Indicator: White
+12
+Document Classification: Public
+Relationship to Critical Systems Cybersecurity Controls 
+(CSCC-1:2019)
+Operational Technology Cybersecurity Controls (OTCC-1:2022) is applicable to 
+industrial control systems or operational technologies residing in critical facilities. 
+Non-OT/ICS critical systems are subject to Critical Systems Cybersecurity Controls 
+(CSCC-1:2019) while critical industrial control systems and operational technologies 
+are only subject to Operational Technology Cybersecurity Controls (OTCC-1:2022).Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+13
+Document Classification: Public
+Main Domains and Subdomains Structure of the OTCC
+Figure 3 shows the structure of OTCC Main Domains and Subdomains:
+Figure 3: OTCC Main Domains and Subdomains
+Cybersecurity
+Governance
+Cybersecurity Policies and 
+Procedures
+Cybersecurity 
+Roles and 
+Responsibilities
+Cybersecurity Risk Management
+Cybersecurity 
+in Industrial 
+Control 
+System Project 
+Management
+Cybersecurity 
+in Change 
+Management
+Periodical 
+Cybersecurity 
+Review and Audit
+Cybersecurity 
+in Human 
+Resources
+Cybersecurity 
+Awareness 
+and Training 
+Program
+Cybersecurity
+Defense
+Asset 
+Management   
+Identity 
+and Access 
+Management
+System and 
+Processing Facility 
+Protection
+Network 
+Security 
+Management
+Mobile 
+Devices 
+Security
+Data and 
+Information 
+Protection
+Cryptography Backup and Recovery 
+Management
+Vulnerabilities 
+Management
+Penetration 
+Testing
+Cybersecurity 
+Event Logs and 
+Monitoring 
+Management
+Cybersecurity Incident and 
+Threat Management Physical Security
+Cybersecurity
+Resilience Cybersecurity Resilience Aspects of Business Continuity Management (BCM)
+Third-Party
+Cybersecurity Third-Party CybersecurityOTCC Methodology and Mapping AnnexSharing Indicator: White
+14
+Document Classification: Public
+ECC Control ID ECC Control Statement Relation to OTCC Controls
+5-1-1 Cybersecurity requirements related 
+to Industrial Controls Systems and 
+Operational Technology (ICS/OT) 
+must be defined, documented and 
+approved.
+1-1-1
+5-1-2 The cybersecurity requirements 
+related to Industrial Controls 
+Systems and Operational 
+Technology (ICS/OT) must be 
+implemented.
+1-1-1
+5-1-3 In addition to the applicable 
+ECC controls from the main 
+domains (1), (2), (3) and (4), the 
+cybersecurity requirements related 
+to Industrial Controls Systems and 
+Operational Technology (ICS/OT) 
+must include at least the following:
+-
+5-1-3-1 Strict physical and virtual 
+segmentation when connecting 
+industrial production networks 
+to other networks within the 
+organization (e.g., corporate 
+network).
+2-4-1-1, 2-4-1-2, 2-4-1-3, 2-4-1-6, 
+ 2-4-1-9, 2-4-1-10, 2-4-1-11,
+ 2-4-1-12, 2-4-1-13 
+5-1-3-2 Strict physical and virtual 
+segmentation when connecting 
+systems and industrial networks 
+with external networks (e.g., 
+Internet, wireless, remote access).
+2-4-1-4, 2-4-1-5,
+2-4-1-7, 2-4-1-8
+Relationship Between OTCC and ECC Domain 5
+The ECC Domain 5 “Industrial Control System Protection” includes controls and 
+sub-controls for enhancing the cybersecurity level of OT/ICS environment in general. 
+However, Operational Technology Cybersecurity Controls (OTCC-1:2022) specifies 
+more detailed controls to increase the protection of OT/ICS systems. 
+Table (1) below illustrates the relationship between the cybersecurity controls stated in 
+ECC domain 5 and the cybersecuirty controls stated in the OTCC document. Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+15
+Document Classification: Public
+5-1-3-3 Continuous monitoring and 
+activation of cybersecurity event 
+logs on the industrial networks and 
+its connections.
+2-11-1, 2-11-3
+5-1-3-4 Isolation of Safety Instrumental 
+Systems (SIS).
+2-4-1-3
+5-1-3-5 Strict limitation on the use of 
+external storage media.
+2-3-1-8, 2-3-1-9
+5-1-3-6 Strict limitation on connecting 
+mobile devices to industrial 
+production networks. 
+2-5-1-1, 2-5-1-2, 2-5-1-3,
+2-5-1-4, 2-5-1-5
+5-1-3-7 Periodic review and secure 
+configuration and hardening of 
+industrial, automated, support 
+systems, and devices.
+2-3-1-1, 2-3-1-2,
+2-3-1-3, 2-3-1-5, 2-3-1-7, 
+2-4-1-15
+5-1-3-8 Vulnerability management for 
+industrial control systems and 
+operational technology (ICS/OT).
+2-9-1-1, 2-9-1-2,
+2-9-1-3,
+5-1-3-9 Patch management for industrial 
+control systems and operational 
+technology (ICS/OT). 
+2-3-1-3, 2-5-1-2
+5-1-3-10 Cybersecurity applications 
+management related to the 
+protection of the industrial systems 
+from viruses and malware.
+2-2-1-2, 2-3-1-1, 2-3-1-6,
+2-11-1-5
+5-1-4 The cybersecurity requirements 
+related to Industrial Controls 
+Systems and Operational 
+Technology (ICS/OT) must be 
+reviewed periodically.
+1-1-3, 1-4-2, 1-5-4, 1-7-2, 
+2-1-2, 2-2-2, 2-3-2, 2-4-2,
+2-5-2, 2-6-2, 2-7-2, 2-8-2,
+2-9-2, 2-10-2, 2-11-2, 2-12-2,
+2-13-2, 3-1-2, 4-1-2
+Table 1: Relationship Between OTCC and ECC Domain 5OTCC Methodology and Mapping AnnexSharing Indicator: White
+16
+Document Classification: Public
+Assigning OTCC Controls & Subcontrols Levels
+Overview
+This section provides a thorough process on how organizations assign appropriate 
+levels to different facilities within their OT/ICS environment. Assigning the 
+appropriate facility level must be based on  the defined criteria to ensure appropriate 
+controls  are assigned to appropriate facilities.  
+Assigning Levels Approach
+This approach consists of two main steps: 
+• Defining the criticality levels for facilities based on the results of Facility Level 
+Identification Tool (OTCC-1:2022).
+• Defining the applicable controls for each facility in accordance to the criticality of 
+OT/ICS systems within the respective facility. 
+Figure 4: Main Steps to Apply Cybersecurity Controls in OT/ICS Environment
+Defining the Criticality Levels for Facilities
+There are three levels defined in the Operational Technology Cybersecurity Controls 
+(OTCC) that are dependent on the criticality, consequences and impacts of the 
+organization’s facilities containing OT/ICS systems or assets. This allows organizations 
+to appropriately tailor its cybersecurity controls to its OT/ICS environment:
+• Level 1 (L1): The criticality level of the facility is high and have severe adverse 
+effects, consequences, and/or impacts to operations, catstrophic or assets, 
+resources, or Health, Safety, and Environment (HSE) of the organization.
+• Level 2 (L2):  The criticality level of the facility is moderate and have significant 
+effects, consequences, and/or impacts to operations, assets, resources, or Health, 
+Safety, and Environment (HSE) of the organization.
+Defining the 
+Criticality Levels for 
+Facilities
+Defining 
+Applicable 
+ControlsSharing Indicator: WhiteOTCC Methodology and Mapping Annex
+17
+Document Classification: Public
+• Level 3 (L3):  The criticality level of the facility is low and have moderate adverse 
+effects, consequences, and/or impacts to operations, assets, resources, or Health, 
+Safety, and Environment (HSE) of the organization.
+Each organization utilizes the Facility Level Identification Tool (OTCC-1:2022) when 
+they identify the criticality level for their facilities based on the following criteria:
+1. N egative impact to onsite and/or offsite population.
+2. Negative environmental impact onsite and/or offsite areas.
+3. Negative impact on national security.
+4. Negative impact on the Kingdom’s reputation and public image.
+5. Unauthorized disclosure of data that is classified as Secret or Top Secret.
+6. Disruption to the national economy. 
+7. Negative impact to a large number of beneficiaries.
+8. National infrastructure interdependencies.
+9. Facility interdependencies.
+If an organizations owns industrial control systems with different criticality levels 
+within the same facility, the criticality level of the facility will be based on the system 
+with the highest criticality level.
+Defining Applicable Controls
+Once the organization has identified facilities’ levels based on the defined criteria 
+above, the organization shall comply with the applicable controls based on the results 
+of the Facility Level Identification Tool. When the organization has different OT/ICS 
+facilities that are separated and isolated, the levels can differ. Thus, the applicability of 
+the controls will differ. 
+Each control and sub-control in OTCC document is associated with a specific level. 
+The facility’s level will determine the set of controls that must be applied to achieve 
+compliance with OTCC document. Organizations that have facilities that are classified 
+as L1 are required to implement all controls and subcontrols stated in the document. 
+Organizations that have facilities that are classified as L2 are required to implement L2 
+and L3 controls. Organizations that have facilities that are classified as L3 are required 
+to implement L3 controls at minimum. If a control or sub-control is not required to 
+be applied based on the identified level, NCA encourages the organization to apply 
+that control or sub-control.OTCC Methodology and Mapping AnnexSharing Indicator: White
+18
+Document Classification: Public
+Cybersecurity Governance1
+Cybersecurity Policies and Procedures1-1
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+ CPM-1,
+ CPM-2c,
+ CPM-2e,
+CPM-3b
+ 003-R1,
+003-R2
+ISBR 8PL-2 ID.GV-1,
+ID.GV-2
+-ZCR 6.1 ORG 1.1,
+ORG 2.4
+1-1-1
+ACM-1c, 
+ACM-2a,
+ 002-R1,
+ 002-R2,
+ 003-R1,
+003-R2
+ISBR 6CM-3, MA-
+1, SA-10
+PR.IP-3SR 7.6-CM 1.21-1-2
+ISC-1 (all), 
+CPM-2g
+RM-3e
+002-R1, 
+002-R2, 
+003-R1, 
+003-R2
+ISBR 13, 
+ISBR 1, 
+ISBR 2
+SA-11 (2), 
+RA-3, PM-
+11, PL-2, 
+PM-9
+ID.GV-4, 
+ID.RA-5, 
+ID.BE (All), 
+ID-GV-4, 
+ID.RA-4
+-ZCR 5.1, 
+ZCR 6.6, 
+ZCR 4.1, 
+ZCR 7.1, 
+ZCR 6.8
+ORG 1.6, 
+ORG 2 (all)
+1-1-3
+Cybersecurity Roles and Responsibilities1-2
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+1-2-1
+WM-1d, 
+WM-1c
+ 002-R2,
+ 003-R1,
+ 003-R3,
+003-R4
+ ISBR 1,
+ISBR 3
+PS-1, PM-
+1, PM-2
+ ID.AM-6,
+ ID.GV-2,
+PR.AT-4
+-- ORG 1.3,
+ORG 1.5
+1-2-1-1
+WM-1d, 
+WM-1c
+002-R2, 
+003-R1, 
+003-R3, 
+003-R4
+ISBR 1, 
+ISBR 3
+PS-1, PM-
+1, PM-2
+ID.AM-6, 
+ID.GV-2, 
+PR.AT-4
+--ORG 1.3, 
+ORG 1.5
+1-2-1-2
+Cybersecurity Risk Management1-3
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+1-3-1
+RM-3e-ISBR 2 RA-1,
+PM-1
+ ID.RM-1,
+,ID.RM-3
+- ZCR 3.3,
+ ZCR 5.3,
+ZCR 7.1
+ORG 2.11-3-1-1
+International Standards Mapping to OTCC Controls
+In case of a discrepancy between the OTCC document and the other national and 
+international standards referenced in this document, the OTCC must take precedence.Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+19
+Document Classification: Public
+TVM-1d, 
+TVM-1g, 
+RM-2e, 
+RM-1c
+002-R1, 
+008-R1
+ISBR 5RA-3, 
+SA-11 (2), 
+SA-15 (4), 
+PM-16,
+ID.RA-4-ZCR 5.1, 
+ZCR 5.3, 
+ZCR 5.4, 
+ZCR 5.5, 
+ZCR 5.7, 
+ZCR 5.10, 
+ZCR 5.11, 
+ZCR 5.13, 
+ZCR 6.1, 
+ZCR 6.6
+ORG 2.1, 
+ORG 2.4, 
+AVAIL 1.2, 
+AVAIL 1.2, 
+NET 1.5
+1-3-1-2
+--ISBR 2RA-3ID.RA-6-ZCR 5.13ORG 2.11-3-1-3
+RM-2a, 
+RM-1c
+---ID.GV-4-ZCR 5.13ORG 2.11-3-1-4
+COMP 3.5003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10-PR.IP-3--COMP 3.51-3-1-5
+CPM-3b,-ISBR 6PL-8, PL-2----1-3-1-6
+CPM-3b,-ISBR 6PL-8, PL-2----1-3-1-7
+Cybersecurity in Industrial Control System Project Management1-4
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+1-4-1
+CPM-4b-ISBR 8CA-1,
+CM-4 (2)
+SA-1, SA-
+3, SA-4, 
+SA-8, SA-
+11, SA-12
+ID.SC-4SR 3.3- ORG 2.3,
+ORG 1.6
+1-4-1-1
+CPM-4b-ISBR 12--SR 7.6-ORG 2.3, 
+ORG 1.6
+1-4-1-2
+---CP-2
+CP-3
+PR.IP-9---1-4-1-3
+---PM-7ID.GV-4---1-4-1-4
+--ISBR 8CM-7 (1)---ORG 2.41-4-2
+Cybersecurity in Change Management1-5
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+ACM-4a003-R1, 
+003-R2
+ISBR 10CM-3PR.IP-3--CM 1.41-5-1
+ACM (all)003-R1, 
+003-R2
+ISBR 10CM-3PR.IP-3--CM 1.41-5-2
+1-5-3
+ACM-3a003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10CM-4PR.IP-3--CM 1.41-5-3-1
+ACM-4d003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10CM-3(2)PR.IP-3--CM 1.41-5-3-2OTCC Methodology and Mapping AnnexSharing Indicator: White
+20
+Document Classification: Public
+-003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10IR-4 (2)PR.IP-3--CM 1.41-5-3-3
+-003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10IR-4 (2)PR.IP-3--CM 1.41-5-3-4
+ACM-2d010-R1, 
+010-R2
+ISBR 10CM-2(2)PR.IP-3SR 7.6 
+RE(1)
+-CM 1.41-5-3-5
+ACM-4g003-R1, 
+003-R2, 
+010-R1, 
+010-R2
+ISBR 10CM-3PR.IP-3-- CM 1.4,
+ORG 2.4
+1-5-4
+Periodical Cybersecurity Review and Audit1-6
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+---AU*PR.PT-1
+SR 2.8, 
+SR 2.9, SR 
+2.10, SR 
+2.11, SR 
+2.12
+-
+4.3.3.3.9, 
+4.3.3.5.8, 
+4.3.4.4.7, 
+4.4.2.1, 
+4.4.2.2, 
+4.4.2.4
+1-6-1
+---AU*PR.PT-1--3.1.181-6-2
+Cybersecurity in Human Resources1-7
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+WM-2a, 
+WM-2c
+004-R3, 
+004-R4, 
+004-R5
+-PS-3---USER 1.2, 
+USER 1.41-7-1
+---PS-1PR.IP-11---1-7-2
+Cybersecurity Awareness and Training Program1-8
+Standards
+رقم الضابط62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+WM-3a, 
+WM-3d
+004-R1, 
+004-R2ISBR 5PR.AT-1
+ PR.AT-1,
+ PR.AT-2,
+PR.AT-5
+--ORG 1.41-8-1
+1-8-2
+WM-3i004-R1, 
+004-R2ISBR 5PR-AT-3 PR.AT-2,
+PR.AT-5--ORG 1.51-8-2-1
+WM-3i004-R1, 
+004-R2ISBR 5PR-AT-3 PR.AT-2,
+PR.AT-5--ORG 1.51-8-2-2Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+21
+Document Classification: Public
+Cybersecurity Defense2
+Asset Management١
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-1-1
+- 002-R1,
+ 002-R2,
+ 003-R1,
+003-R2
+ISBR 17CM-8ID.AM-1SR 1.2-CM 1.12-1-1-1
+- 002-R1,
+ 002-R2,
+ 003-R1,
+003-R2
+ISBR 17CM-8ID.AM-1SR 1.2-CM 1.12-1-1-2
+-002-R2, 
+003-R1, 
+003-R2
+ISBR 17CP-9 (3), 
+CM-8 (7)
+PR.AC-4 SR 2.1
+ RE(1), SR
+7.7
+-AVAIL 2.4, 
+USER 1.5
+2-1-1-3
+-002-R2ISBR 3CM-9 (1)ID.GV-2SR 2.1-ORG 1.32-1-1-4
+- 002-R1,
+ 002-R2,
+ 003-R1,
+003-R2
+ISBR 17CM-8ID.AM-1SR 1.2-CM 1.12-1-1-5
+-002-R1, 
+002-R2, 
+003-R1, 
+003-R2
+ISBR 17CM-8ID.AM-1SR 1.2-CM 1.12-1-2
+Identity and Access Management2-2
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-2-1
+-007-R5--- SR 1.1, SR
+2.1
+--2-2-1-1
+IAM-1a007-R5ISBR 19AC-2 (1)PR.AC-7SR 1.2-USER 1.22-2-1-2
+IAM-1c007-R5ISBR 19AC-2 (2)PR.AC-1SR 1.2-USER 1.22-2-1-3
+-003-R1, 
+005-R1, 
+005-R2
+-AC-11, AC-
+12, SI-14
+- SR 2.5, SR
+2.6
+-USER 1.162-2-1-4
+--ISBR 19AC-2 (1)----2-2-1-5
+-007-R5ISBR 19AC-3 (2)-SR 2.1 
+RE(3), SR 
+2.1 RE(4)
+-USER 2.3, 
+USER 2.4
+2-2-1-6
+CPM-3 
+(all)
+005-R2ISBR 4SC-1, SC-7PR.AC-3SR 5.2 ZCR 2.1,
+3.1, 4.1
+NET 1.12-2-1-7
+IAM-1a007-R5-IA-5PR.AC-1SR 1.4-USER 1.22-2-1-8
+- 011-R1,
+011-R2
+-AC-21 PR.DS-1,
+PR.DS-2
+SR 1.7-DATA 1.22-2-1-9
+IAM-1d007-R5, 
+010-R1
+ISBR 19-PR.AC-1SR 4.1 
+RE(1)
+--2-2-1-10OTCC Methodology and Mapping AnnexSharing Indicator: White
+22
+Document Classification: Public
+IAM-1c007-R5ISBR 19AC-2 (2)PR.AC-1--USER 1.22-2-1-11
+----R.AC-1SR 1.2-USER 1.22-2-2
+System and Processing Facilities Protection2-3
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-1-1
+SA-2b, SA-
+2e, SA-2j
+ 007-R3,
+ 007-R4,
+ 010-R1,
+010-R2
+ISBR 13SI-3DE.CM-4 SR 3.2, SR
+5.2
+- COMP 1.1,
+COMP 2.2
+2-3-1-1
+TVM-2c007-R2ISBR 6CM-6, 
+CM-7
+PR.PT-3--COMP 1.1, 
+USER 1.5, 
+COMP 3
+2-3-1-2
+TVM-2c007-R2ISBR 6 CM-6,
+CM-7
+PR.PT-3-- COMP 1.1,
+ USER 1.5,
+COMP 3
+2-3-1-3
+---CM-7PR.IP-1SR 7.7--2-3-1-4
+- 010-R1,
+010-R2
+- AU-5 (4),
+CP-12
+-SR 5.2 
+RE(3)
+-DATA 1.32-3-1-5
+---CM-7PR.IP-1SR 7.7
+SR 3.2
+--2-3-1-6
+SA-4a, 
+IAM-2d,
+ 005-R1,
+ 010-R1,
+010-R2
+ISBR 6SA-17 (7) PR.IP-3,
+PR.AC-4
+SR 5.1 
+RE(3), SR 
+2.1 RE(1)
+ ZCR 3.1,
+ZCR 3.3
+ NET 1.3,
+ COMP 1.1,
+ COMP 3.3,
+ EVENT 1.1,
+EVENT 1.5
+2-3-1-7
+IAM-1a, 
+IAM-2a
+004-R2, 
+007-R1, 
+007-R3, 
+007-R4, 
+010-R4
+ISBR 13MA-3 (2), 
+MP (all)
+PR.PT-2, 
+DE.CM-4
+SR 3.2 
+RE(1)
+-COMP 1.2, 
+COMP 2.1
+2-3-1-8
+IAM-1a, 
+IAM-2a
+ 004-R2,
+ 007-R1,
+ 007-R3,
+ 007-R4,
+010-R4
+ISBR 13MA-3 (2), 
+MP (all)
+ PR.PT-2,
+DE.CM-4
+SR 3.2 
+RE(1)
+- COMP 1.2,
+COMP 2.1
+2-3-1-9
+-001-R4
+002-R4
+003-R4
+-AU-1*PR.PT-1SR 2.8, 
+SR 2.9, SR 
+2.10, SR 
+2.11, SR 
+2.12
+--2-3-1-10
+SA-2d007-R4ISBR 13CA-7DE.CM-4SR 2.8-ORG 2.22-3-1-11
+SA-2b007-R4ISBR 13CA-7DE.AE-7SR 2.8-ORG 2.22-3-1-12
+SA-1c, 
+SA-1e
+007-R4ISBR 2AU-6 (4)DE.AE-3SR 2.8 
+RE(1)
+-EVENT 1.72-3-1-13
+SA-2b, SA-
+2e, SA-2j
+007-R3, 
+007-R4, 
+010-R1, 
+010-R2
+ISBR 13SI-3DE.CM-4SR 3.2, SR 
+5.2
+-COMP 1.1, 
+COMP 2.2
+2-3-2Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+23
+Document Classification: Public
+Network Security Management2-4
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-4-1
+SA-2b, SA-
+2e, SA-2j
+ 005-R1,
+006-R1
+ISBR 4 AC-17,
+SC-7
+ PR.AC-5,
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+-NET 1.12-4-1-1
+CPM-3 
+(all)
+005-R1, 
+006-R1
+ISBR 4SC-7PR.AC-5, 
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+ZCR 3.2NET 1.1, 
+NET 1.3
+2-4-1-2
+CPM-3 
+(all)
+ 002-R1,
+ 005-R1,
+006-R1
+ISBR 4SC-7 PR.AC-5,
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+ZCR 3.3NET 1.32-4-1-3
+CPM-3 
+(all)
+-ISBR 4AC-18 
+(all), SI-4 
+(14)
+PR.AC-5, 
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+ZCR 3.5NET 2 
+(ALL)
+2-4-1-4
+CPM-3 
+(all)
+-ISBR 4AC-18 (all) PR.AC-5,
+PR.PT-4
+SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.5 NET 2.2,
+NET 1.6
+2-4-1-5
+CPM-3 
+(all)
+005-R1, 
+007-R1
+ISBR 4MA-4 (4), 
+SC-7 (5)
+PR.AC-5SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.6NET 1.72-4-1-6
+CPM-3 
+(all)
+ 003-R1,
+ 005-R1,
+005-R2
+-AC-11, AC-
+12, SI-14
+- SR 2.5, SR
+2.6
+-USER 1.162-4-1-7
+-005-R1ISBR 4MA-4 (4), 
+SC-7
+PR.AC-3, 
+PR.AC-5, 
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+-NET 3 
+(ALL)
+2-4-1-8
+CPM-3 
+(all)
+005-R2ISBR 4MA-4 (4), 
+SC-7, SC-7 
+(8)
+ PR.AC-3,
+ PR.AC-5,
+PR.PT-4
+SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.2NET 3 
+(ALL)
+2-4-1-9
+CPM-3 
+(all)
+005-R2ISBR 4MA-4 (4), 
+SC-7, SC-7 
+(8)
+PR.AC-3, 
+PR.AC-5, 
+PR.PT-4
+SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.2NET 3 
+(ALL)
+2-4-1-10
+CPM-3 
+(all)
+005-R2ISBR 4MA-4 (4), 
+SC-7, SC-7 
+(8)
+ PR.AC-3,
+ PR.AC-5,
+PR.PT-4
+SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.2NET 3 
+(ALL)
+2-4-1-11
+CPM-3 
+(all)
+005-R2ISBR 4MA-4 (4), 
+SC-7, SC-7 
+(8)
+ PR.AC-3,
+ PR.AC-5,
+PR.PT-4
+SR 1.6, SR 
+5.1 (all), 
+SR 5.2 
+(all)
+ZCR 3.2NET 3 
+(ALL)
+2-4-1-12
+CPM-3 
+(all)
+005-R1ISBR 4MA-4 (4), 
+SC-7
+PR.AC-3, 
+PR.AC-5, 
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+-NET 3 
+(ALL)
+2-4-1-13
+CPM-3 
+(all)
+005-R1ISBR 4 MA-4 (4),
+SC-7
+ PR.AC-3,
+ PR.AC-5,
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+-NET 3 
+(ALL)
+2-4-1-14OTCC Methodology and Mapping AnnexSharing Indicator: White
+24
+Document Classification: Public
+CPM-3 
+(all)
+005-R1ISBR 11 CA-9, SI-4,
+CA-3
+ ID.AM-3,
+DE.AE-1
+-ZCR 6.3NET 1.22-4-1-15
+CPM-3 
+(all)
+005-R1ISBR 11CA-9, SI-4, 
+CA-3
+ID.AM-3, 
+DE.AE-1
+-ZCR 6.3NET 1.22-4-1-16
+CPM-3 
+(all)
+ 005-R1,
+006-R1
+ISBR 4 AC-17,
+SC-7
+ PR.AC-5,
+PR.PT-4
+SR 5.1 
+(all), SR 
+5.2 (all)
+-NET 1.12-4-2
+Mobile Devices Security2-5
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-5-1
+-007-R3, 
+007-R4, 
+010-R3, 
+010-R4
+ISBR 4ISBR 6PR.AC-7SR 2.3--2-5-1-1
+- 007-R3,
+ 007-R4,
+ 010-R3,
+010-R5
+010-R6
+ISBR 6
+ISBR 13
+ISBR 6 PR.AC-7,
+,DE.CM-7
+SR 2.3 
+(all), SR 
+2.2, SR 2.2 
+RE(1)
+-NET 2 (all), 
+NET 1.7, 
+NET 1.8
+COMP 1.2, 
+COMP 2.1
+2-5-1-2
+--ISBR 6AC-19PR.AC-3SR 2.3--2-5-1-3
+--ISBR 6AC-19-SR 2.3--2-5-1-4
+--ISBR 6AC-19-SR 4.2--2-5-1-5
+- 007-R3,
+ 007-R4,
+ 010-R3,
+010-R4
+ISBR 6AC-19PR.AC-7SR 2.3- NET 2 (all),
+ NET 1.7,
+NET 1.8
+ COMP 1.2,
+COMP 2.1
+2-5-2
+Data and Information Protection2-6
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-6-1
+-011-R1, 
+011-R2
+-AC-21PR.DS-1, 
+PR.DS-2
+SR 4.1 
+RE(1)
+-DATA 1.22-6-1-1
+----PR.DS-1,
+PR.DS-2
+SR 3.4
+SR 4.1
+--2-6-1-2
+- 011-R1,
+011-R2
+-MP-6ID.GV-4SR 4.2 (all)-DATA 1.62-6-1-3
+---CM-8, MP-
+6, PE-16
+CM-2
+PR.DS-7
+PR.DS-3
+SR 4.2- ,4.3.3.3.9
+4.3.4.4.1
+2-6-1-4
+-011-R1, 
+011-R2
+-AC-21PR.DS-1, 
+PR.DS-2
+SR 4.1 , 
+4.2
+-DATA 1.22-6-2
+Cryptography2-7
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+25
+Document Classification: Public
+---SC-13PR.DS-1, 
+PR.DS-2
+SR 3.1 
+(all), SR 
+4.1 (all), 
+SR 4.3
+-DATA 1.72-7-1
+---SC-13PR.DS-1, 
+PR.DS-2
+SR 3.1 
+(all), SR 
+4.1 (all), 
+SR 4.3
+-DATA 1.72-7-2
+Backup and Recovery Management2-8
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-8-1
+-009-R1ISBR 15CP-9 (3)PR.IP-4--AVAIL 2.42-8-1-1
+-009-R1ISBR 17CP-9PR.IP-4SR 7.3-AVAIL 2.12-8-1-2
+-009-R1ISBR 17CP-9PR.IP-4SR 7.3-AVAIL 2.12-8-1-3
+-009-R1-CP-6PR.IP-4SR 7.3-AVAIL 2.12-8-1-4
+-009-R1ISBR 15CP-9 (3)PR.IP-4--AVAIL 2.42-8-2
+Vulnerabilities Management2-9
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-9-1
+TVM-2 (all)010-R3ISBR 6, 
+ISBR 10, 
+ISBR 12
+RA-3, RA-5ID.RA-1, 
+PR.IP-12
+-ZCR 5.13ORG 2.2, 
+EVENT 1.9
+2-9-1-1
+TVM-2f010-R3ISBR 13CA-5PR.IP-12SR 3.3ZCR 5.13EVENT 1.92-9-1-2
+- 003-R1,
+010-R3
+-RA-5---ORG 2.12-9-1-3
+TVM-2f010-R3ISBR 13CA-5PR.IP-12SR 3.3ZCR 5.13EVENT 1.92-9-2
+Penetration Testing2-10
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-10-1
+TVM-2e010-R2-CA-8----2-10-1-1
+TVM-2e--CA-8----2-10-1-2
+TVM-2e010-R2-CA-8----2-10-1-3
+TVM-2e010-R2-CA-8----2-10-1-4
+TVM-2e010-R2-CA-8----2-10-2
+Cybersecurity Event Logs and Monitoring Management2-11
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2OTCC Methodology and Mapping AnnexSharing Indicator: White
+26
+Document Classification: Public
+2-11-1
+SA-1a, 
+SA-1b
+007-R4ISBR 16AU-2PR.PT-1, 
+DE.AE-3, 
+DE.CM-1
+SR 2.8, SR 
+6.1
+-EVENT 1.1, 
+EVENT 1.2, 
+EVENT 1.5
+2-11-1-1
+-007-R4-AU-5DE.DP-3SR 2.10--2-11-1-2
+SA-2a007-R4ISBR 2CA-7DE.AE-2SR 6.2-EVENT 1.72-11-1-3
+-SA-2b007-R4ISBR 13CA-7DE.CM-3SR 2.8-2-11-1-4
+SA-2d007-R4ISBR 13CA-7DE.CM-4SR 2.8-ORG 2.22-11-1-5
+SA-2b010-R2ISBR 13CA-7DE.CM-7SR 2.8-ORG 2.22-11-1-6
+SA-2b005-R2ISBR 18SI-4DE.CM-7SR 2.8-ORG 2.22-11-1-7
+ SA-1a,
+SA-1b
+007-R4ISBR 16AU-2PR.PT-1, 
+DE.AE-3, 
+DE.CM-1
+SR 2.8, SR 
+6.1
+-EVENT 1.1, 
+EVENT 1.2, 
+EVENT 1.5
+2-11-1-8
+SA-2b007-R4ISBR 13CA-7DE.CM-4SR 2.8-ORG 2.22-11-1-9
+SA-2b007-R4ISBR 13CA-7DE.CM-4SR 2.8-ORG 2.22-11-1-10
+ SA-1a,
+SA-1b
+007-R4ISBR 16AU-2PR.PT-1, 
+DE.AE-3, 
+DE.CM-1
+SR 2.8, SR 
+6.1
+-EVENT 1.1, 
+EVENT 1.2, 
+EVENT 1.5
+2-11-2
+Cybersecurity Incident and Threat Management2-12
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-12-1
+IR-3f008-R1, 
+008-R2, 
+008-R3
+ISBR 16IR-1, IR-8RS.RP (all)--EVENT 1.82-12-1-1
+IR-3h008-R3ISBR 16IR-4RS.AN-2, 
+RS.AN-3
+--EVENT 1.72-12-1-2
+IR-4b 009-R1,
+ 009-R2,
+009-R3
+ISBR 15IR-4, IR-1RS.RP (all)--EVENT 1.8, 
+AVAIL 2.5
+2-12-1-3
+IR-3c008-R1, 
+009-R1
+ISBR 16IR-8RS.CO (all)--EVENT 1.82-12-1-4
+IR-4c 008-R1,
+ 008-R2,
+008-R3
+------2-12-1-5
+ EDM-2e,
+ CPM-2f,
+CPM-4b
+--CM-9, 
+SA-3, SA-4 
+(3), SA-8, 
+SA-15
+PR.IP-2--ORG 2.32-12-1-6
+---IR-3PR.IP-10SR 3.3--2-12-1-7
+TVM-1a, 
+TVM-1e, 
+TVM-1f, 
+TVM-1j
+- ISBR 5,
+ISBR 13
+SA-12 (8)ID.RA-2-ZCR 5.1, 
+ZCR 6.6
+-2-12-1-8
+ TVM-1a,
+ TVM-1e,
+ TVM-1f,
+TVM-1j
+ 008-R1,
+ 008-R2,
+008-R3
+ISBR 16IR-1, IR-8RS.RP (all)--EVENT 1.82-12-2Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+27
+Document Classification: Public
+Physical Security2-13
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+2-13-1
+---PE-2DE.CM-7--ORG 3.12-13-1-1
+---PE-3DE.CM-7--ORG 3.12-13-1-2
+---PE-3DE.CM-7--ORG 3.12-13-1-3
+-006-R1-PE-6, PE-
+6, PE-6 (1), 
+PE-6 (3), 
+PE-6 (4)
+DE.CM-7--ORG 3.12-13-1-4
+-------ORG 3.12-13-1-5
+---PE-8---ORG 3.12-13-1-6
+---MA-2DE.CM-6---2-13-1-7
+---AT-2
+PM-13
+PR.AT-5--ORG 3.12-13-1-8
+---AT-2
+PM-13
+PR.AT-5--ORG 3.12-13-1-9
+---PE-1----2-13-2OTCC Methodology and Mapping AnnexSharing Indicator: White
+28
+Document Classification: Public
+Cybersecurity Resilience3
+Cybersecurity Resilience Aspects of Business Continuity Management 
+)BCM(
+3-1
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+3-1-1
+IR-4c009-R1ISBR 9CP-9PR.IP-4SR7.4-AVAIL 2.13-1-1-1
+IR-4c 005-R1,
+ 006-R1,
+009-R1
+-CP-9 (6), 
+PE-9 (1)
+ PR.IP-4,
+PR.DS-4
+ SR 7.2, SR
+7.3
+- AVAIL 1.1,
+AVAIL 1.2
+3-1-1-2
+IR-4c, IR-
+4e, IR-4h
+009-R1-PR.IP-9, 
+CP-2 (5)
+PR.IP-9--AVAIL 1.13-1-1-3
+IR-2a, IR-
+2d, IR-4a
+ 009-R1,
+ 009-R2,
+009-R3
+ISBR 7 CP-6, CP-6
+ (1), CP-6
+ (2), CP-6
+ (3), CP-7,
+ CP-7 (1),
+ CP-7 (2),
+ CP-7 (3),
+(CP-7 (4
+PR.IP-9SR 7.4 ZCR 5.3,
+ZCR 5.4
+AVAIL 1.13-1-1-4
+- 002-R1,
+ 008-R2,
+009-R2
+- SI-13 (4),
+(SI-13 (5
+ PR.PT-5,
+PR.DS-4
+ SR 7.4, SR
+7.5
+-AVAIL 1.23-1-1-5
+-008-R2, 
+009-R2
+-CP-3 (1), 
+CP-3 (2), 
+CP-4 (3)
+PR.IP-10---3-1-1-6
+IR-4c009-R1ISBR 9CP-9PR.IP-4SR7.4-AVAIL 2.13-1-2Sharing Indicator: WhiteOTCC Methodology and Mapping Annex
+29
+Document Classification: Public
+4 Third-Party Cybersecurity
+Third-Party Cybersecurity4-1
+Standards
+OTCC 
+Control ID
+62443-2-162443-3-262443-3-3NIST CSF NIST
+SP800-
+53/82
+NOG 104NERC CIPDOE C2M2
+4-1-1
+- 013-R1,
+013-R2
+ISBR 8SA-12 ID.SC-1,
+ID.SC-3
+-ZCR 5.12ORG 1.64-1-1-1
+- 013-R1,
+013-R2
+- IR-6 (3),
+PS-7, UL-2
+ID.SC-2--ORG 1.64-1-1-2
+EDM-2e, 
+CPM-2f, 
+CPM-4b
+--CM-9, 
+SA-3, SA-4 
+(3), SA-8, 
+SA-15
+PR.IP-2--ORG 2.34-1-1-3
+----ID.SC-4SR 6.1--4-1-1-4
+----ID.SC-4SR 6.1-ID.SC-14-1-2

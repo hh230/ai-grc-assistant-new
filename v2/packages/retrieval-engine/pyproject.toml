@@ -1,0 +1,50 @@
+[project]
+name = "retrieval-engine"
+version = "0.1.0"
+description = "Rasheed V2 Retrieval Engine core (Phase 9A). Ports-and-adapters retrieval over the generated knowledge artifacts: metadata filtering, vector + keyword (BM25) search, reciprocal-rank fusion, citation validation, context assembly. Ships an in-memory provider set by default; PostgreSQL/pgvector is an optional backend behind the `pgvector` extra. No generation, no LLM, no RAG. Implements v2/docs/architecture/retrieval-engine.md."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+]
+
+[project.optional-dependencies]
+# In-memory cosine vector search (InMemoryVectorProvider) reads the embedding artifacts into a
+# numpy matrix. Keyword/BM25 retrieval needs none of this, so numpy stays out of the base
+# install and the core package imports with pipeline-contracts alone.
+vectors = ["numpy>=2.1.0"]
+# PostgreSQL / pgvector production backend (PgVectorProvider + the pg/ ops modules). These SDKs
+# are imported lazily inside the provider, so the core package never requires them to import.
+pgvector = [
+    "numpy>=2.1.0",
+    "pgvector>=0.3.6",
+    "psycopg[binary]>=3.2",
+]
+
+[dependency-groups]
+# Dev/test runs the full suite: the in-memory vector fixtures need numpy, and the (DB-gated,
+# auto-skipping) pgvector integration test needs psycopg + pgvector.
+dev = [
+    "pytest>=8.3.0",
+    "numpy>=2.1.0",
+    "pgvector>=0.3.6",
+    "psycopg[binary]>=3.2",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["retrieval_engine"]
+# Development-only illustration/benchmark modules — kept in the source tree, never shipped in
+# the production wheel.
+exclude = [
+    "retrieval_engine/demo.py",
+    "retrieval_engine/pg/benchmark.py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,514 @@
+ © 2025 Author(s).  This is an open access article licensed  under the Creative Commons Attribution (CC BY NC ND)      
+License (https://creativecommons.org/licenses/by-nc-nd/4.0/).    
+ 
+SYSTEM SAFETY: HUMAN - TECHNICAL FACILITY – ENVIRONMENT  
+7(1), 2025, pp. 493-500 
+ 
+ 
+THE USE OF “BOW TIE” ANALYSIS TO RISK IDENTIFICATION 
+IN ORGANIZATION 
+DOI: 10.2478/czoto-2025-0045 
+Received:  21/11/2025 
+Accepted:  19/12/2025 
+ 
+ 
+Dorota Wojtyto1 – orcid id: 0000-003-2493-9808, e-mail: dorota.wojtyto@pcz.pl 
+1Czestochowa University of Technology, 42-201 Częstochowa, Al. Armii Krajowej 19B, Poland  
+ 
+Abstract: The article presents the use of "bow tie" analysis to identify risk in an 
+organization. Risk identification is one of the initial stages of the risk management process 
+and can be carried out using a variety of methods or techniques. The choice of method 
+depends on the  specifics of the organization, available resources, as well as 
+spatiotemporal criteria. The paper presents practical examples of the use of "bow tie" 
+analysis as an alternative to more popular methods, such as: "what if?" scenario analysis, 
+fault tree, or  Haddon matrix (less popular, but detailed). The versatility of the "bow tie" 
+analysis allows it to be implemented in organizations with various business profiles. The 
+aim of the study was to demonstrate that the "bow tie" method effectively exhausts the 
+issue of risk identification (especially for complex risks), and thus allows for the 
+implementation of subsequent stages of the risk management process. The potential of 
+this method allows for continuous improvement of the organization's processes and 
+minimization of the risks that occur. Thus, it fits into the idea of broadly understood 
+security, which is topical in the current socio -economic conditions of the organization's 
+environment. 
+Keywords: risk identification, risk management “bow tie”, causes, effects. 
+ 
+ 
+ 
+1. INTRODUCTION 
+Contemporary organizations operate in an environment characterized by increasing 
+uncertainty, regulatory pressure, and rapid technological development, which makes risk 
+an inherent element of managerial and decision-making processes (Knop, 2020; Silva, et 
+al., 2025 ). Globalization, digital transformation, process automation, and the growing 
+complexity of organizational systems contribute to the emergence of new types of risks 
+and the intensification of existing ones  (Potjanajaruwit, et al, 2025; Ingaldi & U lewicz, 
+2025). As a result, risk management is no longer perceived solely as a reactive function 
+but as a fundamental component of modern management, supporting organizational 
+resilience, operational continuity, and the achievement of strategic objectives. 
+According to the approach presented in ISO 31000  (ISO/IEC 31010:2019), effective risk 
+management requires a structured and systematic process that includes establishing the 
+organizational context, risk identification, risk analysis and evaluation, followed by the 
+planning and implementation of appropriate risk response meas ures. Among these 
+stages, risk identification plays a particularly critical role, as it determines the quality and 
+ 
+ 
+System Safety: Human - Technical Facility - Environment 7(1), 2025                                                                                             494 
+effectiveness of subsequent risk management activities. Inadequate or incomplete 
+identification of risk sources, their causes, and potential consequences may lead to flawed 
+managerial decisions and a reduced level of organizational safety. Therefore, both the 
+academic literature and managerial practice emphasize the need for methods that enable 
+a comprehensive and transparent identification of risks, taking into account not only their 
+origins but also their possible outcomes. 
+The aim of the paper was, firstly, to discuss and apply in practical examples the "bow tie" 
+analysis in the field of risk management in an organization, and secondly, to demonstrate 
+that this method effectively exhausts the issue of risk identification in the entire risk 
+management process. The motive for the author's research was the growing emphasis on 
+risk management, which has an impact on ensuring broadly understood security in an 
+organization. Thus, it requires the use of effective risk management met hods at every 
+stage of the process. One of the interesting proposals for the use of the method due to its 
+universality, practicality and ease of implementation is the "bow tie" method. This method 
+is not new, but it can provide a lot of interesting data fo r identifying risks and combining 
+them (as in the Haddon Matrix (Korzeniowski , 2012)) with control mechanisms, which 
+gives greater effectiveness in the implementation of the entire process. In addition, the 
+"bow tie", through its construction, forces the risk owner to constantly monitor the identified 
+risks with reducing or minimizing actions, which is in line with the idea of continuous 
+improvement of the organization's processes, and thus contributes to the development of 
+management science. Taking into account the assumptions for this paper and a review of 
+the literature on the subject, it is noted that the "bow tie" method is not classified as 
+appropriate for risk identification, but only for the assessment of the consequentiality, 
+probability and level of risk (ISO/IEC 31010:2019), which, according to the author of this 
+paper, is a research gap. Therefore, by clearly linking the results of the research with 
+specific gaps in the literature, the author indicates the legitimacy of the presented study 
+and the presentation of "bow tie" as one of the methods of identifying risk in the 
+organization. As mentioned earlier, the analysis of "bow tie" is not a new phenomenon, it 
+has extensive application in various fields of business science and practice, including 
+safety systems ( Kobaszyńska-Twardowska & Gill, 2013), including aviation 
+(Krzyżanowski, et al., 2014), accident analysis in maritime shipping ( Yang et al. 2025), 
+medicine (Abdi, et al., 2016, Dimova, et al., 2014), including the identification of the causes 
+and effects of the global corona pandemic in 2021 ( Brown, et al., 2021), management, 
+including the management of innovative projects ( Pitblado & Wijand, 2014; Orellano & 
+Gourc, 2025) or in the retail sector (Barros,  et al., 2021). 
+The whole risk management process consists of several stages, such as: establishing the 
+context of the organization (or indicating the objectives for which we identify risks), risk 
+identification, risk analysis, risk assessment, risk response with communication and  
+control (Jastrzębska, et al., 2014, PN-ISO 31000:2018). These stages are accompanied 
+by the implementation of specific tasks in this area (Kaczmarek, 2020). Risk identification 
+consists in determining the risk factors along with its causes and effects. The type of risk 
+is also often formulated according to a given category. By defining these two parameters, 
+control mechanisms can be established, among others:  milimalizing, eliminating or 
+preventive actions. This is then the stage of risk response, which also includes a plan of 
+action with risk (setting a deadline for the implementation of activities, persons responsible 
+for them, costs, etc.). (Woźniak & Wereda, 2023).  
+ 
+495                                                                                                                                                                        Dorota Wojtyto 
+Thanks to the wide range of available scientific and practical methods, each stage of the 
+risk management process has a number of methods, analyses and techniques that can 
+be used to implement it (Czajkowska , 2017). According to: ISO/IEC 31010:2019 Risk 
+Management – Risk Assessment Techniques, the methods that will work best at the 
+identification stage include: brainstorming, structured or semi structured interviews, delphi 
+method, checklist, preliminary hazard analysis, hazard and operability study, hazard 
+analysis and critical control points, structured „what if?” technique, failure mode and 
+effects analysis, event tree analysis, cause and consequence analysis, cause and effect 
+analysis and decision tree analysis etc. According to the author of this study, the "bow tie" 
+method is also a helpful tool for risk identification, which was demonstrated in the research 
+part of the study.  
+"Bow tie" owes its name to the male bow tie, which is associated with the construction of 
+the diagram being created (wolterskluwer.com). This method is a relatively simple and 
+schematic way of describing and analysing the paths of development of a given risk from 
+the cause of the risk to its effects (Jasińska, 2016, Wróblewski, 2015). It has two basic 
+functions: it analyses possible scenarios of events that make up the risk and identifies 
+control measures. These functions are inspired by the following metho ds: the fault tree 
+(left side) and the event tree (the right side of the diagram) (wolterskluwer.com). "Bow tie" 
+is used to illustrate the risks along with the range of possible causes and causes that can 
+be constructed during brainstorming. On the other hand, potential control mechanisms in 
+response to the consequences of risk can be determined using other creative methods, 
+including, for example, the Disney ’s method (Krwawicz, 2020). Causes and effects are 
+important due to the fact that when determining a ctions to minimize or eliminate risks 
+(control mechanisms), it is possible to act specifically on causes or effects with these 
+mechanisms, so that the risk is at an acceptable level (Kobaszyńska & Gill, 2013). 
+Creating a "bow tie" diagram starts with defining a given risk (the central point on the 
+diagram). On the left side there is a path showing the tree of the events that led to the risk 
+(cause). They are accompanied by control mechanisms that eliminate or minimize the 
+causes. On the left, there are the effects of risks along with control mechanisms that 
+reduce or reduce the level of consequences of the analyzed risk. The "bow tie" effect is a 
+diagram presenting the main risk pathways and barriers that are to prevent or mitigate the 
+effects of risk (Wróblewski , 2015). Bow-tie analysis exhausts the implementation of the 
+two stages of risk management: risk identification and risk response, but it does not 
+evaluate risk and does not determine its level. The advantage of "bow tie" is undoubtedly 
+the ease of understa nding and the transparent form of risk analysis from causes to 
+consequences, as well as a fairly high level of detail. Moreover, it clearly indicates which 
+control activities are assigned to which factors, which allows for their level of effectiveness 
+in relation to a given cause or consequence in the long term. However, when constructing 
+a "bow tie" diagram, it is important to take into account the fact that there is a balance 
+when determining causes and effects, so that they are not too specific (difficul t to find 
+effects) or too general (too many effects). 
+ 
+2. METHODOLOGY OF RESEARCH 
+This study presents the results of the "bow tie" analysis for the risk occurring in a selected 
+company from the automotive industry. This work is a methodological development of the 
+risk identification stage for the article on the implementation of the ove rall risk 
+management process (Wojtyto, et al., 2025). In order to identify control mechanisms, the  
+ 
+System Safety: Human - Technical Facility - Environment 7(1), 2025                                                                                             496 
+Disney’s method was used, which, through creative thinking, allowed for the development 
+of optimal preventive actions, eliminating or reducing the effects and causes of selected 
+risks.  Moreover, the paper uses such research methods and techniques as:  review of 
+subject literature, comparative analysis, analysis of collected data and brainstorming 
+technique, synthesis and analysis. 
+ 
+3. RESULTS 
+The results of the "bow tie" analysis in the form of a diagram and a table are presented 
+for an example of the risk occurring in the examined manufacturing company. Figure 1 
+presents a schematic 'bow tie' analysis in the form of a diagram for production co ntinuity 
+risk, while Table 2 presents a description of this analysis. The diagram shows the potential 
+causes of the risk (left side) with control mechanisms and the consequences of the risk 
+(right side) with control mechanisms. The middle of the diagram represents the risk being 
+studied. 
+ 
+ 
+Fig. 1. “Bow-tie” analysis for risk: production continuity disruptions 
+Source: own elaboration 
+ 
+Table 1.  
+Identified causes and effects in the “bow tie” analysis for risk: production continuity disruptions 
+Causes Control mechanisms Effects Control 
+mechanisms 
+1-Incorrect 
+organization and 
+planning of production 
+1-Implementation of an 
+integrated management 
+system taking into 
+account the planning, 
+organization and 
+optimization of 
+production/intelligent 
+systems 
+ 
+1-Untimely 
+deliveries to 
+customers 
+1-Increased 
+optimization 
+activities (delivery 
+time), proper 
+planning and 
+organization of 
+deliveries 
+(production volume), 
+policy aimed at 
+optimal reserves 
+DISRU TION 
+OF 
+ RODUCTION 
+CONTINUITY
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+C    E     C       
+         
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+497                                                                                                                                                                        Dorota Wojtyto 
+and inventories and 
+a balance between 
+demand, and supply 
+2-Quality control that 
+does not meet the 
+highest standards 
+2-Moving away from 
+sampling methods, 
+inspecting products at 
+every stage of the 
+process 
+ 
+2-Low product 
+quality 
+2- Product quality 
+control at every 
+stage of the 
+process, 
+implementation of 
+appropriate quality 
+control methodology 
+3- Lack / problem with 
+the availability of raw 
+materials/ materials 
+for production 
+3-Raw material reserves 3-Loss of 
+customers and 
+increased 
+competition 
+ 3-Business 
+diversification, price 
+and product 
+competitiveness, 
+benchmarking, 
+outsourcing, 
+intensified 
+marketing activities 
+(planning marketing 
+strategies), reliable 
+market analysis and 
+adaptation of the 
+offer to the specific 
+needs of the most 
+important 
+customers, 
+favorable sales 
+conditions, good 
+relations with 
+customers. 
+4- Fluctuations in raw 
+material prices, 
+instability in the 
+supply chain. 
+4-Negotiation policy with 
+suppliers, long-term 
+contracts  
+4-Decline in the 
+company's 
+reputation 
+4- Intensified, very 
+active marketing 
+activities based on 
+different strategies 
+5- Downtime due to 
+human mistakes 
+5-Employee training, 
+analysis of the causes 
+and effects of possible 
+errors, employee control 
+5-Financial 
+problems (lack of 
+financial liquidity, 
+contractual 
+penalties) 
+5-Insurance, 
+negotiating payment 
+terms with creditors 
+ 
+6-Downtime due to 
+machine and 
+equipment failure 
+6-Continuous program 
+of systematic repairs 
+and maintenance 
+6-High complaint 
+rate 
+2- Product quality 
+control at every 
+stage of the 
+process, 
+implementation of 
+appropriate quality 
+control methodology 
+7-Downtime due to 
+lack of power 
+7-Alternative energy 
+sources 
+7-Lack of 
+production 
+efficiency 
+7-Production 
+optimization, 
+implementation of a 
+management 
+system supporting 
+the production  
+ 
+System Safety: Human - Technical Facility - Environment 7(1), 2025                                                                                             498 
+process, use of 
+modern 
+technologies based 
+on AI, IoT 
+8-Employee 
+absenteeism, lack of 
+qualified staff 
+8-Training of employees 
+in various positions, 
+optimization of 
+employment 
+  
+9-Other 
+macroeconomic 
+measures 
+9-Strategic planning 
+(including 
+macroeconomic 
+analyses), financial 
+reserves 
+  
+10-Insufficient 
+production technology 
+– lack of state-of-the-
+art solutions based on 
+robotization, 
+automation, 
+digitization, 
+computerization 
+10- Phased 
+implementation of 
+modern technologies 
+based on automation 
+and computerization of 
+production 
+  
+Source: own elaboration 
+ 
+As shown in Figure 1 and Table 1, for the risk of production continuity disruption, the “bow 
+tie” analysis identified 10 potential causes fitted for individual control solutions. Similarly, 
+7 potential effects were identified for the effects of this risk, for which 6 control mechanisms 
+were adjusted. One of them (product quality control at each stage of the process, 
+implementation of appropriate quality control methodology ) was implemented for two 
+different effects, such as: a high complaint rate and low product quality. 
+ 
+3. CONCLUSION 
+To summarize the considerations regarding the use of “bow tie” analysis at the stage of 
+risk identification in an organization, the following conclusions can be presented: 
+− The "bow tie" analysis is a universal tool, which is confirmed by a literature review. 
+It refers to various risks, combines many aspects of the organization's operations, 
+is simple to use, and its structure is legible and clear. Simplicity in preparation and 
+inference is an advantage of its use. 
+− "Bow tie" can take any extension of the method. It can be a diagram of the causes 
+of risk and its consequences, with control mechanisms tailored to these factors, 
+but it is also recommended to expand it with consequences regarding the human, 
+environmental, economic, physical (property, equipment) aspects, etc. You can 
+also classify causes according to the adopted taxonomy, e.g. human, external, 
+technical causes, etc. A similar concept is used by the Haddon Matrix, which is 
+also a method used to identify ris ks and respond to them. In addition, for better 
+functioning of the method, especially in the context of risk response, and thus the 
+application of control mechanisms, it is possible to determine in this method who 
+is responsible for the implementation of i ndividual actions within the control 
+mechanisms (owners), as well as to indicate the exact place where the risk occurs.  
+ 
+499                                                                                                                                                                        Dorota Wojtyto 
+− Despite the fact that in the literature on the subject there are mentions that "bow 
+tie" does not fit into risk identification, according to the author of this work, it is quite 
+the opposite. In its construction, "Bow tie" takes into account causes and eff ects, 
+which is in line with the definition of risk identification, which recognizes risks by 
+determining their causes and potential effects. Subsequently, causes and effects 
+can be evaluated, for example, using the scale of probability and effects, or 
+significance for risk (impact). 
+− Bow tie analysis can be used in both risk identification and risk response, as it 
+adjusts control mechanisms to both cause and effect, thus acting on the entire risk 
+without its value. This gives them a greater chance of effectiveness of control 
+mechanisms, as actions are taken "immediately".  
+− "Bow tie" necessitates the need for detailed cooperation and high involvement of 
+the employees who are affected by the risks or who are in possession of the 
+necessary information. That is why it is so important that when determining the 
+causes of a given r isk, they are not too detailed, because then a lot of control 
+mechanisms would have to be implemented, and their too fragmentation may 
+cause a problem with taking responsibility and effective implementation of risk 
+owners. Causes that are too specific are also difficulties in determining the effects. 
+Too general causes cause too many effects to be generated.  
+− By using "bow tie", you can support yourself with many other methods or 
+techniques that are proposed by the literature on the subject. To identify risk, all 
+kinds of brainstorming or the Haddon Matrix will be helpful, which identifies the 
+causes of risk in  detail and responds to them with specific actions. On the other 
+hand, in order to determine the control mechanisms that will be the optimal solution 
+for the causes and effects determined in the 'bow tie' diagram, the Disney method 
+is proposed, which allow s for creating actions taking into account optimistic, 
+realistic and pessimistic variants.  
+Despite its advantages, the use of the “bow tie” method is subject to certain limitations. 
+First, the effectiveness of the analysis largely depends on the knowledge, experience, and 
+engagement of participants, which may introduce subjectivity into the iden tification of 
+causes, consequences, and control mechanisms. Additionally, an improper level of detail, 
+either too granular or too general , may reduce the clarity of the diagram and limit its 
+practical usefulness. Therefore, future research should focus on developing guidelines for 
+the optimal level of detail in “bow tie” construction, as well as on empirical validation of the 
+method across different organizational contexts and industries, including its integration 
+with quantitative risk assessment techniques. 
+ 
+REFERENCES 
+Abdi, Z., Ravaghi, H., AbbasiDelgoshaei, M.B. and Esfandiari, S. , 2016, Application of Bow -tie 
+methodology to improve patient safety, International Journal of Health Care Quality Assurance, 
+29(4), 425-440. DOI: 10.1108/IJHCQA-10-2015-0121. 
+Barros, C.H.O., dos Santos, I.M., Alencar M.H., Alencar, L.H. 2021, Bow tie analysis for prioritizing 
+actionstomanagetherisksofoutof stock on shelves in the retail, International Journal of Retail & 
+Distribution Management, 49(8), 1213-1231, DOI 10.1108/IJRDM-06-2020-0213. 
+Brown, K.R., VanBerkel, P., Khanc, F.I., Amyottea,, P.R., 2021, Application of bow tie analysis and 
+inherently safer design to the novel coronavirus hazard , Process Safety and Environmental 
+Protection, 152, 701-718. DOI: 10.1016/j.psep.2021.06.046  
+ 
+System Safety: Human - Technical Facility - Environment 7(1), 2025                                                                                             500 
+Czajkowska, K., 2017, Metody identyfikacji ryzyka w zarządzaniu ryzykiem w przedsiębiorstwie , 
+Journal of Modern Management Process, 1(2), 40-49.  
+Dimova, R., Raycheva, R., Pavlova, P., 2024, Application of the bow-tie analysis to improve patient 
+safety – a lesson learned from clinical practice, Folia Medica , 66(4), 549-554. DOI: 
+10.3897/folmed.66.e129251 
+Yang, D., Huang, X., Xie, B., Ding, Z., Zheng, J., Wang, J., 2025, Multidimensional causation chain 
+analysis of marine oil spill accidents: based on grounded theory and bow -tie model, Ocean 
+Engineering 341(4), 122824. DOI: 10.1016/j.oceaneng.2025.122824 
+https://www.wolterskluwer.com/en/solutions/enablon/bowtie/expert-insights/barrier-based-risk-
+management-knowledge-base/the-historie-of-bowtie [dostęp: 15.11.2025]. 
+ISO/IEC 31010:2019 Risk Management – Risk Assessment Techniques. 
+Jasińska, J., 2016, Metoda Bow-Tie w zastosowaniu do oceny ryzyka, Gospodarka Materiałowa i 
+Logistyka, 10, 112-120. 
+Jastrzębska, M. Janowicz -Lomott, K. Łyskawa, 2014, Zarządzanie ryzykiem w  działalności 
+jednostek samorządu terytorialnego ze szczególnym uwzględnieniem ryzyka katastroficznego, 
+Wyd. Wolters Kluwer SA, Warszawa. 
+Kaczmarek, T., 2020, Zarządzanie ryzykiem. Ujęcie interdyscyplinarne, Difin, Warszawa . 
+Kobaszyńska- Twardowska, A., Gill, A., 2013, Zastosowanie analizy bow-tie do identyfikacji warstw 
+ochronnych w systemach bezpieczeństwa, Technika Transportu Szynowego nr 10/2013.  
+Korzeniowski, L., 2012, Podstawy nauk o bezpieczeństwie, Wyd. Difin, Warszawa.  
+Krwawicz, M., 2020, Podstawy organizacji I zarządzania, Oficyna Wydawnicza Politechniki 
+Warszawskiej, Warszawa. 
+Krzyżanowski, M.,  Wieczorek , A., Chróciewicz , A., 2014, Wykorzystanie metody bowtie oraz 
+techniki gsn do analiz bezpiecze stwa ruchu lotniczego, Prace Naukowe Politechniki 
+Warszawskiej z. 103. 
+Orellano, M., Gourc, D.,2025, What typology of risks and methods for risk management in 
+innovation projects?: A systematic literature review, International Journal of Innovation Studies, 
+9(1), 1-15, doi: 10.1016/j.ijis.2024.10.001. 
+Pitblado, R., Wijand, P., 2014, Barrier diagram (bow tie) quality issues for operating managers, 
+Process Safety Progress, 33(4), 355-361. 
+PN-ISO 31000:2018. Zarządzanie ryzykiem. Zasady i wytyczne. Polski Komitet Normalizacyjny, 
+Warszawa. 
+Wojtyto D., M ichalik J., B erski Sz., 2025,  „Risk management in an organisation based on the 
+example of a manufacturing company”,  Kwartalnik Nauk o Przedsiębiorstwie  Tom 76 Nr 2/ 
+2025. 
+Woźniak J., Wereda W., 2023, Mapa ryzyka w zarządzaniu organizacją, Wyd. Cedewu, Warszawa. 
+Wróblewski D. (ed.) 2015, Zarządzanie ryzykiem. Przegląd wybranych metodyk, Wydawnictwo 
+Centrum Naukowo -Badawczego Ochrony Przeciwpożarowej im. Józefa Tuliszkowskiego 
+Państwowego Instytutu Badawczego Poland- Józefów DOI: 10.17381/2015.1. 
+Knop, K. 2020. Indicating and analysis the interrelation between terms – visual: management, 
+control, inspection and testing. Production Engineering Archives, 26(3), 2020. 110 -120. DOOI: 
+10.30657/pea.2020.26.22. 
+Silva, J., Ávila, P., Faria, L., Bastos, J., Ferreira, L.P., Castro, H. , Matias, J. 2025. Activity based 
+model based on AI to support the prediction of activity durations in metalworking project 
+management. Production Engineering Archives, 31(4), 565 -579. DOI: 
+10.30657/pea.2025.31.52. 
+Ingaldi M., Ulewicz R., 2025, Sustainable Development and Technological Advancements in 
+Industry 4.0: Overcoming Barriers in SME Sector Integration, Management Systems in 
+Production Engineering, 33(1), 144-162, DOI: 10.2478/mspe-2025-0015 
+Potjanajaruwit, P., Hiranrithikorn, P., Meenakorn M., 2025. The impact of risk management on the 
+efficiency of educational institutions in thailand . Polish Journal of Management Studies, 31(1), 
+232-247. DOI: 10.17512/pjms.2025.31.1.13. 

@@ -1,0 +1,1129 @@
+Compliance Handbook 7th edition
+Compliance
+Handbook
+E i s a i    N e t w o r k    C o m p a n i e s
+English
+Version
+January 2017
+& Compliancehhc
+Compliance Handbook for
+Eisai Network Companies
+Compliance HandbookCorporate Objective
+A human health care company capable of making a meaningful contribution under 
+any healthcare system while observing the highest legal and ethical standards in its 
+business activities.1
+Message from the Chief Executive Oﬃcer
+The modern pharmaceutical industry has two missions: the discovery and the 
+development of curative medicines and preemptive medicines. Also we make every 
+eﬀort to get access to those medicines for people in need. 
+To fulfill these missions the fundamental corporate strength we need is compliance. 
+Compliance underpins the basic ability for the growth. But compliance changes as 
+time passes; in other words, it is a living standard. What was right yesterday may no 
+longer be right today. This is the reason we train ourselves constantly through 
+various sessions both internally and externally. 
+Above all, I would like to emphasise that if you do the wrong thing with regard to 
+modern compliance, the consequences for you as an individual and for the 
+company as an organisation will be devastating. This Compliance Handbook 
+provides guiding principles to help you and Eisai stay compliant and achieve our 
+missions.
+January 2017
+Haruo Naito
+Representative Corporate Oﬃcer and CEO
+Eisai Co., Ltd.
+2
+Message from the Chief Compliance Oﬃcer
+Eisai’s ethical standards are focused around its hhc 
+philosophy where patients and their families are at 
+the core of what we do, and include integrity, 
+respect and openness. These are central to 
+establishing and maintaining trusting 
+relationships, not only with colleagues, but also 
+with our stakeholders, our business partners, 
+patients, the communities within which we work 
+and those who govern us. They guide us in all we 
+do and with whomever we work.
+The continued success of our organisation 
+depends on the ability of each of us to live up to these standards as we navigate the 
+challenges we encounter in our day-to-day activities – not only in the letter, but also in 
+the spirit. This includes full and part time employees as well as anyone representing 
+Eisai.
+Every employee has an individual responsibility to work together as a team to meet 
+the standards of behaviour set out in this Handbook. In addition those of us who have 
+managerial responsibilities are required to ensure that our team members are familiar 
+with the contents of this Handbook as well as all the rules, regulations and principles 
+that apply in our business area and to be a role model to them in the way we behave.
+We recognise that this Handbook does not cover every compliance situation that we 
+might face in our work. In these situations, we must use our personal judgement to 
+make the right decisions. We must consult others if we are not sure, for example our 
+colleagues, our manager(s) or the Compliance function (“Compliance”).
+Compliance encourages everyone to be proud to work for Eisai, to embrace our 
+standards and be passionate in everything we do. If any of you has any concerns or 
+problems, please speak up.
+January 2017
+Junichi Asatani
+Chief Compliance Oﬃcer 
+Eisai Co., Ltd.
+3
+Contents
+Message from the Chief Executive Oﬃcer 1
+Message from the Chief Compliance Oﬃcer 2
+Introduction to the Compliance Handbook 5
+A. What is compliance in Eisai? 5
+B. Who is this Handbook for? 5
+C. What is the purpose of this Handbook? 5
+D. How to use this Handbook 5
+Charter of Business Conduct  6
+Code of Conduct 8
+Part 1 What Eisai’s Code of Conduct means to each of us 9
+1.1 Our responsibilities 10
+1.2 Additional responsibilities for oﬃcers, directors and managers 11
+1.3 Asking questions and reporting compliance concerns 12
+Part 2 Our working environment 15
+2.1 Discrimination 16
+2.2 Harassment 17
+2.3 Health and safety 18
+2.4 Drugs and alcohol 20
+2.5 Use of social media 21
+2.6 Conﬂicts of interest 23
+2.7 Fraud  254
+Part 3 Eisai and its stakeholders 27
+3.1 Research and development 28
+3.2 Manufacturing and distribution 30
+3.3 Promotional and non-promotional communication 31
+3.4 Adverse events and safety 33
+3.5 Interactions with Healthcare Providers  34
+3.6  Relations with regulatory and other public agencies 37
+Part 4 Relationship with society 39
+4.1 Corrupt practices and bribery 40
+4.2 Fair trade and competition practices 42
+4.3 Political contributions 45
+4.4 Environmental protection 46
+4.5 Organised crime 47
+4.6 Human rights 48
+Part 5 Corporate assets and information 49
+5.1 Documentation 50
+5.2 Intellectual property 51
+5.3 Confidential information 54
+5.4 Protection of personal data  57
+5.5 Insider information and trading 59
+5.6 Eisai’s assets 60
+5.7 Tax payments and financial statements 615
+Introduction to the Compliance Handbook
+A. What is compliance in Eisai?
+Compliance in Eisai means complying with written standards such as laws, 
+regulations, Eisai policies and procedures as well as the ethical standards of 
+integrity, respect and openness.
+B. Who is this Handbook for?
+This Handbook contains Eisai’s Charter of Business Conduct and Code of Conduct 
+applicable to anyone working with or on behalf of Eisai, including oﬃcers, directors, 
+managers, employees, contractors and agents. 
+C. What is the purpose of this Handbook?
+The Handbook highlights some of the written and ethical standards Eisai expects 
+everyone to comply with. It provides some guiding principles. The Handbook does 
+not give detailed solutions to every situation we face in our day to day activities. We 
+need to refer to Eisai policies and procedures for further information.
+The Handbook sets out the available resources everyone can use to support the 
+implementation of these standards. We should discuss matters with colleagues and 
+in particular consult our manager. In addition, we can consult our local or regional 
+Compliance Contact or Helpdesk, Compliance Department (“Compliance”), Human 
+Resources or Legal Department as appropriate. 
+We must remember that our activities do not necessarily end when we leave our 
+place of work. If we interact with customers, attend professional events or travel on 
+business, we are representing Eisai. The standards outlined in the Code apply to 
+those activities too, and need to be subject to the same judgements we make about 
+our activities as in our place of work.
+D. How to use this Handbook
+Everyone is expected to read and understand the guiding principles covered in this 
+Handbook and apply them to their day to day activities. 6
+Charter of Business Conduct 
+Establised: March 2000
+Revised: January 2017
+We give first thoughts to patients and their families. We strive to increase the 
+benefits that healthcare provides them and we conduct our business to meet their 
+diversified healthcare needs worldwide. As a Human Health Care (“hhc”) company, 
+we develop and provide products and services that contribute to the well-being of 
+patients and their families under any healthcare system. 
+It is an integral part of our corporate mission that we exercise good business 
+judgement and act in a proper manner, in compliance with all relevant laws and 
+ethical standards. These principles are essential to the company’s existence and are 
+given top priority in all corporate activities.
+We hereby establish our Charter of Business Conduct as a statement of our 
+commitment to compliance. Eisai’s oﬃcers, directors and managers recognise that it 
+is their role to lead by example by implementing the content and spirit of this 
+Charter in all the work they do and in supervising those who work with them. By 
+adhering to this Charter, they will inspire and encourage everyone to apply these 
+standards in all their activities.
+Everyone is expected to abide by the content and spirit of this Charter.7
+Eisai and its stakeholders
+ • We promote mutual respect and trust in our business relationships including 
+healthcare providers, shareholders, investors, employees, business partners, 
+patients and communities
+ • We do not tolerate bribery or any other form of corrupt business behaviour
+ • We compete fairly
+ • We appropriately manage information and ensure our records are accurate, 
+complete, fair and secure
+ • We communicate with stakeholders, and appropriately disclose corporate 
+information in a timely manner
+ • We act in accordance with the principles of fairness, respect, and non-
+discrimination in the workplace and provide a safe work environment for our 
+employees
+Eisai and society
+ • We comply with all relevant laws and regulations of each country in which we do 
+business and we conduct ourselves with the highest level of integrity
+ • We respect human rights and prevent, within the scope of our business, modern 
+slavery such as child labour, forced labour and human traﬃcking, while we take 
+into consideration the cultures and customs of the countries where we operate
+ • We are a “good corporate citizen” and support and encourage activities that 
+contribute to society
+ • We maintain fair and transparent relations with political and government entities
+ • We shall not enter into, or to the extent we become aware we shall sever, 
+relations with organised crime groups
+ • We promote best practices for environmental protection in our business activities8
+Code of Conduct9
+Part 1 
+    
+What Eisai’s Code of Conduct means to each of us
+1.1 Our responsibilities
+1.2 Additional responsibilities for oﬃcers, directors and 
+managers
+1.3 Asking questions and reporting compliance concerns10
+1.1  Our responsibilities
+Compliance is everyone’s responsibility. Everyone is responsible for being trained 
+on, understanding and applying relevant laws and regulations, Eisai’s ethical 
+standards, policies and procedures. 
+Whilst it is diﬃcult to be prepared for every possible situation in our daily work, this 
+Handbook can help us recognise some potential issues and give us basic guidance 
+on how to respond in diﬀerent situations. 
+Our managers can help us implement the standards set out in this Handbook. We 
+should ask our manager if we have a question or are unsure about how to deal with 
+a situation that we think is not covered by the Handbook, policies or procedures, or 
+we are unsure how to apply Eisai’s ethical standards in a given situation. 
+Eisai resources, such as our local or regional Compliance Contact or Helpdesk, 
+Compliance Department (“Compliance”), Human Resources or Legal Department, 
+can also help us if our manager is unable to provide clear guidance or we are more 
+comfortable discussing a concern  with someone other than our manager. 
+Everyone has an obligation to report concerns regarding non-compliance with 
+written standards and Eisai’s ethical standards.11
+1.2  Additional responsibilities for oﬃcers, 
+directors and managers
+In addition to the responsibilities described in the previous section (page 10), 
+oﬃcers, directors and managers are expected to lead by example when applying 
+relevant laws and regulations, Eisai’s ethical standards, policies and procedures to 
+their day to day activities.
+Oﬃcers, directors and managers must guide and train employees under their 
+supervision and ensure that their employees follow all laws and regulations and 
+Eisai’s ethical standards, policies and procedures. They are responsible for helping to 
+implement the compliance programme in their area. 
+Eisai gives its oﬃcers, directors and managers responsibility for the compliance 
+programme, but the Board of Eisai oversees its overall implementation and is 
+responsible for ensuring that appropriate Compliance structures and systems are in 
+place and operating eﬀectively. 
+Oﬃcers, directors and managers are responsible for ensuring that compliance 
+concerns in their area are properly handled and resolved. Prompt and accurate 
+internal reporting about compliance concerns is essential to the success of the 
+compliance programme. The compliance performance of oﬃcers, directors and 
+managers is a critical part of their management performance and they are 
+evaluated on that basis.
+In Eisai, the compliance programme includes having a compliance structure, clear 
+and concise policies and procedures, good communication and eﬀective training, 
+reporting and internal controls, and processes to enable employees to report 
+compliance concerns.12
+1.3  Asking questions and reporting 
+compliance concerns
+It is everyone’s responsibility to ensure Eisai complies with laws and regulations, 
+Eisai’s ethical standards, policies and procedures. When the right thing to do is not 
+clear to us or something does not seem right we should ask questions or report our 
+concerns. Failing to do the right thing may also damage Eisai’s business, reputation 
+and patients.
+If we are unsure that what we or our colleagues are doing complies with or we 
+become aware of non-compliance, with written and ethical standards we should 
+speak with our manager or consult Compliance, Human Resources, Legal or other 
+relevant departments as appropriate.
+Compliance concerns should be reported promptly because the earlier the 
+company knows about them the sooner it can investigate and take appropriate 
+action.
+1.3.1 Policy of non-retaliation
+Eisai encourages everyone to report compliance concerns and does not tolerate 
+attempts to stop someone from making a report. No one will be punished or 
+disciplined for making a report in good faith. Additionally we will not allow anyone 
+to interfere with an investigation of a compliance concern or retaliate against the 
+person who reported it. Any attempt to interfere with an investigation or to retaliate 
+may result in disciplinary action. 13
+Compliance can help us:
+ • understand our obligation to report compliance concerns and methods for 
+making a compliance report
+ • when we are not sure that what we or our colleagues are doing is compliant or 
+ethical
+ • if we want to speak to someone other than our manager, or we do not consider  
+that our manager’s advice meets Eisai’s standards
+ • when we report an activity that may not comply with written or ethical standards
+Compliance cannot help us:
+ • with advice for personal legal issues or other issues not related to our work at 
+Eisai
+ • if we make a compliance report that is knowingly false
+1.3.2 Reporting compliance concerns
+You should always report something you believe not to comply with laws and 
+regulations, Eisai’s ethical standards, policies or procedures. If you are not sure, you 
+should contact Compliance. 
+Be assured that a report of a compliance concern will be treated confidentially and 
+information will be shared only in order to carry out any necessary investigation.
+Scenario
+I think a colleague is engaged in conduct that does not comply with the law as well 
+as Eisai policy but I don’t want him to get in trouble. What should I do? 
+Advice
+You should speak to your manager or Compliance rather than ignore a problem 
+which potentially could damage Eisai’s business, reputation or patients.14
+15
+Part 2 
+    
+Our working environment
+2.1 Discrimination
+2.2 Harassment
+2.3 Health and safety
+2.4 Drugs and alcohol
+2.5 Use of social media
+2.6 Conﬂicts of interest
+2.7 Fraud16
+2.1  Discrimination
+Eisai welcomes and respects diversity, and believes in the fair treatment of all 
+people. All our activities, including recruitment, training, and promotion, reﬂect that 
+philosophy. Eisai policies are intended to encourage the professional growth and 
+development of all employees in a workplace environment that is free from 
+discrimination.
+Examples of discrimination include, but are not limited to: race, gender, age, 
+disability, national origin, religion, sexual orientation, marital status.
+In short:
+We should:
+ • treat everyone with respect
+ • base evaluations of an employee’s job performance strictly on the merits 
+We should not:
+ • make decisions in respect of any employee or applicant based on attributes 
+not related to the person’s job performance or qualifications17
+2.2  Harassment
+Everyone has the right to work in a place that is free from harassment and no-one 
+should engage in conduct that constitutes harassment. We are all expected to 
+support a harassment free workplace.
+We must make a report if we or our colleagues are the victims of harassment. Eisai 
+does not tolerate anyone making sexual advances toward a colleague in the 
+workplace or work-related environment, or taking intimidating or oﬀensive actions 
+that create a hostile working environment.
+In short:
+We should:
+ • treat everyone with respect and professionalism and as business colleagues, 
+not social friends or classmates. The workplace is a professional environment, 
+not a home or school or private club 
+We should not:
+ • make or use oﬀensive or inappropriate comments, pictures, or written text
+Scenario
+A colleague tells sexual jokes during the lunch break. What should I do?
+Advice
+Behaviour or action that makes you uncomfortable and unreasonably interferes 
+with your work performance may be considered harassment. To some extent, this is 
+a question of degree, but in appropriate cases, you should let your colleague know 
+that this behaviour is oﬀensive to you or your colleagues and ask him or her to stop.  
+You may also consult your manager, Compliance, or Human Resources for further 
+guidance.   18
+2.3  Health and safety
+Eisai provides a work environment that complies with health and safety laws and 
+regulations. We should all be aware of the safety procedures applicable to our 
+activities and follow them. We must immediately report any accident, or unsafe or 
+potentially hazardous practice or condition, including actual or potential security 
+risks, to our manager or relevant department. 
+Certain areas of our business, such as Research and Development and 
+manufacturing, involve the handling of materials and equipment that can pose 
+hazards to the health or safety of employees, and that are strictly regulated or may 
+impact the environment. If we are involved in these types of activities we should 
+consult our local written standards to understand how to work with these materials 
+or equipment.
+The use of certain medicinal drugs may impair our ability to function properly. We 
+should be aware of how this can aﬀect our day to day activities and if this poses a 
+problem for health and safety at work we should consult our manager, Human 
+Resources or other relevant department.19
+In short:
+We should:
+ • be aware that not complying with safety laws, regulations, policies and 
+procedures can lead to serious health or safety problems
+ • obtain written approvals from the appropriate manager if there are no 
+relevant laws, regulations, policies or procedures
+ • immediately report accidents and unsafe or potentially dangerous practices
+We should not:
+ • depart from safety laws, regulations, policies or procedures
+ • leave accidents and unsafe or potentially dangerous practices without 
+reporting20
+2.4  Drugs and alcohol
+The use of drugs and alcohol can be a serious workplace issue. Not only can their 
+use lead to significant health problems but anyone under the inﬂuence of drugs or 
+alcohol can be a hazard to themselves and others. Eisai believes that alcohol and 
+drugs have no place in the workplace, unless required for a medical condition. Eisai 
+does not allow the use of illegal drugs at work. The consumption of alcohol on site 
+without permission is also prohibited.
+Drug and alcohol misuse can create a serious health and safety risk for the abuser 
+and for other employees. We should contact our local Human Resources 
+Department if we are concerned about ourselves or colleagues.
+In short:
+We should:
+ • be aware that the consumption of alcohol or drugs can be dangerous in the 
+workplace
+We should not:
+ • consume alcohol in the workplace without appropriate permission
+Scenario
+My department wants to hold a celebration for the launch of our new product. We 
+want to serve food and alcoholic beverages. Since it is a celebration, is it OK to have 
+alcohol? 
+Advice
+It might be, but in any event, you must obtain appropriate managerial approval or 
+approval as set out in your local policy before you have alcohol at a work event.21
+2.5  Use of social media
+We are all responsible for the reputation of Eisai whether during oﬃce hours or 
+otherwise. Our actions may adversely aﬀect Eisai’s reputation, which can be 
+detrimental to Eisai’s business and consequently to patients.  In order to protect 
+Eisai’s reputation we should be mindful of what we post on social media in a 
+personal capacity and avoid being seen to be acting on behalf of Eisai, or 
+expressing Eisai’s oﬃcial view or opinion.
+Any social media accounts created for Eisai business purposes must be properly 
+approved in accordance with Eisai policies and procedures.
+In short:
+We should:
+ • avoid being seen to be acting on behalf of Eisai when acting in a personal 
+capacity
+ • clearly identify our posts as personal, write in the first person and use a 
+personal email address
+We should not:
+ • open social media accounts in a personal capacity that could be interpreted 
+by others as acting on behalf of Eisai (e.g. using an Eisai company name, 
+names of Eisai-related products or services)
+ • write about Eisai products or competitor products or services
+ • post information that might be construed in a way that could damage Eisai’s 
+reputation, even indirectly. We should not post disparaging, oﬀensive, 
+obscene, discriminatory or defamatory statements about Eisai, its clients, 
+personnel or business partners
+ • create social media accounts for business purposes without proper approval22
+Scenario
+My mother has recently been taking an Eisai drug and it seems to be working, and I 
+would like to share this goods news to friends via social media. Can I do this? 
+Advice
+No. It is against Eisai policy for you to write about Eisai’s products on your personal 
+social media. Only people authorised to post messages about Eisai and its products 
+can do so through Eisai authorised media.
+Scenario
+I have created a social media account for use between colleagues at work. Is this 
+acceptable?
+Advice
+No. Only authorised social media for business purpose is permitted. Communication 
+between colleagues for business purposes must be done through authorized and 
+secure media such as e-mails or company telephones.23
+2.6  Conﬂicts of interest
+When we make professional judgments or act on behalf of Eisai we are responsible 
+for doing so impartially and in the best interests of the company. A conﬂict of 
+interest exists when our personal interest is inconsistent with those of Eisai and 
+creates conﬂicting loyalties. This conﬂict may cause us to make a biased business 
+decision that may not be in Eisai’s best interests.
+In performing our work, a conﬂict of interest may arise if we have a personal interest 
+in a possible transaction or in a third party with whom Eisai has a business relation, 
+or if we receive a gift or invitation to an event from a business partner.
+If we have an actual conﬂict of interest or there is a potential for the appearance of a 
+conﬂict of interest we should declare it to our manager so that an appropriate 
+solution can be found, for example, by removing ourselves from any decision about 
+a third party. 
+Examples of potential conﬂicts include:
+ • professional engagements, including third party board memberships
+ • setting up or being a trustee of a charity which Eisai supports or is asked to 
+support
+ • accepting cash, gifts or invitations from a business partner
+ • owning stock in an existing or potential business partner or competitor
+• conducting business with a company owned by a family member or friend
+ • accepting a position with an existing or potential business partner24
+In short:
+We should:
+ • declare any potential conﬂicts of interest to our manager
+We should not:
+ • be unduly inﬂuenced in our business activities by relationships with close 
+friends and family members
+Scenario
+I own stock in a company that does business with Eisai, do I have to disclose this 
+information? 
+Advice
+There may be an issue with your owning stock in a company that does business 
+with Eisai and you must disclose this information to your manager. Your ownership 
+of the stock means you have a personal interest that may be diﬀerent from Eisai’s 
+and the potential for a financial gain at Eisai’s expense. You will need to discuss this 
+situation with your manager and Compliance.25
+2.7  Fraud 
+Eisai provides guidelines to detect and prevent fraud, misappropriations and other 
+irregularities. Fraud is defined as the intentional, false representation or 
+concealment of a significant fact which leads someone to act upon it to their 
+detriment.
+Each oﬃcer, director and manager should be familiar with the types of irregularities 
+that might occur within their area of responsibility, and we should all be alert for 
+any indication of irregularity.
+2.7.1 Appropriate use of expenses and funds
+Appropriate payments and reimbursement of expenses are fundamental to all 
+legitimate business activities. All expense payments should be conducted in 
+transparent processes (cashless payments, etc.) based on facts, and in a timely 
+manner. We must all submit, use and reimburse expenses appropriately in 
+compliance with Eisai procedures (including requirements such as amount limits, 
+use of preferred vendors, etc.). 
+Research and Development activities are funded not only by internal resources but 
+also by external resources. We must appropriately manage and use Research and 
+Development funds for their intended purpose.
+2.7.2 Assuring reliability of research data
+In order to assure reliability of research data, we must have adequate mechanisms 
+to address fraudulent conduct in such activities (fabrication, falsification, plagiarism, 
+etc.). We must follow policies and procedures in research divisions in each country 
+where Eisai operates.
+If we become aware of fraudulent conduct, we must contact Compliance. 26
+In short:
+We should:
+ • be aware of the types of irregularities or fraudulent conduct that might occur 
+within our area
+ • report any eﬀort to engage in fraud, negligence or improper manipulation of 
+clinical trial results
+We should not:
+ • request reimbursement of inappropriate expenses27
+Part 3 
+    
+Eisai and its stakeholders
+3.1 Research and development
+3.2 Manufacturing and distribution
+3.3 Promotional and non-promotional communication
+3.4 Adverse events and safety
+3.5 Interactions with Healthcare Providers
+3.6 Relations with regulatory and other public agencies28
+3.1  Research and development
+Research and development activities are the basis of Eisai’s business and essential to 
+achieving our hhc mission. We carry out our research and development activities 
+respecting intellectual property rights (page 51), data integrity (page 25), health and 
+safety (page 18), Healthcare Providers (page 34), clinical trial participants and the 
+scientific community. We engage in research and development activities that comply 
+with all regulations, internationally recognised standards e.g. Good Laboratory Practice 
+(GLP) and Good Clinical Practice (GCP) and we adhere to high ethical standards.
+3.1.1 Respect for clinical trial participants
+Eisai respects the principles of GCP for clinical trials including the rights, safety and 
+well-being of trial participants. Freely given informed consent should be obtained 
+from every participant prior to clinical trial participation.
+3.1.2 Disclosure of clinical results
+We must disclose, in a timely and accurate fashion, clinical trial results regardless of 
+outcome. 
+3.1.3 Handling regulated chemicals and materials
+In the process of research and development, we create and handle various 
+chemicals and materials, which are regulated by laws and regulations, Eisai policies 
+and procedures, such as narcotics, anti-hypnotics (and their raw materials), psycho-
+pharmaceuticals and other hazardous chemicals.
+Chemicals and materials may be hazardous if they are not properly handled 
+(including living organisms and radioactive materials) and may impact the 
+environment (including genetically modified organisms).
+3.1.4 Animal research
+Eisai accepts that animal research is a necessary and required part of verifying 
+safety and eﬃcacy in the development of new drugs. We are dedicated to the 
+humane care and treatment of the laboratory animals we use. Our animal research 
+is overseen and guided by an Institutional Animal Care and Use Committee (IACUC), 
+which includes external specialists. 29
+Our research is conducted with scientific rigour and due consideration is given to 
+the well-being of the animals as well as to the 3R Principles of animal testing:
+ • Replacement: Evaluating alternative techniques for animal research 
+ • Reduction: Reducing the number of animals used to a minimum
+ • Refinement: Minimising pain and suﬀering of animals to be used in research 
+In short:
+We should:
+ • conduct our research and development activities strictly in accordance with 
+Eisai policies and procedures
+ • take steps, with the Intellectual Property Department, to secure appropriate 
+intellectual property protection for any research and development work Eisai 
+does
+ • ensure that all clinical data are recorded and reported according to the clinical 
+study plan
+ • follow Eisai’s guidelines on disclosure of results from clinical studies
+We should not:
+ • suppress negative data about a product in development or otherwise attempt 
+to distort the development record
+ • engage in fraud, negligence or improper manipulation of clinical trial results30
+3.2  Manufacturing and distribution
+Eisai’s manufacturing and distribution activities comply with all laws, regulations 
+and internationally recognised standards e.g. Good Manufacturing Practice (GMP). 
+Eisai manufactures products of high quality to ensure the health and safety of 
+patients. We carry out our manufacturing activities with due regard for health and 
+safety (page 18), and the environment (page 46).
+Quality assurance includes production levels (such as intake and handling of raw 
+materials and finished products, including contract manufacturing) and proper 
+storage and handling of the products during distribution.
+In short:
+We should:
+ • be aware of and report any diversion or illegal tampering of our products
+We should not:
+ • conduct activities that cause or may cause contamination of production sites, 
+raw materials or finished products31
+3.3  Promotional and non-promotional 
+communication
+As an hhc company Eisai strives to create, produce and market innovative products 
+that provide benefits to patients and their families. Our stakeholders have a legitimate 
+interest in our products and the results of our research and development activities. 
+Eisai markets and promotes its pharmaceutical products worldwide. We provide 
+accurate and balanced scientific information, and promote our products only for the 
+uses for which they have been approved by the applicable regulatory authorities. 
+Oﬀ-label and false or misleading promotion and promotion of pre-approved drugs 
+are prohibited as they may raise legal, regulatory and product liability issues. The 
+relevant department must approve the content of any promotional materials, and 
+we must avoid improper promotional activities. 
+If we are engaged in promotional activities, we are expected to be familiar with the 
+rules governing promotional activities.
+In our promotional and non-promotional activities, we interact with Healthcare 
+Providers; the rules governing this kind of interaction are many and complicated 
+and they vary from country to country (page 34). 
+3.3.1 Advisory board meetings
+Advisory boards meetings should be held only to enable Eisai to answer legitimate 
+business questions to which we do not already know the answer and must comply 
+with local or regional written standards. They are therefore by their very nature not 
+promotional. 
+To be considered a legitimate advisory board:
+ • the choice and number of participants should stand up to independent scrutiny 
+ • each member should be chosen according to their expertise so that they will be 
+able to contribute meaningfully to the purpose and expected outcomes of the 
+meeting
+ • the agenda should allow adequate time for discussion32
+It may be necessary to discuss clinical data about our drugs but only if that 
+information is essential to meet the stated objective of the advisory board meeting. 
+To do otherwise might be disguised promotion or promotion of an unlicensed drug 
+or indication.
+Consult Compliance or the relevant department if you are not certain the meeting 
+being organised is an Advisory Board.
+In short:
+We should:
+ • provide accurate and balanced scientific information regarding our products’ 
+appropriate use and safety information
+ • conduct promotional activities using only materials that have been approved 
+by the relevant department in our company
+We should not:
+ • promote our products for any uses that are not authorised 
+ • provide samples outside the scope of applicable laws and regulations
+Scenario
+I found an article in a reputable medical journal regarding one of our products. May 
+I circulate it to our sales representatives for them to use as a reference?
+Advice
+Not unless it has been approved by the relevant Eisai department. Sales 
+representatives may use only those documents and materials that the relevant 
+department in your company has reviewed and approved for promotion and 
+advertising. Documents provided solely for training purposes are not to be 
+distributed outside of Eisai.33
+3.4  Adverse events and safety
+The safety of our products, whether they are under development or on the market, 
+is fundamental to our hhc mission. We are obliged by law to collect and report all 
+information regarding the safety of our products.
+If any of us becomes aware of an adverse event relating to an Eisai product, we 
+should immediately report it to our local Pharmacovigilance Department in 
+accordance with local standards. 
+Eisai is responsible for reporting adverse events to governmental or regulatory 
+authorities. If we are not sure how to proceed, we must ask our manager or contact 
+our local Pharmacovigilance Department. 
+In short:
+We should:
+ • report all adverse events and safety information on marketed products, as well 
+as on products being used in clinical trials, to the appropriate 
+Pharmacovigilance Department
+ • be familiar with the requirements and procedures for adverse drug event 
+report
+We should not:
+ • ignore or attempt to conceal adverse information about our products 
+Scenario
+A friend of a friend has posted on social media that they felt really unwell after 
+taking an Eisai drug. Do I need to tell anybody?  
+Advice
+Yes. You must report the message you have seen to your Pharmacovigilance 
+Department in accordance with your local procedures.34
+3.5  Interactions with Healthcare Providers 
+Collaboration between industry and Healthcare Providers benefits patients. It is a 
+relationship that has delivered numerous innovative medicines and changed the 
+way many diseases impact our lives. Industry and Healthcare Providers collaborate 
+in a range of activities from clinical research, sharing best clinical practice and 
+exchanging information on how new medicines fit in to the patient pathway. Eisai 
+also interacts with Healthcare Organisations/Entities and Patient Groups to 
+implement our hhc mission.
+In all of these and other interactions, it is important that we ensure that the 
+interactions are in accordance with applicable laws, regulations, and Eisai policies 
+and procedures and that any compensation provided to Healthcare Providers or 
+Organisations/Entities is in accordance with fair market value.
+Any discussion of pricing or discounts must be done in accordance with local 
+standards.
+3.5.1 Disclosure of payments to Healthcare Providers, 
+Organisations/Entities and Patient Groups
+The collaboration Eisai has with its Healthcare Providers, Organisations/Entities and 
+Patient Groups is important to us. We want to ensure that patients and others have 
+confidence that these relationships are open and transparent and this is why Eisai 
+supports the initiatives of the pharmaceutical industry to disclose details of 
+payments and other benefits in kind. We must therefore capture all relevant 
+information so we can comply with local disclosure requirements.
+3.5.2 Domestic and international events
+When Eisai arranges an event there are written standards that must be taken into 
+consideration. For example, the local rules applicable to the:
+ • meeting agenda and materials
+ • internal and regulatory requirements to pre-approve events
+ • meeting location and venue35
+ • fair market value thresholds
+ • hospitality and meals thresholds
+ • disclosure of transfers of value
+For international events we must also consider the nationality of the Healthcare 
+Providers and consult with the relevant departments and countries to ensure 
+compliance with various diﬀerent written standards.
+In short:
+We should:
+ • interact with Healthcare Providers or Organisations/Entities only for a 
+legitimate business purpose
+ • follow the varied local laws, regulations, policies and procedures applicable to 
+interactions with Healthcare Providers, Organisations/Entities or Patient 
+Groups and specific activities
+ • assure that any compensation provided to Healthcare Providers or 
+Organisations/Entities is in accordance with fair market value for the particular 
+service provided and consistent with any relevant contract with the 
+Healthcare Providers or Organisations/Entities
+ • report the details of the interaction in accordance with local policies, if 
+required
+We should not:
+ • interact with or provide anything of value to a Healthcare Providers or 
+Organisations/Entities which is or can be perceived as being an improper 
+inducement to prescribe of Eisai’s products
+ • provide anything of value to or on behalf of a guest or family member of a 
+Healthcare Provider
+ • try to hide or fail to disclose any compensation or value provided to a 
+Healthcare Providers or Organisations/Entities36
+Scenario
+I have invited an expert to speak at one of our sponsored conferences. Eisai has a 
+great relationship with this expert and I would like to show him my appreciation by 
+taking him to a nice restaurant for dinner. Can I do this?
+Advice
+Even if the purpose is to provide information of a medical/scientific nature or on 
+Eisai products, or if it is in conjunction with an Eisai-sponsored presentation, an 
+expensive restaurant dinner is likely to be considered inappropriate under the 
+relevant country’s standards. Please consult Compliance if you have any questions. 37
+3.6   Relations with regulatory and other public 
+agencies
+Our pharmaceutical business is regulated by many public agencies in diﬀerent 
+countries in the world. We must ensure that Eisai has appropriate interactions with 
+all those agencies; those interactions must be accurate, complete, timely and 
+transparent.
+In short:
+We should:
+ • be open and transparent in our interactions with public authorities38
+39
+Part 4 
+    
+Relationship with society
+4.1 Corrupt practices and bribery
+4.2 Fair trade and competition practices
+4.3 Political contributions
+4.4 Environmental protection
+4.5 Organised crime
+4.6 Human rights40
+4.1  Corrupt practices and bribery
+It is Eisai policy not to tolerate bribery (including facilitation payments) or other 
+corrupt conduct in Eisai business dealings either directly or by third parties acting 
+on our behalf.
+Many countries have laws that prohibit bribery, including bribery of public oﬃcials 
+or any other individual or organisation. We should remember the definition of 
+public oﬃcial diﬀers from country to country and that this term may include 
+Healthcare Providers.
+We do not oﬀer or promise any payment or item of value to anyone for the purpose 
+of corruptly inﬂuencing their decisions in connection with the supply of goods or 
+services to or from Eisai. We should recognise that violation of these laws may result 
+in criminal charges not only against Eisai but individuals as well. 
+4.1.1 Third party compliance due diligence
+We should ensure that third parties acting on our behalf demonstrate the same 
+high standards as Eisai. To allow Eisai to comply with anti-bribery, anti-corruption 
+written standards we carry out appropriate compliance due diligence on third 
+parties prior to engaging with them and provide training to them when required. 41
+In short:
+We should:
+ • follow written standards for dealing with third parties, whether they are public 
+oﬃcials or any other individual or organisations.
+ • obtain approval for all gifts, hospitality and expenses in accordance with local 
+standards
+ • consult Compliance if we are unsure of our conduct or the laws applying to 
+the countries where we may be conducting business
+We should not:
+ • give, promise or oﬀer anything of value which is or may be perceived as an 
+inducement for improper conduct
+ • contract with a third party without conducting appropriate due diligence
+ • fail to investigate any suspicious transactions by a third party acting on behalf 
+of Eisai
+Scenario
+I plan to contract with a renowned public oﬃcial Healthcare Provider for a service. 
+She has asked me to contract with a company for this service instead. I am not sure 
+that this company is really necessary for the service; however, I feel it may be hard 
+to reject such a request. May I contract with this company for the service? 
+Advice
+You may contract for services with the individual or the organisation if there is a 
+legitimate business need and if the contract terms are appropriate. If you are unsure 
+of who is in fact providing the service, or unsure about whether the proposed 
+arrangement provides fair value to Eisai and is otherwise appropriate, please 
+consult Compliance. 42
+4.2  Fair trade and competition practices
+Eisai’s policy is to compete fairly and legitimately and to comply with anti-trust or 
+competition laws in each country in which we operate. Acts or practices of unfair 
+restraint of trade, for example, cartel, price fixing, etc. are prohibited.
+We should consult the Legal Department if we have any questions about the 
+application of competition laws to a particular situation.
+4.2.1 Dealings with competitors, distributors, customers and 
+suppliers
+Formal or informal agreements or understandings with competitors, distributors, 
+customers and suppliers may be prohibited under competition laws. In some cases, 
+even discussion about the sensitive topics listed below may violate those laws. 
+Therefore any intended interaction involving these sensitive topics by anyone in 
+Eisai with any third party is prohibited, unless the relevant Legal Department has 
+given its advice and prior written approval.
+4.2.2 Sensitive topics for competitors
+ • pricing, costs or profits
+ • terms or conditions of sale (including credit extensions or information)
+ • entering or leaving, or allocating with one or more other companies, product, 
+service or geographic markets
+ • market share or production or sales volume
+ • decisions to bid or quote or otherwise allocate customers, suppliers or channels 
+of distribution
+ • whether and how diligently to pursue R&D projects43
+4.2.3 Sensitive topics for distributors, customers and suppliers
+ • terms under which a purchaser of our products resells the products (including 
+price or whether the purchaser can resell)
+ • making transactions dependent on other transactions (such as buying or selling 
+other products or services)
+ • restricting a third party to manufacture, buy, sell or provide any service to 
+another party
+In short:
+We should:
+ • take measures to avoid discussion of sensitive topics with third parties and, if 
+required, remove ourselves from any such contact at the earliest opportunity 
+ • obtain prior written approval from the relevant Legal Department for any 
+agreement or understanding with any third parties about any sensitive topic
+ • obtain prior Legal Department review of agendas for meetings with 
+competitors (including trade associations or other industry gatherings)
+ • make sure that business decisions, including those about R&D, manufacturing, 
+pricing, promotion and sales, are based on independent grounds
+ • report contact with third parties in line with company policy
+We should not:
+ • communicate and agree with third parties about sensitive topics, without 
+prior advice and/or approval from the relevant Legal Department44
+Scenario
+I plan to attend a conference where one of our co-promotion partners will be 
+present. This co-promotion partner has recently introduced a product that 
+competes directly with one of our products. Can I discuss their new product with 
+them? 
+Advice
+You should limit your discussion with co-promotion partners to co-promotion 
+matters. Any conversation about their new product will raise competition law 
+questions, and unless the Legal Department has approved it in advance, you should 
+not discuss the new product with the business partner.
+Scenario
+I just want to talk to other market participants about some issues having to do with 
+standardised practices, which I think will be in all our interests. Is there any reason I 
+can’t do that? 
+Advice
+Yes, there is. Competition laws don’t think markets should be “orderly” . Competitors 
+are supposed to make independent business decisions. If they have agreements or 
+understandings with their competitors about sensitive topics, they violate 
+competition laws in the process. Eisai will not tolerate such an outcome, and it 
+exposes the individuals involved, as well as Eisai, to legal liability.45
+4.3  Political contributions
+Donations to politicians and political organisations are regulated in each country. In 
+dealing with political donations, Eisai complies with local laws and regulations.
+In short:
+We should:
+ • obtain appropriate internal approvals before making any contributions to 
+politicians or political organisations in the name of Eisai46
+4.4  Environmental protection
+Eisai places global environmental protection as an important component of 
+business operations and strives to maintain the environment in compliance with 
+written standards.
+In short:
+We should:
+ • help conserve energy and materials through recycling, power saving, water 
+saving, etc.
+ • be alert to ways in which Eisai’s activities can be changed to reduce the 
+company’s environmental footprint47
+4.5  Organised crime
+We do not enter into, or to the extent we become aware we sever, relations with 
+organised crime groups. 
+If it is found that individuals or third parties we work with are involved in, or are 
+suspected of being involved in, organised crime, we promptly report our concern to 
+Compliance.
+In short:
+We should:
+ • be aware that organised crime exists 
+ • avoid any situation that could involve Eisai in relations with organised crime
+ 48
+4.6  Human rights
+Eisai is committed to uphold all internationally recognised human rights wherever 
+our operations are located. Eisai will not tolerate the use of, including by its third 
+parties or their supply chains, modern slavery such as child labour, forced labour, 
+human traﬃcking or any other behaviour that does not maintain human dignity 
+and respect.
+In short:
+We should:
+ • respect the rights of all people in the way we conduct our business
+Scenario
+I have become aware that one of our suppliers regularly uses children to work in 
+their factory. What should I do? 
+Advice
+You should inform your manager and/or Compliance. 49
+ Part 5 
+    
+Corporate assets and information
+5.1 Documentation
+5.2 Intellectual property
+5.3 Confidential information
+5.4 Protection of personal data
+5.5 Insider information and trading
+5.6 Eisai’s assets
+5.7 Tax payments and financial statements50
+5.1  Documentation
+Documents are the memory of a company. Individuals may remember events, but 
+their memories are not consistently reliable. People inside and outside the company 
+regard documentary records as much more important in trying to reconstruct 
+things that happened in the past.
+Not everything that happens needs to be documented. But we need to be aware 
+that when we write emails or other messages, when we leave voice mails, and even 
+when we have telephone conversations, if they are recorded, we are creating 
+documents.
+It is essential that documents be created for matters that need to be documented. 
+There are many laws, rules, regulations and Eisai policies and procedures that cover 
+these topics. We need to be fully aware of the ones that apply to our work.  It is also 
+essential that when documents are created, they be timely, accurate and 
+thoughtfully prepared so they are not misunderstood later, or taken out of their 
+proper context. 
+The knowing creation of false documentation, or the improper alteration of 
+documents, makes it impossible rely on the company’s memory. Such misconduct is 
+a gross violation of compliance and will be severely punished, up to and including 
+termination from employment.51
+5.2  Intellectual property
+We spend a great deal of time, eﬀort and money developing valuable new products 
+to improve patients’ health and quality of life. During the course of this product 
+development, new technology, new designs, and unique product names may be 
+invented or conceived. These may give rise to valuable assets in the form of 
+intellectual property rights such as patent rights, design rights, trademark rights, 
+copyright, know-how, and trade secrets. Others view their own intellectual property 
+rights in the same way and we may not use intellectual property owned by a third 
+party without the third party’s permission. 
+If we are uncertain about Eisai’s intellectual property or the steps necessary to 
+protect Eisai’s rights, or whether a third party’s rights are relevant to our activities, 
+we should consult our manager, the Intellectual Property Department, Legal or 
+Compliance.
+5.2.1 Copyright
+Whilst patent and trademark rights must be registered if they are to be protected, 
+copyright need not be. 
+ • We must be aware that copying another party’s work, even absent any copyright 
+registration, could be considered copyright infringement.
+ • We should obtain permission from the appropriate copyright holders to use their 
+copyrighted works, and comply with the relevant laws when citing copyrighted 
+works.52
+In short:
+We should:
+ • be vigilant in the protection of Eisai’s own intellectual property and let your 
+manager, Compliance or Legal know if third parties are violating Eisai’s rights
+ • be aware of relevant third party patent and other intellectual property rights
+ • obtain permission from the appropriate copyright holders to use their 
+copyrighted works, and comply with the relevant laws when citing 
+copyrighted works
+We should not: 
+ • disclose (even unintentionally) to anyone outside Eisai any trade secret or 
+know-how that belongs to Eisai
+ • obtain from someone who joins Eisai, trade secrets or other intellectual 
+property of their previous company53
+Scenario
+Am I allowed to quote from another person’s copyrighted work for the purpose of 
+preparing promotional materials?
+Advice
+In many countries, it is permissible to quote from another person’s published work, 
+with appropriate credit to the author. But there are certain requirements you must 
+meet in order to quote the material lawfully. If you fail to meet such requirements, 
+you (and Eisai) may be in violation of copyright laws. Therefore, please consult and 
+seek advice from Compliance or the Legal Department.
+Scenario
+I found a third party’s product with a name and packaging substantially similar to 
+one of our products. Is there anything I can do?
+Advice
+Our product names and product packaging designs are protected under trademark 
+laws or other laws in most countries. Such protection given by law may be seriously 
+undermined if Eisai does not take appropriate counter measures immediately. 
+Therefore, if you find such a product, please contact Compliance as soon as possible 
+so Eisai can take appropriate action.54
+5.3  Conﬁdential information
+5.3.1 Conﬁdential information
+Confidential information is an important Eisai asset. Confidential information 
+includes anything from inventions, know-how and research results to financial data 
+and customer lists. Disclosing our confidential information intentionally or 
+accidentally might undermine our business. Therefore, we must make every eﬀort 
+both seriously and diligently to protect our confidential information. 
+Please note that if some information, despite being confidential information, is not 
+managed appropriately, we may lose valuable legal protection that would 
+otherwise apply to it. 
+Confidential information received from third parties is similarly important to their 
+success. When we come across information from a third party in our work and 
+everyday life, we are required to obtain the necessary permission to use it. 
+In all these cases, each of us needs to ensure that information that should stay 
+within Eisai does stay within Eisai because, if it does not, its value to Eisai and 
+perhaps others will be lost or diminished.
+5.3.2 Information and Communication Technology security
+Eisai takes Information and Communication Technology  (“ICT”) security seriously 
+and has policies, procedures and systems in place to help prevent unauthorised 
+access, disclosure, and disruption of information held in its ICT systems. 
+If we become aware of any suspicious activities we should contact our local ICT 
+Department or Compliance.55
+In short:
+We should:
+ • discuss confidential information only in private locations. Remember that 
+conversations using speaker phones and cellular/mobile phones can be 
+overheard by others
+ • review confidential documents only in private locations
+ • when sending facsimiles or e-mails or text or other messages, ensure they are 
+sent only to the proper recipients
+ • if we need to share confidential information with a third party, get the 
+approval of our manager and the manager responsible for Information 
+Security in advance 
+We should not: 
+ • discuss confidential information in elevators, hallways, restaurants, airplanes, 
+taxi cabs, trains or any other public places
+ • dispose of confidential documents in such a way that they might be picked up 
+by others56
+Scenario
+I have a large amount of company data in my computer. Can I take my computer 
+with me to work away from the oﬃce? 
+Advice
+If you are permitted to work away from the oﬃce (for example, at home), as per 
+local company policy, you must ensure that your computer is securely protected 
+e.g. use of a strong password. Please note that if you take your computer outside 
+the oﬃce, you must make sure it is in your possession or in a secure place at all 
+times. Do not leave the computer in your car or any place else that it can be taken 
+by others.
+Scenario
+If I develop an improvement to an existing product that is not patentable, is this 
+considered confidential information?
+Advice
+Yes. All discoveries, inventions, improvements, and innovations, regardless of their 
+patentability, are considered to be valuable or confidential information and should 
+not be shared with anyone outside Eisai without the necessary approval.57
+5.4  Protection of personal data 
+In the course of its business, Eisai has personal information about its employees, 
+patients, Healthcare Providers, suppliers, customers and contractors. Personal 
+information is any information that identifies a living individual. Examples include 
+lists of employees, and records that show their birth date, government-issued 
+identification number or other identifying information or medical information. 
+Eisai is committed to complying with data protection laws around the world. Some 
+data protection laws specifically control how personal information can be used by 
+organisations and businesses.
+Eisai is responsible for using data in accordance with applicable data protection 
+principles to ensure that such data are, at a minimum,
+ • used fairly and lawfully
+ • used for limited, specifically stated purposes
+ • used in a way that is adequate, relevant and not excessive
+ • accurate
+ • kept for no longer than is absolutely necessary
+ • handled according to people’s data protection rights
+ • kept safe and secure
+ • not transferred to other countries without adequate protection
+There is often stronger legal protection for data which is deemed sensitive personal 
+information.58
+In short:
+We should:
+ • Access an individual’s personal information only with permission and when a 
+clear business need exists, and in accordance with applicable law
+ • Share personal information only with someone who has permission and a 
+need to know the information
+ • Be aware of all local laws and regulations regarding personal data protection 
+when transferring or receiving personal data across countries and regions
+We should not: 
+ • Use or disclose anyone’s personal information for any purpose other than the 
+one for which it was collected
+ • Distribute any personal information without being sure that the distribution is 
+allowed by applicable law59
+5.5  Insider information and trading
+Insider information is information that is not public and that an investor would 
+consider important (“Material Information”) when deciding whether to buy, sell or 
+hold stock. The use of insider information for making personal decisions relating to 
+the purchase or sale of securities or other investments is illegal. Insider information 
+must be kept strictly confidential and we should not give trading recommendations 
+to those without the information. 
+Examples of material Information include: financial results and forecasts; changes in 
+dividends; possible mergers, acquisitions or joint ventures; and significant strategic 
+and corporate developments, such as R&D or clinical trial results, major litigation 
+developments, that are not yet public. 
+In short:
+We should:
+ • keep Eisai insider information confidential and use it only for the business 
+purposes for which it was developed
+We should not: 
+ • share Eisai insider information with family, friends or any other third party
+ • make investment decisions for ourselves or anyone else that involve Eisai or 
+other listed company shares and that are based in any way on insider 
+information
+Scenario
+A relative asked me if she should sell Eisai shares, when I knew there would be an 
+announcement soon that would likely have an eﬀect on the share price. Can I tell 
+her what I think she should do?
+Advice
+No. You need to tell her that you can’t advise her and you can’t give her information 
+or hints about what is going on.60
+5.6  Eisai’s assets
+Protecting Eisai’s assets is important. Eisai’s assets include items such as computers, 
+telephones, lab equipment, oﬃce supplies, and company products, as well as 
+intangible assets such as intellectual property rights. Any loss, theft or improper use 
+of these assets can cause serious financial loss and damage to Eisai’s business. 
+In short:
+We should:
+ • take all appropriate steps to protect Eisai’s assets and report any loss or theft 
+immediately61
+5.7  Tax payments and ﬁnancial statements
+Eisai must make the correct payments to governments as required by applicable tax 
+laws. For proper tax payments, it is important to maintain suﬃcient documents to 
+prove and support the accuracy of our records and to establish proper criteria for 
+our decisions. Eisai prohibits false information and forged expense claims in 
+reimbursement or account settlements, as well as misrepresentation or 
+concealment of relevant facts in a tax inspection; all these activities hinder proper 
+tax payments.
+As we are a publicly traded company we are required to disclose information about 
+certain types of corporate activities in our annual reports. Accordingly, we must 
+make sure that all our stakeholders receive correct and complete information in a 
+timely manner.
+In short:
+We should:
+ • properly document decisions to support information we disclose to tax 
+authorities
+ • account for the amounts accurately and promptly when using Eisai money
+ • prepare expense claims promptly and accurately, attaching all relevant 
+documents (i.e. invoices, expense claims), and clarifying amount and business 
+purpose of the expense
+ • keep proper documentation of approved company spending, and provide 
+complete and accurate documentation upon request from Eisai, its auditors or 
+the government
+We should not:
+ • falsify expense claims
+ • falsify any company record or take any step to impair the accuracy of Eisai’s 
+reporting of its business or financial performance62
+Compliance Test
+We all aim to realize our hhc mission. Before you take any action or make any 
+business decision please ask yourself the following questions to make sure you are 
+in line with our compliance standards. If you are in any doubt, you are encouraged 
+to consult your manager. If, for some reason, you cannot consult your manager, 
+please contact Compliance.
+ • Could you openly tell your family what you have done?
+ • Do you think it’s acceptable to be non-compliant as long as you are not found 
+out? 
+ • How would it feel to read a report of your activities in the news or on social 
+media?The first edition: April 1st, 2000
+The second edition: July 1st, 2001
+The third edition: April 1st, 2003
+The fourth edition: September 1st, 2005
+The fifth edition: October 1st, 2007
+The sixth edition: March 31st, 2013
+The seventh edition: January 31st, 2017
+Compliance Handbook for  
+Eisai Network Companies
+English Version (B)
+Published by: 
+Corporate Compliance & Risk Management Department, 
+Eisai Co., Ltd.
+© 2017 Eisai Co., Ltd.Compliance Handbook 7th edition
+Compliance
+Handbook
+E i s a i    N e t w o r k    C o m p a n i e s
+English
+Version
+January 2017
+& Compliancehhc
+Compliance Handbook for
+Eisai Network Companies
+Compliance Handbook

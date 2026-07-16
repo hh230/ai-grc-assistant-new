@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام المنافسة ولائحته التنفيذية.pdf",
+  "filename": "نظام المنافسة ولائحته التنفيذية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام المنافسة ولائحته التنفيذية.pdf",
+  "size_bytes": 1165198,
+  "last_modified": "2026-06-26T19:38:54.073121+00:00",
+  "checksum_sha256": "a20900ccb45bdd7978e5e2477aa6e7ecd616566c55039dd7ee8f693a4faddbd7",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 55,
+  "character_count": 53498,
+  "extraction_duration": 3.6914564999751747,
+  "parsed_at": "2026-07-12T16:12:17.152467+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 142,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.010347750037908554,
+  "chunked_at": "2026-07-12T16:12:17.167319+00:00",
+  "chunking_error": null
+}

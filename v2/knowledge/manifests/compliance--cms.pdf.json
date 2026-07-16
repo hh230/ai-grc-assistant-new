@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "compliance--cms.pdf",
+  "filename": "cms.pdf",
+  "extension": ".pdf",
+  "category": "Compliance",
+  "relative_path": "Compliance/cms.pdf",
+  "size_bytes": 44855,
+  "last_modified": "2026-06-26T21:11:06.855716+00:00",
+  "checksum_sha256": "075eab57e75d852b473c98345cece9dba48bb1050865f6e86b864c58e1ea717c",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 19,
+  "character_count": 7951,
+  "extraction_duration": 0.018049457925371826,
+  "parsed_at": "2026-07-12T16:09:19.537375+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 8,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.42857142857142855,
+  "chunking_duration": 0.0018812089692801237,
+  "chunked_at": "2026-07-12T16:09:19.540046+00:00",
+  "chunking_error": null
+}

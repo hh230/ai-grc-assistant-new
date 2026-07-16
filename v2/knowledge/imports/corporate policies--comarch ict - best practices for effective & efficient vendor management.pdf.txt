@@ -1,0 +1,1352 @@
+BEST PRACTICES  
+FOR EFFECTIVE & EFFICIENT  
+VENDOR MANAGEMENTTABLE OF CONTENTS 
+1. Introduction
+2. From IT vendor management to strategic partnership
+3. Vendor Management Tools and Mechanisms
+4. The successful vendor selection process
+5. Benefits of implementing Vendor Management
+6. Case study of Financial Services IT outsourcing project
+7. Summary
+4
+8
+10
+22
+26
+27
+30
+Adam Tymofiejewicz
+Consulting Director of ICT Services BENELUX 
+Comarch
+Małgorzata Zabieglińska – Lupa
+ICT Product Manager 
+Comarch
+Authors:1. “Predicts 2016: IT Vendor Ecosystems Must be Re-evaluated Based on Agility, 
+Collaboration and Risk”, Gartner report
+1. INTRODUCTION
+Long-term development in the business environment has become much more 
+difficult to anticipate due to globalization, digital innovation, more demanding 
+customers, shorter product life cycles, continuous pressure on costs, as well as 
+social and ethical issues. In addition, vendors are finding that the world is rapidly 
+changing as we move into the digital era.
+While responding to the changing business environment, organizations are using 
+new organization models, modern management methods (i.e. lean management 
+or Six Sigma), or innovative sourcing approaches (i.e. crowdsourcing). Outsourcing 
+and vendor management have become the key factors in enabling organizations 
+to build a successful business and achieve business goals.
+Regardless of the business you're in, vendors play a key role in the success of your 
+organization. If you had asked automobile manufacturers 20 years ago how they 
+selected car parts suppliers, they would probably have said it was based on price 
+in the first place, then the supplier location and preference. Customer demands, 
+governance and the rapidly changing and growing IT industry have put a stronger 
+emphasis on safety and quality, so evaluating and selecting the right supplier today 
+has become a much more critical and complex process for each organization, not 
+only automobile manufacturers. According to Gartner, by 2019, 50% of the external 
+service and solution expenses of global 2000 companies will be through less 
+than 10 strategic vendors in an organization's vendor ecosystem
+1. This shows how 
+important vendor management is.
+WHITEPAPER4WHITEPAPER
+5
+WHAT IS VENDOR MANAGEMENT? 
+According to Gartner’s definition, Vendor 
+Management is “a discipline that enables organiza-
+tions to control costs, drive service excellence and 
+mitigate risks to gain increased value from their 
+vendors throughout the deal life cycle.”
+2 In keep-
+ing with Gartner’s definition, Vendor Management 
+should help each organization, regardless of the 
+size and the industry, to:
+ n select the right vendors;
+ n categorize vendors to ensure the right contract, 
+metrics and relationship;
+ n determine the ideal number of vendors;
+ n mitigate risk when using vendors;
+ n and establish a vendor management organiza-
+tion that best fits the enterprise.
+3
+Good vendor management allows your organization 
+to build a successful and stronger relationship 
+with your suppliers or service providers. These 
+partnerships will not only strengthen both 
+businesses, but also allow you to focus on building 
+and delivering products and services at the optimal 
+level of quality and add value to your clients.
+The list below is a good starting point for figuring out 
+the types of deal your company needs. You should 
+take a brief moment to answer these questions. 
+All answers help your organization to match the 
+vendor management model to your organizational 
+goals and objectives.
+ n WHO ARE YOU? – YOU SHOULD HAVE A 
+CLEAR UNDERSTANDING OF YOUR ORGANI -
+ZATION’S EXPECTATIONS AND PRIORITIES;
+ n WHY DID THE COMPANY DECIDE TO IMPLE -
+MENT A VENDOR MANAGEMENT PROCESS?
+ n WHAT IS THE SUITABLE NUMBER OF PEOPLE 
+TO COMMIT TO THE VENDOR MANAGEMENT 
+FUNCTION?
+ n HOW ESSENTIAL ARE VENDORS’ PRODUCTS 
+AND SERVICES TO THE ORGANIZATION?
+ n WHAT METRICS SHOULD BE UTILIZED TO 
+MEASURE THE EFFECTIVENESS OF THE 
+VENDOR MANAGEMENT MODEL?
+ n WHO WILL BE RESPONSIBLE FOR THE VEN -
+DOR MANAGEMENT PROCESS?
+ n WHICH PROCESS IS RESPONSIBLE FOR 
+MANAGING RELATIONSHIPS WITH VEN -
+DORS AT THIS MOMENT?
+ n WHY SHOULD OUR ORGANIZATION CARE 
+ABOUT RELATIONS WITH VENDORS?
+ n WHAT ARE THEY CAPABLE OF?
+ n WHAT VALUE DOES IT BRING TO THE 
+ORGANIZATION?
+2. http://www.gartner.com/it-glossary/vendor-management/
+3. http://www.gartner.com/it-glossary/vendor-management/
+WHITEPAPER6
+Large, international organizations often have hun-
+dreds of vendor relationships to make effective  
+relationships and manage them. Increasingly, these 
+relationships are drawing scrutiny from regulators, 
+stakeholders (i.e. boards of directors) and internal / 
+external auditors. With this increasing dependence 
+on vendors, it can be challenging for organizations 
+to effectively monitor and manage these relation-
+ships. The following steps should be performed 
+to identify, validate and operationalize all require-
+ments. It's also important for organizations to follow 
+these stages to ensure a comprehensive plan is put 
+in place to reap the benefits of the vendor manage-
+ment process.
+ n Develop the strategic vision – a strategic 
+vision for vendor management is critical to 
+the development of the framework. The vision 
+defines the desired organization, capability 
+and scope of vendor management activities. 
+The vision should be created with the input of 
+all key stakeholders (e.g. business units, finance 
+department, legal and compliance, etc.)
+ n Design and documentation – the strategic 
+vision is brought to life through the design 
+and documentation of the framework. Each of 
+the elements is documented to facilitate the 
+validation, roll out and ongoing execution of the 
+framework.
+ n Validation and Implementation – key 
+stakeholders should be provided with the 
+opportunity to validate and vet the framework 
+to confirm that their specific requirements have 
+been addressed. Validation of the framework will 
+support the development and execution of roll-
+out plans, while creating improved awareness for 
+vendor management.
+ n Reporting and continuous improvement – exe-
+cuting the new vendor management framework 
+usually includes making company–wide changes 
+to accommodate the new governance processes, 
+operational roles and responsibilities. Additional 
+implementation activities may include changes 
+in management and communication, process 
+re-engineering, progress reporting, as well as sys-
+tem requirement definition and selection.
+VENDOR MANAGEMENT 
+LIFE CYCLE
+JOIN US ONWHITEPAPER
+7
+ 
+These stages can also be shown in a slightly different 
+way.
+ n Vendor Selection – during this stage, the 
+vendor management strategy should be exe-
+cuted. It is based on relationships with vendors, 
+commodities and services procured, and past 
+performance metrics, etc. Evaluation criteria 
+together with KPIs are also defined at this stage. 
+Additionally, vendors should be measured 
+against the terms and conditions agreed in the 
+current contract.
+ n Service Delivery – during this stage, the 
+selected vendor provides services, which need 
+to be monitored and managed. Based on the 
+defined strategy and evaluation metrics criteria, 
+performance should be collected from various 
+sources. All collected data should be measured 
+and reported in an appropriate form to be 
+shared with both parties.
+ n Service Adjustment – this stage provides the 
+opportunity to optimize already established 
+relations with the vendor. Previously defined 
+KPIs can be used to identify areas to change, 
+optimize or improve.
+ n Contract Review – during this stage, review 
+meetings should be conducted with vendors 
+as per the strategy defined earlier. The review 
+meetings should be held periodically i.e. once 
+a month, quarterly, half yearly or yearly. This 
+depends on the strategy and client expectation. 
+The agenda of these meetings should include 
+the following points:
+ n Discussion of performance as regards various 
+metrics;
+ n Action points from previous review meetings;
+ n Areas of improvement;
+ n Support needed to drive project improve-
+ment, etc.Vendor Selection
+Service 
+Delivery
+Service Adjustment
+VENDOR 
+MANAGEMENT
+LIFE CYCLE
+Contract
+ReviewWHITEPAPER
+8
+For many years, customers have used vendors 
+to support various IT and business activities. 
+In a fast-changing business environment, they 
+are interested in increasing the direct business 
+value of IT by developing strategic partnerships. 
+Strategic partnerships are becoming more critical 
+to enterprise success. But what is the meaning 
+of strategic partnerships and how can they be 
+built? According to Gartner's definition, “strategic 
+partnerships (SPs) are external relationships that 
+directly support key business processes, outcomes 
+and revenues. They are integral to IT’s ability to 
+deliver business results to the enterprise. An SP that 
+fails to deliver results will create a business risk.”
+4
+In accordance with Gartner's definition, customers 
+see vendors as strategic partners if they deliver 
+effective systems and services that support the 
+creation of value for the enterprise. Below is a figure 
+which shows how an enterprise evolves step by step. 
+First, from “simple” vendor management to strategic 
+vendor management, and finally to strategic 
+partnership management. Strategic partnership 
+management is a new level of vendor relationship 
+management. Managing strategic partnerships 
+is a very different approach from the traditional 
+strategic vendor management.
+5
+2. FROM IT VENDOR 
+MANAGEMENT TO STRATEGIC 
+PARTNERSHIP
+Other
+business
+units
+Vendor
+IT
+Other
+business
+units
+IT
+Strategic
+partner
+Other
+business
+units
+Strategic
+Vendor
+IT
+Indicates direct relationship
+Note: Relative size of circles indicates extent of responsibility for business/enterprise risk
+Source: Gartner
+STRATEGIC PARTNERSHIP
+VENDOR RELATIONSHIP STRATEGIC VENDOR RELATIONSHIP
+EVOLUTION OF VENDOR RELATIONSHIPS
+4. http://www.gartner.com/document/1727978 
+5. http://www.gartner.com/document/1727978 
+JOIN US ONWHITEPAPER
+9
+One of the main reasons why enterprises are 
+evolving to strategic vendor management is that 
+the price aspect is no longer the crucial key factor 
+in the vendor selection process. The result of this 
+change is that the vendor relationship model has 
+switched to strategic business partnerships.
+Strategic partnerships are more like processes, not 
+occasional events. To establish strategic partnerships, 
+the entire business environment has to evolve to a 
+higher level of collaboration. The true effectiveness of 
+strategic partnerships can be achieved only through 
+the mutual development of complementary skills.
+Here are some hallmarks which help to build  
+a successful strategic partnership:
+ n Get the basics right first. Being responsive 
+and providing stable solutions and services are 
+still the main factors of a successful strategic 
+partnership. Customers should identify 
+and remove obstacles that limit vendors' 
+responsiveness and stability.
+Małgorzata Zabieglińska – Lupa 
+ n Communication is a two-way street. Com-
+munication between customers and strategic 
+partners still leaves a lot to be desired. The 
+weaknesses of partnerships largely consist of 
+one-sided communication.
+ n Building trust. There is no long-term 
+relationship without trust. Focus on building 
+trust in relationship with your partners. 
+ n Be process- and metrics-driven. Currently, 
+business decisions are mostly data- and 
+metrics-driven. The value for business needs 
+to be quantified. Customers should focus not 
+only on "hard" metrics, but also the "soft" side of 
+relationship metrics.
+ n Evaluating your relationship. Both parties, 
+customers as well as vendors, should make 
+sure the relationship is sustainable in terms of 
+financial and strategic business objectives.
+Strategic partnerships is more 
+like process, not an occasional 
+event.WHITEPAPER
+10
+Developing good relationships with vendors is 
+not so complicated, but in real life where humans 
+need to interact with each other it requires good 
+interpersonal skills. Take the time to get to know 
+your vendors, be communicative and tell them of 
+your needs and standards.
+One of the best practices is to maintain proactive 
+and multi-level contact. You should start from 
+establishing multiple points of contact at the 
+vendor. Effective vendor relationship development 
+depends on:
+ n Effective communication with the vendor – this 
+is the most important aspect, which helps to 
+establish long-term and profitable relationships;
+ n Timely and constant measuring of performance 
+– this helps to analyze whether companies’ 
+expectations have been met;
+ n Understand how your vendor works - to create 
+good partnerships you need to know as much 
+about your vendors as the vendors know about 
+you;
+ n Clearly define roles and responsibilities at each 
+level;
+ n Share information intensively, but also selectively 
+- keep vendors aware of what's going on in your 
+company, about changes in key personnel, new 
+products, special promotions and so on;
+ n Formulate a vendor selection process for your 
+company;
+ n Choose vendor management models 
+(centralized, decentralized or hybrid) which 
+best suit your organization’s needs;
+ n Centralized (company-wide) – vendor 
+management functions managed and 
+coordinated centrally;
+ n Decentralized (business units, sites, region) 
+– vendor management functions not 
+managed centrally;
+ n Hybrid – vendor management split across 
+the organization; for example: contracts 
+centrally, performance locally.
+3. VENDOR MANAGEMENT TOOLS 
+AND MECHANISMS
+RELATIONSHIP DEVELOPMENT
+Developing good relationships with vendors is not so complicated process, 
+but in a real life where humans need to interact each other it requires 
+good interpersonal skills. Take the time to get to know your vendors, be 
+communicative and tell them of your needs and standards. In today’s 
+world, managing the vendors is all about strengthening and developing 
+relationships that can make your business.
+Adam Tymofiejewicz
+JOIN US ONContracts establish more than just terms and 
+conditions. There are a number of different contract 
+definitions. According to the simplest definition, 
+contract management is the process of managing 
+contracts from vendors, partners, customers or 
+employees. The most complete definition is that 
+“contract management is the process of managing 
+contract creation, negotiation, execution and 
+analysis to maximize operational and financial 
+performance at an organization”
+6
+The main goal of contract management is to 
+ensure that all contract participants fully meet their 
+expectations and obligations in order to deliver the 
+objectives required from the contract. One part of 
+the contract management process is building a 
+good business relationship between the client 
+and service or product provider. Another part is 
+to help your organization manage proactively in 
+order to anticipate future needs, as well as reacting 
+to situations that arise. The contract management 
+process includes the following steps:
+1. Enabling contract management. In this phase 
+the contract management process begins by 
+identifying contracts, the verification of roles, 
+responsibilities and procedures.
+2. Contract authorization. Writing a contract by 
+hand is a time-consuming activity, but through 
+the use of automated contract management 
+systems the process can become quite 
+streamlined.
+3. Contract negotiation relies on the completion 
+of the draft contract. Employees who take part 
+in negotiations should be able to compare all 
+versions of the contract. The main point is to 
+ensure that the best possible contract is available 
+to all sides.
+4. Approving the contract. The instance in which 
+most bottlenecks occur is getting management 
+approval. Users can preemptively combat this by 
+creating tailored approval workflows, including 
+parallel and serial approvals to keep decisions 
+moving at a rapid pace.
+5. Execution of the contract. Executing the 
+contract allows users to control and shorten the 
+signature process through the use of eSignature 
+and fax support.
+6. Obligation management. This requires a 
+great deal of project management to ensure 
+deliverables are being met by key stakeholders 
+and the value of the contract doesn’t deteriorate 
+through its early phases of growth.
+7. Revisions and amendments. Gathering all 
+documents pertinent to the contract’s initial 
+drafting is a difficult task. When overlooked items 
+are found, systems must be in place to amend 
+the original contract.
+WHITEPAPER 11
+CONTRACT MANAGEMENT
+6. http://www.businessnewsdaily.com/4813-contract-management.html WHITEPAPER
+12
+ n the supplier is co-operative and responsive;
+ n the organization understands its obligations 
+under the contract;
+ n there are no disputes (supported by no incon-
+sistencies in the contract);
+ n there are no surprises;
+ n a professional and objective debate over 
+changes and issues arising can be had;
+ n efficiencies are being realized.
+A good contract management process does not 
+only ensure that the agreed terms and conditions of 
+the contract are being met. This is just one step, but 
+the first of many that should be taken. No matter 
+how well the contract negotiation process runs 
+and the scope of the contract, there will always be 
+some tensions between the different perspectives 
+of the customer and provider. The idea behind 
+a good contract management process is about 
+resolving these tensions as soon as possible to build 
+a partnership relation with the provider.
+These relationships should be based on mutual 
+understanding, trust, open communication 
+and benefits to both sides. In that way, contract 
+management could be compared to project 
+management, because each contract is like a mini-
+project. It has unique goals, consumes resources, 
+has a beginning and end date, and requires 
+coordination and planning of relevant activities, as 
+well as documentation in a contract file throughout 
+the process. And each contract is different and 
+should be treated separately.
+8. Auditing and reporting. Contract management 
+does not simply entail drafting a contract and 
+then pushing it into the filing cabinet without 
+another thought. Contract audits are important 
+in determining both organizations’ compliance 
+to the terms of the agreement and any possible 
+problems that might arise.
+9. Renewal. Using manual contract management 
+methods can often result in missed renewal 
+opportunities and lost business revenue. 
+Automating the process allows an organization 
+to identify renewal opportunities and create new 
+contracts.
+During day-to-day operations, you probably ask 
+yourself why you should manage contracts. Your 
+organization needs to manage contracts:
+ n to achieve the agency’s business outcomes and 
+deliver savings/efficiencies;
+ n as part of the agency’s ongoing risk manage-
+ment; and
+ n to meet various governance, legislative and 
+audit compliance requirements.
+Successful contract management is more than 
+just the management of documents, terms, 
+conditions and a few signatures. Effective contract 
+management relies on the implementation of 
+successful post-award and upstream activities. 
+Contract management is successful if
+7:
+ n the arrangements for service delivery continue 
+to be satisfactory to both parties, and the 
+expected business benefits and value for money 
+are being realized;
+ n the expected business benefits and value for 
+money are being achieved;
+7. http://www.cips.org/documents/CIPS_KI_Contract%20Management%20Guidev2.pdf
+JOIN US ONGOVERNANCE AND 
+STEERING MECHANISMS 
+(INCL. KPIs)
+A governance model describes the organizational 
+structures and roles that project participants can 
+take on and the process for decision making and 
+reporting within the project. A lack of governance 
+can be considered a major threat to proper vendor 
+relationship management. The nature of the 
+governance model covers the following elements:
+ n Strategic – at this level, governance focuses on 
+overall strategic performance, strategic KPIs 
+and contract management;
+ n Tactical – at this level, governance focuses 
+on relationship, performance management, 
+including penalty and incentive systems, mon-
+itoring service improvement initiatives, escala-
+tion process, contracting, financials and KPIs;
+ n Operational – at this level, governance focuses 
+on local day-to-day operational work.
+To ensure efficient and effective periodic formal 
+communication at the different steering levels, 
+between all involved parties, meetings should be 
+structured. This leads to a more constructive use of 
+time.
+Having clear communication lines between the 
+client and vendor and assigning roles at each level 
+is an important success factor of the cooperation 
+between both parties. This is especially true if 
+business processes are not working or some parts 
+of agreements are unclear. That’s why both parties 
+should have clear knowledge about communication 
+flows and the first person of contact at each level. 
+This helps to solve problems quickly. There are 
+different meetings defined on operational, tactical 
+and strategic levels.
+ n Strategic Meeting – the purpose of this meet-
+ing is to ensure that both sides’ objectives can 
+be achieved in a balanced manner. For exam-
+ple, meetings with regional boards.
+ n Tactical Meeting – the purpose of this meeting 
+is to assess whether the service portfolio con-
+tinues to meet the current and future needs of 
+the client.
+WHITEPAPER 13WHITEPAPER14
+ n Operational Meeting – the purpose of this 
+meeting is to ensure the timely and smooth 
+implementation of planned and ongoing proj-
+ects, releases and changes in which the vendor 
+is involved
+ n Business Continuity Meeting – the purpose of 
+this meeting is to discuss business continuity 
+matters. (Business) Continuity Management 
+makes sure the client’s business operations 
+can continue during and after a disaster at an 
+agreed level until normal business operations 
+resume. Continuity management is also aimed 
+at pro-actively preventing discontinuity and 
+avoiding extended disruption.
+ n Security & Compliance Meeting – the purpose 
+of this meeting is to discuss new developments 
+and the progression of affairs and activities 
+concerning security and compliance in relation 
+to the services the vendor will deliver under 
+the agreement. These meetings could have an 
+on-demand character and be triggered by the 
+Tactical Committee.
+Steering Mechanisms should consist of two areas:
+ n Penalty and Incentive systems;
+ n Performance Management together with Key 
+Performance Indicators (KPIs).
+First of all, we would like to concentrate on penalty 
+and incentive systems. They should be reasonable, 
+systematically applied, and anticipated by the 
+supplier. In practice, penalty and incentive clauses 
+should be included in the SLA (Service Level 
+Agreement) as a critical part of any vendor contract. 
+It should also be mentioned in the letter of credit 
+(if applicable) and on purchase orders. It is very 
+important to make sure the supplier is aware of 
+penalty and incentive systems. This system should 
+refer to the compensation agreement and penalty 
+and incentive clauses that determine the level of 
+vendor compensation. Below are five ways in which 
+penalty and incentive systems can make for a better 
+business:
+ n Use penalties together with incentives – punish-
+ment cannot be used effectively without incen-
+tives. Penalties should be used to keep vendors 
+on track. In the same way, incentives should 
+be used as an encouragement to provide bet-
+ter services or products. This will benefit both 
+parties.
+ n Communication is critical – all metrics and 
+goals should be visible and clear to vendors. 
+Additionally, regular communication helps 
+both parties avoid potential threats.
+ n Establish the escalation process, which is 
+important to solve any critical issue as soon as 
+possible.
+JOIN US ONWHITEPAPER 15
+ n Focus on your critical vendors – not all vendors 
+are equal for your business. That’s why you 
+shouldn’t try to apply penalty and incentive sys-
+tems to all your vendors. The company should 
+look at all high-risk vendors. An additional 
+advantage is that the added attention will help 
+you support and develop ongoing relationships 
+with vendors.
+ n Different goals for different vendors – if you 
+have a large number of vendors across different 
+industries, don’t use the same metrics and key 
+performance indicators to review the level of 
+provided services or goods.
+Sometimes a penalty system is not the best solution 
+for your business. Use alternatives to a penalty 
+system to support the development of your vendor 
+relationships:
+ n Introduce a system of vendor rating for fairness 
+and transparency;
+ n Exclude vendors from your approved list of ven-
+dors / suppliers;
+ n Collaborative root cause analysis;
+ n Timely planning of reviews and call off strate-
+gies to solve problems;
+ n A continuous vendor evaluation stage as part 
+of the company procurement risk migration 
+process;
+ n Meeting vendors on a regular basis.
+Last but not least, performance management. Here 
+we would like to find the reasons why you should 
+measure vendor performance, as well as what and 
+how should be measured. Don’t forget - the vendor's 
+performance must be monitored constantly from 
+the beginning.
+With increasing numbers of vendor relationships, 
+it can be challenging for your organization to 
+effectively monitor and manage each process. This 
+should include the requirements that are most 
+critical to your business. In order for the performance 
+management process to be efficient and effective, 
+you should implement and review it consistently. 
+The vendor performance management process is 
+an ongoing practice, definitely not a once-a-year 
+task. It should show vendors the continual direction 
+and feedback they need to improve and achieve. 
+Here is a list of best practices in performance 
+management
+ n Performance metrics must be established for 
+each critical element / service and should be 
+set realistically in view of other performance 
+requirements;WHITEPAPER
+16
+ n Metrics should also be maintained at an accept-
+able required level of performance;
+ n Vendor performance metrics should be subject 
+to penalty and motivation systems;
+ n Vendor performance metrics as the focal point 
+of all performance measurement should be 
+both quantitative and qualitative in nature and 
+developed according to the value objectives of 
+the relationship;
+ n The most important of all metrics are Key 
+Performance Indicators (KPI). KPIs should be 
+defined and regularly evaluated under the 
+contract.
+Establishing effective metrics related to vendor 
+performance management allows your business to:
+ n Implement a future vendor selection process 
+based on past performance metrics;
+ n Implement penalty and incentive systems 
+based on performance;
+ n Adjust purchasing strategy based on accurate 
+performance data;
+ n Effectively evaluate vendor performance for the 
+expected level of quality and standards;
+ n Enforce expected service levels;
+ n Improve processes so problems are anticipated 
+and prevented.
+In choosing effective metrics, decide what is most 
+critical for your business. The most important goal 
+of any vendor performance metric is to motivate 
+the appropriate behavior of both the client and the 
+vendor. Sometimes less means more. It is better for 
+your business to avoid choosing too many metrics. 
+All metrics produce a voluminous amount of data, 
+so if you choose an excessive number of metrics, no-
+one will have time to analyze them. Depending on 
+the provided service, different types of metrics can 
+be monitored. Below are some examples:
+ n Priority 1/2/3/4 incidents are resolved within 
+the hours as specified by the SLA: Resolution 
+is measured as a percentage of incident tickets 
+successfully closed within the defined target;
+ n Service Level Availability / Unavailability: 
+Availability is measured as the percentage of 
+time a service should have been available vs. the 
+Why measure 
+vendor 
+performance?
+Deﬁning 
+Acceptable Vendor 
+Performance
+Continually 
+monitoring 
+performance
+Continual service
+improvement
+What should be
+measure?
+Implementing
+vendor metrics
+EFFECTIVE VENDOR PERFORMANCE
+JOIN US ONWHITEPAPER
+17
+actual time the service was available per server 
+(no average). Availability is counted as follows: 
+the % that a service is below target is weighed 
+in the formula of the average availability;
+ n Defect rates: Numbers or percentages of errors 
+in major deliverables. Examples: incomplete 
+backups and restores, coding errors/rework, 
+missed deadlines etc.;
+ n Service and Change Requests delivered on 
+time: The Service and Change Request (SCR) is 
+measured by the number of SCRs delivered on 
+time vs. the total number of SCRs;
+ n Security: Measuring security metrics, such as 
+anti-virus updates and patching, etc.;
+ n Satisfaction: Measuring satisfaction metrics, 
+such as stakeholder satisfaction and end-user 
+satisfaction, etc.
+Defining the right vendor metrics is just half 
+way to success. To be useful, the metrics must 
+define acceptable levels of vendor performance. 
+The following factors ensure the effectiveness of 
+performance measurement:
+ n the vendor performance management process 
+review is performed in a timely manner;
+ n key stakeholders are engaged and support the 
+process with agreed improvement plans and 
+actions;
+ n measures align with the service level defined in 
+the contract.WHITEPAPER
+18
+EXAMPLES PERFORMANCE MEASUREMENT  
+METRICS FOR VENDOR MANAGEMENT 8
+8. “Vendor Management. Realizing Opportunities in the Financial Service Sector” Protiviti
+VENDOR PERFORMANCE AND RISK REPORTS
+INTERNAL AND EXTERNAL CONTROL, 
+COMPILANCE, TEST AND QUALITY REPORT
+FINANCIAL RISK
+EXTERNAL NEWS / MANAGEMENT REPORT
+ n Total annual spend (by 
+vendor) 
+ n Aggregate internal risk 
+assessment score across 
+services / contracts (by 
+vendor)
+ n Number of subcontractors 
+violations by vendor type
+ n Percentage of quality 
+assurance nonconformance 
+issues by vendor n Percent profit margin
+ n Frequency of risk reporting
+ n Vendor performance 
+(on-time delivery, stc.)
+ n Percentage of SLA 
+nonconformance (incident 
+resolution, on-time delivery, 
+etc.)
+ n Percentage of Wescalation 
+issues (aged)
+ n Number of full-time  
+employees assigned  to the 
+engagement / engagement 
+spend
+ n Available capacity dedicated 
+to client
+ n Percentage of invoices with 
+price variance from contract
+ n Number of occurrences of 
+noncompilance to contract 
+terms
+ n Number of compilance 
+nonconformance 
+acceptances by vendor n Percent debt to equity
+ n Percentage of negative 
+news returns per quarter
+ n Credit capacity
+JOIN US ONWHITEPAPER
+19
+FINANCE AND COMMERCIAL MANAGEMENT
+Financial Management covers the functions 
+and processes responsible for managing vendor 
+budgeting, accounting and charging requirements. 
+It provides the business and vendor with the 
+quantification, in financial terms, of the value of 
+provided services and the value of assets.
+First of all, we would like to concentrate on two 
+aspects: pricing models and reporting. We will try 
+to explore and understand that different pricing 
+models exist in Vendor Management. Customers 
+must use the right pricing model to meet their 
+business objectives. They should remember that 
+each pricing model has benefits and risks for both 
+sides. Before choosing a right price model for your 
+business, remember that the organization, not 
+the provider, should define the pricing model. 
+In addition, one of the most important factors in 
+the context of pricing models is risk. Remember 
+to make pricing model decisions early and revisit 
+them often.
+9
+Below are six factors which play a key role in the 
+decision making process with regard to pricing 
+models:
+ n Scope of work
+ n Client involvement
+ n Client – Vendor relationship
+ n Revenue & Value
+ n Risk
+ n Transparency
+The most commonly used pricing models:
+ n Time and Materials Model (T&M) 10 – this model 
+is based on labor supplied at negotiated labor 
+rates (such as hourly, daily or monthly). The 
+vendor is obliged to supply the appropriate 
+skills for the work to be performed or meet 
+deliverables, milestones, schedules or service 
+levels. The provider is reimbursed for the cost of 
+the materials used or other costs incurred, such 
+as travel expenses.
+ n Fixed Price Model – the model is based on a 
+fixed amount, in preset periodic increments, for 
+a fixed scope of work (SOW) at the completion 
+of the project or when milestones are achieved.
+ n Cost Plus Model – In the cost-plus model, 
+customers pay the provider for the actual cost 
+of doing the work, plus an additional negotiated 
+profit margin.
+ n Open Book Model - In the open book model, 
+customers pay the provider for the actual cost 
+of service delivery, plus an additional negotiated 
+profit margin.
+ n Gain-Sharing Pricing Model 11 – a pricing model 
+based on the value delivered by the vendor 
+beyond its typical responsibilities, but deriving 
+from its expertise and contribution. This 
+payment model is best for customers who want 
+to create a true alliance with IT vendors. Both 
+sides work together to obtain a common goal, 
+that’s why the model encourages collaboration 
+and creative problem-solving. On the other 
+hand, the gain-sharing pricing model requires 
+a high level of trust with equitable distribution 
+9. “Pricing Model Definitions, Benefits and Risks for IT Services and Outsourcing Contracts”; Gartner 
+10. “Pricing Model Definitions, Benefits and Risks for IT Services and Outsourcing Contracts”; Gartner
+11. http://www.cio.com/article/2397240/outsourcing/4-new-it 
+     -outsourcing-pricing-models-gain-popularity.htmlWHITEPAPER
+20
+should be a comprehensive plan for identifying and 
+decreasing potential business uncertainties and 
+legal liabilities.
+Risk management is a risk-based approach to 
+managing vendor relationships through:
+ n Identifying potential risks
+ n Risk prioritization
+ n Analyzing risks and their potential impacts
+ n Developing effective vendor risk management 
+strategies
+ n Vendor due diligence
+ n Continuous risk and vendor monitoring / 
+Ongoing risk management
+RISK MANAGEMENT
+Your successful business operations depend on 
+suppliers, distributors and other third parties. You 
+need to be confident about who you’re doing 
+business with and what business you’re doing 
+business with them.
+According to Gartner’s definition, risk management 
+in vendor management is “the process of ensuring 
+that the use of service providers and IT suppliers 
+does not create an unacceptable potential for 
+business disruption or a negative impact on business 
+performance. Vendor risk management technology 
+supports enterprises that must assess, monitor 
+and manage their risk exposure from third-party 
+suppliers that provide IT products and services, or 
+that have access to enterprise information.”
+13
+When an enterprise outsources business processes 
+to an external vendor, sensitive data may be 
+transmitted, stored and processed on both 
+company and vendor networks. Risk management 
+of potential risk and reward. Of course, it is not 
+without significant upfront investment.
+ n Incentive-Based Pricing Model 12 – a pricing 
+model based on bonus payments. This model 
+is for those vendors who are able to achieve 
+specific performance levels above the contract's 
+service level agreements. This model is often 
+used together with a traditional payment 
+method, such as time-and-materials or fixed 
+price. This model is best for customers who are 
+able to identify specific vendor investments in 
+order to deliver a higher level of performance.
+ n Consumption-Based Pricing Model (Unit-
+based/ Use-based Model) – a pricing model 
+based on amounts of services that customers 
+use or consume. Costs are allocated based on 
+actual usage (e.g., gigabytes of disk space used 
+or help desk calls answered). This model is best 
+for cloud computing providers. 
+ n Shared Risk-Reward Pricing Model – the 
+provider and customer jointly fund the 
+development of new products, solutions and 
+services with the provider sharing in rewards for 
+a defined period of time.
+12. http://www.cio.com/article/2397240/outsourcing/4-new 
+-it-outsourcing-pricing-models-gain-popularity.html   
+13. http://www.gartner.com/it-glossary/vendor-risk-management/
+JOIN US ONVendor risk categories:
+ n Financial risk (vendor unable to meet contract 
+obligations due to financial difficulties)
+ n Operational risk
+ n Environmental / Market risk
+ n Compliance risk (e.g.: violations of applicable 
+laws, rules, regulatory mandates)
+ n Business continuity risk
+ n Geopolitical risk (country-specific factors, i.e. 
+government, climate and politics) 
+ n Technology / Information security risk
+ n Reputation Risk (e.g.: negative public perception 
+and opinion of vendors)
+ n Service Delivery (vendor unable to meet client 
+service standards or SLA parameters)Successful 
+risk management strategies should include:
+ n A contract which should have a clear description 
+of what the vendor is to provide (i.e. deliverables 
+and obligations), service levels required (i.e. 
+SLAs), the financials of the relationship (e.g. 
+prices, how billed, invoice disputes), and exit 
+procedure (in case of the need to change 
+vendor).
+ n A contract outlining the business relationship 
+between the organization and the business.
+ n Consistent monitoring of vendor performance 
+to ensure that contract stipulations are being 
+met.
+ n Guidelines regarding who will have access 
+to what information as part of the vendor 
+agreement.
+ n Stipulations to ensure that vendors meet 
+regulatory compliance guidelines for your 
+industry, and methods to monitor this 
+compliance.
+WHITEPAPER 21WHITEPAPER
+22
+One of the initial phases of the vendor management 
+cycle is the vendor selection process, which can be a 
+very complicated and emotional process if you don't 
+know how to successfully approach it from the very 
+beginning. The vendor selection process consists of 
+a multi-stage framework to evaluate not only what 
+the supplier can do, but also the way it’s done. It’s 
+important to know that the vendor management 
+process takes some time and usually lasts between 
+6 – 12 months. A good vendor selection process 
+should consist of the following steps: 
+4. THE SUCCESSFUL VENDOR 
+SELECTION PROCESS
+14. “Steps to select right Outsourcing vendor” OSF Global Services.
+6
+STEP 6: Choose
+the Vendor
+Conclusion
+STEP 2: Find out all you 
+need to know about 
+the vendor – Plan the RFI
+STEP 1: Deﬁne your objectives and goals
+STEP 5: Proof
+of Concept (PoC)
+STEP 3: Prepare 
+the RFP
+STEP 4: Evaluate the response
+VENDOR SELECTION 
+PROCESS
+JOIN US ON n STEP 1: Define your objectives and goals
+ n STEP 2: Find out all you need to know about 
+the vendor – Plan the RFI
+ n STEP 3: Prepare the RFP
+ n STEP 4: Evaluate the response
+ n STEP 5: Proof of Concept (PoC)
+ n STEP 6: Choose the Vendor Conclusion
+If the scope to outsource is small or organization 
+resources are limited, the aforementioned steps can 
+be narrowed, i.e. by not conducting the RFI or RFP 
+processes.
+STEP 1:  
+DEFINE YOUR OBJECTIVES AND 
+GOALS
+First of all, you should start with selecting a team of 
+people who not only have knowledge and expertise 
+in vendor management, but also have a common 
+interest in this specific vendor selection process. 
+Together with the team, you should analyze all 
+business and technical needs. This is the toughest 
+part, but success here will put you on the right track 
+in selecting the right vendor. At the end of this stage, 
+you should have defined the outcome (product, 
+material or service) you want outsourced together 
+with the technical and business requirements. 
+Defining all these needs helps your company explain 
+where you are right now, show where you want to be 
+in the near future and how to get there. You should 
+also specify what your business goals are through 
+outsourcing. While formulating your objectives, 
+remember to answer the following questions:
+14
+ n What do you want to outsource?
+ n What type of outsourcing agreement are you 
+looking for?
+ n Fixed Price contracts (fixed project, fixed 
+monthly recurrent fee)
+ n Time and Material costs (i.e. agile projects)
+ n Hybrid (Costs plus Fixed fee)
+ n What are the nearshore and offshore outsourc-
+ing locations that you are interested in?
+WHITEPAPER 23
+WHITEPAPER
+24
+ n What are your goals in outsourcing?
+ n What services do you expect a vendor to 
+provide?
+ n How much do you plan to spend?
+ n What are the risks associated with such an out-
+sourcing agreement?
+Selecting the type of outsourcing agreement is 
+an important aspect of the vendor management 
+process. The three definitions below present how 
+different IT service consultants can measure their 
+services to clients.
+In Fixed Price contracts, both the price and the 
+scope of work are set in the SOW and neither 
+change without agreement from both parties. With 
+Fixed Price contracts, the vendor is an IT professional 
+who bears the risk. These types of agreements 
+are negotiated usually where reasonably definite 
+specifications are available, and costs can be 
+estimated with reasonable accuracy.
+Time and Material Cost contracts are agreements 
+under which the client agrees to pay a set amount 
+per hour (actual cost of direct labor) plus the actual 
+cost of materials and equipment usage. Time and 
+Material Cost contracts are typically contracts for 
+construction, product development or any other 
+piece of work. With Time and Material Cost contracts, 
+the client bears the risk.
+Hybrid forms of agreements are outsourcing 
+agreements where portions of a Cost Plus agreement 
+are combined with a Fixed Cost Agreement. The 
+main idea is to provide the best of both types of 
+agreement.
+STEP 2:  
+FIND OUT ALL YOU NEED TO 
+KNOW ABOUT THE VENDOR – 
+PLAN THE RFI
+The vendor selection process would not be complete 
+without listing the criteria that the vendor itself 
+must meet. The Request for Information (RFI) shares 
+information about the features or capabilities you 
+are looking for in a vendor and helps you with the 
+first rounds of vendor evaluations.
+RFI should also help you with defining a shortlist 
+of qualified vendors for the next step of selection. 
+You can find potential suppliers through a variety 
+of channels. It's best to identify as many third party 
+vendor candidates as possible with consideration 
+of the available resources to manage the selection 
+process. Each of the selected vendors should receive 
+the RFI from you. Based on the received responses, 
+you will be able to create a shortlist of vendors.
+STEP 3:  
+PREPARE THE RFP
+The next step is to develop the formal Request for 
+Proposal (RFP). The RFP should be sent to at least 
+three short-listed suppliers. After evaluation, you 
+should select the best vendor that matches your 
+requirements. Information collected during the 
+second step of the vendor selection process should 
+be included as the solution-requirements section of 
+the related RFP. A good RFP sent to vendors should 
+consist of the following information:
+ n Introduction and Executive Summary
+ n Brief project / service overview
+ n Project goals and target audience
+ n Instructions to vendors in terms of structure of 
+the proposal, proposal language, contact for 
+questions, timeline
+ n Scope of Work & Deliverables
+ n Business and technical requirements
+ n Vendor profile
+ n Expected vendor methodology
+JOIN US ON n Infrastructure
+ n Financial conditions
+Here is the outcome which should be delivered by 
+vendors:
+ n Vendor profile (incl. vendor financial situation)
+ n Technical Solution Architecture
+ n Service Catalog (Scope of Work & Deliverables) 
+and SLA levels
+ n Service Implementation or Transition Project 
+(incl. expectations toward client)
+ n Track Record (references)
+ n Pricing Matrix and Financial conditions
+STEP 4:  
+EVALUATE RESPONSE
+Start by building an evaluation sheet based on 
+the RFP (which again reflects your requirements). 
+By providing a weight to each of the criteria and 
+evaluating each vendor response against these 
+criteria, you will get a total score per vendor. After 
+you get the information you need, fill in as much 
+of the evaluation sheet as possible. Your goal is to 
+see if any vendor fails to meet your “must have” 
+requirements.
+STEP 5:  
+PROOF OF CONCEPT (POC)
+During the Proof of Concept (PoC) stage, you 
+will have the opportunity to check the vendor’s 
+actual capability to deliver the required services or 
+products. This is also a good opportunity to get an 
+overall impression of the vendors and check their 
+‘soft factors’ (i.e. culture).
+STEP 6:  
+CHOOSE THE VENDOR 
+CONCLUSION
+After all the steps, it is now time to make your choice. 
+Identifying and selecting the right vendor is crucial to 
+a project’s success and the eventual adoption of any 
+new system or process. Making the final decision 
+means signing a contract. An outsourcing contract 
+should clearly define the performance measures, 
+team size, team members, pricing policies, time 
+frames, regular reviews, business continuity plans, 
+and overall quality of work standards.
+Best practices for establishing a selection process 
+include:
+ n Determining the role that an RFP or RFI will 
+play in the selection process;
+ n Deciding on the appropriate documentation 
+for the deal (contract, SOW, SLAs); and
+ n Involving third party consulting firms in select-
+ing the right vendor.
+WHITEPAPER 25WHITEPAPER
+26
+The main objectives of vendor management are 
+to help clients meet their business objectives, 
+minimize potential business disruption, avoid deal 
+and delivery failure, and ensure more-sustainable 
+multi-sourcing, while driving the greatest value 
+from their vendors. Good vendor management will 
+accrue the following group of benefits:
+Quality and performance improvement
+1. Formalizing practices to measure and manage 
+vendor performance through target policies, 
+controls, processes, accountabilities and the 
+governance structure;
+2. Improving the time to market of new features, 
+services or products by vendor governance, and 
+the set of KPIs focusing on service agility;
+3. The opportunity to engage suppliers and 
+clients in a process of continual improvement 
+of both products and services provided, and 
+of the accompanying service levels; Fewer 
+misunderstandings, less miscommunication 
+and better communication with vendors by 
+regular reviews and improvements in processes, 
+communications and purchaser/vendor 
+interaction;
+4. Ensuring vendor processes and policies are 
+compliant with the organization’s;
+5. Improving internal and external information flow 
+between all the players engaged in the vendor 
+management process;
+6. Experienced staff are released from problem 
+solving to concentrate on core-business 
+processes;
+7. Increasing vendor performance with metrics.
+If the scope to outsource is small or organization 
+resources are limited, the aforementioned steps can 
+be narrowed, i.e. by not conducting the RFI or RFP 
+processes.
+Cost optimization
+1. Total cost reduction - lower costs for managing 
+the long-term relationship and reduced costs 
+through failures;
+2. Management overhead reduction – your internal 
+teams spend less time and more easily manage 
+vendor relationships, existing contracts and 
+negotiate new ones.
+3. Risk reduction - fewer incidents, service failures 
+or issues of poor performance, reducing main 
+business process outages and disruptions;
+4. Enabling the organization to proactively address 
+issues before they become problems.
+5. BENEFITS OF IMPLEMENTING 
+VENDOR MANAGEMENT
+JOIN US ONThe case is related to the financial services sector, 
+where the client decided to select a provider to:
+1. make a transition of IT services from the current 
+offshore provider to a nearshore location in 
+Europe;
+2. deliver the managed platform as a service and 
+technical application management.
+Both business and IT stockholders were involved 
+because the main driver for this project was the 
+transition and transformation of one of the business 
+lines. The selection process was supported by 
+an external consulting company, which ensured 
+structure and governance for the process.
+BUSINESS AND  
+IT CHALLENGE
+There were many business obstacles (i.e. HR transfer 
+of business analysts), as well as the following 
+challenges related to the IT project.
+1. Tight schedule due to business restrictions:
+a. Selection and contracting: 3 months
+b. Service Transition: 4-6 months
+2. International team located in different locations 
+spread around the world
+3. Incomplete and outdated documentation
+4. Outdated infrastructure (lack of life-cycle 
+updates and upgrades)
+5. Flexibility of volumes and prices
+SOLUTION
+Of course, we can look at these topics from different 
+angles: technology, project and resources, service 
+delivery, etc. However, focusing on the vendor 
+management aspect, the following areas are very 
+important and need to be monitored and managed.
+6. CASE STUDY OF A FINANCIAL 
+SERVICES IT OUTSOURCING 
+PROJECT
+WHITEPAPER 27WHITEPAPER
+28
+negotiate. It is important to prepare – during the 
+contracting phase – agreements which can be easily 
+managed after contract signing. I do recommend 
+putting some “regular contract review” clauses/KPIs 
+to Steering Mechanisms.
+The governance helps the parties to understand 
+the process/project, to identify responsibility, and 
+defines communication flows. It is important 
+to establish governance for each step of the 
+process (selection, contracting, transition and/or 
+transformation, delivery).
+ n Who is the single point of contact?
+ n How often should we hold project meetings 
+and who should participate?
+ n How can we escalate issues? Who should we 
+contact in case of disputes?
+ n What are the KPIs (i.e. meeting frequency, 
+reaction time on escalations, etc.)?
+Regardless of the answers, we strongly recommend 
+making it simple, doable, and adjusting it to the 
+specific needs. 
+The Finance and Commercial area has many 
+perspectives and dimensions. Focusing on the case, 
+the main challenge was related to cost variability – 
+correlate changing demand with capacity and costs 
+(pay as you use model). Based on these criteria, a 
+flexible pricing model was developed. However, 
+during service delivery, additional governance 
+mechanisms were added to control the current 
+capacity utilization to better predict future costs.
+In this area, it was important to have an adaptive 
+approach, which provides flexibility and supports 
+future demand changes (business upscale / 
+downscale).
+ n Relationship development
+ n Contract management
+ n Governance, Issue & Dispute Management
+ n Finance and Commercial Management
+In the aforementioned case, different stakeholders 
+were involved in relationship development: client 
+representatives (CIO, project manager and change 
+manager, vendor manager, and procurement), a 
+consulting company and the provider (account 
+manager, IT architect, project manager and delivery 
+manager).
+Based on this experience, I can say that Relationship 
+Development determines success in IT Outsourcing 
+projects and is very important during each step of 
+the process. 
+ n During vendor selection, it supports the 
+management of business expectations and the 
+understanding of the client’s needs;
+ n During the contracting phase, it helps to speed 
+up the negotiation process through better 
+communication;
+ n During the transition project, relationship 
+development helps to speed up the solution of 
+issues and the removal of project obstacles;
+ n During service delivery, it supports service 
+improvement and alignment with the client’s 
+needs and expectations.
+Contract management is not just a contracting 
+phase. This activity should be carried out before 
+contracting – to prepare the contract structure, 
+to identify potential show stoppers and areas to 
+JOIN US ONCLIENT BENEFITS
+We believe that proper vendor management 
+(relationship development, contract management, 
+Governance and finance and commercial 
+management) is a key success factor for IT 
+Outsourcing projects.
+By executing that, the following was achieved in the 
+case.
+ n The IT Transition Project was finished on time, 
+and the business could migrate the product 
+line on time as well.
+ n The platform was upgraded, so the risk of 
+unavailability was reduced.
+ n Service quality – confirmed by the end users  
+– is very high
+ n Demand and capacity management is 
+executed, which helps to align costs with the 
+business needs.
+CASE STUDY TAKE AWAY
+Here is a list of key elements related to vendor 
+management, which have helped to successfully 
+finish the project and start operations.
+ n Building relations with the vendor
+ n Establishing Governance
+ n Defining goals and KPIs
+ n Executing Vendor Management
+WHITEPAPER 297. SUMMARY
+In today’s rapidly changing business environment, global companies 
+should constantly evaluate their strategic vendor relationships. As a 
+customer, you should take a closer look at how your company manages 
+its vendor relations, who your strategic partner is and what a successful 
+vendor selection process should consist of.
+The success of an outsourcing project is not signing a contract with 
+vendors. Here, everything is just beginning. Your success depends 
+much more on how well you can manage the process before and 
+after signing the outsourcing contract. 
+To increase your chances of success, you have to do two things.
+ n Most importantly, having a truly successful business is based on 
+building two-way trust. Trust is a basic condition for each successful 
+cooperation. Based on years of our experiences, trust can take a long 
+time to build and only one short moment to be destroyed. Without 
+trust, real mutual understanding and effective collaborative work 
+are compromised.
+ n Secondly, you can't forget about communication in order to 
+successfully manage projects. Don't assume that the vendor 
+intimately knows your business or can read your mind. Don’t 
+be afraid to share information and priorities with your partners. 
+Of course, not all information, but information affecting your 
+cooperation. Regular communication will avoid misunderstandings 
+and proactively address issues before they become real problems.info@comarch.com           www.ict.comarch.com
+Comarch, a global software provider, also offers reliable services related to IT infrastructure. Comarch outsourcing gives customers access  
+to thirteen Data Centres located all around the world. Extensive international experience and the number of international offices allows the 
+company to offer nearshoring services. The flexibility of our solutions convinced global brands, including Thomas Cook, Heathrow and BP,  
+to establish a long-term cooperation with Comarch. For 22 years, the company has helped them to optimise business costs by using the latest 
+technologies and ensuring the highest data security standards.
+ABOUT COMARCH

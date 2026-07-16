@@ -4,6 +4,7 @@ node_modules/
 .next/
 out/
 dist/
+build/
 *.tsbuildinfo
 .turbo/
 
@@ -41,3 +42,11 @@ Thumbs.db
 
 # Local document storage (Upload Center)
 .data/
+
+# ---- V2 knowledge pipeline: derived/regenerable artifacts ----
+# Rebuilt by the knowledge-importer package: chunks from knowledge/imports/,
+# embeddings from knowledge/chunks/ (deterministic local provider). This is a
+# build cache, not source — do not version-control it. knowledge/imports/ and
+# knowledge/manifests/ ARE kept (effective source text + ingestion audit trail).
+v2/knowledge/chunks/
+v2/knowledge/embeddings/

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام الأسماء التجارية.pdf",
+  "filename": "نظام الأسماء التجارية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام الأسماء التجارية.pdf",
+  "size_bytes": 1046528,
+  "last_modified": "2026-06-26T19:44:03.231046+00:00",
+  "checksum_sha256": "e1f2379cd4742e5cbd9597be10662dbcee31c10915caeb3c8a99d8ca4a08ce82",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 8,
+  "character_count": 8664,
+  "extraction_duration": 0.11389087501447648,
+  "parsed_at": "2026-07-12T16:10:48.253560+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 28,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.0016369170043617487,
+  "chunked_at": "2026-07-12T16:10:48.255891+00:00",
+  "chunking_error": null
+}

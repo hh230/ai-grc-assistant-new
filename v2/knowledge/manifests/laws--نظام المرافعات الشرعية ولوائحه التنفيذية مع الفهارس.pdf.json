@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf",
+  "filename": "نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf",
+  "size_bytes": 2326706,
+  "last_modified": "2026-06-26T19:45:16.350530+00:00",
+  "checksum_sha256": "8723dcfddaa1ac28f97dfe4d2412972ecd45be16ab16ab37e485ac696ae6c885",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 164,
+  "character_count": 263704,
+  "extraction_duration": 11.42885316698812,
+  "parsed_at": "2026-07-12T16:11:56.244573+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 514,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.05107533396221697,
+  "chunked_at": "2026-07-12T16:11:56.320969+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "contract templates--distribution agreement.pdf",
+  "filename": "Distribution Agreement.pdf",
+  "extension": ".pdf",
+  "category": "Contract Templates",
+  "relative_path": "Contract Templates/Distribution Agreement.pdf",
+  "size_bytes": 356009,
+  "last_modified": "2026-06-26T21:43:24.842793+00:00",
+  "checksum_sha256": "69d131562913be1d101c9571b2eb7030c6fbd0f0b4f67c01422062d2625fa3fa",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 10,
+  "character_count": 22215,
+  "extraction_duration": 0.15292316605336964,
+  "parsed_at": "2026-07-12T16:09:22.414471+00:00",
+  "error": null,
+  "document_profile": "contract",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 23,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.25,
+  "chunking_duration": 0.003428374999202788,
+  "chunked_at": "2026-07-12T16:09:22.418683+00:00",
+  "chunking_error": null
+}

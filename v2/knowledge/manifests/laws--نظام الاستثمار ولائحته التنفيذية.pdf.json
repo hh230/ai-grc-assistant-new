@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام الاستثمار ولائحته التنفيذية.pdf",
+  "filename": "نظام الاستثمار ولائحته التنفيذية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام الاستثمار ولائحته التنفيذية.pdf",
+  "size_bytes": 1049080,
+  "last_modified": "2026-06-26T19:40:30.226537+00:00",
+  "checksum_sha256": "53dc64ba74056502ee0ceac5bf43e699f372cf7aa5e16431d9cd533441780682",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 57,
+  "character_count": 48677,
+  "extraction_duration": 4.623119916999713,
+  "parsed_at": "2026-07-12T16:10:48.122833+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 79,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.010867082979530096,
+  "chunked_at": "2026-07-12T16:10:48.135950+00:00",
+  "chunking_error": null
+}

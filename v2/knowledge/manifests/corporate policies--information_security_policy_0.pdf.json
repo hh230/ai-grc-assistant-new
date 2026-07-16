@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "corporate policies--information_security_policy_0.pdf",
+  "filename": "information_security_policy_0.pdf",
+  "extension": ".pdf",
+  "category": "Corporate Policies",
+  "relative_path": "Corporate Policies/information_security_policy_0.pdf",
+  "size_bytes": 917280,
+  "last_modified": "2026-06-26T21:25:37.461780+00:00",
+  "checksum_sha256": "ee756ded5a11ac0cc88ab598e8b0557d62dca242388693f0293f6941f0110f9f",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 18,
+  "character_count": 26718,
+  "extraction_duration": 0.23591270891483873,
+  "parsed_at": "2026-07-12T16:09:45.072840+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 62,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.005446166964247823,
+  "chunked_at": "2026-07-12T16:09:45.079923+00:00",
+  "chunking_error": null
+}

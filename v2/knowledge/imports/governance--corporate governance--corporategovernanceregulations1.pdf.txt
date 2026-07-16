@@ -1,0 +1,2226 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+KINGDOM OF SAUDI ARABIA 
+Capital Market Authority 
+ 
+ 
+Corporate Governance Regulations 
+English Translation of the Official Arabic Text 
+ 
+ 
+ 
+Issued by the Board of the Capital Market Authority 
+Pursuant to Resolution Number 8-16-2017 
+Dated 16/5/1438H Corresponding to 13/2/2017G  
+Based on the Companies Law 
+Issued by Royal Decree No M/3 dated 28/1/1437H 
+ 
+ 
+Amended by Resolution of the Board 
+of the Capital Market Authority Number 8-5-2023  
+Dated 25/6/1444H Corresponding to 18/1/2023 G 
+Based on the Companies Law Issued by Royal Decree No. M/132 dated 1/12/1443H 
+ 
+ 
+ 
+Note: Arabic is the official language of the Capital Market Authority 
+ 
+Important Notice:  
+The current version of these Regulations, as may be amended, can be found at  the 
+Authority website: www.cma.org.sa 2 
+ 
+Table of Contents 
+Part 1: Preliminary Provisions 
+Article 1: Definitions  
+Article 2: Preamble 
+Article 3: Objectives of the Regulations 
+Part 2: Rights of Shareholders 
+Chapter 1: General Rights 
+Article 4: Fair Treatment of Shareholders 
+Article 5: Rights related to shares 
+Article 6: Shareholder access to information 
+Article 7: Communicating with Shareholders 
+Article 8: Electing the Board Members 
+Article 9: Distribution of Dividends 
+Chapter 2: Rights Related to the Meeting of the General Assembly 
+Article 10: Preamble 
+Article 11: Competencies of the Extraordinary General Assembly 
+Article 12: Competencies of the Ordinary General Assembly 
+Article 13: Shareholders' Assembly 
+Article 14: The Agenda of the General Assembly 
+Article 15: Management of the Shareholders' Assembly 
+Part 3: The Board of Directors 
+Chapter 1: Formation of the Board  
+Article 16: Composition of the Board  
+Article 17: Appointment of the Board members  
+Article 18: Conditions for the Membership of the Board 3 
+Article 19: Issues Affecting Independence  
+Chapter 2: Responsibilities and Competencies of the Board 
+Article 20: Responsibility of the Board 
+Article 21: Main Functions of the Board 
+Article 22: Distribution of Competencies and Duties 
+Article 23: Separation of Positions 
+Article 24: Oversight over the Executive Management 
+Article 25: Competencies and Duties of the Executive Management 
+Chapter 3: Competencies of the Chairman and the Board Members 
+Article 26: Competencies and Duties of the Chairman of the Board  
+Article 27: Appointing the Chief Executive Officer after the end of his/her services as 
+Chairman of the Board 
+Article 28: Tasks and Duties of the Board Members 
+Article 29: Duties of the Independent Director 
+Chapter 4: Procedures of the Board Activities 
+Article 30: The Board Meetings 
+Article 31: Remarks of the Board Members 
+Article 32: Organising the Attendance of the Board Meetings 
+Article 33: The Agenda of Board Meetings 
+Article 34: Exercising the Competencies of the Board 
+Article 35: The Secretary of the Board 
+Article 36: Qualifications of the Secretary 
+Chapter 5: Training, Support and Assessment 
+Article 37: Training 
+Article 38: Providing Members with Information 
+Article 39: The Assessment  4 
+Chapter 6: Conflicts of Interest 
+Article 40: Dealing with Conflicts of Interest and Related Parties Transactions 
+Article 41: Conflicts of Interest Policy 
+Article 42: Avoiding Conflicts of Interest 
+Article 43: Disclosure of Conflicts of Interest by the Nominee 
+Article 44: Rules of Competing with the Company 
+Article 45: Concept of the Competing Businesses 
+Article 46: Accepting Gifts 
+Part 4: Company Committees 
+Chapter 1: General Provisions 
+Article 47: Forming the Committees 
+Article 48: Committees Membership 
+Article 49: Studying Subjects 
+Article 50: Committees Meetings 
+Chapter 2: The Audit Committee 
+Article 51 Audit Committee Formation 
+Article 52: Competencies, powers and responsibilities of the Audit Committee 
+Article 53: Conflict between the Audit Committee and the Board 
+Article 54: Audit Committee Meetings 
+Article 55: Arrangements for Providing Remarks 
+Article 56: Powers of the Audit Committee 
+Chapter 3: Remuneration Committee 
+Article 57: Composition of the Remuneration Committee 
+Article 58: Competencies of the Remuneration Committee 
+Article 59: Remuneration Policy 5 
+Article 60: Meetings of the Remuneration Committee 
+Chapter 4: Nomination Committee 
+Article 61: Composition of the Nomination Committee 
+Article 62: Competencies of the Nomination Committee 
+Article 63: The Nomination Procedures 
+Article 64: Meetings of the Nomination Committee 
+Article 65: Publishing the Nomination Announcement 
+Article 66: Nomination Rights of Shareholders 
+Chapter 5: Risk Management Committee  
+Article 67: Composition of the Risk Management Committee 
+Article 68: Competencies of the Risk Management Committee 
+Article 69: Meetings of the Risk Management Committee 
+Part 5: Internal Control 
+Article 70: Internal Control System 
+Article 71: Establishing Independent Units or Departments within the Company 
+Article 72: Duties of the Internal Audit Unit or Department 
+Article 73: Composing an Internal Audit Unit or Department 
+Article 74: Internal Audit Plan 
+Article 75: Internal Audit Report 
+Article 76: Maintaining Internal Audit Reports 
+Part 6: The Company’s External Auditor 
+Article 77: Assigning the Audit Function 
+Article 78: Appointment of the External Auditor  
+Article 79: Duties of the External Auditor 
+ 
+ 6 
+Part 7: Shareholders 
+ 
+Article 80: Regulating the Relationship with Stakeholders 
+Article 81: Reporting Non-Compliant Practices 
+Article 82: Employee Incentives  
+Part 8: professional and Ethical Standards 
+Article 83: Professional Conduct Policy 
+Article 84: Social Responsibility 
+Article 85: Social Initiatives 
+Part 9: Disclosure and Transparency 
+Article 86: Policies and Procedure of Disclosure 
+Article 87: The Board’s Report 
+Article 88: The Audit Committee’s Report 
+Article 89: Disclosure by the Board 
+Article 90: Disclosure of Remunerations  
+Part 10: Implementation of Corporate Governance 
+Article 91: Implementation of Effective Governance  
+Article 92: Formation of a Corporate Governance Committee 
+Part 11: Retaining of Documents  
+ 
+Article 93: Retaining of Documents 
+Part 12: Closing Provisions 
+Article 94: Providing the Additional data and Information  
+Article 95: Publication and Entry into Force 
+Appendix (1) Remuneration Schedule 
+  7 
+Part 1 
+Preliminary Provisions 
+Article 1: Definitions  
+The following terms and expressions shall have the meaning they bear as  follows unless the 
+contrary intention appears: 
+Companies Law: the Companies Law issued by Royal Decree No. (M/132) dated 1/12/1443 
+AH. 
+Capital Market Law : the Capital Market Law  issued by Royal Decree No. (M/30) dated 
+2/6/1424 AH. 
+Rules on the Offer of Securities and Continuing Obligations : The Rules on the Offer of 
+Securities and Continuing Obligations issued by the Board. 
+Listing Rules: The Listing Rules approved by the Board 
+Authority: the Capital Market Authority. 
+The Exchange: The Saudi Stock Exchange. 
+Company: the listed joint stock company.  
+Board: the company’s Board of Directors. 
+Corporate Governance: rules to lead and guide the Company that includes mechanisms to 
+regulate the various relationships between the Board, Executive Directors, shareholders and 
+Stakeholders, by establishing rules and procedures to facilitate the decision making process 
+and add transparency and credibility to it with the objective of  protecting the rights of 
+shareholders and Stakeholders and achieving fairness, competitiveness and transparency on the 
+Exchange and the business environment. 
+Shareholders Assembly: an assembly consisting of the shareholders in the Company formed 
+in accordance with the provisions of the Companies Law and the Company’s bylaws. 
+Executive Director: a member of the Board who is a full time member of the executive 
+management team of the Company and participates in its daily activities. 
+Non-Executive Director: a member of the Board who is not a full -time member of the  
+management team of the Company and does not participate in its daily activities. 
+Independent Director: a non-executive member of the Board who enjoys complete 
+independence in his/her position and decisions and none of the independence affecting issues 
+stipulated in Article 19 of these Regulations apply to him/her.  8 
+Executive Management or Senior Executive : persons responsible for managing the daily 
+operations of the Company, and proposing and executing strategic decisions, such as the Chief 
+Executive Officer (CEO) and his/her delegates and the Chief Financial Officer (CFO). 
+Relatives: 
+- Fathers, mothers, grandfathers and grandmothers (and their ancestors). 
+- children and grandchildren and their descendants. 
+- siblings, maternal and paternal half-siblings. 
+- Husbands and wives. 
+Holding Company: a Joint Stock Company or simplified Joint Stock Company or Limited  
+Liability Company that establishes companies or owns stake or shares in existing companies 
+that become subsidiaries thereof in accordance with the provisions of the Companies Law and 
+its implementing regulations.  
+Person: any natural or legal person that is recognised as such under the laws of the Kingdom.  
+Related Parties: 
+1) affiliates of the Company except for wholly-owned companies; 
+2) substantial shareholders of the Company; 
+3) directors and senior executives of the Company; 
+4) directors of affiliates of the Company; 
+5) directors and senior executives of substantial shareholders of the Company; 
+6) any relatives of persons described at (1), (2), (3) or (5) above; 
+7) any company controlled by any person described at (1), (2), (3), (5) or (6) above. 
+For the purposes of paragraph (6) of this definition, the term “relatives” shall mean a parent, 
+spouse, and children. 
+The Group: When referring to a person, means the person and his affiliates. 
+Affiliate: a person who controls another person or is controlled by that other person, or who 
+is under common control with that person by a third person. In any of the preceding, control 
+could be direct or indirect. 
+Stakeholder: any person who has an interest in the Company, including employees, creditors, 
+customers, suppliers and the community. 
+Substantial Shareholders: any person who owns (5%) or more of the shares of the Company 
+or voting rights therein. 9 
+Controlling Interest: The ability to influence actions or decisions of another person directly, 
+indirectly, individually or collectively with a relative or an affiliate through: (A) owning %30 
+or more of the voting rights in a company, (B) having the right to appoint %30 or mo re of the 
+administrative team members. 
+Administrative Team: A group of individuals who make strategic decisions of the person. 
+The Board is the Company's Administrative Team. 
+Remunerations: amounts, allowances, dividends and the like, periodic or annual bonuses 
+linked to performance, long or short term incentive plans and any other in-kind benefits except 
+the actual reasonable expenses and fees incurred by the Company to enable the Board member 
+to perform his duties. 
+Day: Calendar day whether a business day or not.  
+ 
+Article 2: Preamble 
+a) These Regulations state the rules and standards that regulate the management of the 
+companies to ensure its compliance with the best governance practices that ensure the 
+protection of shareholder's rights as well as the rights of Stakeholders. 
+b) These Regulations  are mandatory for companies listed on the Main Market except the 
+provisions that contain a reference of being guiding provisions.  
+c) Paragraph (c) of Article 13, Paragraph (b) of Article (50), Paragraph (a) of Article (51), 
+Article 52, Article 56, and Article (88) of these Regulations  are mandatory for companies 
+listed on the Parallel Market, and the other provisions of these Regulations shall be deemed 
+as guiding provisions for companies listed  on the Parallel Market unless another law, 
+regulations or a resolution of the Board of the Authority states that some provisions thereof 
+are mandatory for companies listed on the Parallel Market. 
+d) Without prejudice to the provisions of these Regulations, laws and instructions of other 
+supervisory authorities apply to companies that are subject to them. 
+ 
+Article 3: Objectives of the Regulations 
+These Regulations aim at establishing an effective legal framewor k to govern the Company, 
+and particularly aim at the following: 
+1) enhancing the role of the Company’s shareholders and facilitating the exercise of their 
+rights; 
+2) Stating the competencies and responsibilities of the Board and the Executive 
+Management; 
+3) enhancing the role of the Board and the committees and developing their capabilities to 
+enhance the Company’s decision making mechanisms; 
+4) achieving transparency, impartiality and equity in the Exchange, its transactions, and 
+the business environment and enhance disclosure therein; 
+5) providing effective and balanced tools to deal with conflicts of interest; 
+6) enhancing accountability and control mechanisms for the Company’s employees; 10 
+7) establishing the general framework for dealing with Stakeholders and protecting their 
+rights; 
+8) supporting the effectiveness of the system for overseeing companies and the tools  
+thereof; and 
+9) raising the awareness of companies in respect of the concept of professional conduct 
+and encouraging them to adopt and develop such concept in accordance with  their 
+nature. 
+  11 
+Part 2 
+ 
+Rights of Shareholders 
+ 
+Chapter 1: General Rights 
+ 
+Article 4: Fair Treatment of Shareholders 
+a) The Board is obliged to seek shareholders' rights protection to ensure fairness and equality 
+among them. 
+b) The Board and the Executive Management of the Company is obliged not to discriminate 
+among shareholders who own the same type or class of shares nor prevent them from 
+accessing any of their rights. 
+c) The Company shall specify in its internal policies the procedures that are necessary to 
+guarantee that all shareholders exercise their rights. 
+ 
+Article 5: Rights related to shares 
+All rights related to shares shall be guaranteed to  the shareholder, and particularly the 
+following: 
+1) to obtain his/her portion of the net profits which are to be distributed in cash or through 
+the issuance of shares; 
+2) to obtain his/her share of the Company’s assets upon liquidation; 
+3) to attend the General or Special Shareholders Assemblies, take part in their 
+deliberations and vote on their decisions;  
+4) to dispose of his/her shares in accordance with the provisions of the Companies Law, 
+The Capital Market Law and their implementing regulations; 
+5) to enquire and request viewing the books and documents of the Company, including 
+the data and information related to the activities of the Company and its operational and 
+investment strategy without prejudice to the interests of the Company or breach of the 
+Companies Law and the Capital Market Law and their implementing regulations; 
+6) to monitor the performance of the Company and the activities of the Board; 
+7) to hold Board members accountable, to file liability lawsuits against them and appeal 
+for nullification of the resolutions of the General and Special Shareholders Assemblies 
+in accordance with the conditions and restrictions provided in the Companies Law and 
+the bylaws of the Company; 
+8) preemptive rights  to subscribe for new shares issued in exchange for cash unless 
+otherwise specified in the Company’s bylaws or when the Extraordinary General 
+Assembly suspends the pre-emptive rights are per Article (129) of the company's law.  
+9) to record his/her name in the Company’s shareholders register; 
+10) to request to view a copy of the Company’s articles of association and bylaws unless 
+the Company publishes them on its website; and 
+11) to nominate and elect the Board members. 
+ 12 
+Article 6: Shareholder access to information 
+a) The Board shall make available to the shareholder  complete, clear, accurate and non-
+misleading information to enable him/her to properly exercise his/her rights. Such 
+information shall be provided at the proper times and shall be updated regularly. 
+b) The method used to provide information to the shareholders shall be clear and detailed and 
+shall include a list of the Company's information that the shareholders may obtain. This 
+information shall be made available to all shareholders of the same type or class. 
+c) The Company shall use the most effective methods in communicating with shareholders  
+and shall not discriminate among shareholders in respect of providing information. 
+ 
+Article 7: Communicating with Shareholders 
+a) The Board shall ensure communication between the Company and the shareholders based 
+on the common understanding of the strategic objectives and interests of the Company. 
+b) The chairman of the Board and the C hief Executive Officer shall inform the remaining 
+Board members of the opinions of the shareholders and discuss these opinions with them. 
+c) No shareholder may intervene in the operations of the Board or the work of the Executive 
+Management of the Company unless he/she is a member of its Board or works in its 
+executive management; or unless his/her intervention is through the General Assembly 
+according to its powers. 
+d) The Company shall appoint a person responsible for the tasks related to investor relations 
+in the Company in order to achieve effective and fair communication between the Company 
+and the shareholders.1 
+ 
+Article 8: Electing the Board Members 
+a) Upon calling for the General Assembly, the Company shall announce on the Exchange's 
+website information about the nominees for the membership of the Board which shall 
+include the nominees' experience, qualifications, skills and their previous and current jobs 
+and memberships. The Company shall make a copy of the mentioned information available 
+in the Company's head office and its website. 
+b) Voting in the General Assembly shall be confined to the Board nominees whose 
+information has been announced as per paragraph (a) of this Article.  
+ 
+Article 9: Distribution of Dividends 
+a) The General Assembly shall determine the percentage of the net profits to be distributed to 
+the shareholders and deduct the reserves if any. 
+b) The Board shall establish a clear policy for the distribution of dividends to achieve the 
+interests of the shareholders and the Company as per the Company's bylaw.  
+c) The shareholder is entitled to receive his/her share of dividends as per the decision of the 
+General Assembly in respect of the distribution of dividends to shareholders or the Board 
+                                                 
+1 Guidance Paragraph.  13 
+resolution on distributing interim dividends . The resolution shall specify the record date 
+and the distribution date  provided that the resolution shall be executed as per the 
+Implementing Regulation of the Companies Law for Listed Joint Stock Companies.  
+  
+Chapter 2: Rights Related to the Meeting of the General Assembly 
+ 
+Article 10: Preamble 
+General Shareholders Assemblies of the Company are competent in all of its affairs. A duly-
+constituted General Assembly represents all shareholders in exercising their powers in respect 
+of the Company. The General Assembly  shall exercise its role in accordance with the 
+provisions of the Companies Law and its implementing regulations and the Company's bylaws. 
+ 
+Article 11: Competencies of the Extraordinary General Assembly 
+The Extraordinary General Assembly shall have the following Competencies: 
+1) amending the Company’s bylaws, except for amendments which are deemed null and 
+void pursuant to the provisions of the Companies Law; 
+2) increasing the Company’s share capital in accordance with the situations provided by 
+the Companies Law and its implementing regulations; 
+3) decreasing the Company’s share capital if it exceeds the Company’s needs or in the 
+event the Company incurs financial losses, in accordance with the situations provided 
+by the Companies Law and its implementing regulations; 
+4) deciding the use of the reserve allocated for specific purposes in the Company's bylaws;  
+5) resolving to maintain or liquidate the Company before the end of the term specified in 
+its bylaws; 
+6) approving the Company's shares buy-back; 
+7) issuing preferred shares or redeemable shares or approving their buying, or converting 
+a type or class of the Company’s shares into another type or class of  shares as per the 
+Company's bylaws and the Implementing Regulation of the Companies Law for Listed 
+Joint Stock Companies; 
+8) issuing debt instruments or financing deeds convertible into shares, and stating the 
+maximum number of shares that may be issued against these instruments or deeds; 
+9) allocate Shares that are issued upon the capital increase or part of them for the 
+employees of the Company, and its affiliates or some of them, or any of them; and 
+10) suspending preemptive rights of shareholders in subscribing for the ca pital increase in 
+exchange for cash or giving priorit y to non -shareholders in cases as deemed in the 
+interest of the Company if so is provided for in the Company's bylaws.  
+The Extraordinary General Assembly may issue resolutions that fall within the powers of the 
+Ordinary General Assembly, provided that such resolutions are issued in accordance with the 
+issuance requirements of Ordinary General Assembly resolutions which is the majority of 
+voting rights represented at the meeting. 
+ 
+ 
+ 14 
+Article 12: Competencies of the Ordinary General Assembly 
+Except for the competencies reserved to the Extraordinary General Assembly , the Ordinary 
+General Assembly shall have competencies in all affairs of the Company, and particularly the 
+following: 
+1) electing and removing Board members; 
+2) permitting a Board member  to have direct or indirect interest in the business and 
+contracts that are executed for the Company's account , in compliance with the 
+provisions of the Companies Law and its implementing regulations; 
+3) permitting a Board member to take part in any activities that may lead to competition 
+with the Company, or compet ition in any of its activities , in compliance with the 
+provisions of the Companies Law and its implementing regulations; 
+4) monitoring the compliance of the Board members with the provisions of the Companies 
+Law and its implementing regulations and other relevant laws and the Company’s 
+bylaws; inspecting any damage that may occur as a result of their violation of such 
+provisions or mismanagement of the affairs of the Company; determine the liability 
+resulting therefrom and undertaking the procedures it deems proper in this regard 
+pursuant to the Companies Law and its implementing regulations; 
+5) review and discuss the Company's financial statement; 
+6) review and discuss the Board report;  
+7) deciding on the proposals of the Board with respect to the method of distributing the 
+net profits;  
+8) appointing one or more external auditor of the Company, specify ing his fees, 
+reappointing him, dismissing him, discussing his report and making a decision in its 
+regard; 
+9) looking into the violations  and errors committed by the external auditors of the 
+Company when performing their duties and any difficulties, reported by the Company’s 
+external auditors, regarding their empowerment by the Company’s Board or 
+Management to review the books, records and other documents, statements and 
+clarifications required to perform their duties , and respond to that as  it deems 
+appropriate in this regard; 
+10) deciding the use of the Company’s reserves, if such has not been set aside for a specific 
+purpose in the Company's bylaws, provided that using such reserves shall be based on 
+a proposal of the Board and used in ways that benefit the Company or the shareholders; 
+11) forming the Company's reserves and determining their uses; 
+12) setting aside amounts from the Company’s net profits to achieve social purposes for the 
+benefit of the Company’s employees in accordance with Article (123) of the Companies 
+Law; and 
+13) approving the sale of more than (50%) of the assets of the Company, whether in one or 
+several transactions within a period of 12 months from the date of the first selling 
+transaction. In case selling these assets includes what falls within the powers of the 
+Extraordinary General Assembly, the approval of the said Assembly is required. 
+ 15 
+Article 13: Shareholders' Assembly 
+a) The Ordinary General assembly shall convene in accordance with the situations and 
+circumstances stated in the  Companies Law and its implementing regulations and the 
+Company’s bylaws. 
+b) The annual Ordinary General Assembly shall convene at least once within the six months 
+following the end of the Company's financial year. 
+c) The General and Special Shareholders' Assemblies shall convene upon an invitation from 
+the Board in accordance with the situations stated in  the Companies Law  and its 
+implementing regulations and the Company’s bylaws. The Board shall invite the Ordinary 
+General Assembly to convene within 30 days from the date of the external auditor request, 
+the audit committee or a number of shareholders holding shares equal to at least (10%) of 
+the company's shares that have voting rights. The external auditor may invite the Ordinary 
+General Assembly to convene if the Board does not invite the assembly within thirty days 
+from the date of the external auditor's request. 
+d) With regards of the provisions of the Companies Law and its implementing regulations, the 
+date, place and agenda of the General Assembly shall be announced at least twenty one 
+days prior to the date thereof; the invitation shall be published on the website  of the 
+Exchange and the Company's website. In addition, t he Company may invite the General 
+and Special Shareholders' Assemblies to convene using contemporary technologies means. 
+e) The Company may amend the agenda of the General Assembly within a period between 
+publishing the announcement referred to in paragraph ( d) of this Article and the date of 
+convening the General Assembly meeting, provided that the Company shall announce this 
+as prescribed in paragraph (d) of this Article. 
+f) Shareholders shall be granted the opportunity to effectively participate and vote in the 
+General Assembly meetings. The meetings of the General Assemblies of shareholders may 
+be convened and shareholders may participate in their deliberations and vote on their 
+resolutions using methods of contemporary technologies  pursuant to the Implementing 
+Regulation of the Companies Law for Listed Joint Stock Companies. 
+g) The Board shall work on facilitating the participation of the largest number of shareholders 
+in the meetings of the General Assembly, including  choosing the appropriate place and 
+time of such meeting. 
+h) The Company shall ensure recording the details of the shareholders who desire to attend at 
+the Company's head office prior to  the specified time for convening the assembly , unless 
+the Company's bylaw state other means. 
+ 
+Article 14: The Agenda of the General Assembly 
+a) When preparing the General Assembly’s agenda, the Board shall take into consideration 
+the matters that the shareholders wish to list; shareholders holding no less than ( 10%) of 
+the Company’s shares that have voting rights are entitled to add one or more items to the 
+agenda upon its preparation. 
+b) The Board shall separate each of the matters listed in the agenda of the General Assembly 
+meeting as an independent item, and not combine significantly different matters under one 16 
+item, and not combine the businesses and contracts in which any Board member has a direct 
+or indirect interest under one item , for the purpose of obtaining the shareholders’ vote for 
+the item as a whole. 
+c) The shareholders shall be allowed  through the Company's website  and the Exchange's 
+website, when the invitation for the convention of the General Assembly  is published, to 
+obtain the information related to the items of the  General Assembly's agenda, particularly 
+the reports of the Board and the external auditor, the financial statements and the audit 
+committee’s report in order to enable them to make an informed decision in this regard.  
+The Company shall update this information in case the General Assembly's agenda was 
+amended. 
+d) The Authority may add any items  it deems appropriate to the agenda of the General 
+Assembly. 
+ 
+Article 15: Management of the Shareholders' Assembly 
+a) The Shareholders' General Assembly meetings shall be chaired by the chairman, his deputy 
+(if the chairman is absent) or whom is delegated by the Board of directors of its members 
+(when the chairman and his deputy are absent); and if not possible, the General Assembly 
+shall be chaired by whom the shareholders delegates from the board members or others by 
+voting.  
+b) The chairman of the Shareholders' Assembly shall commit to grant the shareholders the 
+opportunity to effectively participate  and vote in the meetings of the General Assembly , 
+and avoid a ny procedure that may prevent ing their attendance to the assemblies or the  
+exercise of the voting right . Shareholders shall be informed of the rules governing such 
+meetings and the voting procedures.  
+c) Shareholders are entitled to discuss matters listed in the agenda of the General Assembly 
+and raise relevant questions to the Board members and to the external auditor. The Board 
+or the external auditor shall answer the questions raised by shareholders to the extent that 
+does not jeopardize the Company’s interest. 
+d) Shareholders shall be granted access to the minutes of the General Assembly meeting; and 
+the Company shall provide the Authority with a copy of such minutes within (10) days of 
+the date of any such meeting. 
+e) A Company shall announce to the public and inform the Authority and the Exchange, as 
+per the rules prescribed by the Authority, of the results of a General Assembly meeting 
+immediately following its conclusion. 
+ 
+  17 
+Part 3 
+ 
+The Board of Directors 
+ 
+Chapter 1: Formation of the Board 
+Article 16: Composition of the Board  
+The following shall be taken into consideration when composing the Board: 
+1) the number of its members shall be suitable for the size and nature of the Company's 
+activities without prejudice to paragraph (a) of Article 17 of these Regulations. 
+2) the majority of the Board members shall be of Non-Executive Directors. 
+3) the number of Independent Directors shall not be less than two members or one-third 
+of the Board members, whichever is greater. 
+ 
+Article 17: Appointment of the Board members Board 
+a) The Company’s bylaws shall specify the number of the Board members, provided that such 
+number shall not be less than three. 
+b) The General Assembly shall elect the Board members for the term stated in the Company’s 
+bylaws, provided that such term shall not exceed four years.  Board members may be re-
+elected, unless otherwise provided for in the Company’s bylaws. 
+c) A Board member shall not be a member of the Boards of Directors of more than five listed 
+joint stock companies at the same time. 
+d) The Company shall notify the Authority  of the names of the Board members  and 
+description of their memberships within five business days from the commencement date 
+of the Board term or from the date of their appointment , whichever is shorter, as well as 
+any changes that may affect their membership within five business days from the 
+occurrence of such changes. 
+ 
+Article 18: Conditions for the membership of the Board2 
+A member of the Board is required to be professionally capable and has the required  
+experience, knowledge, skill and independence, which enable him/her to perform his/her duties 
+efficiently. He/she shall have the following qualifications in particular: 
+1) Ability to lead: He/she shall enjoy leadership skills which enable him /her to delegate 
+powers in order to enhance performance and apply best practices in effective 
+management and compliance with professional ethics and values. 
+2) Competency: He/she shall have the academic qualifications and proper professional 
+and personal skills as well as an appropriate level of training and practical experience 
+related to the current and future businesses of the Company and the knowledge of  
+management, economics, accounting, law or governance, as well as the desire to learn 
+and receive training. 
+                                                 
+2  Guiding Article. 18 
+3) Ability to guide : He/she shall have the technical, leadership, and administrative 
+competencies as well as the ability to take prompt decisions, and understand technical 
+requirements and developments related to the job. He/she shall also be able to provide 
+strategic guidance and long-term planning and have a clear future vision. 
+4) Financial knowledge: He/she shall have the ability to read and understand financial 
+statements and reports.  
+5) Physical fitness: He/she shall not suffer from any health issue that may hinder him/her 
+from performing his/her duties and responsibilities. 
+The General Assembly shall take into account , when electing members to the Board, the 
+recommendations of the nomination committee and the availability of the personal and 
+professional capabilities required to perform their duties effectively pursuant to this Article. 
+ 
+Article 19: Issues Affecting Independence  
+a) An Independent Director shall be able to perform his/her duties, express his/her opinions 
+and vote on decisions objectively with no bias  in order to help the Board make correct 
+decisions that contribute to achieving the interests of the Company. 
+b) The Board shall annually evaluate the extent of the member's independence and ensure that 
+there are no relationships or circumstances that affect or may affect his/her independence. 
+c) By way of example, the following negate the independence requirement for an Independent 
+Director: 
+1) if he/she holds five percent or more of the shares of the Company or any other 
+company within its group; or is a relative of who owns such percentage.  
+2) if he/she is a relative of any member of the Board of the Company,  or any other 
+company within the Company’s group; 
+3) if he/she is a relative of any Senior Executive of the Company, or of any other 
+company within the Company’s group; 
+4) if he/she is a Board member of any company within the group of the Company for 
+which he/she is nominated to be a Board member.  
+5) if he/she is an employee or used to be an employee, during the preceding two years, 
+of the Company or a company within its group, or if  he/she held a controlling 
+interest in the Company or any party dealing with the Company or any company 
+within its group, such as external auditors or main suppliers  during the preceding 
+two years. 
+6) if he/she has a direct or indirect interest in the businesses and contracts executed for 
+the Company’s account. 
+7) if the member of the Board receives financial consideration from the Company in 
+addition to  the remuneration for his/her membership of the Board or any of its 
+committees exceeding an amount of (SAR 200,000) or 50% of his/her remuneration 
+of the last year for the membership of the board or any of its committees, whichever 
+is less. 
+8) if he/she engages in a business where he competes with the Company, or conducting 
+businesses in any of the company's activities.   19 
+9) if he/she served for more than nine years, consecutive or inconsecutive, as a Board 
+member of the Company.3 
+d) Unless the Nominations Committee considers otherwise, the businesses and contracts with 
+the board member to meet his/her personal needs shall not be deemed as an interest that 
+affect the independence of the board member which require a n authorisation from the 
+ordinary general assembly, provided that such businesses and contracts are carried out in 
+the same conditions and settings followed by the Company with all contractors and dealers, 
+and that such businesses and contracts must be within the normal course of the Company's 
+activities. 
+ 
+Chapter 2: Responsibilities and Competencies of the Board 
+ 
+Article 20: Responsibility of the Board 
+a) The Board represents all shareholders; it shall perform its duties of care and loyalty in 
+managing the Company’s affairs and undertake all actions in the general interest of the 
+Company and develop it and maximise its value. 
+b) The Board is responsible for the Company’s business even if it delegates some of its powers 
+to committees, individuals or other third parties. In any case, the Board may not issue a 
+general or an open-ended delegation. 
+ 
+Article 21: Main Functions of the Board 
+ 
+Without prejudice to  the competencies of the General Assembly as per the Companies Law 
+and its implementing regulations and the Company’s bylaws, the Board shall have the broadest 
+powers in managing the Company and guiding its activities to achieve its objectives. Among 
+the main functions and competencies of the Board are the following: 
+1) laying down the plans, policies, strategies and main objectives of the Company, 
+supervising their implementation and reviewing them periodically, and ensuring that 
+the human and financial resources required to fulfill them are available, including: 
+a. setting a comprehensive strategy for the Company, key business plans and policies 
+and mechanisms of the risk management and review and guide them 
+b. determining the most appropriate capital structure for the Company, its strategies 
+and financial objectives, and approving all kinds of estimated budgets; 
+c. overseeing the main capital expen ditures of the Company and the acquisition or 
+disposal of assets; 
+d. setting performance indicators, and monitoring the implementation thereof and the 
+overall performance of the Company; 
+e. reviewing and approving the organisational and human resources structures of the 
+Company on a periodic basis; and 
+                                                 
+3 The Capital Market Authority Board issued its Resolution Number 1-35-2018 Dated 9/7/1439H Corresponding 
+to 26/3/2018G stating that this sub-paragraph is to be a mandatory sub-paragraph starting from the term of the 
+listed company's board that will be after 1/1/2019G. 20 
+f. ensuring that the financial  and human resources required for achieving the 
+objectives and main plans of the Company are available. 
+2) setting rules and procedures for internal control and  generally overseeing them, 
+including: 
+a. developing a written policy to remedy actual and potential conflicts of interest 
+scenarios for each of the Board  members, the  Executive Management, and the 
+shareholders. This includes misuse of the Company’s assets and facilities and the 
+mismanagement resulting from transactions with Related Parties; 
+b. ensuring the integrity of the financial and accounting rules, including rules relating 
+to the preparation of financial reports; 
+c. ensuring the implementation of appropriate control procedures for risk assessment 
+and management by  generally forecasting the ris ks that the Company may 
+encounter and creating an environment which is aware of the culture of risk 
+management at the Company level and disclosing such risks transparently to the 
+Stakeholders and parties related to the Company; and 
+d. reviewing the effectiveness of the Company’s internal control procedures on an 
+annual basis. 
+3) setting forth specific and explicit policies, standards and procedures for membership in 
+the Board, without prejudice  to the mandatory provisions of th ese Regulations, and 
+implementing them following approval by the General Assembly; 
+4) developing a written policy that regulates the relationship with Stakeholders pursuant 
+to the provisions of these Regulations; 
+5) setting policies and procedures to ensure the Company’s compliance with the laws and 
+regulations and the Company’s obligation to disclose material information to 
+shareholders and Stakeholders, and ensuring the compliance of the Executive 
+Management with these policies and procedures; 
+6) supervising the ma nagement of the Company’s finances, its cash flows as well as its 
+financial and credit relationships with third parties; 
+7) providing recommendations to the Extraordinary General Assembly as to what it deems 
+appropriate regarding the following: 
+a. increasing or decreasing the share capital of the Company; and 
+b. dissolving the Company before the end of its term as  specified in its bylaws or 
+deciding the continuity of the Company. 
+8) providing recommendation to the Ordinary General Assembly as to what it deems 
+appropriate regarding: 
+a. use of the company's reserves, if they are not allocated for a specific purpose in the 
+Company's bylaws; 
+b. forming additional financial allocations or reserves for the Company; and 
+c. the method of distributing the net profits of the Company. 
+9) preparing the Company's interim and annual financial statements and approving them 
+before publishing them; 
+10) preparing the Board report and approving it before publishing it. 21 
+11) ensuring the accuracy and integrity of the data and information which must be disclosed 
+pursuant to the applicable policies and systems in respect of disclosure and 
+transparency; 
+12) developing effective communication channels allowing shareholders to continuou sly 
+and periodically review the various aspects of the Company's businesses as well as any 
+material developments; 
+13) forming specialised committees of the Board pursuant to resolutions that shall specify 
+the term, powers and responsibilities of such committees as well as the manner used by 
+the Board to monitor such committees. Such resolutions shall also specify the names of 
+the members and their duties, rights and obligations and shall evaluate the performance 
+and activities of these committees and their members; 
+14) specifying the types of remuneration s granted to the Company's employees, such as 
+fixed remuneration s, remunerations linked to performance and remuneration s in the 
+form of shares without prejudice to  the Implementing Regulation of the  Companies 
+Law for Listed Joint Stock Companies; 
+15) notifying the Ordinary General Assembly when convened of the businesses and 
+contracts in which any Board member has a direct or indirect interest; the notification 
+shall include the information provided by the member of the Board as per paragraph 
+(14) of Article (28) of these Regulations, and shall be accompanied by a special report 
+of the Company's external auditor. 
+16) setting the values and standards that govern the work at the Company;  
+ 
+Article 22: Distribution of Competencies and Duties 
+The organisational structure of the Company shall specify the competencies and distribute the 
+duties between the Board and the Executive Management in accordance with the best practices 
+in Corporate Governance, and to improve the efficiency of the Company's decision making and 
+to achieve a balance of powers and authorities across the Board and the Executive 
+Management, and to achieve this, the Board shall: 
+1) approve and develop internal policies in respect of the Company’s business, including 
+specifying the duties, competencies and responsibilities assigned to the various 
+organisational levels; 
+2) approving a written and detailed policy that identifies  the powers delegated to the 
+Executive Management, a matrix stating these powers,  means of implementation and 
+the period of delegation\ The Board may request the Executive Management to submit 
+periodic reports in respect of its exercise of such delegated powers; and 
+3) identifying the matters on which the Board reserves the power to decide. 
+ 
+ 
+ 
+ 
+ 22 
+Article 23: Separation of Positions 
+a) without prejudice to the provisions of the Company's bylaws, The Board appoints, from its 
+members, a chairman and a vice chairman, and may appoint from its members a managing 
+director or a chief executive officer. 
+b)  it is prohibited to hold, at the same time,  the position of chairman of the Board and any 
+other executive position in the Company, including the positions of the managing director, 
+the Chief Executive Officer, or the general manager, even if the Company's bylaws 
+provided for otherwise. 
+c) the Board shall define the competencies and specify the responsibilities of the chairman, 
+the vice chairman, and the managing director  or the chief executive officer  explicitly and 
+in writing if the Company's bylaws has no reference thereto. 
+d) in all cases , no person shall have the sole and absolute power to take decisions in the 
+Company. 
+ 
+Article 24: Oversight over the Executive Management4 
+The Board shall form the Executive Management of the Company, regulate its operating 
+procedures, monitor and oversee it and ensure that it performs the duties assigned to it, and to 
+achieve this, the Board shall: 
+1) develop the necessary administrative and financial policies; 
+2) ensure that the Executive Management operates in accordance with  the policies 
+approved by the Board.; 
+3) select and appoint the Chief Executive Officer of the Company, and oversee his/her 
+work; 
+4) appoint the manager of the internal audit unit or department, or the internal auditor and 
+dismiss him and determine his remuneration;  
+5) convene periodic meetings with the Executive Management to explore the work 
+progress and any obstacles and problems in connection therewith , and review and 
+discuss the important information in respect of the Company’s business; 
+6) develop standards for the performance of the Executive Management consistent with 
+the objectives and strategy of the Company; 
+7) review and evaluate the performance of the Executive Management; and 
+8) develop succession plans for the management of the Company. 
+ 
+ 
+ 
+ 
+                                                 
+4 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Paragraph (4) of Article 24 of the Corporate Governance Regulations and stating that 
+such amendment shall be effective as of 19/6/1445H Corresponding to 1/1/2024G, provided that Paragraph (4) of 
+Article 25 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution no. ( 8-16-
+2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority Resolution 
+no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue to be  effective until the 
+effectiveness date of Paragraph (4) of Article 24 of these Regulations. 23 
+Article 25: Competencies and Duties of the Executive Management 
+ 
+Without prejudice to the competencies entrusted to the Board pursuant to the provisions of the 
+Companies Law and its implementing regulations, the Executive Management shall be 
+responsible for implementing the plans, policies, strategies and  main objectives of the 
+Company in order to achieve its purposes. The competencies and duties of the Executive 
+Management shall include the following: 
+1) implementing the Company’s internal policies and rules approved by the Board; 
+2) suggesting the Company’s comprehensive strategy as well as the principal and interim 
+business plans and the policies and mechanisms for investment, financ ing, risk 
+management and emergency administrative circumstances management plans and 
+implementing them; 
+3) proposing the most appropriate capital structure for the Company and its strategies and 
+financial objectives;  
+4) proposing the main capital expenditures of the Company and acquiring and disposing 
+of assets; 
+5) proposing the organi sational and human resources structures of the Company and 
+presenting them to the Board for approval; 
+6) implementing internal control systems and procedures, and generally overseeing them, 
+which include: 
+a. implementing the conflicts of interest policy; 
+b. correctly applying the financial and accounting procedures , including the 
+procedures relating to the preparation of financial reports; 
+c. applying appropriate control systems for measuring and managing  risks by 
+generally forecasting the risks that the Company may encounter and creating an 
+environment which is aware of the culture of risk mitigation at the Company level, 
+and transparently disclosing them to the Company’s Board and other Stakeholders. 
+7) implementing the Company’s Corporate Governance rules effectively, to the extent 
+they do not conflict with the provisions of these Regulations , and proposing 
+amendments thereto if needed; 
+8) implementing policies and procedures to ens ure the Company’s compliance with the 
+laws and regulations and its obligation to disclose material information to shareholders 
+and Stakeholders; 
+9) providing the Board with the information required to exercise its competencies and 
+provide recommendations regarding the following: 
+a. increasing or decreasing the share capital of the Company; 
+b. dissolving the Company before the end of its term as specified in its bylaws or 
+deciding the continuity of the Company; 
+c. use of the Company's reserves if they are not allocated for a specific purpose in the 
+Company's bylaws; 
+d. forming additional reserves for the Company; and 
+e. the method for distributing the net profits of the Company. 24 
+10) proposing the policy and types of remunerations granted to employees, such as fixed 
+remunerations, remunerations linked to performance and remunerations in the form of 
+shares; 
+11) preparing periodic financial and non -financial reports in respect of  the progress  
+achieved in the business of the Company in light of the strategic plans and objectives 
+of the Company, and presenting such reports to the Board; 
+12) managing the daily business and activity of the Company , in addition to managing  its 
+resources in the most appropriate form in accordance with the objectives and strategies 
+of the Company; 
+13) participating effectively in building and developing a culture of ethical values within 
+the Company; 
+14) implementing internal control and risk management systems and ensuring that they are 
+effective and efficient, and ensuring compliance with the level of risks approved by the 
+Board; 
+15) proposing and developing  internal policies related to the business of the Company, 
+including specifying the duties, competencies and responsibilities assigned to the 
+various organisational levels; 
+16) proposing a clear policy to delegate tasks to the Executive Management and the method 
+for implementing such policy; and 
+17) proposing the powers to be delegated to the Executive Management, the procedures for 
+decision making and the period of delegation, provided that it shall present periodic 
+reports to the Board in respect of its exercise of such powers. 
+ 
+Chapter 3: Competencies of the Chairman and the Board Members 
+Article 26: Competencies and Duties of the Chairman of the Board  
+ 
+Without prejudice to the competencies of the Board, the chairman of the Board shall be 
+responsible for leading the Board and supervising its operations and the effective performance 
+of its duties. The competencies and duties  of the chairman of the Board shall in particular 
+include the following: 
+1) ensuring that the Board members obtain complete, clear, accurate and non-misleading 
+information in due course; 
+2) ensuring that the Board effectively discusses all fundamental issues in due course; 
+3) representing the Company before third parties in accordance with the Companies Law 
+and its implementing regulations and the Company's bylaws; 
+4) encouraging the Board members to effectively perform their duties in order to achieve 
+the interests of the Company; 
+5) ensuring that there are actual communication channels with shareholders and conveying 
+their opinions to the Board; 
+6) encouraging constructive relationships and effective participation between the Board 
+and the Executive Management on the one hand, and the Executive, Non-Executive and 
+Independent Directors on the other  hand, and creating a culture that encourages 
+constructive criticism; 25 
+7) preparing agendas of the Board meetings, taking into consideration any matters raised 
+by Board members or the external auditor and consult with the Board members and the 
+Chief Executive Officer upon preparing the Board's agenda; and 
+8) convening periodic meetings with the Non-Executive Directors without the presence of 
+any executive officers of the Company. 
+ 
+Article 27: Appointing the C hief Executive Officer after the end of his/her services  as 
+Chairman of the Board 5 
+It is prohibited to appoint the Chief Executive Officer, during the first year following the end 
+of his/her service, as the chairman of the Board. 
+ 
+Article 28: Tasks and Duties of the Board Members 
+Each member of the Board shall, being a Board member, perform the following tasks and 
+duties: 
+1) providing proposals to develop the strategy of the Company; 
+2) monitoring the performance of the Executive Management and the extent to which it 
+has achieved the objectives and purposes of the Company; 
+3) reviewing reports related to the performance of the Company; 
+4) ensuring the integrity and impartiality of the financial statements and information of 
+the Company; 
+5) ensuring that the financial control and risk management systems are sound; 
+6) determining the appropriate level of remuneration s of the members of the Executive  
+Management; 
+7) expressing opinions as to the appointment and dismissal of members of the Executive 
+Management; 
+8) participating in developing the succession and replacement plans of executive positions 
+within the Company; 
+9) complying fully with the provisions of the Companies Law, Capital Market Law, their 
+implementing regulations, the relevant regulations and the bylaws when performing 
+his/her duties as a member of the Board and abstaining from taking or participating in 
+any action that constitute mismanagement of the Company’s affairs; 
+10) attending the Board and the General Assembly meetings, and not being absent except 
+for legitimate excuse of which the chairman of the Board shall be notified by prior 
+notice, or for emergency reasons; 
+11) allocating sufficient time to fulfill his/her responsibilities and preparing for the Board 
+and its committees’ meetings and effectively participating therein, including raising 
+relevant questions and carrying discussions with the Senior Executives; 
+12) studying and analysing all information related to the matters looked into by the Board 
+before expressing an opinion on the same; 
+                                                 
+5 The Capital Market Authority Board issued its Resolution Number 4-52-2018 Dated 28/8/1439H Corresponding 
+to 14/5/2018G stating that Article 27 of the Corporate Governance Regulations is to be guiding article. 26 
+13) enabling other Board members to express their opinion s freely, and encouraging the 
+Board to deliberate on the subjects and obtain the views of the competent members of 
+the Company’s Executive Management and others, when necessary; 
+14) notifying the Board fully and immediately of any interest , either direct or indirect , in 
+the businesses and contracts that are executed for the Company's account, the 
+notification shall include the nature and extent of such interest, the names of concerned 
+persons, and the expected benefit to be obtained directly or indirectly from interest 
+whether financial or non-financial.  the concerned member shall abstain from voting on 
+any decisions issued in connection therewith in compliance with the provisions of the 
+Companies Law, the Capital Market Law and their implementing regulations; 
+15) notifying the Board fully and immediately of his/her participation, directly or indirectly, 
+in any businesses that may compete with the Company or lead to competing with the 
+Company, directly or indirectly, in respect of any of its activities , in compliance with 
+the provisions of the Companies Law, the Capital Market Law and their implementing 
+regulations; 
+16) refraining from disclosing or announc ing any secrets  he/she came across through 
+his/her membership in the Board to any shareholder of the Company, unless such 
+disclosure is made during the meetings of the General Assembly, or to a third party, in 
+pursuance with the provisions of the Companies Law, the Capital Market Law and their 
+implementing regulations; 
+17) working on the basis of complete information, in good faith and with the necessary care 
+and diligence for the interest of the Company and all shareholders; 
+18) recognising his/her duties, roles and responsibilities arising from the membership; 
+19) developing his/her knowledge in the field of the Company's business and activities and 
+in the related financial, commercial and industrial fields; and 
+20) resigning from the membership of the Board if he/she is unable to fully fulfill his/her 
+duties in the Board. 
+ 
+Article 29: Duties of the Independent Director 
+Without prejudice to Article (28) of these Regulations, an Independent Director of the Board 
+shall effectively participate in the following duties: 
+1) expressing his/her independent opinion in respect of strategic issues and the Company’s 
+policies and performance and appointing members of the Executive Management; 
+2) ensuring that the interest of the Company and its shareholders are taken into account 
+and given priority in case of any conflicts of interest; 
+3) overseeing the development of the Company’s Corporate Governance rules,  and 
+monitoring the implementation of the rules by the Executive Management. 
+ 
+ 
+ 
+ 27 
+ 
+Chapter 4: Procedures of the Board Activities 
+Article 30: The Board Meetings 
+a) Without prejudice to the Companies Law and its implementing regulations, the Board shall 
+convene regular meetings to perform its duties effectively, and  also convene  meetings 
+whenever needed. 
+b) The Board shall convene no less than four meetings per year, and no less than one meeting 
+every three months. 
+c) The Board shall meet upon the invitation of its chairman or upon a request from one of its 
+members. The invitation to the meeting shall be sent to each of the Board members no less 
+than five days prior to the date of the meeting accompanied by its agenda and the necessary 
+documents and information, unless circumstance require convening an emergency meeting, 
+the invitation accompanied with the agenda and necessary documents and information may 
+be sent within a period less than the five days. 
+d) The meeting shall not be valid unless attended by half of the Board members (by themselves 
+or by proxy), provided that the number of attendees shall not be less than three, unless the 
+Company's bylaws stated greater percentage or number. 
+ 
+Article 31: Remarks of the Board Members 
+ 
+a) If any member of the Board has any remarks in respect of the performance of the Company 
+or any of the matters presented and which was not resolved in the Board meeting, such 
+remarks shall be recorded and the procedures taken or to be taken by the Board in 
+connection therewith must be set forth in the minutes of the Board meeting.  
+b) If a member of the Board expresses an opinion differs from the  Board resolution, such 
+opinion must be recorded in detail in the minutes of the Board meeting. 
+ 
+Article 32: Organising the Attendance of the Board Meetings. 
+a) The Attendance of Board meetings , and dealing with cases of irregular attendance by 
+members of such meetings shall be organised. 
+b) An Independent Director of the Board shall make every effort to  attend all meetings in 
+which important and material decisions affecting the position of the Company are made. 
+ 
+Article 33: The Agenda of Board Meetings 
+a) The Board shall approve the agenda once the Board meeting is convened. Should any 
+member of the Board raise any objection in respect of such agenda, such objection shall be 
+recorded in the minutes of the meeting. 
+b) Each member of the Board is entitled to propose additional items to the agenda. 28 
+ 
+Article 34: Exercising the Competencies of the Board 
+a) The Board shall exercise its competencies and duties to lead the Company within a 
+framework of effective and prudent controls that allow assessing and managing risks  and 
+limiting and mitigating their effects. 
+b) Without prejudice to Paragraph (b) of Article ( 20) of these Regulations, the Board may, 
+within the scope of its competencies, delegate to one or more of its members or committees 
+or a third party the performance of a specific function or functions. 
+c) The Board shall develop an internal policy that explains the procedures of the Board 
+activities and aims at encouraging its members to work effectively to fulfill their obligations 
+towards the Company. 
+d) The Board shall organise its activities and allocate sufficient time to perform the duties and 
+responsibilities assigned to it, including preparing for Board and committees’ meetings and 
+ensuring the coordination, recording and retaining of the minutes of its meetings. 
+Article 35: The Secretary of the Board 
+a) The Board shall appoint a secretary among  its members or a third party, whose 
+competencies and wage shall be specified by a Board resolution, unless the Company's 
+bylaws include provisions in connection therewith, provided that such powers shall include: 
+1) documenting the Board meetings and preparing minutes theref or, which shall include 
+the discussions and deliberations carried during such meetings, as well as the place, 
+date, times on which such meetings commenced and concluded; and recording the  
+decisions of the Board and voting results and retaining them in a special and organised 
+register, and including the names of the attendees and any reservations they expressed 
+(if any) . Such minutes shall be signed by the chairman of the meeting, all of the 
+attending members and the secretary; 
+2) retaining the reports submitted to the Board and the reports prepared by it; 
+3) providing the Board  members with the agenda of the Board meeting and related 
+worksheets, documents and information and any additional information, related to the 
+topics included in the agenda items, requested by any Board member; 
+4) ensuring that the Board members comply with the procedures approved by the Board; 
+5) notifying the Board members of the dates of the Board’s meetings within sufficient time 
+prior to the date specified for the meeting; 
+6) presenting the draft minutes to the Board members to provide their opinions on them 
+before signing the same;  
+7) ensuring that the Board members receive, fully and promptly, a copy the minutes of the 
+Board’s meetings as well as the information and documents related to the Company; 
+8) coordinating among the Board members; 
+9) regulating the disclosure register of the Board and Executive Management as per 
+Article (89) of these Regulations; and 
+10) providing assistance and advice to the Board members. 
+b) The Secretary of the Board may not be relieved except pursuant to a decision of the Board. 29 
+ 
+Article 36: Qualifications of the Secretary6 
+The Board must specify the conditions that the secretary must meet, provided that they include 
+at least one of the following: 
+1) he/she holds a bachelor degree in law, finance, accounting or administration or their 
+equivalent, and has relevant practical experience of not less than three years; or  
+2) he/she has relevant practical experience of not less than five years. 
+ 
+Chapter 5: Training, Support and Assessment 
+Article 37: Training7 
+The Company shall pay adequate attention to the training and preparation of the Board 
+members, committee members,  and the Executive Management, and  shall develop the 
+necessary programmes required for the same, taking the following into account: 
+1) preparing program mes for the recently-appointed Board members , committee 
+members, and Executive Management to familiarise them with  the progress of the 
+Company’s business and activities, particularly the following: 
+a. the strategy and objectives of the Company; 
+b. the financial and operational aspects of the Company’s activities; 
+c. the obligations of the Board members and their duties, responsibilities and rights; 
+d. the duties and competencies of the committees of the Board. 
+2) developing the necessary mechanisms for Board members, committee members,  and 
+the Executive Management to continuously enroll in training programmes and courses 
+in order to develop their skills and knowledge in the fields related to the activities of 
+the Company. 
+ 
+Article 38: Providing Members with Information 
+The Executive Management of the Company shall provide the Board members , the Non-
+Executive Directors in particular, and the committees of the Company with all of the necessary 
+information, details, documents and records, provided that they shall be complete, clear, correct 
+and non-misleading, in due course to enable them to perform their duties and obligations. 
+ 
+ 
+ 
+                                                 
+6 Guiding Article. 
+7 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Article 37 of the Corporate Governance Regulations and stating that such amendment 
+shall be effective as of 19/6/1445H Corresponding to 1/1/2024G, provided that Article 37 shall remain to be a 
+guiding article, provided that Article 39 of the Corporate Governance Regulations issued by the  Board of the 
+Authority Resolution no. ( 8-16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the 
+Board of the Authority Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall 
+continue to be  effective until the effectiveness date of Article 37 of these Regulations. 30 
+Article 39: The Assessment8  
+a) The Board shall develop, based on the proposal of the nomination committee, the necessary 
+mechanisms to annually assess the performance of the Board, its members and committees 
+and the Executive Management using key performance indicators  linked to the extent to 
+which the strategic objectives of the Company have been achieved, the quality of the risk 
+management and the efficiency of the internal control systems, among others, provided that 
+weaknesses and strengths shall be identified and a solution shall be proposed for the same 
+in the best interests of the Company. 
+b) The procedures of performance  assessment shall be in writing  and clearly stated and 
+disclosed to the Board members and parties concerned with the assessment. 
+c) The performance assessment shall entail an assessment of the skills and experiences of the 
+Board, identification of the weaknesses and strengths of the Board and shall attempt to 
+resolve such weaknesses using the available methods, such as nominating competent 
+professional staff able to improve the performance of the Board. The performance 
+assessment shall also entail the assessment of the mechanisms of the Board’s activities in 
+general. 
+d) The individual assessment of the  Board members  shall take into account the extent of 
+effective participation of the member and his/her commitment to performing his/her duties 
+and respo nsibilities, including attending the Board  and its committees’ meetings and 
+dedicating adequate time thereof. 
+e) The Board shall carry out the necessary arrangements  to obtain an assessment of  its 
+performance from a competent third party every three years.  
+f) Non-Executive Directors shall carry out a periodic assessment of the performance of the 
+chairman of the Board after getting the opinions of the  Executive Directors, without the 
+presence of  the chairman of the Board in the discussion on this matter , provided that 
+weaknesses and strengths shall be identified and a solution shall be proposed for the same 
+in the best interests of the Company. 
+ 
+Chapter 6: Conflicts of Interest 
+Article 40: Dealing with Conflicts of Interest and Related Parties Transactions 
+Without prejudice to the provisions of the Companies Law and its implementing regulations, 
+conflicts of interest situations and Related Parties transactions shall be dealt with in accordance 
+with the provisions of this Chapter. 
+ 
+Article 41: Conflicts of Interest Policy 
+The Board shall develop an explicit and written policy to deal with actual and potential conflicts 
+of interest situations which may affect the performance of Board members, a member of its 
+committees, or the Executive Management or any other employees of the Company when 
+                                                 
+8  Guiding Article. 31 
+dealing with the Company or other Stakeholders. This policy shall include the following in 
+particular: 
+1) informing members of the Board and its committees, Substantial Shareholders, Senior 
+Executives and other employees of the Company of the importance of avoiding 
+situations that may lead to a conflict between their interests and the interests of the 
+Company, and dealing with them in accordance with the provisions of the Companies 
+Law and its implementing regulations. 
+2) providing examples of conflict s of interest situations that are relevant to the nature of 
+the Company’s activity. 
+3) clear procedures for disclosing conflict s of interest in the activities that may lead to  
+such conflicts and obtaining authorisation or the requisite approval. 
+4) the obligation to constantly disclose situations that may lead to conflicts of interest or 
+upon the occurrence of such conflicts. 
+5) the obligation to abstain from voting or taking part in decision making whe n there is 
+conflicts of interest. 
+6) clear procedures when the Company contracts or enters into a transaction with a Related 
+Party, this shall include notifying the Authority and the public without any delay of that 
+contract or transaction  if it equals to or exceeds 1 % of the Company's total revenues 
+according to the last annual audited financial statements. 
+7) procedures to be taken by the Board when discovering that such policy is violated. 
+ 
+Article 42: Avoiding Conflicts of Interest 
+a) A member of the Board shall: 
+1) perform his/her duties with honesty and integrity, and not prioritize his/her own 
+interest over the interests of the Company and its shareholders, and not use his/her 
+position to achieve personal interests; 
+2) avoid situations of conflicts of interest and notify the Board of situations of conflict 
+which may affect his/her neutrality when looking into matters presented before the 
+Board. The Board shall not allow such member to be involved in deliberations and 
+shall not count  his/her vote when voting on such matters in the  Board and the 
+Shareholders Assemblies meetings; and 
+3) protect the confidentiality of the information  related to the Company and its 
+activities, and not disclose any of such information to any person. 
+b) Each Board member is prohibited from misusing or benefitting, directly or indirectly, from 
+any of the Company’s assets, information or investment opportunities presented to the 
+Company or to him in his/her capacity as a member of the Board. This includes investment 
+opportunities which are within the activities of the Company, or which the Company wishes 
+to make use of. Such prohibition shall extend to Board member who resigns to, directly or 
+indirectly, use investment opportunities that the Company wishes to use, which came to 
+his/her knowledge during his/her membership in the Board. 
+ 
+ 32 
+Article 43: Disclosure of Conflicts of Interest by the Nominee 
+A person who desires to nominate himself /herself for the membership of the Board shall 
+disclose to the Board or the General Assembly any cases of conflicts of interest, including: 
+1) having direct or indirect interest in the  contracts and businesses entered  into for the 
+benefit of the Company in which he/she desires to be nominated to the Board. 
+2) engaging in business that may compete with the Company or any of its activities. 
+ 
+Article 44: Rules of Competing with the Company 
+Without prejudice to Article (27) of the Companies Law and other relevant provisions in these 
+regulations, if a member of the Board, or a member of one of its committees, desires to engage 
+in a business that may compet e with the Company or any of its activities, the following shall 
+be taken into account: 
+1) notifying the Board of the competing businesses  he/she desires to engage in and 
+recording such notification in the minutes of the Board meeting. 
+2) the conflicted member shall abstain from voting on the related decision in the Board 
+meeting, the meeting of its committees, and General Assemblies. 
+3) The chairman of the Board informing the Ordinary General Assembly, once convened, 
+of the competing businesses that the member of the Board, or a member of one of its 
+committees, is engaged in, after the Board assesses the board member's competition 
+with the company's business or if he/she is in co mpetition with one of the branch 
+activities that it conducts in accordance with the standards issued by the Ordinary 
+General Assembly upon a proposal from the Board and published on the company’s 
+website, provided that such businesses are assessed on annual basis. 
+4) obtaining an authorisation of the Ordinary General Assembly of the Company, or of the 
+Board through a delegation of the Ordinary General Assembly, for the Board member 
+to engage in the competing business. 
+ 
+Article 45: Concept of the Competing Businesses 
+The following shall be deemed  a participation in any business that may compet e with the 
+Company or any of its activities: 
+1) the Board members’ establishing a company or a sole proprietorship or the ownership 
+of a controlling percentage of shares or stakes in a company or any other entity engages 
+in business activities that are similar to the activities of the Company or its group. 
+2) accepting membership in the Board of a company , an entity that  competing with the 
+Company or its group , or managing  the affairs of  a competing sole proprietorship or 
+any competing company of any form, except the company’s affiliates. 
+3) the Board member’s acting as an overt or covert commercial agent for another company 
+or entity competing with the Company or its group. 
+ 
+ 
+ 33 
+Article 46: Accepting Gifts 
+No member of the Board or a member of one of its committees or Senior Executives may accept 
+gifts from any person who has entered into commercial transactions with the Company if such 
+acceptance of gifts may lead to a conflict of interest. 
+ 
+  34 
+Part 4 
+ 
+ Company Committees 
+ 
+Chapter 1: General Provisions 
+Article 47: Forming the Committees 
+Without prejudice to Article ( 51) of these Regulations, the Board shall form special ised 
+committees as follows: 
+1. as may be needed depending on  the Company’s circumstances in order to enable it to 
+effectively perform its duties. 
+2. the formation of the committees shall be made in accordance with  general procedures 
+developed by the Board, which shall determine the duties, duration and powers of each 
+committee, and the manner in which the Board monitors the activities of each committee. 
+The committee shall inform the Board of its findings or decisions with complete 
+transparency. The Board shall regularly follow up the activities of such committees to 
+ensure the performance of the duties delegated to them.  
+3. each committee shall be responsible before the Board for its activities, this shall not relief 
+the Board of its responsibility for such activities, duties and powers that it has delegated to 
+such committee. 
+4. the number of members of a committee shall not be less than three or more than five.   
+5. the chairmen or whom they delegate of each committee members, shall attend the General 
+Assembly Meetings and answer any questions raised by the shareholders. 
+6. the Company shall provide the Authority with the names of the members and the types of 
+their memberships in such Board's committees within five (5) days of their appointment, 
+and shall notify the Authority of  any changes there to within five (5) days of the date of 
+such changes. 
+7. a Company may combine remuneration and nomination committees into one committee 
+named remuneration and nomination committee. In such case, the remuneration and 
+nomination committee must satisfy the requirements related to any of them as set forth in 
+Chapter 3 and 4 of this Part, and exercise  all the powers set forth in Article ( 58) and (62) 
+of these Regulations, provided that the committee convenes periodically at least every six 
+months. 
+ 
+Article 48: Committees Membership 
+a) A sufficient number of Non-Executive Directors  shall be appointed to the committees 
+which perform duties that may involve a conflict of interest, such as ensuring the integrity 
+of financial and non-financial reports, reviewing Related Party transactions, nomination to 
+membership of the Board, appointment of Senior Executives and determining the 
+remuneration. Chairmen and members of these committees shall comply with duties of care 
+and loyalty and shall attend to the interests of the Company and its shareholders, and 
+prioritise them over their personal interests.  35 
+b) The Company shall take into consideration while forming the remuneration and nomination 
+committees that their members are of Independent Directors. The Board may appoint Non-
+Executive Director s or persons other than Board members  either from shareholders or 
+others, provided that the chair men of committees mentioned in this paragraph are of the 
+Independent Directors. 
+c) Chairman of the Board shall not be a member of the audit committee. He may be a member 
+of other committees, provided that he is not the chairman of committees mentioned in these 
+Regulations. 
+ 
+Article 49: Studying Subjects 
+a) Each committee shall assess the matters that fall within its authority or those referred to it 
+by the Board and shall communicate its recommendations to the Board to issue decisions 
+in connection therewith. The committees shall take decisions in regards to these matters if 
+delegated by the Board, in pursuance to paragraph (b) of Article (20) of these Regulations.   
+b) The committees may seek assistance from any experts or specialists , whether internal or 
+external, within the scope of its powers. This shall be included in the minutes of the 
+committee meeting ; the minutes  states the name  of the expert and his relation to the 
+Company or its Executive Management. 
+ 
+Article 50: Committees Meetings 
+a) No member of the Board or the Executive Management except the secretary or a member 
+of the committee may attend the meetings of a committee unless such committee requests 
+his/her opinion or advice. 
+b) Committee meetings are valid if attended by a majority of its members. Resolutions of the 
+committees shall be issued by a majority of the votes present and, in case of a tie, the 
+chairman of the relevant committee shall have the casting vote. 
+c) Board meetings shall be documented and minutes including the discussions and 
+deliberations carried during such meetings shall be  prepared. Recommendations of the 
+committees and voting results shall be documented and retained in a special and organised 
+register, including the names of the attendees and any reservations they expressed (if any). 
+Such minutes shall be signed by all of the attending members. 
+ 
+Chapter 2: The Audit Committee 
+Article 51: Audit Committee Formation 
+a) An audit committee shall be formed by a resolution of the Company’s Board, and the 
+members of the audit committee shall be from the shareholders or others, provided that no 
+Executive Director  is among its members . The number of the members of the audit 
+committee shall not be less than three or more than five, provided that one of its members 
+is specialised in finance and accounting. 
+b) The audit committee shall have at least one Independent Director among its members.  36 
+c) The chairman of the audit committee shall be an Independent Director.9  
+d) Half of the audit committee’s members must be Independent Directors or from those on 
+whom the issues affecting independence in Article (19) of this Regulation do not apply.10 
+e) The Company's General Assembly shall, upon a recommendation of the Board, issue a 
+regulation for the audit committee which shall include the rules and procedures for the 
+activities and duties of the committee,  the rules for selecting its members, the means of 
+their nomination, the term of their membership, their remunerations, and the mechanism of 
+appointing temporary members in case a seat in the committee becomes vacant. 
+f) Any person who works or has worked in the Company's finance Department, the Executive 
+Management or for the Company’s external auditor during the preceding two years may 
+not be a member of the audit committee. 
+g) A member of the audit committee shall not be a member of the audit committees of more 
+than five listed joint stock companies at the same time. 
+ 
+Article 52: Competencies, powers and responsibilities of the Audit Committee11 
+The audit committee shall be competent in monitoring the Company’s activities and ensuring 
+the integrity and effectiveness of the reports, financial statements and internal control systems. 
+The duties of the audit committee shall particularly include the following: 
+a) Financial Reports: 
+1) analysing the Company's interim and annual  financial statements before presenting them 
+to the Board and providing its opinion and recommendations thereon  to ensure their 
+integrity, fairness and transparency; 
+2) providing its technical opinion, at the request of the Board, regarding whether the Board’s 
+report and the Company's financial statements are fair, balanced, understandable, and 
+contain information that allow s shareholders and investors to assess the Company's 
+financial position, performance, business model, and strategy;  
+3) analysing any important or non-familiar issues contained in the financial reports; 
+4) accurately investigating any issues raised by the Company's chief financial officer or any 
+person assuming his/her duties or the Company's compliance officer or external auditor; 
+5) examining the accounting estimates in respect of significant matters that are contained in 
+the financial reports; and 
+6) examining the accounting policies followed by the Company and providing its opinion and 
+recommendations to the Board thereon. 
+b) Internal Audit: 
+                                                 
+9  Guiding paragraph. 
+10  Guiding paragraph. 
+11 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G  amending Sub -Paragraph (3) of P aragraph ( b) of Article 52 of the Corporate Governance 
+Regulations and stating that such amendment shall be effective as of 19 /6/1445H Corresponding to 1/1/2024G, 
+provided that Sub-Paragraph (3) of Paragraph (b) of Article 55 of the Corporate Governance Regulations issued 
+by the  Board of the Authority Resolution no. (8-16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and 
+amended by the Board of the Authority Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 
+22/08/2022G, shall continue to be  effective until the effectiveness date of Sub-Paragraph (3) of Paragraph (b) of 
+Article 52 of these Regulations. 37 
+1) examining and reviewing the Company's internal and financial control  systems and risk 
+management system; 
+2) analysing the internal audit reports and following up the implementation of the corrective 
+measures in respect of the remarks made in such reports; and  
+3) monitoring and overseeing the performance and activities of the internal auditor and 
+internal audit department of the Company to ensure the availability of the necessary 
+resources and their effectiveness in performing the assigned activities and duties.  
+4) providing a recommendation to the Board on appointing the manager of the internal audit 
+unit or department, or the internal auditor and suggest his/her remunerations. 
+c) External Auditor:  
+1) providing recommendations to the Board to nominate external auditors, dismiss them , 
+determine their remunerations, and assess their performance after verifying their 
+independence and reviewing the scope of their work and the terms of their contracts; 
+2) verifying the independence of the external auditor, its objectivity , fairness,  and 
+effectiveness of the audit activities, taking into account the relevant rules and standards; 
+3) reviewing the plan of the Company's external auditor and its activities, and ensuring that it 
+does not provide any technical, administrative or consulting works that are beyond its scope 
+of work, and provides its opinion thereon; 
+4) responding to queries of the Company's external auditor; and  
+5) reviewing the external auditor's reports and its comments on the financial statements, and 
+following up the procedures taken in connection therewith. 
+d) Ensuring Compliance:  
+1) reviewing the findings of the reports of supervisory authorities and ensur ing that the 
+Company has taken the necessary actions in connection therewith; 
+2) ensuring the Company's compliance with the relevant laws, regulations, policies and 
+instructions; 
+3) reviewing the contracts and proposed Related Party transactions, and provid ing its 
+recommendations to the Board in connection therewith; and 
+4) reporting to the Board any issues in connection with what it deems necessary to take action 
+on, and providing recommendations as to the steps that should be taken.  
+ 
+Article 53: Conflict between the Audit Committee and the Board 
+If a conflict arises between the recommendations of the audit committee and the Board 
+resolutions, or if the Board refuses to put the committee's recommendation s into action as to 
+appointing or dismissal the company's external auditor or determining its remuneration, 
+assessing its performance or appointing the internal auditor, the Board’s report shall include 
+the committee's recommendations and justifications, and the reasons for not following such 
+recommendations.  
+ 
+ 38 
+Article 54: Audit Committee Meetings12 
+a) The audit committee shall convene periodically , provided that at least four meetings are 
+held during the Company's financial year. 
+b) The audit committee shall convene periodically with the Company's external auditor and 
+internal auditor. 
+c) The internal auditor and the external auditor may call for a meeting with the  audit 
+committee at any time as may be necessary. 
+  
+Article 55: Arrangements for Providing Remarks 
+The audit committee shall develop arrangements that enable the Company’s employees to 
+confidentially provide their remarks in respect of  any inaccuracies in the financial or other 
+reports. The audit committee shall ensure that such arrangements have been put into action 
+through an adequate independent investigation in respect of the error or inaccuracy, and shall 
+adopt appropriate follow-up procedures.  
+Article 56: Powers of the Audit Committee 
+In order to perform its duties, the audit committee may: 
+1) review the Company’s records and documents. 
+2) request any clarification or statement f rom the Board  members or the Executive 
+Management. 
+3) request that the Board calls for a General Assembly Meeting if its activities have been 
+impeded by the Board or if the Company has suffered significant losses and damages.  
+ 
+Chapter 3: Remuneration Committee 
+Article 57: Composition of the Remuneration Committee 
+a) The Company's Board shall, by resolution  thereof, set up a committee to be named the 
+“remuneration committee.” Members of the committee shall not  be Executive Directors, 
+provided that there shall be at least one Independent Director among them. 
+b) The Company's General Assembly, as per the Board recommendation, issues a regulation 
+for the remuneration committee including its procedure, duties  and rules for selecting its 
+members, the term of their membership and their remunerations. 
+ 
+ 
+                                                 
+12 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Paragraph (b) of Article 54 of the Corporate Governance Regulations  and stating that 
+such amendment shall be effective as of 19/6/1445H Corresponding to 1/1/2024G, provided that Paragraph (b) of 
+Article 57 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution no. (8-16-
+2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority Resolution 
+no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue to be  effective until the 
+effectiveness date of Paragraph (b) of Article 54 of these Regulations. 39 
+Article 58: Competencies of the Remuneration Committee 
+The competencies of the remuneration committee are: 
+1) preparing a clear policy for the remunerations of the Board members and its committees 
+and the Executive Management, and presenting such policy to the Board in preparation for 
+approval by the General Assembly, provided that such policy follows standards that linked 
+to performance, and disclosing and ensuring the implementation of such policy;  
+2) clarifying the relation between the paid remunerations and the ado pted remuneration 
+policy, and highlighting any material deviation from that policy. 
+3) periodically reviewing the remuneration policy and assessing its effectiveness in achieving 
+its objectives; and 
+4) providing recommendations to the Board in respect of the remunerations of its members, 
+the committees members and Senior Executives, in accordance with the approved policy. 
+ 
+Article 59: Remuneration Policy 
+Without prejudice to the provisions of the Companies Law and the Capital Market Law and 
+their implementing regulations, the remuneration policy shall: 
+1) be consistent with the Company's strategy and objectives; 
+2) provide remunerations with the aim of encouraging the Board  members and Executive 
+Management to achieve the success of the Company and its long-term development, by for 
+example making the variable part of the remuneration linked to the long-term performance; 
+3) determine remuneration based on  job level, duties and responsibilities, educational 
+qualifications, practical experience, skills and level of performance; 
+4) be consistent with the magnitude, nature and level of risks faced by the Company; 
+5) take into consideration the practices of other companies in respect of the determination of 
+remunerations, and avoid the disadvantages of such comparisons in leading to unjustifiable 
+increases in remunerations and compensations; 
+6) attract talented professionals and retain and motivate them without exaggeration; 
+7) be prepared in coordination with the nomination committee in respect of new appointments; 
+8) take into consideration situations where remunerations should be suspended or reclaimed 
+if it is determined that such remunerations were set based on inaccurate  information 
+provided by a member of the Board or the executive management, in order to prevent abuse 
+of power to obtain unmerited remunerations; and 
+9) regulating the grant of Company's shares to the Board  members and the Executive 
+Management, whether newly issued or purchased by the Company. 
+ 
+Article 60: Meetings of the Remuneration Committee 
+The remuneration committee shall convene periodically at least once a year, and as may be 
+necessary.  
+ 
+ 40 
+Chapter 4: Nomination Committee 
+Article 61: Composition of the Nomination Committee 
+a) The Company's Board shall, by resolution  thereof, form a committee to be named the 
+“nomination committee,”. Members of the committee  shall not  be Executive Directors, 
+provided that there shall be at least one Independent Director among them. 
+b) The Company's General Assembly, as per the Board recommendation, issues a regulation 
+for the nomination committee including its procedures, duties and rules for selecting its 
+members, the term of their membership and their remunerations. 
+ 
+Article 62: Competencies of the Nomination Committee 
+The competencies of the nomination committee shall include the following: 
+1) suggesting clear policies and standards for membership of the Board and the Executive 
+Management; 
+2) providing recommendations to the Board for the nomination or re -nomination of its 
+members in accordance with approved policies and standards, taking into account that 
+nomination shall not include any person convicted of a crime involving moral turpitude or 
+dishonesty; 
+3) preparing a description of the capabilities and qualifications required for membership of 
+the Board and Executive Management positions; 
+4) determining the amount of time that the member shall allocate to the activities of the Board; 
+5) annually reviewing the skills  and expertise  required of the Board members  and the 
+Executive Management;  
+6) reviewing the str ucture of the Board and the Executive Management and providing 
+recommendations regarding changes that may be made to such structure; 
+7) annually ensuring the independence of Independent Directors and the absence of any 
+conflicts of interest if a Board member also acts as a member of the Board of directors of 
+another company; 
+8) providing job description s for the Executive, Non-Executive and Independent Directors 
+and the Senior Executive Management; 
+9) setting procedures to be followed if the position of a me mber of the Board or a Senior 
+Executive becomes vacant; and 
+10) determining the strengths and weakness es of the Board and recommending remedy 
+solutions that serve the Company's interests. 
+ 
+Article 63: The Nomination Procedures 
+a) When nominating a Board member, the nomination committee shall take into consideration 
+the provisions of these Regulations and the requirements set by the Authorities; and 41 
+b) The number of nominees to the Board whose names are presented to the General Assembly 
+shall be more than the number of available seats to give a chance to the General Assembly 
+to select the Board members among those nominees.13 
+ 
+Article 64: Meetings of the Nomination Committee 
+The nomination committee shall convene periodically at least once a year, and as may be 
+necessary.  
+Article 65: Publishing the Nomination Announcement 
+The Company shall publish the nomination announcement on the websites of the Company and 
+the Exchange and through any other medium specified by the Authority; to invit e persons 
+wishing to be nominated to the membership of the Board, provided that the nomination period 
+shall remain open for at least a month from the date of the announcement. 
+ 
+Article 66: Nomination Rights of Shareholders  
+None of the provisions of this Chapter shall prejudice the right of any shareholder to nominate 
+him/herself or others to the membership of the Board in accordance with the provisions of the 
+Companies Law and its implementing regulations. 
+ 
+Chapter 5: Risk Management Committee 
+Article 67: Composition of the Risk Management Committee14 
+The Company's Board shall, by resolution therefrom, form a committee to be named the “risk 
+management committee.”. Chairman and majority of its members shall  be Non-Executive 
+Directors. The members of that committee shall possess an adequate level of knowledge in risk 
+management and finance. 
+ 
+Article 68: Competencies of the Risk Management Committee15 
+The competencies of the risk management committee shall include the following: 
+1) developing a strategy and comprehensive policies for risk management that are consistent 
+with the nature and volume of the Company's activities, monitoring their implementation, 
+and reviewing and updating them based on the Company's internal and external changing 
+factors; 
+2) determining and maintaining an acceptable level of risk that may be faced by the Company 
+and ensuring that the Company does not go beyond such level;  
+                                                 
+13 Guiding Paragraph. 
+14 Guiding Article. 
+15 Guiding Article. 42 
+3) Ensuring the feasibility of the Company continuation, the successful continuity  of its 
+activities and determining the risks that threaten its existence during the following twelve 
+(12) months; 
+4) overseeing the Company's risk management system and assessing the effectiveness of the 
+systems and mechanisms for determining and monitoring the risks that threaten the 
+Company in order to determine areas of inadequacy therein; 
+5) Regularly reassessing the Company's ability to take risks and be exposed to such risks 
+(through stress tests as an example); 
+6) preparing detailed reports on the exposure to risks and the recommended measures to 
+manage such risks, and presenting them to the Board; 
+7) providing recommendations to the Board on matters related to risk management; 
+8) ensuring the availability of adequate resources and systems for risk management; 
+9) reviewing the organi sational structure for risk management and providing 
+recommendations regarding the same before approval by the Board; 
+10) verifying the independence of the risk management employees from activities th at may 
+expose the Company to risk; 
+11) ensuring that the risk management employees understand the risks threatening the 
+Company and seeking to raise awareness of the culture of risk; and  
+12) reviewing any issues raised by the audit committee that may affect the Company's risk 
+management. 
+ 
+Article 69: Meetings of the Risk Management Committee16 
+The risk management committee shall convene periodically at least once every six months, and 
+as may be necessary.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+                                                 
+16  Guiding Article. 43 
+Part 5 
+ 
+Internal Control 
+ 
+Article 70: Internal Control System 
+The Board shall approve an internal control system for the Company in order to assess the 
+policies and procedures relating to risk management, implementation of the provisions of the 
+Company's governance rules approved by the Company and compliance with the relevant laws 
+and regulations. Such system shall ensure compliance with clear accountability standards at all 
+executive levels in the Company, and that Related Party transactions are implemented in 
+accordance with the relevant provisions and controls.  
+ 
+Article 71: Establishing Independent Units or Departments within the Company 
+ 
+a) For purposes of implementing the approved internal control system, the Company shall 
+establish units or departments for the assessment and management of risks and for internal 
+auditing. 
+b) The Company may utilise external entities to perform the duties and competencies of the 
+units or departments of r isks assessments and management  and internal control without 
+prejudice to the Company's responsibility for those duties and competencies. 
+ 
+Article 72: Duties of the Internal Audit Unit or Department 
+An internal audit unit or department assess es and monitors the implementation of the internal 
+control system, and verifies that the Company and its employees comply with the applicable 
+laws, regulations and instructions, and the Company's policies and procedures.  
+ 
+Article 73: Composing an Internal Audit Unit or Department17 
+The internal audit unit or department shall be composed of at least one internal auditor whose 
+appointment is recommended by the audit committee. Such internal auditor shall be responsible 
+before the audit committee. The formation and operation of the internal audit unit or department 
+shall take into consideration the following:  
+1) employees of such department shall be competent, independent and adequately trained, and 
+shall not be entrusted with any other functions that conflict with the goals of the internal 
+audit duties or infringe upon its independence; 
+                                                 
+17 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Article 73 of the Corporate Governance Regulations  and stating that such amendment 
+shall be effective and that Article 73 shall become mandatory as of 19 /6/1445H Corresponding to 1/1/2024G, 
+provided that Article 76 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution 
+no. (8-16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority 
+Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue t o be  effective 
+until the effectiveness date of Article 73 of these Regulations. 44 
+2) the department shall report to the audit committee, and shall be subordinate and accountable 
+to it;  
+3) the remunerations of the manager of the audit unit or department shall be determined by a 
+recommendation of the audit committee as per Company's policies; and 
+4) the department or unit shall be given access to information and documents, and shall be 
+able to obtain the same without any restrictions.  
+ 
+Article 74: Internal Audit Plan18 
+The internal audit unit or department shall operate pursuant to a comprehensive audit plan 
+approved by the audit committee. Such plan shall be updated annually. Key activities and 
+operations, including the activities related to the risk management and compliance departments, 
+shall be reviewed at least annually. 
+ 
+Article 75: Internal Audit Report19 
+a) The internal audit unit or department shall prepare and submit a written report o n its 
+activities at least quarterly to the Board and the audit committee. Such report shall include 
+an assessment of the Company's internal c ontrol system and the final opinion and 
+recommendations of the unit or department. Such report shall also specify the procedures 
+taken by each department for addressing the findings and recommendations from the 
+previous audit, and any remarks the reon, particularly failures to promptly address such 
+findings and recommendations and the reasons for such failure;  
+b) The internal audit unit or department shall prepare a general written report to be submitted 
+to the Board and the audit committee on the audit activities it carried during the fiscal year 
+compared to the approved plan. Such report shall explain the reasons for any deviation from 
+the plan, if any, during the quarter following the end of the relevant financial year; 
+c) The Board shall specify the scope of the report of the internal audit unit or department, 
+based on recommendations from the audit committee and the internal a udit unit or  
+department. The report shall include the following in particular:  
+1) procedures for monitoring and overseeing the financial affairs, investments and risk 
+management; 
+                                                 
+18 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Article 74 of the Corporate Governance Regulat ions and stating that such amendment 
+shall be effective and that Article 74 shall become mandatory as of 19 /6/1445H Corresponding to 1/1/2024G, 
+provided that Article 77 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution 
+no. (8-16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority 
+Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue to be  effective 
+until the effectiveness date of Article 74 of these Regulations. 
+19 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Article 75 of the Corporate Governance Regulations  and stating that such amendment 
+shall be e ffective and that Article 75 shall become mandatory as of 19 /6/1445H Corresponding to 1/1/2024G, 
+provided that Article 78 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution 
+no. (8-16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority 
+Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue to be  effective 
+until the effectiveness date of Article 75 of these Regulations. 45 
+2) assessing the development of risk factors threatening the Company and the existing 
+systems, in order to confront radical or unexpected changes; 
+3) an assessment of the performance of the Board and the Senior Management with respect 
+to the implementation of internal control systems, including specifying the number of 
+times the Board has been informed of control issues (including risk management) and 
+a description of the method followed to address such issues;  
+4) failures or weaknesses in the  implementation of internal control, or emergenc y 
+situations that have affected or may affect the Company's financial performance, and 
+the measures taken by the Company to address such failure s (particularly the issues 
+disclosed in the Company's annual reports and its financial statements); 
+5) the extent to which the Company has complied with the internal controls when 
+determining and managing risks; and  
+6) information describing the Company's risk management operations.  
+ 
+Article 76: Maintaining Internal Audit Reports 
+The Company shall keep records of the audit reports and business documents, which shall 
+clarify its accomplishments, findings and recommendations, and all actions taken in their 
+regard. 
+  46 
+Part 6 
+The Company’s External Auditor 
+Article 77: Assigning the Audit Function 
+The Company shall assign the function of auditing its annual accounts to an independent and 
+competent external auditor who possesses the necessary expertise and qualifications to prepare 
+an objective and independent report to the Board and the shareholders, setting out whether the 
+Company’s financial statements clearly and impartially express the financial position of the 
+Company and its performance in the significant areas. 
+  
+Article 78: Appointment of the External Auditor  
+The Ordinary General Assembly shall appoint the Company's external auditor based on a 
+recommendation from the Board, provided that the following requirements are met: 
+1) the nomination shall be based on a recommendation from the audit committee; 
+2) the external auditor shall be authorised by the Competent Authority; 
+3) the external auditor's interests shall not conflict with the interests of the Company; and 
+4) the number of nominees shall not be less than two.  
+ 
+Article 79: Duties of the External Auditor 
+ 
+The external auditor shall: 
+1) owe the duties of loyalty and care to the Company;  
+2) notify the Authority if the Board fails to take appropriate actions in respect of suspicious 
+issues it raises; and  
+3) Request the Board to call for a General Assembly meeting if the Board has not facilitated 
+his mission; and shall be liable to compensate  the Company, the shareholders or third 
+parties for the damages resulted from errors it commits in the course of its engagement. If 
+an error is attributable to more than one external auditor, they shall be jointly responsible 
+therefor. 
+ 
+  47 
+Part 7 
+Stakeholders 
+Article 80: Regulating the Relationship with Stakeholders20 
+The Board shall establish clear and written policies and procedures regulating the relationship 
+with Stakeholders with the aim of protecting  them and safeguard their rights , which  shall 
+include the following, in particular: 
+1) methods to compensate Stakeholders when their rights established by laws or protected by 
+contracts are infringed; 
+2) methods for resolving complaints or disputes that may arise between the Company and the 
+Stakeholders; 
+3) methods for building good relationships with customers and suppliers and maintaining the 
+confidentiality of their information; 
+4) rules of professional conduct for Company managers and employees that are prepared in 
+compliance with the proper professional and ethical standards a nd regulate their 
+relationship with Stakeholders, provided that the Board shall establish mechanisms for 
+supervising the implementation of, and compliance with such rules; 
+5) the Company's social contributions; 
+6) ensuring that the Company's transactions with Board members  and Related Parties are 
+entered into on terms identical to the terms of transactions with Stakeholders without any 
+discrimination or bias; 
+7) Stakeholders obtaining of information relevant to their activities to enable them to perform 
+their duties. Such information shall be correct and sufficient and shall be provided in timely 
+manner and on a regular basis; and 
+8) treating Company employees pursuant to the principles of justice and equality and without 
+discrimination.  
+Article 81: Reporting Non-Compliant Practices 
+The Board shall, based upon a proposal from the audit committee, develop the necessary 
+policies and procedures to be followed by Stakeholders when submitting complaints  or 
+reporting any violations, taking the following into consideration:  
+1) facilitating the method by which Stakeholders (including Company employees) report to 
+the Board conducts and practices of the Executive Management's  that violate applicable 
+laws, regulations and rules or raising doubts as to the financial statements or the internal 
+audit controls or others, whether such conducts or practices are against them or not, and 
+conducting the necessary investigation in that regard;  
+2) maintaining the confidentiality of reporting procedures through facilitating direct contact 
+with an independent member of the audit committee or other specialised committees; 
+3) appointing an employee to receive and address complaints or reports sent by Stakeholders; 
+4) dedicating a telephone number or an email address for receiving complaints; and 
+5) providing the necessary protection to the Stakeholders. 
+                                                 
+20  Guiding Article. 48 
+Article 82: Employee Incentives21  
+The Company shall establish program mes for developing and encouraging the participation 
+and performance of the Company’s employees. The programmes shall particularly include the 
+following: 
+1) forming committees or holding special ised workshops to hear the opinions of the 
+Company’s employees and d iscuss the issues and topics that are subject to important 
+decisions;  
+2) establishing a scheme for granting Company shares or a percentage of the Company profits 
+and pension programmes for employees, and setting up an independent fund for such 
+programme; and 
+3) establishing social organisations for the benefit of the Company’s employees. 
+ 
+ 
+  
+                                                 
+21 Guiding Article. 49 
+Part 8 
+Professional and Ethical Standards 
+Article 83: Professional Conduct Policy 
+The Board shall establish a policy for professional conduct and ethical values at the Company, 
+which shall particularly take the following into consideration:  
+1) ensuring that each member of the Board or the Executive Management and employees 
+perform his/her duties of loyalty and care to the Company, and undertake the measures that 
+may protect the Company's interests  and contribute to its development and increase its 
+value, and shall not, at all times, priorit ise his/her own interests over the interests of the 
+Company; 
+2) a Board member shall represent all shareholders  of the Company and take all actions to 
+achieve the best interests of the Company and its shareholders, while protecting the rights 
+of the other Stakeholders rather than only the interests of the group that elected him; 
+3) entrench among the Board members and Senior Executives the principle of compliance 
+with all relevant laws, regulations and instructions; 
+4) preventing the Board members or the Executive Management from abusing their positions 
+with the aim of achieving benefits for himself/herself or a third party; 
+5) ensuring that the Company's assets and resources are only used to achieve the Company’s 
+purposes and objectives, and not to achieve personal interests; and 
+6) establishing accurate, well-formed, and clear rules regulating the authority to access the 
+Company's internal information and timing to access it, in a way that prevents the Board 
+members, the Executive Management and others from making personal use or disclosing 
+the same to any person, except within the prescribed limits or as permitted by law. 
+ 
+Article 84: Social Responsibility22 
+The Ordinary General Assembly, based on the Board recommendation, shall establish a policy 
+that guarantees a balance between its objectives and those of the community for purposes of 
+developing the social and economic conditions of the community. 
+ 
+Article 85: Social Initiatives23 
+The Board shall establish programmes and determine the necessary methods for proposing 
+social initiatives by the Company, which include: 
+1) establishing indicators that link the Company's performance with its social initiatives and 
+comparing it with other companies that engage in similar activities;  
+2) disclosing the objectives of the Company's social responsibility to its employees and raising 
+their awareness and knowledge of social responsibility; 
+                                                 
+22 Guiding Article. 
+23 Guiding Article. 50 
+3) disclosing plans for achieving social responsibility in the periodical reports on the activities 
+of the Company's; and 
+4) establishing awareness programmes to the community to familiarise them with  the 
+Company's social responsibility. 
+ 
+  51 
+Part 9 
+Disclosure and Transparency 
+Article 86: Policies and Procedure of Disclosure 
+Without prejudice to the Rules on the Offer of Securities and Continuing Obligations, the Board 
+shall set forth in writing the policies, procedures and supervisory rules related to disclosure  
+pursuant to the disclosure requirements provided for in the Companies Law and the Capital 
+Market Law, as the case may be, and their implementing regulations, taking into consideration 
+the following:  
+1) such policies shall include proper disclosure methods that enable the shareholders and other 
+Stakeholders to access the financial and non -financial information  pertaining to the 
+Company’s performance and information in respect of ownership of shares, and to obtain 
+a comprehensive view of the Company's position;  
+2) disclosure to shareholders and investors shall be made without discrimination in a clear , 
+correct and non-misleading fashion, and in a timely, regular and accurate manner in order 
+to enable shareholders and other Stakeholders to exercise their rights to the fullest extent; 
+3) the Company's website shall include all information required to be disclosed and any details 
+or other information that may be published through other disclosure methods;24 
+4) reporting rules shal l be established and shall describe the information required to be 
+disclosed and the method of its classification in terms of its nature, and the frequency of its 
+disclosure; and 
+5) the disclosure policies shall be reviewed periodically and their compliance with the best 
+practices and the provisions of the Capital Market Law and its implementing rules shall be 
+verified. 
+ 
+Article 87: The Board’s Report25 
+The Board’s report shall include the Board's operations during the last fiscal year and all factors 
+that affect the company's businesses, such report shall include the following:  
+1) implemented and non -implemented provisions of these Regulations, and justifications 
+therefor; 
+2) names, qualifications, a nd experience of the Board  and committees’ members and 
+Executive Management;  
+3) names of the companies inside and outside the Kingdom in which a Board member is a 
+member of their current or previous Board member or manager; 
+                                                 
+24 Guiding Paragraph. 
+25 The Capital Market Authority Board issued its Resolution Number 8-5-2023 Dated 25/6/1444H Corresponding 
+to 18/1/2023G amending Paragraph (11) of Article 87 of the Corporate Governance Regulations and stating that 
+such amendment shall be effective as of 19 /6/1445H Corresponding to 1/1/2024G, provided that Paragraph (11) 
+of Article 90 of the Corporate Governance Regulations issued by the  Board of the Authority Resolution no. (8-
+16-2017) dated 16/05/1438H. corresponding to 13/02/2017G and amended by the Board of the Authority 
+Resolution no. (1 -94-2022) dated 24/01/1444H. corresponding to 22/08/2022G, shall continue to be  effective 
+until the effectiveness date of Paragraph (11) of Article 87 of these Regulations. 52 
+4) composition of the Board and classification of its members , as follows: Executive 
+Directors, Non-Executive Director, or Independent Director; 
+5) Procedure taken to the Board to inform its members, Non-Executive Directors in particular, 
+of the shareholders' suggestions and remarks on the Company and its performance. 
+6) a brief description of the competencies and duties of the committees , such as the audit 
+committee, the nomination committee and the remuneration committee indicating their 
+names, names of their chairmen, names of their members, the number of their respective 
+meetings, dates of those meetings and the members' attendance details of each meeting; 
+7) Where applicable, the means used by the Board to assess its performance, the performance 
+of its committees and members and the external body which conducted the assessment and 
+its relation with the Company, if any; 
+8) disclose the remuneration of the Board members and Executive Management as st ated in 
+Article (90) of these Regulations; 
+9) any punishment, penalty, precautionary procedure or preventive measure imposed on the 
+Company by the Authority or any other supervisory , regulatory or judiciary authority, 
+describing the reasons for non -compliance, the imposing autho rity and the measures 
+undertaken to remedy and avoid such non-compliance in the future; 
+10) results of the annual review of the effectiveness of the internal control procedures of the 
+Company and the opinion of the audit committee with respect to the adequacy of the 
+Company's internal control system; 
+11) the audit committee’s recommendation on appointing an internal auditor for the Company, 
+if it has made such recommendation in the last financial year. 
+12) the audit committee’s recommendation with conflict with Board resolution or those which 
+the Board disregards relating to the appointment, dismissal, assessment or determining the 
+remuneration of an external auditor , as well as justifications for those recommendations 
+and reasons for disregarding them.  
+13) details of the Company's social contributions, if any;  
+14) a list of the dates of the General Assembly meetings held during the last fiscal year and the 
+names of the Board members who attended them. 
+15) a description of the ma in scope of business of the Company and its affiliates. If there are 
+two or more, a statement showing each activity and how it affects the Company businesses 
+and results shall be attached. 
+16) a description of the company's significant plans and decisions (including changes to the 
+structure, expanding the Company's operations or halting them) and the future expectations. 
+17) information on any risks facing the Company (operational, financial or market related) and 
+the policy of managing and monitoring these risks. 
+18) a summary in a form of table or graph showing the company's assets, liabilities and results 
+of the last five fiscal year or since the incorporation date, whichever is shorter. 
+19) geographical analysis of the company's and its affiliates' revenues. 
+20) any material differences in the operational results compared to the preceding year's results, 
+along with any expectations announced by the company. 
+21) any inconsistency with the standards approved by the Saudi Organization for Chartered and 
+Professional Accountants.  53 
+22) name of each affiliate company, its capital, the company's ownership percentage, the main 
+scope of business, country of operation and country of incorporation. 
+23) details of shares and debt instruments issued for each affiliate company. 
+24) a description of the dividends distribution policy. 
+25) a description of any interest in a class of voting shares held by persons (other than the 
+company’s directors, Senior Executives and their relatives) who have notified the Company 
+of their holdings pursuant to Article 85 of the Rules on the Offer of Securities and 
+Continuing Obligations, together with any change to such interests during the last fiscal 
+year; 
+26) a description of any interest, contractual securities or rights issue of the Board members, 
+Senior Executives and their relatives on shares or debt instruments of the Company or its 
+affiliates, and any change on these interest or rights during the last fiscal year. 
+27) information on any loans (payable upon request or not), a statement of the total 
+indebtedness of the Company and its affiliates, any amounts paid  by the Company in 
+repayments of loans during the year, the amount of the principal debts, the creditor  name, 
+the loan term and remaining amount. In case there is no debts, a declaration thereof shall 
+be presented. 
+28) a description of the class and number of  any convertible debt instruments, contractual 
+securities, preemptive right or similar rights issued or granted by the Company during the 
+fiscal year, as well as stating any compensation obtained by the Company in this regard. 
+29) a description of any conversion or subscription rights under any convertible debt 
+instruments, contractually based securities, warrants or similar rights issued or granted by 
+the company. 
+30) description of any redemption, purchase or cancellation by the Company of any redeemable 
+debt instruments and the value of such securities outstanding, distinguishing between those 
+listed securities purchased by the Company and those purchased by its affiliates. 
+31) the number of Board  meetings held during the last financial year, their dates  and the 
+attendance record of each meeting listing the names of the attendees. 
+32) numbers of company's requests of shareholders records, dates and reasons thereof.   
+33) a description of any transaction between the Company and any Related Party. 
+34) information relating to any business  or contract to which the Company is a party and in 
+which a director of the Company, a Senior Executive or any person related to any of them 
+is or was interested, including the names of persons in relation, the nature, conditions, 
+durations and the amo unt of the business or contract. I f there are no such businesses or 
+contracts, the Company must submit a statement thereof. 
+35) a description of any arrangement or agreement under which a director or a Senior Executive 
+of the Company has waived any remuneration. 
+36) a description of any arrangement or agreement under which a shareholder of the Company 
+has waived any rights to dividends. 
+37) a statement of the value of any paid and outstanding statutory payment on account of any 
+zakat, taxes, fees or any other charges  that have not been paid until the end of the annual 
+financial period with a brief description and the reasons therefor. 
+38) a statement as to the value of any investments made or any reserves set up for the benefit 
+of the employees of the company. 54 
+39) declarations that: 
+a. proper books of account have been maintained;  
+b.the system of internal control is sound in design and has been effectively implemented; 
+and 
+c. there are no significant doubts concerning the company's ability to continue its activity. 
+40) if the external auditor's report contains reservations on the annual financial statements, the 
+Board report shall highlight this mentioning the reasons and any relevant information. 
+41) if the Board recommended replacing the external auditor befor e the end of i ts term, the 
+report shall indicate this mentioning the reasons for the replacement recommendation. 
+42) information relating to any competing business with the Company or any of its activities 
+that any member of the Board is engaging in or was engaging in such competing businesses, 
+including the names of persons in relation, the nature, conditions of such competing 
+businesses. If there are no such competing businesses, the Company must submit a 
+statement thereof.  
+ 
+Article 88: The Audit Committee’s Report 
+a) The report of the audit shall include  details of its performance of its competencies and 
+duties stated in these Regulations, provided that the report contains its recommendations 
+and opinion on the adequacy of the internal and financial control systems and  risk 
+management systems in the Company.  
+b) The Board shall make available sufficient copies of t he audit committees' report at the 
+Company's head office, and publish them on the Company's and the Exchange's websites 
+when publishing the invitation to convene the General Assembly, to enable shareholders to 
+get a copy thereof. Summary of the report shall be read at the General Assembly.    
+ 
+Article 89: Disclosure by the Board 
+The Board shall regulate the disclo sures of each of its members and the members of the 
+Executive Management, observing the following:  
+1) maintaining a register for the disclosures of the Board  members and the Executive 
+Management and updating it regularly based on disclosures required as per the Companies 
+Law, the Capital Market Law and their implementing regulations; and 
+2) making such register available for review by the Company's shareholders free of charge. 
+ 
+Article 90: Disclosure of Remunerations  
+a) The Board shall: 
+1) disclose the remuneration policy and the method by which remunerations of the Board 
+and executive management are determined; 
+2) provide an accurate, transparent and detailed disclosure in the  Board report on the  
+remunerations granted to the Board members and Executive Management, directly or 
+indirectly, without any omission or misleading information, and whether these were in 55 
+cash or other benefits of any nature. In case they were shares of the Company, the value 
+of the shares is the market value on the due date; 
+3) explain the relationship between remunerations granted and applicable remuneration 
+policy, highlighting any significant deviation from such policy;  
+Board 
+4) a description of the necessary details with respect to the remunerations and 
+compensations granted to each of the following, separately: 
+a. Board members;  
+b. five Senior Executives who have received the highest remuneration from the 
+Company, provided that the chief executive officer and chief financial officer are 
+among them.26 
+c. members of committees. 
+b) The disclosures in this article and in the Board report  shall be pursuant to the appended 
+schedule. 
+ 
+ 
+ 
+  
+                                                 
+26 The Capital Market Authority Board issued its Resolution Number 1-35-2018 Dated 9/7/1439H Corresponding 
+to 26/3/2018G stating that the remunerations of senior executives mentioned in sub -paragraph (b) o f paragraph 
+(4) of Article 90 of the Corporate Governance Regulations is to be disclosed collectively.   56 
+Part 10  
+Implementation of Corporate Governance 
+Article 91: Implementation of Effective Governance  
+The Board shall establish governance rules for the Company in accordance with the provisions 
+of these Regulations, and shall monitor their implementation, verify their effectiveness, and 
+amend them as necessary. To that end, the Board shall: 
+1) verify that the Company is in compliance with these rules; 
+2) review and update the rules pursuant to statutory requirements and best practices; 
+3) review and develop codes of professional conduct representing the Company's values and 
+other internal policies and procedures in order to fulfill the Company's requirements and in 
+accordance with best practices; and 
+4) regularly inform the Board members of the developments in corporate governance and best 
+practices, or authorise the audit committee or any other committee or department to 
+undertake this task. 
+ 
+Article 92: Formation of a Corporate Governance Committee27 
+If the Board forms a corporate governance committee, it shall assign to it the competencies 
+stipulated in Article ( 91) of these Regulations. Such committee shall oversee any matters 
+relating to the implementation of governance, and shall provide the Board with its reports and 
+recommendations at least annually. 
+ 
+ 
+  
+                                                 
+27 Guiding Article. 57 
+Part 11 
+ 
+Retaining of Documents  
+Article 93: Retaining of Documents 
+A Company shall retain all minutes, documents, reports and other  papers required to be 
+maintained in the company's head office for at least ten years as per these Regulations. This 
+shall include the Board report and audit committee report. Without prejudice to this period, a 
+company, in case of any lawsuit (file d or th reatened to be file d) or ongoing claim or any 
+investigation relating to those minutes, documents, reports and other papers, shall maintain 
+them until the end of the ongoing lawsuit, claim or investigation.   
+ 
+  58 
+Part 12 
+Closing Provisions 
+Article 94: Providing the Additional data and Information 
+The Authority may request from the Company any additional information or details it deems 
+necessary to verify the extent of its compliance with the provisions of these Regulations. 
+ 
+Article 95: Publication and Entry into Force  
+These Regulations shall be effective as per its approval resolution. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 59 
+Appendix (1) Remuneration Schedule 
+ 
+Board Remuneration 
+ 
+ 
+ 
+ 
+ Fixed remunerations Variable remunerations 
+End-of-service award 
+Aggregate Amount 
+Expenses Allowance  
+Specific amount 
+Allowance for attending Board 
+meetings 
+ Total Allowance for attending 
+committee meetings committee 
+In-kind benefits 
+Remunerations for technical, 
+managerial and consultative work 
+Remunerations of the chairman, 
+Managing Director or Secretary, if a 
+member 
+Total 
+Percentage of the profits 
+Periodic remunerations 
+Short-term incentive plans 
+Long-term incentive plans 
+Granted shares (insert the value) 
+Total 
+First: 
+Indepen
+dent 
+Director
+s 
+ 
+  
+1-                 
+2-                 
+3-                 
+Total                 
+Second: 
+Non-
+Executiv
+e 
+Director
+s 
+ 
+                
+1-                 
+2-                 
+3-                 
+Total                 
+Third: 
+Executiv
+e 
+Director
+s 
+                
+1-                 
+2-                 
+3-                 
+Total                 60 
+Remunerations of Senior Executives 28 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+28 The Capital Market Authority Board issued its Resolution Number 1-35-2018 Dated 9/7/1439H Corresponding to 
+26/3/2018G stating that the table for disclosure of senior executive remunerations specified in Appendix (1) of the Corporate 
+Governance Regulations is of guiding nature, and the disclosure of senior executives' remunerations in the Board of Directors' 
+reports, which will be issued for the financial periods beginning on 1/1/2020, shall be detailed in accordance with the table for 
+the disclosure of senior executives remunerations specified in Appendix (1) of the Corporate Governance Regulations.  
+Senior Executives 
+Fixed 
+remuneratio
+ns 
+Variable 
+remunerations 
+End-of-
+service 
+award 
+Total 
+remunerat
+ions for 
+Board 
+executive, 
+if any 
+Aggre
+gate 
+Amou
+nt 
+Salaries 
+Allowances 
+ 
+In-kind benefits 
+Total 
+Periodic remunerations 
+Profits 
+Short-term incentive plans 
+Long-term incentive plans 
+Granted shares (insert the 
+value) 
+Total 
+   
+1- CEO              
+2- CFO              
+3-              
+4-              
+5-              
+Total              61 
+Committees Members Remuneration 
+ 
+  
+Fixed 
+Remuneration 
+(Except for the 
+allowance for 
+attending Board 
+meetings) 
+ 
+Allowance for 
+attending Board 
+meetings 
+Total 
+Audit Committee Members 
+1-     
+2-     
+3-     
+Total    
+Remuneration Committee Members 
+1-    
+2-    
+3-    
+Total    
+Nomination Committee Members 
+1-    
+2-    
+3-    
+Total    
+Risks Committee Members 
+1-    
+2-    
+3-    
+Total    
+(………) Committee Members 
+1-    
+2-    
+3-    
+Total    
+ 

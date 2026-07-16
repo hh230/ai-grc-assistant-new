@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "contract templates--franchise agreement - retail.pdf",
+  "filename": "Franchise Agreement - Retail.pdf",
+  "extension": ".pdf",
+  "category": "Contract Templates",
+  "relative_path": "Contract Templates/Franchise Agreement - Retail.pdf",
+  "size_bytes": 1525197,
+  "last_modified": "2026-06-26T21:43:52.326052+00:00",
+  "checksum_sha256": "efce17aa3d99dacf1d42021533e13a401489aba5aee2d647ffa767dfa67b62f9",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 87,
+  "character_count": 177946,
+  "extraction_duration": 1.5763680409872904,
+  "parsed_at": "2026-07-12T16:09:23.997541+00:00",
+  "error": null,
+  "document_profile": "contract",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 178,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.13793103448275862,
+  "chunking_duration": 0.04377462505362928,
+  "chunked_at": "2026-07-12T16:09:24.045011+00:00",
+  "chunking_error": null
+}

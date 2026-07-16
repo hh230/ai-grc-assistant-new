@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "corporate policies--code-of-conduct-english-2.pdf",
+  "filename": "Code-of-Conduct-English-2.pdf",
+  "extension": ".pdf",
+  "category": "Corporate Policies",
+  "relative_path": "Corporate Policies/Code-of-Conduct-English-2.pdf",
+  "size_bytes": 11762214,
+  "last_modified": "2026-06-26T21:33:34.295068+00:00",
+  "checksum_sha256": "b10bfc1d71489b5a07c4d9393eb647312c7a6cd877ca9072f1e63f935f1d072e",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 56,
+  "character_count": 66174,
+  "extraction_duration": 1.076621791929938,
+  "parsed_at": "2026-07-12T16:09:32.700589+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 118,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.01547695801127702,
+  "chunked_at": "2026-07-12T16:09:32.718684+00:00",
+  "chunking_error": null
+}

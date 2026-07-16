@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "sdaia--compliance guide--دليل امتثال أصحاب العمل.pdf",
+  "filename": "دليل امتثال أصحاب العمل.pdf",
+  "extension": ".pdf",
+  "category": "SDAIA",
+  "relative_path": "SDAIA/Compliance Guide/دليل امتثال أصحاب العمل.pdf",
+  "size_bytes": 1380122,
+  "last_modified": "2026-06-26T19:52:54.058748+00:00",
+  "checksum_sha256": "115321508ba4482dd4ecbac005def46e9403da0a87106046885abe96949b521e",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 130,
+  "character_count": 123654,
+  "extraction_duration": 1.3218429168919101,
+  "parsed_at": "2026-07-12T16:13:04.577291+00:00",
+  "error": null,
+  "document_profile": "regulation",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 123,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.06818181818181818,
+  "chunking_duration": 0.038843334070406854,
+  "chunked_at": "2026-07-12T16:13:04.620524+00:00",
+  "chunking_error": null
+}

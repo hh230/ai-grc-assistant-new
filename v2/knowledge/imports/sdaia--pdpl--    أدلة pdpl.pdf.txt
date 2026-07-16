@@ -1,0 +1,1404 @@
+                                                                                                                           
+ 
+ 0 
+    
+   
+ 
+وثيقة 
+الدليل الإسترشادي للتقييم الذاتي للمتطلبات الأساسية 
+لنظام حماية البيانات الشخصية في المملكة العربية السعودية 
+للجهات العامة والخاصة 
+Guidance Document 
+on self-assessment for public and private entities 
+regarding the key requirements of the Personal 
+Data Protection Law of Saudi Arabia  
+                                                                                                                            
+ 
+ 1 
+مقدمة 
+ 
+ 
+1. الهدف من هذا المستند هو دعم الفئات المستهدفة في القيام بتقييم ذاتي مبدئي للمتطلبات الأساسية لنظام حماية البيانات 
+الوطنية مما سيوفر مؤشر مبدئي عن مدى إلتزام الجهات العامة والخاصة بنظام حماية البيانات الشخصية.  
+2. ما لم يُنص على خلاف ذلك في هذاالتقييم، فإن جميع المواد المذكورة فيه تشير إلى مواد النظام و جميع المصطلحات 
+المستخدمة في هذا التقييم الذاتي لها نفس المعنى المحدد في النظام.  
+3. يتم تقديم الأمثلة في هذا التقييم الذاتي لأغراض توضيحية فقط.  
+4. من الممكن أن يتم تعديل هذه الوثيقة بعد إعتماد اللوائح التنفيذية للنظام وإعتماد الوثائق الإرشادية إزاء المواضيع 
+المذكورة في هذه الوثيقة (على سبيل المثال مبدأ الغرض من معالجة البيانات الشخصية والمسوغ النظامي للمعالجة 
+والموافقة ونقل البيانات الشخصية إلى خارج الحدود الجغرافية للمملكة). 
+5. يجب أن يتم ملء قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الوطنية من قبل مسؤول حماية البيانات الشخصية أو
+الموظف المتخصص في الأنظمة أو الموظف المتخصص في الامتثال في الجهة. 
+ 
+1. This guidance document is designed to support the organizations to complete the self-
+assessment questionnaire on the Saudi Personal Data Protection Law (“PDPL”). Unless 
+otherwise specified in this guidance document, all articles mentioned in it refer to articles of 
+the PDPL. All terms used in this guidance document have the same meaning, as in the 
+PDPL.  
+2. The examples specified in this guidance document are presented purely for illustrative 
+purposes. 
+3. This guidance document may be updated after the Executive Regulations to the PDPL are 
+adopted and guidance documents on the data privacy topics mentioned in this document are 
+issued (e.g. processing principles, lawful basis for processing, consent, cross-border 
+transfers, etc.). 
+4. The self-assessment questionnaire must be completed by data privacy, legal or compliance 
+specialist of the organization.  
+                                                                                                                             
+ 
+ 2 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية 
+ 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+1. مبدأ الغرض من
+معالجة البيانات الشخصية 
+1. Processing 
+Principles 
+سؤال رقم1.1:  
+ 
+هل تم جمع البيانات الشخصية لأغراض محددة وصريحة ونظامية والتيتتعارض مع أي نظام قائم؟  
+Is personal data collected for specified and lawful purposes?  
+ 
+شرح السؤال رقم1.1: 
+ 
+ما المقصود بالأغراض المحددة؟ 
+ 
+يجب أن يكون لديكم كجهة تجمع بيانات شخصية غرض محدد (سبب)، لجمعكم ومعالجتكم لهذه البيانات الشخصية ويجب 
+أن يتم توثيق الغرض من قبلكم في سجلات أنشطة المعالجة. 
+مثال: يقوم قسم الموارد البشرية بجمع السير الذاتية للمرشحين المحتملين لأدوار وظيفية في الجهة. الغرض المحدد هو 
+فحص ما إذا كان المرشحون الجدد مناسبين للأدوار الوظيفية المطلوبة في الجهة. 
+ 
+ما المقصود بالأغراض النظامية؟ 
+ 
+يجب التأكد من أنكم كجهة تجمع وتعالج البيانات الشخصية أنكم تقومون بذلك على أساس نظامي كما هو محدد في المادتين 
+5 و 6 من نظام حماية البيانات الشخصية ولا يخالف أي أنظمة قائمة في المملكة العربية السعودية 
+Explanation of Question No. 1.1: 
+ 
+What is a specified purpose?  
+ 
+You need to have a specified purpose (reason), why you are using the personal data.  
+Your organization must determine the purpose of collection of personal data. The 
+purpose must be documented by your organization, e.g. in the records of processing 
+activities. 
+ 
+Example: An HR department collects the CV of potential candidates for new roles. The 
+specific purpose is to screen whether new candidates are suitable for new roles within 
+the organization.  
+ 
+What is a lawful purpose? 
+ 
+You must ensure that your organization collects personal data based on a lawful basis 
+(as the lawful bases are determined in Art. 5 and 6). You must not do anything with the 
+personal data in breach of the laws of Saudi Arabia.  
+ 
+ 
+الإجابة على السؤال رقم 1.1:  
+Answer to Question No. 1.1: 
+ 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم1.2:  
+ 
+هل البيانات الشخصية التي جُمعت من قبلكم ذات صلة بالغرض الذي جُ معت من أجله وأنه تم جمع الحد الأدنى منها؟ 
+Is personal data relevant, limited and minimized to what is necessary in relation 
+to the purposes for which it is processed? 
+                                                                                                                            
+ 
+ 3 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+شرح السؤال رقم1.2: 
+ 
+يجب ألا تجمع الجهة بيانات شخصية أكثر مما تحتاجه لتحقيق الغرض من معالجة البيانات الشخصية، إذا لم يكن هنالك
+حاجة ضرورية وماسة إلى البيانات الشخصية، فلا يجب على الجهة جمعها. 
+Explanation of Question No.1.2: 
+ 
+Your organization must not collect more personal data than it needs to achieve the 
+purpose of processing of personal data. If you do not strictly need personal data, you 
+must not collect it.   
+ 
+الإجابة على السؤال رقم 1.2: 
+Answer to Question No. 1.2: 
+  
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم1.3:  
+ 
+هل يتم الإحتفاظ بالبيانات الشخصية فقط في الحالات الضرورية للأغراض التي تتم معالجتها من أجلها، وهل يتم التخلص 
+منها بعد الإنتهاء منها؟  
+Is personal data kept only for as long as it is necessary for the purposes for 
+which it is processed? 
+ 
+شرح السؤال رقم1.3: 
+ 
+يجب على الجهة معالجة البيانات الشخصية فقط طالما كانت في حاجة إليها، ما لم تكن ملزمة بالحفاظ عليها بموجب 
+الأنظمة التي تنطبق على الجهة (على سبيل المثال الأنظمة المحددة للقطاع الذي تعمل جهتك فيه). 
+Explanation of Question No.1.3: 
+ 
+Your organization must only process personal data for as long as you need it, unless 
+you are obligated to keep it under the laws that apply to your organization (e.g. 
+specific laws of the sector in which your organization operates in). 
+ 
+ 
+الإجابة على السؤال رقم 1.3:  
+Answer to Question No. 1.3: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم1.4:  
+ 
+هل البيانات الشخصية الموجودة لدى الجهة دقيقة وكاملة ومحدثة؟  
+Is personal data accurate, complete and kept up to date? 
+ 
+ 
+شرح السؤال رقم1.4: 
+ 
+يجب على الجهة مراجعة البيانات الشخصية التي تحتفظ بها للتأكد من كونها دقيقة وكاملة. بالإضافةإلى توفير إجراء يسمح 
+لصاحب البيانات الشخصية بمراجعة وتعديل بياناتهم عند الحاجة. 
+مثال: يوجد في موقع الجهة الرسمي خيار يُمكِن  ه صاحب البيانات الشخصية من تحديث بياناته.  
+ 
+Explanation of Question No.1.4: 
+                                                                                                                            
+ 
+ 4 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+Your organization must regularly review personal data that it holds to ensure that it is 
+accurate, complete and up to date. You must also provide an opportunity to your 
+customers and employees to review their personal data and update it, where 
+necessary.  
+ 
+Example: A bank has a section on its customer website, where every user can update 
+his personal data. 
+ 
+ 
+ 
+الإجابة على السؤال رقم 1.4:  
+Answer to Question No. 1.4: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+.2 حقوق صاحب البيانات
+وآليات إشعاره وإحاطته 
+2. Privacy Notices 
+and Data Subject 
+Rights 
+سؤال رقم2.1:  
+ 
+هل يتم إحاطة أصحاب البيانات بالمسوغ النظامي لجمع ومعالجة بياناتهمالشخصية وإعلامهم بالغرض من المعالجة على 
+النحو المنصوص عليه في المادة رقم 13 من النظام (بما في ذلك حقوق أصحاب البيانات الشخصية كما وردت في المادة
+رقم 4 من النظام)؟  
+Are privacy notices clearly provided to data subjects informing them of the legal 
+basis for processing and the purpose of processing as well as all other 
+information, as set out in Art. 12 and Art. 13 (including the rights of the data 
+subjects specified in Art. 4)?  
+ 
+شرح السؤال رقم2.1: 
+ 
+يجب أن يتضمن إشعار الخصوصية الذي يهدف الى إحاطة أصحابالبيانات الشخصية بالمسوغ النظامي والغرض من 
+معالجة بياناتهم الشخصية، بالإضافة الى المعلومات التالية (وفقًا للمادتين 12 و13 من النظام: 
+ 
+● المسوغ النظامي لجمع بياناته الشخصية 
+ 
+● الغﺮض مﻦ جﻤع بﻴاناته الﺸﺨﺼﻴة، وما إذا كان جﻤعها كلها أو بعﻀها إلﺰامﻴًا أم إخﺘﻴاريًا، وإحاﻃﺘه كﺬلﻚ بأن بﻴاناته لﻦ 
+تُعالج لاحقًا بﺼﻮرة تﺘﻨافى مع الغﺮض مﻦ جﻤعها أو في غﻴﺮ الأحﻮال الﻤﻨﺼﻮص علﻴها في الﻤادة 10 من النظام 
+ 
+● أنواع البيانات الشخصية التي سيتم جمعها. 
+ 
+● الوسائل المستخدمة في جمع ومعالجة وتخزين وإتلاف البيانات الشخصية. 
+ 
+● هﻮيةمﻦ يﺠﻤع الﺒﻴانات الﺸﺨﺼﻴة وعﻨﻮان مﺮجعه عﻨﺪ الاقﺘﻀاء، ما لﻢ يﻜﻦ جﻤعها لأغﺮاض أمﻨﻴة.  
+ 
+● الﺠهة أو الﺠهات الﺘي سﻴﺠﺮى إفﺼاح الﺒﻴانات الﺸﺨﺼﻴة إلﻴها، وصفﺘها، وما إذا كانﺖ الﺒﻴانات الﺸﺨﺼﻴة سﺘﻨقﻞ أو 
+سﻴفﺼح عﻨها أو سﺘعالج خارج الﻤﻤلﻜة. 
+ 
+● اﻵثار والأخﻄار الﻤﺤﺘﻤلة الﺘي تﺘﺮتﺐ على عﺪم إتﻤام إجﺮاء جﻤع الﺒﻴانات الﺸﺨﺼﻴة.  
+ 
+● حقوق صاحب البيانات الشخصية المنصوص عليها في المادة4 في النظام وهي على النحو التالي 
+ 
+1- الﺤق في العلﻢ، ويﺸﻤﻞ ذلﻚ إحاﻃﺘه علﻤًا بالﻤﺴﻮغ الﻨﻈامي لﺠﻤع بﻴاناته الﺸﺨﺼﻴة والغﺮض مﻦ جﻤعها. 
+2-   الﺤق في وصﻮله إلى بﻴاناته الﺸﺨﺼﻴة الﻤﺘﻮافﺮة لﺪى جهة الﺘﺤﻜﻢ، وفق الﻀﻮابﻂ والإجﺮاءات الﺘي تﺤﺪدها 
+اللﻮائح، ودون إخلال بﻤا ورد في الﻤادة 9 من الﻨﻈام. 
+3-  الﺤق في ﻃلﺐ الﺤﺼﻮل على بﻴاناته الﺸﺨﺼﻴة الﻤﺘﻮافﺮة لﺪى جهة الﺘﺤﻜﻢ بﺼﻴغة مقﺮوءة وواضﺤة، وفق 
+الﻀﻮابﻂ والإجﺮاءات الﺘي تﺤﺪدها اللﻮائح. 
+4-   الﺤق في ﻃلﺐ تﺼﺤﻴح بﻴاناته الﺸﺨﺼﻴة الﻤﺘﻮافﺮة لﺪى جهة الﺘﺤﻜﻢ، أو إتﻤامها، أو تﺤﺪيﺜها. 
+5-   الﺤق في ﻃلﺐ إتلاف بﻴاناته الﺸﺨﺼﻴة الﻤﺘﻮافﺮة لﺪى جهة الﺘﺤﻜﻢ مﻤا إنﺘهﺖ الﺤاجة إلﻴه مﻨها، وذلﻚ دون                                                                                                                            
+ 
+ 5 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+إخلال بﻤا تقﻀي به الﻤادة 18 من النظام 
+ 
+Explanation of Question No. 2.1: 
+ 
+The privacy notice must include the following information (pursuant to Art. 12 and 13): 
+● Legal basis for collecting personal data. 
+● The purpose of collecting data subject’s personal data, and whether 
+collecting all or some of it is mandatory or optional, and informing data 
+subject also that his data will not be processed later in a manner inconsistent 
+with the purpose of its collection or in cases other than those stipulated in Art. 
+10. 
+● Types of personal data to be collected.  
+● Means used for collection, processing, storage and destruction of personal 
+data.  
+● The identity of the data controller, collecting the personal data and its 
+address, unless the collection is for security purposes. 
+● The entity(ies) to which the personal data will be disclosed, their role, and 
+whether the personal data will be transferred, disclosed or processed outside 
+the Kingdom. 
+● Possible effects and dangers of not completing the personal data collection 
+procedure. 
+● The rights of data subjects stipulated in Article 4 of the PDPL which are as 
+follows. 
+o The right to be informed of the legal basis and purpose for collecting 
+your personal data. 
+o The right to have access to your personal data. 
+o The right to obtain a copy of your personal data in a readable and clear 
+format. 
+o The right to request correction, completion or updating of your personal 
+data.  
+o The right to request erasure of your personal data if it is no longer 
+needed. 
+o The right to withdraw your consent to processing of your personal data 
+(when you give such).  
+ 
+ 
+ 
+ 
+الإجابة على السؤال رقم 2.1:  
+Answer to Question No. 2.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 2.2: 
+ 
+هل يوجد إجراء يُمكِن صاحب البيانات بتقديم طلب يخص حقوقه المنصوص عليها في المادة رقم 4 من النظام؟ 
+Do you have a procedure for a data subject to raise a request regarding his/her 
+rights? 
+ 
+شرح السؤال رقم2.2: 
+ 
+يجب على جميعالجهات التي تجمع وتعالج البيانات الشخصية الإستجابة لحقوق أصحاب البيانات الشخصية، لذلك يجب 
+على الجهة توثيق كيفية الإستجابة لهذه الحقوق عن طريق (السياسات، والإجراءات، ونماذج طلب حق صاحب البيانات في 
+الوصول الى بياناته الشخصية، وما إلى ذلك).                                                                                                                            
+ 
+ 6 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+Explanation of Question No. 2.2: 
+ 
+All organizations need to respond to data subject rights. Organizations, therefore, 
+need to have appropriate documentation that specify how such rights must be 
+responded to (e.g. policies, procedures, subject access right request forms, etc.).  
+ 
+ 
+الإجابة على السؤال رقم 2.2:  
+Answer to Question No. 2.2: 
+ 
+ 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 2.3: 
+ 
+هل أصحاب البيانات الشخصية قادرون على الوصول إلى بياناتهم الشخصية الموجودة لدى جهتكم؟  
+Are data subjects able to access their personal data and request copies of their 
+personal data?  
+ 
+شرح السؤال رقم2.3: 
+ 
+يمكن لأصحاب البيانات الشخصية الوصول إلى بياناتهم الشخصية وطلب نُسخ منها من خلال قنوات مختلفة، على سبيل 
+المثال، عبر البريد الإلكتروني أو الهاتف أو من خلال تطبيق مراسلة على موقع الشركة على الويب 
+Explanation of Question No. 2.3: 
+ 
+Data subjects may access their personal data and request its copies through various 
+channels. For example, via email, phone or through a messaging app on the 
+company’s website.  
+. 
+الإجابة على السؤال رقم 2.3:  
+Answer to Question No. 2.3: 
+ 
+الرجاء كتابةالإجابة هنا 
+ 
+سؤال رقم2.4:  
+ 
+هل يوجد إجراء لتصحيح وإكمال النقص–في حال وجوده-وتحديث البيانات الشخصية الموجودة لدى جهتكم؟ 
+Do you maintain processes for correcting, completing or updating personal data 
+for the data subject? 
+ 
+شرح السؤال رقم2.4: 
+ 
+يجبعلى الجهة التي لديها بيانات شخصية أن يكون لديها إجراءات معمول بها عن تحديث أو تصحيح البيانات الشخصية 
+بناءً على طلب صاحبها.                                                                                                                            
+ 
+ 7 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+Explanation of Question No. 2.4: 
+ 
+You must have a process and procedure in place, whereby you can update or correct 
+the personal data of an individual upon his request.   
+ 
+الإجابة على السؤال رقم 2.4:  
+Answer to Question No. 2.4: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 2.5:  
+ 
+في حال طلب صاحبالبيانات إتلاف بياناته الشخصية، هل يتم أخذ جميع الخطوات اللازمة لمسح جميع البيانات ونسخها 
+وروابطها وسجلات الأنشطة الإلكترونية مع الأخذ بعين الإعتبار الاستثناءات الواردة في المادة رقم 18من النظام؟  
+Where a data subject requests the destruction of personal data, do you take 
+every reasonable step to erase all data, links, action logs (where they identify 
+individuals) and copies subject to any exemptions as set out in Art. 18? 
+ 
+شرح السؤال رقم2.5: 
+ 
+إذا طلب صاحب البيانات من الجهة حذف بياناته الشخصية، يجب على الجهة حذفها بالكامل من جميع أنظمتها المعلوماتية، 
+بما في ذلك الأرشيف، ولا  يجوز للجهة الاحتفاظ بالبيانات الشخصية إلا في الحالات التالية (بموجب المادة 18 من النظام: 
+ إذاتﻮافﺮ مﺴﻮغ نﻈامي يﻮجﺐ الاحﺘفاظ بها مﺪة مﺤﺪدة، وفي هﺬه الﺤالة يﺠﺮى إتلافها بعﺪ إنﺘهاء هﺬه الﻤﺪة أو 
+إنﺘهاء الغﺮض مﻦ جﻤعها، أيهﻤا أﻃﻮل.  
+  إذاكانﺖ الﺒﻴانات الﺸﺨﺼﻴة مﺘﺼلة إتﺼالاً وثﻴقًا بقﻀﻴة مﻨﻈﻮرة أمام جهة قﻀائﻴة وكان الاحﺘفاظ بها مﻄلﻮبًا 
+لهﺬا الغﺮض، وفي هﺬه الﺤالة يﺠﺮى إتلافها بعﺪ إسﺘﻜﻤال الإجﺮاءات القﻀائﻴة الﺨاصة بالقﻀﻴة. 
+ولكن بعد إنتهاء الحالات المذكورة أعلاه، يجب على الجهة حذف البيانات الشخصية عند طلب صاحبها حذفها. 
+ 
+ 
+Explanation of Question No. 2.5: 
+ 
+If the data subject requests you to delete his/her personal data you must fully delete it 
+from all systems of your organization, including from the archive. You may retain the 
+personal data only in the following cases (under Art. 18): 
+● Other laws of Saudi Arabia require you to store this personal data for some 
+period. 
+● You are facing judicial procedures for which the personal data is required.  
+However, after the above cases are no longer relevant, you must delete the personal 
+data which the data subject requested you to delete.  
+ 
+ 
+ 
+الإجابة على السؤال رقم 2.5: 
+Answer to Question No. 2.5: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 3.موافقة صاحب 
+البيانات الشخصية 
+3. Consent 
+سؤال رقم3.1: 
+ 
+هل يوجد إثبات أو دليل أن أصحاب البيانات قد وافقوا على معالجة بياناتهم الشخصية من قبلكم؟ 
+Are you able to demonstrate that data subjects have consented to the                                                                                                                            
+ 
+ 8 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+processing of their data (where applicable)? 
+ 
+شرح السؤال رقم3.1: 
+ 
+على الجهة التي تجمع و تعالج البيانات الشخصية تسجيل و حفظ موافقات أصحاب البيانات الشخصية على جمع ومعالجة
+بياناتهم الشخصية في أنظمتها المعلوماتية. 
+Explanation of Question No. 3.1: 
+ 
+If you collect consents of data subject (where required by the PDPL) you must record 
+and store all such consents in the systems of your organization.  
+ 
+الإجابة على السؤال رقم 3.1:  
+Answer to Question No. 3.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 3.2: 
+ 
+هل طلبات الموافقة من قبل صاحب البيانات على جمع ومعالجة البيانات الشخصية الخاصة به واضحة وصريحة ومختلفة
+عن الشروط والأحكام الأخرى، ويتم إعدادها في صيغة واضحة وسهلة الوصول، ومكتوبة بلغة واضحة وصريحة؟ 
+Are consent requests clearly distinguishable from other terms and conditions, 
+prepared in an intelligible and accessible form, and written in clear and plain 
+language? 
+ 
+شرح السؤال رقم3.2: 
+ 
+يجب على الجهة التي تجمع وتعالج وتخزن البيانات الشخصية طلب الموافقة من صاحب البيانات الشخصية على ذلك،
+ويجب عدم دمج طلب الموافقة مع أي شروط وأحكام أخرى - على سبيل المثال شروط بيع المنتجات أو أداء الخدمات. 
+يجب تقديم طلب الموافقة إلى أصحاب البيانات الشخصية كمستند منفصل يمكن العثور عليه ومراجعته بسهولة. يجب أن 
+يكون طلب الموافقة موجزًا ويجب كتابته بلغة يمكن لأي شخص فهمها. 
+Explanation of Question No. 3.2: 
+ 
+In order to collect a consent from a data subject, you must request such a consent. 
+Such a request must not be combined with any other terms and conditions – e.g. 
+conditions for sale of products or performance of services. The request for consent 
+must be presented to the data subject as a separate document which the data subject 
+can easily find and review. The consent request must be concise and must be written 
+in a language that any person can understand – e.g. without legal education.  
+ 
+ 
+ 
+الإجابة على السؤال رقم 3.2: 
+Answer to Question No. 3.2: 
+ 
+ 
+الرجاء كتابة الإجابة هنا 
+                                                                                                                            
+ 
+ 9 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+سؤال رقم3.3: 
+ 
+هل يمكن لأصحاب البيانات في أي وقت سحب موافقتهم على معالجة بياناتهم الشخصية؟ 
+Can data subjects at any time withdraw their consent to data processing? 
+ 
+شرح السؤال رقم3.3: 
+ 
+يجب أن توفر الجهة لأصحاب البيانات الشخصية فرصة لسحب موافقتهم على معالجة بياناتهم الشخصية في أي وقت وبكل 
+سهولة. 
+Explanation of Question No. 3.3: 
+ 
+You must provide data subjects with an opportunity to withdraw their consent at any 
+time. The mechanism of such withdrawal must be easy and straightforward for the 
+data subject – not more difficult as it was to give consent in the first place. 
+ 
+  
+ 
+الإجابة على السؤال رقم 3.3: 
+Answer to Question No. 3.3: 
+ 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 4.المسوغ النظامي 
+للمعالجة 
+4. Legal Basis 
+Processing 
+سؤال رقم4.1: 
+ 
+4.1 إذا لمتكن الموافقة على معالجة البيانات الشخصية –هي الأساس للمعالجة - هل تم تحديد أيًا من القواعد النظامية 
+التالية لمعالجة البيانات الشخصية: 
+ 4.1.1 تخدم المعالجة المصالح الفعلية لصاحب البيانات ، لكن التواصل مع صاحب البيانات مستحيل أوصعب ؛ أو 
+ 4.1.2 تتم المعالجة وفقًا لنظام آخر أو في تنفيذإتفاقية سابقة يكون صاحب البيانات طرفًا فيها ؛ أو 
+ 4.1.3 جهة التحكم هي جهة عامة والمعالجة مطلوبة لأغراض أمنية أو لتلبية المتطلبات القضائية ؛ أو 
+ 4.1.4 المعالجة ضرورية لغرض المصلحة المشروعة 1 لجهة التحكم، بشرط عدم معالجة أي بيانات حساسة2 ؟ 
+ 
+4.1 Unless you obtained consent as a basis of processing - have you identified any 
+of the below legal bases to proceed personal data: 
+4.1.1 the processing serves actual interests of the data subject, but 
+communicating with the data subject is impossible or difficult; or 
+4.1.2 the processing is performed pursuant to another law or in 
+implementation of a previous agreement to which the data subject is a 
+party; or 
+4.1.3 the controller is a public entity and the processing is required for 
+security purposes or to satisfy judicial requirements; or 
+4.1.4 the processing is necessary for the purpose of legitimate interest of the 
+controller, provided that no sensitive data is processed? 
+ 
+                                                           
+1  تُعد المصلحة المشروعة أي حاجة ضرورية لدى جهة التحكم يتطلب تحقيقها معالجة بيانات شخصية ويتحقق فيها ما يلي:  
+أ- عدم مخالفتها لأي من الأنظمة المعمول بها في المملكة.  
+ب- ألا تخل بحقوق أصحاب البيانات الشخصية أو ترتب عليهم آثارًا سلبية .  
+ج- عدم تضمن المعالجة بيانات حساسة.   
+2 كل بيان شخصي يتعلق بأصل الفرد العرقي أو أصله الاثني، أو معتقده الديني أو الفكري أو السياسي، وكذلك البيانات الأمنية والجنائية، أو بيانات السمات الحيوية التي 
+تحدد الهوية، أو البيانات الوراثية، أو البيانات الصحية، والبيانات التي تدل على أن الفرد مجهول الأبوين أو أحدهما.  
+                                                                                                                            
+ 
+ 10 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+  
+ 
+شرح السؤال رقم4.1: 
+ 
+من أجل معالجة البيانات الشخصية بدون أخذ الموافقة من صاحبها، تحتاج الجهة الى سبب وجيه للقيام بذلك من الأسباب 
+التالية (أيهما مناسب): 
+ 
+ تخدم المعالجة المصالح الفعلية لصاحب البيانات، لكن التواصل مع صاحب البيانات مستحيل أوصعب  
+ تتم المعالجة وفقًا لنظام آخر أو في تنفيذإتفاقية سابقة يكون صاحب البيانات طرفًا فيها 
+ جهة التحكم هي جهة عامة3 والمعالجة مطلوبة لأغراض أمنية أو لتلبية المتطلبات القضائية  
+المعالجة ضرورية لغرض المصلحة المشروعة 4 لجهة التحكم، بشرط عدم معالجة أي بيانات حساسة5  
+Explanation of Question No. 4.1: 
+ 
+In order to process personal data you need a valid reason to do so. If you have not 
+used consent you may use any of the following reasons (whichever is suitable):  
+ 
+● The processing serves actual interests of the data subject, but 
+communicating with the data subject is impossible or difficult. 
+ 
+● The processing is performed pursuant to another law or in implementation of 
+a previous agreement to which the data subject is a party. 
+ 
+● The controller is a public entity and the processing is required for security 
+purposes or to satisfy judicial requirements. 
+ 
+● The processing is necessary for the purpose of legitimate interest of the 
+controller, provided that no sensitive data is processed.  
+ 
+ 
+ 
+الإجابة على السؤال رقم 4.1:  
+Answer to Question No. 4.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 
+ 
+                                                           
+3 الﺠهة العامة: أي وزارة أو مﺼلﺤة أو مﺆسﺴة عامة أو هﻴﺌة عامة، أو أي جهة عامة مﺴﺘقلة في الﻤﻤلﻜة، أو أي مﻦ الﺠهات الﺘابعة لها 
+4  تُعد المصلحة المشروعة أي حاجة ضرورية لدى جهة التحكم يتطلب تحقيقها معالجة بيانات شخصية ويتحقق فيها ما يلي:  
+أ- عدم مخالفتها لأي من الأنظمة المعمول بها في المملكة.  
+ب- ألا تخل بحقوق أصحاب البيانات الشخصية أو ترتب عليهم آثارًا سلبية .  
+ج- عدم تضمن المعالجة بيانات حساسة.   
+5 كل بيان شخصي يتعلق بأصل الفرد العرقي أو أصله الاثني، أو معتقده الديني أو الفكري أو السياسي، وكذلك البيانات الأمنية والجنائية، أو بيانات السمات الحيوية التي 
+تحدد الهوية، أو البيانات الوراثية، أو البيانات الصحية، والبيانات التي تدل على أن الفرد مجهول الأبوين أو أحدهما.  
+                                                                                                                            
+ 
+ 11 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+5.  جمع البيانات 
+الشخصية بطريقة غير 
+مباشرة من أصحابها 
+5. Collecting 
+personal data 
+not directly from 
+the data subject 
+سؤال رقم5.1: 
+ 
+في حالة عدم الحصول على البيانات الشخصية مباشرةً من أصحاب البيانات، هل تقومون بجمع هذه البيانات الشخصية وفقًا 
+لأحد المتطلبات المنصوص عليها في المادة رقم 10 من النظام؟ في حالة استخدام البيانات الشخصية لغرض آخر غير الذي 
+جمعت من أجله، هل يتم الالتزام بأحد من المتطلبات المنصوص عليها في المادة رقم 10 من النظام؟ 
+ 
+Where personal data is not obtained directly from data subjects, do you collect 
+such personal data in accordance with one of the requirements under article 10? 
+When you want to use personal data for other purpose than for which it was 
+collected, do you comply with one of the requirements under article 10? 
+ 
+شرح السؤال رقم5.1: 
+ 
+إذا لم يتم الحصول على البيانات الشخصية مباشرةً من صاحبها، أو تم تغيير الغرض من المعالجة – فيجب الإمتثال للمادة 
+رقم 10 من النظام. 
+Explanation of Question No. 5.1: 
+ 
+If you do not obtain personal data directly from the individual, or you change the 
+purpose of processing - you will need to comply with Art 10.  
+ 
+ 
+الإجابة على السؤال رقم 5.1:  
+Answer to Question No. 5.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 6. جهات المعالجة 
+6. Processors 
+سؤال رقم6.1: 
+ 
+هل يوجد إجراءات وسياسات لديكم كجهة تحكم عندإختياركم لجهة المعالجة-المعالجة للبيانات الشخصية-تضمن أن جهة 
+المعالجة المختارة تلتزم وتوفر الضمانات اللازمة لتنفيذ أحكام النظام واللوائح؟ 
+Do you maintain policies and procedures for contracting and conducting due 
+diligence on processors and sub-processors to ensure they have the necessary 
+guarantees to safeguard the personal data processed? 
+شرح السؤال رقم6.1: 
+ 
+يجب على جهة التحكم6 التأكد من أن جهة المعالجة7  التي تتعامل معها لديها ضوابط مناسبة مطبقة لحماية البيانات
+الشخصية و ذلك من خلال إستبيان طرف ثالث على سبيل المثال لفهم الضوابط والضمانات الموجودة لديهم لحماية البيانات 
+الشخصية. 
+Explanation of Question No. 6.1: 
+ 
+In order to ensure that the processors you contract with have appropriate controls in 
+place to safeguard the personal data you will need to ensure that you have conducted 
+sufficient due diligence on them through for example a third party questionnaire to 
+understand what controls and safeguards they have in place for protecting personal 
+data.  
+ 
+                                                           
+6 أيجهة عامة، وأي شﺨﺼﻴة ذات صفة ﻃﺒﻴعﻴة أو اعﺘﺒارية خاصة؛ تﺤﺪد الغﺮض مﻦ معالﺠة الﺒﻴانات الﺸﺨﺼﻴة وكﻴفﻴة ذلﻚ؛ سﻮاء أباشﺮت معالﺠة الﺒﻴانات بﻮساﻃﺘها 
+أم بﻮساﻃة جهة الﻤعالﺠة. 
+7  أيجهة عامة، وأي شﺨﺼﻴة ذات صفة ﻃﺒﻴعﻴة أو اعﺘﺒارية خاصة؛ تعالج الﺒﻴانات الﺸﺨﺼﻴة لﻤﺼلﺤة جهة الﺘﺤﻜﻢ ونﻴابة عﻨها                                                                                                                            
+ 
+ 12 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+ 
+الإجابة على السؤال رقم 6.1:  
+Answer to Question No. 6.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 7. الإفصاح عن البيانات 
+الشخصية 
+7. Disclosure of 
+Personal Data 
+سؤال رقم7.1: 
+ 
+هل يتم الإفصاح على البيانات الشخصية من قبلكم–كجهة تحكم- وفقً ا لإحدى الضمانات المنصوص عليها في المادتين رقم 
+15 و16 من النظام؟ 
+When you disclose personal data, do you do so only in accordance with one of 
+the safeguards under Art. 15 and subject to Art. 16? 
+ 
+شرح السؤال رقم7.1: 
+ 
+يجب على جهة التحكم قبل الإفصاح عن البيانات الشخصيةإتباع التالي: 
+ 
+1 -  التحقق من وجود سبب للكشف عن البيانات الشخصية كما هو منصوص في المادة رقم 15 من النظام 
+ 
+2 - إذا تم التحقق أنه يوجد سبب نظامي كما ورد في النقطة1 فيجبالتحقق من عدم وجود أي من القيود المنصوص عليها 
+في المادة رقم 16 من النظام لأنه في حال وجود أي قيد يجب عدم الإفصاح عن البيانات الشخصية 
+Explanation of Question No. 7.1: 
+ 
+Before disclosing personal data, you must take the following steps: 
+ 
+Step 1 - You must check that you have an applicable ground to disclose the personal 
+data under Art. 15.  
+ 
+Step 2 - If you do have an applicable ground for disclosure, you then need to check if 
+any of the restrictions of Art. 16 apply. If any of such restrictions apply – you must not 
+disclose the personal data.  
+ 
+الإجابة على السؤال رقم 7.1:  
+Answer to Question No. 7.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 7.2: 
+ 
+عندما تقوم بتصحيحالبيانات الشخصية أو إكمال النقص أو تحديثها، هل تقوم أنت-كجهة تحكم- بإبلاغ الجهات الأخرى التي 
+تم نقل البيانات الشخصية إليها سابقاً بهذه التغييرات؟ 
+When you correct, complete or update personal data, do you inform other 
+entities to which the personal data has been transferred of such changes?  
+ 
+شرح السؤال رقم7.2: 
+ 
+يجب على جهة التحكم حين تصحيح أو تحديث أو إكمال النقص في البيانات الشخصية لديها أن تقوم بإبلاغ الجهات الأخرى
+التي تم نقل البيانات الشخصية إليها لتقوم هذه الجهات بدورها بعكس هذه التغيرات على البيانات الشخصية لديها. 
+ 
+ 
+Explanation of Question No. 7.2: 
+                                                                                                                            
+ 
+ 13 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+If you get a subject access request requiring you to update the personal data of an 
+individual, you must ensure that if you shared such personal data with other entities, 
+you request such entities to update this personal data in their systems.  
+ 
+ 
+ 
+الإجابة على السؤال رقم 7.2:  
+Answer to Question No. 7.2: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 8.  الاحتفاظ بالبيانات 
+الشخصية 
+8. Data Retention 
+سؤال رقم8.1: 
+ 
+هل تقوم أنت–كجهة تحكم- بإتلاف البيانات الشخصية بعد إنتهاء الغرض من جمعها وذلك وفقً ا لمتطلبات المادة رقم 18 
+من النظام؟ 
+Do you destroy the personal data that you process once it is no longer 
+necessary for the purpose for which it was collected in accordance with the 
+requirements of Art. 18? 
+شرح السؤال رقم8.1: 
+يجب على الجهة معالجة البيانات الشخصية فقط في حالة الحاجةإليها إلا في حالة طُلب من الجهة الاحتفاظ بها من أجل أي 
+التزام نظامي. 
+عند إنتهاء فترة الاحتفاظ المحددة، لا يسمح للجهة الاحتفاظ بالبيانات الشخصية إلا في الحالات التالية: 
+● هناك أساس نظامي آخر للاحتفاظ بالبيانات الشخصية. 
+● إذا كانت البيانات الشخصية مرتبطة إرتباطًا وثيقًا بقضية قيد النظر أمام محكمة وكان الاحتفاظ بالبيانات 
+الشخصية مطلوبًا لهذا الغرض. 
+Explanation of Question No. 8.1: 
+ 
+You must only process personal data for as long as you need it, unless you are 
+required to retain it for a legal obligation.  
+ 
+On expiration of the determined retention period you may retain personal data only in 
+the following cases: 
+● There is another legal basis to keep the personal data. 
+● If the personal data is closely related to a case under consideration before a 
+court and the retention of the personal data is required for that purpose. 
+ 
+ 
+ 
+الإجابة على السؤال رقم 8.1:  
+Answer to Question No. 8.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 9. الإجراءات التقنية 
+والتنظيمية 
+9. Technical and 
+Organizational 
+Measures 
+سؤال رقم9.1: 
+ 
+هل تمإتخاذ جميع ما يلزم من إجراءات ووسائل تنظيمية وإدارية وتقنية تضمن المحافظة على البيانات الشخصية بما في 
+ذلك حمايتها عند نقلها؟ 
+Have you implemented appropriate technical or organizational measures to 
+ensure security of personal data, including its protection during transfers? 
+                                                                                                                            
+ 
+ 14 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+شرح السؤال رقم9.1: 
+ 
+تحتاج الجهات التي تتعامل مع البيانات الشخصية إلى تدابير تقنية وتنظيمية كافية لحماية البياناتالشخصية والتأكد من 
+سريتها وتوافرها وسلامتها عند نقلها واللإحتفاظ بها. 
+Explanation of Question No. 9.1: 
+ 
+An organization needs to have adequate technical and organizational measures to 
+safeguard the personal data. Such controls are required to protect the confidentiality, 
+integrity and availability of the personal data during its transmission and storage.  
+ 
+الإجابة على السؤال رقم 9.1:  
+Answer to Question No. 9.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 
+ 10. إخطار الجهة 
+المختصة في حالة حدوث 
+تسرب أو تلف للبيانات 
+الشخصية 
+10. Breach 
+Notification to 
+the Competent 
+Authority 
+سؤال رقم10.1: 
+ 
+هل يوجد إجراء (أو ما يعادله)  موثق لديكم–كجهة تحكم- لإخطار الجهة المختصة8 في حال حدوث تسرب أو تلف أو
+وصول غير مشروع الى البيانات الشخصية؟ 
+Do you have a documented procedure (or equivalent) to notify the Competent 
+Authority of a personal data breach?  
+ 
+شرح السؤال رقم10.1: 
+يجب أن يكون لدى جهة التحكم سياسة وإجراءات للتعامل مع تسرب البيانات و  يجب أن تحوي هذه السياسات و 
+الإجراءات تفاصيل عن كيفية إرسال الإخطارات بشأن تسرب البيانات إلى الجهة المختصة و أصحاب البيانات الشخصية 
+(عند الحاجة). 
+Explanation of Question No. 10.1: 
+You should have in place a Data Breach Handling Policy and Procedure in order to 
+respond to personal data breaches. This document must also instruct you on when 
+and how you must make notifications to the competent authority and data subjects 
+(where required). 
+ 
+ 
+الإجابة على السؤال رقم 10.1:  
+Answer to Question No. 10.1: 
+ 
+الرجاء كتابةالإجابة هنا 
+ 
+ 11. تقييم الأثار المترتبة 
+على معالجة البيانات 
+الشخصية 
+11. Data 
+Protection 
+Impact 
+Assessments 
+السؤال رقم11.1: 
+ 
+هل يتم إجراء عمليات تقييم الأثار المترتبة على معالجة البيانات الشخصية لأي منتج أو خدمة تقدم للعموم بشكل مستمر وفقا 
+للمادة رقم 22 من النظام؟ 
+Do you conduct data protection impact assessments (in accordance with Art. 22 
+of the PDPL) on an ongoing basis? 
+ 
+                                                           
+8 الﺠهة الﺘي يﺼﺪر بﺘﺤﺪيﺪها قﺮار مﻦ مﺠلﺲ الﻮزراء. سوف يكون مكتب إدارة البيانات الوطنية الجهة المختصة من سبتمبر 2023.                                                                                                                            
+ 
+ 15 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+شرح السؤال رقم11.1: 
+ 
+يجب على الجهة إجراء عمليات تقييم الأثار المترتبة على معالجة البيانات الشخصية لأي منتج أو خدمة تقدم للعموم بشكل 
+مستمر ومنها تقييم المخاطر بما يتعلق بمخالفة نظام حماية البيانات الشخصية. 
+Explanation of Question No. 11.1: 
+ 
+You must assess data privacy risks (risks of violating the PDPL) in relation to every 
+product and a service that you plan to offer to the public.  
+ 
+ 
+الإجابة على السؤال رقم 11.1:  
+Answer to Question No. 11.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 12. معالجة البيانات 
+الصحية 
+12. Processing 
+of Health Data 
+سؤال رقم12.1: 
+ 
+هل يتم معالجة البيانات الصحية في الجهة؟ 
+Do you process Health Data? 
+ 
+شرح السؤال رقم12.1: 
+ 
+البيانات الصحية هي بيانات شخصية تتضمن أي بيانات تتعلق بالحالة الصحيةوالبدنية والعقلية والنفسية للفرد، أو المتعلقة 
+بالخدمات الصحية التي يتلقاها ذلك الفرد. 
+Explanation of Question No. 12.1: 
+ 
+Health Data is personal data that includes any personal data related to an individual's 
+health condition, whether their physical, mental or psychological conditions, or related 
+to health services received by that individual. 
+ 
+الإجابة على السؤال رقم 1.3:  
+Answer to Question No. 1.3: 
+ 
+الرجاء كتابة الإجابة هنا 
+سؤال رقم 12.2: 
+إذا كان هنالك معالجة بيانات صحية هل تم تطبيق الضوابط المذكورة فيالمادة رقم 23 من النظام؟ 
+يشمل ذلك قصر حق الاطلاع على البيانات الصحية على أقل عدد ممكن من الموظفين. 
+Question No. 12.2: 
+If you process Health Data, have you implemented the extra controls as set out in Art 
+23? This must include restricting the right to access to health data to the minimum 
+number of employees.  
+ 
+شرح السؤال رقم12.2: 
+ 
+في حال القيام بمعالجة البياناتالصحية، فيجب التأكد مما يلي: 
+● تقييد الحق في الوصول إلى البيانات الصحية ، بما في ذلك الملفات الطبية ، على الحد الأدنى من عدد 
+الموظفين وإلى الحد الضروري فقط لتقديم الخدمات الصحية المطلوبة. 
+● تقييد إجراءات وعمليات معالجة البيانات الصحية إلى الحد الأدنى الممكن للموظفين والعاملين حسب 
+الضرورة لتقديم الخدمات الصحية أو تقديم برامج التأمين الصحي. 
+Explanation of Question No. 12.2: 
+                                                                                                                            
+ 
+ 16 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+If you process Health Data, you must ensure the following: 
+● Restricting the right to access Health Data, including medical files, to the 
+minimum number of employees and only to the extent necessary to provide 
+the required Health Services. 
+● Restricting Health Data Processing procedures and operations to the 
+minimum extent possible of employees and workers as necessary to provide 
+Health Services or offer health insurance programs. 
+ 
+ 
+الإجابة على السؤال رقم 12.2: 
+Answer to Question No. 12.2: 
+ 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 
+ 
+ 13.  معالجة البيانات 
+الائتمانية 
+13. Processing 
+of Credit Data 
+سؤال رقم13.1: 
+ 
+هل يتم معالجة البيانات الائتمانية في جهتكم؟ 
+Do you process Credit Data?  
+ 
+شرح السؤال رقم13.1: 
+البيانات الائتمانية هي بيانات شخصية تتعلق بطلب الفرد للحصول على تمويل من جهة تمويلية سواءً كانت لأغراض عائلية
+أو شخصية، بما في ذلك أي بيانات تتعلق بقدرة هذا الفرد على الحصول على القروض وسدادها، والتاريخ الائتماني لذلك 
+الشخص. 
+Explanation of Question No. 13.1: 
+ 
+Credit Data is personal data that includes any personal data related to an individual's 
+request for, or obtaining of, financing from a financing entity, whether for a personal or 
+family purpose, including any data relating to that individual’s ability to obtain and 
+repay debts, and the credit history of that person. 
+ 
+الإجابة على السؤال رقم 13.1:  
+Answer to Question No. 13.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 13.2: 
+ 
+إذا كان هنالك معالجة للبيانات الائتمانية هل تم تطبيق الضوابط المذكورة في المادة رقم 24 من النظام؟ 
+If you process Credit Data, have you implemented the extra controls as set out 
+in Art. 24? 
+ 
+ 
+شرح السؤال رقم13.2: 
+في حال معالجة البيانات الائتمانية، فيجب التأكد مما يلي 
+ إتﺨاذ ما يلﺰم للﺘﺤقق مﻦ تﻮافﺮ الﻤﻮافقة الﺼﺮيﺤة مﻦ صاحﺐ الﺒﻴانات الﺸﺨﺼﻴة على جﻤع هﺬه الﺒﻴانات أو 
+تغﻴﻴﺮ الغﺮض مﻦ جﻤعها أو الإفﺼاح عﻨها أو نﺸﺮها وفق أحﻜام الﻨﻈام ونﻈام الﻤعلﻮمات الائﺘﻤانﻴة. 
+ وجﻮب إشعار صاحﺐ الﺒﻴانات الﺸﺨﺼﻴة عﻨﺪ ورود ﻃلﺐ الإفﺼاح عﻦ بﻴاناته الائﺘﻤانﻴة مﻦ أي جهة.                                                                                                                            
+ 
+ 17 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+Explanation of Question No. 13.2: 
+ 
+If you process Credit Data, you must ensure the following: 
+● Implement appropriate measures to verify that the data subject has given 
+their explicit consent to the collection of the personal data, changing the 
+purpose of the collection, or disclosure or publishing of the personal data in 
+accordance with the provisions of this law and the credit information law. 
+● Requiring that the data subject be notified when a request for disclosure of 
+their Credit Data is received from any entity. 
+ 
+ 
+الإجابة على السؤال رقم 13.2:  
+Answer to Question No. 13.2: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 14. الإعلانات والتوعية 
+14. Advertising 
+and awareness 
+materials 
+سؤال رقم14.1: 
+ 
+هل يتم استخدام وسائل الاتصال الشخصية للأفراد(مثل البريد أو البريد الإلكتروني) للإعلان أو التوعية من قبل جهتكم؟ 
+Do you use personal means of communication (such as post and/or email) for 
+advertising and/or awareness?  
+ 
+شرح السؤال رقم14.1: 
+ 
+تتضمن عمليات التواصل إرسال رسائل بريدإلكتروني، ورسائل نصية، وإشعارات الدفع ، وما إلى ذلك لإبلاغ أصحاب 
+البيانات الشخصية عن المعلومات التجارية أو التسويقية أو غيرها من المعلومات. 
+Explanation of Question No. 14.1: 
+ 
+Such communication includes sending emails, text messages, push-notifications, etc. 
+to inform the data subject of some commercial, marketing or other information. 
+الإجابة على السؤال رقم 14.1:  
+Answer to Question No. 14.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 14.2: 
+ 
+إذا كان الجواب للسؤال رقم14.1 نعم هل تجرى هذه الإعلانات أو عمليات التواصل وفقا لمتطلبات المادة رقم25 من
+النظام؟ 
+Do you conduct such advertising and/or awareness in accordance with the 
+requirements of the Art. 25 of the PDPL? 
+ 
+شرح السؤال رقم 14.2: 
+ 
+ما لم تكن جهة عامة، يجب الامتثال للمتطلبات التالية قبل إرسال مواد إعلانية وتوعوية 
+ 
+ أنتﺆخﺬ مﻮافقة الﻤﺘلقي الﻤﺴﺘهﺪف على إرسال هﺬه الﻤﻮاد إلﻴه. 
+ أنيﻮفﺮ مﺮسﻞ الﻤﻮاد آلﻴة واضﺤة -بﺤﺴﺐ ما تﺤﺪده اللﻮائح- تﻤﻜﻦ الﻤﺘلقي الﻤﺴﺘهﺪف مﻦ إبﺪاء رغﺒﺘه في 
+الﺘﻮقﻒ عﻦ إرسالها إلﻴه . 
+Explanation of Question No. 14.2: 
+                                                                                                                            
+ 
+ 18 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+Unless you are a public entity, you must comply with following requirements before 
+sending advertising and awareness materials: 
+ 
+● The target recipient must provide a clear consent for such communication. 
+● The target recipient must have a clear mechanism to request stopping 
+receiving such materials.  
+ 
+ 
+الإجابة على السؤال رقم 14.2:  
+Answer to Question No. 14.2: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 15. معالجة للبيانات 
+الشخصية لأغراض 
+تسويقية 
+15. Processing 
+Personal Data 
+for Marketing 
+purposes 
+سؤال رقم15:1: 
+ 
+إذا كان هناك معالجة للبيانات الشخصية لأغراض تسويقية، فهل تجمع الموافقة على هذا التسويق؟ وهل يتم ضمان عدم 
+جمع أي بيانات حساسة لمثل هذه الأغراض التسويقية؟ 
+If you process personal data for marketing purposes, do you collect consent for 
+such marketing and do you ensure that no sensitive data is collected for such 
+marketing purposes? 
+ 
+شرحالسؤال رقم 15.1: 
+ 
+إذا تمت معالجة البيانات الشخصية لأغراض التسويق، فيجب تلبية المتطلبات الإضافية التالية 
+● الحصول على موافقة من صاحب البيانات الشخصية لمثل هذه المعالجة. 
+● لا يمكن إستخدام أي بيانات شخصية حساسة. 
+Explanation of Question No. 15.1: 
+ 
+If you process personal data for marketing purposes, you must meet the following 
+additional requirements: 
+● You obtain consent from the data subject for such processing; 
+● No sensitive personal data can be used for such marketing. 
+الإجابة على السؤال رقم 15.1:  
+Answer to Question No. 15.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 15.2: 
+ 
+عند أخذ الموافقة لمعالجة البيانات الشخصية لأغراض التسويق من صاحب البياناتالشخصية، هل يتم ذلك وفقً ا للمادة رقم 
+26 من النظام؟ 
+When collecting consent for marketing purposes is such collection of consent 
+in accordance with the PDPL? 
+ 
+ 
+ 
+                                                                                                                            
+ 
+ 19 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+شرح السؤال رقم15.2: 
+ 
+الرجاء الرجوع للمحوررقم (3. موافقة صاحب البيانات الشخصية) النقاط رقم 3.1 و3.2 و3.3 من هذا المستند. 
+Explanation of Question No. 15.2: 
+ 
+Please see the comments on the consent in sections 3.1, 3.2 and 3.3 of this 
+document.   
+ 
+ 
+الإجابة على السؤال رقم 15.2:  
+Answer to Question No. 15.2: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 16. معالجة البيانات 
+الشخصية لأغراض علمية 
+أو بحثية أو إحصائية 
+16. Processing 
+Personal Data 
+for scientific 
+research, or 
+statistical 
+purposes 
+سؤال رقم16.1: 
+ 
+هل يتم القيام بمعالجة البيانات الشخصية لأغراض علمية أو بحثية أو إحصائية؟ إذا كان الأمر كذلك ، فهل يتم الإلتزام بما 
+ورد في المادة رقم 18 من النظام؟ 
+Do you process personal data for scientific, research, or statistical purposes? If 
+so, do you comply with Art. 27?  
+ 
+شرح السؤال رقم16.1: 
+ 
+عند القيام بمعالجة البيانات الشخصية لأغراض علمية أو بحثية أو إحصائية، فيجب الإمتثال لجميع متطلبات نظام حماية 
+البيانات الشخصية. وبالإضافة إلى ذلك يجوز لجهتك معالجة البيانات الشخصية لهذه الأغراض دون موافقة صاحب البيانات 
+الشخصية  في الحالات التالية:  
+ إذا لم تتضمن البيانات الشخصية ما يدل على هوية صاحبها على وجه التحديد. 
+ إذا كان سَيُجرىإتلاف ما يدل على هوية صاحب البيانات الشخصية على وجه التحديد خلال عملية مُعالجتها وقبل 
+الإفصاح عنها لأي جهة أُخرى ولم تكن تلك البيانات بيانات حساسة. 
+إذا كان جمع البيانات الشخصية أو معالجتها لهذه الأغراض يقتضيها نظام آخر أو تنفيذاً لإتفاق سابق يكون صاحبها طرفاً 
+فيه. 
+ 
+ 
+ 
+Explanation of Question No. 16.1: 
+ 
+If you process personal data for scientific, research, or statistical purposes you must 
+comply with all the requirements of the PDPL.  
+ 
+Additionally, you may process personal data for such purposes without the consent of 
+the data subject in the following cases: 
+● such data it does not specifically identify the data subject (e.g. the data is 
+anonymized); 
+● the evidence of the data subject’s identity will be destroyed during the 
+processing and prior to disclosure of such data to any other entity, if it is not 
+sensitive data. 
+● if personal data is collected or processed for these purposes is required by 
+another law or in implementation of a previous agreement to which the data 
+subject is a party. 
+ 
+الإجابة على السؤال رقم 16.1: 
+Answer to Question No. 16.1: 
+ 
+                                                                                                                            
+ 
+ 20 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 17.  الوثائق الرسمية 
+17. Official 
+documents 
+سؤال رقم17.1: 
+ 
+هل يتم معالجة الوثائق الرسمية؟ إذا كان الجواب للسؤال نعم، هل يتم القيام بتصوير ونسخ هذه الوثائق الرسمية بما يتوافق
+مع الحالات المذكورة في المادة رقم 28 في النظام؟ 
+Do you process official documents? If so, do you restrict the copying of official 
+documents to the cases as set out in Art. 28 of the PDPL?  
+ 
+شرح السؤال رقم17.1: 
+ 
+يجب ألا يتم نسخ المستندات الرسمية التيتحوي بيانات شخصية تؤدي الى التعرف على صاحب هذه البيانات، إلا إذا: 
+● تم طلب هذه النسخ بموجب نظام قائم 
+● تم طلب هذه النسخ من جهة عامة وفقاً لما تحدده اللوائح 
+Explanation of Question No. 17.1: 
+ 
+You must not copy official document where data subjects are identifiable, unless: 
+● it is required by the law or 
+● a competent public authority requests copying such documents pursuant to 
+the Regulations. 
+ 
+الإجابة على السؤال رقم 17.1:  
+Answer to Question No. 17.1: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 18. نقل البيانات 
+الشخصية إلى خارج 
+الحدود الجغرافية للمملكة 
+18. Data 
+Transfers 
+Outside the 
+Kingdom 
+سؤال رقم18.1: 
+ 
+هل يتم القيام بنقل وتخزين ومعالجة البيانات الشخصية خارج الحدود الجغرافية للمملكة العربيةالسعودية؟ 
+18.1 Do you transfer, store or process personal data outside Saudi Arabia?  
+ 
+شرح السؤال رقم18.1: 
+ 
+نقل البيانات الشخصية خارج حدود المملكة العربية السعودية يتضمن معالجة هذه البيانات خارج المملكة (مثل تخزين
+البيانات الشخصية في أنظمة التخزين السحابية المستضافة خارج المملكة العربية السعودية). 
+ 
+Explanation of Question No. 18.1: 
+ 
+Any use of personal data which assumes transfers outside the borders of Saudi Arabia 
+means processing outside Saudi Arabia (e.g. storage of personal data in cloud storage 
+systems hosted outside Saudi Arabia). 
+ 
+Answer to Question No. 18.1: 
+الإجابة على السؤال رقم 18.1:  
+ 
+الرجاء كتابة الإجابة هنا 
+                                                                                                                            
+ 
+ 21 
+المحور 
+Topic 
+قائمة الأسئلة الخاصة بمتطلبات نظام حماية البيانات الشخصية  
+Legal Requirements Checklist 
+ 
+  19. سجلات معالجة 
+البيانات الشخصية 
+19. Records of 
+processing 
+سؤال رقم19.1: 
+ 
+هل تمإنشاء سجل لكيفية معالجة البيانات الشخصية وفقًا لمتطلبات المادة رقم 31 من النظام؟ 
+Have you created and maintained a record of how you process personal data in 
+accordance with the requirements of Art. 31? 
+ 
+شرح السؤال رقم19.1: 
+ 
+يجب أن يتضمن السجلالذي يحوي كيفية معالجة البيانات الشخصية في جهة التحكم التالي: 
+ تفاصﻴﻞالاتﺼال الﺨاصة بﺠهة الﺘﺤﻜﻢ. 
+ الغﺮض مﻦ معالﺠة الﺒﻴانات الﺸﺨﺼﻴة.  
+ وصﻒ فﺌات أصﺤاب الﺒﻴانات الﺸﺨﺼﻴة.  
+ أيجهة جﺮى أو سﻴﺠﺮى إفﺼاح الﺒﻴانات الﺸﺨﺼﻴة لها 
+ ماإذا جﺮى أو سﻴﺠﺮى نقﻞ الﺒﻴانات الﺸﺨﺼﻴة إلى خارج الﻤﻤلﻜة أو الإفﺼاح عﻨها لﺠهة خارج الﻤﻤلﻜة.  
+ الﻤﺪة الﺰمﻨﻴة الﻤﺘﻮقعة للاحﺘفاظ بالﺒﻴانات الﺸﺨﺼﻴة. 
+Explanation of Question No. 19.1: 
+ 
+It is a document which describes how the personal data is processed across your 
+organization. You must specify in this document at least the following: 
+ 
+● Contact details of your organization and the controller (if your organization is 
+not a controller, but a processor). 
+● The purpose of the personal data processing. 
+● Description of the categories of personal data subjects. 
+● Any other entity to which personal data has been, or will be, disclosed. 
+● Whether the Personal Data has been or will be transferred outside Saudi 
+Arabia or disclosed to an entity outside Saudi Arabia. 
+● The expected period for which personal data shall be retained. 
+ 
+Answer to Question No. 19.1: 
+الإجابة على السؤال رقم 19.1:  
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+ 
+ 
+ 
+20. الحوكمة 
+20.Accountability 
+and governance 
+سؤال رقم20.1: 
+ 
+هل يوجد حوكمة ونموذج تشغيلي لحماية البيانات الشخصيةفي الجهة؟ 
+Do you have a governance and operating model for data protection within your 
+organization?  
+ 
+شرح السؤال رقم20.1: 
+ 
+إنه وصف واضح ومنظم لخصوصية البيانات داخل الجهة، ويجب أن يُظهر كيف يتم تعاون موظفين و إدارات الجهة في 
+مختلف مواضيع خصوصية البيانات. 
+Explanation of Question No. 20.1: 
+ 
+It is a clear and structured description of the data privacy function within your 
+organization. It must show how various employees and divisions in your organization 
+cooperate with each other on various data privacy issues.                                                                                                                            
+ 
+ 22 
+ 
+ 
+Answer to Question No. 20.1: 
+الإجابة على السؤال رقم 20.1:  
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 20.2: 
+ 
+هل تم تدريب جميع الموظفين الذين يتعاملون مع البيانات الشخصية على متطلبات نظام حماية البيانات الشخصية بما في
+ذلك أنشطة المعالجة، والضوابط، وتقييمات الأثر ، والتدقيق ، وحقوق أصحاب البيانات ، وطرق الإبلاغ في حال وجود 
+إنتهاكات للنظام و مبدأ الخصوصية في التصميم وعلى التأثير المحتمل لعدم الامتثال للنظام ؟ 
+Do you train all employees that handle personal data on PDPL requirements — 
+including on processing activities, controls, privacy impact assessments, 
+audits, data subject rights, reporting lines and privacy by design and on the 
+potential impact of non-compliance? 
+ 
+شرح السؤال رقم20.2: 
+ 
+يجب أن يخضعموظفو الجهة  الذين يتعاملون مع البيانات الشخصية في الأقسام المختلفة (مثل قسم تكنولوجيا المعلومات ، 
+وإدارة الموارد البشرية ، وما إلى ذلك) لتدريب منتظم على حماية البيانات الشخصية 
+قد يتضمن التدريب على حماية البيانات الشخصية ، على سبيل المثال ، مقدمة عن: 
+● مفاهيم خصوصية البيانات  
+● وظيفة وممارسات خصوصية البيانات في الجهة 
+ 
+Explanation of Question No. 20.2: 
+ 
+Your employees that deal with personal data (e.g. IT department, HR department, 
+etc.) must undergo regular training on data privacy. 
+ 
+Data privacy training may include, for instance, introduction to: 
+● data privacy concepts;  
+● data privacy function and practices of your organization.  
+ 
+الإجابة على السؤال رقم 20.2:  
+Answer to Question No. 20.2: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 20.3: 
+ 
+هل تم تعيين مسؤول حمايةبيانات شخصية؟ هل لديه / لديها سلطة رفع التقارير إلى أعلى مستوى من الإدارة والموارد 
+اللازمة والاستقلالية والسلطة لضمان الامتثال لقانون حماية البيانات الشخصية؟ 
+Do you have an appointed Data Protection Officer (DPO)? Does he/she have 
+reporting authority to the highest level of management, necessary resources, 
+independence, and authority to ensure compliance with the PDPL? 
+شرح السؤال رقم20.3: 
+ 
+مسؤولحماية البيانات الشخصية هو الشخص الرئيسي في الجهة المسؤول عن خصوصية البيانات وحماية البيانات 
+الشخصية، و يجب أن يتمتع بسلطة رفع التقارير إلى أعلى مستوى من الإدارة، والموارد اللازمة، والاستقلالية، والسلطة 
+لضمان الامتثال لنظام حماية البيانات الشخصية. 
+ 
+ 
+ 
+Explanation of Question No. 20.3:                                                                                                                            
+ 
+ 23 
+ 
+Data Privacy Officer is the main person in your organization who is responsible for 
+data privacy issues. He must have reporting authority to the highest level of 
+management, necessary resources, independence, and authority to ensure 
+compliance with the PDPL.  
+ 
+Answer to Question No. 20.3: 
+الإجابة على السؤال رقم 20.3:  
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 20.4: 
+ 
+هل يوجد نهج واحد (قواعد ومعايير موحدة) فيما يتعلق بمعالجة وتخزين البيانات الشخصية عبر المؤسسة او الجهة (بما
+في ذلك جميع الجهات التابعة لها أو الأفرع؟ 
+Do you have a single approach (e.g. rules and standards) in relation to 
+processing and storage of personal data across your organization (including all 
+of its subsidiaries, where applicable)? 
+ 
+شرح السؤال رقم20.4: 
+ 
+يجب أن يكون لدى الجهةمعايير ومتطلبات موحدة لجميع البيانات الشخصية التي تتم معالجتها عبر الجهة (بما في ذلك 
+فروعها). يجب تحديد هذه المعايير والمتطلبات في سياسة أو إجراء أو مستند داخلي في الجهة. 
+Explanation of Question No. 20.4: 
+ 
+It means that your organization has common standards and requirements to all 
+personal data processed across all your organization (including its branches). Such 
+standards and requirements must be specified in a policy, procedure or another 
+internal document of your organization. 
+الإجابة على السؤال رقم 20.4:  
+Answer to Question No. 20.4: 
+ 
+الرجاء كتابة الإجابة هنا 
+ 
+سؤال رقم 20.5: 
+هل تم عمل تقييمات بطريقة دورية لجهتكم للتحقق من امتثالها للنظام؟ 
+Do you occasionally carry out random checks of your organization to check its 
+compliance with the PDPL? 
+شرح السؤال رقم20.5: 
+يجب على الجهة القيام بتقييمات مبدئية ودورية لقياس مدى إلتزامها بنظام حماية البيانات الشخصية والتأكد من الالتزام 
+بالنظام، قد يتم إجراء مثل هذه التقييمات من قبل موظفي الجهة على سبيل المثال، مسؤول حماية البيانات الشخصية أو 
+التدقيق الداخلي أو بواسطة منظمة خارجية. 
+Explanation of Question No. 20.5: 
+ 
+From time to time you must arrange in your organization assessments in order to 
+understand whether or not your organization complies with the PDPL. Such 
+assessments may be conducted by your personnel (e.g. Data Privacy Officer, internal 
+audit) or by an external organization.  
+ 
+Answer to Question No. 20.5: 
+الإجابة على السؤال رقم 20.5:  
+ 
+الرجاء كتابة الإجابة هنا 
+                                                                                                                            
+ 
+ 24 
+ 

@@ -1,0 +1,1028 @@
+Software as a Service Agreement (“SaaS”) 
+These terms, including all schedules are entered into as of the date listed on the Order Form between 
+My Learning Hub Limited, incorporated and registered in England and Wales with company number 
+08974897 whose registered office is at 3 Martineau Drive, Twickenham, TW1 1PZ.   ("Supplier") and 
+the customer identified on the Order Form ("Customer"), collectively the "Parties". 
+BACKGROUND 
+(A) The Supplier has developed certain software applications which it makes available to 
+subscribers via the internet for the purpose of staff training and learning management.  
+(B) The Customer wishes to use the Supplier's service in its business operations. 
+(C) The Supplier has agreed to provide and the Customer has agreed to take and pay for the 
+Supplier's service subject to the terms and conditions of this agreement. 
+Agreed terms 
+The following definitions and rules of interpretation apply in this SaaS together with all other 
+definitions contained in the accompanying Order Form, Data Processing Terms  (User details: 
+first name, last name, email address to access the Authoring Tool, subject to the clients 
+requirements) and Service Level Agreement. 
+1. Interpretation 
+1.1 The definitions and rules of interpretation in this clause apply in this agreement. 
+ Authorised Users: those employees, agents and independent contractors of the Customer 
+who are authorised by the Customer to use the Services. 
+ Business Day: a day other than a Saturday, Sunday or public holiday in England when banks 
+in London are open for business. 
+ Change of Control: shall be as defined in section 1124 of the Corporation Tax Act 2010, and 
+the expression change of control shall be construed accordingly. 
+ Confidential Information: information that is proprietary or confidential which may or may not 
+be clearly labelled as such or identified as Confidential Information. All information (in any 
+medium or format, including written, oral, visual or electronic) which is marked or described as 
+"confidential" and which relates to a party (the "Disclosing Party") or to its employees, 
+officers, customers or suppliers and which is directly or indirectly disclosed by the Disclosing 
+Party to the other (the "Recipient Party") in the course of their dealings relating to this 
+Agreement, whether disclosed before or after the commencement date stated on the Order    
+  
+  
+ Form other than: 
+ 
+(a) information which is in the public domain other than as a result of breach of this 
+Agreement;(i) information which the Recipient Party received, free of any obligation of 
+confidence, from a third party which itself was not under any obligation of confidence in 
+relation to that information; and(ii) Information which was developed or created independently 
+by or on behalf of the Recipient Party; 
+ 
+(b) information which the Recipient Party received, free of any obligation of confidence, from a 
+third party which itself was not under any obligation of confidence in relation to that 
+information; and(i) Information which was developed or created independently by or on behalf 
+of the Recipient Party; 
+ 
+(c) Information which was developed or created independently by or on behalf of the 
+Recipient Party; 
+ Customer Data or Customer Content: the data inputted by the Customer, Authorised Users, 
+or the Supplier on the Customer's behalf for the purpose of using the Services or facilitating 
+the Customer's use of the Services.  
+ Data Protection Legislation: means the Privacy and Electronic Communication (EC 
+Directive) Regulations 2003, the General Data Protection Regulation 2016 ("GDPR"), the UK 
+Data Protection Act 2018 and all applicable laws and regulations in the UK that relate to the 
+protection and processing of personal data and privacy including any mandatory guidance 
+and codes of practice issued by the UK's Information Commissioner, all as amended, 
+replaced or superseded from time to time. "Controller", "Data Subject", "Personal Data", 
+"Processing" and "Processor" shall each have the meanings given in the applicable Data 
+Protection Legislation. 
+ Documentation: means the documentation produced by the Supplier and made available to 
+the Customer specifying how the Services and the Software should be used. 
+ Effective Date or Commencement Date: the date stated on the Order Form. 
+ Initial Subscription Term: the initial fixed term of this agreement as set out in the Order 
+Form. 
+ Intellectual Property Rights: means all intellectual property rights which subsist now or in 
+the future, in any part of the world, whether registered or unregistered, including any 
+application or right of application for such rights, any renewals or extension, and any rights to 
+claim priority from (and the "intellectual property rights" referred to above include copyright and related rights, database rights, confidential information, trade secrets, know-how, 
+business names, trade names, trademarks, service marks, passing off rights, unfair 
+competition rights, patents, petty patents, utility models, semi-conductor topography rights, 
+rights in designs and all similar or equivalent rights and forms of protection). 
+ Malware: means any thing or device (including any software, code, file or program) which 
+may: prevent, impair or otherwise adversely affect the operation of any computer software, 
+hardware or network, any telecommunications service, equipment or network or any other 
+service or device; prevent, impair or otherwise adversely affect access to or the operation of 
+any program or data, including the reliability of any program or data (whether by re-arranging, 
+altering or erasing the program or data in whole or part or otherwise); or adversely affect the 
+user experience, including worms, trojan horses, viruses and other similar things or devices. 
+ Normal Business Hours: 8.00 am to 6.00 pm local UK time, from Monday to Friday. 
+ Renewal Period: the period described in clause 16 (Term). 
+ Services: means all the services provided or to be provided by the Supplier to the Customer 
+under this Agreement as specified in Order Form. 
+ Service Start Date: means the earlier of: 
+ 
+(a) the 'Service Start Date' confirmed in the Order Form; and 
+ 
+(b) the date on which the Customer's subscription with the Supplier first became active. 
+ Software or Platform: the online software applications provided by the Supplier as part of the 
+Services. 
+ Subscription Fees: the subscription fees payable by the Customer to the Supplier for the 
+User Subscriptions, as set out in the Order Form. 
+ Subscription Term: has the meaning given in clause 16 (Term) being the Initial Fixed 
+Subscription Term together with any subsequent Renewal Periods as set out in the Order 
+Form and as measured from the Service Start Date. 
+ Supplier's Service Level Agreement: the Supplier's policy for providing support in relation to 
+the Services, as set out at Schedules 1-3 of this SaaS Agreement and the Service Level 
+Agreement.  
+ User Subscriptions: the user subscriptions purchased by the Customer pursuant to clause 2 
+(User subscriptions) which entitle Authorised Users to access and use the Services and the 
+Documentation in accordance with this agreement. 
+ Virus: any thing or device (including any software, code, file or programme) which may: 
+prevent, impair or otherwise adversely affect the operation of any computer software, 
+hardware or network, any telecommunications service, equipment or network or any other 
+service or device; prevent, impair or otherwise adversely affect access to or the operation of 
+any programme or data, including the reliability of any programme or data (whether by re-arranging, altering or erasing the programme or data in whole or part or otherwise); or 
+adversely affect the user experience, including worms, trojan horses, viruses and other similar 
+things or devices. 
+1.2 Clause, schedule and paragraph headings shall not affect the interpretation of this 
+Agreement. 
+1.3 A person includes an individual, corporate or unincorporated body (whether or not having 
+separate legal personality) and that person's legal and personal representatives, successors 
+or permitted assigns. 
+1.4 A reference to a company shall include any company, corporation or other body corporate, 
+wherever and however incorporated or established. 
+1.5 Unless the context otherwise requires, words in the singular shall include the plural and in the 
+plural shall include the singular. 
+1.6 Unless the context otherwise requires, a reference to one gender shall include a reference to 
+the other genders.  
+1.7 A reference to a statute or statutory provision is a reference to it as it is in force as at the date 
+of commencement of services pursuant to the Order Form. 
+1.8 A reference to a statute or statutory provision shall include all subordinate legislation under 
+that statute or statutory provision. 
+1.9 A reference to writing or written includes faxes but not e-mail. 
+1.10 References to clauses and schedules are to the clauses and schedules of this agreement; 
+references to paragraphs are to paragraphs of the relevant schedule to this agreement. 
+2. User subscriptions 
+2.1 Subject to the Customer purchasing the Services in accordance with the Purchase Order and 
+this Agreement, the  restrictions set out in this clause 2 and the other terms and conditions of 
+this Agreement, the Supplier hereby grants to the Customer a non-exclusive, non-transferable 
+right, without the right to grant sublicences, to permit the Authorised Users to use the Services 
+during the Subscription Term solely for the Customer's internal business operations. 
+3. Customer Obligations 
+3.1 The Customer shall: 
+provide the Supplier with all reasonably necessary co-operation in relation to this Agreement; a) ensure that its Authorised Users use the Services, Software and Documentation in 
+accordance with the terms and conditions of this Agreement and shall be responsible 
+for any Authorised User's breach of this Agreement; 
+b) ensure that it and any Authorised Users abide by all applicable laws and regulations in 
+connection with their use of the Services; 
+c) ensure that it and any Authorised Users abide, do not abuse, attempt to circumvent, or 
+violate any rules, regulations, or terms of service of any systems or software 
+connected to the platform on which the Services are provided; 
+3.2 The Customer shall not knowingly access, store, distribute or transmit any Viruses, or any 
+material during the course of its use of the Services that: 
+(a) is unlawful, harmful, threatening, defamatory, obscene, infringing, harassing or 
+racially or ethnically offensive; 
+(b) facilitates illegal activity; 
+(c) depicts sexually explicit images; 
+(d) promotes unlawful violence; 
+(e) is discriminatory based on race, gender, colour, religious belief, sexual orientation, 
+disability; or 
+(f) is otherwise illegal or causes damage or injury to any person or property; 
+and the Supplier reserves the right, without liability or prejudice to its other rights to the 
+Customer, to disable the Customer's access to any material that breaches the provisions of 
+this clause. 
+3.3 The Customer shall not: 
+(a) except as may be allowed by any applicable law which is incapable of exclusion by 
+agreement between the parties and except to the extent expressly permitted under 
+this agreement: 
+            
+           
+         
+        
+       
+  
+           
+            
+  
+(i) attempt to copy, modify, duplicate, create derivative works from, frame, mirror,
+ republish, download, display, transmit, or distribute all or any portion of the
+ Software and/or Documentation (as applicable) in any form or media or by
+ any means. 
+�����������������������������������������������������������������������������
+� ���������������������������������������������������������������������������
+� ��(b) access all or any part of the Services and Documentation in order to build a product 
+or service which competes with the Services; or 
+(c) use the Services and/or Documentation to provide services to third parties, except 
+via the Authoring Tool or Hubs which can be used to deliver training content to third 
+parties; or 
+(d) subject to clause 23 (Assignment), license, sell, rent, lease, transfer, assign, 
+distribute, display, disclose, or otherwise commercially exploit, or otherwise make the 
+Services available to any third party except the Authorised Users, or 
+(e) attempt to obtain, or assist third parties in obtaining, access to the Services, other 
+than as provided under this clause ; or 
+(f) introduce or permit the introduction of, any Virus into the Supplier's network and 
+information systems.  
+3.4 The Customer shall use all reasonable endeavours to prevent any unauthorised access to, or 
+use of, the Services and/or the Documentation and, in the event of any such unauthorised 
+access or use, promptly notify the Supplier. 
+3.5 The rights provided under this clause 2 are granted to the Customer only, and shall not be 
+considered granted to any subsidiary or holding company of the Customer. 
+4. Services 
+4.1 The Supplier shall, during the Subscription Term, provide the Services to the Customer on 
+and subject to the terms of this agreement. 
+4.2 The Supplier shall use commercially reasonable endeavours to make the Services available 
+24 hours a day, seven days a week, except for: 
+(a) planned maintenance carried out during a maintenance window during Normal 
+Business Hours, subject to reasonable prior notice being given to the Customer; and 
+(b) unscheduled maintenance performed outside Normal Business Hours, provided that 
+the Supplier has used reasonable endeavours to give the Customer reasonable 
+notice in advance. 
+4.3 The Supplier will, as part of the Services (and in consideration of the support fees set out in 
+the Order Form), provide the Customer with the Supplier's standard customer support 
+services during Normal Business Hours in accordance with the Supplier's Service Level 
+Agreement in effect at the time that the Services are provided. The Customer may purchase 
+enhanced support services separately at the Supplier's then current rates. Subscription Rights and Access 
+4.4 Subject to Customer’s payment of the fees confirmed in the Order Form at the front of this 
+Agreement and compliance with the terms of this Agreement, Supplier grants Customer the 
+non-exclusive limited-time subscription and right to use the Services and/or Training Services 
+in accordance with this Agreement. Further, Supplier agrees that Customer may access and 
+use, and permit each Authorised User to access and use, the Services for its intended 
+purpose, in accordance with the specifications confirmed in any Documentation and subject to 
+the terms of this Agreement and the limits on User Count, Order Volume, SKU Count, Feature 
+Set, Channels, and/or other use restrictions specified on the Order Form. Subject to 
+Customer’s payment of the fees confirmed in the Order Form and compliance with the terms 
+of this Agreement, Supplier shall provide to Customer the necessary passwords, security 
+protocols and policies, and network links or connections to allow Customer and its Authorised 
+Users to access the Services. Supplier shall provide the Customer and Authorised Users with 
+(a) support for the Services and (b) access to enhancements and maintenance modifications 
+as they become available. Customer and its Authorised Users are solely responsible for 
+ensuring that they have sufficient and compatible hardware, software, telecommunications 
+equipment, and Internet service necessary for the use of the Services. All other rights not 
+expressly granted in this Agreement are reserved by the Supplier. 
+4.5 For the avoidance of doubt, the Customer has no right to access the object code or source 
+code of the Software at any time. 
+Customisations 
+4.6 From time to time the Supplier and the Customer may agree that the Supplier will customise 
+the Services in accordance with a specification agreed in writing between the parties 
+("Customisation"). From the date when a Customisation is first made available to the 
+Customer, the Customisation shall form part of the Software and Services under this 
+Agreement. The Customer acknowledges that the Supplier may make any Customisation 
+available to its other customers at any time after making available that Customisation to the 
+Customer. All Intellectual Property Rights in the Customisations shall, as between the parties, 
+be the exclusive property of the Supplier. The only exception is whereby any Custom Training 
+Content developed for or by the Customer, shall remain the exclusive property of the 
+Customer. The Customer will be responsible for procuring any third-party cooperation 
+reasonably required by the Supplier to enable the Supplier to fulfil its obligations in providing 
+Customisations. 
+Beta Services 
+4.7 From time to time, Supplier may invite Customer to try certain beta services, including pilot, 
+limited release, developer preview, non-production, or evaluation services ("Beta Services") 
+at no charge. Customer may accept or decline any such trial. Beta Services will be clearly designated as such by Supplier. Beta Services are provided "as is" without a warranty or 
+guarantee and are for evaluation purposes and not for production use, are not considered 
+"Services" under this Agreement, are not supported, and may be subject to additional terms. 
+Unless otherwise stated, any Beta Services trial period will expire upon the earlier of one year 
+from the trial start date or the date that a version of the Beta Services becomes generally 
+available. Supplier may discontinue Beta Services at any time and may never make them 
+generally available. Supplier will have no liability for, and Customer hereby releases Supplier 
+from, any liability or damage arising out of or in connection with any Beta Services. 
+Software Updates 
+              
+             
+          
+              
+            
+           
+              
+            
+             
+               
+             
+      
+  
+                   
+          
+            
+          
+          
+              
+          
+                
+          
+             
+            
+              
+          
+          
+           
+             
+              
+             
+              
+               
+              
+           
+               
+                
+            
+4.8 Supplier may change, modify, upgrade, or discontinue any aspect or feature of Software in
+ whole or in part. Such changes, upgrades, modifications, additions, or deletions will be
+ effective immediately upon notice thereof, which may be made by posting such changes to
+ the Supplier's website or directly via email to Customer. In the event Supplier modifies or
+ discontinues any content or feature of Software which results in reduction of functionality or
+ degradation of the Services, Supplier shall provide comparable functionality. Supplier shall, 
+from time to time, develop new features, which may be offered to Customers for additional fees.
+Limitations
+                 
+             
+             
+            
+             
+                 
+            
+                  
+           
+              
+                
+                 
+               
+             
+               
+               
+                 
+             
+             
+            
+             
+                 
+            
+                  
+           
+              
+                
+                 
+               
+             
+               
+               
+���������������������������������������������������������������������������������������������������
+� ���������������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������
+� ��������������������������������������������������������������������������������������
+� �����������������������������������������������������������������������������������
+� �����������������������������������������������������������������������������������������������
+� ��������������������������������������������������������������������������������������������
+� ��������������������������������������������������������������������������������������������
+� ��������������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������
+� ����������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������������
+� ���������������������������������������������������������������������������������������
+� �������������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������
+� ����������������������������������������������������������������������������������������Terms of Service on the Supplier's website. In the event of any conflict between the terms of 
+this Agreement and any Terms of Service on Supplier’s website, this Agreement shall take 
+precedence. Customer shall immediately notify Supplier of any unauthorised use of 
+Customer’s passwords or account, or any other breach of security that is known or suspected 
+by Customer. 
+Non-Supplier Applications 
+4.10 The Customer acknowledges that Supplier may enable or assist it to access and/or purchase 
+content or technical applications offered by third parties ("Non-Supplier Application") either 
+directly from the Supplier app store or via third party websites. Any use by Customer and any 
+exchange of data between Customer and the provider of Non-Supplier Applications is solely 
+between Customer and the applicable provider. Supplier does not warrant or support Non-
+Supplier Applications or other non-Supplier products or services. The Supplier makes no 
+representation or commitment and shall have no liability or obligation whatsoever in relation to 
+the access, content or use of, or correspondence with, any such third party, or any 
+transactions completed, and any contract entered into by the Customer, with any such third 
+party. 
+4.11 If Customer installs or enables a Non-Supplier Application for use with the Services, 
+Customer hereby grants Supplier permission to allow the provider of that Non-Supplier 
+Application to access Customer’s data and content as required for the interoperation of that 
+Non-Supplier Application with the Services. Supplier is not responsible for any disclosure, 
+modification, or deletion of any of Customer’s data or content resulting from access by a Non-
+Supplier Application. The Services may contain features designed to interoperate with Non- 
+Supplier Applications. To use such features, Customer may be required to obtain access to 
+Non-Supplier Applications from their providers, and may be required to grant Supplier access 
+to Customer’s account(s) on the Non-Supplier Applications. If the provider of a Non-Supplier 
+Application ceases to make the Non-Supplier Application available for interoperation with the 
+corresponding Service features, Supplier may cease providing those Service features without 
+entitling Customer to any refund, credit, or other compensation. 
+5. Customer Content 
+5.1 Supplier will process and store Customer Content as generally necessary in order to perform 
+the Services. Any Customer Content is proprietary to the Customer and cannot be used for 
+the supplier commercial advantage. Supplier will implement appropriate technical and 
+organizational measures to protect any Customer Content against unauthorized or unlawful 
+processing and accidental loss or damage. 
+(A) Customer Content warranty 5.2 Customer represents and warrants that it has all necessary permissions, consents and 
+authority to provide the Customer Content and that any Customer Content hosted, processed, 
+stored or used by Supplier as part of the Services will not (a) infringe or violate the Intellectual 
+Property Rights or other legal rights of any third party; (b) be deceptive, defamatory, obscene, 
+or unlawful; or (c) contain any viruses, worms, Malware, spyware, or other malicious computer 
+programming codes intended to damage the platform or data. 
+5.3 Customer acknowledges that any use of the Services by Customer or Authorised Users 
+contrary to or in violation of the representations and warranties of Customer in this paragraph 
+constitutes unauthorised and improper use of the Services. Any such authorised or improper 
+use shall entitle the Supplier to discontinue the Customer's access to the Services, without 
+prejudice to its other rights or remedies. Customer shall have the sole responsibility for the 
+accuracy, quality, integrity, legality, reliability, and appropriateness of all Customer Content. 
+The Parties acknowledge that Supplier does not and cannot review all Customer Content and 
+will not be responsible for such content, but that Supplier shall have the right to delete, move, 
+or edit any Customer Content that Supplier determines violates or might violate this 
+Agreement, or any applicable law or regulation, or is otherwise unacceptable. 
+(B) Anonymous data 
+5.4 The Supplier shall be entitled to use aggregated anonymised User Data created from data 
+produced under this Agreement for the purposes of reporting on the performance, developing 
+and providing new and different products/services. This paragraph shall survive the expiry or 
+termination of the Agreement. 
+(C) Data Corruption/Loss 
+5.5 In the event of the loss of, or corruption of, Customer Content stored on the Software being 
+notified by the Customer to the Supplier, the Supplier shall, if so directed by the Customer, 
+use all reasonable endeavours promptly to restore the Customer Content from the most 
+recent available backup copy, if available. In the event of any loss or damage to the Customer 
+Content, the Customer's sole and exclusive remedy shall be for the Supplier to use 
+reasonable commercial endeavours to restore the Customer Content that is lost or damaged 
+from the latest back-up, if any, maintained by the Supplier. The Supplier shall not be 
+responsible for any loss, destruction, alteration or disclosure of the Customer Content caused 
+by any third-party, other than the Supplier’s sub-contractor.  
+6. Data protection 
+6.1 Each party shall ensure that it complies with the requirements of all applicable legislation and 
+regulatory requirements in force from time to time relating to the use of Personal Data, 
+including the Data Protection Legislation. 6.2 The Supplier and the Customer acknowledge that for the purposes of the Data Protection 
+Legislation, the Customer is the Controller and the Supplier is the Processor in respect of any 
+Personal Data that the Customer shares with the Supplier in the provision of the Services for 
+the duration of this Agreement. The remainder of this Clause 4 shall apply if the Supplier 
+processes any Personal Data on the Customer's behalf when performing its obligations under 
+this Agreement. 
+(A) Processing  
+6.3 The Supplier shall process the Personal Data only for the purposes of providing the Services, 
+performing its other obligations under this Agreement and otherwise in accordance with the 
+reasonable and lawful documented instructions of the Customer and applicable laws. 
+6.4 Other than as expressly set out in this Agreement, the Supplier shall not process the Personal 
+Data in any country outside the European Economic Area ("EEA") (or following the United 
+Kingdom's departure from the European Union, outside the United Kingdom and the EEA) 
+without the prior written request from, or consent of, the Customer and the Supplier shall 
+comply with its obligations under the Data Protection Legislation by providing an adequate 
+level of protection to any Personal Data that is transferred by entering into the European 
+Commission's standard contractual clauses for the transfer of Personal Data to processors 
+established in third countries which do not ensure an adequate level of protection, as 
+updated, amended, replaced or superseded  from time to time.  
+6.5 If the Supplier is required by applicable laws to transfer the Personal Data outside of the EEA 
+(or following the United Kingdom's departure from the European Union, outside the United 
+Kingdom and the EEA), the Supplier shall inform the Customer of such requirement before 
+making the transfer (unless the Supplier is barred from making such notification under the 
+relevant applicable law). 
+6.6 The Supplier shall ensure that all persons authorised by it to process the Personal Data are 
+subject to appropriate duties of confidentiality and shall have at all times during the term of 
+this Agreement appropriate technical and organisational measures in place to protect any 
+Personal Data against unauthorised or unlawful processing and against accidental loss, 
+alteration, destruction or damage (taking into account the state of the art, the costs of 
+implementation and the nature, scope, context and purposes of processing as well as the risk 
+of varying likelihood and severity for the rights and freedoms of natural persons). The Supplier 
+shall comply with its own information security policies. The Supplier shall at the Customer's 
+election, delete or return all Personal Data to the Customer, and delete all existing copies 
+unless applicable law requires their retention. 
+6.7 The Supplier shall (at the Customer's cost) make available to the Customer all information 
+reasonably necessary to demonstrate compliance with the obligations set out in this paragraph 4A and 4B, and at the Customer's request (and at the Customer's cost) allow for 
+and contribute to audits, including inspections, conducted by the Customer or its 
+representative. The Supplier will provide estimates of its costs to the Customer prior to 
+incurring any costs which arise in accordance with this clause.  
+6.8 The Supplier shall without undue delay from becoming aware, notify the Customer of any 
+unauthorised or unlawful processing of any of the Personal Data to which this Clause 4 
+applies and of any loss or destruction or other damage and shall take reasonable steps to 
+mitigate the detrimental effects of any such incident on the Data Subjects and co-operate with 
+the Customer in dealing with such incident and its consequences. 
+6.9 The Supplier shall provide reasonable assistance to the Customer in ensuring its compliance 
+with its obligations under the Data Protection Legislation in respect of security of Personal 
+Data, notifications of breaches of Data Protection Legislation to supervisory authorities, 
+communications of breaches of Data Protection Legislation to Data Subjects, the carrying out 
+of data protection impact assessments and any consultations with supervisory authorities. 
+The Supplier shall assist the Customer, where reasonably requested by the Customer (and at 
+the Customer's cost) and to the extent possible, with fulfilling the Customer's obligations to 
+respond to requests from a Data Subject for access to, rectification, erasure or portability of, 
+or for restriction of, or objections to, the Processing of, that Data Subject's Personal Data. 
+ 
+(B) Sub-Processors 
+ 
+The Customer acknowledges and agrees that the Supplier may engage third party sub 
+Processors in connection with the Processing of such Personal Data and in order to meet its 
+obligations under the Agreement from time to time. In such circumstances the Customer 
+hereby authorises the Supplier to engage with such third party sub Processors and in respect 
+of the Supplier's use of sub Processors the Supplier shall inform the Customer of any 
+intended changes concerning the addition or replacement of other sub Processors, thereby 
+giving the Customer the opportunity to object to such changes. The Supplier confirms that it 
+has entered or (as the case may be) will enter with the sub Processor into a written 
+agreement incorporating terms which are substantially similar to those set out in this Clause 
+4. As between the Supplier and the Customer, the Supplier shall remain fully liable for all acts 
+or omissions of any sub Processor appointed by it pursuant to this Clause 4. 
+ 
+If the Supplier appoints sub Processors who process Personal Data outside the EEA, the 
+Supplier shall notify the Customer of such sub Processors and the jurisdiction in which 
+Personal Data shall be processed and the paragraph above shall apply in respect of any 
+objection by the Customer. (C) Consent 
+ 
+Where the Customer provides Personal Data to the Supplier, the Customer shall ensure that 
+any disclosure of Personal Data made by it to the Supplier is made with the Data Subject's 
+consent or is otherwise lawful and any instructions given to the Supplier by the Customer are 
+lawful. 
+ 
+The Customer acknowledges that the Supplier is reliant on the Customer for direction as to 
+the extent to which the Supplier is entitled to use and process the Personal Data. 
+Consequently, subject to the terms above, the Supplier will not be liable for any claim brought 
+by a Data Subject arising from any action or omission by the Supplier, to the extent that such 
+action or omission resulted directly from the Customer's improper or unlawful instructions. 
+7. Third party providers 
+The Customer acknowledges that the Services may enable or assist it to access the website 
+content of, correspond with, and purchase products and services from, third parties via third-
+party websites and that it does so solely at its own risk. The Supplier makes no 
+representation, warranty or commitment and shall have no liability or obligation whatsoever in 
+relation to the content or use of, or correspondence with, any such third-party website, or any 
+transactions completed, and any contract entered into by the Customer, with any such third 
+party.  Any contract entered into and any transaction completed via any third-party website is 
+between the Customer and the relevant third party, and not the Supplier.  The Supplier 
+recommends that the Customer refers to the third party's website terms and conditions and 
+privacy policy prior to using the relevant third-party website.  The Supplier does not endorse 
+or approve any third-party website nor the content of any of the third-party website made 
+available via the Services. 
+8. Supplier's obligations 
+8.1 The Supplier undertakes that the Services will be performed substantially in accordance with 
+the Documentation with best care, skill and diligence in accordance with best practice in the 
+supplier’s industry, profession or trade 
+8.2 The undertaking at clause 8.1 shall not apply to the extent of any non-conformance which is 
+caused by use of the Services contrary to the Supplier's instructions, or modification or 
+alteration of the Services by any party other than the Supplier or the Supplier's duly 
+authorised contractors or agents. If the Services do not conform with the foregoing 
+undertaking, Supplier will, at its expense, use all reasonable commercial endeavours to 
+correct any such non-conformance promptly, or provide the Customer with an alternative 
+means of accomplishing the desired performance.  
+ 8.3 The Supplier: 
+(a) does not warrant that the Customer's use of the Services will be uninterrupted or 
+error-free 
+(b) is not responsible for any delays, delivery failures, or any other loss or damage 
+resulting from the transfer of data over communications networks and facilities, 
+including the internet, and the Customer acknowledges that the Services and 
+Documentation may be subject to limitations, delays and other problems inherent in 
+the use of such communications facilities. 
+8.4 This agreement shall not prevent the Supplier from entering into similar agreements with third 
+parties, or from independently developing, using, selling or licensing documentation, products 
+and/or services which are similar to those provided under this agreement. 
+8.5 The Supplier warrants that it has and will maintain all necessary licences, consents, and 
+permissions necessary for the performance of its obligations under this agreement. 
+8.6 In the event of any loss or damage to Customer Data, the Customer's sole and exclusive 
+remedy against the Supplier shall be for the Supplier to use reasonable commercial 
+endeavours to restore the lost or damaged Customer Data from the latest back-up of such 
+Customer Data maintained by the Supplier. The Supplier shall not be responsible for any loss, 
+destruction, alteration or disclosure of Customer Data caused by any third party (except those 
+third parties sub-contracted by the Supplier to perform services related to Customer Data 
+maintenance and back-up for which it shall remain fully liable. 
+9. Customer's and Supplier obligations 
+9.1 The Customer and Supplier shall: 
+(a) Provide respectively with: 
+(i) all reasonable co-operation in relation to this agreement; and 
+(ii) all reasonable access to such information as may be required 
+in order to provide the Services, including but not limited to Customer Data, security 
+access information and configuration services; 
+(b) without affecting its other obligations under this agreement, comply with all applicable 
+laws and regulations with respect to its activities under this Agreement; 
+(c) carry out all other responsibilities set out in this agreement in a timely and efficient 
+manner; 
+(d) ensure that the Authorised Users use the Services and the Documentation in 
+accordance with the terms and conditions of this agreement and shall be responsible 
+for any Authorised User's breach of this agreement; (e) obtain and shall maintain all necessary licences, consents, and permissions 
+necessary for the Supplier, its contractors and agents to perform their obligations 
+under this agreement, including without limitation the Services; 
+(f) ensure that its network and systems comply with the relevant specifications provided 
+by the Supplier from time to time; and 
+(g) be, to the extent permitted by law and except as otherwise expressly provided in this 
+agreement, solely responsible for procuring, maintaining and securing its network 
+connections and telecommunications links from its systems to the Supplier's data 
+centres, and all problems, conditions, delays, delivery failures and all other loss or 
+damage arising from or relating to the Customer's network connections or 
+telecommunications links or caused by the internet. 
+9.2 The Customer shall own all right, title and interest in and to all of the Customer Data that is 
+not personal data and shall have sole responsibility for the legality, reliability, integrity, 
+accuracy and quality of all such Customer Data. 
+10. Charges and payment 
+10.1 The Customer shall pay all amounts payable by the Customer to the Supplier under or in 
+relation to this Agreement, including the Subscription Fees for the User Subscriptions and 
+support fees (“Charges”).  
+10.2 Except for as otherwise set out in this Agreement, all payments to Supplier are non-
+refundable and non-cancellable. Specifically, Customer’s loss of business, loss of Services 
+due to non-payment, or Customer’s failure to use the Services will not be cause for any refund 
+to Customer from Supplier. 
+VAT and Taxes 
+10.3 The Charges confirmed in the Order Form are exclusive of VAT, or other applicable 
+governmental taxes, duties, fees, excises, or tariffs ("Taxes") now or hereafter imposed on 
+the Services. Customer shall be responsible for, and shall reimburse, Supplier for all such 
+Taxes on any amounts payable by Customer hereunder, except for Taxes imposed on 
+Supplier’s net income. If Supplier has the legal obligation to pay or collect Taxes for which 
+Customer is responsible under this paragraph, Supplier will add such Taxes to the amount 
+invoiced to Customer. 
+Compliance and Auditing 
+10.4 Pricing is determined by a number of factors, including User Count, Order Volume, SKU 
+Count, Customisations, Support Services, and other similar factors. Supplier may, from time 
+to time, audit Customer’s account without any notice to Customer to ensure compliance with 
+agreed-upon terms and pricing. Supplier will give Customer at least ten (10) business days’ notice for all audits (unless not permitted under a relevant law or regulation) and audits should 
+not disrupt Customer’s normal operations. Such audit will be at Supplier’s expense; however, 
+if any such audit should disclose any underpayment by Customer, Customer shall 
+immediately pay Supplier such underpaid amount, together with interest thereon at the rate 
+for the usage discovered by Supplier, and Customer shall also pay Supplier for Supplier’s 
+expenses associated with such audit. 
+Pricing 
+10.5 Charges under this Agreement are based on information shared by Customer to Supplier. The 
+Supplier may be required to adjust the Charges as necessary in the event of any change i n 
+product, project scope, increase in User Count, Order Volume, SKU Count, or 
+misrepresentation of facts by Customer. At its discretion, the Supplier reserves the right to 
+adjust the basis and the rate of Charges, including by removing any discounts provid ed, 
+provided that (a) the adjustment is as a result of Customer change in scope or use outside of 
+the scope agreed; and/or (b) the adjustment affects all customers of the same Service.. 
+10.6 In the event of a change to the Charges based on misrepresentation of facts by Customer, 
+Supplier reserves the right to suspend Customer access to the Services until a remedy can be 
+found between parties. The Supplier and Customer shall each have the right to terminate this 
+Agreement, unless otherwise agreed, within fourteen (14) Business Days after notification to 
+Customer of a change to the Charges. In the event the termination of this Agreement as a 
+result of a change in Charges, Supplier may be required to bill for or retain reasonable and 
+proportional compensation for any work performed or expenses incurred prior to the 
+termination of this Agreement. The Customer shall be entitled to a refund of any Charges 
+already paid by the Customer for the Subscription Term remaining after the date of 
+termination.  
+Late Payment 
+10.7 Without limiting any other remedies available to the Supplier, the Supplier may suspend or 
+terminate access to the Software and the provision of the Services if any amounts due to be 
+paid by the Customer to the Supplier under this Agreement are overdue by more than 
+fourteen (14) days and the Supplier has provided at least fourteen (14) days' notice of such 
+suspension. 
+10.8 Overdue payments will be subject to interest from the due date until payment of the overdue 
+sum, whether before or after judgment. Interest under this clause will accrue at the interest 
+rate of 3% per annum above Barclays Bank plc’s base rate. Interest will be compounded 
+monthly.  
+Future Functionality 10.9 The Customer acknowledges that the continued payment for Services and Software does not 
+mean that the Supplier undertakes or promises to provide any future functionality or new 
+features. 
+11. Intellectual Property Rights 
+            
+          
+            
+          
+           
+             
+           
+    
+11.2 All proprietary rights in the Services, including in the Software as well as any aggregate usage 
+statistics, traffic patterns, and other non-personally identifiable data collected by Supplier in 
+connection with use of the Services, will be the sole and exclusive property of Supplier. 
+Supplier retains the royalty-free right to use any suggestions, ideas, feedback, or other 
+recommendations provided by Customer or Authorised Users relating to the Services. 
+Supplier may use Customer’s name and/or its logo on Supplier’s website and in its marketing 
+materials to indicate that Customer is a client of Supplier, subject to prior written approval by 
+the Customer. Customer hereby grants Supplier the right to contact Customer and Authorised 
+Users in connection with their use of the Services unless otherwise stated on the Order Form. 
+11.3 The Supplier confirms that it has all the rights in relation to the Services and the 
+Documentation that are necessary to grant all the rights it purports to grant under, and in 
+accordance with, the terms of this agreement. 
+11.4 Supplier’s intellectual property will remain the property of the Supplier where intellectual 
+property is not created specifically for the Customer. For the avoidance of doubt, the default 
+courses in the content library provided by Supplier shall remain the Supplier’s property. 
+Customer Content which is generated by Customer as a user of the Services shall remain the 
+Customer’s property. 
+12. Confidentiality  
+12.1 Each party may be given access to Confidential Information from the other party in order to 
+perform its obligations under this agreement.   
+12.2 Subject to clause 12.4, each party shall hold the other's Confidential Information in confidence 
+and not make the other's Confidential Information available to any third party, or use the 
+����������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������
+� ���������������������������������������������������������������������������������������������
+� ����������������������������������������������������������������������������������
+� ���������������������������������������������������������������������������������������������
+� ���������������������������������������������������������������������������������������������
+� ������������������������������������������������������������������������������������������
+� �������������������������other's Confidential Information for any purpose other than the implementation of this 
+agreement.  
+12.3 Each party shall take all reasonable steps to ensure that the other's Confidential Information 
+to which it has access is not disclosed or distributed by its employees or agents in violation of 
+the terms of this agreement. 
+12.4 A party may disclose Confidential Information to the extent such Confidential Information is 
+required to be disclosed by law, by any governmental or other regulatory authority or by a 
+court or other authority of competent jurisdiction, provided that, to the extent it is legally 
+permitted to do so, it gives the other party as much notice of such disclosure as possible and, 
+where notice of disclosure is not prohibited and is given in accordance with this clause 12.4, it 
+takes into account the reasonable requests of the other party in relation to the content of such 
+disclosure. 
+12.5 The Customer acknowledges that details of the Services, and the results of any performance 
+tests of the Services, constitute the Supplier's Confidential Information. 
+13. Upon termination of this Agreement, each Party shall promptly cease all further use of 
+Confidential Information, return to the other Party all physical materials containing Confidential 
+Information, whether the materials were originally provided by the disclosing Party or copied 
+or otherwise prepared by the receiving Party, and erase or otherwise destroy any Confidential 
+Information kept by either Party in electronic or other non-physical form. The Parties 
+acknowledge that the receiving Party will not be required to return to the disclosing Party or 
+destroy those copies of Confidential Information residing on the receiving Party’s backup or 
+disaster-recovery systems, or which must be maintained for regulatory or policy purposes. 
+Such termination by either Party will not affect each Party’s continuing obligations under this 
+paragraph. 
+13.1 The above provisions of this clause  shall survive termination of this agreement, however 
+arising. 
+14. Indemnity 
+14.1 During the Term, Supplier shall indemnify Customer against a final award of damages 
+resulting from a claim that the Services infringe any Intellectual Property Rights (under Clause 
+11), Confidentiality (under Clause 12) or Data Protection (under Clause 4) provisions. In 
+addition, if the use of the Services infringes or is enjoined, or Supplier believes it is likely to 
+infringe or be enjoined, Supplier may, at its sole option: (a) procure for Customer the right to 
+continue use of the Services as furnished; (b) modify the Services to make them non-
+infringing, provided that they still substantially conform to the applicable Documentation; or (c) 
+if Supplier, after using all commercially reasonable efforts, is unable to accomplish the 
+foregoing remedies, terminate this Agreement and refund to Customer any prepaid but unused Charges calculated on a straight-line prorated basis for the remainder of the then-
+current Term. The indemnity provided herein does not apply to the extent the alleged 
+infringement arises from any use of the Services not in accordance with this Agreement or as 
+specified in the Documentation or any unauthorised modification of the Services. This 
+paragraph states Supplier’s sole and exclusive liability and Customer’s sole remedies for any 
+threatened or actual infringement of any Intellectual Property Rights, Confidentiality or Data 
+Protection provisions.  
+14.2 During the Term, Customer shall defend, indemnify, and hold harmless Supplier and its 
+officers, directors, employees, agents, successors, and assigns from and against any claims, 
+damages, liabilities, judgments, settlements, losses, costs, or expenses of any kind, including 
+reasonable legal fees, costs and expert witness fees, suffered or incurred by the Supplier. 
+Customer’s misuse of the Intellectual Property Rights of any third party; and any Customer 
+Content which violates the terms of this Agreement. 
+14.3 In relation to the indemnities given within this agreement, the applicable indemnified party 
+shall: 
+a) provide notice of any relevant claim to the indemnifying party in a timely manner; 
+b) provide reasonable co-operation to the indemnifying party in the defence and 
+settlement of such claim at the indemnifying party's expense; 
+c) give the indemnifying party sole authority to defend or settle the claim; 
+d) and use all reasonable endeavours to mitigate its losses. 
+14.4 In no event shall the Supplier, its employees, agents and sub-contractors be liable to the 
+Customer to the extent that the alleged infringement is based on: 
+(a) a modification of the Services or Documentation by anyone other than the Supplier; 
+or 
+(b) the Customer's use of the Services or Documentation in a manner contrary to the 
+instructions given to the Customer by the Supplier; or 
+(c) the Customer's use of the Services or Documentation after notice of the alleged or 
+actual infringement from the Supplier or any appropriate authority. 
+15. Warranties and Liability 
+Disclaimer 
+15.1 Supplier does not warrant that the operation of the services will be uninterrupted or error-free. 15.2 Except as expressly and specifically provided in this agreement, the Customer assumes sole 
+responsibility for results obtained from the use of the services, the software and the 
+documentation by the customer, and for conclusions drawn from such use. The Supplier shall 
+have no liability for any damage caused by errors or omissions in any information, instructions 
+or scripts provided to the Supplier by the Customer in connection with the services or the 
+software, or any actions taken by the Supplier at the customer's direction. 
+15.3 Except as specifically provided in this agreement, all other conditions, warranties or other 
+terms which might have effect between the parties or be implied or incorporated into this 
+agreement or any collateral contract, whether by statute, common law or otherwise, are 
+hereby excluded, including the implied conditions, warranties or other terms as to satisfactory 
+quality, fitness for purpose or the use of reasonable skill and care. 
+15.4 Nothing in the agreement limits any liability which cannot legally be limited, including but not 
+limited to liability for: (a) death or personal injury caused by negligence; or (b) fraud or 
+fraudulent misrepresentation. 
+Limited Warranty  
+15.5 Each Party warrants that it has all necessary authority to enter into and perform its obligations 
+under this Agreement. Supplier represents and warrants that: (a) it will provide the Services 
+will reasonable skill and care, it will promptly fix any errors with the Services of which it is 
+aware and the Services will perform in accordance with this Agreement; and (b) the Services 
+provided hereunder will be performed in a professional manner in accordance with prevailing 
+industry standards. 
+15.6 The Services may contain links to sites on the Internet that are owned and operated by third 
+parties. Customer acknowledges and agrees that Supplier is not responsible for the 
+availability of, or the content located on or through, any such external site. 
+Liability  
+15.7 Supplier at its expense will indemnify and hold Customer harmless with respect to every third 
+party claim that may be brought against Customer or others that use the Services, for any 
+alleged infringement of any patent, copyright, industrial design right, utility model or other 
+industrial and intellectual or proprietary right based on Supplier’s Services. Supplier will 
+investigate and defend or otherwise handle every such claim, and at Customer’s request, 
+assist Customer in Customer’s investigation, defense, or handling of any such claim.  Supplier 
+will pay all expenses and damages or settlement amounts that Customer and others using the 
+Services may sustain by reason of each such indemnified claim.  In the event a claim of 
+infringement is asserted, Supplier may replace or modify the Supplies to make them non-
+infringing, provided that Customer approves such replacement or modification and agrees in 
+writing that such replacement or modification achieves the substantive results of the original version of such Supplies, or Supplier may procure at its expense a license for Customer to 
+use the allegedly infringing Supplies. For clarity, Supplier’s obligations herein will be reduced 
+to the extent a claim arises from: (a) modification of source code of the Services without 
+Supplier’s knowledge and consent; and (b) use of the Services in violation of agreements 
+between Supplier and Customer. 
+15.8 Supplier will not be liable to Customer whether in contract, tort (including negligence, 
+warranty, strict liability or otherwise), arising under or in connection with Supplier’s provision 
+of Services in accordance with this agreement for any loss or damage suffered by Customer 
+where such damage or loss resulted from incomplete, inaccurate or erroneous information or 
+instructions provided or made available to Supplier by Customer. Except with respect to 
+indemnification obligations herein or breaches of confidentiality, data protection or intellectual 
+property, (i) neither Party will be liable to the other for any indirect or consequential loss or 
+damage, including loss of profits, account of profits, loss of revenue sale or business, loss of 
+turnover, loss of agreements or contracts, loss of or damage to goodwill, loss or damage to 
+reputation, or loss of customers; and (ii) each Party’s liability for claims arising under this 
+agreement shall be limited to the fees paid or payable by Customer in accordance with 
+contracts for Services to be provided by Supplier. This liability cap includes damages, interest 
+and costs. 
+16. Term and termination 
+16.1 This agreement shall, unless otherwise terminated as provided in this clause 16, commence 
+on the date stated on the Order Form and shall continue for the initial term and, thereafter, 
+this agreement shall be automatically renewed for successive periods of 12 months (each a 
+Renewal Period), unless:  
+(a) either party notifies the other party of termination, in writing, at least 90 days before 
+the end of the Initial Subscription Term or any Renewal Period, in which case this 
+agreement shall terminate upon the expiry of the applicable Initial Subscription Term 
+or Renewal Period; or 
+(b) otherwise terminated in accordance with the provisions of this agreement. 
+16.2 Without affecting any other right or remedy available to it, either party may terminate this 
+agreement with immediate effect by giving written notice to the other party if: 
+(a) the other party fails to pay any amount due under this agreement on the due date for 
+payment and remains in default not less than 14 days after being notified in writing to 
+make such payment; 
+(b) the other party commits a material breach of any other term of this agreement and (if 
+such breach is remediable) fails to remedy that breach within a period of 60 days 
+after being notified in writing to do so; (c) any event occurs, or proceeding is taken, with respect to the other party in any 
+jurisdiction to which it is subject that has an effect equivalent or similar to the other 
+party being deemed bankrupt or insolvent; 
+(d) the other party suspends or ceases, or threatens to suspend or cease, carrying on all 
+or a substantial part of its business; 
+(e) the other party's financial position deteriorates so far as to reasonably justify the 
+opinion that its ability to give effect to the terms of this agreement is in jeopardy; or 
+(f) there is a change of control of the other party (within the meaning of section 1124 of 
+the Corporation Tax Act 2010). 
+16.3 On termination of this agreement for any reason: 
+(a) all licences granted under this agreement shall immediately terminate;  
+(b) each party shall return and make no further use of any equipment, property, 
+Documentation and other items (and all copies of them) belonging to the other party; 
+(c) the Supplier may destroy or otherwise dispose of any of the Customer Data in its 
+possession; and 
+(d) any rights, remedies, obligations or liabilities of the parties that have accrued up to 
+the date of termination, including the right to claim damages in respect of any breach 
+of the agreement which existed at or before the date of termination shall not be 
+affected or prejudiced. 
+ 
+17. Non disparagement 
+Supplier and Customer agree that they will not criticize, denigrate, or disparage each other as 
+set forth herein. Customer agrees to not make any comments or statements to the media, 
+Supplier’s current and former employees, customers, or any individual or entity with whom the 
+Supplier has a business relationship, or any other individual or entity if such comment or 
+statement could be likely to adversely affect the conduct of the Supplier’s business with that of 
+such third party, or any of Supplier’s plans, prospects, or business reputation of Supplier. 
+18. Force majeure 
+The Supplier shall have no liability to the Customer under this agreement if it is prevented 
+from or delayed in performing its obligations under this agreement, or from carrying on its 
+business, by acts, events, omissions or accidents beyond its reasonable control, including, 
+without limitation, strikes, lock-outs or other industrial disputes (whether involving the 
+workforce of the Supplier or any other party), failure of a utility service or transport or 
+telecommunications network, act of God, war, riot, civil commotion, malicious damage, 
+compliance with any law or governmental order, rule, regulation or direction, accident, breakdown of plant or machinery, fire, flood, storm or default of suppliers or sub-contractors, 
+provided that the Customer is notified of such an event and its expected duration. 
+19. Variation 
+No variation of this agreement shall be effective unless it is in writing and signed by the 
+parties (or their authorised representatives). 
+20. Waiver 
+No failure or delay by a party to exercise any right or remedy provided under this agreement 
+or by law shall constitute a waiver of that or any other right or remedy, nor shall it prevent or 
+restrict the further exercise of that or any other right or remedy. No single or partial exercise of 
+such right or remedy shall prevent or restrict the further exercise of that or any other right or 
+remedy. 
+21. Rights and remedies 
+Except as expressly provided in this agreement, the rights and remedies provided under this 
+agreement are in addition to, and not exclusive of, any rights or remedies provided by law. 
+22. Severance 
+22.1 If any provision or part-provision of this agreement is or becomes invalid, illegal or 
+unenforceable, it shall be deemed deleted, but that shall not affect the validity and 
+enforceability of the rest of this agreement. 
+22.2 If any provision or part-provision of this agreement is deemed deleted under clause 22.1 the 
+parties shall negotiate in good faith to agree a replacement provision that, to the greatest 
+extent possible, achieves the intended commercial result of the original provision. 
+23. Entire agreement 
+23.1 This agreement constitutes the entire agreement between the parties and supersedes and 
+extinguishes all previous agreements, promises, assurances, warranties, representations and 
+understandings between them, whether written or oral, relating to its subject matter. 
+23.2 Each party acknowledges that in entering into this agreement it does not rely on, and shall 
+have no remedies in respect of, any statement, representation, assurance or warranty 
+(whether made innocently or negligently) that is not set out in this agreement. 
+23.3 Each party agrees that it shall have no claim for innocent or negligent misrepresentation 
+based on any statement in this agreement. 24. Assignment 
+24.1 Neither party may assign, transfer, charge, sub-contract or deal in any other manner with all 
+or any of its rights or obligations under this agreement without the prior written consent of the 
+other party, such consent not to be unreasonably withheld or delayed. Notwithstanding the 
+foregoing, either party may assign, transfer, charge, subcontract or deal with any other 
+manner with all or any of its rights or obligations under this agreement to its affilate. 
+25. No partnership or agency 
+Nothing in this agreement is intended to or shall operate to create a partnership between the 
+parties, or authorise either party to act as agent for the other, and neither party shall have the 
+authority to act in the name or on behalf of or otherwise to bind the other in any way 
+(including, but not limited to, the making of any representation or warranty, the assumption of 
+any obligation or liability and the exercise of any right or power). 
+26. Third party rights 
+This agreement does not confer any rights on any person or party (other than the parties to 
+this agreement and, where applicable, their successors and permitted assigns) pursuant to 
+the Contracts (Rights of Third Parties) Act 1999. 
+27. Counterparts 
+27.1 This agreement may be executed in any number of counterparts, each of which shall 
+constitute a duplicate original, but all the counterparts shall together constitute the one 
+agreement. 
+28. Notices 
+28.1 Any notice required to be given under this agreement shall be in writing and shall be delivered 
+by e-mail to the other party at its address set out in this agreement, or such other address as 
+may have been notified by that party for such purposes. 
+29. Governing law 
+This agreement and any dispute or claim arising out of or in connection with it or its subject 
+matter or formation (including non-contractual disputes or claims) shall be governed by and 
+construed in accordance with the law of England and Wales. 
+30. Jurisdiction 
+Each party irrevocably agrees that the courts of England and Wales shall have exclusive 
+jurisdiction to settle any dispute or claim arising out of or in connection with this agreement or 
+its subject matter or formation (including non-contractual disputes or claims).  Schedule 1 
+Ongoing Support and Maintenance Services 
+Transition to Ongoing Support Model 
+ Supplier and Client will each appoint a Project Manager to oversee the transition of the 
+project to an ongoing support phase. 
+ 
+ Supplier will ensure that all required and reasonably requested documentation will be 
+completed in advance of handover of the project. 
+ 
+Chapter 1 Help, support & guidance 
+ 
+ Supplier will continue to provide access, updated as required to reflect changes to the 
+software, to online support tutorials for users. 
+ 
+ Where significant changes to the Software are being introduced, Supplier will provide 
+details of these changes and ensure an opportunity for learning is available to Customer 
+for this. 
+ 
+ All support related queries can be logged using Supplier’s helpdesk: 
+https://[client_name].mylearninghub.com/helpDesk 
+ 
+ Or by e-mailing Supplier at support@mylearninghub.com 
+Chapter 2 Ongoing Service Review 
+ 
+ Supplier and Customer will each appoint a single point of contact for ongoing 
+service management. 
+ 
+ Supplier and Customer will conduct regular service reviews on a quarterly basis to 
+ensure required quality of service continues to be met 
+ 
+Chapter 3 Service Coverage 
+ 
+ All Support Services must be based on a unique ID ticketing system 
+ 
+ The service hours are defined as: 
+Service Availability The service will be available 24-hours a day, 365 days 
+a year. 
+Service Support Hours The application will be supported during the standard 
+Service Desk support hours which are: 
+09:00 – 18:00 Central Time Mon – Fri 
+Tickets can be logged 24/7/365. 
+Maintenance Windows Any maintenance must take place during non-core 
+business hours and notified in advance. 
+ 
+ As outlined in the Supplier proposal, support services will be provided in accordance with 
+the Service Levels. Chapter 4 Failure to meet Service Levels 
+As per the Supplier proposal, Service Credits are applied at the following rate: for each service 
+failure outside the 95% tolerance 
+ 
+ Level 1 Service Failure $25.00 
+ Level 2 Service Failures $45.00 
+ Level 3 Service Failures $65.00 
+ Level 4 Service Failure $100 each day where core functionality is lost 
+Chapter 5 Data Backup 
+Full back up of all data must take place to ensure disaster recovery targets can be achieved. 
+Access to extract the full data set must be available to allow information to be archived externally. 
+Chapter 6 Data Restoration 
+Restoration of data will be available where required up to 30 days 
+Chapter 7 Disaster Recovery 
+The Recovery Time Objective (RTO) is defined as 4 hours. RTO is the targeted duration of time 
+and a service level within which the Learning Management System must be restored after a 
+disaster and/or disruption in order to avoid unacceptable consequences associated with a break in 
+business continuity. 
+ 
+Recovery Point Objective (RPO) is defined as 4 hours. RPO is the maximum targeted period in 
+which data might be lost from the Contractor due to a major incident. RPO is set to give Customer’s 
+IT team a limit to work to. 
+ 
+                    
+     
+Schedule 2
+The Support Services set out at Schedule 1 shall be subject to the following limitations based on the 
+Solution option selected by the Customer.
+  
+  
+   
+  
+  
+ 
+     
+   
+  
+  
+ 
+ 
+ 
+   
+   
+  
+   
+  
+  
+      
+   
+  
+  
+  
+   
+   
+    
+     
+   
+   
+   
+    
+    
+    
+    
+      
+������������������������������������������������������������
+���������������������������������������������������������������
+����������������������������������������������������������������������
+���������������������������������������������28 
+ 
+Schedule 3 
+ 
+Additional Support Services 
+ 
+At Customer’s reasonable request and subject to the availability of the Supplier’s personnel, the 
+Supplier shall provide Customer any additional installation services, additional training, 
+consulting services, custom programming, assistance with data transfers or Customer system or 
+database upgrades, system restarts and reinstallations and other specialised support services 
+that are outside the scope of the Services at the Supplier’s then prevailing professional services 
+fees for the type of service requested. The current professional service rates are set out below. 
+In addition, the Supplier reserves the right to charge a premium for any ongoing support 
+services requested by Customer to be performed outside of normal business hours and/or at 
+Customer’s locations.  
+ 
+Learning and Development Consulting $300/hour 
+Content Development  
+Custom Web Development  
+Training and Onboarding  
+Project Management  
+Technical Support $50/hour 
+ 
+ 
+$300/hour
+$10,000/course
+$100/hour
+���������

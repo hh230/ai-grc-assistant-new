@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "contract templates--ksa_labourlaw_annex38.pdf",
+  "filename": "KSA_labourlaw_annex38.pdf",
+  "extension": ".pdf",
+  "category": "Contract Templates",
+  "relative_path": "Contract Templates/KSA_labourlaw_annex38.pdf",
+  "size_bytes": 3947655,
+  "last_modified": "2026-06-26T21:45:11.148410+00:00",
+  "checksum_sha256": "826d0a7c7c5a097d6cbd06be8ea9ca2861453ab431b96f6fc38d7fa497790ffd",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 31,
+  "character_count": 581,
+  "extraction_duration": 0.2680253339931369,
+  "parsed_at": "2026-07-12T16:09:24.317384+00:00",
+  "error": null,
+  "document_profile": "contract",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 1,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.0,
+  "chunking_duration": 0.00018637499306350946,
+  "chunked_at": "2026-07-12T16:09:24.317995+00:00",
+  "chunking_error": null
+}

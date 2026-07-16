@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "compliance--ethics-and-compliance-handbook.pdf",
+  "filename": "Ethics-and-Compliance-Handbook.pdf",
+  "extension": ".pdf",
+  "category": "Compliance",
+  "relative_path": "Compliance/Ethics-and-Compliance-Handbook.pdf",
+  "size_bytes": 3410553,
+  "last_modified": "2026-06-26T21:13:06.605495+00:00",
+  "checksum_sha256": "58a748e539826fcf7e55ed38e3a1ade6ca4bc18a0e2f2feb176f704c8e1f70cd",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 56,
+  "character_count": 223612,
+  "extraction_duration": 1.0279509999090806,
+  "parsed_at": "2026-07-12T16:09:18.473602+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 384,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.04339729202911258,
+  "chunked_at": "2026-07-12T16:09:18.523757+00:00",
+  "chunking_error": null
+}

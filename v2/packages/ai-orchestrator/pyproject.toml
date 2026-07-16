@@ -1,0 +1,44 @@
+[project]
+name = "ai-orchestrator"
+version = "0.1.0"
+description = "Rasheed V2 AI Orchestrator — the composition root and single entry point of the AI pipeline. Coordinates the existing engines (DecisionEngine → RetrievalEngine → ContextBuilder → PromptOrchestrator → GenerationProvider) and owns sequencing, dependency injection, wiring, execution flow, metrics, tracing, error propagation, cancellation, and the future event / human-approval hooks. Orchestration only: no business logic, no retrieval, no prompt building, no classification. Generation sits behind the GenerationProvider protocol; no provider is hardcoded."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "decision-engine",
+    "retrieval-engine",
+    "context-builder",
+    "prompt-orchestrator",
+    "generation-engine",
+    "answer-validation",
+    "pipeline-tracing",
+    "event-bus",
+]
+
+[project.optional-dependencies]
+# Backward-compatible extra: the OpenAI adapter (and its SDK) now lives in generation-engine.
+openai = ["generation-engine[openai]"]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+generation-engine = { path = "../generation-engine", editable = true }
+decision-engine = { path = "../decision-engine", editable = true }
+retrieval-engine = { path = "../retrieval-engine", editable = true }
+context-builder = { path = "../context-builder", editable = true }
+prompt-orchestrator = { path = "../prompt-orchestrator", editable = true }
+answer-validation = { path = "../answer-validation", editable = true }
+pipeline-tracing = { path = "../pipeline-tracing", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ai_orchestrator"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

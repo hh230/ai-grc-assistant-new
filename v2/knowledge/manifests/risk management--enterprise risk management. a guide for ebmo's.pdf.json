@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "risk management--enterprise risk management. a guide for ebmo's.pdf",
+  "filename": "Enterprise Risk Management. A guide for EBMO's.pdf",
+  "extension": ".pdf",
+  "category": "Risk Management",
+  "relative_path": "Risk Management/Enterprise Risk Management. A guide for EBMO's.pdf",
+  "size_bytes": 1404311,
+  "last_modified": "2026-06-26T21:08:03.311636+00:00",
+  "checksum_sha256": "9ce5611561d6f687e0a5a30e8885d8f3d22d131c06e332a13024299b15f3cca5",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 57,
+  "character_count": 190717,
+  "extraction_duration": 0.9051853340351954,
+  "parsed_at": "2026-07-12T16:12:56.913783+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 281,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.044895833008922637,
+  "chunked_at": "2026-07-12T16:12:56.964041+00:00",
+  "chunking_error": null
+}

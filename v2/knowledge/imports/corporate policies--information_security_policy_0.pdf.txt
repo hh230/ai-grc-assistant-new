@@ -1,0 +1,756 @@
+ 
+ 
+INSPIRING BUSINESS  INNOVATION  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+INFORMATION SECURITY POLICY 
+Version 1.1 
+Policy Number: 
+ 
+ 
+  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 2/17 
+ 
+ 
+ 
+ 
+ 
+ 
+1. Table of Contents 
+1. Table of Contents ........................................................................................................................ 2 
+2. Property Information .................................................................................................................. 3 
+3. Document Control ...................................................................................................................... 4 
+3.1. Information ............................................................................................................ 4 
+3.2. Revision History ................................................................................................... 4 
+3.3. Review, Verification and Approval ...................................................................... 4 
+3.4. Distribution List .................................................................................................... 4 
+4. Introduction ................................................................................................................................. 5 
+5. Policy Overview ......................................................................................................................... 10 
+5.1. Purpose ............................................................................................................... 10 
+5.2. Scope ................................................................................................................... 10 
+5.3. Terms and Definitions ........................................................................................ 10 
+5.4. Change, Review and Update ............................................................................. 11 
+5.5. Enforcement / Compliance ................................................................................ 12 
+5.6. Wavier .................................................................................................................. 12 
+5.7. Roles and Responsibilities (RACI Matrix) ........................................................ 12 
+5.8. Relevant Documents .......................................................................................... 14 
+5.9. Ownership ........................................................................................................... 15 
+6. Policy Statements ...................................................................................................................... 16 
+6.1. Policies for Information Security ...................................................................... 16 
+6.2. Review of the Policies for Information Security .............................................. 17 
+ 
+   INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 3/17 
+ 
+ 
+ 
+ 
+ 
+ 
+2. Property Information 
+This document is the property information of Imam Abdulrahman bin Faisal University - ICT Deanship. The 
+content of this document is Confidential and intended only for the valid recipients. This document is not  
+to be distributed, disclosed, published or copied without ICT Deanship written permission.  
+  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 4/17 
+ 
+ 
+ 
+ 
+ 
+ 
+3. Document Control 
+3.1. Information 
+Title Classification Version Status 
+INFORMATION SECURITY POLICY Confidential 1.1 validated 
+3.2. Revision History  
+Version Author(s) Issue Date Changes 
+0.1 Alaa Alaiwah - Devoteam November 09, 2014 Creation  
+0.2 Nabeel Albahbooh - Devoteam December 1, 2014 Update 
+0.3 Osama Al Omari – Devoteam  December 27, 2014 QA 
+1.0 Nabeel Albahbooh - Devoteam December 31, 2014 Update 
+1.1 Muneeb Ahmad – ICT, IAU 27 April 2017 Update 
+3.3. Review, Verification and Approval 
+Name Title Date 
+Lamia Abdullah Aljafari Quality Director  
+Dr. Saad Al-Amri Dean of ICT  
+3.4. Distribution List 
+Copy # Recipients Location 
+   
+    INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 5/17 
+ 
+ 
+ 
+ 
+ 
+ 
+4. Introduction 
+The information assets’ confidentiality, integrity and availability are essential to maintain University of Imam 
+Abdulrahman bin Faisal security compliance.  
+ICT Deanship shall acknowledge the importance of ensuring information security within information assets; 
+and is committed towards supporting the information security goals and principles.  
+The ultimate goal of IAU’s information security policy is to ensure the followings: 
+ Confidentiality of information is being maintained  (e.g., academic, administrati ve and personal 
+information). 
+ Integrity of the information through the protection from unauthorized modification. 
+ Availability of information to authorized users, if and when required. 
+ Information is protected from unauthorized access. 
+ Business strategy is achieved. 
+ The current security threats within environment are assessed. 
+ Regulatory and legislative requirements are met.  
+ Responsibilities and accountability for information security are established. 
+All IAU’s employees, faculty members, students, contractors, consultants and third parties shall adhere to 
+this Information Security Policy and the appropriate supporting policies. Table 1 briefly summarizes each 
+of the policies that have developed to support the overall security posture of IAU’s information assets. These 
+policies follow best security practices based on ISO/IEC 27001:2013 standard and map to its 
+recommendations (Annex A). Each information security policy shall include statements that address the 
+following aspects: 
+ Definition of information security, objectives and principles to guide all activities relating to 
+information security. 
+ Assignment of all related roles and responsibilities. 
+ Process for handling policy exceptions. 
+  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 6/17 
+ 
+ 
+ 
+ 
+ 
+ 
+No. Policy Objectives 
+1 
+Organization of 
+Information 
+Security 
+ Establish IAU’s management framework to initiate and control 
+the implementation and operation of information security 
+within IAU.  
+ Ensure the security of teleworking and use of mobile devices. 
+2 
+Human Resource 
+Security 
+ Ensure that IAU’s employees and contractors underst and 
+their responsibilities and are suitable for the roles for which 
+they are considered. 
+ Ensure that IAU’s employees and contracts are aware of and 
+fulfil their information security responsibilities. 
+ Protect other IAU’s interests as part of the process of 
+changing or terminating employment. 
+3 Asset Management 
+ Identify IAU’s organizational assets and define appropriate 
+protection responsibilities 
+ Ensure that information receives an appropriate level of 
+protection in accordance with its importance to IAU. 
+ Prevent unauthorized disclosure, modification, removal or 
+destruction of information stored on media. 
+4 Access Control 
+ Limit access to information and information processing 
+facilities. 
+ Ensure authorized user access and to prevent unauthorized 
+access to systems and services. 
+ Make users accountable for safeguarding their authentication 
+information. 
+ Prevent unauthorized access to systems and applications. 
+5 Cryptography 
+ Ensure proper and effective use of cryptography to protect 
+the confidentiality, authent icity and/or integrity of  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 7/17 
+ 
+ 
+ 
+ 
+ 
+ 
+information. 
+6 
+Physical and 
+Environmental 
+Security 
+ Prevent unauthorized physical access, damage and 
+interference to IAU’s information and information processing 
+facilities. 
+ Prevent loss, damage, theft or compromise of assets and 
+interruption to IAU’s operations. 
+7 Operations Security 
+ Ensure correct and secure operations of information 
+processing facilities. 
+ Ensure that information and information processing facilities 
+are protected against malware. 
+ Protect against loss of data. 
+ Record events and generate evidence. 
+ Ensure the integrity of operational systems. 
+ Prevent exploitation of technical vulnerabilities. 
+ Minimize the impact of audit activities on operational systems. 
+8 
+Communications 
+Security 
+ Ensure the protection of informa tion in networks and its 
+supporting information processing facilities. 
+ Maintain the security of information transferred within IAU 
+and with any external entity. 
+9 
+System Acquisition, 
+Development and 
+Maintenance 
+ Ensure that information security is an integral part of 
+information systems across the entire lifecycle. 
+ Ensure that information security is designed and implemented 
+within the development lifecycle of information systems. 
+ Ensure the protection of data used for testing. 
+10 
+Supplier 
+Relationships 
+ Ensure protection of IAU’s assets that is accessible by 
+suppliers. 
+ Maintain an agreed level of information security and service  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 8/17 
+ 
+ 
+ 
+ 
+ 
+ 
+delivery in line with supplier agreements. 
+11 
+Information 
+Security Incident 
+Management 
+ Ensure a consistent and effective approach to the management 
+of information security incidents, including communication on 
+security events and weaknesses. 
+12 
+Information 
+Security Aspects of 
+Business Continuity 
+Management 
+ Ensure that information security continuity is embedded in 
+IAU’s business continuity management systems. 
+ Ensure availability of information processing facilities. 
+13 Compliance 
+ Avoid breaches of legal, statutory, regulatory or contractual 
+obligations related to information security and of any security 
+requirements. 
+14 Risk Management 
+ Determine areas of information security vulnerability and 
+threats within IAU’s environment and to initiate appropriate 
+remediation. 
+15 Acceptable Usage 
+ Define a set of rules for users that restrict the ways in which 
+computer, network, email and internet services may be used. 
+ Minimize the potential risks such as virus attacks, compromise 
+of network systems and services, and legal issues.  
+Table 1: List of Information Security Policies 
+Figure 1 shows the security domains and their relevant aspects as per ISO/IEC 27001:2013 standard (Annex 
+A). There are 14 domains with 34 security aspects (objectives).  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 9/17 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1: Security Domains as per ISO/IEC 27001:2013 (Annex A) 
+A.5 - Information 
+Security Policies •A.5.1 - Management Direction for Information Security
+A.6 - Organization of 
+Information Security
+•A.6.1 - Internal Organization
+•A.6.2 - Mobile Devices and Teleworking
+A.7 - Human 
+Resources Security
+•A.7.1 - Prior to Employment
+•A.7.2 - During Employment
+•A.7.3 - Termination and Change of Employment
+A.8 - Asset 
+Management
+•A.8.1 - Responsibility for Assets
+•A.8.2 - Information Classification
+•A.8.3 Media Handling
+A.9 - Access Control
+•A.9.1 - Business Requirements of Access Control
+•A.9.2 - User Access Management
+•A.9.3 - User Responsibilities
+•A.9.4 - System and Application Access Control
+A.10 – Cryptography •A.10.1 Cryptographic Controls
+A.11 - Physical and 
+Environmental 
+Security
+•A.11.1 - Secure Areas
+•A.11.2 - Equipment
+A.12 - Operations 
+Security
+•A.12.1 - Operational Procedures and Responsibilities
+•A.12.2 - Protection from Malware
+•A.12.3 - Backup
+•A.12.4 - Logging and Monitoring
+•A.12.5 - Control of Operational Software
+•A.12.6 - Technical Vulnerability Management
+•A.12.7 - Information Systems Audit Considerations
+A.13 -
+Communications 
+Security
+•A.13.1 - Network Security Management
+•A.13.2 - Information Transfer
+A.14 - System 
+Acquisition, 
+Development and 
+Maintenance
+•A.14.1 - Security Requirements of Information Systems
+•A.14.2 - Security in Development and Support Processes
+•A.14.3 - Test Data
+A.15 - Supplier 
+Relationships
+•A.15.1 - Information Security in Supplier Relationships
+•A.15.2 - Supplier Service Delivery Management
+A.16 - Information 
+Security Incident 
+Management
+•A.16.1 - Management of Information Security Incidents and 
+Improvements
+A.17 - Information 
+Security Aspects of 
+Business Continuity 
+Management
+•A.17.1 - Information Security Continuity
+•A.17.2 - Redundancies
+A.18 – Compliance •A.18.1 Compliance with Legal and Contractual Requirements  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 10/17 
+ 
+ 
+ 
+ 
+ 
+ 
+5. Policy Overview 
+This section describes and details the purpose, scope, terms and definitions , change, review and update , 
+enforcement / compliance, wavier, roles and responsibilities, relevant documents and ownership. 
+5.1. Purpose 
+The main purpose of Information Security Policy is to: 
+Provide IAU’s management direction and support for information security in accordance with business 
+requirements and relevant laws and regulations. 
+5.2. Scope 
+The policy statements written in this document are applicable to all IAU’s resources at all levels of sensitivity; 
+including: 
+ All full-time, part-time and temporary staff employed by, or working for or on behalf of IAU. 
+ Students studying at IAU. 
+ Contractors and consultants working for or on behalf of IAU.  
+ All other individuals and groups who have been granted access t o IAU’s ICT systems and 
+information. 
+This policy covers all information assets defined in Risk Assessment  Scope Document and will be used as 
+foundation for information security management. 
+5.3. Terms and Definitions 
+Table 2 provides definitions of the common terms used in this document. 
+Term Definition 
+Accountability 
+A security principle indicating that individuals shall be able to be identified and 
+to be held responsible for their actions. 
+Asset Information that has value to the organization such as forms, media, networks,  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 11/17 
+ 
+ 
+ 
+ 
+ 
+ 
+hardware, software and information system. 
+Availability 
+An examination of the facts to render an opinion and may include testing 
+evidence to support the opinion. 
+Confidentiality 
+The state of an asset or a service of being accessible and usable upon demand 
+by an authorized entity. 
+Control 
+A means of managing risk, including policies, procedures, and guidelines which 
+can be of administrative, technical, management or legal nature. 
+Guideline 
+A description that clarifies what shall be done and how, to achieve the objectives 
+set out in policies. 
+Information Security 
+The preservation of confidentiality, integrity, and availability of information. 
+Additionally, other properties such as authenticity, accountability, non -
+repudiation and reliability can also be involved. 
+Integrity 
+Maintaining and assuring the accuracy and consistency of asset over its entire  
+life-cycle. 
+Owner 
+A person or group of people who have been identified by Management as having 
+responsibility for the maintenance of the confidentiality, availability and integrity 
+of an asset. The Owner may change during the lifecycle of the asset. 
+Policy 
+A plan of action to guide decisions and actions. The policy process includes the 
+identification of different alternatives such as programs or spending priorities, 
+and choosing among them on the basis of the impact they will have. 
+Risk 
+A combination of  the consequences of an event (including changes in 
+circumstances) and the associated likelihood of occurrence. 
+System 
+An equipment or interconnected system or subsystems of equipment that is 
+used in the acquisition, storage, manipulation, management, con trol, display, 
+switching, interchange, transmission or reception of data and that includes 
+computer software, firmware and hardware. 
+Table 2: Terms and Definitions 
+5.4. Change, Review and Update 
+This policy shall be reviewed once every year unless the owner considers an earlier review necessary to 
+ensure that the policy remains current. Changes of this policy shall be exclusively performed by the 
+Information Security Officer and approved by Management. A change log shall be kept current and be updated 
+as soon as any change has been made.  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 12/17 
+ 
+ 
+ 
+ 
+ 
+ 
+5.5. Enforcement / Compliance 
+Compliance with this policy is mandatory and it is to be reviewed periodically by the Information Security 
+Officer. All IAU units (Deanship, Department, College, Section and Centre) shall ensure continuous 
+compliance monitoring within their area.  
+In case of ignoring or infringing the information security directives, IAU’s environment could be harmed (e.g., 
+loss of trust and reputation, operational disruptions or legal violations), and the fallible persons will be made 
+responsible resulting in disciplinary or corrective actions (e.g., dismissal) and could face legal investigations.  
+A correct and fair treatment of employees who are under suspicion of violating security directives (e .g., 
+disciplinary action) has to be ensured. For the treatment of policy violations, Management and Human 
+Resources Department have to be informed and deal with the handling of policy violations. 
+5.6. Wavier 
+Information security shall consider exceptions on an individual basis. For an exception to be approved, a 
+business case outlining the logic behind the request shall accompany the request.  Exceptions to the policy 
+compliance requirement shall be authorized by the Information Securi ty Officer and approved by the I CT 
+Deanship.  Each waiver request shall include justification and benefits attributed to the waiver.  
+The policy waiver period has maxi mum period of 4 months, and shall be reassessed and re -approved, if 
+necessary for maximum three consecutive terms. No policy shall be provided waiver for more than three 
+consecutive terms. 
+5.7. Roles and Responsibilities (RACI Matrix) 
+Table 3 shows the RACI matrix 1 that identifies who is responsible, accountable, consulted or informed for 
+every task that needs to be performed.  There a couple of roles involved in this policy respectively: ICT Dean, 
+Information Security  Manager (ISM), I CT Deanship, Information Security Officer (ISO), Legal Affairs 
+Department, Human Resources Department / Administrative Unit  (HR/A), Internal /External Auditor and 
+User (Employees, Faculty Members, Students, Contractors, Consultants and Third Parties). 
+                                                
+1  The responsibility assignment RACI matrix describes the participation by various roles in completing tasks for a business process.  It is 
+especially useful in clarifying roles and responsibilities in cross-functional/departmental processes.  R stands for Responsible who performs  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 13/17 
+ 
+ 
+ 
+ 
+ 
+ 
+                                    Roles 
+Responsibilities 
+ICT 
+Dean ISM ICT ISO Legal HR/
+A Auditor User 
+Enforcing information security policies 
+within IAU’s environment to protect 
+critical business information assets. 
+R, A 
+ 
+C C   
+ 
+I 
+Supporting information security initiatives, 
+projects, programs and activities. R, A  C C    I 
+Ensuring that information security policies 
+are compliant with IAU’s legal and 
+contractual requirement. 
+I 
+ 
+ C R, A  
+ 
+I 
+Providing the expert legal advice that is 
+necessary for other units/departments to 
+provide services in a manner that is fully 
+compliant with existing laws and 
+regulations. 
+ 
+ 
+C C R, A  
+ 
+I 
+Approving the new or modifications of 
+existing information security policies. R, A  C C    I 
+Distributing information security 
+documents so that those who need such 
+documents have copies or can readily 
+locate the documents via an intranet site. 
+I 
+ 
+C R, A  R, C 
+ 
+I 
+Communicating this policy to all new IAU’s 
+employees, faculty members, students, 
+contracts, consultants and third parties  to 
+ensure that they understand the 
+requirements and responsibilities towards 
+information security policies. 
+ 
+ 
+C C  R, A 
+ 
+I 
+Defining and maintaining the information 
+security policies. I  C R, A, 
+C     
+Preparing and periodically updating 
+information security manuals needed to 
+advance information security at IAU. 
+I 
+ 
+C R, A, 
+C  I 
+ 
+I 
+Adhering to information security policies, 
+guidelines and procedures pertaining to the 
+protection of information. 
+ 
+ 
+C C  C 
+ 
+R, A,I 
+Reporting actual or suspected security 
+incidents to ICT Deanship. I  A, C C    R 
+Managing all information security auditing 
+activities.  C, I I C, I   R,A  
+Developing the annual audit plan.  C, I I C, I   R,A  
+Reporting audit findings to the Information 
+Security Manager.  C, I I C, I   R,A  
+Ensuring compliance with the information 
+security practices, policies and procedures.  C, I I C, I   R,A  
+                                                
+a task, A stands for Accountable (or Approver) who sings off (approves) on a task that a responsible performs, C stands for Consulted 
+(or Consul) who provide opinions, and I stand for Informed who is kept up-to-date on task progress. 
+  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 14/17 
+ 
+ 
+ 
+ 
+ 
+ 
+                                    Roles 
+Responsibilities 
+ICT 
+Dean ISM ICT ISO Legal HR/
+A Auditor User 
+Monitoring the compliance with the 
+information security policies, procedures, 
+guidelines and standards along with 
+external chosen standards. 
+ C, I I C, I   R,A  
+Table 3: Assigned Roles and Responsibilities based on RACI Matrix 
+5.8. Relevant Documents 
+The followings are all relevant policies and procedures to this policy: 
+ Organization of Information Security Policy  
+ Human Resource Security Policy 
+ Asset Management Policy 
+ Access Control Policy 
+ Cryptography Policy 
+ Physical and Environmental Security Policy 
+ Operations Security Policy 
+ Communications Security Policy 
+ System Acquisition, Development and Maintenance Policy 
+ Supplier Relationships Policy 
+ Information Security Incident Management Policy 
+ Information Security Aspects of Business Continuity Policy 
+ Compliance Policy 
+ Risk Management Policy 
+ Acceptable Usage Policy 
+ Asset Classification Procedure 
+ Change Management Procedure 
+ Patch Management Procedure  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 15/17 
+ 
+ 
+ 
+ 
+ 
+ 
+ Risk Management Procedure 
+ Information Security Incident Handling Procedure 
+ Physical and Logical Access Control Procedure 
+ Human Resource Security Procedure 
+ Backup and Restoration Procedure 
+ System Acquisition, Development and Maintenance Procedure 
+5.9. Ownership 
+This document is owned and maintained by the ICT Deanship of University of Imam Abdulrahman bin Faisal.   INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 16/17 
+ 
+ 
+ 
+ 
+ 
+ 
+6. Policy Statements 
+The following subsections present the policy statements in two main aspects: 
+ Policies for Information Security 
+ Review of the Policies for Information Security  
+6.1. Policies for Information Security 
+1. Management shall define a well-structured information security framework to initiate and maintain 
+information security in accordance with IAU’s business requirements.  
+2. Management shall acknowledge the importance of ensuring information sec urity within IAU’s 
+information assets shall be committed towards supporting the information security goals and 
+principles.  
+3. Management shall understand their responsibilities toward supporting the information security 
+objectives within IAU’s environment. 
+4. Management shall provide the direction and support for the implementation of information security 
+requirements across IAU’s environment.  
+5. Management shall commit to preserve the security of all information within IAU’s assets; and entrust 
+to them to ensure the security of information and legal conformity.  
+6. IAU’s approach to information security management shall be based on international standards (e.g., 
+ISO/IEC 27001:2013) and globally accepted best practices to ensure the following aspects: 
+a. Information (e.g., academic, administrative and personal information)  is only accessed by 
+authorized individuals, who have the proper and approved access authorization. 
+b. All the confidential information is well protected with all the necessary controls. 
+c. Information is changed and/or updated only by authorized individuals who have the proper 
+and approved authorization. 
+d. Information is always available to all the individuals who have the proper and approved 
+authorization to access this information.  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 17/17 
+ 
+ 
+ 
+ 
+ 
+ 
+e. All individuals who have been granted any form of access to information are fully accountable 
+for the proper use of this information. 
+7. Management and IAU’s employees shall adhere to its information security policies and practices; and 
+shall comply with relevant information security policies and procedures. 
+8. ICT Deanship shall define and develop a set of information security policies in two levels: 
+a. High Level – Define an “information security policy” that sets out IAU’s approach in managing 
+its information security objectives; and shall be approved by Management. 
+b. Low Level – Define topic-specific policies to support implementati on of security controls 
+within IAU’s environment. Example of such topics include: 
+▪ Physical and logical access control 
+▪ Environmental security 
+▪ Network and communication security 
+▪ Encryption controls 
+▪ Information backup and recovery 
+▪ Business continuity 
+▪ Information exchange 
+▪ External threats management 
+▪ Desktop and laptop security 
+▪ Data privacy and protection 
+▪ Supplier security management 
+REF: [ISO/IEC 27001: A.5.1.1] 
+6.2. Review of the Policies for Information Security 
+1. Information Security Officer shall maintain, review and update all information security policies and 
+procedures on an annual basis.  INFORMATION SECURITY POLICY 
+      
+ 
+ 
+  Page 18/17 
+ 
+ 
+ 
+ 
+ 
+ 
+2. Information Security Officer shall annually measure the effectiveness of the implemented controls to 
+avoid security incidents and reduce resulting impacts through a well -defined process for 
+benchmarking security maturity of assets. The followings shall be considered: 
+a. Feedback from interested users. 
+b. Reports of security incidents. 
+c. Review of independent consultants and Management. 
+d. Trends of threats and their vulnerabilities. 
+e. Consult and involve Human Resources Department / Administrative Unit and Legal 
+Department. 
+3. Information Security Officer shall ensure that its internal information security policies and relevant 
+procedures are well documented in line with relevant international standards (e.g., ISO/IEC 
+27001:2013), legal and regulatory requirements.   
+REF: [ISO/IEC 27001: A.5.1.2] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-------------------------------------------------------- End of Document ------------------------------------------------- 
+ 
+ 

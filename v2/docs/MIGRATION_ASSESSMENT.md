@@ -218,7 +218,8 @@ wiring may land, not what to write.
 
 6. **A commit is defined by what it is permitted to change, not by what we hope improves after it.**
    Before the work starts, its scope is written as two lists — **permitted** and **forbidden** — and
-   nothing else. No prediction of which tests will turn green: anticipating results invites the
+   nothing else. (Those two lists are the operational form of rule 7: they enumerate the *means*;
+   rule 7 names the *property* they serve.) No prediction of which tests will turn green: anticipating results invites the
    commonest failure of small commits, *"while I'm here, I'll fix that too"*, and the boundary
    collapses from the inside. Results belong to the Exit Gate, **after** the work, where they are
    explained rather than expected.
@@ -233,7 +234,26 @@ wiring may land, not what to write.
    be *incorrect* without it. The **migrations do not belong**, because the commit can be built,
    tested and shown correct without them; they are a deployment concern and get their own commit.
 
-7. **An unexpected pass is an engineering event, not good news.** A test that turns green without
+7. **Scope is defined by the observable system property, and may be refined by the Exit Gate before
+   the commit exists.**
+
+   > A commit is defined by the observable system property it introduces. Files, mechanisms, and
+   > implementation techniques are merely the means by which that property is achieved.
+
+   *Rationale:* if a commit is scoped by an implementation choice (for example "use Postgres"), its
+   real architectural boundary stays implicit, and later work crosses that boundary unintentionally.
+   Scoping by the observable property keeps the boundary stable even when the implementation changes.
+
+   And the Gate does not only reject incorrect implementations — **it exposes incorrectly scoped
+   commits.** An Exit Gate failure is therefore allowed to *redefine the scope* before any commit
+   exists. The worked example is the store commit: it was first scoped as *"use postgres mission
+   store"* — an implementation. The Gate caught execution running inside the transaction (the
+   rejected Option A of ADR 0055), which revealed the true property was *command-scoped persistence*,
+   not a database choice. Re-scoped, then continued. That is not a debugging loop; it is an
+   architectural learning loop — write scope → write tests → implement → the Gate exposes a property
+   outside the scope → re-scope before committing.
+
+8. **An unexpected pass is an engineering event, not good news.** A test that turns green without
    being made green must be explained before anything else proceeds — it usually means the test was
    measuring less than we thought. This is precisely why the exit-criterion tests are marked
    `xfail(strict=True)`: strict does not say *"good, it's green"*, it says ***"explain why it's

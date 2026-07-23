@@ -223,6 +223,16 @@ wiring may land, not what to write.
    collapses from the inside. Results belong to the Exit Gate, **after** the work, where they are
    explained rather than expected.
 
+   **The membership test** — what decides whether something belongs in a commit is not *"is it
+   related?"* or *"will it be needed anyway?"* but:
+
+   > **Nothing belongs in a commit unless its absence would make the commit wrong.**
+
+   Worked example, from the store commit: the **outbox sink belongs**, because leaving it outside the
+   command's unit of work restores the dual write the commit exists to eliminate — the commit would
+   be *incorrect* without it. The **migrations do not belong**, because the commit can be built,
+   tested and shown correct without them; they are a deployment concern and get their own commit.
+
 7. **An unexpected pass is an engineering event, not good news.** A test that turns green without
    being made green must be explained before anything else proceeds — it usually means the test was
    measuring less than we thought. This is precisely why the exit-criterion tests are marked

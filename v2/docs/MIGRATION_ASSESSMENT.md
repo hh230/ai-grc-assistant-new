@@ -216,7 +216,14 @@ wiring may land, not what to write.
 
    A new failure is a finding, not an obstacle. It is reported, not worked around.
 
-6. **An unexpected pass is an engineering event, not good news.** A test that turns green without
+6. **A commit is defined by what it is permitted to change, not by what we hope improves after it.**
+   Before the work starts, its scope is written as two lists — **permitted** and **forbidden** — and
+   nothing else. No prediction of which tests will turn green: anticipating results invites the
+   commonest failure of small commits, *"while I'm here, I'll fix that too"*, and the boundary
+   collapses from the inside. Results belong to the Exit Gate, **after** the work, where they are
+   explained rather than expected.
+
+7. **An unexpected pass is an engineering event, not good news.** A test that turns green without
    being made green must be explained before anything else proceeds — it usually means the test was
    measuring less than we thought. This is precisely why the exit-criterion tests are marked
    `xfail(strict=True)`: strict does not say *"good, it's green"*, it says ***"explain why it's

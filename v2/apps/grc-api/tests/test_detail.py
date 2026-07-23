@@ -6,6 +6,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 from mission_engine import (
     ApprovalRequest,
     InMemoryMissionStore,
@@ -66,7 +67,7 @@ def client() -> tuple[TestClient, Mission, str, Mission]:
         store.save(m)
         rm.record(MissionListItem(m.id, "tenant-a", mtype, scope, m.status.value, 1.0, 2.0))
 
-    app = create_app(read_model=rm, mission_store=store)
+    app = create_app(storage=Storage.MEMORY, read_model=rm, mission_store=store)
     return TestClient(app), running, step_id, awaiting
 
 

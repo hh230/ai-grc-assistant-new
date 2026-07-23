@@ -10,12 +10,13 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 
 from tests.conftest import AUTH_A, AUTH_B
 
 
 def _client() -> TestClient:
-    return TestClient(create_app())
+    return TestClient(create_app(storage=Storage.MEMORY))
 
 
 # --- create -----------------------------------------------------------------------------

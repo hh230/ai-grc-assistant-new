@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 from mission_engine import (
     EchoExecutor,
     InMemoryMissionStore,
@@ -41,7 +42,12 @@ def _gated_app() -> tuple[TestClient, Mission, InMemoryMissionListReadModel]:
             mission.id, "tenant-a", "gap_assessment", "Findings", mission.status.value, 1.0, 2.0
         )
     )
-    app = create_app(read_model=read_model, mission_store=store, mission_engine=engine)
+    app = create_app(
+        storage=Storage.MEMORY,
+        read_model=read_model,
+        mission_store=store,
+        mission_engine=engine,
+    )
     return TestClient(app), mission, read_model
 
 

@@ -9,6 +9,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 from mission_read_model import InMemoryMissionListReadModel, MissionListItem
 
 # (mission_id, tenant_id, mission_type, title, status, created_at, updated_at)
@@ -30,7 +31,10 @@ def _seed() -> InMemoryMissionListReadModel:
 
 @pytest.fixture
 def client() -> TestClient:
-    return TestClient(create_app(read_model=_seed()))
+    # This suite declares its environment: `storage=MEMORY`. The host is durable by default, so an
+    # in-memory suite says so rather than inheriting it — which is why a new test cannot fall into
+    # an assumption it never made. `tests/production` is the suite that speaks to PostgreSQL.
+    return TestClient(create_app(storage=Storage.MEMORY, read_model=_seed()))
 
 
 AUTH_A = {"Authorization": "Bearer dev-tenant-a"}

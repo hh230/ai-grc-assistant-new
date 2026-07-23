@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 
 AUTH_A = {"Authorization": "Bearer dev-tenant-a"}
 AUTH_B = {"Authorization": "Bearer dev-tenant-b"}
@@ -18,7 +19,7 @@ AUTH_B = {"Authorization": "Bearer dev-tenant-b"}
 
 def _client() -> TestClient:
     # A fresh app: empty document read model + knowledge base, seeded dev identities.
-    return TestClient(create_app())
+    return TestClient(create_app(storage=Storage.MEMORY))
 
 
 def _upload(

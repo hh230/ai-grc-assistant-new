@@ -9,6 +9,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 from mission_engine import InMemoryMissionStore, MissionEngine, Plan, PlanStep, StepResult
 from mission_read_model import InMemoryMissionListReadModel, MissionListItem
 from pipeline_contracts import TenantContext
@@ -56,7 +57,12 @@ def _gap_app() -> tuple[TestClient, str]:
             mission.id, "tenant-a", "gap_assessment", "Tech", mission.status.value, 1.0, 2.0
         )
     )
-    app = create_app(read_model=read_model, mission_store=store, mission_engine=engine)
+    app = create_app(
+        storage=Storage.MEMORY,
+        read_model=read_model,
+        mission_store=store,
+        mission_engine=engine,
+    )
     return TestClient(app), mission.id
 
 
@@ -72,7 +78,12 @@ def _pending_app() -> tuple[TestClient, str]:
             mission.id, "tenant-a", "gap_assessment", "Org", mission.status.value, 1.0, 2.0
         )
     )
-    app = create_app(read_model=read_model, mission_store=store, mission_engine=engine)
+    app = create_app(
+        storage=Storage.MEMORY,
+        read_model=read_model,
+        mission_store=store,
+        mission_engine=engine,
+    )
     return TestClient(app), mission.id
 
 

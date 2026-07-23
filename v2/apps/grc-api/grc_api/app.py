@@ -5,9 +5,11 @@ and the read model), stores it on `app.state`, registers the uniform error handl
 health probe and the versioned `/v1` surface. No business logic lives here — the host validates,
 authenticates, scopes to a tenant, and dispatches to `v2/packages/*`.
 
-Adapters are injectable so tests (and later, deployment) swap them without touching the routes: the
-default read model is the in-memory one; the Postgres adapter drops in at the same seam. The default
-identity provider is the seeded development one; OIDC replaces it here alone.
+Adapters are injectable so tests (and later, deployment) swap them without touching the routes. The
+**read models are durable by default** — an unconfigured deployment gets PostgreSQL, not an
+in-memory projection (see `composition`); a test that wants in-memory asks for it explicitly with
+`storage=Storage.MEMORY`. The store, the executor, and the identity provider are still the
+development ones, each replaced at its own seam.
 """
 
 from __future__ import annotations
@@ -15,14 +17,15 @@ from __future__ import annotations
 from typing import Any
 
 from assistant_runtime.builtin import default_mission_catalog
-from document_read_model import DocumentReadModel, InMemoryDocumentReadModel
+from document_read_model import DocumentReadModel
 from fastapi import FastAPI
 from framework_library import FrameworkLibrary
 from knowledge_runtime import TenantKnowledgeBase
 from mission_application import DeliverableBuilderRegistry, ExportService
 from mission_engine import EchoExecutor, InMemoryMissionStore, MissionEngine
-from mission_read_model import InMemoryMissionListReadModel, MissionListReadModel
+from mission_read_model import MissionListReadModel
 
+from grc_api.composition import Storage, build_document_read_model, build_mission_read_model
 from grc_api.errors import register_exception_handlers
 from grc_api.result_adapters import (
     BundledDeliverableProvider,
@@ -45,6 +48,7 @@ API_VERSION = "0.1.0"
 
 def create_app(
     *,
+    storage: Storage = Storage.DURABLE,
     read_model: MissionListReadModel | None = None,
     identity_provider: IdentityProvider | None = None,
     mission_store: Any | None = None,
@@ -54,7 +58,10 @@ def create_app(
 ) -> FastAPI:
     app = FastAPI(title=API_TITLE, version=API_VERSION)
 
-    app.state.mission_read_model = read_model or InMemoryMissionListReadModel()
+    # `storage` selects the read-model adapters: DURABLE (the production default — an unconfigured
+    # deployment gets PostgreSQL, never an in-memory projection that loses a tenant's work) or
+    # MEMORY, which a test asks for explicitly. An injected adapter still wins over both.
+    app.state.mission_read_model = read_model or build_mission_read_model(storage)
     app.state.identity_provider = identity_provider or development_identity_provider()
     # The Core store the detail endpoint reads live missions through (Slice S2). Default in-memory;
     # a Postgres-backed store drops in at this same seam.
@@ -79,7 +86,7 @@ def create_app(
     # Knowledge (Slice S4): the Document read model the view lists, plus the shared knowledge base
     # the upload ingests into. One base holds every tenant's chunks (each chunk tenant-scoped), so
     # retrieval never crosses the boundary. Both drop in at this seam (Postgres / pgvector later).
-    app.state.document_read_model = document_read_model or InMemoryDocumentReadModel()
+    app.state.document_read_model = document_read_model or build_document_read_model(storage)
     app.state.knowledge_base = knowledge_base or TenantKnowledgeBase()
     # The Mission Catalog (Slice S7): a Mission type IS a plan factory. The create command reads it
     # to turn a chosen type + scope into the Core's (goal, plan). The bundled catalog holds the 6.

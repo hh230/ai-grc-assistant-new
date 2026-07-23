@@ -11,6 +11,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
+from grc_api.composition import Storage
 from mission_engine import InMemoryMissionStore, MissionEngine, Plan, PlanStep, StepResult
 from mission_read_model import InMemoryMissionListReadModel, MissionListItem
 from pipeline_contracts import TenantContext
@@ -50,7 +51,12 @@ def _app_with_waiting_decision() -> tuple[TestClient, str]:
         )
     )
     client = TestClient(
-        create_app(read_model=read_model, mission_store=store, mission_engine=engine)
+        create_app(
+            storage=Storage.MEMORY,
+            read_model=read_model,
+            mission_store=store,
+            mission_engine=engine,
+        )
     )
     return client, mission.id
 

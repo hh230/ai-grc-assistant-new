@@ -1,0 +1,38 @@
+[project]
+name = "mission-store"
+version = "0.1.0"
+description = "Rasheed V2 Mission Store (Phase 15, ADR 0042 step 4) — the durable MissionStorePort. A PostgreSQL-backed store that round-trips the Mission aggregate (versioned plan, plan-version history, step results, lifecycle state, tenant scope) behind the frozen port the Mission Engine already depends on. Drop-in for the reference InMemoryMissionStore: the engine and aggregate are unchanged. Tenant isolation is enforced in SQL; idempotency is per tenant; every mission is stored. The psycopg driver is imported lazily and the codec is pure, so the package imports with or without the driver."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "mission-engine",
+    "event-bus",
+]
+
+[project.optional-dependencies]
+# PostgreSQL backend (PostgresMissionStore). psycopg is imported lazily inside the store's
+# methods, so the core package — and the pure codec — import without it.
+postgres = ["psycopg[binary]>=3.2"]
+
+[dependency-groups]
+# Dev/test needs psycopg so the (DB-gated, auto-skipping) integration test can run when a
+# database is reachable; the pure codec/contract/schema tests need no driver.
+dev = [
+    "pytest>=8.3.0",
+    "psycopg[binary]>=3.2",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mission_store"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

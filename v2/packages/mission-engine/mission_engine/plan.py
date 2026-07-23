@@ -36,11 +36,17 @@ class PlanStep:
     runs (ADR 0042 §5, §12.5); a read-only step never gates. `instruction` is the opaque
     payload the executor interprets — for the Pipeline Tool (a later step) it will carry the
     grounded-answer request. The Mission Engine never inspects `instruction`: it dispatches,
-    it does not reason (§3)."""
+    it does not reason (§3).
+
+    `tool` names the registered Tool this step routes to (ADR 0048). Empty means "use the
+    executor's default tool" — so every plan written before ADR 0048 is unchanged. The
+    Mission Engine never inspects `tool` either; it copies it onto the `StepRequest` and the
+    executor resolves it. `instruction` stays the opaque *what*; `tool` is the *which*."""
 
     description: str = ""
     instruction: str = ""
     consequential: bool = False
+    tool: str = ""
     id: str = field(default_factory=new_step_id)
 
     def to_dict(self) -> dict[str, object]:

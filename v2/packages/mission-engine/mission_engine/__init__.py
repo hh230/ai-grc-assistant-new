@@ -16,8 +16,10 @@ tool registry.
 """
 
 from mission_engine.adapters import EchoExecutor, InMemoryMissionStore
+from mission_engine.approval import ApprovalDecision, ApprovalRequest
 from mission_engine.engine import MissionEngine
 from mission_engine.errors import (
+    ApprovalError,
     IllegalTransition,
     MissionError,
     MissionNotFound,
@@ -25,6 +27,7 @@ from mission_engine.errors import (
     TenantMismatch,
 )
 from mission_engine.events import (
+    MissionApproved,
     MissionAwaitingApproval,
     MissionCancelled,
     MissionCompleted,
@@ -32,6 +35,7 @@ from mission_engine.events import (
     MissionEvent,
     MissionFailed,
     MissionPlanned,
+    MissionRejected,
     MissionResumed,
     MissionStepCompleted,
 )
@@ -62,6 +66,9 @@ __all__ = [
     "PlanStep",
     "ExecutionProfile",
     "single_step_plan",
+    # approval (ADR 0044, Slice 1): value objects owned by the Mission aggregate
+    "ApprovalRequest",
+    "ApprovalDecision",
     # ports
     "ExecutionPort",
     "MissionStorePort",
@@ -77,6 +84,8 @@ __all__ = [
     "MissionStepCompleted",
     "MissionAwaitingApproval",
     "MissionResumed",
+    "MissionApproved",
+    "MissionRejected",
     "MissionCompleted",
     "MissionFailed",
     "MissionCancelled",
@@ -86,4 +95,5 @@ __all__ = [
     "TenantMismatch",
     "MissionNotFound",
     "PlanError",
+    "ApprovalError",
 ]

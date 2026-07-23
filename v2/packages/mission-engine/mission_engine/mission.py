@@ -23,11 +23,12 @@ it and talks to the `ExecutionPort` / `MissionStorePort` / Event Bus around it.
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from pipeline_contracts import TenantContext, dataclass_dict
 
-from mission_engine.errors import IllegalTransition, PlanError, TenantMismatch
+from mission_engine.approval import ApprovalDecision, ApprovalRequest
+from mission_engine.errors import ApprovalError, IllegalTransition, PlanError, TenantMismatch
 from mission_engine.ids import new_mission_id, new_trace_id
 from mission_engine.lifecycle import MissionStatus, can_transition, is_terminal
 from mission_engine.plan import ExecutionProfile, Plan, PlanStep
@@ -53,6 +54,10 @@ class Mission:
     idempotency_key: str = ""
     created_at: float = 0.0
     updated_at: float = 0.0
+    # The one active human-approval request, if the mission is paused at a gate (ADR 0044, Slice 1).
+    # `None` normally; at most one at a time (the one-active-request invariant, enforced in
+    # `await_approval`). The decision half is set in Slice 2 — here the request is always pending.
+    approval: ApprovalRequest | None = None
     _plan_versions: list[Plan] = field(default_factory=list, repr=False)
 
     # --- construction -------------------------------------------------------------------
@@ -108,6 +113,13 @@ class Mission:
         without reaching into the lifecycle machinery."""
         return is_terminal(self.status)
 
+    @property
+    def has_active_approval(self) -> bool:
+        """Whether the mission is holding a *pending* (undecided) approval request — the aggregate
+        side of ADR 0044's one-active-request invariant. A request whose decision is set is no
+        longer active (that path lands in Slice 2)."""
+        return self.approval is not None and self.approval.is_pending
+
     # --- guards -------------------------------------------------------------------------
 
     def assert_tenant(self, tenant: TenantContext) -> None:
@@ -161,17 +173,83 @@ class Mission:
 
     # --- lifecycle: human gate & re-plan (defined now, exercised when Human Approval lands) --
 
-    def await_approval(self) -> None:
+    def await_approval(self, request: ApprovalRequest | None = None) -> None:
         """EXECUTING → AWAITING_APPROVAL: pause BEFORE a consequential step's side effect
-        (ADR 0042 §2.5, §12.5). The engine calls this; the *decision* surface is Human
-        Approval, a later phase."""
+        (ADR 0042 §2.5, §12.5). Optionally attach the `ApprovalRequest` that records **why** the
+        mission paused (ADR 0044, Slice 1) — the engine builds it at the pause point. Enforces the
+        one-active-request invariant: a new request cannot be attached while one is still pending.
+        The engine calls this; the *decision* surface (approve/reject) is Slice 2.
+
+        `request=None` keeps the frozen behaviour exactly (pause only, no request), so existing
+        callers are unaffected."""
+        if request is not None and self.has_active_approval:
+            raise ApprovalError(
+                f"mission {self.id} already has an active approval request; "
+                "at most one is allowed at a time (ADR 0044)"
+            )
         self._transition(MissionStatus.AWAITING_APPROVAL)
+        if request is not None:
+            self.approval = request
 
     def resume(self) -> None:
         """AWAITING_APPROVAL → RESUMED, after an approval/edit. Resumption re-verifies the
         approver's tenant at the engine boundary (ADR 0040 §5) — a gate approved by an
         outsider is not a gate."""
         self._transition(MissionStatus.RESUMED)
+
+    def approve(
+        self, approver: TenantContext, *, comment: str = "", now: float | None = None
+    ) -> None:
+        """AWAITING_APPROVAL → RESUMED: a human approves the pending gate (ADR 0044 §Q4, Slice 2).
+
+        Records the decision on the active `ApprovalRequest` and drives the already-legal transition
+        — it does **not** resume execution (that orchestration is a later slice). The approver's
+        *tenant* is re-verified (ADR 0040 §5): a decision from a foreign tenant is not a decision.
+        Whether the principal *may* approve (RBAC) is decided above the pure aggregate (ADR 0044
+        assumption 3); here `approver.principal_id` is recorded as data only."""
+        self._decide(approver, approved=True, comment=comment, now=now, dst=MissionStatus.RESUMED)
+
+    def reject(
+        self, approver: TenantContext, *, comment: str = "", now: float | None = None
+    ) -> None:
+        """AWAITING_APPROVAL → CANCELLED: a human rejects the pending gate, fail-safe (ADR 0044 §Q5,
+        Slice 2). The rejected action never runs; the mission stops with the rejection recorded.
+        Reuses the frozen `CANCELLED` terminal (no new state) — the recorded `ApprovalDecision`
+        (`approved=False`, with its approver and comment) distinguishes a rejection from a plain
+        cancel. Same tenant re-check and RBAC boundary as `approve`."""
+        self._decide(
+            approver, approved=False, comment=comment, now=now, dst=MissionStatus.CANCELLED
+        )
+
+    def _decide(
+        self,
+        approver: TenantContext,
+        *,
+        approved: bool,
+        comment: str,
+        now: float | None,
+        dst: MissionStatus,
+    ) -> None:
+        """The shared approve/reject body: tenant re-check, require a pending request, drive the
+        transition, then record the decision. The transition is validated *before* the decision is
+        written, so an illegal call leaves the request untouched (a frozen value object is never
+        half-decided)."""
+        self.assert_tenant(approver)
+        if not self.has_active_approval:
+            raise ApprovalError(
+                f"mission {self.id} has no pending approval request to decide (ADR 0044)"
+            )
+        self._transition(dst)  # validates AWAITING_APPROVAL → dst; raises before any decision write
+        assert self.approval is not None  # guaranteed by has_active_approval
+        decision = ApprovalDecision(
+            approved=approved,
+            approver=approver.principal_id,
+            comment=comment,
+            decided_at=now if now is not None else _now(),
+        )
+        # A decision produces a NEW request carrying it, never a mutation (ADR 0044 §1): "requested"
+        # and "decided" stay two distinct, append-only facts.
+        self.approval = replace(self.approval, decision=decision)
 
     def replan(self, steps: tuple[PlanStep, ...]) -> None:
         """Create a new plan version on the same mission and return to PLANNED (§12.6). Legal

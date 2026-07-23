@@ -25,7 +25,7 @@ for new records.
 | [0009](./0009-event-driven-architecture.md) | Event-Driven Architecture where it earns its keep | Accepted | §16 |
 | [0010](./0010-plugin-architecture.md) | Plugin architecture for extensibility | Accepted | §17 |
 | [0011](./0011-ddd-boundaries.md) | Domain-Driven Design boundaries | Accepted | §14, §15 |
-| [0012](./0012-postgres-pgvector.md) | PostgreSQL + pgvector as the primary data store | Accepted | §4, §12 |
+| [0012](./0012-postgres-pgvector.md) | PostgreSQL + pgvector as the primary data store | Accepted (access-mechanism amended for V2 by [0045](./0045-v2-persistence-mechanism.md)) | §4, §12 |
 | [0013](./0013-fastapi-nextjs-stack.md) | FastAPI (backend) + Next.js (frontend) stack | Accepted | §4, §18 |
 | [0014](./0014-security-and-multitenancy.md) | Security principles & multi-tenancy | Accepted | §20 |
 | [0015](./0015-audit-and-traceability.md) | Audit & traceability (AI transparency) | Accepted | §19 |
@@ -54,6 +54,19 @@ for new records.
 | [0039](./0039-v2-platform-hardening.md) | V2 — platform hardening (validation, tracing, event bus & audit, provider expansion) | Accepted — implemented (Phase 13) | §9, §16, §19 |
 | [0040](./0040-v2-tenancy-model.md) | V2 — the tenancy model (contract only; implementation deferred to Phase 15+) | Accepted — contract only | §3, §8, §9, §16, §19, §20 |
 | [0041](./0041-knowledge-source-storage.md) | Knowledge source storage | Accepted | §12 |
-| [0042](./0042-v2-mission-engine.md) | V2 — the Mission Engine (governed unit of work; architecture only, pending review) | Proposed — architecture only | §3, §7, §8, §9, §11, §16, §19, §20 |
+| [0042](./0042-v2-mission-engine.md) | V2 — the Mission Engine (governed unit of work) | Accepted — implemented (amended by [0044](./0044-v2-human-approval-lifecycle.md)) | §3, §7, §8, §9, §11, §16, §19, §20 |
+| [0043](./0043-v2-mission-store.md) | V2 — the Mission Store (durable persistence behind the frozen MissionStorePort) | Accepted — implemented (Slices 1–4, frozen) | §8, §14, §15, §16, §19, §20 |
+| [0044](./0044-v2-human-approval-lifecycle.md) | V2 — the Human Approval Lifecycle (approval as a Mission-owned value object; amends ADR 0042) | Accepted — implemented (Slices 1–3; Slice 4 deferred) | §7, §8, §15, §16, §19, §20 |
+| [0045](./0045-v2-persistence-mechanism.md) | V2 — persistence mechanism (sync psycopg3 + raw parameterized SQL; reconciles [0012](./0012-postgres-pgvector.md)) | Accepted | §4, §12, §14, §20 |
+| [0046](./0046-v2-ai-grc-assistant.md) | V2 — the AI GRC Assistant (product layer / gateway; Capability Catalog → Mission Catalog → MissionRuntime) | Accepted — architecture (Slice 1) | §3, §5, §7, §8, §18, §19, §20 |
+| [0047](./0047-v2-capability-risk-assessment.md) | V2 — Risk Assessment capability (MVP; first *composite* Assistant capability) — the capability-ADR template | Accepted — architecture | §3, §8, §11, §19 |
+| [0048](./0048-v2-per-step-tool-selection.md) | V2 — Per-step tool selection (additive `PlanStep.tool`; unlocks multi-tool missions; amends ADR 0042/0043) | Accepted — implemented | §8, §9, §10 |
+| [0049](./0049-v2-tool-step-result-contract.md) | V2 — Shared tool-step result contract relocated to `tool-registry` (additive; lets leaf tools speak it without the LLM stack) | Accepted — implemented | §9, §10 |
+| [0050](./0050-v2-framework-library-tool.md) | V2 — Framework Library tool (frameworks as data; first real GRC tool; ISO 27001:2022) | Accepted — implemented | §9, §10, §13 |
+| [0051](./0051-v2-inter-step-context.md) | V2 — Inter-step context (additive transient `StepRequest.prior_results`; makes composite capabilities coherent; amends ADR 0042) | Accepted — implemented | §8, §9 |
+| [0052](./0052-v2-product-api-host.md) | V2 — the V1 Product API Host (`v2/apps/grc-api`; composition root only) | Accepted | §5, §6, §9, §20 |
+| [0053](./0053-v2-read-models-and-projection.md) | V2 — Read models & Application-layer projection (the V2 CQRS read side) | Accepted | §6, §14, §15, §16 |
+| [0054](./0054-v2-application-layer-contract.md) | V2 — the Application layer contract (policies, CQRS by dependencies, `CommandResult`, `CommandContext`) | Accepted — closed | §6, §9, §14, §22 |
+| [0055](./0055-v2-mission-execution-lifecycle-ownership.md) | V2 — Mission execution lifecycle ownership: the transaction boundary is the **command**, execution sits outside it (Gate A of the V1 → Platform migration) | Accepted | §6, §8, §14, §16, §20 |
 
 There is no ADR 0033 — the number was skipped, not lost.

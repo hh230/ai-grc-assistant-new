@@ -23,8 +23,11 @@ Mission → ExecutionPort → RegistryExecutor → Tool Registry → PipelineToo
 - **`RegistryExecutor`** — the bridge that implements the Mission Engine's `ExecutionPort` by
   **resolving a step to a Tool via the Tool Registry and invoking it** (ADR 0042 §5, §12.3). The
   Mission Engine dispatches a `StepRequest`; this executor resolves the tool, invokes it with the
-  step's tenant, and maps the result to a `StepResult`. For this first slice every step routes to
-  the Pipeline Tool.
+  step's tenant, and maps the result to a `StepResult`. A step may **name its own tool**
+  (`StepRequest.tool`, from `PlanStep.tool`, ADR 0048): the executor resolves that tool when set and
+  falls back to its constructor default (`tool_name`) when it is empty — so a single-tool mission is
+  unchanged and a **multi-tool mission** (e.g. Risk Assessment's `collect → assess → report`) routes
+  each step to its own tool, with no change to the Mission Engine or the Registry.
 - **`ToolStepResult`** — the **explicit, shared contract** every mission-invokable Tool speaks
   (`ok`, `output`, `source_ids`, `confidence`, `warnings`). The tool builds one; the executor
   maps it to a `StepResult`. Because the contract is single-sourced (not an implicit dict shape),

@@ -1,0 +1,119 @@
+{
+  "id": "framework:cis",
+  "name": "CIS Critical Security Controls v8",
+  "version": "8",
+  "region": "INT",
+  "languages": [
+    "en"
+  ],
+  "controls": [
+    {
+      "id": "cis_v8:1",
+      "code": "1",
+      "title": "Inventory and Control of Enterprise Assets",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:2",
+      "code": "2",
+      "title": "Inventory and Control of Software Assets",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:3",
+      "code": "3",
+      "title": "Data Protection",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:4",
+      "code": "4",
+      "title": "Secure Configuration of Enterprise Assets and Software",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:5",
+      "code": "5",
+      "title": "Account Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:6",
+      "code": "6",
+      "title": "Access Control Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:7",
+      "code": "7",
+      "title": "Continuous Vulnerability Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:8",
+      "code": "8",
+      "title": "Audit Log Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:9",
+      "code": "9",
+      "title": "Email and Web Browser Protections",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:10",
+      "code": "10",
+      "title": "Malware Defenses",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:11",
+      "code": "11",
+      "title": "Data Recovery",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:12",
+      "code": "12",
+      "title": "Network Infrastructure Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:13",
+      "code": "13",
+      "title": "Network Monitoring and Defense",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:14",
+      "code": "14",
+      "title": "Security Awareness and Skills Training",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:15",
+      "code": "15",
+      "title": "Service Provider Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:16",
+      "code": "16",
+      "title": "Application Software Security",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:17",
+      "code": "17",
+      "title": "Incident Response Management",
+      "domain": ""
+    },
+    {
+      "id": "cis_v8:18",
+      "code": "18",
+      "title": "Penetration Testing",
+      "domain": ""
+    }
+  ]
+}

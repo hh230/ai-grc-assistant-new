@@ -1,8 +1,10 @@
 # ADR 0042: Rasheed V2 — the Mission Engine (the governed unit of work, decided before it is built)
 
-- Status: **Accepted** — architecture only (this ADR writes no code); the first Phase 15
-  package (the Mission Engine) is built directly against it. Amended and accepted 2026-07-16
-  (see *Amendment* at the end).
+- Status: **Accepted — implemented** (Phase 15; the Mission Engine package is built and frozen, and
+  the first product package is built directly against it). Accepted 2026-07-16 (see *Amendment* at
+  the end); amended by [ADR 0044](./0044-v2-human-approval-lifecycle.md) (Human Approval: aggregate +
+  event vocabulary). *(Header updated 2026-07-17: the original "architecture only / writes no code"
+  wording predated implementation and is no longer accurate.)*
 - Date: 2026-07-16
 - Deciders: Product Owner (accepted 2026-07-16), Architecture
 - Related: CLAUDE.md §3 (mission-centric), §7 (the Orchestrator is the brain), §8 (mission
@@ -33,8 +35,10 @@ model is wrong, or its boundaries with the coming layers are vague, we will rede
 15, 16, and 17 in sequence. ADR 0040 already made this argument for tenancy and fixed that
 contract ahead of the build; this ADR does the same for the Mission itself.
 
-**This ADR deliberately writes no code.** No package, class, interface, or dataclass is
-proposed. It fixes: (1) *whether* Mission is even the right top-level unit, (2) what a
+**This ADR deliberately wrote no code** — it was ratified *before* the build (the Mission Engine has
+since been implemented and frozen, and amended by ADR 0044; see the Status header). No package,
+class, interface, or dataclass is proposed here. It fixes: (1) *whether* Mission is even the right
+top-level unit, (2) what a
 Mission is and is not, (3) the boundaries between Mission and the Platform below it and the
 Product layers beside it, and (4) the small set of decisions that must be locked now to
 avoid a redesign in Phase 16/17.

@@ -27,3 +27,9 @@ class MissionNotFound(MissionError):
 class PlanError(MissionError):
     """An invalid plan — e.g. a plan with no steps, or an attempt to re-plan a mission that is
     not in a re-plannable state (ADR 0042 §12.6)."""
+
+
+class ApprovalError(MissionError):
+    """An approval-invariant violation (ADR 0044). Slice 1 raises it for the one-active-request
+    invariant: attaching a second approval request while one is still pending (undecided). The
+    `approve`/`reject` decision paths that will also use it are Slice 2."""

@@ -1,0 +1,33 @@
+[project]
+name = "mission-projection"
+version = "0.1.0"
+description = "Rasheed V2 Mission Projection — the WRITE side of the Missions-View CQRS (Execution Slice S1). A tiny projector that turns a Core Mission plus its product-only metadata (Mission Type + scope) into a MissionListItem and records it in the read model. It supplies exactly the two fields the frozen Core does not persist; everything else is read off the mission. Consumes mission-engine (the Mission) and mission-read-model (the port); changes no Core."
+requires-python = ">=3.12"
+dependencies = [
+    "mission-engine",
+    "mission-read-model",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.uv.sources]
+mission-engine = { path = "../mission-engine", editable = true }
+mission-read-model = { path = "../mission-read-model", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mission_projection"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# mission-engine ships no py.typed; consume it as an untyped import (our own code stays strict).
+[[tool.mypy.overrides]]
+module = "mission_engine.*"
+ignore_missing_imports = true

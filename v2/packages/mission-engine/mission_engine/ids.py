@@ -12,6 +12,7 @@ import uuid
 MISSION_PREFIX = "mis"
 STEP_PREFIX = "stp"
 TRACE_PREFIX = "trc"
+APPROVAL_PREFIX = "apr"
 
 
 def _new(prefix: str) -> str:
@@ -24,6 +25,12 @@ def new_mission_id() -> str:
 
 def new_step_id() -> str:
     return _new(STEP_PREFIX)
+
+
+def new_approval_id() -> str:
+    """An approval request's id: distinguishes successive gates on one mission, so a decision and
+    its (future) events reference an exact request (ADR 0044, Slice 1)."""
+    return _new(APPROVAL_PREFIX)
 
 
 def new_trace_id() -> str:

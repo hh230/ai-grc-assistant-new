@@ -33,13 +33,22 @@ if TYPE_CHECKING:  # avoid a runtime import cycle: mission.py imports StepResult
 class StepRequest:
     """What the engine hands the executor for one step. It carries the mission's
     `TenantContext` **unchanged** (ADR 0040 §5): the executor runs *within* that tenant and
-    cannot widen it. `instruction` is the opaque payload from the `PlanStep`."""
+    cannot widen it. `instruction` is the opaque payload from the `PlanStep`; `tool` is the
+    registered Tool name the step routes to (ADR 0048), empty for the executor's default.
+
+    `prior_results` is the results of every step already completed in this mission, in order
+    (ADR 0051) — so a later step can be executed *from* earlier steps' output. It is transient
+    (this whole request is built per execution, never persisted) and defaults empty, so a first
+    step and every single-step mission are unchanged. The engine only carries it; a tool that
+    ignores it behaves exactly as before."""
 
     mission_id: str
     step_id: str
     tenant: TenantContext
     instruction: str
     consequential: bool = False
+    tool: str = ""
+    prior_results: tuple[StepResult, ...] = ()
 
     def to_dict(self) -> dict[str, object]:
         return dataclass_dict(self)

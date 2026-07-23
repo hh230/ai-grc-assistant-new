@@ -19,6 +19,7 @@ from tool_registry.errors import (
     ToolRegistryError,
 )
 from tool_registry.registry import ToolRegistry
+from tool_registry.result import PAYLOAD_INSTRUCTION, PAYLOAD_PRIOR_CONTEXT, ToolStepResult
 from tool_registry.spec import SideEffectProfile, ToolSpec
 from tool_registry.tool import Tool
 
@@ -29,6 +30,9 @@ __all__ = [
     "Tool",
     "ToolSpec",
     "SideEffectProfile",
+    "ToolStepResult",
+    "PAYLOAD_INSTRUCTION",
+    "PAYLOAD_PRIOR_CONTEXT",
     # errors
     "ToolRegistryError",
     "InvalidToolSpec",

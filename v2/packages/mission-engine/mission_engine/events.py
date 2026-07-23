@@ -11,11 +11,12 @@ Events carry **summary** fields only (ids, status, counts, profile) — never th
 instructions or a step's output text — keeping the bus a thin notification layer, exactly as
 the pipeline events do. The full artifacts live on the mission record and the store.
 
-The vocabulary below is fixed now (ADR 0042 §12) so the audit sink, tracer, and workspace
-stream are built once against a stable event set. The happy path publishes `MissionCreated →
-MissionPlanned → MissionStepCompleted* → MissionCompleted`; `MissionFailed` / `MissionCancelled`
-close a run fail-safe; `MissionAwaitingApproval` / `MissionResumed` are defined for the human
-gate that lands with Human Approval (a later phase).
+The vocabulary below is fixed by ADR 0042 §12 so the audit sink, tracer, and workspace stream are
+built once against a stable event set. The happy path publishes `MissionCreated → MissionPlanned →
+MissionStepCompleted* → MissionCompleted`; `MissionFailed` / `MissionCancelled` close a run
+fail-safe; `MissionAwaitingApproval` / `MissionResumed` mark the human gate's pause and resume.
+**ADR 0044 (Human Approval) extends this vocabulary** with `MissionApproved` / `MissionRejected`
+— the gate's decision facts (Slice 2).
 """
 
 from __future__ import annotations
@@ -111,6 +112,42 @@ class MissionResumed(MissionEvent):
 
     def _mission_payload(self) -> dict[str, object]:
         return {"plan_version": self.plan_version}
+
+
+@dataclass(frozen=True)
+class MissionApproved(MissionEvent):
+    """A human approved the mission's pending gate (ADR 0044 §Q4, Slice 2). Past-tense fact carrying
+    the resolved `ApprovalRequest`'s id and the approver's principal id (the "when" is
+    `occurred_at`). Emission is the engine's job in a later slice; the event type and its outbox
+    registration land in Slice 2 so the audit vocabulary is complete."""
+
+    name: ClassVar[str] = "mission.approved"
+
+    approval_id: str = ""
+    approver: str = ""
+
+    def _mission_payload(self) -> dict[str, object]:
+        return {"approval_id": self.approval_id, "approver": self.approver}
+
+
+@dataclass(frozen=True)
+class MissionRejected(MissionEvent):
+    """A human rejected the mission's pending gate; the mission stops fail-safe as `CANCELLED`
+    (ADR 0044 §Q5, Slice 2). Carries the request id, the approver, and the rejection `comment` — the
+    who/why an auditor needs (CLAUDE.md §19)."""
+
+    name: ClassVar[str] = "mission.rejected"
+
+    approval_id: str = ""
+    approver: str = ""
+    comment: str = ""
+
+    def _mission_payload(self) -> dict[str, object]:
+        return {
+            "approval_id": self.approval_id,
+            "approver": self.approver,
+            "comment": self.comment,
+        }
 
 
 @dataclass(frozen=True)

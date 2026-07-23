@@ -21,9 +21,15 @@ dependencies = [
 ]
 
 [dependency-groups]
+# DEV ONLY. The `dependencies` above are the production path and are deliberately untouched by the
+# Wave 1 test commit — `psycopg` and `mission-store` exist here solely so `tests/production` can
+# stand the durable adapters up and inspect raw rows out of band. They become production
+# dependencies only when the wiring commits land.
 dev = [
     "pytest>=8.3.0",
     "httpx>=0.27.0",
+    "psycopg[binary]>=3.2.0",
+    "mission-store",
 ]
 
 [tool.uv.sources]
@@ -36,6 +42,8 @@ framework-library = { path = "../../packages/framework-library", editable = true
 document-read-model = { path = "../../packages/document-read-model", editable = true }
 knowledge-runtime = { path = "../../packages/knowledge-runtime", editable = true }
 assistant-runtime = { path = "../../packages/assistant-runtime", editable = true }
+# dev-only (tests/production) — not a production dependency yet
+mission-store = { path = "../../packages/mission-store", editable = true }
 
 # These ship no py.typed; consume them as untyped imports (our own code stays strict).
 [[tool.mypy.overrides]]

@@ -195,6 +195,39 @@ wiring may land, not what to write.
    store, executor, or projection — and forfeits cheap revert. Each commit must stand alone, carry
    its own value, and be revertible on its own.
 
+   | # | Commit | Contains nothing else |
+   |---|---|---|
+   | 1 | `test(wave1): assert the production composition` | no wiring, no production source |
+   | 2 | `wire(wave1): connect postgres read models` | no store · no executor · no identity · no API change |
+   | 3 | `replace(wave1): use postgres mission store` | the durable path begins here |
+   | 4 | `replace(wave1): replace echo executor` | the `xfail`s begin turning green |
+
+4. **Every commit closes a loop.** Code → tests → an explanation of the result → and only then, the
+   next component. The explanation is not optional prose; it is the **Commit Exit Gate** below.
+
+5. **The Commit Exit Gate.** A Wave 1 commit is not finished until three questions are answered.
+   This is the stamp on every one of them.
+
+   | Question | Required |
+   |---|---|
+   | Which tests now pass? | **by name** |
+   | Which tests still fail? | and **is that failure the expected one?** |
+   | Did any new failure appear? | if yes → **work stops** |
+
+   A new failure is a finding, not an obstacle. It is reported, not worked around.
+
+6. **An unexpected pass is an engineering event, not good news.** A test that turns green without
+   being made green must be explained before anything else proceeds — it usually means the test was
+   measuring less than we thought. This is precisely why the exit-criterion tests are marked
+   `xfail(strict=True)`: strict does not say *"good, it's green"*, it says ***"explain why it's
+   green."*** That distinction is what makes this wave a chain of engineering checkpoints rather
+   than a chain of commits.
+
+*(Commit 1 landed 2026-07-23 on `feat/wave1-production-tests`, over a Baseline Snapshot — `chore:
+import accepted v2 baseline` — which records where git tracking began and claims to be no
+development step. 340 files of accepted work had never been committed; without that snapshot no
+commit in this wave could have been coherent.)*
+
 ---
 
 ## 5. Risks of a direct copy

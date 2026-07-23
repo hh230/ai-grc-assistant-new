@@ -240,6 +240,11 @@ visibility test failed, on the same code). Named at the level the system observe
 *properties*. Scoping the work by the properties (per rule 7 of the migration protocol) is what keeps
 the boundary stable when the mechanism later changes.
 
+*(These two are how the system is **observed**. How the *work* is partitioned into commits is a
+separate question, answered by the Realization below — a launch **boundary** commit and its
+**implementation** commit — because on the frozen engine the two observations cannot be delivered by
+two separate persistence-mechanism commits. The models are the lens; the boundary is the seam.)*
+
 ### The separation is achieved outside the frozen engine — a constraint, not a defect
 
 `MissionEngine.execute()` (and `resume()`) **couple** the state transition into `EXECUTING` with the
@@ -269,10 +274,10 @@ would promote an **implementation constraint into an architectural fact**, the e
 forbids.
 
 The resolution is a small seam, **not** a merge of the two properties: a Port between the command and
-execution.
+execution — **a responsibility boundary, not an execution layer.**
 
     Command  →  «this mission is ready»   (a decision — atomic, in the command's transaction)
-             →  ExecutionStartPort.start(mission_id)   (execution begins — outside that transaction)
+             →  MissionLaunchPort.start(mission_id)   (execution begins — outside that transaction)
 
 The Port's whole surface is `start(mission_id)`. The command knows nothing of `Engine`, `Runtime`,
 `Driver`, `Queue`, or `Worker` — only "begin execution". That is what makes *"the command owns the
@@ -282,27 +287,35 @@ transaction, but not progress"* true **structurally**, not by a choice of connec
   the difference is that the *Port's implementation* owns that coupling, not the command. The
   constraint is moved to where it belongs (execution is execution's concern), which is the same
   discipline the whole project follows: **wire above the Core, do not change the Core.**
+- **It is a responsibility boundary, not an execution layer.** This is the line that must survive:
+  the Port is where command-completion ends and execution begins — nothing more. It must not grow
+  into an "Execution Manager"/"Coordinator"/"Workflow". Scheduling, retry, cancellation, and
+  background dispatch all live *behind* it, as choices of its implementation — never on the Port
+  itself.
 - **It is not a new architectural decision.** It is a *realization* of this ADR's decision (the
   command owns the transaction). It adds no option and opens no alternative, so it needs **no new
   ADR** — only this section.
 - **Naming.** The Core already owns `ExecutionPort` (the seam for executing a single *step*). This is
-  a different concept — the boundary at which a mission's execution *starts* — so it takes a distinct
-  name (`ExecutionStartPort` / `MissionLaunchPort`, TBD at implementation) to avoid collision.
+  a different concept — the point at which a mission's execution *starts* — so it takes a distinct
+  name that avoids the word "execution" to keep the two from blurring: **`MissionLaunchPort`**.
 
-### The resulting split (superseded by the Realization above)
+### How the work partitions into commits
 
-The earlier plan named two commits — `introduce command-scoped durability` (Consistency) and `run
-execution outside the command transaction` (Temporal). The experiment showed that, on the frozen
-engine, one structural change (the command stops calling `execute()` and goes through the Port)
-delivers **both** observable properties at once — because the Core already saves per step, "off the
-command transaction" *is* "visible per step". So the honest landing is:
+The Port separates two things that can each be observed on their own, independent of any mechanism
+(no `autocommit`, no `Echo`, no `Queue` in either statement):
 
-- **One commit** introduces the Port and routes command→execution through it, satisfying **both** the
-  Consistency and Temporal exit tests. The Consistency work already written is folded into it, not
-  discarded.
-- **The genuine remaining split is the deferred async decision** (execution on a worker/queue,
-  §Deferred decision) — which now lives *behind the Port*, changeable without touching the command.
-  That, not a second persistence-mechanism commit, is "what comes after".
+- **Commit A — introduce the launch boundary.** The command no longer calls `engine.execute()`; a
+  `MissionLaunchPort` exists; execution begins through it. *Observable:* command completion and
+  execution start are separate responsibilities.
+- **Commit B — provide one implementation of that boundary.** Today: synchronous, in-process,
+  outside the command's transaction. Tomorrow (the §Deferred decision): a worker, a queue, a
+  scheduler — all realizations of the same boundary, none of which touch the command.
+
+The experiment (frozen engine → per-step saves) tells us only that *the first implementation of the
+boundary happens to satisfy the visibility test too* — a fact about today's Core, not a property of
+the Port. **This partitioning may change how the implementation work is split into commits, but it
+does not change the architectural decision above.** The ADR records the decision; the commit boundary
+is settled when the work is done, not predicted here.
 
 ## Rejected alternatives
 

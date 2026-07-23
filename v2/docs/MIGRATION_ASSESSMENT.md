@@ -272,10 +272,14 @@ wiring may land, not what to write.
    *Worked example (store commit):* command-scoped durability (Consistency) and execution visible
    per-step (Temporal) could not be delivered as two commits, because the command called
    `engine.execute()` directly and the frozen engine's per-step saves fused the two. The missing
-   responsibility was the boundary *between command completion and execution start* — an Execution
-   Port. It did not merge the two models; it isolated the frozen coupling behind a seam (ADR 0055,
-   Realization). Do not mistake an **implementation** constraint (the engine couples begin+drive) for
-   an **architectural** fact (the models are one) — that inversion is rule 7 run backwards.
+   responsibility was the boundary *between command completion and execution start* — a
+   `MissionLaunchPort` (ADR 0055, Realization). It did not merge the two models; it isolated the
+   frozen coupling behind a seam, and re-partitioned the work honestly: a **boundary** commit (the
+   command stops calling `execute()`; the Port exists) and an **implementation** commit (how launch
+   is realized — synchronous today, a worker/queue later). That partition names no mechanism, so it
+   survives a change of Core. Do not mistake an **implementation** constraint (the engine couples
+   begin+drive) for an **architectural** fact (the models are one) — that inversion is rule 7 run
+   backwards.
 
 *(Commit 1 landed 2026-07-23 on `feat/wave1-production-tests`, over a Baseline Snapshot — `chore:
 import accepted v2 baseline` — which records where git tracking began and claims to be no

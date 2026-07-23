@@ -192,10 +192,11 @@ lifecycle as a side effect of choosing where a `COMMIT` goes.
 
 **If Option D — *Command-owned transaction boundary; execution outside the transaction* — is accepted:**
 
-- **Changes.** `grc-api` gains a request-scoped Unit of Work dependency; `StoreMissionAccess`,
-  `EngineWorkflow`, and `ReadModelProjection` are constructed against one shared connection instead
-  of three independent ones; the read model's projection joins the mission's transaction; the step
-  loop's persistence runs in the store's owned (autocommit) mode with per-step event capture.
+- **Changes.** `grc-api` gains a per-command Unit of Work; `StoreMissionAccess`, `EngineWorkflow`,
+  and `ReadModelProjection` are constructed against one shared connection instead of three
+  independent ones; the read model's projection joins the mission's transaction (the **Consistency**
+  model). Execution is taken out of that transaction (the **Temporal** model) — see *Implementation
+  notes* for why these are two changes, not one.
 - **Does not change.** `MissionEngine`, `MissionStorePort`, `UnitOfWork`, the aggregate, the event
   set, ADR 0053's "projection is a synchronous Application-layer act", ADR 0054's command contract,
   or any route signature. `MissionRuntime` keeps its role for workers and batch and stays frozen.
@@ -216,6 +217,54 @@ Whether mission execution should remain synchronous or move to background proces
 execution model: a command-owned transaction boundary is correct whether the step loop runs
 in-request or in a worker, because the boundary is defined by the *use case*, not by *where the work
 runs*. Today's decision constrains nothing about tomorrow's.
+
+## Implementation notes (added 2026-07-23, during Wave 1)
+
+Building this decision surfaced two things worth recording on the ADR itself — one a sharpening of
+what the decision *is*, one a constraint the frozen Core imposes on *how* it is reached. Neither
+changes the decision.
+
+### Two models, not two mechanisms
+
+"Command owns the transaction; execution sits outside it" is not one property — it is **two
+independently observable ones**, and conflating them is what a first implementation got wrong (it
+made the transaction atomic and left execution inside it; the atomicity test passed and the
+visibility test failed, on the same code). Named at the level the system observes them:
+
+| Property | Model it changes | Observable as | Does **not** speak of |
+|---|---|---|---|
+| Every logical effect of a command (state · events · projection) is atomic | **Consistency** | a failed command leaves nothing; its event is in the outbox | time, execution, tools |
+| Execution progress becomes visible as it happens | **Temporal** | step *n* is visible to another session before the mission finishes; no transaction spans a tool/LLM call | atomicity, which store |
+
+`Store` and `Execution` are *mechanisms*; **Consistency** and **Temporal visibility** are the
+*properties*. Scoping the work by the properties (per rule 7 of the migration protocol) is what keeps
+the boundary stable when the mechanism later changes.
+
+### The separation is achieved outside the frozen engine — a constraint, not a defect
+
+`MissionEngine.execute()` (and `resume()`) **couple** the state transition into `EXECUTING` with the
+`_drive` step loop, in one call. This is a **constraint of the frozen Core**, recorded as such — not
+a bug to fix and not a reason to touch the engine (ADR 0042 §3 keeps infrastructure out of it). The
+consequence is stated precisely:
+
+> Given this Core, the separation is achieved **from outside it**: execution becomes not-part-of the
+> command transaction. *Today* that is realised by running the drive on an autocommit connection
+> while decision transitions run inside a `UnitOfWork`; *tomorrow* it could be a worker, a queue, an
+> actor, or a saga. The autocommit connection is the **first implementation** of the temporal model,
+> not the model itself.
+
+This is the same discipline the whole project follows: **wire above the Core, do not change the
+Core.**
+
+### The resulting split
+
+Because the two properties can succeed or fail independently, they are two commits, each named for
+its property, not its mechanism:
+
+- **`replace(wave1): introduce command-scoped durability`** — the Consistency model. (The Wave 1
+  Commit-3 work already written realises exactly this and only this; it is re-scoped to it, not
+  discarded.)
+- **`replace(wave1): run execution outside the command transaction`** — the Temporal model.
 
 ## Rejected alternatives
 

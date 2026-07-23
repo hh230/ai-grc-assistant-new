@@ -260,6 +260,23 @@ wiring may land, not what to write.
    green."*** That distinction is what makes this wave a chain of engineering checkpoints rather
    than a chain of commits.
 
+9. **When two independent properties resist being delivered separately, look first for the missing
+   responsibility — not for a way to merge them.** Two properties can be independently *observable*
+   (a system can exhibit either without the other) yet still refuse to ship in separate commits,
+   because a single existing seam couples their delivery. The temptation then is to merge them and
+   declare them "one property". Resist it: the honest question is *"is the model wrong, or is there a
+   responsibility we have not modelled yet?"* — and the answer is usually a small missing seam whose
+   absence forced the coupling. Merging hides the gap; naming the missing responsibility closes it
+   without collapsing the model.
+
+   *Worked example (store commit):* command-scoped durability (Consistency) and execution visible
+   per-step (Temporal) could not be delivered as two commits, because the command called
+   `engine.execute()` directly and the frozen engine's per-step saves fused the two. The missing
+   responsibility was the boundary *between command completion and execution start* — an Execution
+   Port. It did not merge the two models; it isolated the frozen coupling behind a seam (ADR 0055,
+   Realization). Do not mistake an **implementation** constraint (the engine couples begin+drive) for
+   an **architectural** fact (the models are one) — that inversion is rule 7 run backwards.
+
 *(Commit 1 landed 2026-07-23 on `feat/wave1-production-tests`, over a Baseline Snapshot — `chore:
 import accepted v2 baseline` — which records where git tracking began and claims to be no
 development step. 340 files of accepted work had never been committed; without that snapshot no

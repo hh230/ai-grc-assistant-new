@@ -256,15 +256,53 @@ consequence is stated precisely:
 This is the same discipline the whole project follows: **wire above the Core, do not change the
 Core.**
 
-### The resulting split
+### Realization — the Execution Port (added 2026-07-24)
 
-Because the two properties can succeed or fail independently, they are two commits, each named for
-its property, not its mechanism:
+Building the split surfaced a **missing responsibility**, not a wrong model. The command was calling
+`engine.execute()` *directly*, inside its own transaction — so the command owned progress. The frozen
+`execute()` couples the `EXECUTING` transition with the drive loop, and an experiment confirmed the
+consequence precisely: with the command's store on an autocommit connection the drive is visible
+per-step (`[0,1,2]`); wrapped in one transaction it is not (`[0,0,0]`). Read narrowly, that says *on
+the current wiring the only mechanism that keeps the command from owning progress is the same one
+that makes progress visible.* Read too broadly — as "therefore the two commits are impossible" — it
+would promote an **implementation constraint into an architectural fact**, the exact inversion rule 7
+forbids.
 
-- **`replace(wave1): introduce command-scoped durability`** — the Consistency model. (The Wave 1
-  Commit-3 work already written realises exactly this and only this; it is re-scoped to it, not
-  discarded.)
-- **`replace(wave1): run execution outside the command transaction`** — the Temporal model.
+The resolution is a small seam, **not** a merge of the two properties: a Port between the command and
+execution.
+
+    Command  →  «this mission is ready»   (a decision — atomic, in the command's transaction)
+             →  ExecutionStartPort.start(mission_id)   (execution begins — outside that transaction)
+
+The Port's whole surface is `start(mission_id)`. The command knows nothing of `Engine`, `Runtime`,
+`Driver`, `Queue`, or `Worker` — only "begin execution". That is what makes *"the command owns the
+transaction, but not progress"* true **structurally**, not by a choice of connection mode.
+
+- **It does not remove the frozen coupling — it isolates it.** The Core still couples begin+drive;
+  the difference is that the *Port's implementation* owns that coupling, not the command. The
+  constraint is moved to where it belongs (execution is execution's concern), which is the same
+  discipline the whole project follows: **wire above the Core, do not change the Core.**
+- **It is not a new architectural decision.** It is a *realization* of this ADR's decision (the
+  command owns the transaction). It adds no option and opens no alternative, so it needs **no new
+  ADR** — only this section.
+- **Naming.** The Core already owns `ExecutionPort` (the seam for executing a single *step*). This is
+  a different concept — the boundary at which a mission's execution *starts* — so it takes a distinct
+  name (`ExecutionStartPort` / `MissionLaunchPort`, TBD at implementation) to avoid collision.
+
+### The resulting split (superseded by the Realization above)
+
+The earlier plan named two commits — `introduce command-scoped durability` (Consistency) and `run
+execution outside the command transaction` (Temporal). The experiment showed that, on the frozen
+engine, one structural change (the command stops calling `execute()` and goes through the Port)
+delivers **both** observable properties at once — because the Core already saves per step, "off the
+command transaction" *is* "visible per step". So the honest landing is:
+
+- **One commit** introduces the Port and routes command→execution through it, satisfying **both** the
+  Consistency and Temporal exit tests. The Consistency work already written is folded into it, not
+  discarded.
+- **The genuine remaining split is the deferred async decision** (execution on a worker/queue,
+  §Deferred decision) — which now lives *behind the Port*, changeable without touching the command.
+  That, not a second persistence-mechanism commit, is "what comes after".
 
 ## Rejected alternatives
 

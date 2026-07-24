@@ -30,3 +30,18 @@
 
 *(Owner-raised this session, 2026-07-24. Do not implement until a v1.3 amendment is explicitly
 approved.)*
+
+---
+
+## BL-2 · Source Lifecycle (≠ Source Status) + Knowledge Acquisition Workflow
+
+- **Proposed for:** a future contract version · **Target stage:** Stage 5 / Stage 6 (Knowledge Acquisition)
+- **Trigger:** when the system must autonomously discover, acquire, and mature sources — e.g. replacing `Missing`/`Rejected` sources without a human fetching files.
+- **The distinction — two orthogonal layers:**
+  - **Source Status** *(operational — already in §5.0)*: `Ready · OCR Required · Identity Correction · Missing Canonical Source · Rejected Source · Blocked`. Answers *"can we extract it right now?"*
+  - **Source Lifecycle** *(maturity — NEW)*: **Candidate → Verified → Canonical → Deprecated → Superseded**. Answers *"where is this source in its life?"* A source can be `Canonical` (lifecycle) yet `OCR Required` (status) — independent axes.
+- **Knowledge Acquisition Workflow (the agent):** a first-class V3 component that (1) knows which Sources are `Missing`/`Rejected`, (2) enters the authoritative origin (e.g. `rulebook.sama.gov.sa`), (3) inventories the real documents, (4) proposes them, (5) files a report, (6) **waits for human approval** before they move `Candidate → Verified → Canonical`. Gap-filling is an **agent** task, not a human one — *the system manages knowledge; the user only approves*.
+- **Why deferred:** a genuine new architectural layer (like BL-1 Provenance). The frozen contract must not gain it now; adopt as a conscious future amendment once Knowledge Acquisition is built — never mid-execution.
+- **Relation to existing contract:** complements §5.0 (Source Status) and Principle 11 (append-only); `Superseded`/`Deprecated` lifecycle pairs naturally with the `superseded_by` relationship (§4.3).
+
+*(Owner-raised 2026-07-24 during Stage-2 verification, when Missing/Rejected sources revealed that "waiting for files" contradicts V3's self-managing philosophy. Do not implement until a future contract version is approved.)*

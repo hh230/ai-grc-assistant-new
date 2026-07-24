@@ -186,6 +186,19 @@ noticing.
 Owner-set constraints (2026-07-23, at Gate A closure). Constraints, not a plan: they bound *how* the
 wiring may land, not what to write.
 
+> **What earns a place in this list — the test for a rule.** These rules exist because the wave kept
+> surfacing patterns, and there is a standing temptation to promote every discovery to a rule until
+> the protocol is all exceptions. So: **an observation becomes a numbered rule only if it could
+> prevent a mistake in a different project that knows nothing of GRC or `MissionEngine`.** By that
+> test, rules 7 (scope is a property), 9 (find the missing responsibility), and 10 (a command's
+> response describes the command) are general and stay. Anything that cannot clear it belongs in an
+> ADR or a design comment — never here. The protocol stays short and sharp, or it stops being read.
+>
+> *The idea worth keeping above any of the rules, any name (`MissionLaunchPort`), or any partition
+> (A/B): the tests stopped asking "does the code work?" and started asking "does this commit still
+> deliver the property it claimed to add?" — verifying the commit's architectural claim, not just its
+> behaviour. That shift is what made the rest cohere.*
+
 1. **The durable path is tested first.** Every suite today proves the Development Composition — the
    very thing Wave 1 replaces. The first safety net must prove the **production** composition;
    until it exists, no wiring is measurable and a green suite means nothing about the new path.

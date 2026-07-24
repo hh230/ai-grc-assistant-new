@@ -52,26 +52,37 @@ class ReadModelProjection:
 
 
 class EngineWorkflow:
-    """Drives Core transitions for the write commands. `approve_step` composes two engine operations
-    (approve + resume) — a business action, deliberately not a 1:1 mirror of the engine."""
+    """Drives Core transitions for the write commands — and, per ADR 0055, **stops short of starting
+    execution**. Where a command would once have run the drive loop (`start` → `execute`,
+    `approve_step` → `resume`), it now records a **launch request** into the scope's buffer instead.
+    The scope fires those requests through the `MissionLaunchPort` *after its transaction commits*,
+    so the command owns the decision but never owns progress (ADR 0055, Realization).
 
-    def __init__(self, engine: Any) -> None:
+    The decision half stays here, inside the command's transaction: `approve` and `reject` are Core
+    transitions with events, driven and persisted transactionally. Only the *drive* is deferred to
+    the launch boundary."""
+
+    def __init__(self, engine: Any, launches: list[tuple[str, TenantContext]]) -> None:
         self._engine = engine
+        self._launches = launches
 
     def approve_step(
         self, mission: Any, *, step_id: str, approver: TenantContext, comment: str = ""
     ) -> None:
+        # The approval decision itself — a Core transition with events, inside the transaction.
         self._engine.approve(mission, approver, comment=comment)
-        self._engine.resume(mission)  # continue execution past the approved gate (ADR 0044 Slice 3)
+        # The resume (execution past the gate) is a launch, fired after commit (not engine.resume).
+        self._launches.append((mission.id, approver))
 
     def reject_step(
         self, mission: Any, *, step_id: str, approver: TenantContext, comment: str = ""
     ) -> None:
-        self._engine.reject(mission, approver, comment=comment)
+        self._engine.reject(mission, approver, comment=comment)  # a decision; no execution follows
 
     def start(self, mission: Any) -> None:
-        # The product's "Start mission" → the Core's execute (Slice S7). One op, not two.
-        self._engine.execute(mission)
+        # The product's "Start mission": a launch, not a direct `engine.execute`. Recorded now,
+        # fired after the command's transaction commits (ADR 0055).
+        self._launches.append((mission.id, mission.tenant))
 
 
 class CatalogDefinitionProvider:

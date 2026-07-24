@@ -7,6 +7,7 @@ the Postgres one is a composition change here, invisible to the routes.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import Annotated, Any
 
 from document_read_model import DocumentReadModel
@@ -49,7 +50,7 @@ def get_approval_queue(request: Request) -> ApprovalQueueProjection:
     """The Decisions read (Slice S6): the Approval Queue Projection composed from the store + the
     reused mission-read-model — computed-on-read, no stored table."""
     state = request.app.state
-    return ApprovalQueueProjection(state.mission_store, state.mission_read_model)
+    return ApprovalQueueProjection(state.mission_reader, state.mission_read_model)
 
 
 def get_document_read_model(request: Request) -> DocumentReadModel:
@@ -68,14 +69,14 @@ def get_mission_detail_query(request: Request) -> MissionDetailQuery:
     """The read-side Application Service the detail route calls. Composed from the wired store +
     read model on `app.state`; the route stays a thin adapter (ADR 0052)."""
     return MissionDetailQuery(
-        request.app.state.mission_store, request.app.state.mission_read_model
+        request.app.state.mission_reader, request.app.state.mission_read_model
     )
 
 
 def get_result_query(request: Request) -> ResultQuery:
     """The Result read-side service (Slice S3): store + read model + the builder registry."""
     state = request.app.state
-    return ResultQuery(state.mission_store, state.mission_read_model, state.result_registry)
+    return ResultQuery(state.mission_reader, state.mission_read_model, state.result_registry)
 
 
 def get_dashboard_projection(request: Request) -> DashboardProjection:
@@ -83,7 +84,9 @@ def get_dashboard_projection(request: Request) -> DashboardProjection:
     a MissionSummaryProvider over the reused mission-read-model, and a CoverageRollupProvider over
     the reused ResultQuery. Nothing is stored; the projection is assembled here at read time."""
     state = request.app.state
-    result_query = ResultQuery(state.mission_store, state.mission_read_model, state.result_registry)
+    result_query = ResultQuery(
+        state.mission_reader, state.mission_read_model, state.result_registry
+    )
     return DashboardProjection(
         MissionSummaryProvider(state.mission_read_model),
         CoverageRollupProvider(state.mission_read_model, result_query),
@@ -111,23 +114,44 @@ def require_context(
     )
 
 
-def _adapters(request: Request) -> tuple[StoreMissionAccess, ReadModelProjection, EngineWorkflow]:
-    state = request.app.state
-    return (
-        StoreMissionAccess(state.mission_store),
-        ReadModelProjection(state.mission_read_model),
-        EngineWorkflow(state.mission_engine),
+class _ScopedCommand:
+    """Runs a command inside one **command scope** (ADR 0055).
+
+    Opening the scope creates the unit of work and, on its single connection, the mission store, the
+    outbox sink and the projection; the command runs; clean exit commits all three together and an
+    exception rolls all three back. The route sees an object with `.execute(...)` and knows nothing
+    about transactions — and no store outlives the call, because none was ever built outside it.
+    """
+
+    def __init__(self, scope_factory: Any, build: Callable[[Any], Any]) -> None:
+        self._scope_factory = scope_factory
+        self._build = build
+
+    def execute(self, *args: Any, **kwargs: Any) -> Any:
+        with self._scope_factory() as scope:
+            return self._build(scope).execute(*args, **kwargs)
+
+
+def _scoped(request: Request, build: Callable[[Any], Any]) -> _ScopedCommand:
+    return _ScopedCommand(request.app.state.command_scope, build)
+
+
+def _mission_command(scope: Any, command_type: Any) -> Any:
+    """The three write collaborators, bound to this scope's one connection. The workflow records a
+    launch into the scope's buffer (fired after commit, ADR 0055), so it takes `scope.launches`."""
+    return command_type(
+        access=StoreMissionAccess(scope.store),
+        projection=ReadModelProjection(scope.mission_read_model),
+        workflow=EngineWorkflow(scope.engine, scope.launches),
     )
 
 
-def get_approve_command(request: Request) -> ApproveMissionStepCommand:
-    access, projection, workflow = _adapters(request)
-    return ApproveMissionStepCommand(access=access, projection=projection, workflow=workflow)
+def get_approve_command(request: Request) -> Any:
+    return _scoped(request, lambda scope: _mission_command(scope, ApproveMissionStepCommand))
 
 
-def get_reject_command(request: Request) -> RejectMissionStepCommand:
-    access, projection, workflow = _adapters(request)
-    return RejectMissionStepCommand(access=access, projection=projection, workflow=workflow)
+def get_reject_command(request: Request) -> Any:
+    return _scoped(request, lambda scope: _mission_command(scope, RejectMissionStepCommand))
 
 
 def get_mission_catalog(request: Request) -> Any:
@@ -135,18 +159,20 @@ def get_mission_catalog(request: Request) -> Any:
     return request.app.state.mission_catalog
 
 
-def get_create_command(request: Request) -> CreateMissionCommand:
+def get_create_command(request: Request) -> Any:
     """The create command (Slice S7): define (catalog) → create+plan (engine) → project the creation
     (read model). No mission is loaded — it makes one; no Draft is persisted."""
-    state = request.app.state
-    return CreateMissionCommand(
-        definer=CatalogDefinitionProvider(state.mission_catalog),
-        creator=EngineMissionCreator(state.mission_engine),
-        projection=CreationProjection(state.mission_read_model),
+    catalog = request.app.state.mission_catalog
+    return _scoped(
+        request,
+        lambda scope: CreateMissionCommand(
+            definer=CatalogDefinitionProvider(catalog),
+            creator=EngineMissionCreator(scope.engine),
+            projection=CreationProjection(scope.mission_read_model),
+        ),
     )
 
 
-def get_start_command(request: Request) -> StartMissionCommand:
+def get_start_command(request: Request) -> Any:
     """The start command (Slice S7): reuses the S2 MissionCommand template (load → start → proj)."""
-    access, projection, workflow = _adapters(request)
-    return StartMissionCommand(access=access, projection=projection, workflow=workflow)
+    return _scoped(request, lambda scope: _mission_command(scope, StartMissionCommand))

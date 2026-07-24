@@ -18,6 +18,8 @@ dependencies = [
     "document-read-model",
     "knowledge-runtime",
     "assistant-runtime",
+    "mission-store>=0.1.0",
+    "event-bus>=0.1.0",
 ]
 
 [dependency-groups]

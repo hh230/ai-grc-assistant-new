@@ -68,9 +68,16 @@ def test_approve_completes_the_mission_and_updates_the_projection() -> None:
     assert resp.status_code == 200
     body = resp.json()
     assert body["mission_id"] == mission.id
-    assert body["status"] == "completed"  # approve + resume drove it to completion
+    # The command's response describes the *decision* (the gate was approved → the mission resumed),
+    # not the execution that decision launched. Resuming past the gate runs behind the launch port,
+    # so the response must not claim "completed" (migration rule 10 / ADR 0055). The approval is no
+    # longer pending, whatever the launched execution then does.
+    assert body["status"] != "completed"
     assert body["approval_pending"] is False
-    # the projection was updated through the chain (ProjectionPort adapter)
+    # Execution progress is observed through a query. The resume the approval launched drove the
+    # mission to completion, and the read model — projected by the launch — reflects it.
+    detail = client.get(f"/v1/missions/{mission.id}", headers=APPROVER).json()
+    assert detail["status"] == "completed"
     projected = read_model.get(mission.id, TENANT_A)
     assert projected is not None and projected.status == "completed"
 

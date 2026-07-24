@@ -19,20 +19,16 @@ from __future__ import annotations
 
 import uuid
 from collections.abc import Callable, Iterator
-from dataclasses import dataclass
 from typing import Any
 
 import psycopg  # dev-only dependency of this app; always installed for tests
 import pytest
-from document_read_model import PostgresDocumentReadModel
 from document_read_model import create_table_sql as document_table_sql
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from grc_api.app import create_app
-from mission_engine import MissionEngine
-from mission_read_model import PostgresMissionListReadModel
+from grc_api.composition import Storage, Tables
 from mission_read_model import create_table_sql as mission_table_sql
-from mission_store import PostgresMissionStore
 from mission_store.config import dsn as default_dsn
 from mission_store.outbox_schema import apply_outbox_schema
 from mission_store.schema import apply_schema
@@ -54,17 +50,6 @@ def connect(*, autocommit: bool = False) -> psycopg.Connection:
         pytest.skip(f"no reachable PostgreSQL ({exc})")
 
 
-@dataclass(frozen=True)
-class Tables:
-    """The four throwaway tables one test runs against — the whole durable surface the product
-    touches: the Core's missions + outbox, and the two product read models (ADR 0053)."""
-
-    missions: str
-    outbox: str
-    missions_read_model: str
-    documents_read_model: str
-
-
 @pytest.fixture
 def observer() -> Iterator[psycopg.Connection]:
     """A separate autocommit session, used only for out-of-band assertions on raw rows. It is never
@@ -80,60 +65,45 @@ def tables(observer: psycopg.Connection) -> Iterator[Tables]:
     created = Tables(
         missions=f"missions_pc_{suffix}",
         outbox=f"outbox_pc_{suffix}",
-        missions_read_model=f"mrm_pc_{suffix}",
-        documents_read_model=f"drm_pc_{suffix}",
+        missions_view=f"mrm_pc_{suffix}",
+        documents_view=f"drm_pc_{suffix}",
     )
     apply_schema(observer, created.missions)
     apply_outbox_schema(observer, created.outbox)
-    observer.execute(mission_table_sql(created.missions_read_model))
-    observer.execute(document_table_sql(created.documents_read_model))
+    observer.execute(mission_table_sql(created.missions_view))
+    observer.execute(document_table_sql(created.documents_view))
     yield created
     for table in (
         created.missions,
         created.outbox,
-        created.missions_read_model,
-        created.documents_read_model,
+        created.missions_view,
+        created.documents_view,
     ):
         observer.execute(f"DROP TABLE IF EXISTS {table}")
 
 
 @pytest.fixture
-def build_app(tables: Tables) -> Iterator[Callable[..., FastAPI]]:
-    """Build the API over the durable adapters. **Each call opens its own connection**, so calling
-    it twice models two processes over one database — which is how the durability tests stand in for
-    a restart without actually restarting anything.
+def build_app(tables: Tables) -> Callable[..., FastAPI]:
+    """Build the API over the **durable** composition, pointed at this test's throwaway tables.
 
-    `executor` and `read_model` are overridable so a test can inject a probe or a deliberate
-    failure; everything else is the composition a deployment would use. An injected executor is
-    wrapped in an engine over *this* app's store, exactly as the host does it — a test never hands
-    in an engine bound to some other store.
+    Note what it no longer does: it does not hand the host a pre-built store. It cannot — ADR 0055
+    left no store to hand over. The host composes its own reader and its own per-command scope, and
+    the test only says *where* to write. That is the difference between observing the real
+    composition and observing a substitute for it.
+
+    `executor` is overridable so a test can watch execution from inside; everything else is the
+    composition a deployment gets.
     """
-    connections: list[psycopg.Connection] = []
 
     def _build(*, executor: Any | None = None, read_model: Any | None = None) -> FastAPI:
-        conn = connect(autocommit=True)
-        connections.append(conn)
-        store = PostgresMissionStore(connection=conn, table=tables.missions)
-        missions_view = (
-            read_model
-            if read_model is not None
-            else PostgresMissionListReadModel(
-                connection=conn, table=tables.missions_read_model
-            )
-        )
-        documents_view = PostgresDocumentReadModel(
-            connection=conn, table=tables.documents_read_model
-        )
         return create_app(
-            read_model=missions_view,
-            mission_store=store,
-            mission_engine=MissionEngine(store, executor) if executor is not None else None,
-            document_read_model=documents_view,
+            storage=Storage.DURABLE,
+            tables=tables,
+            executor=executor,
+            read_model=read_model,
         )
 
-    yield _build
-    for connection in connections:
-        connection.close()
+    return _build
 
 
 @pytest.fixture

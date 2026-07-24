@@ -23,10 +23,22 @@ from framework_library import FrameworkLibrary
 from knowledge_runtime import TenantKnowledgeBase
 from mission_application import DeliverableBuilderRegistry, ExportService
 from mission_engine import EchoExecutor, InMemoryMissionStore, MissionEngine
-from mission_read_model import MissionListReadModel
+from mission_engine.ports import ExecutionPort
+from mission_read_model import MissionListReadModel, PostgresMissionListReadModel
 
-from grc_api.composition import Storage, build_document_read_model, build_mission_read_model
+from grc_api.adapters import ReadModelProjection
+from grc_api.composition import (
+    DurableMissionReader,
+    Storage,
+    Tables,
+    build_document_read_model,
+    build_mission_read_model,
+    durable_command_scope_factory,
+    memory_command_scope_factory,
+    open_autocommit_connection,
+)
 from grc_api.errors import register_exception_handlers
+from grc_api.launch import DurableMissionLaunch, MemoryMissionLaunch, MissionLaunchPort
 from grc_api.result_adapters import (
     BundledDeliverableProvider,
     DocxExporter,
@@ -49,6 +61,8 @@ API_VERSION = "0.1.0"
 def create_app(
     *,
     storage: Storage = Storage.DURABLE,
+    tables: Tables | None = None,
+    executor: ExecutionPort | None = None,
     read_model: MissionListReadModel | None = None,
     identity_provider: IdentityProvider | None = None,
     mission_store: Any | None = None,
@@ -61,17 +75,42 @@ def create_app(
     # `storage` selects the read-model adapters: DURABLE (the production default — an unconfigured
     # deployment gets PostgreSQL, never an in-memory projection that loses a tenant's work) or
     # MEMORY, which a test asks for explicitly. An injected adapter still wins over both.
-    app.state.mission_read_model = read_model or build_mission_read_model(storage)
+    where = tables or Tables()
+    app.state.mission_read_model = read_model or build_mission_read_model(storage, where)
     app.state.identity_provider = identity_provider or development_identity_provider()
-    # The Core store the detail endpoint reads live missions through (Slice S2). Default in-memory;
-    # a Postgres-backed store drops in at this same seam.
-    store = mission_store if mission_store is not None else InMemoryMissionStore()
-    app.state.mission_store = store
-    # The Core engine the write commands drive (approve/reject). Shares the store so load + save are
-    # consistent. Dev uses the reference EchoExecutor; a real executor drops in at this seam.
-    app.state.mission_engine = (
-        mission_engine if mission_engine is not None else MissionEngine(store, EchoExecutor())
-    )
+    # Storage, per ADR 0055. **No durable store lives here.** Reads go through a reader service that
+    # creates a store per read and discards it; writes go through a factory that creates one
+    # transaction's worth of collaborators per command. What is long-lived is configuration, never a
+    # store — so there is nothing for a later change to accidentally share process-wide.
+    run_step: ExecutionPort = executor or EchoExecutor()
+    launch: MissionLaunchPort
+    if storage is Storage.MEMORY:
+        # In-memory state has to live somewhere: the dictionary IS the storage, and no connection or
+        # transaction is involved. `mission_store` / `mission_engine` stay injectable for this path.
+        memory_store = mission_store if mission_store is not None else InMemoryMissionStore()
+        memory_engine = (
+            mission_engine if mission_engine is not None else MissionEngine(memory_store, run_step)
+        )
+        app.state.mission_reader = memory_store
+        # Execution starts through the launch boundary (ADR 0055), never from a command directly.
+        # It projects its result to the shared read model when it finishes (execution is a write).
+        memory_projection = ReadModelProjection(app.state.mission_read_model)
+        launch = MemoryMissionLaunch(memory_engine, memory_store, memory_projection.project)
+        app.state.command_scope = memory_command_scope_factory(
+            memory_engine, memory_store, app.state.mission_read_model, launch
+        )
+    else:
+        app.state.mission_reader = DurableMissionReader(where.missions)
+        launch = DurableMissionLaunch(
+            executor=run_step,
+            missions_table=where.missions,
+            outbox_table=where.outbox,
+            connect=open_autocommit_connection,
+            project=lambda conn, mission: ReadModelProjection(
+                PostgresMissionListReadModel(connection=conn, table=where.missions_view)
+            ).project(mission),
+        )
+        app.state.command_scope = durable_command_scope_factory(run_step, where, launch)
     # The Result builder registry (Slice S3): each mission type gets its builder; the default is the
     # generic one. Concrete builders + the framework provider are composed here, behind the ports.
     provider = BundledDeliverableProvider()
@@ -86,7 +125,7 @@ def create_app(
     # Knowledge (Slice S4): the Document read model the view lists, plus the shared knowledge base
     # the upload ingests into. One base holds every tenant's chunks (each chunk tenant-scoped), so
     # retrieval never crosses the boundary. Both drop in at this seam (Postgres / pgvector later).
-    app.state.document_read_model = document_read_model or build_document_read_model(storage)
+    app.state.document_read_model = document_read_model or build_document_read_model(storage, where)
     app.state.knowledge_base = knowledge_base or TenantKnowledgeBase()
     # The Mission Catalog (Slice S7): a Mission type IS a plan factory. The create command reads it
     # to turn a chosen type + scope into the Core's (goal, plan). The bundled catalog holds the 6.

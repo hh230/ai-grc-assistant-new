@@ -1,16 +1,14 @@
 """ADR 0055 — the transaction boundary is the **command**; execution sits **outside** it.
 
-Two properties, asserted from outside the host:
+The decision is two independently observable models, and this file has a section for each (ADR 0055
+Implementation notes):
 
-1. **A command is all-or-nothing.** Its mission write, its events, and its projection commit
-   together. A command that fails half way leaves nothing behind.
-2. **Execution is not wrapped in a transaction.** A step that has been recorded is visible to
-   another session *before* the mission finishes — which is only true if the step loop commits
-   outside any enclosing transaction.
-
-Property 1 **fails on arrival** and is made true by the Wave 1 wiring commits. Property 2 **passes
-on arrival** and is here as a regression guard: it is the test that fails the day someone wraps
-execution in a single transaction — the rejected Option A.
+1. **The Consistency model.** A command is all-or-nothing: its mission write, its events, and its
+   projection commit together, and one that fails half way leaves nothing behind. Delivered by the
+   commit *introduce command-scoped durability*.
+2. **The Temporal model.** Execution is not wrapped in a transaction: a recorded step is visible to
+   another session *before* the mission finishes. This holds exactly when the command's transaction
+   does not enclose execution — the constraint "the command owns the transaction, but not progress".
 
 Every assertion reads raw rows through the `observer` session, never through the app. Asking *"what
 can another session see?"* is the only honest way to test a transaction boundary.
@@ -18,6 +16,7 @@ can another session see?"* is the only honest way to test a transaction boundary
 
 from __future__ import annotations
 
+import contextlib
 import uuid
 from collections.abc import Callable
 from typing import Any
@@ -27,7 +26,6 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from mission_engine import StepResult
-from mission_read_model import InMemoryMissionListReadModel
 
 from tests.production.conftest import AUTH_A, Tables, connect, create_mission
 
@@ -60,24 +58,6 @@ class _VisibilityProbe:
             return len(row[0] or [])
         finally:
             conn.close()
-
-
-class _FailingProjection:
-    """A read model whose **projection** fails — the way to ask "what survives half a command?".
-
-    Reads delegate to a real in-memory read model on purpose. A design that reads before it projects
-    must still reach the failure under test, not trip over a missing method: this test has to fail
-    on the property, never on the stub.
-    """
-
-    def __init__(self) -> None:
-        self._inner = InMemoryMissionListReadModel()
-
-    def record(self, item: Any) -> None:
-        raise RuntimeError("projection failed")
-
-    def __getattr__(self, name: str) -> Any:
-        return getattr(self._inner, name)
 
 
 def _count(observer: psycopg.Connection, table: str, where: str = "", params: tuple = ()) -> int:
@@ -119,7 +99,7 @@ def test_a_mission_and_its_history_are_durable_together(
 
 
 def test_a_failed_command_leaves_nothing_behind(
-    build_app: Callable[..., FastAPI],
+    client: TestClient,
     observer: psycopg.Connection,
     tables: Tables,
 ) -> None:
@@ -127,28 +107,39 @@ def test_a_failed_command_leaves_nothing_behind(
     of it survives. A mission row here means the command was **partially applied** — the dual write
     ADR 0055 exists to prevent.
 
-    The test says nothing about *how*: a shared unit of work, a compensating action, or any other
-    mechanism that leaves no residue satisfies it equally.
-    """
-    app = TestClient(build_app(read_model=_FailingProjection()), raise_server_exceptions=False)
+    **How the failure is injected** matters, and this is the second thing Commit 3 taught. The
+    failure is made to happen *at a participating sink inside the command's transaction* — here, the
+    projection: its table is dropped, so the real projection INSERT raises mid-command. An earlier
+    version swapped the whole read model for a failing stub, but the command scope builds its own
+    projection bound to the transaction, so the stub was never reached — the injection point was
+    *below* the property. Dropping the table injects at the real sink, through no test-only hook in
+    production code.
 
+    The test still says nothing about *how* atomicity is achieved: a shared unit of work, a
+    compensating action, anything that leaves no residue satisfies it equally.
+    """
     before = _count(observer, tables.missions)
     assert before == 0, "precondition: this test's throwaway table starts empty"
 
-    response = app.post(
-        "/v1/missions",
-        json={"type": "gap_assessment", "scope": "Technological controls", "document_ids": []},
-        headers={**AUTH_A, "Idempotency-Key": uuid.uuid4().hex},
-    )
-    # Only that it did not succeed. How a failed command surfaces over HTTP is the host's business.
-    assert response.status_code != 201, "the command was expected to fail"
+    # Make the projection sink fail as part of the command's transaction.
+    observer.execute(f"DROP TABLE {tables.missions_view}")  # noqa: S608 - test-owned table
+
+    with contextlib.suppress(Exception):
+        # However the host surfaces the sink failure (500, or a raised exception through the test
+        # client) is its business; the property is what the database is left holding.
+        client.post(
+            "/v1/missions",
+            json={"type": "gap_assessment", "scope": "Technological controls", "document_ids": []},
+            headers={**AUTH_A, "Idempotency-Key": uuid.uuid4().hex},
+        )
 
     assert _count(observer, tables.missions) == before, (
-        "a mission survived a command that failed — the command is not atomic (ADR 0055)"
+        "a mission survived a command whose projection failed — mission write and projection are "
+        "not in one transaction (ADR 0055; the dual write the outbox exists to prevent)"
     )
 
 
-# --- property 2: execution is outside the transaction (guard; passes on arrival) ---------
+# --- property 2: the Temporal model — execution outside the transaction -------------------
 
 
 def test_a_recorded_step_is_visible_to_another_session_mid_execution(
@@ -204,3 +195,29 @@ def test_execution_progress_is_durable_per_step(
     status, step_results = row
     assert status in {"completed", "awaiting_approval"}
     assert len(step_results or []) > 0, "the plan ran but recorded no durable step results"
+
+
+# --- the launch boundary: a command's response describes the command, not execution --------
+
+
+def test_run_response_describes_the_command_and_a_query_describes_execution(
+    client: TestClient,
+) -> None:
+    """Migration rule 10 / ADR 0055, over real PostgreSQL. `POST /run` reports the *command* — it
+    does not claim the execution it launched has finished. Completion is read afterward through a
+    query. Asserted as the **separation**, not a status string, so it survives launch becoming a
+    worker or a queue: the response must not say "completed", and a `GET` then shows it did."""
+    mission_id = create_mission(client)
+
+    started = client.post(f"/v1/missions/{mission_id}/run", headers=AUTH_A)
+    assert started.status_code == 200, started.text
+    assert started.json()["status"] != "completed", (
+        "the /run response claimed the launched execution finished — the response is coupled to "
+        "progress the command does not own (ADR 0055; migration rule 10)"
+    )
+
+    detail = client.get(f"/v1/missions/{mission_id}", headers=AUTH_A)
+    assert detail.status_code == 200, detail.text
+    assert detail.json()["status"] == "completed", (
+        "execution did not complete, or the launch did not project its result to the read surfaces"
+    )

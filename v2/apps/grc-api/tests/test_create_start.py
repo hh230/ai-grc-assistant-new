@@ -90,8 +90,16 @@ def test_create_review_then_start_runs_the_mission() -> None:
 
     started = client.post(f"/v1/missions/{created['id']}/run", headers=AUTH_A)
     assert started.status_code == 200
-    # the mission ran to completion (echo executor, no gate) and reflects on the read surfaces
-    assert started.json()["status"] == "completed"
+    # ADR 0055 / migration rule 10: the command's response describes the *command* — it does not
+    # claim the execution it launched has finished. Execution runs behind MissionLaunchPort, so the
+    # response must NOT assert "completed". This holds whether launch is synchronous, a worker, or a
+    # queue — it is the boundary being tested, not a status value.
+    assert started.json()["status"] != "completed"
+
+    # Execution progress is read through a query, not the command response. The mission the command
+    # launched has run to completion (echo executor, no gate), and the read surfaces reflect it.
+    detail = client.get(f"/v1/missions/{created['id']}", headers=AUTH_A).json()
+    assert detail["status"] == "completed"
     dash = client.get("/v1/dashboard", headers=AUTH_A).json()
     assert created["id"] in [r["id"] for r in dash["recent"]]
 

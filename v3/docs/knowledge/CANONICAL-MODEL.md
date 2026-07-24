@@ -1,6 +1,6 @@
 # V3 Canonical Knowledge Model — The Contract
 
-> **Status:** Stage 1 **CLOSED** · Contract **v1.2** — **RATIFIED** · frozen through Stage 2 (§12)
+> **Status:** Contract **v1.3** · Stage-1 model RATIFIED & frozen · Stage-2 verified facts reconciled (§5.0, §12) · Stage 2 open (readiness gate)
 > **Nature:** Official, binding reference model for the entire V3 knowledge layer.
 > **This document is documentation only.** It defines *meaning and identity*, not storage.
 >
@@ -42,6 +42,14 @@ This contract is **Stage 1**. It governs every stage after it:
 *(This refines the original 10-step import mission into the canonical V3 sequence: knowledge is
 extracted, normalized, and graphed **before** persistence, and embeddings come **after** the graph
 is validated and stored.)*
+
+> **Stage-2 readiness gate (v1.3).** Extraction operates only on **resolved** sources — every
+> source is either Canonical (`Ready`) or carries a documented reason for absence (`Missing` /
+> `Rejected`); `Unknown = 0`. **Gaps are managed** (Knowledge Acquisition Workflow), never a halt —
+> the pipeline does not stop and wait for a human. When a `Missing` source is later acquired and
+> verified, its entities are **appended** (Principle 11) under its **stable Source ID** — the graph
+> is never rebuilt and IDs never churn. *(Terminology: what we've called "Stage 2 = Verification"
+> is this readiness gate; the numbered Extraction stage follows. Final numbering owner-confirmed.)*
 
 ---
 
@@ -323,6 +331,44 @@ Lineage / physical
 
 ## 5. Canonical Source Register — authoritative core
 
+### 5.0 Stage-2 verification reconciliation (v1.3 — appended; supersedes ⚠ rows per Principle 11)
+
+**Tooling:** read-only PyMuPDF/`fitz` structural inspection (fonts/images/encryption), cross-checked with `pypdf`. **Extraction must use `fitz`** — it opens every owner/AES-encrypted and mildly-malformed file that `pypdf` in this environment cannot.
+
+**Source Status — operational states (6).** Every source resolves to exactly one. **A gap is a *managed state*, never a halt** — the system tracks and replaces it (via the Knowledge Acquisition Workflow); it does **not** stop and wait for a human. **Stage-2 exit = every source is either Canonical (`Ready`) or carries a documented reason for absence (`Missing` / `Rejected`); `Unknown = 0`.**
+
+| State | Meaning |
+|---|---|
+| ✅ Ready | canonical file present and extractable as-is |
+| 🔍 OCR Required | scanned/image-only — needs an OCR text layer first |
+| ⚠ Identity Correction Required | wrong identity / Canonical ID / Authority — an identity fix, not a technical one |
+| 🕳️ Missing Canonical Source | Source ID **known and retained**, but its canonical file is absent (or only a non-canonical placeholder exists); replacement supplied by the **Knowledge Acquisition Workflow** |
+| 🚫 Rejected Source | a present file **rejected as non-authoritative**, with a documented reason; not used |
+| ⛔ Blocked | cannot be opened/processed (password, corruption) |
+
+*(`Needs Decomposition` is retired — its only case, SAMA, is now a `Rejected Source`. `Source Status` is the **operational** layer; the distinct **Source Lifecycle** layer (Candidate→Verified→Canonical→Deprecated→Superseded) is deferred to `CONTRACT-BACKLOG.md` BL-2, not the frozen contract.)*
+
+**Snapshot (117 sources).** Post-verification: ✅ 109 · 🔍 3 · ✂️ 1 · ⚠ Identity 4 · ⛔ 0 · **Unknown 0**. **After decisions (2026-07-24):** ✅ **113** (incl. the 4 corrected identity items) · 🕳️ **Missing Canonical Source 2** (`ISO-42001`, `ISO-22301` — current files are non-canonical scans; IDs retained; canonical copies via Knowledge Acquisition) · 🚫 **Rejected 2** (`SAMA-RISK` = derived print bundle; `EX-POL-TRAVEL` = low-value scan) · ⛔ 0 · **Unknown 0**. **Every source has a resolved state.** Stage 2 stays ⏸️ open — **managed by the Knowledge Acquisition Workflow** until Missing/Rejected sources are replaced by canonical files; it is **not** blocked "waiting for the user."
+
+- **🕳️ Missing Canonical Source (2):** `ISO-42001`, `ISO-22301` — the present files are non-canonical **image-only scans**. **Source IDs are retained** (identity never changes); canonical born-digital copies to be provided by the **Knowledge Acquisition Workflow**.
+- **🚫 Rejected Source (2):**
+  - `SAMA-RISK` — **Reason: Derived Print Bundle** (a bulk print of `rulebook.sama.gov.sa`, not an authoritative source). The real SAMA Rulebook documents are **Missing Canonical Sources** (new Source IDs) to be acquired via the Knowledge Acquisition Workflow — *not* fetched manually.
+  - `EX-POL-TRAVEL` (Annex-8) — **Reason: low-value scanned sample**, not a canonical source.
+- **⛔ Blocked (0):** none. The 11 "encrypted" files all open (owner/empty-user password), verified with `fitz` **and** `pypdf`.
+
+**⚠ Identity corrections (4) — supersede the ⚠ rows in §5.1 / §5.2 / §6.2 / §6.3 / §9:**
+
+| Was (⚠) | Verified identity (first-page peek) | Corrected registration |
+|---|---|---|
+| `ISO-37300` | TÜV guidance leaflet *about* ISO 37301 (4p) — **not a standard** | → `REF-TUV-ISO37301-GUIDE` · Genre Guidance · Authority **Reference** · License Unknown · Stability Volatile · `relates_to ISO-37301` |
+| `OCEG-ASSESS-AR` (`مدقق`) | OCEG GRC Assessment Framework (Burgundy) **v3.5.1 Arabic** (rev 2024-08-31) | → `OCEG-BB@3.5.1` **AR rendition** · `translates` the EN copy |
+| `REF-GOV-BOOKLET13` | CMA **Corporate Governance** guide | → `CMA-CG-GUIDE` · Publisher CMA · Authority Regulatory/Interpretive · `relates_to CMA-CGR` |
+| `REF-RSK-APPETITE` | "Risk Appetite & Tolerance" Guidance Paper | → `REF-RSK-APPETITE` confirmed · Authority Reference · domain RSK |
+
+*(Per Principle 11 these are **appended**; the original ⚠ rows are retained and marked superseded, not deleted. No entities exist yet, so nothing downstream is affected.)*
+
+---
+
 Facets per Source: **Authority Profile · License · Genre · Confidence · GRC Domains · Product usage.**
 Flags: 🔒 encrypted · 🖨️ scanned→OCR · 📝 draft.
 
@@ -340,7 +386,7 @@ Flags: 🔒 encrypted · 🖨️ scanned→OCR · 📝 draft.
 | `ISO-42001` 🖨️ | 2023 | EN | 100% | AIG GOV RSK CMP ETH | Compliance, Risk, AI-Assistant, KG |
 | `ISO-22301` | 2019 | EN | 100% | BCM RSK GOV | Risk, Compliance, KG |
 | `ISO-9001` 🔒 | 2015 | EN | 100% | QMS GOV RSK IC | Compliance, KG |
-| `ISO-37300` ⚠ | — | EN | **Unknown** | — | *pending verification (§9)* |
+| `ISO-37300` ⚠ | — | EN | **Unknown** | — | *superseded → §5.0: not a standard; TÜV guidance → `REF-TUV-ISO37301-GUIDE`* |
 | `IIA-GIAS` 🔒 | 2024 | EN, AR | 100% | AUD GOV RSK IC CMP ETH | Audit, Governance, KG, QA |
 | `IIA-3LINES` (Reference) 🔒 | 2020 | EN | 100% | GOV RSK IC AUD | Governance, Audit, Risk, KG |
 
@@ -360,7 +406,7 @@ Flags: 🔒 encrypted · 🖨️ scanned→OCR · 📝 draft.
 | `COBIT` | 2019 | EN | Normative | Licensed | 100% | GOV RSK CMP IC AUD | Governance, Audit, Compliance, KG |
 | `OCEG-RB` | 3.5 | AR | Reference | Licensed | 95% | GOV RSK CMP ETH AUD IC | Governance, Risk, Compliance, KG |
 | `OCEG-BB` 🔒 | 3.5.1 | EN | Methodology | Licensed | 95% | GOV RSK CMP AUD | Audit, Gap, KG |
-| `OCEG-ASSESS-AR` 🔒 ⚠ | — | AR | — | Licensed | Unknown | — | *pending (§9)* |
+| `OCEG-ASSESS-AR` 🔒 ⚠ | — | AR | — | Licensed | Unknown | — | *superseded → §5.0: = `OCEG-BB@3.5.1` AR rendition* |
 | `OECD-CG` | 2023 | EN | Reference | Licensed | 100% | GOV ETH FIN | Governance, KG, QA |
 | `IODSA-KINGIV` 🔒 | 2016 | EN | Reference | Licensed | 100% | GOV ETH RSK AUD IC | Governance, Audit, KG |
 | `BCBS-OPRISK` | 2011 | EN | Reference | Licensed | 100% | OPR RSK GOV IC | Risk, Governance, KG |
@@ -432,7 +478,7 @@ GRC domains vary per law (LEG always; +FIN/HR/PRIV/AML/ABC/GOV as applicable).
 `SA-CGR-EN` (EN Saudi Corporate-Governance Regulations — candidate `translates` `CMA-CGR`, C 80%) ·
 `REF-GOV-CORPGOV-BOOK-AR` ("Issues in Corporate Governance", License Unknown) ·
 `REF-GOV-PUBSECTOR-BOOK-AR` ("Governance in the Public Sector", License Unknown) ·
-`REF-GOV-BOOKLET13` ⚠ unresolved.
+`REF-GOV-BOOKLET13` → **resolved §5.0** (CMA Corporate Governance guide → `CMA-CG-GUIDE`).
 
 ### 6.3 Non-authoritative pool — Authority: Example/Template · License: Unknown/Internal · Used by: AI-Assistant only
 
@@ -448,7 +494,7 @@ GRC domains vary per law (LEG always; +FIN/HR/PRIV/AML/ABC/GOV as applicable).
   `TMPL-AGENCY-01/02` · `TMPL-COMMERCIAL-AGENCY` · `TMPL-VENDOR-KSA` · `TMPL-INCORP-01` ·
   `TMPL-UNRESOLVED-01/02` (⚠ `doc_4`, `masterassurences`).
 - **Risk pool:** `EX-RSK-CONCEPTS-5E-2015` · `EX-RSK-ILO-EBMO` · `TMPL-RSK-REGISTER` ·
-  `METHOD-RSK-BOWTIE` · `REF-RSK-APPETITE` ⚠. The 2nd physical ISO-31000 copy is an **alias of
+  `METHOD-RSK-BOWTIE` · `REF-RSK-APPETITE` (**resolved → §5.0**). The 2nd physical ISO-31000 copy is an **alias of
   `ISO-31000@2018`** (§7), not a separate Source.
 
 ---
@@ -490,12 +536,18 @@ rendition is present).
 
 | Source | Problem | Disposition |
 |---|---|---|
-| `ISO-37300` | 4 pages, no title — likely a preview or mislabeled `ISO 37000` | verify via first-page probe (Stage 2, on approval) |
-| `SAMA-RISK` 🚨 | 1,281-page print-to-PDF **bundle** — many docs merged | must be decomposed into constituent Sources before any use |
-| `OCEG-ASSESS-AR` | Arabic OCEG doc, encrypted, exact title unconfirmed | verify identity + decryptability |
-| `REF-GOV-BOOKLET13`, `REF-RSK-APPETITE`, `TMPL-UNRESOLVED-01/02` | opaque filenames, null titles | title from first-page probe (deferred) |
-| **11 encrypted files** | Spotlight "Password Encrypted" — owner-vs-user password unknown | probe openability before Stage 2; user/owner password may be required |
-| `NIST-PF@1.1-IPD` | valid identity but a **DRAFT** | **Quarantine:** kept in graph, tagged `draft`, **excluded from Normative use** until a final edition supersedes it |
+> **v1.3 update:** Stage-2 verification resolved most of the items below. Identity items → **§5.0**; encrypted files → **all openable (not blockers)**; OCR/bundle items → **Stage-2 Preprocessing Addendum**.
+
+| `ISO-37300` | not a standard — TÜV guidance about ISO 37301 | ✅ **RESOLVED v1.3 → §5.0** (`REF-TUV-ISO37301-GUIDE`) |
+| `OCEG-ASSESS-AR` | = OCEG Assessment Framework v3.5.1 **Arabic** | ✅ **RESOLVED v1.3 → §5.0** (`OCEG-BB@3.5.1` AR) |
+| `REF-GOV-BOOKLET13` | = CMA **Corporate Governance** guide | ✅ **RESOLVED v1.3 → §5.0** (`CMA-CG-GUIDE`) |
+| `REF-RSK-APPETITE` | = "Risk Appetite & Tolerance" Guidance Paper | ✅ **RESOLVED v1.3 → §5.0** |
+| `TMPL-UNRESOLVED-01/02` (`doc_4`, `masterassurences`) | opaque contract templates, low priority | Ready (extractable); identity deferred — non-authoritative pool |
+| **11 "encrypted" files** | owner/empty-user password | ✅ **RESOLVED:** all open (verified `fitz`+`pypdf`) — **not blockers**; extract with `fitz` |
+| `SAMA-RISK` 🚨 | SAMA Rulebook print-dump | 🚫 **Rejected Source** (derived bundle) — see §5.0 |
+| `ISO-42001` · `ISO-22301` | scanned / image-only | 🕳️ **Missing Canonical Source** (canonical copies via Knowledge Acquisition) — see §5.0 |
+| `EX-POL-TRAVEL` | low-value scan | 🚫 **Rejected Source** — see §5.0 |
+| `NIST-PF@1.1-IPD` | valid identity but a **DRAFT** | Quarantine: tagged `draft`, excluded from Normative use until a final edition |
 
 ---
 
@@ -565,7 +617,8 @@ is itself a project asset; better ideas are logged for a future contract version
 | draft — Manifest v2 | Stage 1 | added Canonical IDs, Entity Types, Control Levels, Relationship Types, Confidence, License, Product-Usage |
 | v1.0 | Stage 1 | Source≠Version identity spine; Source vs Entity relationship tiers; Authority Profile axis |
 | v1.1 — RATIFIED | Stage 1 **CLOSED** | added Knowledge Stability as the 4th independent axis; the four-dimensions rule (Identity · Authority · License · Stability, none inferred); freeze-through-Stage-2 rule |
-| **v1.2 (this) — RATIFIED** | Stage 1 close | **Principle 11 — Knowledge is Immutable: append-only extraction, version-scoped entities, relationship Validity, Temporal Traceability; recorded the V3 stage roadmap (§0.1)** |
+| v1.2 — RATIFIED | Stage 1 close | Principle 11 — Knowledge is Immutable: append-only extraction, version-scoped entities, relationship Validity, Temporal Traceability; recorded the V3 stage roadmap (§0.1) |
+| **v1.3 (this)** | Stage 2 — verification | **Sanctioned reconciliation of Stage-2 verified facts (freeze exception): §5.0 defines the 6-state Source Status model (Ready · OCR · Identity-Correction · Missing-Canonical-Source · Rejected-Source · Blocked) — gaps are *managed states, not halts*; 4 identity corrections; `SAMA-RISK` print-dump → Rejected (derived bundle), real Rulebook docs → Missing (Knowledge Acquisition); `ISO-42001`/`ISO-22301` scans → Missing (canonical copies pending); Annex-8 → Rejected; 11-encrypted resolved as openable; readiness gate reframed (resolved = Canonical or documented absence). Stage-1 model rules unchanged; append-only per Principle 11. Source-Lifecycle layer → Backlog BL-2.** |
 
 *End of contract. **Stage 1 is CLOSED and this contract is RATIFIED.** Knowledge is append-only
 (§10.11); the contract is frozen through Stage 2 and amended only on a real conflict with reality

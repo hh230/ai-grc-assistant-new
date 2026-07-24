@@ -290,14 +290,22 @@ transaction, but not progress"* true **structurally**, not by a choice of connec
 - **It is a responsibility boundary, not an execution layer.** This is the line that must survive:
   the Port is where command-completion ends and execution begins — nothing more. It must not grow
   into an "Execution Manager"/"Coordinator"/"Workflow". Scheduling, retry, cancellation, and
-  background dispatch all live *behind* it, as choices of its implementation — never on the Port
+  background dispatch all live *behind* it, as choices of its **realization** — never on the Port
   itself.
-- **It is not a new architectural decision.** It is a *realization* of this ADR's decision (the
+- **It is not a new architectural decision.** The Port is a *realization* of this ADR's decision (the
   command owns the transaction). It adds no option and opens no alternative, so it needs **no new
   ADR** — only this section.
 - **Naming.** The Core already owns `ExecutionPort` (the seam for executing a single *step*). This is
   a different concept — the point at which a mission's execution *starts* — so it takes a distinct
   name that avoids the word "execution" to keep the two from blurring: **`MissionLaunchPort`**.
+
+### The term "realization"
+
+Used precisely from here on, to keep the ADR, the commit messages, and the migration protocol in one
+vocabulary: the **Port is the boundary**; a **realization** is *one way of standing that boundary up*
+(synchronous in-process, a worker, a queue, …). A realization can be replaced without changing the
+architectural decision. "Realization" is therefore not a synonym for "implementation detail" — it is
+the named, swappable *behind-the-boundary* half of this decision.
 
 ### How the work partitions into commits
 
@@ -307,14 +315,14 @@ The Port separates two things that can each be observed on their own, independen
 - **Commit A — introduce the launch boundary.** The command no longer calls `engine.execute()`; a
   `MissionLaunchPort` exists; execution begins through it. *Observable:* command completion and
   execution start are separate responsibilities.
-- **Commit B — provide one implementation of that boundary.** Today: synchronous, in-process,
-  outside the command's transaction. Tomorrow (the §Deferred decision): a worker, a queue, a
-  scheduler — all realizations of the same boundary, none of which touch the command.
+- **Commit B — the first realization of the boundary.** Today: synchronous, in-process, outside the
+  command's transaction. Tomorrow (the §Deferred decision): a worker, a queue, a scheduler — all
+  realizations of the same boundary, none of which touch the command.
 
-The experiment (frozen engine → per-step saves) tells us only that *the first implementation of the
+The experiment (frozen engine → per-step saves) tells us only that *the first realization of the
 boundary happens to satisfy the visibility test too* — a fact about today's Core, not a property of
-the Port. **This partitioning may change how the implementation work is split into commits, but it
-does not change the architectural decision above.** The ADR records the decision; the commit boundary
+the Port. **This partitioning may change how the realization work is split into commits, but it does
+not change the architectural decision above.** The ADR records the decision; the commit boundary
 is settled when the work is done, not predicted here.
 
 ## Rejected alternatives

@@ -275,9 +275,10 @@ wiring may land, not what to write.
    responsibility was the boundary *between command completion and execution start* — a
    `MissionLaunchPort` (ADR 0055, Realization). It did not merge the two models; it isolated the
    frozen coupling behind a seam, and re-partitioned the work honestly: a **boundary** commit (the
-   command stops calling `execute()`; the Port exists) and an **implementation** commit (how launch
-   is realized — synchronous today, a worker/queue later). That partition names no mechanism, so it
-   survives a change of Core. Do not mistake an **implementation** constraint (the engine couples
+   command stops calling `execute()`; the Port exists) and a **realization** commit (how launch is
+   stood up — synchronous today, a worker/queue later). "Realization" is the ADR's term for the
+   swappable behind-the-boundary half; the partition names no mechanism, so it survives a change of
+   Core. Do not mistake an **implementation** constraint (the engine couples
    begin+drive) for an **architectural** fact (the models are one) — that inversion is rule 7 run
    backwards.
 

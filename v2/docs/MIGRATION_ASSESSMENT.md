@@ -281,6 +281,22 @@ wiring may land, not what to write.
    begin+drive) for an **architectural** fact (the models are one) — that inversion is rule 7 run
    backwards.
 
+10. **A command's response describes the command; a query describes execution.** A write command
+    reports the state *it* reached — the decision it committed — never the state of the work that
+    decision set in motion. `POST /run` returns "the mission is launched" (a post-decision status),
+    not "the mission completed"; completion is read afterward through `GET`. This is a direct
+    consequence of ADR 0055's launch boundary: the moment the command stops owning progress, its
+    response cannot report progress. Choosing otherwise — re-reading after the launch so the response
+    can say "completed" — re-couples the response to execution and reintroduces the very ownership the
+    boundary removed; under a worker or queue it becomes impossible anyway (the work has not finished
+    when the response is due).
+
+    *Testing consequence:* a test for this must assert the **separation**, not a status string — the
+    response does **not** claim the launched execution finished, and a following query shows that it
+    did. `assert status == "planned"` re-binds the test to one of today's values; `assert status !=
+    "completed"` **and** a `GET` that observes completion binds it to the boundary, so it survives
+    launch becoming synchronous, a worker, or a queue.
+
 *(Commit 1 landed 2026-07-23 on `feat/wave1-production-tests`, over a Baseline Snapshot — `chore:
 import accepted v2 baseline` — which records where git tracking began and claims to be no
 development step. 340 files of accepted work had never been committed; without that snapshot no

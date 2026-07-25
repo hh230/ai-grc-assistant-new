@@ -1,0 +1,26 @@
+[project]
+name = "artifact-writers"
+version = "0.1.0"
+description = "Rasheed V3 — Artifact Writers: realizations of the replaceable artifact FORMAT (ADR 0057) behind the Port's `ArtifactWriter` boundary. Source-agnostic and shared by every extractor. First realization: `JsonArtifactWriter` (append-only JSON under v3/knowledge/entities). Swappable for Postgres/Parquet/SQLite without touching the Port or any extractor."
+requires-python = ">=3.12"
+dependencies = [
+    "knowledge-extraction",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.uv.sources]
+knowledge-extraction = { path = "../knowledge-extraction", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["artifact_writers"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

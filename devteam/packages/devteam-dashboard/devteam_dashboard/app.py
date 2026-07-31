@@ -28,6 +28,7 @@ from devteam_dashboard import (
     jobs_view,
     lifecycle_view,
     log_reader,
+    operations_view,
     pipeline_view,
 )
 from devteam_dashboard.actions_log import ActionsLog
@@ -120,6 +121,12 @@ def create_app(
         # The Mission Lifecycle: every active problem's state + the metrics, read from the snapshot
         # the coordinator writes. Viewer-only — the LifecycleCoordinator owns the state.
         return lifecycle_view.read_lifecycle(settings.lifecycle_path)
+
+    @app.get("/api/operations")
+    def operations() -> dict[str, object]:
+        # The one Operations Projection the daemon produces (health, metrics, problems, approvals,
+        # missions, escalations, activity). The Viewer reads ONLY this — it merges nothing (S6).
+        return operations_view.read_operations(settings.operations_path)
 
     @app.get("/api/pipeline")
     def pipeline() -> dict[str, object]:

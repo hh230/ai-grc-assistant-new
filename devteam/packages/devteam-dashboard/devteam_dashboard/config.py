@@ -27,6 +27,7 @@ _JOURNAL_FILE = JOURNAL_FILENAME
 _JOBS_FILE = "jobs.json"
 _CONNECTORS_FILE = "connectors.json"
 _LIFECYCLE_FILE = "lifecycle.json"
+_OPERATIONS_FILE = "operations.json"
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,7 @@ class DashboardConfig:
     jobs_path: Path  # the AI Organization Jobs snapshot the organization service writes
     connectors_path: Path  # the AI Organization Connectors snapshot the service writes
     lifecycle_path: Path  # the Mission Lifecycle snapshot (ledger + metrics) the service writes
+    operations_path: Path  # the single OperationsSnapshot the daemon projects (S6)
     host: str = "127.0.0.1"
     port: int = 8787
     poll_seconds: float | None = None
@@ -65,6 +67,7 @@ def load_config(
     jobs_path: Path | str | None = None,
     connectors_path: Path | str | None = None,
     lifecycle_path: Path | str | None = None,
+    operations_path: Path | str | None = None,
     host: str = "127.0.0.1",
     port: int = 8787,
 ) -> DashboardConfig:
@@ -111,6 +114,11 @@ def load_config(
         if lifecycle_path is not None
         else resolved_log.parent / _LIFECYCLE_FILE
     )
+    resolved_operations = (
+        Path(operations_path)
+        if operations_path is not None
+        else resolved_log.parent / _OPERATIONS_FILE
+    )
     return DashboardConfig(
         label=resolved_label,
         plist_path=resolved_plist,
@@ -123,6 +131,7 @@ def load_config(
         jobs_path=resolved_jobs,
         connectors_path=resolved_connectors,
         lifecycle_path=resolved_lifecycle,
+        operations_path=resolved_operations,
         host=host,
         port=port,
         poll_seconds=info.poll_seconds if info else None,

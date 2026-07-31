@@ -5,7 +5,7 @@
 // GitHub/logs/diffs is HTML-escaped before rendering (untrusted content).
 
 const view = document.getElementById("view");
-const POLL = { executive: 10000, overview: 25000, pipeline: 6000, agents: 6000, lifecycle: 8000, jobs: 8000, connectors: 8000, missions: 25000, logs: 4000, metrics: 20000, settings: 0 };
+const POLL = { executive: 10000, overview: 25000, operations: 8000, pipeline: 6000, agents: 6000, lifecycle: 8000, jobs: 8000, connectors: 8000, missions: 25000, logs: 4000, metrics: 20000, settings: 0 };
 let currentTab = "executive";
 let pollTimer = null;
 let knownActionable = null; // Set<pr_number> for notification diffing
@@ -1491,9 +1491,116 @@ function severityKind(s) {
   return { low: "neutral", medium: "waiting", high: "waiting", critical: "blocked" }[s] || "neutral";
 }
 
+// The Operations Projection — the ONE snapshot the daemon produces. This Viewer reads only
+// /api/operations and renders its sections; it never touches Correlation/Approval/Mission/Ledger.
+async function renderOperations() {
+  let data;
+  try {
+    data = await api("/api/operations");
+  } catch (e) {
+    view.innerHTML = errorNotice("operations", e);
+    return;
+  }
+  const h = data.health || {};
+  const m = data.metrics || {};
+  const num = (v) => (v == null ? "—" : v);
+  const secs = (v) => (v == null ? "—" : Math.round(v) + "s");
+  const notPresent = !data.snapshot_present
+    ? `<div class="notice notice-warn">The daemon hasn't written the operations snapshot yet
+        (<span class="mono">${esc(data.path)}</span>).</div>`
+    : "";
+  const approvals = data.pending_approvals || [];
+  const problems = data.active_problems || [];
+  const missions = data.running_missions || [];
+  const activity = (data.recent_activity || []).slice().reverse(); // newest first
+
+  const approvalRows = approvals.map(approvalRow).join("")
+    || `<tr><td colspan="4" class="muted">No approvals waiting.</td></tr>`;
+  const problemRows = problems.map(problemRow).join("")
+    || `<tr><td colspan="4" class="muted">No active problems — the organization is healthy.</td></tr>`;
+  const missionRows = missions.map(missionRow).join("")
+    || `<tr><td colspan="3" class="muted">No missions running.</td></tr>`;
+  const activityRows = activity.map(activityRow).join("")
+    || `<tr><td colspan="3" class="muted">No recent activity.</td></tr>`;
+
+  view.innerHTML = `
+    ${notPresent}
+    <div class="banner">One projection, produced by the daemon. This Viewer reads only
+      <span class="mono">operations.json</span> — it merges nothing (Core → Projection → Viewer).</div>
+    <div class="banner">Health ${badge(healthKind(h.status), h.status || "—")}
+      ${h.detail ? "· " + esc(h.detail) : ""} &nbsp;·&nbsp; <b>${num(m.active_problems)}</b> active
+      &nbsp;·&nbsp; MTTV <b>${secs(m.mean_time_to_verify)}</b> &nbsp;·&nbsp; MTTC
+      <b>${secs(m.mean_time_to_close)}</b> &nbsp;·&nbsp; ${num(m.escalation_count)} escalations
+      &nbsp;·&nbsp; ${num(m.retry_count)} retries</div>
+    <div class="section-title">Pending approvals</div>
+    <table>
+      <thead><tr><th>Mission</th><th>Role</th><th>Reason</th><th>Waiting since</th></tr></thead>
+      <tbody>${approvalRows}</tbody>
+    </table>
+    <div class="section-title">Active problems</div>
+    <table>
+      <thead><tr><th>Problem</th><th>Type</th><th>Severity</th><th>State</th></tr></thead>
+      <tbody>${problemRows}</tbody>
+    </table>
+    <div class="section-title">Running missions</div>
+    <table>
+      <thead><tr><th>Mission</th><th>Owner</th><th>Status</th></tr></thead>
+      <tbody>${missionRows}</tbody>
+    </table>
+    <div class="section-title">Recent activity</div>
+    <table>
+      <thead><tr><th>Time</th><th>Event</th><th>Where</th></tr></thead>
+      <tbody>${activityRows}</tbody>
+    </table>`;
+}
+
+function approvalRow(a) {
+  const title = (a.mission_type || "") + (a.asset ? " · " + a.asset : "");
+  return `<tr>
+    <td><span class="agent-name">${esc(title)}</span>
+      <div class="stat-sub mono">${esc(a.target)}</div></td>
+    <td>${esc(a.role || "any authorized")}</td>
+    <td>${esc(a.reason || "—")}</td>
+    <td class="mono">${fmtTime(a.waiting_since)}</td>
+  </tr>`;
+}
+
+function missionRow(m) {
+  return `<tr><td class="mono">${esc(m.id)}</td><td>${esc(m.goal || "—")}</td>
+    <td>${badge("working", m.status || "—")}</td></tr>`;
+}
+
+function activityRow(e) {
+  const kind = (e.kind || "").replace(/_/g, " ");
+  const where = shortRef(e.ref) + (e.detail ? " — " + e.detail : "");
+  return `<tr><td class="mono">${fmtTime(e.at)}</td>
+    <td>${badge(activityKind(e.kind), kind)}</td>
+    <td>${esc(where)}</td></tr>`;
+}
+
+function healthKind(s) {
+  return { healthy: "idle", degraded: "waiting", down: "blocked", unknown: "neutral" }[s] || "neutral";
+}
+
+function activityKind(k) {
+  return { detected: "waiting", approval_requested: "waiting", approved: "idle", rejected: "blocked",
+    mission_started: "working", verified: "idle", closed: "idle", escalated: "blocked" }[k] || "neutral";
+}
+
+function shortRef(r) {
+  const p = (r || "").split(":");
+  return p.length >= 2 ? p[0] + ":" + p[1] : (r || "");
+}
+
+function fmtTime(at) {
+  if (!at) return "—";
+  return new Date(at * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+
 const routes = {
   executive: renderExecutive,
   overview: renderOverview,
+  operations: renderOperations,
   pipeline: renderPipeline,
   agents: renderAgents,
   lifecycle: renderLifecycle,

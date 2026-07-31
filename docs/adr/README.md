@@ -68,5 +68,15 @@ for new records.
 | [0053](./0053-v2-read-models-and-projection.md) | V2 — Read models & Application-layer projection (the V2 CQRS read side) | Accepted | §6, §14, §15, §16 |
 | [0054](./0054-v2-application-layer-contract.md) | V2 — the Application layer contract (policies, CQRS by dependencies, `CommandResult`, `CommandContext`) | Accepted — closed | §6, §9, §14, §22 |
 | [0055](./0055-v2-mission-execution-lifecycle-ownership.md) | V2 — Mission execution lifecycle ownership: the transaction boundary is the **command**, execution sits outside it (Gate A of the V1 → Platform migration) | Accepted | §6, §8, §14, §16, §20 |
+| [0056](./0056-v3-knowledge-extraction-port.md) | V3 — The Knowledge Extraction boundary (one Port, per-family Realizations) | Accepted | §12, §17 |
+| [0057](./0057-v3-extraction-output-artifact.md) | V3 — Extraction produces a canonical Artifact (the format is replaceable; `Structure ≠ Semantics`) | Accepted | §12, §15 |
+| [0058](./0058-v3-pipeline-execution-model.md) | V3 — Downstream pipeline execution model (Fail-Open, Incremental, Independent & Idempotent) | Accepted | §12, §16 |
+| [0059](./0059-v3-graph-projection-port.md) | V3 — The Graph Projection boundary (one Port, many target realizations) | Accepted | §12, §17 |
+| [0060](./0060-v3-embedding-port.md) | V3 — The Embedding boundary (one `EmbeddingPort`, many provider realizations) | Accepted | §12, §17 |
+| [0061](./0061-autonomous-platform-dev-team.md) | The Autonomous Platform Dev Team — a mission-centric engineering team on the frozen v2 Core | Accepted — implemented | §3, §7, §8, §9, §10, §11, §16, §17, §19 |
+| [0062](./0062-agent-collaboration-protocol.md) | The Agent Collaboration Protocol — the boundary is the messages; agents are realizations (rule 6 amended by 0063) | Accepted | §9, §11, §17 |
+| [0063](./0063-mission-intake-and-capability-planning.md) | Mission Intake & capability-based planning — normalize triggers into missions; plan in capabilities, resolve separately (intake input refined by 0064) | Accepted | §5, §9, §11, §17 |
+| [0064](./0064-mission-correlation.md) | Mission Correlation — relate a trigger to an existing mission; Intake receives CreateMission \| UpdateMission | Accepted | §8, §16 |
+| [0065](./0065-organization-mission-lifecycle.md) | The Organization Mission Lifecycle — drive a mission from evidence to closure, verified by the connector, escalated on exhaustion | Accepted — implemented & live-validated; Core frozen | §7, §8, §9, §11, §16, §19 |
 
 There is no ADR 0033 — the number was skipped, not lost.

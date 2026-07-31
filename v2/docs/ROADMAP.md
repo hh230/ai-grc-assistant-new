@@ -1,5 +1,13 @@
 # Rasheed V2 — Roadmap
 
+> **Update (2026-07-31):** Since this roadmap was last revised, the **AI Organization / Autonomous
+> DevTeam** phase (ADRs 0061–0065) shipped on top of the frozen Core, and its **Mission Lifecycle Core**
+> was frozen and certified **PASS** — see [docs/devteam/](../../docs/devteam/)
+> (`ARCHITECTURE-CERTIFICATION.md`, `CORE-FREEZE-REVIEW.md`, `MISSION-LIFECYCLE.md`) and the
+> [v2.0.0 release notes](../../docs/releases/v2.0.0.md). The v2/devteam standalone suites are **now
+> wired into CI** (the `v2-v3-tests` job). The body below (last revised 2026-07-23) remains the
+> authoritative map of the V2 Platform + Product Core and the V1 product surface.
+
 > **Purpose.** A single, durable map of what V2 *is*, what is **done and frozen**, and what is
 > **deliberately deferred** — so a handoff or a return after months starts from a coherent picture,
 > not from reading every slice. This is a living index; each line points to the ADR that owns the
@@ -320,9 +328,10 @@ Assessment · Policy Generator · Vendor Review — each drives real tools E2E (
 5. **Production readiness** — Docker · Kubernetes · CI/CD for the v2 packages · monitoring · security
    review · performance/scaling · disaster recovery.
 
-**CI note:** the v2 packages are per-package `uv` projects (their own `.venv`), **not** wired into the
-repo-root CI (`.github/workflows/ci.yml` covers the V1 tree). Wiring v2 into CI is part of Production
-readiness (item 5).
+**CI note:** the v2/devteam packages are per-package `uv` projects (their own `.venv`). A dedicated CI
+job (`v2-v3-tests` in `.github/workflows/ci.yml`) now discovers and runs every standalone suite via
+`devteam-ci`'s `test_runner` (informational-first; ADR 0061, Phase 0.2). The repo-root job still covers
+the V1 tree.
 
 ## Next / deferred (nothing started)
 

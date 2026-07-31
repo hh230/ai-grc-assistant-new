@@ -154,16 +154,16 @@ If a change violates any pillar above, it is wrong by definition — redesign it
 | **Frontend** | Next.js (App Router) + TypeScript + React | Server Components by default; Client Components only when interactivity requires it. Workspace-first UX. |
 | **UI** | Tailwind CSS + a component library (e.g. shadcn/ui) | Design tokens centralized; no ad-hoc inline styles. |
 | **Frontend state/data** | TanStack Query for server state; minimal client state | Avoid global stores unless justified. |
-| **Backend / API** | Python + FastAPI | Async-first. Pydantic models at every boundary. |
+| **Backend / API** | Python + FastAPI | Async at the API edge; the **frozen v2 mission/tool/event Core is synchronous** (ADR 0045/0039). Pydantic models at every boundary. |
 | **AI Orchestration** | Internal AI Orchestrator service + agent framework | The Orchestrator owns planning, memory, tool routing, and policy. LLM SDKs sit behind it. |
 | **LLM access** | LLM provider SDKs (e.g. Anthropic/OpenAI) behind a provider abstraction | Providers are swappable; business logic never imports an SDK directly. |
 | **Vector store** | pgvector on Postgres (or a managed vector DB) | Keep retrieval close to the relational data when possible. |
 | **Database** | PostgreSQL | Single source of truth for relational data. Migrations are mandatory. |
-| **ORM / DB access** | SQLAlchemy (async) + Alembic for migrations | No raw SQL string interpolation. |
-| **Workflow engine** | Durable workflow/orchestration engine (e.g. Temporal / a job-graph engine) | Runs missions and long workflows reliably with retries and state. |
-| **Eventing** | Message/event bus (e.g. Kafka/NATS/Redis Streams) | Event-Driven Architecture where decoupling and async are needed. |
+| **ORM / DB access** | **V2 Core (binding): synchronous psycopg3 + raw, fully parameterized SQL + hand-written `.sql` migrations & a `schema_migrations` ledger** (ADR 0045, supersedes ADR 0012 for V2). V1 used SQLAlchemy (async) + Alembic. | Never string-interpolate values — always bind parameters. |
+| **Workflow engine** | *Target:* durable workflow engine (e.g. Temporal) — **not yet built**. | V2 runs missions via the Mission Engine + Transactional Outbox (ADR 0042/0043); durable multi-worker execution is a future ADR. |
+| **Eventing** | *Target:* message bus (e.g. Kafka/NATS). **V2 today: a synchronous, in-process `EventBus` + Transactional Outbox — no broker (ADR 0039/0043).** | EDA where decoupling earns its keep; events captured atomically to the outbox, relayed at-least-once. |
 | **Auth** | OIDC / SSO + RBAC (and ABAC where needed) | Multi-tenant isolation enforced at the data layer. |
-| **Background jobs** | Task queue (e.g. Celery/RQ/Arq) | Long agent runs, ingestion, and scheduled jobs are async, not request-blocking. |
+| **Background jobs** | *Target:* task queue (e.g. Celery/RQ/Arq) — **not yet built in V2**. | The autonomous dev team's 24/7 loop bootstraps on Claude Code scheduling → GitHub Actions → a worker service (ADR 0061). |
 | **Infra** | Docker, IaC, CI/CD pipelines | Reproducible environments; no manual prod changes. |
 | **Observability** | Structured logging + distributed tracing + LLM-call tracing | Every model call is traced with prompt, model version, tokens, latency, cost. |
 
@@ -290,6 +290,12 @@ reasoning engine the Orchestrator rents per call. All durable intelligence — p
 control flow, memory, routing, policy enforcement, and human gating — lives in the
 Orchestrator.
 
+> **V2 vocabulary (ADR 0042 §12.8).** In the V2 implementation this "brain" role — planning,
+> routing, lifecycle, and gates — is realized by the **Mission Engine**. The package named
+> `ai-orchestrator` (ADR 0038) is the per-step *pipeline runner* (one grounded answer), **not**
+> this brain. The autonomous dev team's **Foreman** (ADR 0061) is a planner at the
+> Mission-Engine altitude, not inside `ai-orchestrator`.
+
 **Responsibilities of the Orchestrator:**
 
 - **Mission planning & decomposition.** Turn a mission goal into a plan of steps, each
@@ -415,8 +421,10 @@ Orchestrator, agents, API, UI, workflows, jobs, and tests find and call Tools.
   Breaking changes ship as new versions.
 - **Capability metadata for the Orchestrator.** The Orchestrator reads the Registry to
   plan missions — it knows what Tools exist, what they need, and what they affect.
-- **Access control.** The Registry enforces which roles/tenants/agents may call which
-  Tools.
+- **Access control.** The Registry **carries** each Tool's `required_roles` as *declarative
+  metadata*; it does not evaluate them. Authorization is **enforced in the Application/command
+  layer** (ADR 0054), with tenant scope on every invocation — the Registry stays a pure catalog
+  (ADR 0006/0049).
 - **Auditability.** Every registration and invocation is traceable.
 - **Plugin entry point.** New Tools (including third-party/plugin Tools) appear in the
   system by registering here — no core code change required. (See §17.)
@@ -452,6 +460,12 @@ missions.
 - **Workflow Agent** — drives **multi-step processes**: orchestrating long-running
   workflows, scheduling re-assessments, coordinating approvals and hand-offs across the
   other agents and the Workflow Engine.
+
+> **Second roster — the platform dev team (ADR 0061).** The roster above serves the GRC
+> *product*. The same multi-agent pattern is realized for *platform engineering* by an
+> autonomous dev team — **Foreman, QA, Monitor, Security, Developer, Reviewer** — that maintains
+> this codebase as governed Missions on the frozen v2 Core. New agents in either roster are added
+> by ADR + registry, never by editing the core (§17).
 
 **Rules for agents:**
 
@@ -818,7 +832,9 @@ Consistency lets anyone read unfamiliar code quickly. These are mandatory.
 
 **Python / FastAPI:**
 
-- Async-first for all I/O. Pydantic for request/response models and settings.
+- Async at the API edge. **The frozen v2 mission/tool/event Core is synchronous** (sync psycopg3,
+  in-process bus — ADR 0045/0039); do not add async to it. Pydantic for request/response models
+  and settings.
 - Dependency injection via FastAPI `Depends` for db sessions, auth, tenancy, and services.
 - Repository pattern for data access; no ORM queries in route handlers or in the Domain's
   pure logic.

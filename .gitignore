@@ -50,3 +50,5 @@ Thumbs.db
 # knowledge/manifests/ ARE kept (effective source text + ingestion audit trail).
 v2/knowledge/chunks/
 v2/knowledge/embeddings/
+.vercel
+.env*

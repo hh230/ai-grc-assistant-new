@@ -34,3 +34,16 @@ jobs:
       - run: uv run ruff check .
       - run: ./scripts/ci/mypy-workspace.sh
       - run: uv run pytest
+
+  # ADR 0061, Phase 0.2 — close CI gap #1. The v2/ and v3/ packages are standalone uv projects
+  # (each its own lock/venv), invisible to the `python` job's root workspace — their ~1,000 tests
+  # never ran in CI. This job discovers and runs every standalone suite. Informational-first:
+  # `continue-on-error` surfaces results without blocking merges yet; flip it off once the sweep is
+  # proven stable (a tracked follow-up, along with per-package caching / a matrix for speed).
+  v2-v3-tests:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: python3 devteam/packages/devteam-ci/devteam_ci/test_runner.py

@@ -1,0 +1,33 @@
+[project]
+name = "devteam-approval-api"
+version = "0.1.0"
+description = "Approval API + UI (S5a/S5b) — a Viewer/Driver surface over the Approval Domain. It talks ONLY to ApprovalService (FileApprovalStore); it knows nothing about the lifecycle. Decisions are recorded durably; the daemon applies them on tick (file-store + reconcile)."
+requires-python = ">=3.12"
+dependencies = [
+    "devteam-approval",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0", "httpx>=0.27.0"]
+
+[tool.uv.sources]
+devteam-approval = { path = "../devteam-approval", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_approval_api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+strict = true

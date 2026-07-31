@@ -1,0 +1,4 @@
+# Regression fixtures: real GitHub Actions logs, intentionally version-controlled so a future parser
+# change can never silently reintroduce a bug that reality already caught. This overrides the root
+# `*.log` ignore for everything under this fixtures/ directory.
+!*.log

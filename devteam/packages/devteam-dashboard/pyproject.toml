@@ -1,0 +1,39 @@
+[project]
+name = "devteam-dashboard"
+version = "0.1.0"
+description = "Autonomous Platform Dev Team — Operations Dashboard (Operations Mode). A LOCAL, presentation-only web view over the existing runtime: it observes the ContinuousMonitor (live GitHub + the monitor log + the LaunchAgent plist) and drives approve/reject through the EXISTING ApprovalGateway. No business logic, no new runtime behavior, no database — it only calls services that already exist (mirrors operate.py)."
+requires-python = ">=3.12"
+dependencies = [
+    "devteam-runtime",
+    "devteam-github",
+    "devteam-agents",
+    "devteam-analysis",
+    "devteam-observability",
+    "devteam-tools",
+    "mission-engine",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0", "httpx>=0.27.0"]
+
+[tool.uv.sources]
+devteam-runtime = { path = "../devteam-runtime", editable = true }
+devteam-github = { path = "../devteam-github", editable = true }
+devteam-agents = { path = "../devteam-agents", editable = true }
+devteam-analysis = { path = "../devteam-analysis", editable = true }
+devteam-observability = { path = "../devteam-observability", editable = true }
+devteam-tools = { path = "../devteam-tools", editable = true }
+mission-engine = { path = "../../../v2/packages/mission-engine", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_dashboard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

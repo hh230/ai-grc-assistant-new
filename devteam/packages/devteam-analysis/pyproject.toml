@@ -1,0 +1,19 @@
+[project]
+name = "devteam-analysis"
+version = "0.1.0"
+description = "Autonomous Platform Dev Team — failure analysis (ADR 0061). The only tool-aware layer under the general Developer: a FailureAnalyzer Port normalizes raw CI failure logs into a tool-agnostic AnalyzedFailure (category, findings, proposed edits). Realizations per tool (mypy, pytest, eslint, …); the Developer consumes only the normalized model and never learns which tool failed. Pure — depends on nothing but the standard library."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_analysis"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+2026-07-09T18:49:30.9864535Z ##[group]Run uv run mypy .
+2026-07-09T18:49:30.9864827Z uv run mypy .
+2026-07-09T18:49:30.9901019Z shell: /usr/bin/bash -e {0}
+2026-07-09T18:49:30.9901277Z env:
+2026-07-09T18:49:30.9901532Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-07-09T18:49:30.9901855Z ##[endgroup]
+2026-07-09T18:49:31.2504022Z packages/domain/tests/knowledge/test_value_objects.py: error: Duplicate module named "test_value_objects" (also at "./packages/domain/tests/extraction/test_value_objects.py")
+2026-07-09T18:49:31.2506363Z packages/domain/tests/knowledge/test_value_objects.py: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-file-paths-to-modules for more info
+2026-07-09T18:49:31.2508118Z packages/domain/tests/knowledge/test_value_objects.py: note: Common resolutions include:
+2026-07-09T18:49:31.2509449Z packages/domain/tests/knowledge/test_value_objects.py: note:     a) using `--exclude` to avoid checking one of them,
+2026-07-09T18:49:31.2511071Z packages/domain/tests/knowledge/test_value_objects.py: note:     b) adding `__init__.py` somewhere,
+2026-07-09T18:49:31.2512477Z packages/domain/tests/knowledge/test_value_objects.py: note:     c) using `--explicit-package-bases` or adjusting `MYPYPATH`
+2026-07-09T18:49:31.2513606Z Found 1 error in 1 file (errors prevented further checking)
+2026-07-09T18:49:31.2558153Z ##[error]Process completed with exit code 2.

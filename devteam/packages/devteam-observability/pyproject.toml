@@ -1,0 +1,33 @@
+[project]
+name = "devteam-observability"
+version = "0.1.0"
+description = "Live runtime observability for the Autonomous Platform Dev Team (ADR 0061; CLAUDE.md §11, §19). A PASSIVE layer that turns the running agents into observable participants: a roster-neutral core (AgentId, RuntimeEvent, RuntimeObserver port, AgentRuntimeRegistry projection, RuntimeStateView) folds the runtime's activity into per-agent live state — status, current mission, last activity, completed count, average duration, decision history — and a mission ownership/handoff index. The core depends on NO agent system, so a second system integrates later as a new adapter with no redesign (owner constraint). Only the DevTeam adapter is wired this milestone."
+requires-python = ">=3.12"
+# The core is dependency-free; the DevTeam adapter maps the frozen Core onto it, so the package
+# depends on the Core boundaries it observes — never on a concrete agent or a runtime.
+dependencies = [
+    "event-bus",
+    "mission-engine",
+    "devteam-protocol",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+# uv sources are not transitive, so every editable path dep (direct + transitive) is named here.
+[tool.uv.sources]
+pipeline-contracts = { path = "../../../v2/packages/pipeline-contracts", editable = true }
+event-bus = { path = "../../../v2/packages/event-bus", editable = true }
+mission-engine = { path = "../../../v2/packages/mission-engine", editable = true }
+devteam-contracts = { path = "../devteam-contracts", editable = true }
+devteam-protocol = { path = "../devteam-protocol", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_observability"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

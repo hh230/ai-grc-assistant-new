@@ -1,0 +1,28 @@
+[project]
+name = "devteam-tools"
+version = "0.1.0"
+description = "Autonomous Platform Dev Team — Dev Tools (ADR 0061). Each capability the dev team can perform is a registered Tool speaking the frozen tool-registry contract (ToolSpec + ToolStepResult), with a declared SideEffectProfile. Read-only tools first (check_repo_health, ...); consequential tools (apply_patch, open_pr) are gated by the Mission Engine. Depends only on tool-registry + pipeline-contracts + devteam-contracts — no LLM stack (ADR 0049)."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "tool-registry",
+    "devteam-contracts",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../../../v2/packages/pipeline-contracts", editable = true }
+tool-registry = { path = "../../../v2/packages/tool-registry", editable = true }
+devteam-contracts = { path = "../devteam-contracts", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_tools"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

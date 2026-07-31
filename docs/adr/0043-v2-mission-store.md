@@ -8,7 +8,24 @@
 - Related: CLAUDE.md §3 (mission-centric), §8 (mission lifecycle), §14 (services/repository),
   §15 (DDD), §16 (EDA), §19 (audit), §20 (tenancy); ADR 0012 (Postgres + SQLAlchemy/Alembic),
   0015 (audit & traceability), 0038 (pipeline-contracts), 0039 (platform hardening / event bus),
-  0040 (tenancy model), **0042 (Mission Engine — defines and freezes `MissionStorePort`)**
+  0040 (tenancy model), **0042 (Mission Engine — defines and freezes `MissionStorePort`)**,
+  **0045 (V2 persistence mechanism — carries the Errata below forward)**
+
+> **Errata (2026-08-01, v2.0.0 release audit) — the migration-ledger detail did not ship as
+> designed.** §0 and §14 below name a `schema_migrations` ledger runner as a "settled decision."
+> **The historical decision text is left as originally written — nothing below is rewritten or
+> hidden.** But the final V2 implementation across Slices 1–4 (frozen, per *Implementation
+> Status* at the end of this ADR) **did not build that runner or ledger table.** Every shipped
+> migration (`migrations/0001_missions.sql`, `0002_outbox.sql`, `0003_approval.sql`) is applied as
+> idempotent DDL (`CREATE TABLE`/`CREATE INDEX IF NOT EXISTS`) directly, with no apply-tracking
+> table — matching the Retrieval Engine precedent this ADR cites. This is documented honestly in
+> `v2/packages/mission-store/README.md`: "Generic migration runner + `schema_migrations`
+> ledger… deferred to later slices (deliberately not built now)." **[ADR 0045](./0045-v2-persistence-mechanism.md)**
+> (which promoted §0's direction into the single project-wide persistence policy) carries this
+> same correction and is the canonical reference for V2's actual migration mechanism; read this
+> Errata alongside 0045's own Correction note. The ledger remains a legitimate, undecided future
+> enhancement — not a reversal of the "no Alembic, hand-written `.sql`" decision itself, which
+> stands and matches the code.
 
 ---
 
@@ -142,6 +159,9 @@ amendment is out of scope here; ADR 0043 only *adopts* the direction V2 already 
 amendment as the follow-up that keeps one policy. (b) Migrations follow that existing V2 direction —
 forward-only ordered `.sql` + a `schema_migrations` ledger runner (§14) — not Alembic. This is a
 *decision*, closing what was previously an open item.
+
+> *(a) shipped as [ADR 0045](./0045-v2-persistence-mechanism.md). Of (b), only the "forward-only
+> ordered `.sql`, not Alembic" part shipped — the ledger runner did not; see the Errata above.)*
 
 ### 1. Responsibilities
 
@@ -453,6 +473,11 @@ This follows directly from the data-access direction **adopted in §0** (the dir
 follows; reconciling ADR 0012 is left to a separate amendment). It is a settled decision, not an open
 choice.
 
+> *(See the Errata above: the runner + `schema_migrations` ledger table described in this section
+> were not built. Slices 1–4 apply each migration as idempotent DDL directly — "forward-only,
+> ordered, idempotent" held; "a small runner that records applied files in a ledger table" did not.
+> The ADR 0045 Correction note is the canonical statement of what actually shipped.)*
+
 ---
 
 ## Design challenge (I am challenging this before accepting it)
@@ -508,6 +533,9 @@ The two structural decisions that were open in the prior draft — the **driver/
 **migration runner** — are now **resolved in §0** (sync psycopg3 + raw parameterized SQL; hand-written
 `.sql` + ledger), so V2 has one direction. Two smaller, non-structural points remain for the final
 review; each has a default I will take unless overruled, and neither blocks the shape of the schema:
+
+> *(Of this pair, only the driver/ORM direction shipped as designed; the ledger half of the
+> migration-runner resolution did not build — see the Errata near the top of this ADR.)*
 
 1. **Idempotency-race UX.** Accept the self-healing `IdempotencyConflict`-then-retry (§9), or judge the
    race material enough to justify a future ADR-0042 change letting `save` return the winner. *Default:
@@ -594,7 +622,10 @@ frozen before the next. Status as of 2026-07-17:
   row (§5–§7): typed indexed scoping/lifecycle columns + JSONB nested collections, tenant isolation in
   SQL, cross-tenant overwrite refusal, faithful aggregate round-trip (incl. plan-version history),
   store-managed `revision` and `payload_schema_version` written from the first migration, a pure
-  driver-free codec, and lazy psycopg import.
+  driver-free codec, and lazy psycopg import. **Migrations (§14 correction):** the canonical
+  migration (`migrations/0001_missions.sql`) is idempotent DDL applied directly — the §14 "runner +
+  `schema_migrations` ledger" was **not built**; see the Errata near the top of this ADR and ADR
+  0045. `v2/packages/mission-store/README.md` lists it under *Deferred to later slices*.
 - **Slice 2 — idempotency completion — ✅ Frozen.** A `save` colliding on `(tenant_id,
   idempotency_key)` from a *different* mission is wrapped from the raw driver uniqueness violation into
   a typed `IdempotencyConflict` (§9, §11). Portable semantics stay engine-level find-before-create;

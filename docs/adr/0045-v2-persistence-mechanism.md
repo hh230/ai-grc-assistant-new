@@ -8,6 +8,19 @@
   0038 (pipeline-contracts), 0042 (Mission Engine — the frozen synchronous ports), 0043 (Mission
   Store — where this reconciliation was promised, §0)
 
+> **Correction (2026-08-01, v2.0.0 release audit).** This ADR's Context and Decision originally
+> described V2's migration mechanism as "hand-written ordered `.sql` migrations **and a
+> `schema_migrations` ledger**" — copied from ADR 0043 §14, which called the ledger runner a
+> "settled decision." **No `schema_migrations` ledger (or a runner that tracks applied files) was
+> ever built** in the frozen Mission Store (Slices 1–4) or the Retrieval Engine; both apply
+> idempotent DDL (`CREATE TABLE`/`CREATE INDEX IF NOT EXISTS`) directly, with no apply-tracking
+> table. `v2/packages/mission-store/README.md` already states this accurately: "Generic migration
+> runner + `schema_migrations` ledger… deferred to later slices (deliberately not built now)." The
+> text below is corrected to match the frozen implementation; the ledger remains a legitimate
+> future enhancement, not a shipped V2 mechanism. (V1's `apps/web` has its own real, working
+> `schema_migrations` table via `scripts/db-migrate.mjs` — unrelated to V2 and unaffected by this
+> correction.)
+
 ---
 
 ## Context
@@ -22,8 +35,9 @@ builds — the kind of drift that misleads a team returning to the project or re
 - **V2, in production, does the opposite mechanism.** The Retrieval Engine's pgvector adapter
   (Phase 9B) and the Mission Store ([ADR 0043](./0043-v2-mission-store.md), Slices 1–4, frozen) both
   run **synchronous psycopg3 + raw, fully parameterized SQL behind Ports & Adapters**, with
-  hand-written ordered `.sql` migrations and a `schema_migrations` ledger — **not** async SQLAlchemy,
-  **not** Alembic.
+  hand-written ordered, idempotent `.sql` migrations (`CREATE ... IF NOT EXISTS`) applied directly —
+  **not** async SQLAlchemy, **not** Alembic. (A `schema_migrations` apply-tracking ledger was
+  proposed but is **not built**; see the Correction note above.)
 
 [ADR 0043 §0](./0043-v2-mission-store.md) adopted the V2 mechanism and **explicitly deferred the
 reconciliation to "a separate ADR amendment to ADR 0012"** so the project would end with a single,
@@ -48,9 +62,12 @@ V2 has already been built on, and removes the contradiction.
    already in use; it is **not** the V2 mechanism.
 
 3. **V2 standardizes on: synchronous psycopg3 + raw, fully parameterized SQL, behind Ports &
-   Adapters, with hand-written ordered `.sql` migrations + a `schema_migrations` ledger.** Every V2
-   persistence adapter follows this one mechanism (the Retrieval Engine and the Mission Store already
-   do). There is **one** V2 persistence idiom, not two.
+   Adapters, with hand-written ordered `.sql` migrations applied as idempotent DDL** (`CREATE ...
+   IF NOT EXISTS`, no apply-tracking table today). Every V2 persistence adapter follows this one
+   mechanism (the Retrieval Engine and the Mission Store already do). There is **one** V2
+   persistence idiom, not two. *(A generic migration runner + `schema_migrations` ledger remains a
+   legitimate, deliberately deferred enhancement — not part of this decision; see the Correction
+   note above and `v2/packages/mission-store/README.md`.)*
 
 Why this is the correct — not merely convenient — mechanism for V2 (condensed from ADR 0043 §0):
 

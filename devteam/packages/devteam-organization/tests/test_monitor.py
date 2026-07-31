@@ -23,8 +23,11 @@ def test_tick_syncs_the_lifecycle_and_stays_idle_without_evidence(
     outcome = OrganizationMonitor(runtime, Supervisor(runtime), lifecycle=lifecycle).tick()
     assert outcome.synced is True  # the lifecycle is the single operational path in the tick
     # Every connector is Unavailable (empty config) → no evidence → no fabricated problems.
-    assert lifecycle.coordinator.states() == {}
-    assert lifecycle.metrics_snapshot().active_problems == 0
+    assert lifecycle.composition.coordinator.states() == {}
+    assert lifecycle.composition.metrics_snapshot().active_problems == 0
+    # The daemon projects one snapshot; with no evidence it is empty + healthy.
+    snapshot = lifecycle.snapshot(now=1000.0)
+    assert snapshot.active_problems == () and snapshot.pending_approvals == ()
 
 
 def test_a_tick_runs_intents_supervises_and_heartbeats(runtime: OrganizationRuntime) -> None:

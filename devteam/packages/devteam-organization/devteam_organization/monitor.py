@@ -34,12 +34,13 @@ from mission_engine.mission import Mission
 
 from devteam_organization.connectors import ConnectorConfig, ConnectorRegistry, build_registry
 from devteam_organization.connectors.snapshot import write_connectors_snapshot
-from devteam_organization.lifecycle import LifecycleComposition
 from devteam_organization.lifecycle_host import (
+    OrganizationLifecycle,
     build_organization_lifecycle,
     recover_lifecycle,
     write_lifecycle_snapshot,
 )
+from devteam_organization.operations_projection import write_operations_snapshot
 from devteam_organization.runtime import OrganizationRuntime
 from devteam_organization.supervisor import SupervisionOutcome, Supervisor, engine_recovery
 
@@ -101,7 +102,7 @@ class OrganizationMonitor:
         intents: IntentSource = _no_intents,
         poll_seconds: float = 60.0,
         heartbeat_every: int = 1,
-        lifecycle: LifecycleComposition | None = None,
+        lifecycle: OrganizationLifecycle | None = None,
         after_tick: Callable[[], None] | None = None,
         sleep: Callable[[float], None] = time.sleep,
     ) -> None:
@@ -260,22 +261,25 @@ def main(argv: Sequence[str] | None = None) -> int:  # pragma: no cover - loops 
     supervisor = Supervisor(
         runtime, recover=engine_recovery(runtime), stall_after_s=args.stall_after_s
     )
-    lifecycle: LifecycleComposition | None = None
+    lifecycle: OrganizationLifecycle | None = None
     after_tick: Callable[[], None] | None = None
     if not args.no_jobs:
         journal_dir = Path(args.journal).parent
         registry = build_connector_registry(
             runtime, config_path=args.config, repo_root=args.repo_root
         )
-        composition = build_organization_lifecycle(runtime, registry)
-        lifecycle = composition
+        org_lifecycle = build_organization_lifecycle(runtime, registry)
+        lifecycle = org_lifecycle
         connectors_path = journal_dir / "connectors.json"
         lifecycle_path = journal_dir / "lifecycle.json"
-        recovered = recover_lifecycle(composition, lifecycle_path)  # continue in-flight problems
+        operations_path = journal_dir / "operations.json"
+        recovered = recover_lifecycle(org_lifecycle.composition, lifecycle_path)
 
         def after_tick() -> None:
             write_connectors_snapshot(registry.states(), connectors_path)
-            write_lifecycle_snapshot(composition, lifecycle_path)
+            write_lifecycle_snapshot(org_lifecycle.composition, lifecycle_path)
+            # The single artifact the Viewer reads (Core -> Projection -> Viewer).
+            write_operations_snapshot(org_lifecycle.snapshot(now=time.time()), operations_path)
 
         after_tick()  # publish the seeded connector roster + the recovered lifecycle immediately
         _LOG.info(

@@ -18,6 +18,7 @@ import logging
 import os
 import time
 from collections.abc import Callable, Mapping
+from dataclasses import dataclass
 from pathlib import Path
 
 from devteam_approval import (
@@ -48,11 +49,21 @@ from devteam_organization.lifecycle import (
     build_evidence_sources,
     build_lifecycle,
 )
+from devteam_organization.operations_projection import (
+    ActivityLog,
+    HealthView,
+    MissionView,
+    OperationsSnapshot,
+    build_operations_snapshot,
+)
 from devteam_organization.runtime import OrganizationRuntime
 
 # Where the shared approval store lives — the Approval API writes here, the daemon reads here (the
 # file-store + reconcile design). Matches devteam_approval_api.config so both default to one file.
 _DEFAULT_APPROVAL_STORE = Path.home() / ".rasheed" / "approvals.json"
+
+# Mission statuses that mean "no longer running" — filtered out of the projection's running list.
+_TERMINAL_MISSIONS = frozenset({"completed", "failed", "cancelled", "archived", "done"})
 
 # The mission a remediation opens once approved (a gated step returns None until then).
 OpenNow = Callable[[ProblemSignal, RemediationPlan, int], str]
@@ -90,13 +101,19 @@ def _approval_policy(signal: ProblemSignal, plan: RemediationPlan) -> DomainAppr
     )
 
 
-def build_approval_gate(approvals: ApprovalService, open_now: OpenNow) -> OpenMission:
+def build_approval_gate(
+    approvals: ApprovalService,
+    open_now: OpenNow,
+    *,
+    on_request: Callable[[ProblemSignal, DomainApprovalPolicy], None] | None = None,
+) -> OpenMission:
     """Turn the mission-opening seam into a human gate (no Core change — this is the host seam). A
     non-consequential remediation opens immediately. A consequential one opens a pending
     ApprovalRequest and returns None (the driver stays PENDING → the problem waits) until a human
     GRANTS it; then the mission opens. REJECTED / EXPIRED / CANCELLED never open. One grant covers
     the remediation incl. its retries to the cap; the request is cleared when the problem closes, so
-    a recurrence re-gates."""
+    a recurrence re-gates. ``on_request`` fires once when a gate is first opened (for the activity
+    log)."""
 
     def open_mission(signal: ProblemSignal, plan: RemediationPlan, number: int) -> str | None:
         if not plan.consequential:
@@ -104,10 +121,11 @@ def build_approval_gate(approvals: ApprovalService, open_now: OpenNow) -> OpenMi
         ref = signal.correlation_ref
         request = approvals.for_target(ref)
         if request is None:
-            approvals.create(
-                target_ref=ref, resume_token=ref, policy=_approval_policy(signal, plan)
-            )
+            policy = _approval_policy(signal, plan)
+            approvals.create(target_ref=ref, resume_token=ref, policy=policy)
             _LOG.info("lifecycle: gate opened — awaiting approval for %s", ref)
+            if on_request is not None:
+                on_request(signal, policy)
             return None
         if request.status is ApprovalStatus.GRANTED:
             return open_now(signal, plan, number)
@@ -116,18 +134,104 @@ def build_approval_gate(approvals: ApprovalService, open_now: OpenNow) -> OpenMi
     return open_mission
 
 
+_ACTIVITY_BY_STATE: dict[ProblemState, str] = {
+    ProblemState.NEW: "detected",
+    ProblemState.VERIFIED: "verified",
+    ProblemState.CLOSED: "closed",
+    ProblemState.ESCALATED: "escalated",
+}
+
+
+def _record_activity(
+    activity: ActivityLog, transition: Transition, approvals: ApprovalService
+) -> None:
+    """Fold a lifecycle transition into operator-facing activity. An approval-driven resume records
+    both 'approved (by role)' and 'mission started', so the timeline reads as a human narrative."""
+    ref = transition.correlation_ref
+    at = transition.at
+    if transition.to_state is ProblemState.IN_PROGRESS:
+        if transition.source == "approval":
+            request = approvals.for_target(ref)
+            role = ""
+            if request is not None and request.current_decision is not None:
+                actor = request.current_decision.actor
+                role = actor.role or actor.actor_id
+            activity.record("approved", ref, at=at, detail=f"by {role}" if role else "human")
+        activity.record("mission_started", ref, at=at, detail=transition.reason)
+        return
+    kind = _ACTIVITY_BY_STATE.get(transition.to_state)
+    if kind is not None:
+        activity.record(kind, ref, at=at, detail=transition.reason)
+
+
+@dataclass
+class OrganizationLifecycle:
+    """The daemon's handle on the running lifecycle: the composition it syncs, plus the single
+    OperationsSnapshot it projects. The daemon hosts this; the dashboard never sees it — only the
+    snapshot written to operations.json (Core -> Projection -> Viewer)."""
+
+    composition: LifecycleComposition
+    approvals: ApprovalService
+    activity: ActivityLog
+    runtime: OrganizationRuntime
+    registry: ConnectorRegistry
+
+    def sync(self) -> None:
+        self.composition.sync()
+
+    def snapshot(self, *, now: float) -> OperationsSnapshot:
+        return build_operations_snapshot(
+            now=now,
+            health=self._health(),
+            metrics=self.composition.metrics_snapshot(),
+            problems=self.composition.coordinator.export(),
+            pending=self.approvals.pending(),
+            missions=self._missions(),
+            activity=self.activity.events(),
+        )
+
+    def _health(self) -> HealthView:
+        result = self.registry.fetch("runtime", use_cache=True)
+        if not result.available:
+            return HealthView("degraded", "runtime connector unavailable")
+        down = _str_list(result.data, "workers_down")
+        stalled = _str_list(result.data, "stalled_agents")
+        if down:
+            return HealthView("down", f"{len(down)} worker(s) down")
+        if stalled:
+            return HealthView("degraded", f"{len(stalled)} agent(s) stalled")
+        return HealthView("healthy")
+
+    def _missions(self) -> list[MissionView]:
+        running: list[MissionView] = []
+        for mission in self.runtime.view.missions():
+            status = str(mission.get("status", ""))
+            if status in _TERMINAL_MISSIONS:
+                continue
+            running.append(
+                MissionView(
+                    id=str(mission.get("mission_id", "")),
+                    goal=str(mission.get("owner", "")),
+                    status=status,
+                )
+            )
+        return running
+
+
 def build_organization_lifecycle(
     runtime: OrganizationRuntime,
     registry: ConnectorRegistry,
     *,
     approval_store_path: Path | None = None,
     clock: Callable[[], float] = time.time,
-) -> LifecycleComposition:
+) -> OrganizationLifecycle:
     """Assemble the live lifecycle engine over the real runtime + connectors, gated by human
     approval: consequential remediations wait for a decision recorded via the Approval API, which a
-    registered ``ApprovalDecisionAdapter`` drains into the coordinator each pass (no Core edit)."""
+    registered ``ApprovalDecisionAdapter`` drains into the coordinator each pass (no Core edit).
+    Returns the daemon's handle — the composition plus the OperationsSnapshot it projects (S6)."""
     tenant = platform_tenant("org-lifecycle")
     approvals = ApprovalService(FileApprovalStore(_approval_store_path(approval_store_path)))
+    activity = ActivityLog()
 
     def connector_data(connector_id: str) -> Mapping[str, object] | None:
         result = registry.fetch(connector_id, use_cache=False)
@@ -149,7 +253,12 @@ def build_organization_lifecycle(
         _LOG.info("lifecycle: opened mission %s for %s", mission.id, signal.correlation_ref)
         return mission.id
 
-    open_mission = build_approval_gate(approvals, open_now)
+    def on_gate(signal: ProblemSignal, policy: DomainApprovalPolicy) -> None:
+        activity.record(
+            "approval_requested", signal.correlation_ref, at=clock(), detail=policy.reason
+        )
+
+    open_mission = build_approval_gate(approvals, open_now, on_request=on_gate)
 
     def is_terminal(mission_id: str) -> bool:
         try:
@@ -174,6 +283,7 @@ def build_organization_lifecycle(
             transition.trigger.value,
             transition.source or "?",
         )
+        _record_activity(activity, transition, approvals)
         if transition.to_state is ProblemState.CLOSED:
             # The gate is done; clear it so a later recurrence of this problem opens a fresh one.
             approvals.clear_target(transition.correlation_ref)
@@ -183,7 +293,7 @@ def build_organization_lifecycle(
     evidence = build_evidence_sources(
         connector_fetch=connector_data, runtime_healthy=runtime_healthy
     )
-    return build_lifecycle(
+    composition = build_lifecycle(
         connector_data=connector_data,
         evidence=evidence,
         open_mission=open_mission,
@@ -193,6 +303,7 @@ def build_organization_lifecycle(
         on_transition=on_transition,
         clock=clock,
     )
+    return OrganizationLifecycle(composition, approvals, activity, runtime, registry)
 
 
 def write_lifecycle_snapshot(composition: LifecycleComposition, path: Path) -> None:

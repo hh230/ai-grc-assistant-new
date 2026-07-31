@@ -53,6 +53,7 @@ class ApprovalService:
             resume_token=resume_token,
             policy=policy,
             expires_at=expires_at,
+            created_at=self._clock(),
         )
         self._store.save(request)
         return request

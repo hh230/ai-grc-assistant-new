@@ -73,6 +73,7 @@ def _to_dict(request: ApprovalRequest) -> dict[str, object]:
         "resume_token": request.resume_token,
         "status": request.status.value,
         "expires_at": request.expires_at,
+        "created_at": request.created_at,
         "policy": {
             "requirement": request.policy.requirement,
             "required_role": request.policy.required_role,
@@ -107,6 +108,7 @@ def _from_dict(row: dict[str, object]) -> ApprovalRequest:
         resume_token=str(row.get("resume_token", "")),
         status=ApprovalStatus(str(row.get("status", "pending"))),
         expires_at=float(row.get("expires_at", 0.0)),  # type: ignore[arg-type]
+        created_at=float(row.get("created_at", 0.0)),  # type: ignore[arg-type]
         policy=ApprovalPolicy(
             requirement=str(policy_row.get("requirement", "")),
             required_role=str(policy_row.get("required_role", "")),

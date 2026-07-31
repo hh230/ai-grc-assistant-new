@@ -99,6 +99,7 @@ class ApprovalRequest:
     policy: ApprovalPolicy
     status: ApprovalStatus = ApprovalStatus.PENDING
     expires_at: float = 0.0  # 0.0 = never expires
+    created_at: float = 0.0  # when the gate opened — a projection reads it as "waiting since"
     decisions: tuple[ApprovalDecision, ...] = ()  # the append-only decision event log
     id: str = field(default_factory=lambda: f"apr_{uuid.uuid4().hex}")
 

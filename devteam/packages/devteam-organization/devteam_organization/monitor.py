@@ -37,6 +37,7 @@ from devteam_organization.connectors.snapshot import write_connectors_snapshot
 from devteam_organization.lifecycle_host import (
     OrganizationLifecycle,
     build_organization_lifecycle,
+    recover_activity,
     recover_lifecycle,
     write_lifecycle_snapshot,
 )
@@ -274,6 +275,8 @@ def main(argv: Sequence[str] | None = None) -> int:  # pragma: no cover - loops 
         lifecycle_path = journal_dir / "lifecycle.json"
         operations_path = journal_dir / "operations.json"
         recovered = recover_lifecycle(org_lifecycle.composition, lifecycle_path)
+        # AR-1: the activity timeline survives a restart (rebuilt from the last snapshot).
+        recover_activity(org_lifecycle.activity, operations_path)
 
         def after_tick() -> None:
             write_connectors_snapshot(registry.states(), connectors_path)

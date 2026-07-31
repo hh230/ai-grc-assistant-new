@@ -50,6 +50,7 @@ from devteam_organization.lifecycle import (
     build_lifecycle,
 )
 from devteam_organization.operations_projection import (
+    ActivityEvent,
     ActivityLog,
     HealthView,
     MissionView,
@@ -341,6 +342,32 @@ def recover_lifecycle(composition: LifecycleComposition, path: Path) -> int:
     if isinstance(metrics_state, dict):
         composition.metrics.restore(metrics_state)  # active count + mean-times survive the restart
     return len(records)
+
+
+def recover_activity(activity: ActivityLog, path: Path) -> int:
+    """Rebuild the operator's activity timeline from the last operations snapshot on startup (AR-1).
+    ``recent_activity`` already lives in ``operations.json``; this restores it so a restart does not
+    empty the timeline. Host-only — no Core, contract, state, or dependency change. Returns the
+    count restored; a missing/corrupt snapshot restores nothing (the timeline simply refills)."""
+    if not path.exists():
+        return 0
+    try:
+        payload = json.loads(path.read_text())
+    except (json.JSONDecodeError, OSError):
+        return 0
+    rows = payload.get("recent_activity", []) if isinstance(payload, dict) else []
+    events = [_dict_to_activity(row) for row in rows if isinstance(row, dict)]
+    activity.restore(events)
+    return len(events)
+
+
+def _dict_to_activity(row: dict[str, object]) -> ActivityEvent:
+    return ActivityEvent(
+        at=float(row.get("at", 0.0)),  # type: ignore[arg-type]
+        kind=str(row.get("kind", "")),
+        ref=str(row.get("ref", "")),
+        detail=str(row.get("detail", "")),
+    )
 
 
 def _record_to_dict(record: ProblemRecord) -> dict[str, object]:

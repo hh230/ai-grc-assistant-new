@@ -17,6 +17,7 @@ from devteam_organization.lifecycle import (
     ProblemState,
     Severity,
 )
+from devteam_organization.lifecycle_host import recover_activity
 from devteam_organization.operations_projection import (
     ActivityLog,
     HealthView,
@@ -110,3 +111,27 @@ def test_activity_log_is_bounded_newest_last() -> None:
         log.record("closed", f"r{i}", at=float(i))
     events = log.events()
     assert len(events) == 3 and events[0].ref == "r2" and events[-1].ref == "r4"
+
+
+# --- AR-1: the activity timeline survives a restart (rebuilt from the last operations.json) ---
+
+
+def test_recover_activity_restores_the_timeline(tmp_path: Path) -> None:
+    path = tmp_path / "operations.json"
+    path.write_text(json.dumps({"recent_activity": [
+        {"at": 1.0, "kind": "detected", "ref": "operations:x", "detail": "down"},
+        {"at": 2.0, "kind": "closed", "ref": "operations:x", "detail": ""},
+    ]}))
+    log = ActivityLog()
+    restored = recover_activity(log, path)
+    assert restored == 2
+    events = log.events()
+    assert [e.kind for e in events] == ["detected", "closed"]
+    assert events[0].detail == "down" and events[0].at == 1.0
+
+
+def test_recover_activity_missing_or_empty_is_safe(tmp_path: Path) -> None:
+    assert recover_activity(ActivityLog(), tmp_path / "nope.json") == 0
+    empty = tmp_path / "operations.json"
+    empty.write_text(json.dumps({"generated_at": 1.0}))  # no recent_activity key
+    assert recover_activity(ActivityLog(), empty) == 0

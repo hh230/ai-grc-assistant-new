@@ -6,7 +6,7 @@
 
 [project]
 name = "ai-grc-assistant"
-version = "0.0.0"
+version = "2.0.0"
 description = "AI GRC Assistant — backend & AI monorepo (Python workspace root)."
 requires-python = ">=3.12"
 

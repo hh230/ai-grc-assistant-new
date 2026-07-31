@@ -1,6 +1,6 @@
 {
   "name": "ai-grc-assistant",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "AI GRC Assistant — global multi-tenant Enterprise SaaS platform (monorepo).",
   "packageManager": "pnpm@9.12.0",

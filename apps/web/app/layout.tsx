@@ -4,10 +4,20 @@ import { ibmPlexSansArabic, notoSansArabic } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
+// Resolves the absolute URL for the app/opengraph-image.png / app/icon.png file
+// conventions below. Prefers an explicit override, then Vercel's own
+// system env var for the project's production domain (auto-injected on every
+// deployment, no dashboard config needed — see
+// https://vercel.com/docs/environment-variables/system-environment-variables),
+// then falls back to localhost in local dev.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  // Resolves the absolute URL for the app/opengraph-image.png / app/icon.png file
-  // conventions below; falls back to localhost in dev/when unset.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: "Rasheed",
   description:
     "Enterprise Governance, Risk, Compliance and AI platform — real-time posture across regulated frameworks.",

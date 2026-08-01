@@ -1,0 +1,58 @@
+[project]
+name = "devteam-organization"
+version = "0.1.0"
+description = "The AI Organization (CLAUDE.md §11) — the permanent, mission-governing organization (CEO, CTO, CISO, GRC Expert, QA, DevTeam) plus a Supervisor, built ON the frozen v2 Core and the existing observability + dashboard. A composition, not a new runtime: the CEO plans a capability-routed Mission the frozen Mission Engine drives, each stage observed through the existing ObservingExecutor into the same journal the dashboard reads. Reuses the engineering squad's QA agent; adds no new engine, registry, bus, dashboard, or state model."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "event-bus",
+    "tool-registry",
+    "mission-engine",
+    "mission-integration",
+    "devteam-contracts",
+    "devteam-protocol",
+    "devteam-chain",
+    "devteam-agents",
+    "devteam-ci",
+    "devteam-github",
+    "devteam-tools",
+    "devteam-observability",
+    "devteam-runtime",
+    "devteam-approval",
+    "python-dotenv>=1.0",
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0", "types-PyYAML>=6.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../../../v2/packages/pipeline-contracts", editable = true }
+event-bus = { path = "../../../v2/packages/event-bus", editable = true }
+tool-registry = { path = "../../../v2/packages/tool-registry", editable = true }
+mission-engine = { path = "../../../v2/packages/mission-engine", editable = true }
+mission-store = { path = "../../../v2/packages/mission-store", editable = true }
+mission-integration = { path = "../../../v2/packages/mission-integration", editable = true }
+assistant-runtime = { path = "../../../v2/packages/assistant-runtime", editable = true }
+devteam-contracts = { path = "../devteam-contracts", editable = true }
+devteam-intake = { path = "../devteam-intake", editable = true }
+devteam-protocol = { path = "../devteam-protocol", editable = true }
+devteam-tools = { path = "../devteam-tools", editable = true }
+devteam-agents = { path = "../devteam-agents", editable = true }
+devteam-ci = { path = "../devteam-ci", editable = true }
+devteam-github = { path = "../devteam-github", editable = true }
+devteam-analysis = { path = "../devteam-analysis", editable = true }
+devteam-chain = { path = "../devteam-chain", editable = true }
+devteam-observability = { path = "../devteam-observability", editable = true }
+devteam-runtime = { path = "../devteam-runtime", editable = true }
+devteam-approval = { path = "../devteam-approval", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_organization"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

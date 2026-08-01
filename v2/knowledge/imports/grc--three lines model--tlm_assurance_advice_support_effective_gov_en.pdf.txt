@@ -1,0 +1,785 @@
+Assurance and 
+Advice in Support 
+of Effective 
+Governance
+Three Lines 
+Model
+Statement of Position©2026 The Institute of Internal Auditors. All rights reserved.   |  2 
+theiia.org
+Executive Summary  .......................................................................................................3
+Part I - The Three Lines Model  ......................................................................................5 
+     Purpose and Context ....................................................................................................5 
+     Introduction ...................................................................................................................7 
+     Principles ...................................................................................................................... 8  
+     Independence ...............................................................................................................9 
+     Assurance and Advice ................................................................................................10 
+     The Three Lines Model ...............................................................................................12 
+         Other Providers of Assurance or Advice .................................................................15 
+         Coordination and Reliance Among the Three Lines ...............................................15 
+Part II - The Three Lines Model in Practice ................................................................. 17 
+     Organizational Context ............................................................................................... 17 
+         The Distinct Value of the First Line ......................................................................... 17 
+         The Distinct Value of the Second Line ....................................................................17 
+         The Distinct Value of the Third Line ........................................................................18 
+         The Board’s Rationale for Maintaining the Lines .................................................... 18 
+         Outsourcing Does Not Change Accountability........................................................ 19
+         The Internal Audit Function’s Role as the Integrator of Assurance ......................... 19 
+     Implementation Scenarios  ......................................................................................... 20 
+     Managing Second- and Third-Line Activities ..............................................................20 
+     Safeguards to Maintain Clarity and Objectivity ...........................................................21 
+         When the Internal Audit Function Performs Second-Line Activities ....................... 21 
+         When the Chief Audit Executive Supervises Another  
+         Assurance or Compliance Function ........................................................................22
+Glossary .........................................................................................................................23
+Contents©2026 The Institute of Internal Auditors. All rights reserved.   |  3 
+theiia.org
+Executive Summary 
+Organizations operate in an environment of increasing complexity, rapid change, 
+and heightened expectations for transparency and performance. In this context, 
+boards and senior management require reliable assurance and well-positioned 
+advice to fulfill their oversight responsibilities and support informed decision-
+making. This Statement of Position updates the Three Lines Model to clarify how 
+assurance and advisory activities across the organization collectively support 
+effective governance, risk management, compliance, and control processes. It 
+reinforces a principles-based approach that is adaptable to different organizational 
+contexts while maintaining a clear focus on accountability, independence,  
+and coordination.
+At its core, the Three Lines Model distinguishes roles while emphasizing their 
+complementary contributions:
+1.  Management (first line) owns and manages risks and is responsible for the 
+design and operation of processes and controls.
+2.  Second-line roles provide specialized expertise, support, monitoring, and 
+challenge to enhance risk management, compliance, and control practices.
+3.  The internal audit function (third line) delivers independent and objective 
+assurance on the effectiveness of governance, risk management, compliance, 
+and control processes, while also providing advisory insights without assuming 
+management responsibility. 
+The updated Three Lines Model highlights that assurance and advice are distinct but 
+complementary, with both contributing to better decision-making and organizational 
+performance. The nature and depth of these contributions vary by role, reflecting 
+differences in proximity to operations, expertise, and independence. 
+Independence is emphasized as foundational to credible assurance, supported by 
+appropriate organizational structures and safeguards. At the same time, effective 
+governance requires coordination and transparency across roles, ensuring that 
+independence does not lead to isolation or fragmented insights. 
+A central theme of this update is the importance of coordination and reliance, where 
+appropriate. By aligning assurance and advisory activities across the organization 
+— including, where relevant, external providers — organizations can reduce 
+duplication, address gaps, and provide a more coherent and reliable view of risk and 
+performance to the board. The Statement also recognizes that organizational structures ©2026 The Institute of Internal Auditors. All rights reserved.   |  4 
+theiia.org
+will vary, and that roles across the three lines may overlap in practice. It provides 
+guidance on how such arrangements can be managed through clear accountability, 
+transparency, and safeguards to preserve objectivity and avoid self-review risks.
+Finally, the model reaffirms the unique role of the internal audit function as 
+the integrator of assurance, offering the board a comprehensive, systemwide 
+perspective on how effectively governance, risk management, compliance, and 
+control processes operate together to support organizational objectives. Overall, 
+this Statement of Position supports boards, senior management, and chief audit 
+executives in designing and aligning assurance and advisory capabilities that are 
+proportionate to organizational needs, responsive to evolving risks, and effective in 
+promoting trust, accountability, and long-term value creation.
+ ©2026 The Institute of Internal Auditors. All rights reserved.   |  5 
+theiia.org
+Purpose and Context 
+Organizations need effective governance, risk management, compliance, and control 
+structures and processes to enable achievement of the organization’s mission, 
+strategies, and related objectives. Organizational oversight is the responsibility of the 
+board, which, in turn, provides resources and delegates authority to management 
+to take appropriate actions, including managing risks. To fulfill their oversight 
+responsibilities, boards seek assurance that the organization is functioning as they 
+intend.
+Effective governance, risk management, compliance, and control structures and 
+processes enable boards and senior management to make informed decisions, 
+understand the organization’s true performance and risks, and steer strategy in line 
+with stakeholder expectations. Stakeholders, including the general community, need 
+to be able to trust information provided by the organization.
+The Three Lines Model supports this trust-building by clarifying where boards can 
+obtain the assurance and advice they need, and how these contributions differ 
+across the three lines while remaining coordinated and 
+aligned with governance needs. Management (first line) 
+is responsible for designing and operating the processes 
+that drive performance and manage risks. Management 
+may also establish particular roles (second line) to review, 
+support, monitor, and/or provide advice in specific risk 
+areas. The internal audit function (third line) provides 
+independent and objective assurance on the adequacy and effectiveness of those 
+processes, including on the second line, as well as insightful advisory support where 
+appropriate. 
+Collaboration and coordination among these roles help ensure that information 
+reaching the board is reliable, balanced, and aligned with the organization’s purpose 
+and risk appetite.
+This Statement of Position 
+uses the term “board” to refer 
+to various forms of governing 
+bodies and their committees, as 
+described in the Glossary.
+Part I - The Three Lines Model©2026 The Institute of Internal Auditors. All rights reserved.   |  6 
+theiia.org
+The model’s principles apply to all organizations, though the implementation of 
+governance, risk management, compliance, and control structures and processes 
+is specific to each organization. Often, organizations implement roles and 
+responsibilities as specified by laws and regulations.
+The purpose of this Statement of Position is to:
+•  Describe the roles, responsibilities, and relationships among  
+the identified parties.
+• Recognize decision-makers’ need for reliable and balanced information.
+•  Recognize that organizations make decisions about their structures and 
+processes based on a combination of external and internal factors.
+•  Emphasize the contribution that coordinated approaches to risk management, 
+assurance, and advice make to achieving objectives, creating and protecting 
+value, and promoting trust among stakeholders.
+This update addresses a recurring challenge faced by boards and senior 
+management: how to structure and align assurance and advisory capabilities 
+and manage collaboration and integration so that oversight remains reliable, 
+independent, and proportionate in increasingly complex organizational 
+environments.
+The Three Lines Model contributes to good governance in organizations. Good 
+governance supports the organization in serving the public interest and a broad range 
+of stakeholders.©2026 The Institute of Internal Auditors. All rights reserved.   |  7 
+theiia.org
+Introduction 
+This update of the Three Lines Model replaces the prior Position Paper and responds 
+to an evolving governance environment characterized by greater complexity, faster 
+change, and increased expectations for both reliable assurance and well-positioned 
+advice. While the model’s core structure remains unchanged as a principles-
+based framework for an organization’s assurance and advisory needs, this revision 
+clarifies how such capabilities across the three lines collectively support effective 
+governance, risk management, compliance, and control processes.
+The update also includes practical application guidance for organizations that 
+are not required to maintain separate assurance functions. It illustrates how The 
+IIA sees the implementation of roles and responsibilities evolving in practice 
+and how organizations can make informed decisions to meet their needs. It 
+emphasizes independence of assurance providers along a continuum, recognizes 
+the complementary contributions of all three lines, and highlights the importance 
+of coordination and integration in providing boards and senior management with 
+balanced, reliable information to support decision-making.
+This Statement of Position is intended primarily for board members, senior 
+management, and chief audit executives. It will guide those responsible for 
+designing, operating, or evaluating assurance and advisory activities. It explains how 
+building and aligning these capabilities strengthen governance and management.©2026 The Institute of Internal Auditors. All rights reserved.   |  8 
+theiia.org
+Principles 
+The following principles explain how assurance and advisory contributions support 
+governance, and how independence enhances confidence in the information 
+provided to boards.
+1.  Boards set purpose, risk appetite, and expectations, and oversee the 
+pursuit of strategic objectives.
+2.  Effective oversight depends on reliable, balanced information on 
+performance, risks, and controls.
+3.  The board and senior management establish accountability by defining 
+roles and responsibilities.
+4.  Distinct sources of assurance, including from an independent source, 
+give boards confidence that governance, risk management, compliance, 
+and control processes are working as intended, achieving objectives, 
+and promoting timely corrective actions.
+5.  Advisory services complement assurance by providing insights, 
+perspectives, and options that support improvement and informed 
+decision-making.©2026 The Institute of Internal Auditors. All rights reserved.   |  9 
+theiia.org
+Independence 
+Independence is a foundational concept in supporting effective governance. It 
+reflects a combination of organizational structures and safeguards designed to 
+ensure that assurance and advisory activities remain reliable, objective, and free 
+from undue influence.
+At the same time, independence should not be interpreted as isolation. If not 
+clearly understood or thoughtfully exercised, perceptions of independence may 
+unintentionally limit cross-functional communication or contribute to misalignment 
+among roles. Preserving independence, therefore, also requires fostering 
+transparency, clarity of responsibilities, and constructive engagement across roles.
+Organizational independence is determined by a role’s position within the 
+governance structure and the extent to which it can operate without interference. 
+Essential elements of independence are:
+•  Reporting lines and authority: who the role reports to, and whether it has 
+the mandate to escalate issues without restriction. The positioning within 
+the organization must enable the role to carry out its responsibilities in an 
+unbiased manner, which typically involves functional reporting to the board 
+and administrative reporting to the CEO.
+•  Autonomy over scope and planning: the ability to decide what assurance work 
+is performed, how it is performed, and what conclusions are drawn.
+•  Unrestricted access to assets, facilities, properties, information, people, and 
+systems: independence is compromised when access to evidence is filtered or 
+controlled.
+•  Control over resources: sufficient personnel, expertise, and budget to carry 
+out responsibilities without dependence on the functions being reviewed. 
+Resource limitations affecting assurance must be reported to the  
+appropriate party. 
+•  Protection from retaliation or undue influence: particularly for assurance 
+providers who may raise difficult or sensitive issues.
+In addition to organizational positioning, independence and objectivity are reinforced 
+through practical safeguards that address real-world overlaps and evolving roles. 
+These safeguards include:
+•  Transparent and documented allocation of responsibilities.
+• Independent review of activities where self-review or oversight risks may arise.
+• Explicit board approval of expanded remits.
+• Timely communication of any actual or perceived threats to objectivity.
+These elements collectively shape the structural environment that enables  
+(or constrains) independence. ©2026 The Institute of Internal Auditors. All rights reserved.   |  10 
+theiia.org
+Assurance and Advice 
+By leveraging the three lines, boards and senior management can strengthen their 
+oversight and decision-making without needing to know every operational detail.
+•  Assurance helps confirm whether governance, risk management, compliance, 
+and control processes are adequate and effective.
+•  Advice helps identify emerging issues, areas for improvement, and 
+opportunities to enhance performance and resilience.
+Assurance and advice are complementary forms of value that support governance 
+and decision-making. Both assurance and advice are delivered across the three 
+lines, but their nature, depth, and safeguards vary by line, reflecting each line’s role, 
+proximity to operations, and degree of independence. Roles closer to operations tend 
+to provide more specific and detailed inputs, while more independent roles provide 
+broader, systemwide assurance and advice. In all cases, appropriate safeguards are 
+necessary to ensure that assurance and advisory activities enhance accountability 
+and do not compromise a practitioner’s objectivity or subsequent assurance. 
+Assurance Engagements
+Assurance engagements typically assess the effectiveness and efficiency of the 
+design and implementation of controls to achieve objectives despite various risks. 
+These engagements require independence because the purpose is to provide an 
+objective conclusion about the effectiveness of processes or controls.
+Assurance cannot be credible if the reviewer:
+• Designs or operates the process.
+• Evaluates their own decisions made previously.
+• Is influenced by management preferences.
+A period of at least 12 months between responsibility for a process or decision and 
+providing assurance in that activity is typically sufficient to safeguard the objectivity 
+of the reviewer. A reviewer’s objectivity is also presumed to be improved by structural 
+distance from the supervisory hierarchy of the process or decision owner.  ©2026 The Institute of Internal Auditors. All rights reserved.   |  11 
+theiia.org
+Advisory Engagements
+Advisory work involves helping management improve processes, identify risks, or 
+design solutions. It is inherently more collaborative and may create familiarity risks 
+or self-review threats for any assurance provider involved. When safeguards are 
+present, advisory engagements can add significant value without compromising 
+the integrity of future assurance. At the same time, a collaborative approach must 
+not dilute professional skepticism or the responsibility to raise and clearly articulate 
+significant concerns. Advisory engagements should support improvement while 
+maintaining due professional care, objectivity, and the willingness to challenge 
+where necessary.
+To protect independence and avoid impairing future assurance work:
+• Roles in advisory engagements should be clearly defined.
+• The advisor should avoid making management decisions.
+• The board should be informed of the nature and scope of advisory work.©2026 The Institute of Internal Auditors. All rights reserved.   |  12 
+theiia.org
+The Three Lines Model  
+Assurance and advice are provided throughout the organization to assess and 
+enhance the organization’s ability to achieve its objectives through effective and 
+efficient governance, risk management, compliance, and control processes. 
+Thr /e.ss01/e.ss01 Lin/e.ss01s Mod/e.ss01l
+Key: Functional Reporting Administrative Reporting Interaction
+External Assurance Providers
+Coor /d.ss01i/n.ss01atio/n.ss01 
+a/n.ss01/d.ss01 R /e.ss01lia/n.ss01c/e.ss01
+• Integrated assurance and advice across all 
+   three lines for a holistic view of governance, 
+   risk, and controls.
+• Combined insights and foresight to 
+   strengthen oversight and decision-making.  
+• Internal audit facilitates as coordinator 
+   through its organizationwide perspective 
+   and board access.  
+Third Li/n.ss01/e.ss01
+Operations Management: 
+Designs and implements 
+controls.
+First Li/n.ss01/e.ss01
+Support and Specialized Roles: 
+Provides expert support, advice, 
+challenge, monitoring, 
+and thematic reviews in 
+specialized areas.
+Second Li/n.ss01/e.ss01
+Boar /d.ss01
+Provides strategic direction and organizational oversight.
+K /e.ss01 y Concepts
+S /e.ss01/n.ss01ior Ma/n.ss01 age /m.ss01/e.ss01/n.ss01 t
+Designs structures to achieve strategic
+and organizational objectives.
+To g /e.ss01 t /h.ss01/e.ss01r,
+t /h.ss01/e.ss01 T /h.ss01 r /e.ss01/e.ss01 Li/n.ss01/e.ss01s: Strengthen governance 
+and accountability
+© 2026 The Institute of Internal Auditors, Inc. All Rights Reserved.
+Enhance decision-making 
+and performance
+Improve resilience and 
+adaptability to change
+Build trust and create 
+sustainable value
+Clear roles and 
+accountabilities
+Independence and 
+objectivity of the Third Line
+Collaboration and 
+coordination
+Value through 
+assurance and advice
+Adaptable to change 
+and emerging risks
+Internal Audit Function: 
+Provides independent, objective 
+assurance and advisory services, 
+and coordinates with other 
+assurance providers.©2026 The Institute of Internal Auditors. All rights reserved.   |  13 
+theiia.org
+The Three Lines Model includes:
+Line First Line 
+(Management)
+Second Line1 
+(Support & Specialist 
+Roles)
+Third Line2  (Internal 
+Audit Functions)
+ Core Roles &
+ Responsibilities
+• Day-to-day ownership of 
+risk. 
+• Designs, implements, 
+and operates processes, 
+controls, and day-to-day 
+risk management. 
+• Supervises activities, 
+monitors and reports on 
+performance, and conducts 
+control self-assessments.
+• Provides operational 
+advice and insights directly 
+linked to execution and 
+performance.
+• Provides expert support, 
+advice, challenge, 
+monitoring, and thematic 
+reviews in specialist areas. 
+• Enhances first-line 
+processes through 
+guidance, specialist advice, 
+and targeted assurance. 
+• Reports to a member of 
+senior management or a 
+board-level committee. 
+• Often offers perspectives 
+independent from the first-
+line reporting hierarchy.
+• Identifies systemic 
+patterns, emerging risks 
+across functions, and 
+incidents within their 
+domain.
+• Provides independent 
+and objective assurance 
+on governance, risk 
+management, compliance, 
+and control effectiveness. 
+• Delivers advisory insights 
+from an independent, 
+systemwide perspective, 
+without assuming 
+management responsibility 
+or decision-making 
+authority. 
+• Reports functionally 
+to the board, enhancing 
+objectivity, transparency, 
+and independence.
+• Promotes coordination 
+across assurance providers 
+and may facilitate the 
+integration of assurance.
+1. Some consider the roles of support functions (such as HR, administration, and building services) to be second-line roles. For clarity, the 
+Three Lines Model regards first-line roles to include both “front of house” and “back office” activities, and second-line roles to comprise 
+those complementary activities focused on risk-related matters.
+2. In some organizations, other third-line roles are identified, such as oversight, inspection, investigation, evaluation, and remediation, 
+which may be part of the internal audit function or operate separately.
+Differences in proximity to operations, scope of expertise, and degree of 
+independence ensure that boards and management receive both informed insights 
+and credible, objective assurance, even though no single line can simultaneously 
+maximize all attributes.©2026 The Institute of Internal Auditors. All rights reserved.   |  14 
+theiia.org
+Line First Line 
+(Management)
+Second Line1 
+(Support & Specialist 
+Roles)
+Third Line2  (Internal 
+Audit Functions)
+Strengths
+• Deep operational 
+knowledge and real-time 
+awareness. 
+• Closest to risks, issues, 
+and performance drivers. 
+• Able to respond quickly 
+and adjust processes.
+• More objective than 
+the first line due to 
+organizational separation 
+from the first line. 
+• Challenges and supports 
+the first line. 
+• Brings specialist 
+knowledge (such as risk, 
+compliance, security, 
+quality).
+• Highest level 
+of organizational 
+independence and 
+objectivity. 
+• Holistic view across all 
+operations, functions, and 
+risk areas. 
+• Sets its scope of services 
+in agreement with the board 
+and in coordination with 
+other assurance providers. 
+• Has access to all 
+information. 
+• Can report issues without 
+undue influence from 
+management.
+Limitations
+• Objectivity is constrained 
+due to operational 
+ownership. 
+• May under-recognize 
+or rationalize control 
+weaknesses.
+• Management may be able 
+to override some controls.
+• Sometimes impaired 
+by reporting through 
+management. 
+• May focus on procedural 
+compliance and monitoring 
+rather than full assurance 
+depth.
+• Assurance coverage is 
+risk-based and therefore 
+periodic, which may result 
+in less frequent review 
+of lower-risk or emerging 
+areas. 
+• Has less direct operational 
+exposure than first- and 
+second-line roles.
+Independence  
+& Objectivity
+• Not independent (by 
+design). 
+• Directly responsible for 
+the processes and controls 
+being reviewed. 
+• Professional behavior is 
+critical to support credible 
+reporting and transparency.
+• Part of management but 
+may have organizational 
+separation from operations. 
+• Expected to maintain 
+sufficient objectivity to 
+provide credible challenge 
+to the first line.
+• Independence is essential 
+and includes organizational 
+positioning with a functional 
+reporting line to the board.
+• Authority, role, and 
+responsibilities are 
+specified by the board or 
+applicable law.
+• Operates autonomously 
+and communicates freely. 
+• Required to maintain 
+professional objectivity 
+to deliver credible overall 
+assurance on all lines.©2026 The Institute of Internal Auditors. All rights reserved.   |  15 
+theiia.org
+Other Providers of Assurance or Advice
+Organizations often receive assurance and advice from external parties who are not 
+considered part of the three lines, each with a different purpose and audience: 
+External Audit (Statutory or Financial Statement Audit) 
+External auditors provide assurance to stakeholders outside the organization and 
+typically focus on the reliability of financial statements or other legally required 
+disclosures. Their scope is defined by law or regulation, and their objective is not 
+to replace internal assurance providers, but to offer an independent opinion for 
+stakeholders, creditors, regulators, or the public.
+Regulatory Inspections and Compliance Reviews 
+Regulators and other external parties, such as accreditation agencies, may conduct 
+inspections or require organizations to demonstrate compliance with specific rules 
+(for example, health and safety, data protection, industry-specific risk requirements). 
+These assurance activities also serve external parties and help enforce compliance 
+with mandatory standards. The degree of advice and assurance given may vary 
+among the types of reviewers, and the information they provide may be useful to the 
+organization for understanding the adequacy of controls. 
+Coordination and Reliance Among the Three Lines
+Effective coordination spans both assurance and advisory engagements, enabling 
+insights to inform improvement while assurance provides confidence. Thoughtful 
+reliance, subject to board oversight, reduces overlap, optimizes assurance coverage, 
+avoids assurance fatigue, and supports a more integrated understanding of risks.
+In some organizations, coordination and reliance develop into a more structured 
+approach commonly referred to as integrated assurance. Aligning and 
+communicating assurance and advisory engagements across the organization, 
+integrated assurance provides a coherent view of governance, risk management, 
+compliance, and control process effectiveness.
+Although not a structural requirement, integrated assurance represents a more 
+mature form of coordination that may be valuable as risks become more complex 
+and interconnected. Its design should reflect organizational context, risk profile, and 
+governance expectations.©2026 The Institute of Internal Auditors. All rights reserved.   |  16 
+theiia.org
+Rather than operating in silos, assurance providers  — including management monitoring, 
+second-line roles, the internal audit function, and, where relevant, external providers  — may 
+align methodologies, share risk information, and coordinate planning. This can improve 
+transparency, reduce duplication, and clarify assurance coverage and gaps.
+An assurance map, shared risk taxonomies, aligned reporting, or coordinated planning 
+discussions are useful for supporting coordination and reliance across the organization 
+and for providing integrated assurance. The internal audit function may support these 
+efforts by facilitating coordination and consolidation, given its organizationwide 
+perspective and reporting relationship with the board, while avoiding ownership of second-
+line activities.©2026 The Institute of Internal Auditors. All rights reserved.   |  17 
+theiia.org
+Part II - The Three Lines Model in Practice
+Organizational Context 
+Organizations vary widely in size, structure, complexity, maturity, sector, risk 
+exposure, and external factors influencing their business (for example, regulators), 
+and the implementation of the three lines should reflect these differences. There is 
+no single structure that fits every organization. The need for separate first-, second-, 
+and third-line roles depends largely on the nature and magnitude of risks and might 
+be subject to regulatory restrictions or obligations.
+The Distinct Value of the First Line
+First-line responsibilities include designing and implementing structures and 
+processes to achieve organizational objectives, including managing risks. The 
+objectives are determined by the organization’s strategic, operational, and 
+administrative priorities, which include compliance with relevant laws and 
+regulations, and meeting the needs of various stakeholders. The senior management 
+team — ultimately, the CEO — is accountable to the board for the effectiveness and 
+efficiency of risk management, compliance, and control processes that create and 
+sustain value for stakeholders.  
+Senior management delegates responsibility for designing and operating specific 
+risk management, compliance, and control processes throughout the organization, 
+which may include outsourcing certain processes. Depending on the organization’s 
+size, complexity, legal or regulatory requirements, or other factors, the senior 
+management team may need varying levels or types of assurance and advice to help 
+fulfill their responsibilities.   
+The Distinct Value of the Second Line
+Organizations with complex operations, significant regulatory obligations, or 
+rapidly changing risk profiles often require a more developed second line, providing 
+specialist expertise in areas such as compliance, cybersecurity, safety, financial 
+crime, or operational risk. These specialist roles help guide, support, and challenge 
+the first line and may conduct ongoing monitoring in higher-risk or compliance-heavy 
+environments.
+Clarity of accountability for performance, monitoring, and independent assurance 
+remains essential to maintaining effective governance, regardless of organizational 
+structure.©2026 The Institute of Internal Auditors. All rights reserved.   |  18 
+theiia.org
+The Distinct Value of the Third Line
+Regardless of the organization’s size or maturity, the third line plays a unique role. 
+The internal audit function provides a holistic, organizationwide view of how well 
+governance, risk management, compliance, and control activities are functioning 
+as a system. This organizationwide view can promote coordinated assurance efforts 
+and support integrated, board-level reporting.
+The third line serves as the ultimate internal assurance provider over internal 
+risks/controls, examining how all parts (including the first and second line) of the 
+governance, risk management, compliance, and control landscape work together 
+and whether they collectively support the organization’s objectives.
+This distinction clarifies why boards typically decide to establish a third line in 
+the form of an internal audit function: they require assurance over the overall 
+coherence, effectiveness, adequacy, and reliability of the full set of governance, risk 
+management, compliance, and control processes, not just isolated components.  
+The Board’s Rationale for Maintaining the Lines  
+It is the board’s responsibility to ensure that the organization has a balanced, 
+reliable, and structured set of assurance and advisory capabilities. Their decisions 
+on whether to establish, expand, or combine the lines are driven by:
+• The strategic importance of certain risks.
+• The complexity and scale of operations.
+•  The level of regulatory or stakeholder expectations, restrictions,  
+or obligations.
+•  The need for independent, objective assurance and well-positioned advisory 
+insights that the system is working as intended and continues  
+to evolve effectively.
+By appropriately designing the lines, the board can ensure that risks are owned, 
+addressed, monitored, and independently assessed in a way that suits the 
+organization’s context.©2026 The Institute of Internal Auditors. All rights reserved.   |  19 
+theiia.org
+Outsourcing Does Not Change Accountability
+Some organizations outsource certain activities to external providers. This may 
+help access specialist skills, manage capacity constraints, or respond to sector-
+specific needs. However, outsourcing does not change:
+• The role of the activity within the Three Lines Model.
+•  The board’s accountability for ensuring that the activity is effective, 
+independent (where required), and appropriately directed.
+Organizations frequently engage external service providers to undertake reviews 
+or provide advice. External service providers should be categorized according to 
+the organizational function that engages and directs their work.
+The Internal Audit Function’s Role as the Integrator of Assurance
+While overlaps may occur, the internal audit function retains a distinct role as the 
+line that provides the board with the most comprehensive and integrated view of 
+how the full system of governance, risk management, compliance, and controls 
+is functioning.
+This does not diminish the value or expertise of the first and second lines. Rather, 
+it reflects the internal audit function’s unique positioning, being functionally 
+accountable to the board and structurally separate from operational decision-
+making.
+Because the internal audit function can draw on the insights, monitoring, and 
+oversight performed by the first and second lines, it is able to provide assurance 
+that connects these contributions and assesses how effectively they work 
+together. The internal audit function’s independence ensures that it can choose 
+not to rely on the work of other assurance providers if quality expectations are not 
+met. This final layer of internal assurance helps the board understand whether 
+the overall system is robust, coherent, and aligned with organizational objectives.©2026 The Institute of Internal Auditors. All rights reserved.   |  20 
+theiia.org
+Implementation Scenarios 
+Although the Three Lines Model provides conceptual clarity, real organizations 
+are rarely neat or uniform in how roles are assigned. Differences in size, structure, 
+maturity, and risk exposure mean that responsibilities across the lines may overlap 
+in practice, and individuals may play roles that touch more than one line. This is not 
+inherently problematic; in many cases, it is a pragmatic response to organizational 
+needs. However, it requires careful attention to maintain clarity, accountability, and 
+objectivity.
+Also, these practical arrangements are not intended to represent preferred practices 
+to be universally adopted, but rather to provide practical guidance for addressing 
+these often-recurring scenarios. Moreover, in certain highly regulated environments, 
+formal requirements or legal obligations may restrict or prohibit such arrangements. 
+Managing Second- and Third-Line Activities 
+There is a difference between blending the activities, where the internal audit 
+function is charged with performing second-line activities, and situations where the 
+chief audit executive is supervising another assurance role, which may occur for 
+practical reasons such as limited capacity, resource constraints, or the absence of 
+dedicated second-line competencies.
+For example, the chief audit executive may:
+• Supervise certain second-line roles or functions.
+• Coordinate specialized risk areas.
+• Be responsible for organizationwide monitoring or compliance activities.
+These arrangements are often designed to strengthen alignment, coordination, 
+and reliance across assurance, monitoring, and advisory capabilities, enhancing 
+coherence rather than compromising independence. This can help reduce 
+duplication, improve consistency, and provide the board with a more integrated view 
+of risks.
+At the same time, overlaps may also consist of shared responsibilities introducing 
+certain risks:
+•  Blending roles may create confusion about who is responsible for operating 
+controls, who is supervising them, and who is independently assessing them.
+•  Self-review threats can arise if the same person or function designs, monitors, 
+and then later evaluates the effectiveness of a process.
+•  Reduced clarity for the board may limit its ability to rely fully on assurance if 
+reporting lines or accountabilities are not clearly articulated.©2026 The Institute of Internal Auditors. All rights reserved.   |  21 
+theiia.org
+These risks do not mean that overlaps are inherently problematic; rather, they 
+highlight the importance of clearly defined responsibilities and appropriate 
+safeguards to ensure roles remain complementary and effective. In certain, highly 
+regulated contexts, formal requirements may prohibit these scenarios. 
+Safeguards to Maintain Clarity and Objectivity 
+To preserve the integrity of the three lines while reflecting practical realities, 
+organizations can implement measures such as:
+•  Transparent and documented allocation of responsibilities, for example in the 
+internal audit charter.
+• Clear separation between advisory activities and subsequent assurance work.
+•  Periodic independent reviews of areas in which the chief audit executive has 
+dual responsibilities.
+• Board approval of the chief audit executive’s remit.
+• Explicit communication to the board when potential objectivity risks arise.
+With these safeguards in place, overlaps can function effectively, strengthening 
+coordination and insight, without compromising independence or accountability.
+To preserve the integrity of the three lines, organizations should apply safeguards 
+tailored to the nature of the overlap.
+When the Internal Audit Function Performs Second-Line Activities
+In situations where the internal audit function carries out a second-line 
+responsibility, the arrangement should be carefully considered, periodically re-
+evaluated, and fully transparent, recognizing that this creates a direct self-review 
+threat. Safeguards may include: 
+• Clear, documented justification that the arrangement is necessary.
+•  Full disclosure to the board of the responsibility being assumed and the risks it 
+creates.
+•  Ensuring another independent party (internal or external) provides assurance 
+over the area for the duration of the overlap.
+These measures help ensure that the internal audit function’s objectivity is preserved 
+and that assurance is not compromised.©2026 The Institute of Internal Auditors. All rights reserved.   |  22 
+theiia.org
+When the Chief Audit Executive Supervises Another Assurance   
+or Compliance Function
+When the chief audit executive oversees a second-line function while the internal 
+audit function remains structurally separate, the safeguards primarily concern 
+organizational clarity and reporting integrity, rather than prohibiting the arrangement 
+outright. Key safeguards include: 
+•  Clear separation between the operational activities of the supervised function 
+and the internal audit function’s own assurance work.
+•  Documented allocation of responsibilities, ensuring the supervised function 
+retains ownership of operations, monitoring, or compliance activities.
+•  Periodic independent reviews of any area in which the chief audit executive has 
+supervision responsibility, to mitigate perceived or actual threats to objectivity.
+•  Board approval of the chief audit executive’s expanded remit, ensuring the 
+board understands the structure and associated risks.
+•  Ongoing, explicit communication to the board when potential or perceived 
+objectivity impairments arise.©2026 The Institute of Internal Auditors. All rights reserved.   |  23 
+theiia.org
+Glossary
+Definitions are mainly adapted from the glossary in The IIA’s Global Internal Audit 
+Standards or newly defined here. 
+advice – Information provided to an organization’s stakeholders without providing 
+assurance or taking on management responsibilities.
+assurance – Statement intended to increase the level of stakeholders’ confidence 
+about an organization’s governance, risk management, compliance, and control 
+processes.
+assurance map – A high-level document that identifies the holistic risk coverage 
+across the organization by a range of assurance providers. It helps to identify gaps in 
+and duplication of assurance coverage.
+audit committee – A committee established by the board to take on prescribed 
+governance functions, including oversight of the internal audit function.
+board – Highest-level body charged with governance, such as: 
+• A board of directors. 
+• A board of governors or trustees.
+• A group of elected officials or political appointees.
+• Another body that has authority over the relevant governance functions.
+In an organization that has more than one governing body, “board” refers to the body/
+bodies authorized to provide management and the internal audit function with the 
+appropriate authority, roles, and responsibilities.
+If none of the above exist, “board” should be read as referring to the group or person 
+that acts as the organization’s highest-level board. The board may delegate certain 
+responsibilities to a committee, such as an audit committee.
+chief audit executive – Term used to refer to the head of the internal audit function 
+in an organization. The specific job title and/or responsibilities may vary across 
+organizations.
+compliance – Adherence to laws, regulations, contracts, policies, procedures, and 
+other requirements.
+control – Any action taken by management, the board, and other parties to manage 
+risk and increase the likelihood that established objectives and goals will be 
+achieved.
+governance – The combination of processes and structures implemented by the 
+board to inform, direct, manage, and monitor the activities of the organization toward 
+the achievement of its objectives.©2026 The Institute of Internal Auditors. All rights reserved.   |  24 
+theiia.org
+risk appetite  – The types and amount of risk that an organization is willing to 
+accept in the pursuit of its strategies and objectives. The board establishes the 
+organization’s risk appetite.
+risk management  – A process to identify, assess, manage, and control potential 
+events or situations to provide reasonable assurance regarding the achievement of 
+the organization’s objectives.
+stakeholder  – A party with a direct or indirect interest in an organization’s activities 
+and outcomes. Stakeholders may include the board, management, employees, 
+customers, vendors, shareholders, regulatory agencies, financial institutions, 
+external auditors, the public, and others.©2026 The Institute of Internal Auditors. All rights reserved.   |  25 
+theiia.org
+About The Institute of  
+Internal Auditors
+The IIA is an international professional association that serves more than 265,000 global 
+members and has awarded more than 220,000 Certified Internal Auditor® (CIA®) certifications 
+worldwide. Established in 1941, The IIA is recognized throughout the world as the internal audit 
+profession’s leader in standards, certifications, education, research, and technical guidance. For 
+more information, visit theiia.org.
+About Statements of Position
+Statements of Position communicate The IIA’s official stance and vision on critical topics 
+affecting governance, risk management, compliance, and control. They explain how a subject 
+should be interpreted or applied in the context of internal auditing and are used to influence 
+regulators, standard setters, boards, and executives. 
+This document is principles-based and does not prescribe organizational structures. It should 
+be applied using professional judgment, considering the organization’s context, complexity, 
+and governance needs. The Statements of Position are not part of The IIA’s International 
+Professional Practices Framework® because they are intended for an executive audience, 
+rather than primarily for internal auditors.
+Disclaimer 
+The IIA publishes this document for informational and educational purposes. This material is 
+not intended to provide definitive answers to specific individual circumstances and as such is 
+only intended to be used as a guide. The IIA recommends seeking independent expert advice 
+relating directly to any specific situation. The IIA accepts no responsibility for anyone placing 
+sole reliance on this material.
+Copyright 
+© 2026 The Institute of Internal Auditors, Inc. All rights reserved. For permission to reproduce, 
+please contact Copyright@theiia.org.1035 Greenwood Blvd., Ste. 401  
+Lake Mary, FL 32746 USA
+theiia.org  

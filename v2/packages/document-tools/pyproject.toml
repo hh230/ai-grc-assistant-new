@@ -1,0 +1,46 @@
+[project]
+name = "document-tools"
+version = "0.1.0"
+description = "Rasheed V2 Document Tools — real, read-only GRC tools that extract text from evidence documents. Three registered Tools (read_pdf, read_docx, read_excel) that CONSUME the frozen knowledge-importer parsers (pypdf/pypdfium2, python-docx, openpyxl) — no re-implementation. Each resolves the step instruction as a path under a configured document root (path-traversal-safe), parses it, and returns the extracted text as a ToolStepResult. Runtime deps are the pure tool-registry + pipeline-contracts + the existing knowledge-importer; no LLM, no Core change."
+requires-python = ">=3.12"
+dependencies = [
+    "tool-registry",
+    "pipeline-contracts",
+    "knowledge-importer",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "mission-engine",
+    "pipeline-tool",
+    "event-bus",
+    "reportlab>=4.0.0",
+    "python-docx>=1.2.0",
+    "openpyxl>=3.1.5",
+]
+
+[tool.uv.sources]
+tool-registry = { path = "../tool-registry", editable = true }
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+knowledge-importer = { path = "../knowledge-importer", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+pipeline-tool = { path = "../pipeline-tool", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["document_tools"]
+
+# knowledge-importer is fully type-hinted but ships no `py.typed` marker and is not held to
+# mypy --strict, so we consume it as an untyped import here rather than inherit its internal type
+# debt. Our own code stays fully strict-checked. (Discovered automatically when mypy runs in-dir.)
+[[tool.mypy.overrides]]
+module = "knowledge_importer.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "oceg--grc assessment framework--مدقق.pdf",
+  "filename": "مدقق.pdf",
+  "extension": ".pdf",
+  "category": "OCEG",
+  "relative_path": "OCEG/GRC Assessment Framework/مدقق.pdf",
+  "size_bytes": 5231159,
+  "last_modified": "2026-06-26T20:17:34+00:00",
+  "checksum_sha256": "045c986cfd897a765ff87ca2f29a0e98591d5147fa4ecf8368e5424f69090e5e",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 144,
+  "character_count": 204451,
+  "extraction_duration": 4.03251245804131,
+  "parsed_at": "2026-07-12T16:12:52.391347+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 197,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.020833333333333332,
+  "chunking_duration": 0.03428100002929568,
+  "chunked_at": "2026-07-12T16:12:52.430543+00:00",
+  "chunking_error": null
+}

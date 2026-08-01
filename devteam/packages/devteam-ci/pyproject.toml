@@ -1,0 +1,19 @@
+[project]
+name = "devteam-ci"
+version = "0.1.0"
+description = "Autonomous Platform Dev Team — CI maintenance tooling (ADR 0061, Phase 0.2). Discovers and runs the standalone v2/v3 package test suites the root CI never touches (each is its own uv project with its own lock/venv). Pure stdlib — depends on nothing; runs anywhere uv is on PATH. Closes CI gap #1."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_ci"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

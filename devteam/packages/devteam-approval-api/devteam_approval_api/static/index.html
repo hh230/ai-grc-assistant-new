@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rasheed — Approvals</title>
+    <style>
+      :root {
+        --bg: #0f1117; --card: #1a1d27; --line: #2a2e3b; --fg: #e6e8ee;
+        --muted: #9aa0ad; --accent: #4f8cff; --ok: #2ea043; --no: #d1495b;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f5f6f8; --card: #fff; --line: #e2e5ea; --fg: #1a1d27;
+          --muted: #666b76; --accent: #2b6cff; --ok: #1a7f37; --no: #c02c40;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: var(--bg); color: var(--fg);
+        font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      header {
+        padding: 18px 24px; border-bottom: 1px solid var(--line);
+        display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      }
+      header h1 { font-size: 18px; margin: 0; font-weight: 650; }
+      header .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); }
+      .who { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+      .who input {
+        background: var(--card); border: 1px solid var(--line); color: var(--fg);
+        border-radius: 7px; padding: 6px 9px; font-size: 13px; width: 120px;
+      }
+      main { padding: 24px; max-width: 820px; margin: 0 auto; }
+      .empty { color: var(--muted); text-align: center; padding: 60px 0; }
+      .card {
+        background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+        padding: 18px 20px; margin-bottom: 14px;
+      }
+      .card .mission { font-size: 16px; font-weight: 640; }
+      .card .row { margin-top: 8px; display: flex; gap: 8px; }
+      .card .label { color: var(--muted); min-width: 84px; }
+      .card .reason { margin-top: 10px; }
+      .badge {
+        display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px;
+        border: 1px solid var(--line); color: var(--muted); text-transform: uppercase;
+        letter-spacing: .04em;
+      }
+      .actions { margin-top: 16px; display: flex; gap: 10px; }
+      button {
+        border: 0; border-radius: 8px; padding: 9px 18px; font-size: 14px; font-weight: 600;
+        cursor: pointer; color: #fff;
+      }
+      button.approve { background: var(--ok); }
+      button.reject { background: var(--no); }
+      button:disabled { opacity: .5; cursor: default; }
+      .err { color: var(--no); font-size: 13px; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="dot"></span>
+      <h1>Pending Approvals</h1>
+      <div class="who">
+        <input id="actor_id" placeholder="your id" />
+        <input id="actor_name" placeholder="name" />
+        <input id="role" placeholder="role" />
+      </div>
+    </header>
+    <main id="list"><div class="empty">Loading…</div></main>
+
+    <script>
+      const listEl = document.getElementById("list");
+
+      function actor() {
+        return {
+          actor_id: document.getElementById("actor_id").value.trim(),
+          actor_name: document.getElementById("actor_name").value.trim(),
+          role: document.getElementById("role").value.trim(),
+        };
+      }
+
+      function card(a) {
+        const el = document.createElement("div");
+        el.className = "card";
+        const mission = (a.mission_type || "—") + (a.asset ? " · " + a.asset : "");
+        el.innerHTML =
+          '<div class="mission">' + esc(mission) + ' <span class="badge">' +
+          esc(a.requirement || "gate") + "</span></div>" +
+          '<div class="row"><span class="label">Role</span><span>' +
+          esc(a.role || "any authorized") + "</span></div>" +
+          '<div class="row"><span class="label">Target</span><span>' +
+          esc(a.target_ref) + "</span></div>" +
+          '<div class="reason">' + esc(a.reason || "") + "</div>" +
+          '<div class="actions"></div><div class="err"></div>';
+        const actions = el.querySelector(".actions");
+        actions.appendChild(btn("Approve", "approve", () => decide(a.id, "grant", el)));
+        actions.appendChild(btn("Reject", "reject", () => decide(a.id, "reject", el)));
+        return el;
+      }
+
+      function btn(text, cls, onClick) {
+        const b = document.createElement("button");
+        b.className = cls; b.textContent = text; b.onclick = onClick;
+        return b;
+      }
+
+      async function decide(id, action, el) {
+        const who = actor();
+        const errEl = el.querySelector(".err");
+        if (!who.actor_id) { errEl.textContent = "Enter your id first."; return; }
+        el.querySelectorAll("button").forEach((b) => (b.disabled = true));
+        try {
+          const res = await fetch("/api/approvals/" + id + "/" + action, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ ...who, comment: "" }),
+          });
+          if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+          await load();
+        } catch (e) {
+          errEl.textContent = String(e.message || e);
+          el.querySelectorAll("button").forEach((b) => (b.disabled = false));
+        }
+      }
+
+      async function load() {
+        try {
+          const res = await fetch("/api/approvals");
+          const data = await res.json();
+          const items = data.approvals || [];
+          listEl.innerHTML = "";
+          if (!items.length) {
+            listEl.innerHTML = '<div class="empty">No pending approvals.</div>';
+            return;
+          }
+          items.forEach((a) => listEl.appendChild(card(a)));
+        } catch (e) {
+          listEl.innerHTML = '<div class="empty">Cannot reach the API.</div>';
+        }
+      }
+
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+          ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
+        );
+      }
+
+      load();
+      setInterval(load, 4000); // poll, not push (v1)
+    </script>
+  </body>
+</html>

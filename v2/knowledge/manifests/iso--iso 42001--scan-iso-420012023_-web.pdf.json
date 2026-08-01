@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "iso--iso 42001--scan-iso-420012023_-web.pdf",
+  "filename": "SCAN-ISO-420012023_-Web.pdf",
+  "extension": ".pdf",
+  "category": "ISO",
+  "relative_path": "ISO/ISO 42001/SCAN-ISO-420012023_-Web.pdf",
+  "size_bytes": 3636286,
+  "last_modified": "2026-07-12T14:18:57.757195+00:00",
+  "checksum_sha256": "d50103cc0af6d2322c60753ab4a6d9cc54594bc78163481322bf80ee2f75a896",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 61,
+  "character_count": 60,
+  "extraction_duration": 0.009813416982069612,
+  "parsed_at": "2026-07-12T16:10:08.344158+00:00",
+  "error": null,
+  "document_profile": "iso_standard",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 1,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.0,
+  "chunking_duration": 5.862500984221697e-05,
+  "chunked_at": "2026-07-12T16:10:08.344566+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,37 @@
+[project]
+name = "assistant-runtime"
+version = "0.1.0"
+description = "Rasheed V2 AI GRC Assistant — product-layer runtime (ADR 0046). Slice 2: the Capability Catalog and Mission Catalog, the two-layer selection (LLM suggests → deterministic selector decides), and a thin AssistantRuntime that turns a request into a Mission driven through the frozen MissionRuntime. Mechanism only — no GRC capabilities, no real LLM, no tools, no streaming, no persistence of its own. Depends only on the frozen mission-engine + pipeline-contracts; the MissionRuntime is injected behind a one-method MissionDriver port, so the runtime carries no reverse dependency into the Core."
+requires-python = ">=3.12"
+dependencies = [
+    "mission-engine",
+    "pipeline-contracts",
+]
+
+[dependency-groups]
+# The E2E test constructs a real MissionRuntime (mission-integration) against real PostgreSQL; the
+# unit tests need none of it (they inject a spy MissionDriver), so these are dev-only.
+dev = [
+    "pytest>=8.3.0",
+    "psycopg[binary]>=3.2",
+    "mission-integration",
+    "mission-store",
+    "event-bus",
+]
+
+[tool.uv.sources]
+mission-engine = { path = "../mission-engine", editable = true }
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+mission-integration = { path = "../mission-integration", editable = true }
+mission-store = { path = "../mission-store", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["assistant_runtime"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

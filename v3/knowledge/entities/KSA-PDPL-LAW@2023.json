@@ -1,0 +1,4029 @@
+{
+  "artifact": {
+    "artifact_id": "KSA-PDPL-LAW@2023~x1~p1~c1.3~8cbe170bb4b1",
+    "source_id": "KSA-PDPL-LAW",
+    "source_version": "2023",
+    "extractor_version": "1",
+    "protocol_version": "1",
+    "contract_version": "1.3",
+    "content_hash": "8cbe170bb4b17082d30ddcdf2c7f9a0bcd1fc67d91334daa645653a6e6a25249",
+    "generated_at": "2026-07-25T14:41:49.410174+00:00"
+  },
+  "summary": {
+    "entities": 156,
+    "structural_relationships": 113,
+    "warnings": 0,
+    "unknown": 0,
+    "counts_by_type": {
+      "Requirement": 137,
+      "Definition": 19
+    },
+    "state": "Ready",
+    "language": "AR",
+    "normalization": [
+      "NFKC"
+    ]
+  },
+  "warnings": [],
+  "entities": [
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الأولى",
+      "number": "Art-1",
+      "description": "لغرض تطبيق هذا النظام، يُقصد بالألفاظ والعبارات الآتية -أينما وردت في هذا النظام- المعاني المبينة أمام كل منها، ما لم يقتضِ السياق غير ذلك: 1 - النظام: نظام حماية البيانات الشخصية. 2 - اللوائح: اللوائح التنفيذية للنظام. 3 - الجهة المختصة: الجهة التي يصدر بتحديدها قرار من مجلس الوزراء. 4 - البيانات الشخصية: كل بيان -مهما كان مصدره أو شكله- من شأنه أن يؤدي إلى معرفة الفرد على وجه التحديد، أو يجعل التعرف عليه ممكنًا بصفة مباشرة أو غير مباشرة، ومن ذلك: الاسم، ورقم الهوية الشخصية، والعناوين، وأرقام التواصل، وأرقام الرُّخص والسجلات والممتلكات الشخصية، وأرقام الحسابات البنكية والبطاقات الائتمانية، وصور الفرد الثابتة أو المتحركة، وغير ذلك من البيانات ذات الطابع الشخصي. 5 - المُعالجة: أي عملية تُجرى على البيانات الشخصية بأي وسيلة كانت يدوية أو آلية، ومن ذلك: عمليات الجمع، والتسجيل، والحفظ، والفهرسة، والترتيب، والتنسيق، والتخزين، والتعديل، والتحديث، والدمج، والاسترجاع، والاستعمال، والإفصاح، والنقل، والنشر، والمشاركة في البيانات أو الربط البيني، والحجب، والمسح، والإتلاف. 6 - الجمع: حصول جهة التحكم على البيانات الشخصية وفقاً لأحكام النظام، سواء من صاحبها مُباشرةً أو ممن يُمثله أو ممن له الولاية الشرعية عليه أو من طرف آخر. 7 - الإتلاف: أي إجراء يتم على البيانات الشخصية ويجعل من المتعذر الاطلاع عليها أو استعادتها مرة أخرى أو معرفة صاحبها على وجه التحديد. 8 - الإفصاح: تمكين أي شخص -عدا جهة التحكم أو جهة المعالجة بحسب الأحوال- من الحصول على البيانات الشخصية أو استعمالها أو الاطلاع عليها بأي وسيلة ولأي غرض. 9 - النقل: نقل البيانات الشخصية من مكان إلى آخر لمعالجتها. 10 - النشر: بث أي من البيانـات الشخصية عبـر وسيلـة نشـر مقـروءة أو مسموعـة أو مرئية، أو إتاحتها. 11 - البيانات الحساسة: كل بيان شخصي يتعلق بأصل الفرد العرقي أو أصله الإثني، أو معتقده الديني أو الفكري أو السياسي. وكذلك البيانات الأمنية والجنائية، أو بيانات السمات الحيوية التي تحدد الهوية، أو البيانات الوراثية، أو البيانات الصحية، والبيانات التي تدل على أن الفرد مجهول الأبوين أو أحدهما. 12 - البيانات الوراثية: كل بيان شخصي يتعلق بالخصائص الوراثية أو المكتسبة لشخص طبيعي، يحدد بشكل فريد السمات الفيسيولوجية أو الصحية لذلك الشخص، ويستخلص من تحليل عينة بيولوجية للشخص كتحليل الأحماض النووية أو تحليل أي عينة أخرى تؤدي إلى استخلاص بيانات وراثية. 13 - البيانات الصحية: كل بيان شخصي يتعلق بحالة الفرد الصحية، سواء الجسدية أو العقلية أو النفسية أو المتعلقة بالخدمات الصحية الخاصة به. 14 - الخدمات الصحية: الخدمات المتعلقة بصحة الفرد، ومن ذلك الخدمات الوقائية والعلاجية والتأهيلية والتنويم وتوفير الدواء. 15 - البيانات الائتمانية: كل بيان شخصي يتعلق بطلب الفرد الحصول على تمويل، أو حصوله عليه، سواء لغرض شخصي أو عائلي، من جهة تُمارس التمويل، بما في ذلك أي بيان يتعلق بقدرته على الحصول على ائتمان أو بقدرته على الوفاء به أو بتاريخه الائتماني. 16 - صاحب البيانات الشخصية: الفرد الذي تتعلق به البيانات الشخصية. 17 - الجهة العامة: أي وزارة أو مصلحة أو مؤسسة عامة أو هيئة عامة، أو أي جهة عامة مستقلة في المملكة، أو أي من الجهات التابعة لها. 18 - جهة التحكم: أي جهة عامة، وأي شخصية ذات صفة طبيعية أو اعتبارية خاصة؛ تحدد الغرض من معالجة البيانات الشخصية وكيفية ذلك؛ سواء أباشرت معالجة البيانات بوساطتها أم بوساطة جهة المعالجة. 19 - جهة المعالجة: أي جهة عامة، وأي شخصية ذات صفة طبيعية أو اعتبارية خاصة؛ تعالج البيانات الشخصية لمصلحة جهة التحكم ونيابةً عنها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-1"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "النظام",
+      "number": "Art-1.1",
+      "description": "نظام حماية البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "اللوائح",
+      "number": "Art-1.2",
+      "description": "اللوائح التنفيذية للنظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الجهة المختصة",
+      "number": "Art-1.3",
+      "description": "الجهة التي يصدر بتحديدها قرار من مجلس الوزراء.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "البيانات الشخصية",
+      "number": "Art-1.4",
+      "description": "كل بيان -مهما كان مصدره أو شكله- من شأنه أن يؤدي إلى معرفة الفرد على وجه التحديد، أو يجعل التعرف عليه ممكنًا بصفة مباشرة أو غير مباشرة، ومن ذلك: الاسم، ورقم الهوية الشخصية، والعناوين، وأرقام التواصل، وأرقام الرُّخص والسجلات والممتلكات الشخصية، وأرقام الحسابات البنكية والبطاقات الائتمانية، وصور الفرد الثابتة أو المتحركة، وغير ذلك من البيانات ذات الطابع الشخصي.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "المُعالجة",
+      "number": "Art-1.5",
+      "description": "أي عملية تُجرى على البيانات الشخصية بأي وسيلة كانت يدوية أو آلية، ومن ذلك: عمليات الجمع، والتسجيل، والحفظ، والفهرسة، والترتيب، والتنسيق، والتخزين، والتعديل، والتحديث، والدمج، والاسترجاع، والاستعمال، والإفصاح، والنقل، والنشر، والمشاركة في البيانات أو الربط البيني، والحجب، والمسح، والإتلاف.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الجمع",
+      "number": "Art-1.6",
+      "description": "حصول جهة التحكم على البيانات الشخصية وفقاً لأحكام النظام، سواء من صاحبها مُباشرةً أو ممن يُمثله أو ممن له الولاية الشرعية عليه أو من طرف آخر.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.7",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الإتلاف",
+      "number": "Art-1.7",
+      "description": "أي إجراء يتم على البيانات الشخصية ويجعل من المتعذر الاطلاع عليها أو استعادتها مرة أخرى أو معرفة صاحبها على وجه التحديد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.7"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.8",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الإفصاح",
+      "number": "Art-1.8",
+      "description": "تمكين أي شخص -عدا جهة التحكم أو جهة المعالجة بحسب الأحوال- من الحصول على البيانات الشخصية أو استعمالها أو الاطلاع عليها بأي وسيلة ولأي غرض.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.8"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.9",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "النقل",
+      "number": "Art-1.9",
+      "description": "نقل البيانات الشخصية من مكان إلى آخر لمعالجتها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.9"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.10",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "النشر",
+      "number": "Art-1.10",
+      "description": "بث أي من البيانـات الشخصية عبـر وسيلـة نشـر مقـروءة أو مسموعـة أو مرئية، أو إتاحتها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.10"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.11",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "البيانات الحساسة",
+      "number": "Art-1.11",
+      "description": "كل بيان شخصي يتعلق بأصل الفرد العرقي أو أصله الإثني، أو معتقده الديني أو الفكري أو السياسي. وكذلك البيانات الأمنية والجنائية، أو بيانات السمات الحيوية التي تحدد الهوية، أو البيانات الوراثية، أو البيانات الصحية، والبيانات التي تدل على أن الفرد مجهول الأبوين أو أحدهما.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.11"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.12",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "البيانات الوراثية",
+      "number": "Art-1.12",
+      "description": "كل بيان شخصي يتعلق بالخصائص الوراثية أو المكتسبة لشخص طبيعي، يحدد بشكل فريد السمات الفيسيولوجية أو الصحية لذلك الشخص، ويستخلص من تحليل عينة بيولوجية للشخص كتحليل الأحماض النووية أو تحليل أي عينة أخرى تؤدي إلى استخلاص بيانات وراثية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.12"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.13",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "البيانات الصحية",
+      "number": "Art-1.13",
+      "description": "كل بيان شخصي يتعلق بحالة الفرد الصحية، سواء الجسدية أو العقلية أو النفسية أو المتعلقة بالخدمات الصحية الخاصة به.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.13"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.14",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الخدمات الصحية",
+      "number": "Art-1.14",
+      "description": "الخدمات المتعلقة بصحة الفرد، ومن ذلك الخدمات الوقائية والعلاجية والتأهيلية والتنويم وتوفير الدواء.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.14"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.15",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "البيانات الائتمانية",
+      "number": "Art-1.15",
+      "description": "كل بيان شخصي يتعلق بطلب الفرد الحصول على تمويل، أو حصوله عليه، سواء لغرض شخصي أو عائلي، من جهة تُمارس التمويل، بما في ذلك أي بيان يتعلق بقدرته على الحصول على ائتمان أو بقدرته على الوفاء به أو بتاريخه الائتماني.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.15"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.16",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "صاحب البيانات الشخصية",
+      "number": "Art-1.16",
+      "description": "الفرد الذي تتعلق به البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.16"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.17",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "الجهة العامة",
+      "number": "Art-1.17",
+      "description": "أي وزارة أو مصلحة أو مؤسسة عامة أو هيئة عامة، أو أي جهة عامة مستقلة في المملكة، أو أي من الجهات التابعة لها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.17"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.18",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "جهة التحكم",
+      "number": "Art-1.18",
+      "description": "أي جهة عامة، وأي شخصية ذات صفة طبيعية أو اعتبارية خاصة؛ تحدد الغرض من معالجة البيانات الشخصية وكيفية ذلك؛ سواء أباشرت معالجة البيانات بوساطتها أم بوساطة جهة المعالجة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.18"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-1.19",
+      "parent": "KSA-PDPL-LAW@2023::Art-1",
+      "type": "Definition",
+      "name": "جهة المعالجة",
+      "number": "Art-1.19",
+      "description": "أي جهة عامة، وأي شخصية ذات صفة طبيعية أو اعتبارية خاصة؛ تعالج البيانات الشخصية لمصلحة جهة التحكم ونيابةً عنها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Definition Art-1.19"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-2",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثانية",
+      "number": "Art-2",
+      "description": "1 - يُطبق النظام على أي عملية مُعالجة لبيانات شخصية تتعلق بالأفراد تتم في المملكة بأي وسيلة كانت، بما في ذلك معالجة البيانات الشخصية المتعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت من أي جهة خارج المملكة. ويشمل ذلك بيانات المتوفى إذا كانت ستؤدي إلى معرفته أو معرفة أحد أفراد أُسرته على وجه التحديد. 2 - يُستثنى من نطاق تطبيق النظام، قيام الفرد بمعالجة البيانات الشخصية لأغراض لا تتجاوز الاستخدام الشخصي أو العائلي، ما دام أنه لم ينشرها أو يفصح عنها للغير. وتحدد اللوائح المقصود بالاستخدام الشخصي والعائلي المنصوص عليهما في هذه الفقرة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-2"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-2.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-2",
+      "type": "Requirement",
+      "name": "يُطبق النظام على أي عملية مُعالجة لبيانات شخصية تتعلق بالأفراد تتم في المملكة بأي وسيلة كانت، بما في ذلك معالجة البيانات الشخصية المتعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت من أي جهة خارج المملكة. ويشمل ذلك بيانات المتوفى إذا كانت ستؤدي إلى معرفته أو معرفة أحد أفراد أُسرته على وجه التحديد.",
+      "number": "Art-2.1",
+      "description": "يُطبق النظام على أي عملية مُعالجة لبيانات شخصية تتعلق بالأفراد تتم في المملكة بأي وسيلة كانت، بما في ذلك معالجة البيانات الشخصية المتعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت من أي جهة خارج المملكة. ويشمل ذلك بيانات المتوفى إذا كانت ستؤدي إلى معرفته أو معرفة أحد أفراد أُسرته على وجه التحديد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-2.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-2.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-2",
+      "type": "Requirement",
+      "name": "يُستثنى من نطاق تطبيق النظام، قيام الفرد بمعالجة البيانات الشخصية لأغراض لا تتجاوز الاستخدام الشخصي أو العائلي، ما دام أنه لم ينشرها أو يفصح عنها للغير. وتحدد اللوائح المقصود بالاستخدام الشخصي والعائلي المنصوص عليهما في هذه الفقرة.",
+      "number": "Art-2.2",
+      "description": "يُستثنى من نطاق تطبيق النظام، قيام الفرد بمعالجة البيانات الشخصية لأغراض لا تتجاوز الاستخدام الشخصي أو العائلي، ما دام أنه لم ينشرها أو يفصح عنها للغير. وتحدد اللوائح المقصود بالاستخدام الشخصي والعائلي المنصوص عليهما في هذه الفقرة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-2.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-3",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثالثة",
+      "number": "Art-3",
+      "description": "لا تخل الأحكام والإجراءات المنصوص عليها في النظام بأي حكم يمنح حقًّا لصاحب البيانات الشخصية أو يقرر حماية أفضل لها، ينص عليه نظام آخر أو اتفاقية دولية تكون المملكة طرفاً فيها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-3"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الرابعة",
+      "number": "Art-4",
+      "description": "يكون لصاحب البيانات الشخصية -وفقاً للأحكام الواردة في النظام وما تحدده اللوائح- الحقوق الآتية: 1 - الحق في العلم، ويشمل ذلك إحاطته علماً بالمسوغ النظامي لجمع بياناته الشخصية والغرض من جمعها. 2 - الحق في وصوله إلى بياناته الشخصية المتوافرة لدى جهة التحكم، وفق الضوابط والإجراءات التي تحددها اللوائح، ودون إخلال بما ورد في المادة )التاسعة( من النظام. 3 - الحق في طلب الحصول على بياناته الشخصية المتوافرة لدى جهة التحكم بصيغة مقروءة وواضحة، وفق الضوابط والإجراءات التي تحددها اللوائح. 4 - الحق في طلب تصحيح بياناته الشخصية المتوافرة لدى جهة التحكم، أو إتمامها، أو تحديثها. 5 - الحق في طلب إتلاف بياناته الشخصية المتوافرة لدى جهة التحكم مما انتهت الحاجة إليه منها، وذلك دون إخلال بما تقضي به المادة )الثامنة عشرة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-4",
+      "type": "Requirement",
+      "name": "الحق في العلم، ويشمل ذلك إحاطته علماً بالمسوغ النظامي لجمع بياناته الشخصية والغرض من جمعها.",
+      "number": "Art-4.1",
+      "description": "الحق في العلم، ويشمل ذلك إحاطته علماً بالمسوغ النظامي لجمع بياناته الشخصية والغرض من جمعها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-4",
+      "type": "Requirement",
+      "name": "الحق في وصوله إلى بياناته الشخصية المتوافرة لدى جهة التحكم، وفق الضوابط والإجراءات التي تحددها اللوائح، ودون إخلال بما ورد في المادة )التاسعة( من النظام.",
+      "number": "Art-4.2",
+      "description": "الحق في وصوله إلى بياناته الشخصية المتوافرة لدى جهة التحكم، وفق الضوابط والإجراءات التي تحددها اللوائح، ودون إخلال بما ورد في المادة )التاسعة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-4",
+      "type": "Requirement",
+      "name": "الحق في طلب الحصول على بياناته الشخصية المتوافرة لدى جهة التحكم بصيغة مقروءة وواضحة، وفق الضوابط والإجراءات التي تحددها اللوائح.",
+      "number": "Art-4.3",
+      "description": "الحق في طلب الحصول على بياناته الشخصية المتوافرة لدى جهة التحكم بصيغة مقروءة وواضحة، وفق الضوابط والإجراءات التي تحددها اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-4",
+      "type": "Requirement",
+      "name": "الحق في طلب تصحيح بياناته الشخصية المتوافرة لدى جهة التحكم، أو إتمامها، أو تحديثها.",
+      "number": "Art-4.4",
+      "description": "الحق في طلب تصحيح بياناته الشخصية المتوافرة لدى جهة التحكم، أو إتمامها، أو تحديثها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-4.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-4",
+      "type": "Requirement",
+      "name": "الحق في طلب إتلاف بياناته الشخصية المتوافرة لدى جهة التحكم مما انتهت الحاجة إليه منها، وذلك دون إخلال بما تقضي به المادة )الثامنة عشرة( من النظام.",
+      "number": "Art-4.5",
+      "description": "الحق في طلب إتلاف بياناته الشخصية المتوافرة لدى جهة التحكم مما انتهت الحاجة إليه منها، وذلك دون إخلال بما تقضي به المادة )الثامنة عشرة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-4.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-5",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الخامسة",
+      "number": "Art-5",
+      "description": "1 - فيما عدا الأحوال المنصوص عليها في النظام، لا تجوز معالجة البيانات الشخصية أو تغيير الغرض من معالجتها إلاَّ بعد موافقة صاحبها. وتُبين اللوائح شروط الموافقة، والأحوال التي يجب فيها أن تكون الموافقة صريحة، والشروط والأحكام المتعلقة بالحصول على الموافقة من الولي الشرعي إذا كان صاحب البيانات الشخصية ناقص أو عديم الأهلية. 2 - في جميع الأحوال، يجوز لصاحب البيانات الشخصية الرجوع عن الموافقة المشار إليها في الفقرة )1 ( من هذه المادة في أي وقت، وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-5"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-5.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-5",
+      "type": "Requirement",
+      "name": "فيما عدا الأحوال المنصوص عليها في النظام، لا تجوز معالجة البيانات الشخصية أو تغيير الغرض من معالجتها إلاَّ بعد موافقة صاحبها. وتُبين اللوائح شروط الموافقة، والأحوال التي يجب فيها أن تكون الموافقة صريحة، والشروط والأحكام المتعلقة بالحصول على الموافقة من الولي الشرعي إذا كان صاحب البيانات الشخصية ناقص أو عديم الأهلية.",
+      "number": "Art-5.1",
+      "description": "فيما عدا الأحوال المنصوص عليها في النظام، لا تجوز معالجة البيانات الشخصية أو تغيير الغرض من معالجتها إلاَّ بعد موافقة صاحبها. وتُبين اللوائح شروط الموافقة، والأحوال التي يجب فيها أن تكون الموافقة صريحة، والشروط والأحكام المتعلقة بالحصول على الموافقة من الولي الشرعي إذا كان صاحب البيانات الشخصية ناقص أو عديم الأهلية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-5.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-5.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-5",
+      "type": "Requirement",
+      "name": "في جميع الأحوال، يجوز لصاحب البيانات الشخصية الرجوع عن الموافقة المشار إليها في الفقرة )1 ( من هذه المادة في أي وقت، وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "number": "Art-5.2",
+      "description": "في جميع الأحوال، يجوز لصاحب البيانات الشخصية الرجوع عن الموافقة المشار إليها في الفقرة )1 ( من هذه المادة في أي وقت، وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-5.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-6",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السادسة",
+      "number": "Art-6",
+      "description": "لا تخضع معالجة البيانات الشخصية للموافقة المشار إليها في الفقرة )1 ( من المادة )الخامسة( من النظام، في الأحوال الآتية: 1 - عندما تُحقق المعالجة مصلحة متحققة لصاحب البيانات وكان الاتصال به متعذراً أو كان من الصعب تحقيق ذلك. 2 - عندما تكون المعالجة بمقتضى نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحب البيانات الشخصية طرفاً فيه. 3 - إذا كانت جهة التحكم جهة عامة، وكانت تلك المعالجة مطلوبة لأغراض أمنية أو لاستيفاء مُتطلبات قضائية. 4 - عندما تكون المعالجة ضرورية لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط المتعلقة بذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-6"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-6.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-6",
+      "type": "Requirement",
+      "name": "عندما تُحقق المعالجة مصلحة متحققة لصاحب البيانات وكان الاتصال به متعذراً أو كان من الصعب تحقيق ذلك.",
+      "number": "Art-6.1",
+      "description": "عندما تُحقق المعالجة مصلحة متحققة لصاحب البيانات وكان الاتصال به متعذراً أو كان من الصعب تحقيق ذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-6.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-6.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-6",
+      "type": "Requirement",
+      "name": "عندما تكون المعالجة بمقتضى نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحب البيانات الشخصية طرفاً فيه.",
+      "number": "Art-6.2",
+      "description": "عندما تكون المعالجة بمقتضى نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحب البيانات الشخصية طرفاً فيه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-6.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-6.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-6",
+      "type": "Requirement",
+      "name": "إذا كانت جهة التحكم جهة عامة، وكانت تلك المعالجة مطلوبة لأغراض أمنية أو لاستيفاء مُتطلبات قضائية.",
+      "number": "Art-6.3",
+      "description": "إذا كانت جهة التحكم جهة عامة، وكانت تلك المعالجة مطلوبة لأغراض أمنية أو لاستيفاء مُتطلبات قضائية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-6.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-6.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-6",
+      "type": "Requirement",
+      "name": "عندما تكون المعالجة ضرورية لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط المتعلقة بذلك.",
+      "number": "Art-6.4",
+      "description": "عندما تكون المعالجة ضرورية لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط المتعلقة بذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-6.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-7",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السابعة",
+      "number": "Art-7",
+      "description": "لا يجوز أن تكون الموافقة المشار إليها في الفقرة )1 ( من المادة )الخامسة( من النظام شرطاً لإسداء خدمة أو تقديم منفعة، ما لم تكن الخدمة أو المنفعة ذات علاقة بمعالجة البيانات الشخصية التي صدرت الموافقة عليها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-7"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-8",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثامنة",
+      "number": "Art-8",
+      "description": "مع مراعاة ما ينص عليه النظام واللوائح في شأن الإفصاح عن البيانات الشخصية، على جهة التحكم عند اختيارها جهة المعالجة أن تلتزم باختيار الجهة التي توفر الضمانات اللازمة لتنفيذ أحكام النظام واللوائح، وعليها التحقق من التزام تلك الجهة بأحكام النظام واللوائح، ولا يخل ذلك بمسؤولياتها تجاه صاحب البيانات الشخصية أو الجهة المختصة بحسب الأحوال. وتحدد اللوائح الأحكام اللازمة لذلك، على أن تشتمل على الأحكام المتعلقة بأي تعاقدات لاحقة تقوم بها جهة المعالجة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-8"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-9",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة التاسعة",
+      "number": "Art-9",
+      "description": "1 - يجوز لجهة التحكم تحديد مدد لممارسة حق الوصول إلى البيانات الشخصية المقرر في الفقرة )2 ( من المادة )الرابعة( من النظام؛ وفق ما تحدده اللوائح. ويجوز كذلك لجهة التحكم تقييد هذا الحق في الأحوال الآتية: أ- إذا كان ذلك ضروريًّا لحماية صاحب البيانات الشخصية أو غيره من أي ضرر؛ وفق الأحكام التي تحددها اللوائح. ب- إذا كانت جهة التحكم جهة عامة، وكان التقييد مطلوباً لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية. 2 - يجب على جهة التحكم ألا تُمكِّن صاحب البيانات الشخصية من الوصول إليها متى تحقق أيٌ من الأحوال المنصوص عليها في الفقرات )1 ( و)2 ( و)3 ( و)4 ( و)5 ( و)6 ( من المادة )السادسة عشرة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-9"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-9.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-9",
+      "type": "Requirement",
+      "name": "يجوز لجهة التحكم تحديد مدد لممارسة حق الوصول إلى البيانات الشخصية المقرر في الفقرة )2 ( من المادة )الرابعة( من النظام؛ وفق ما تحدده اللوائح. ويجوز كذلك لجهة التحكم تقييد هذا الحق في الأحوال الآتية: أ- إذا كان ذلك ضروريًّا لحماية صاحب البيانات الشخصية أو غيره من أي ضرر؛ وفق الأحكام التي تحددها اللوائح. ب- إذا كانت جهة التحكم جهة عامة، وكان التقييد مطلوباً لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "number": "Art-9.1",
+      "description": "يجوز لجهة التحكم تحديد مدد لممارسة حق الوصول إلى البيانات الشخصية المقرر في الفقرة )2 ( من المادة )الرابعة( من النظام؛ وفق ما تحدده اللوائح. ويجوز كذلك لجهة التحكم تقييد هذا الحق في الأحوال الآتية: أ- إذا كان ذلك ضروريًّا لحماية صاحب البيانات الشخصية أو غيره من أي ضرر؛ وفق الأحكام التي تحددها اللوائح. ب- إذا كانت جهة التحكم جهة عامة، وكان التقييد مطلوباً لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-9.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-9.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-9",
+      "type": "Requirement",
+      "name": "يجب على جهة التحكم ألا تُمكِّن صاحب البيانات الشخصية من الوصول إليها متى تحقق أيٌ من الأحوال المنصوص عليها في الفقرات )1 ( و)2 ( و)3 ( و)4 ( و)5 ( و)6 ( من المادة )السادسة عشرة( من النظام.",
+      "number": "Art-9.2",
+      "description": "يجب على جهة التحكم ألا تُمكِّن صاحب البيانات الشخصية من الوصول إليها متى تحقق أيٌ من الأحوال المنصوص عليها في الفقرات )1 ( و)2 ( و)3 ( و)4 ( و)5 ( و)6 ( من المادة )السادسة عشرة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-9.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة العاشرة",
+      "number": "Art-10",
+      "description": "لا يجوز لجهة التحكم جمع البيانات الشخصية إلا من صاحبها مباشرةً، ولا تجوز كذلك مُعالجة تلك البيانات إلا لتحقيق الغرض الذي جُمعت من أجله. ومع ذلك، يجوز لجهة التحكم جمع البيانات الشخصية من غير صاحبها مباشرةً، أو مُعالجتها لغرض آخر غير الذي جمعت من أجله، وذلك في الأحوال الآتية: 1 - إذا وافق صاحب البيانات الشخصية على ذلك، وفقاً لأحكام النظام. 2 - إذا كانت البيانات الشخصية متاحة للعموم، أو جرى جمعها من مصدر متاح للعموم. 3 - إذا كانت جهة التحكم جهة عامة، وكان جمع البيانات الشخصية أو معالجتها؛ مطلوباً لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية. 4 - إذا كان التقيد بهذا الحظر قد يُلحق ضرراً بصاحب البيانات الشخصية أو يؤثر على مصالحه الحيوية. 5 - إذا كان جمع البيانات الشخصية أو معالجتها ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم. 6 - إذا كانت البيانات الشخصية لن تُسجل أو تُحفظ في صيغة تجعل من الممكن تحديد هوية صاحبها ومعرفته بصورة مباشرة أو غير مباشرة. 7 - إذا كان جمع البيانات أو معالجتها ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )7 ( من هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا وافق صاحب البيانات الشخصية على ذلك، وفقاً لأحكام النظام.",
+      "number": "Art-10.1",
+      "description": "إذا وافق صاحب البيانات الشخصية على ذلك، وفقاً لأحكام النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كانت البيانات الشخصية متاحة للعموم، أو جرى جمعها من مصدر متاح للعموم.",
+      "number": "Art-10.2",
+      "description": "إذا كانت البيانات الشخصية متاحة للعموم، أو جرى جمعها من مصدر متاح للعموم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كانت جهة التحكم جهة عامة، وكان جمع البيانات الشخصية أو معالجتها؛ مطلوباً لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "number": "Art-10.3",
+      "description": "إذا كانت جهة التحكم جهة عامة، وكان جمع البيانات الشخصية أو معالجتها؛ مطلوباً لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كان التقيد بهذا الحظر قد يُلحق ضرراً بصاحب البيانات الشخصية أو يؤثر على مصالحه الحيوية.",
+      "number": "Art-10.4",
+      "description": "إذا كان التقيد بهذا الحظر قد يُلحق ضرراً بصاحب البيانات الشخصية أو يؤثر على مصالحه الحيوية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كان جمع البيانات الشخصية أو معالجتها ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم.",
+      "number": "Art-10.5",
+      "description": "إذا كان جمع البيانات الشخصية أو معالجتها ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كانت البيانات الشخصية لن تُسجل أو تُحفظ في صيغة تجعل من الممكن تحديد هوية صاحبها ومعرفته بصورة مباشرة أو غير مباشرة.",
+      "number": "Art-10.6",
+      "description": "إذا كانت البيانات الشخصية لن تُسجل أو تُحفظ في صيغة تجعل من الممكن تحديد هوية صاحبها ومعرفته بصورة مباشرة أو غير مباشرة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-10.7",
+      "parent": "KSA-PDPL-LAW@2023::Art-10",
+      "type": "Requirement",
+      "name": "إذا كان جمع البيانات أو معالجتها ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )7 ( من هذه المادة.",
+      "number": "Art-10.7",
+      "description": "إذا كان جمع البيانات أو معالجتها ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )7 ( من هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-10.7"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-11",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الحادية عشرة",
+      "number": "Art-11",
+      "description": "1 - يجب أن يكون الغرض من جمع البيانات الشخصية ذا علاقة مُباشرة بأغراض جهة التحكم، وألاَّ يتعارض مع أي حكم مقرر نظاماً. 2 - يجب ألاَّ تتعارض طُرق جمع البيانات الشخصية ووسائلها مع أي حكم مقرر نظاماً، وأن تكون ملائمة لظروف صاحبها، ومباشرة وواضحة وآمنة، وخالية من أساليب الخداع أو التضليل أو الابتزاز. 3 - يجب أن يكون مُحتوى البيانات الشخصية ملائماً ومقصوراً على الحد الأدنى اللازم لتحقيق الغرض من جمعها، مع تجنب شموله على ما يؤدي إلى معرفة صاحبها بصورة محددة متى تحقق الغرض من جمعها. وتحدد اللوائح الضوابط اللازمة لذلك. 4 - إذا اتضح أن البيانات الشخصية التي تجمع لم تعد ضرورية لتحقيق الغرض من جمعها، فعلى جهة التحكم التوقف عن جمعها، وإتلاف ما سبق أن جمعته منها دون تأخير.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-11"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-11.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-11",
+      "type": "Requirement",
+      "name": "يجب أن يكون الغرض من جمع البيانات الشخصية ذا علاقة مُباشرة بأغراض جهة التحكم، وألاَّ يتعارض مع أي حكم مقرر نظاماً.",
+      "number": "Art-11.1",
+      "description": "يجب أن يكون الغرض من جمع البيانات الشخصية ذا علاقة مُباشرة بأغراض جهة التحكم، وألاَّ يتعارض مع أي حكم مقرر نظاماً.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-11.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-11.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-11",
+      "type": "Requirement",
+      "name": "يجب ألاَّ تتعارض طُرق جمع البيانات الشخصية ووسائلها مع أي حكم مقرر نظاماً، وأن تكون ملائمة لظروف صاحبها، ومباشرة وواضحة وآمنة، وخالية من أساليب الخداع أو التضليل أو الابتزاز.",
+      "number": "Art-11.2",
+      "description": "يجب ألاَّ تتعارض طُرق جمع البيانات الشخصية ووسائلها مع أي حكم مقرر نظاماً، وأن تكون ملائمة لظروف صاحبها، ومباشرة وواضحة وآمنة، وخالية من أساليب الخداع أو التضليل أو الابتزاز.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-11.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-11.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-11",
+      "type": "Requirement",
+      "name": "يجب أن يكون مُحتوى البيانات الشخصية ملائماً ومقصوراً على الحد الأدنى اللازم لتحقيق الغرض من جمعها، مع تجنب شموله على ما يؤدي إلى معرفة صاحبها بصورة محددة متى تحقق الغرض من جمعها. وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "number": "Art-11.3",
+      "description": "يجب أن يكون مُحتوى البيانات الشخصية ملائماً ومقصوراً على الحد الأدنى اللازم لتحقيق الغرض من جمعها، مع تجنب شموله على ما يؤدي إلى معرفة صاحبها بصورة محددة متى تحقق الغرض من جمعها. وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-11.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-11.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-11",
+      "type": "Requirement",
+      "name": "إذا اتضح أن البيانات الشخصية التي تجمع لم تعد ضرورية لتحقيق الغرض من جمعها، فعلى جهة التحكم التوقف عن جمعها، وإتلاف ما سبق أن جمعته منها دون تأخير.",
+      "number": "Art-11.4",
+      "description": "إذا اتضح أن البيانات الشخصية التي تجمع لم تعد ضرورية لتحقيق الغرض من جمعها، فعلى جهة التحكم التوقف عن جمعها، وإتلاف ما سبق أن جمعته منها دون تأخير.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-11.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-12",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثانية عشرة",
+      "number": "Art-12",
+      "description": "على جهة التحكم أن تعتمد سياسة للخصوصية، وأن تجعلها متاحة لأصحاب البيانات الشخصية ليطلعوا عليها عند جمع بياناتهم. على أن تشتمل تلك السياسة على تحديد الغرض من جمعها، ومُحتوى البيانات الشخصية المطلوب جمعها، وطريقة جمعها، ووسيلة حفظها، وكيفية معالجتها، وكيفية إتلافها، وحقوق صاحبها فيما يتعلق بها، وكيفية ممارسة هذه الحقوق.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-12"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثالثة عشرة",
+      "number": "Art-13",
+      "description": "على جهة التحكم، في حالة جمع البيانات الشخصية من صاحبها مباشرةً، اتخاذ الوسائل الكافية لإحاطته علماً بالعناصر الآتية عند البدء في جمع بياناته: 1 - المسوغ النظامي لجمع بياناته الشخصية. 2 - الغرض من جمع بياناته الشخصية، وما إذا كان جمعها كلها أو بعضها إلزاميًّا أم اختياريًّا، وإحاطته كذلك بأن بياناته لن تعالج لاحقاً بصورة تتنافى مع الغرض من جمعها أو في غير الأحوال المنصوص عليها في المادة )العاشرة( من النظام. 3 - هوية من يجمع البيانات الشخصية وعنوان مرجعه عند الاقتضاء، ما لم يكن جمعها لأغراض أمنية. 4 - الجهة أو الجهات التي سَيُجرى إفصاح البيانات الشخصية إليها، وصفتها، وما إذا كانت البيانات الشخصية ستنقل أو سيفصح عنها أو ستعالج خارج المملكة. 5 - الآثار والأخطار المحتملة التي تترتب على عدم إتمام إجراء جمع البيانات الشخصية. 6 - حقوقه المنصوص عليها في المادة )الرابعة( من النظام. 7 - العناصر الأخرى التي تحددها اللوائح بحسب طبيعة النشاط الذي تمارسه جهة التحكم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "المسوغ النظامي لجمع بياناته الشخصية.",
+      "number": "Art-13.1",
+      "description": "المسوغ النظامي لجمع بياناته الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "الغرض من جمع بياناته الشخصية، وما إذا كان جمعها كلها أو بعضها إلزاميًّا أم اختياريًّا، وإحاطته كذلك بأن بياناته لن تعالج لاحقاً بصورة تتنافى مع الغرض من جمعها أو في غير الأحوال المنصوص عليها في المادة )العاشرة( من النظام.",
+      "number": "Art-13.2",
+      "description": "الغرض من جمع بياناته الشخصية، وما إذا كان جمعها كلها أو بعضها إلزاميًّا أم اختياريًّا، وإحاطته كذلك بأن بياناته لن تعالج لاحقاً بصورة تتنافى مع الغرض من جمعها أو في غير الأحوال المنصوص عليها في المادة )العاشرة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "هوية من يجمع البيانات الشخصية وعنوان مرجعه عند الاقتضاء، ما لم يكن جمعها لأغراض أمنية.",
+      "number": "Art-13.3",
+      "description": "هوية من يجمع البيانات الشخصية وعنوان مرجعه عند الاقتضاء، ما لم يكن جمعها لأغراض أمنية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "الجهة أو الجهات التي سَيُجرى إفصاح البيانات الشخصية إليها، وصفتها، وما إذا كانت البيانات الشخصية ستنقل أو سيفصح عنها أو ستعالج خارج المملكة.",
+      "number": "Art-13.4",
+      "description": "الجهة أو الجهات التي سَيُجرى إفصاح البيانات الشخصية إليها، وصفتها، وما إذا كانت البيانات الشخصية ستنقل أو سيفصح عنها أو ستعالج خارج المملكة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "الآثار والأخطار المحتملة التي تترتب على عدم إتمام إجراء جمع البيانات الشخصية.",
+      "number": "Art-13.5",
+      "description": "الآثار والأخطار المحتملة التي تترتب على عدم إتمام إجراء جمع البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "حقوقه المنصوص عليها في المادة )الرابعة( من النظام.",
+      "number": "Art-13.6",
+      "description": "حقوقه المنصوص عليها في المادة )الرابعة( من النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-13.7",
+      "parent": "KSA-PDPL-LAW@2023::Art-13",
+      "type": "Requirement",
+      "name": "العناصر الأخرى التي تحددها اللوائح بحسب طبيعة النشاط الذي تمارسه جهة التحكم.",
+      "number": "Art-13.7",
+      "description": "العناصر الأخرى التي تحددها اللوائح بحسب طبيعة النشاط الذي تمارسه جهة التحكم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-13.7"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-14",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الرابعة عشرة",
+      "number": "Art-14",
+      "description": "لا يجوز لجهة التحكم أن تعالج البيانات الشخصية دون اتخاذ خطوات كافية للتحقق من دقتها واكتمالها وحداثتها وارتباطها بالغرض الذي جُمعت من أجله وفقاً لأحكام النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-14"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الخامسة عشرة",
+      "number": "Art-15",
+      "description": "لا يجوز لجهة التحكم الإفصاح عن البيانات الشخصية إلا في الأحوال الآتية: 1 - إذا وافق صاحب البيانات الشخصية على الإفصاح وفقاً لأحكام النظام. 2 - إذا كانت البيانات الشخصية قد جرى جمعها من مصدر متاح للعموم. 3 - إذا كانت الجهة التي تطلب الإفصاح جهة عامة، وكان ذلك لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية. 4 - إذا كان الإفصاح ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم. 5 - إذا كان الإفصاح سيقتصر على معالجتها لاحقاً بطريقة لا تؤدي إلى معرفة هوية صاحب البيانات الشخصية أو أي فرد آخر على وجه التحديد. 6 - إذا كان الإفصاح ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )6 ( من هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا وافق صاحب البيانات الشخصية على الإفصاح وفقاً لأحكام النظام.",
+      "number": "Art-15.1",
+      "description": "إذا وافق صاحب البيانات الشخصية على الإفصاح وفقاً لأحكام النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا كانت البيانات الشخصية قد جرى جمعها من مصدر متاح للعموم.",
+      "number": "Art-15.2",
+      "description": "إذا كانت البيانات الشخصية قد جرى جمعها من مصدر متاح للعموم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا كانت الجهة التي تطلب الإفصاح جهة عامة، وكان ذلك لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "number": "Art-15.3",
+      "description": "إذا كانت الجهة التي تطلب الإفصاح جهة عامة، وكان ذلك لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا كان الإفصاح ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم.",
+      "number": "Art-15.4",
+      "description": "إذا كان الإفصاح ضروريًّا لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا كان الإفصاح سيقتصر على معالجتها لاحقاً بطريقة لا تؤدي إلى معرفة هوية صاحب البيانات الشخصية أو أي فرد آخر على وجه التحديد.",
+      "number": "Art-15.5",
+      "description": "إذا كان الإفصاح سيقتصر على معالجتها لاحقاً بطريقة لا تؤدي إلى معرفة هوية صاحب البيانات الشخصية أو أي فرد آخر على وجه التحديد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-15.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-15",
+      "type": "Requirement",
+      "name": "إذا كان الإفصاح ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )6 ( من هذه المادة.",
+      "number": "Art-15.6",
+      "description": "إذا كان الإفصاح ضروريًّا لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبين اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من )2 ( إلى )6 ( من هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-15.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السادسة عشرة",
+      "number": "Art-16",
+      "description": "على جهة التحكم ألاّ تفصح عن البيانات الشخصية في الأحوال المنصوص عليها في الفقرات )1 ( و)2 ( و)5 ( و)6 ( من المادة )الخامسة عشرة( من النظام، متى اتصف الإفصاح بأيٍّ مما يأتي: 1 - أنه يمثل خطراً على الأمن، أو يسيء إلى سمعة المملكة، أو يتعارض مع مصالحها. 2 - أنه يؤثر على علاقات المملكة مع دولة أخرى. 3 - أنه يمنع من كشف جريمة أو يمس حقوق متهم في الحصول على محاكمة عادلة أو يؤثر في سلامة إجراءات جنائية قائمة. 4 - أنه يعرض سلامة فرد أو أفراد للخطر. 5 - أنه يترتب عليه انتهاك خصوصية فرد آخر غير صاحب البيانات الشخصية وفق ما تحدده اللوائح. 6 - أنه يتعارض مع مصلحة ناقص أو عديم للأهلية. 7 - أنه يخل بالتزامات مهنية مقررة نظاماً. 8 - أنه ينطوي عليه إخلال بالتزام أو إجراء أو حكم قضائي. 9 - أنه يكشف عن مصدر سري لمعلومات تحتم المصلحة العامة عدم الكشف عنه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يمثل خطراً على الأمن، أو يسيء إلى سمعة المملكة، أو يتعارض مع مصالحها.",
+      "number": "Art-16.1",
+      "description": "أنه يمثل خطراً على الأمن، أو يسيء إلى سمعة المملكة، أو يتعارض مع مصالحها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يؤثر على علاقات المملكة مع دولة أخرى.",
+      "number": "Art-16.2",
+      "description": "أنه يؤثر على علاقات المملكة مع دولة أخرى.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يمنع من كشف جريمة أو يمس حقوق متهم في الحصول على محاكمة عادلة أو يؤثر في سلامة إجراءات جنائية قائمة.",
+      "number": "Art-16.3",
+      "description": "أنه يمنع من كشف جريمة أو يمس حقوق متهم في الحصول على محاكمة عادلة أو يؤثر في سلامة إجراءات جنائية قائمة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يعرض سلامة فرد أو أفراد للخطر.",
+      "number": "Art-16.4",
+      "description": "أنه يعرض سلامة فرد أو أفراد للخطر.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يترتب عليه انتهاك خصوصية فرد آخر غير صاحب البيانات الشخصية وفق ما تحدده اللوائح.",
+      "number": "Art-16.5",
+      "description": "أنه يترتب عليه انتهاك خصوصية فرد آخر غير صاحب البيانات الشخصية وفق ما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يتعارض مع مصلحة ناقص أو عديم للأهلية.",
+      "number": "Art-16.6",
+      "description": "أنه يتعارض مع مصلحة ناقص أو عديم للأهلية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.7",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يخل بالتزامات مهنية مقررة نظاماً.",
+      "number": "Art-16.7",
+      "description": "أنه يخل بالتزامات مهنية مقررة نظاماً.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.7"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.8",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه ينطوي عليه إخلال بالتزام أو إجراء أو حكم قضائي.",
+      "number": "Art-16.8",
+      "description": "أنه ينطوي عليه إخلال بالتزام أو إجراء أو حكم قضائي.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.8"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-16.9",
+      "parent": "KSA-PDPL-LAW@2023::Art-16",
+      "type": "Requirement",
+      "name": "أنه يكشف عن مصدر سري لمعلومات تحتم المصلحة العامة عدم الكشف عنه.",
+      "number": "Art-16.9",
+      "description": "أنه يكشف عن مصدر سري لمعلومات تحتم المصلحة العامة عدم الكشف عنه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-16.9"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-17",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السابعة عشرة",
+      "number": "Art-17",
+      "description": "1 - إذا جرى تصحيح خطأ أو إكمال نقص أو إجراء تحديث في البيانات الشخصية، فعلى جهة التحكم أن تُشعر أي جهة أخرى انتقلت إليها تلك البيانات بأي تعديل يطرأ عليها، وأن تتيح لها ذلك التعديل. 2 - توضح اللوائح المدد الزمنية للتصحيح والتحديث، وأنواع التصحيح، والإجراءات المطلوبة لتفادي الآثار المترتبة على معالجة بيانات شخصية غير صحيحة أو غير دقيقة أو غير حديثة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-17"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-17.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-17",
+      "type": "Requirement",
+      "name": "إذا جرى تصحيح خطأ أو إكمال نقص أو إجراء تحديث في البيانات الشخصية، فعلى جهة التحكم أن تُشعر أي جهة أخرى انتقلت إليها تلك البيانات بأي تعديل يطرأ عليها، وأن تتيح لها ذلك التعديل.",
+      "number": "Art-17.1",
+      "description": "إذا جرى تصحيح خطأ أو إكمال نقص أو إجراء تحديث في البيانات الشخصية، فعلى جهة التحكم أن تُشعر أي جهة أخرى انتقلت إليها تلك البيانات بأي تعديل يطرأ عليها، وأن تتيح لها ذلك التعديل.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-17.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-17.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-17",
+      "type": "Requirement",
+      "name": "توضح اللوائح المدد الزمنية للتصحيح والتحديث، وأنواع التصحيح، والإجراءات المطلوبة لتفادي الآثار المترتبة على معالجة بيانات شخصية غير صحيحة أو غير دقيقة أو غير حديثة.",
+      "number": "Art-17.2",
+      "description": "توضح اللوائح المدد الزمنية للتصحيح والتحديث، وأنواع التصحيح، والإجراءات المطلوبة لتفادي الآثار المترتبة على معالجة بيانات شخصية غير صحيحة أو غير دقيقة أو غير حديثة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-17.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-18",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثامنة عشرة",
+      "number": "Art-18",
+      "description": "1 - على جهة التحكم إتلاف البيانات الشخصية بعد انتهاء الغرض من جمعها دون تأخير. ومع ذلك، يجوز لها الاحتفاظ بتلك البيانات بعد انتهاء الغرض من جمعها إذا تمت إزالة كل ما يؤدي إلى معرفة صاحبها على وجه التحديد وفق الضوابط التي تحددها اللوائح. 2 - على جهة التحكم الاحتفاظ بالبيانات الشخصية حتى بعد انتهاء الغرض من جمعها في الحالتين الآتيتين: أ- إذا توافر مسوغ نظامي يوجب الاحتفاظ بها مدة مُحددة، وفي هذه الحالة يُجرى إتلافها بعد انتهاء هذه المدة أو انتهاء الغرض من جمعها، أيهما أطول. ب- إذا كانت البيانات الشخصية متصلة اتصالاً وثيقاً بقضية منظورة أمام جهة قضائية وكان الاحتفاظ بها مطلوباً لهذا الغرض، وفي هذه الحالة يُجرى إتلافها بعد استكمال الإجراءات القضائية الخاصة بالقضية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-18"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-18.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-18",
+      "type": "Requirement",
+      "name": "على جهة التحكم إتلاف البيانات الشخصية بعد انتهاء الغرض من جمعها دون تأخير. ومع ذلك، يجوز لها الاحتفاظ بتلك البيانات بعد انتهاء الغرض من جمعها إذا تمت إزالة كل ما يؤدي إلى معرفة صاحبها على وجه التحديد وفق الضوابط التي تحددها اللوائح.",
+      "number": "Art-18.1",
+      "description": "على جهة التحكم إتلاف البيانات الشخصية بعد انتهاء الغرض من جمعها دون تأخير. ومع ذلك، يجوز لها الاحتفاظ بتلك البيانات بعد انتهاء الغرض من جمعها إذا تمت إزالة كل ما يؤدي إلى معرفة صاحبها على وجه التحديد وفق الضوابط التي تحددها اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-18.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-18.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-18",
+      "type": "Requirement",
+      "name": "على جهة التحكم الاحتفاظ بالبيانات الشخصية حتى بعد انتهاء الغرض من جمعها في الحالتين الآتيتين: أ- إذا توافر مسوغ نظامي يوجب الاحتفاظ بها مدة مُحددة، وفي هذه الحالة يُجرى إتلافها بعد انتهاء هذه المدة أو انتهاء الغرض من جمعها، أيهما أطول. ب- إذا كانت البيانات الشخصية متصلة اتصالاً وثيقاً بقضية منظورة أمام جهة قضائية وكان الاحتفاظ بها مطلوباً لهذا الغرض، وفي هذه الحالة يُجرى إتلافها بعد استكمال الإجراءات القضائية الخاصة بالقضية.",
+      "number": "Art-18.2",
+      "description": "على جهة التحكم الاحتفاظ بالبيانات الشخصية حتى بعد انتهاء الغرض من جمعها في الحالتين الآتيتين: أ- إذا توافر مسوغ نظامي يوجب الاحتفاظ بها مدة مُحددة، وفي هذه الحالة يُجرى إتلافها بعد انتهاء هذه المدة أو انتهاء الغرض من جمعها، أيهما أطول. ب- إذا كانت البيانات الشخصية متصلة اتصالاً وثيقاً بقضية منظورة أمام جهة قضائية وكان الاحتفاظ بها مطلوباً لهذا الغرض، وفي هذه الحالة يُجرى إتلافها بعد استكمال الإجراءات القضائية الخاصة بالقضية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-18.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-19",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة التاسعة عشرة",
+      "number": "Art-19",
+      "description": "على جهة التحكم اتخاذ ما يلزم من إجراءات ووسائل تنظيمية وإدارية وتقنية تضمن المحافظة على البيانات الشخصية، بما في ذلك عند نقلها؛ وذلك وفقاً للأحكام والضوابط التي تحددها اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-19"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-20",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة العشرون",
+      "number": "Art-20",
+      "description": "1 - تشعر جهة التحكم الجهة المختصة عند علمها بحدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها؛ وفقاً لما تحدده اللوائح. 2 - تشعر جهة التحكم صاحب البيانات الشخصية إذا كان من شأن حدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها أن يرتب ضرراً على بياناته أو يتعارض مع حقوقه أو مصالحه؛ وفقاً لما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-20"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-20.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-20",
+      "type": "Requirement",
+      "name": "تشعر جهة التحكم الجهة المختصة عند علمها بحدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها؛ وفقاً لما تحدده اللوائح.",
+      "number": "Art-20.1",
+      "description": "تشعر جهة التحكم الجهة المختصة عند علمها بحدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها؛ وفقاً لما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-20.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-20.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-20",
+      "type": "Requirement",
+      "name": "تشعر جهة التحكم صاحب البيانات الشخصية إذا كان من شأن حدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها أن يرتب ضرراً على بياناته أو يتعارض مع حقوقه أو مصالحه؛ وفقاً لما تحدده اللوائح.",
+      "number": "Art-20.2",
+      "description": "تشعر جهة التحكم صاحب البيانات الشخصية إذا كان من شأن حدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها أن يرتب ضرراً على بياناته أو يتعارض مع حقوقه أو مصالحه؛ وفقاً لما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-20.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-21",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الحادية والعشرون",
+      "number": "Art-21",
+      "description": "على جهة التحكم الاستجابة لطلبات صاحب البيانات الشخصية المتعلقة بحقوقه المنصوص عليها في النظام خلال مدة محددة وعبر وسيلة مناسبة تبينهما اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-21"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-22",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثانية والعشرون",
+      "number": "Art-22",
+      "description": "على جهة التحكم إجراء تقويم للآثار المترتبة على معالجة البيانات الشخصية لأي منتج أو خدمة تقدم للعموم بحسب طبيعة النشاط الذي تمارسه جهة التحكم، وتحدد اللوائح الأحكام اللازمة لذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-22"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-23",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثالثة والعشرون",
+      "number": "Art-23",
+      "description": "تُحدد اللوائح الضوابط والإجراءات الإضافية -بما لا يتعارض مع أحكام النظام- في شأن معالجة البيانات الصحية بما يكفل المحافظة على خصوصية أصحابها ويحمي حقوقهم الواردة في النظام، على أن تشتمل على ما يأتي: 1 - قصر حق الاطلاع على البيانات الصحية -بما فيها الملفات الطبية- على أقل عدد ممكن من الموظفين أو العاملين وبالقدر اللازم فقط لتقديم الخدمات الصحية اللازمة. 2 - تقييد إجراءات وعمليات مُعالجة البيانات الصحية إلى أقل قدر ممكن من الموظفين والعاملين لتقديم الخدمات الصحية أو توفير برامج التأمين الصحي.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-23"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-23.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-23",
+      "type": "Requirement",
+      "name": "قصر حق الاطلاع على البيانات الصحية -بما فيها الملفات الطبية- على أقل عدد ممكن من الموظفين أو العاملين وبالقدر اللازم فقط لتقديم الخدمات الصحية اللازمة.",
+      "number": "Art-23.1",
+      "description": "قصر حق الاطلاع على البيانات الصحية -بما فيها الملفات الطبية- على أقل عدد ممكن من الموظفين أو العاملين وبالقدر اللازم فقط لتقديم الخدمات الصحية اللازمة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-23.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-23.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-23",
+      "type": "Requirement",
+      "name": "تقييد إجراءات وعمليات مُعالجة البيانات الصحية إلى أقل قدر ممكن من الموظفين والعاملين لتقديم الخدمات الصحية أو توفير برامج التأمين الصحي.",
+      "number": "Art-23.2",
+      "description": "تقييد إجراءات وعمليات مُعالجة البيانات الصحية إلى أقل قدر ممكن من الموظفين والعاملين لتقديم الخدمات الصحية أو توفير برامج التأمين الصحي.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-23.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-24",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الرابعة والعشرون",
+      "number": "Art-24",
+      "description": "تُحدد اللوائح الضوابط والإجراءات الإضافية -بما لا يتعارض مع أحكام النظام- في شأن معالجة البيانات الائتمانية بما يكفل المحافظة على خصوصية أصحابها ويحمي حقوقهم الواردة في النظام ونظام المعلومات الائتمانية، على أن تشتمل على ما يأتي: 1 - اتخاذ ما يلزم للتحقق من توافر الموافقة الصريحة من صاحب البيانات الشخصية على جمع هذه البيانات أو تغيير الغرض من جمعها أو الإفصاح عنها أو نشرها وفق أحكام النظام ونظام المعلومات الائتمانية. 2 - وجوب إشعار صاحب البيانات الشخصية عند ورود طلب الإفصاح عن بياناته الائتمانية من أي جهة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-24"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-24.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-24",
+      "type": "Requirement",
+      "name": "اتخاذ ما يلزم للتحقق من توافر الموافقة الصريحة من صاحب البيانات الشخصية على جمع هذه البيانات أو تغيير الغرض من جمعها أو الإفصاح عنها أو نشرها وفق أحكام النظام ونظام المعلومات الائتمانية.",
+      "number": "Art-24.1",
+      "description": "اتخاذ ما يلزم للتحقق من توافر الموافقة الصريحة من صاحب البيانات الشخصية على جمع هذه البيانات أو تغيير الغرض من جمعها أو الإفصاح عنها أو نشرها وفق أحكام النظام ونظام المعلومات الائتمانية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-24.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-24.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-24",
+      "type": "Requirement",
+      "name": "وجوب إشعار صاحب البيانات الشخصية عند ورود طلب الإفصاح عن بياناته الائتمانية من أي جهة.",
+      "number": "Art-24.2",
+      "description": "وجوب إشعار صاحب البيانات الشخصية عند ورود طلب الإفصاح عن بياناته الائتمانية من أي جهة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-24.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-25",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الخامسة والعشرون",
+      "number": "Art-25",
+      "description": "فيما عدا المواد التوعوية التي ترسلها الجهات العامة، لا يجوز لجهة التحكم استخدام وسائل الاتصال الشخصية -بما فيها العناوين البريدية والإلكترونية- الخاصة بصاحب البيانات الشخصية لأجل إرسال مواد دعائية أو توعوية، إلاَّ وفقاً لما يأتي: 1 - أن تؤخذ موافقة المتلقي المستهدف على إرسال هذه المواد إليه. 2 - أن يوفر مرسل المواد آلية واضحة -بحسب ما تحدده اللوائح- تُمكن المتلقي المستهدف من إبداء رغبته في التوقف عن إرسالها إليه عند رغبته في ذلك. وتحدد اللوائح الأحكام المتعلقة بالمواد الدعائية والتوعوية المشار إليها في هذه المادة، وشروط وأحوال موافقة المتلقي المستهدف على إرسال هذه المواد إليه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-25"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-25.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-25",
+      "type": "Requirement",
+      "name": "أن تؤخذ موافقة المتلقي المستهدف على إرسال هذه المواد إليه.",
+      "number": "Art-25.1",
+      "description": "أن تؤخذ موافقة المتلقي المستهدف على إرسال هذه المواد إليه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-25.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-25.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-25",
+      "type": "Requirement",
+      "name": "أن يوفر مرسل المواد آلية واضحة -بحسب ما تحدده اللوائح- تُمكن المتلقي المستهدف من إبداء رغبته في التوقف عن إرسالها إليه عند رغبته في ذلك. وتحدد اللوائح الأحكام المتعلقة بالمواد الدعائية والتوعوية المشار إليها في هذه المادة، وشروط وأحوال موافقة المتلقي المستهدف على إرسال هذه المواد إليه.",
+      "number": "Art-25.2",
+      "description": "أن يوفر مرسل المواد آلية واضحة -بحسب ما تحدده اللوائح- تُمكن المتلقي المستهدف من إبداء رغبته في التوقف عن إرسالها إليه عند رغبته في ذلك. وتحدد اللوائح الأحكام المتعلقة بالمواد الدعائية والتوعوية المشار إليها في هذه المادة، وشروط وأحوال موافقة المتلقي المستهدف على إرسال هذه المواد إليه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-25.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-26",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السادسة والعشرون",
+      "number": "Art-26",
+      "description": "فيما عدا البيانات الحساسة، تجوز معالجة البيانات الشخصية لأغراض تسويقية، إذا جرى جمعها من صاحبها مباشرةً ووافق على ذلك وفق أحكام النظام. وتحدد اللوائح الضوابط اللازمة لذلك.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-26"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-27",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السابعة والعشرون",
+      "number": "Art-27",
+      "description": "يجوز جمع البيانات الشخصية أو مُعالجتها لأغراض علمية أو بحثية أو إحصائية دون موافقة صاحبها، في الأحوال الآتية: 1 - إذا لم تتضمن البيانات الشخصية ما يدل على هوية صاحبها على وجه التحديد. 2 - إذا كان سَيُجرى إتلاف ما يدل على هوية صاحب البيانات الشخصية على وجه التحديد خلال عملية مُعالجتها وقبل الإفصاح عنها لأي جهة أُخرى ولم تكن تلك البيانات بيانات حساسة. 3 - إذا كان جمع البيانات الشخصية أو معالجتها لهذه الأغراض يقتضيها نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحبها طرفاً فيه. وتحدد اللوائح الضوابط اللازمة لما ورد في هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-27"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-27.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-27",
+      "type": "Requirement",
+      "name": "إذا لم تتضمن البيانات الشخصية ما يدل على هوية صاحبها على وجه التحديد.",
+      "number": "Art-27.1",
+      "description": "إذا لم تتضمن البيانات الشخصية ما يدل على هوية صاحبها على وجه التحديد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-27.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-27.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-27",
+      "type": "Requirement",
+      "name": "إذا كان سَيُجرى إتلاف ما يدل على هوية صاحب البيانات الشخصية على وجه التحديد خلال عملية مُعالجتها وقبل الإفصاح عنها لأي جهة أُخرى ولم تكن تلك البيانات بيانات حساسة.",
+      "number": "Art-27.2",
+      "description": "إذا كان سَيُجرى إتلاف ما يدل على هوية صاحب البيانات الشخصية على وجه التحديد خلال عملية مُعالجتها وقبل الإفصاح عنها لأي جهة أُخرى ولم تكن تلك البيانات بيانات حساسة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-27.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-27.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-27",
+      "type": "Requirement",
+      "name": "إذا كان جمع البيانات الشخصية أو معالجتها لهذه الأغراض يقتضيها نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحبها طرفاً فيه. وتحدد اللوائح الضوابط اللازمة لما ورد في هذه المادة.",
+      "number": "Art-27.3",
+      "description": "إذا كان جمع البيانات الشخصية أو معالجتها لهذه الأغراض يقتضيها نظام آخر أو تنفيذاً لاتفاق سابق يكون صاحبها طرفاً فيه. وتحدد اللوائح الضوابط اللازمة لما ورد في هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-27.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-28",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثامنة والعشرون",
+      "number": "Art-28",
+      "description": "لا يجوز تصوير الوثائق الرسمية التي تحدد هوية صاحب البيانات الشخصية أو نسخها، إلاَّ عندما يكون ذلك تنفيذاً لأحكام نظام، أو عندما تطلب جهة عامة مختصة تصوير تلك الوثائق أو نسخها وفق ما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-28"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-29",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة التاسعة والعشرون",
+      "number": "Art-29",
+      "description": "1 - مع مراعاة ما ورد في الفقرة )2 ( من هذه المادة، يجوز لجهة التحكم نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة، وذلك لتحقيق أيٍّ من الأغراض الآتية: أ- إذا كان ذلك تنفيذاً لالتزام بموجب اتفاقية تكون المملكة طرفاً فيه. ب- إذا كان ذلك لخدمة مصالح المملكة. ج- إذا كان ذلك تنفيذاً لالتزام يكون صاحب البيانات الشخصية طرفاً فيه. د- إذا كان ذلك تنفيذاً لأغراض أخرى وفق ما تحدده اللوائح. 2 - تكون الشروط الواجب توافرها عند نقل البيانات الشخصية أو الإفصاح عنها -وفق ما ورد في الفقرة ) 1 ( من هذه المادة- على النحو الآتي: أ- ألا يترتب على النقل أو الإفصاح مساس بالأمن الوطني أو بمصالح المملكة الحيوية. ب- أن يتوافر مستوى مناسب لحماية البيانات الشخصية في خارج المملكة؛ بما لا يقل عن مستوى الحماية المقرر في النظام واللوائح، وفقاً لنتائج تقويم تجريه الجهة المختصة في هذا الشأن بالتنسيق مع من تراه من الجهات المعنية. ج- أن يقتصر النقل أو الإفصاح على الحد الأدنى من البيانات الشخصية الذي تدعو الحاجة إليه. 3 - لا يسري ما ورد في الفقرة )2 ( من هذه المادة على حالات الضرورة القصوى للمحافظة على حياة صاحب البيانات الشخصية أو مصالحه الحيوية أو الوقاية من عدوى مرضية أو فحصها أو معالجتها. 4 - تحدد اللوائح الأحكام والمعايير والإجراءات المتعلقة بتطبيق ما ورد في هذه المادة، بما في ذلك تحديد حالات إعفاء جهات التحكم من الالتزام بأي من الشروط المشار إليها في الفقرتين الفرعيتين )ب( و)ج( من الفقرة )2 ( من هذه المادة، وكذلك ضوابط وإجراءات ذلك الإعفاء والعدول عنه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-29"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-29.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-29",
+      "type": "Requirement",
+      "name": "مع مراعاة ما ورد في الفقرة )2 ( من هذه المادة، يجوز لجهة التحكم نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة، وذلك لتحقيق أيٍّ من الأغراض الآتية: أ- إذا كان ذلك تنفيذاً لالتزام بموجب اتفاقية تكون المملكة طرفاً فيه. ب- إذا كان ذلك لخدمة مصالح المملكة. ج- إذا كان ذلك تنفيذاً لالتزام يكون صاحب البيانات الشخصية طرفاً فيه. د- إذا كان ذلك تنفيذاً لأغراض أخرى وفق ما تحدده اللوائح.",
+      "number": "Art-29.1",
+      "description": "مع مراعاة ما ورد في الفقرة )2 ( من هذه المادة، يجوز لجهة التحكم نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة، وذلك لتحقيق أيٍّ من الأغراض الآتية: أ- إذا كان ذلك تنفيذاً لالتزام بموجب اتفاقية تكون المملكة طرفاً فيه. ب- إذا كان ذلك لخدمة مصالح المملكة. ج- إذا كان ذلك تنفيذاً لالتزام يكون صاحب البيانات الشخصية طرفاً فيه. د- إذا كان ذلك تنفيذاً لأغراض أخرى وفق ما تحدده اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-29.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-29.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-29",
+      "type": "Requirement",
+      "name": "تكون الشروط الواجب توافرها عند نقل البيانات الشخصية أو الإفصاح عنها -وفق ما ورد في الفقرة ) 1 ( من هذه المادة- على النحو الآتي: أ- ألا يترتب على النقل أو الإفصاح مساس بالأمن الوطني أو بمصالح المملكة الحيوية. ب- أن يتوافر مستوى مناسب لحماية البيانات الشخصية في خارج المملكة؛ بما لا يقل عن مستوى الحماية المقرر في النظام واللوائح، وفقاً لنتائج تقويم تجريه الجهة المختصة في هذا الشأن بالتنسيق مع من تراه من الجهات المعنية. ج- أن يقتصر النقل أو الإفصاح على الحد الأدنى من البيانات الشخصية الذي تدعو الحاجة إليه.",
+      "number": "Art-29.2",
+      "description": "تكون الشروط الواجب توافرها عند نقل البيانات الشخصية أو الإفصاح عنها -وفق ما ورد في الفقرة ) 1 ( من هذه المادة- على النحو الآتي: أ- ألا يترتب على النقل أو الإفصاح مساس بالأمن الوطني أو بمصالح المملكة الحيوية. ب- أن يتوافر مستوى مناسب لحماية البيانات الشخصية في خارج المملكة؛ بما لا يقل عن مستوى الحماية المقرر في النظام واللوائح، وفقاً لنتائج تقويم تجريه الجهة المختصة في هذا الشأن بالتنسيق مع من تراه من الجهات المعنية. ج- أن يقتصر النقل أو الإفصاح على الحد الأدنى من البيانات الشخصية الذي تدعو الحاجة إليه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-29.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-29.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-29",
+      "type": "Requirement",
+      "name": "لا يسري ما ورد في الفقرة )2 ( من هذه المادة على حالات الضرورة القصوى للمحافظة على حياة صاحب البيانات الشخصية أو مصالحه الحيوية أو الوقاية من عدوى مرضية أو فحصها أو معالجتها.",
+      "number": "Art-29.3",
+      "description": "لا يسري ما ورد في الفقرة )2 ( من هذه المادة على حالات الضرورة القصوى للمحافظة على حياة صاحب البيانات الشخصية أو مصالحه الحيوية أو الوقاية من عدوى مرضية أو فحصها أو معالجتها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-29.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-29.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-29",
+      "type": "Requirement",
+      "name": "تحدد اللوائح الأحكام والمعايير والإجراءات المتعلقة بتطبيق ما ورد في هذه المادة، بما في ذلك تحديد حالات إعفاء جهات التحكم من الالتزام بأي من الشروط المشار إليها في الفقرتين الفرعيتين )ب( و)ج( من الفقرة )2 ( من هذه المادة، وكذلك ضوابط وإجراءات ذلك الإعفاء والعدول عنه.",
+      "number": "Art-29.4",
+      "description": "تحدد اللوائح الأحكام والمعايير والإجراءات المتعلقة بتطبيق ما ورد في هذه المادة، بما في ذلك تحديد حالات إعفاء جهات التحكم من الالتزام بأي من الشروط المشار إليها في الفقرتين الفرعيتين )ب( و)ج( من الفقرة )2 ( من هذه المادة، وكذلك ضوابط وإجراءات ذلك الإعفاء والعدول عنه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-29.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثلاثون",
+      "number": "Art-30",
+      "description": "1 - مع عدم الإخلال بأحكام النظام، وما للبنك المركزي السعودي من صلاحيات وفقاً لما تقضي به النصوص النظامية ذات العلاقة، تكون الجهة المختصة الجهة المشرفة على تطبيق أحكام النظام واللوائح. 2 - تحدد اللوائح الأحوال التي يجب فيها على جهة التحكم تعيين أو تحديد شخص )أو أكثر( يتولى دور مسؤول حماية البيانات الشخصية، وتبين اللوائح كذلك مسؤولياته بما يتفق مع أحكام النظام واللوائح. 3 - على جهة التحكم التعاون مع الجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، وعليها كذلك اتخاذ ما يلزم من إجراءات حيال المسائل المتعلقة بذلك التي تحيلها الجهة المختصة إليها. 4 - للجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، اتخاذ ما يأتي: أ- طلب الوثائق أو المعلومات اللازمة من جهة التحكم للتأكد من التزامها بأحكام النظام واللوائح. ب- الاستعانة بأي جهة أخرى لأغراض المساندة في مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح. ج- تحديد الأدوات والآليات المناسبة في شأن مراقبة ومتابعة التزام جهات التحكم بأحكام النظام واللوائح، بما في ذلك بناء سجل وطني لهذا الغرض عن جهات التحكم. د- تقديم الخدمات المتعلقة بحماية البيانات الشخصية من خلال السجل الوطني المشار إليه في الفقرة الفرعية )ج( من هذه الفقرة أو من خلال أي وسيلة أخرى؛ وفقاً لما تراه مناسباً. وللجهة المختصة استحصال مقابل مالي عن الخدمات التي تقدمها المتعلقة بحماية البيانات الشخصية. 5 - يجوز للجهة المختصة -وفق ما تقدره- تفويض غيرها من الجهات في مباشرة بعض المهمات الموكولة إليها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-30",
+      "type": "Requirement",
+      "name": "مع عدم الإخلال بأحكام النظام، وما للبنك المركزي السعودي من صلاحيات وفقاً لما تقضي به النصوص النظامية ذات العلاقة، تكون الجهة المختصة الجهة المشرفة على تطبيق أحكام النظام واللوائح.",
+      "number": "Art-30.1",
+      "description": "مع عدم الإخلال بأحكام النظام، وما للبنك المركزي السعودي من صلاحيات وفقاً لما تقضي به النصوص النظامية ذات العلاقة، تكون الجهة المختصة الجهة المشرفة على تطبيق أحكام النظام واللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-30",
+      "type": "Requirement",
+      "name": "تحدد اللوائح الأحوال التي يجب فيها على جهة التحكم تعيين أو تحديد شخص )أو أكثر( يتولى دور مسؤول حماية البيانات الشخصية، وتبين اللوائح كذلك مسؤولياته بما يتفق مع أحكام النظام واللوائح.",
+      "number": "Art-30.2",
+      "description": "تحدد اللوائح الأحوال التي يجب فيها على جهة التحكم تعيين أو تحديد شخص )أو أكثر( يتولى دور مسؤول حماية البيانات الشخصية، وتبين اللوائح كذلك مسؤولياته بما يتفق مع أحكام النظام واللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-30",
+      "type": "Requirement",
+      "name": "على جهة التحكم التعاون مع الجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، وعليها كذلك اتخاذ ما يلزم من إجراءات حيال المسائل المتعلقة بذلك التي تحيلها الجهة المختصة إليها.",
+      "number": "Art-30.3",
+      "description": "على جهة التحكم التعاون مع الجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، وعليها كذلك اتخاذ ما يلزم من إجراءات حيال المسائل المتعلقة بذلك التي تحيلها الجهة المختصة إليها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-30",
+      "type": "Requirement",
+      "name": "للجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، اتخاذ ما يأتي: أ- طلب الوثائق أو المعلومات اللازمة من جهة التحكم للتأكد من التزامها بأحكام النظام واللوائح. ب- الاستعانة بأي جهة أخرى لأغراض المساندة في مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح. ج- تحديد الأدوات والآليات المناسبة في شأن مراقبة ومتابعة التزام جهات التحكم بأحكام النظام واللوائح، بما في ذلك بناء سجل وطني لهذا الغرض عن جهات التحكم. د- تقديم الخدمات المتعلقة بحماية البيانات الشخصية من خلال السجل الوطني المشار إليه في الفقرة الفرعية )ج( من هذه الفقرة أو من خلال أي وسيلة أخرى؛ وفقاً لما تراه مناسباً. وللجهة المختصة استحصال مقابل مالي عن الخدمات التي تقدمها المتعلقة بحماية البيانات الشخصية.",
+      "number": "Art-30.4",
+      "description": "للجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، اتخاذ ما يأتي: أ- طلب الوثائق أو المعلومات اللازمة من جهة التحكم للتأكد من التزامها بأحكام النظام واللوائح. ب- الاستعانة بأي جهة أخرى لأغراض المساندة في مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح. ج- تحديد الأدوات والآليات المناسبة في شأن مراقبة ومتابعة التزام جهات التحكم بأحكام النظام واللوائح، بما في ذلك بناء سجل وطني لهذا الغرض عن جهات التحكم. د- تقديم الخدمات المتعلقة بحماية البيانات الشخصية من خلال السجل الوطني المشار إليه في الفقرة الفرعية )ج( من هذه الفقرة أو من خلال أي وسيلة أخرى؛ وفقاً لما تراه مناسباً. وللجهة المختصة استحصال مقابل مالي عن الخدمات التي تقدمها المتعلقة بحماية البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-30.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-30",
+      "type": "Requirement",
+      "name": "يجوز للجهة المختصة -وفق ما تقدره- تفويض غيرها من الجهات في مباشرة بعض المهمات الموكولة إليها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح.",
+      "number": "Art-30.5",
+      "description": "يجوز للجهة المختصة -وفق ما تقدره- تفويض غيرها من الجهات في مباشرة بعض المهمات الموكولة إليها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-30.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الحادية والثلاثون",
+      "number": "Art-31",
+      "description": "دون إخلال بما ورد في المادة )الثامنة عشرة( من النظام، تحتفظ جهة التحكم بسجلات لمدة تحددها اللوائح لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ لتكون متاحة عندما تطلبها الجهة المختصة. على أن تشمل السجلات حدًّا أدنى من البيانات الآتية: 1 - تفاصيل الاتصال الخاصة بجهة التحكم. 2 - الغرض من معالجة البيانات الشخصية. 3 - وصف فئات أصحاب البيانات الشخصية. 4 - أي جهة جرى )أو سَيُجرى( إفصاح البيانات الشخصية إليها. 5 - ما إذا جرى )أو سَيُجرى( نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة. 6 - المدة الزمنية المتوقعة للاحتفاظ بالبيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "تفاصيل الاتصال الخاصة بجهة التحكم.",
+      "number": "Art-31.1",
+      "description": "تفاصيل الاتصال الخاصة بجهة التحكم.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "الغرض من معالجة البيانات الشخصية.",
+      "number": "Art-31.2",
+      "description": "الغرض من معالجة البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "وصف فئات أصحاب البيانات الشخصية.",
+      "number": "Art-31.3",
+      "description": "وصف فئات أصحاب البيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "أي جهة جرى )أو سَيُجرى( إفصاح البيانات الشخصية إليها.",
+      "number": "Art-31.4",
+      "description": "أي جهة جرى )أو سَيُجرى( إفصاح البيانات الشخصية إليها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.5",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "ما إذا جرى )أو سَيُجرى( نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة.",
+      "number": "Art-31.5",
+      "description": "ما إذا جرى )أو سَيُجرى( نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.5"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-31.6",
+      "parent": "KSA-PDPL-LAW@2023::Art-31",
+      "type": "Requirement",
+      "name": "المدة الزمنية المتوقعة للاحتفاظ بالبيانات الشخصية.",
+      "number": "Art-31.6",
+      "description": "المدة الزمنية المتوقعة للاحتفاظ بالبيانات الشخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-31.6"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-32",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثانية والثلاثون",
+      "number": "Art-32",
+      "description": "مُلغاة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-32"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-33",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثالثة والثلاثون",
+      "number": "Art-33",
+      "description": "1 - تضع الجهة المختصة اشتراطات ممارسة الأنشطة التجارية أو المهنية أو غير الربحية المرتبطة بحماية البيانات الشخصية في المملكة، بالتنسيق مع الجهات المعنية، وبما لا يخل بما تضعه تلك الجهات من اشتراطات أخرى بحسب اختصاصاتها. 2 - للجهة المختصة الترخيص لجهات تتولى إصدار شهادات اعتماد لجهة التحكم وجهة المعالجة. وتضع الجهة المختصة القواعد المنظمة لإصدار تلك الشهادات. 3 - للجهة المختصة الترخيص لجهات تتولى أعمال التدقيق أو الفحص لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ وفق الأحكام التي تحددها اللوائح. وتضع الجهة المختصة شروط ومتطلبات إصدار تلك التراخيص، والقواعد المنظّمة لها. 4 - تتولى الجهة المختصة تحديد الأدوات والآليات المناسبة لمتابعة التزام الجهات التي في خارج المملكة بالتزاماتها المقررة بموجب أحكام النظام واللوائح عند معالجتها لبيانات شخصية متعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت، والإجراءات المتعلقة بإنفاذ أحكام النظام واللوائح خارج المملكة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-33"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-33.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-33",
+      "type": "Requirement",
+      "name": "تضع الجهة المختصة اشتراطات ممارسة الأنشطة التجارية أو المهنية أو غير الربحية المرتبطة بحماية البيانات الشخصية في المملكة، بالتنسيق مع الجهات المعنية، وبما لا يخل بما تضعه تلك الجهات من اشتراطات أخرى بحسب اختصاصاتها.",
+      "number": "Art-33.1",
+      "description": "تضع الجهة المختصة اشتراطات ممارسة الأنشطة التجارية أو المهنية أو غير الربحية المرتبطة بحماية البيانات الشخصية في المملكة، بالتنسيق مع الجهات المعنية، وبما لا يخل بما تضعه تلك الجهات من اشتراطات أخرى بحسب اختصاصاتها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-33.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-33.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-33",
+      "type": "Requirement",
+      "name": "للجهة المختصة الترخيص لجهات تتولى إصدار شهادات اعتماد لجهة التحكم وجهة المعالجة. وتضع الجهة المختصة القواعد المنظمة لإصدار تلك الشهادات.",
+      "number": "Art-33.2",
+      "description": "للجهة المختصة الترخيص لجهات تتولى إصدار شهادات اعتماد لجهة التحكم وجهة المعالجة. وتضع الجهة المختصة القواعد المنظمة لإصدار تلك الشهادات.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-33.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-33.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-33",
+      "type": "Requirement",
+      "name": "للجهة المختصة الترخيص لجهات تتولى أعمال التدقيق أو الفحص لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ وفق الأحكام التي تحددها اللوائح. وتضع الجهة المختصة شروط ومتطلبات إصدار تلك التراخيص، والقواعد المنظّمة لها.",
+      "number": "Art-33.3",
+      "description": "للجهة المختصة الترخيص لجهات تتولى أعمال التدقيق أو الفحص لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ وفق الأحكام التي تحددها اللوائح. وتضع الجهة المختصة شروط ومتطلبات إصدار تلك التراخيص، والقواعد المنظّمة لها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-33.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-33.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-33",
+      "type": "Requirement",
+      "name": "تتولى الجهة المختصة تحديد الأدوات والآليات المناسبة لمتابعة التزام الجهات التي في خارج المملكة بالتزاماتها المقررة بموجب أحكام النظام واللوائح عند معالجتها لبيانات شخصية متعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت، والإجراءات المتعلقة بإنفاذ أحكام النظام واللوائح خارج المملكة.",
+      "number": "Art-33.4",
+      "description": "تتولى الجهة المختصة تحديد الأدوات والآليات المناسبة لمتابعة التزام الجهات التي في خارج المملكة بالتزاماتها المقررة بموجب أحكام النظام واللوائح عند معالجتها لبيانات شخصية متعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت، والإجراءات المتعلقة بإنفاذ أحكام النظام واللوائح خارج المملكة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-33.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-34",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الرابعة والثلاثون",
+      "number": "Art-34",
+      "description": "يجوز لصاحب البيانات الشخصية التقدم إلى الجهة المختصة بأي شكوى ناشئة من تطبيق النظام واللوائح. وتحدد اللوائح ضوابط معالجة الجهة المختصة للشكاوى التي يقدمها صاحب البيانات الشخصية الناشئة من تطبيق النظام واللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-34"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-35",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الخامسة والثلاثون",
+      "number": "Art-35",
+      "description": "1 - مع عدم الإخلال بأي عقوبة أشد منصوص عليها في نظام آخر، يُعاقب بالسجن مدة لا تزيد على )سنتين( وبغرامة لا تزيد على )ثلاثة ملايين( ريال، أو بإحدى هاتين العقوبتين؛ كل من أفصح عن بيانات حساسة أو نشرها مخالفًا أحكام النظام إذا كان ذلك بقصد الإضرار بصاحب البيانات أو بقصد تحقيق منفعة شخصية. 2 - تختص النيابة العامة بمهمة التحقيق، والادعاء أمام المحكمة المختصة عن المخالفة المنصوص عليها في الفقرة )1 ( من هذه المادة. 3 - تتولى المحكمة المختصة النظر في الدعاوى الناشئة من تطبيق هذه المادة وإيقاع العقوبات المقررة. 4 - يجوز للمحكمة المختصة مضاعفة عقوبة الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة في حالة العود حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-35"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-35.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-35",
+      "type": "Requirement",
+      "name": "مع عدم الإخلال بأي عقوبة أشد منصوص عليها في نظام آخر، يُعاقب بالسجن مدة لا تزيد على )سنتين( وبغرامة لا تزيد على )ثلاثة ملايين( ريال، أو بإحدى هاتين العقوبتين؛ كل من أفصح عن بيانات حساسة أو نشرها مخالفًا أحكام النظام إذا كان ذلك بقصد الإضرار بصاحب البيانات أو بقصد تحقيق منفعة شخصية.",
+      "number": "Art-35.1",
+      "description": "مع عدم الإخلال بأي عقوبة أشد منصوص عليها في نظام آخر، يُعاقب بالسجن مدة لا تزيد على )سنتين( وبغرامة لا تزيد على )ثلاثة ملايين( ريال، أو بإحدى هاتين العقوبتين؛ كل من أفصح عن بيانات حساسة أو نشرها مخالفًا أحكام النظام إذا كان ذلك بقصد الإضرار بصاحب البيانات أو بقصد تحقيق منفعة شخصية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-35.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-35.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-35",
+      "type": "Requirement",
+      "name": "تختص النيابة العامة بمهمة التحقيق، والادعاء أمام المحكمة المختصة عن المخالفة المنصوص عليها في الفقرة )1 ( من هذه المادة.",
+      "number": "Art-35.2",
+      "description": "تختص النيابة العامة بمهمة التحقيق، والادعاء أمام المحكمة المختصة عن المخالفة المنصوص عليها في الفقرة )1 ( من هذه المادة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-35.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-35.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-35",
+      "type": "Requirement",
+      "name": "تتولى المحكمة المختصة النظر في الدعاوى الناشئة من تطبيق هذه المادة وإيقاع العقوبات المقررة.",
+      "number": "Art-35.3",
+      "description": "تتولى المحكمة المختصة النظر في الدعاوى الناشئة من تطبيق هذه المادة وإيقاع العقوبات المقررة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-35.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-35.4",
+      "parent": "KSA-PDPL-LAW@2023::Art-35",
+      "type": "Requirement",
+      "name": "يجوز للمحكمة المختصة مضاعفة عقوبة الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة في حالة العود حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "number": "Art-35.4",
+      "description": "يجوز للمحكمة المختصة مضاعفة عقوبة الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة في حالة العود حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-35.4"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-36",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السادسة والثلاثون",
+      "number": "Art-36",
+      "description": "1 - فيما لم يرد في شأنه نص خاص في المادة )الخامسة والثلاثين( من النظام، ودون إخلال بأيِّ عقوبة أشد منصوص عليها في نظام آخر؛ تُعاقَب بالإنذار أو بغرامة لا تزيد على )خمسة ملايين( ريال، كلُّ شخصية ذات صفة طبيعية أو اعتبارية خاصة -مشمولة بأحكام النظام- خالفت أيًّا من أحكام النظام أو اللوائح. وتجوز مضاعفة عقوبة الغرامة في حالة تكرار المخالفة حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد. 2 - تكوّن بقرار من رئيس الجهة المختصة، لجنة )أو أكثر( لا يقل عدد أعضائها عن )ثلاثة(، ويسمى أحدهم رئيساً، ويكون من بينهم مختص فني ومستشار نظامي؛ تتولى النظر في المخالفات وإيقاع عقوبة الإنذار أو الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يعتمد قرار اللجنة رئيس الجهة المختصة أو من يفوضه بذلك. ويصدر رئيس الجهة المختصة -بقرار منه- قواعد عمل اللجنة، وتحدد فيها مكافآت أعضائها. 3 - يحق لمن صدر ضده قرار من اللجنة المنصوص عليها في الفقرة )2 ( من هذه المادة التظلم منه أمام المحكمة المختصة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-36"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-36.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-36",
+      "type": "Requirement",
+      "name": "فيما لم يرد في شأنه نص خاص في المادة )الخامسة والثلاثين( من النظام، ودون إخلال بأيِّ عقوبة أشد منصوص عليها في نظام آخر؛ تُعاقَب بالإنذار أو بغرامة لا تزيد على )خمسة ملايين( ريال، كلُّ شخصية ذات صفة طبيعية أو اعتبارية خاصة -مشمولة بأحكام النظام- خالفت أيًّا من أحكام النظام أو اللوائح. وتجوز مضاعفة عقوبة الغرامة في حالة تكرار المخالفة حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "number": "Art-36.1",
+      "description": "فيما لم يرد في شأنه نص خاص في المادة )الخامسة والثلاثين( من النظام، ودون إخلال بأيِّ عقوبة أشد منصوص عليها في نظام آخر؛ تُعاقَب بالإنذار أو بغرامة لا تزيد على )خمسة ملايين( ريال، كلُّ شخصية ذات صفة طبيعية أو اعتبارية خاصة -مشمولة بأحكام النظام- خالفت أيًّا من أحكام النظام أو اللوائح. وتجوز مضاعفة عقوبة الغرامة في حالة تكرار المخالفة حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-36.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-36.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-36",
+      "type": "Requirement",
+      "name": "تكوّن بقرار من رئيس الجهة المختصة، لجنة )أو أكثر( لا يقل عدد أعضائها عن )ثلاثة(، ويسمى أحدهم رئيساً، ويكون من بينهم مختص فني ومستشار نظامي؛ تتولى النظر في المخالفات وإيقاع عقوبة الإنذار أو الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يعتمد قرار اللجنة رئيس الجهة المختصة أو من يفوضه بذلك. ويصدر رئيس الجهة المختصة -بقرار منه- قواعد عمل اللجنة، وتحدد فيها مكافآت أعضائها.",
+      "number": "Art-36.2",
+      "description": "تكوّن بقرار من رئيس الجهة المختصة، لجنة )أو أكثر( لا يقل عدد أعضائها عن )ثلاثة(، ويسمى أحدهم رئيساً، ويكون من بينهم مختص فني ومستشار نظامي؛ تتولى النظر في المخالفات وإيقاع عقوبة الإنذار أو الغرامة المنصوص عليها في الفقرة )1 ( من هذه المادة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يعتمد قرار اللجنة رئيس الجهة المختصة أو من يفوضه بذلك. ويصدر رئيس الجهة المختصة -بقرار منه- قواعد عمل اللجنة، وتحدد فيها مكافآت أعضائها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-36.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-36.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-36",
+      "type": "Requirement",
+      "name": "يحق لمن صدر ضده قرار من اللجنة المنصوص عليها في الفقرة )2 ( من هذه المادة التظلم منه أمام المحكمة المختصة.",
+      "number": "Art-36.3",
+      "description": "يحق لمن صدر ضده قرار من اللجنة المنصوص عليها في الفقرة )2 ( من هذه المادة التظلم منه أمام المحكمة المختصة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-36.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-37",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة السابعة والثلاثون",
+      "number": "Art-37",
+      "description": "1 - يتولى الموظفون أو العاملون -الذين يصدر بتسميتهم قرار من رئيس الجهة المختصة- صلاحيات الضبط والتفتيش المتعلقة بـالمخالفات المنصوص عليها في النظام أو اللوائح. ويُصدر رئيس الجهة المختصة قواعد وإجراءات عملهم بما يتفق مع النصوص النظامية ذات الصلة. 2 - للموظفين أو العاملين -المنصوص عليهم في الفقرة )1 ( من هذه المادة- الاستعانة بجهات الضبط الجنائي أو الجهات المختصة الأخرى؛ وذلك في سبيل قيامهم بمهمات وإجراءات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح. 3 - للجهة المختصة الحق في حجز الوسائل أو الأدوات المستخدمة في ارتكاب المخالفة إلى حين البت فيها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-37"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-37.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-37",
+      "type": "Requirement",
+      "name": "يتولى الموظفون أو العاملون -الذين يصدر بتسميتهم قرار من رئيس الجهة المختصة- صلاحيات الضبط والتفتيش المتعلقة بـالمخالفات المنصوص عليها في النظام أو اللوائح. ويُصدر رئيس الجهة المختصة قواعد وإجراءات عملهم بما يتفق مع النصوص النظامية ذات الصلة.",
+      "number": "Art-37.1",
+      "description": "يتولى الموظفون أو العاملون -الذين يصدر بتسميتهم قرار من رئيس الجهة المختصة- صلاحيات الضبط والتفتيش المتعلقة بـالمخالفات المنصوص عليها في النظام أو اللوائح. ويُصدر رئيس الجهة المختصة قواعد وإجراءات عملهم بما يتفق مع النصوص النظامية ذات الصلة.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-37.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-37.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-37",
+      "type": "Requirement",
+      "name": "للموظفين أو العاملين -المنصوص عليهم في الفقرة )1 ( من هذه المادة- الاستعانة بجهات الضبط الجنائي أو الجهات المختصة الأخرى؛ وذلك في سبيل قيامهم بمهمات وإجراءات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح.",
+      "number": "Art-37.2",
+      "description": "للموظفين أو العاملين -المنصوص عليهم في الفقرة )1 ( من هذه المادة- الاستعانة بجهات الضبط الجنائي أو الجهات المختصة الأخرى؛ وذلك في سبيل قيامهم بمهمات وإجراءات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-37.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-37.3",
+      "parent": "KSA-PDPL-LAW@2023::Art-37",
+      "type": "Requirement",
+      "name": "للجهة المختصة الحق في حجز الوسائل أو الأدوات المستخدمة في ارتكاب المخالفة إلى حين البت فيها.",
+      "number": "Art-37.3",
+      "description": "للجهة المختصة الحق في حجز الوسائل أو الأدوات المستخدمة في ارتكاب المخالفة إلى حين البت فيها.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-37.3"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-38",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثامنة والثلاثون",
+      "number": "Art-38",
+      "description": "1 - مع عدم الإخلال بحقوق الغير حسن النية، يجوز للمحكمة المختصة الحكم بمصادرة الأموال المتحصلة من جراء ارتكاب المخالفات المنصوص عليها في النظام. 2 - يجوز للمحكمة المختصة أو اللجنة المنصوص عليها في الفقرة )2 ( من المادة )السادسة والثلاثين( - بحسب الأحوال- تضمين الحكم أو القرار الصادر من أي منهما بتحديد العقوبة النصَّ على نشر ملخصه على نفقة المحكوم عليه أو المخالف في صحيفة محلية )أو أكثر( تصدر في مكان إقامته، أو في أي وسيلة أخرى مناسبة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يكون النشر بعد اكتساب الحكم الصفة القطعية، أو تحصن القرار بفوات ميعاد التظلم منه، أو صدور حكم نهائي برفض التظلم منه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-38"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-38.1",
+      "parent": "KSA-PDPL-LAW@2023::Art-38",
+      "type": "Requirement",
+      "name": "مع عدم الإخلال بحقوق الغير حسن النية، يجوز للمحكمة المختصة الحكم بمصادرة الأموال المتحصلة من جراء ارتكاب المخالفات المنصوص عليها في النظام.",
+      "number": "Art-38.1",
+      "description": "مع عدم الإخلال بحقوق الغير حسن النية، يجوز للمحكمة المختصة الحكم بمصادرة الأموال المتحصلة من جراء ارتكاب المخالفات المنصوص عليها في النظام.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-38.1"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-38.2",
+      "parent": "KSA-PDPL-LAW@2023::Art-38",
+      "type": "Requirement",
+      "name": "يجوز للمحكمة المختصة أو اللجنة المنصوص عليها في الفقرة )2 ( من المادة )السادسة والثلاثين( - بحسب الأحوال- تضمين الحكم أو القرار الصادر من أي منهما بتحديد العقوبة النصَّ على نشر ملخصه على نفقة المحكوم عليه أو المخالف في صحيفة محلية )أو أكثر( تصدر في مكان إقامته، أو في أي وسيلة أخرى مناسبة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يكون النشر بعد اكتساب الحكم الصفة القطعية، أو تحصن القرار بفوات ميعاد التظلم منه، أو صدور حكم نهائي برفض التظلم منه.",
+      "number": "Art-38.2",
+      "description": "يجوز للمحكمة المختصة أو اللجنة المنصوص عليها في الفقرة )2 ( من المادة )السادسة والثلاثين( - بحسب الأحوال- تضمين الحكم أو القرار الصادر من أي منهما بتحديد العقوبة النصَّ على نشر ملخصه على نفقة المحكوم عليه أو المخالف في صحيفة محلية )أو أكثر( تصدر في مكان إقامته، أو في أي وسيلة أخرى مناسبة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يكون النشر بعد اكتساب الحكم الصفة القطعية، أو تحصن القرار بفوات ميعاد التظلم منه، أو صدور حكم نهائي برفض التظلم منه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-38.2"
+      },
+      "native_node_type": "Provision",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-39",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة التاسعة والثلاثون",
+      "number": "Art-39",
+      "description": "دون إخلال بما ورد في المادة )الخامسة والثلاثين( والفقرة )1 ( من المادة )السادسة والثلاثين( من النظام، يجب على الجهة العامة مساءلة أي من منسوبيها -تأديبيًّا- في حال مخالفته أيًّا من أحكام النظام واللوائح؛ وفق أحكام وإجراءات المساءلة والتأديب المقررة نظاماً.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-39"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-40",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الأربعون",
+      "number": "Art-40",
+      "description": "مع عدم الإخلال بإيقاع العقوبات المنصوص عليها في النظام، لمن لحقه ضرر -نتيجةَ ارتكاب أي من المخالفات المنصوص عليها في النظام أو اللوائح- حق المطالبة أمام المحكمة المختصة بالتعويض عن الضرر المادي أو المعنوي بما يتناسب مع حجم الضرر.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-40"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-41",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الحادية والأربعون",
+      "number": "Art-41",
+      "description": "يلتزم كل من باشر عملاً من أعمال معالجة البيانات الشخصية بالمحافظة على الأسرار المتعلقة بالبيانات حتى بعد انتهاء علاقته الوظيفية أو التعاقدية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-41"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-42",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثانية والأربعون",
+      "number": "Art-42",
+      "description": "يصدر رئيس الجهة المختصة اللوائح، وذلك في مدة لا تتجاوز )سبعمائة وعشرين( يوماً من تاريخ صدور النظام، على أن يُنسِّق -قبل إصدارها- مع وزارة الاتصالات وتقنية المعلومات ووزارة الخارجية وهيئة الاتصالات والفضاء والتقنية وهيئة الحكومة الرقمية والهيئة الوطنية للأمن السيبراني والمجلس الصحي السعودي والبنك المركزي السعودي، كلٌّ فيما يخصه.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-42"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "KSA-PDPL-LAW",
+      "version": "2023",
+      "entity_id": "KSA-PDPL-LAW@2023::Art-43",
+      "parent": null,
+      "type": "Requirement",
+      "name": "المادة الثالثة والأربعون",
+      "number": "Art-43",
+      "description": "يُعمل بالنظام بعد )سبعمائة وعشرين( يوماً من التاريخ الذي نشر به في الجريدة الرسمية.",
+      "language": "AR",
+      "authority": "Regulatory",
+      "license": "Public-Domain",
+      "stability": "Living",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "KSA-PDPL-LAW",
+        "version": "2023",
+        "location": "Requirement Art-43"
+      },
+      "native_node_type": "Article",
+      "egress_restricted": false
+    }
+  ],
+  "structural_relationships": [
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.7"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.8"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.9"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.10"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.11"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.12"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.13"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.14"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.15"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.16"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.17"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.18"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-1",
+      "target": "KSA-PDPL-LAW@2023::Art-1.19"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-2",
+      "target": "KSA-PDPL-LAW@2023::Art-2.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-2",
+      "target": "KSA-PDPL-LAW@2023::Art-2.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-4",
+      "target": "KSA-PDPL-LAW@2023::Art-4.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-4",
+      "target": "KSA-PDPL-LAW@2023::Art-4.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-4",
+      "target": "KSA-PDPL-LAW@2023::Art-4.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-4",
+      "target": "KSA-PDPL-LAW@2023::Art-4.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-4",
+      "target": "KSA-PDPL-LAW@2023::Art-4.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-5",
+      "target": "KSA-PDPL-LAW@2023::Art-5.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-5",
+      "target": "KSA-PDPL-LAW@2023::Art-5.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-6",
+      "target": "KSA-PDPL-LAW@2023::Art-6.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-6",
+      "target": "KSA-PDPL-LAW@2023::Art-6.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-6",
+      "target": "KSA-PDPL-LAW@2023::Art-6.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-6",
+      "target": "KSA-PDPL-LAW@2023::Art-6.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-9",
+      "target": "KSA-PDPL-LAW@2023::Art-9.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-9",
+      "target": "KSA-PDPL-LAW@2023::Art-9.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-10",
+      "target": "KSA-PDPL-LAW@2023::Art-10.7"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-11",
+      "target": "KSA-PDPL-LAW@2023::Art-11.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-11",
+      "target": "KSA-PDPL-LAW@2023::Art-11.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-11",
+      "target": "KSA-PDPL-LAW@2023::Art-11.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-11",
+      "target": "KSA-PDPL-LAW@2023::Art-11.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-13",
+      "target": "KSA-PDPL-LAW@2023::Art-13.7"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-15",
+      "target": "KSA-PDPL-LAW@2023::Art-15.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.7"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.8"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-16",
+      "target": "KSA-PDPL-LAW@2023::Art-16.9"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-17",
+      "target": "KSA-PDPL-LAW@2023::Art-17.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-17",
+      "target": "KSA-PDPL-LAW@2023::Art-17.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-18",
+      "target": "KSA-PDPL-LAW@2023::Art-18.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-18",
+      "target": "KSA-PDPL-LAW@2023::Art-18.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-20",
+      "target": "KSA-PDPL-LAW@2023::Art-20.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-20",
+      "target": "KSA-PDPL-LAW@2023::Art-20.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-23",
+      "target": "KSA-PDPL-LAW@2023::Art-23.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-23",
+      "target": "KSA-PDPL-LAW@2023::Art-23.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-24",
+      "target": "KSA-PDPL-LAW@2023::Art-24.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-24",
+      "target": "KSA-PDPL-LAW@2023::Art-24.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-25",
+      "target": "KSA-PDPL-LAW@2023::Art-25.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-25",
+      "target": "KSA-PDPL-LAW@2023::Art-25.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-27",
+      "target": "KSA-PDPL-LAW@2023::Art-27.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-27",
+      "target": "KSA-PDPL-LAW@2023::Art-27.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-27",
+      "target": "KSA-PDPL-LAW@2023::Art-27.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-29",
+      "target": "KSA-PDPL-LAW@2023::Art-29.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-29",
+      "target": "KSA-PDPL-LAW@2023::Art-29.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-29",
+      "target": "KSA-PDPL-LAW@2023::Art-29.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-29",
+      "target": "KSA-PDPL-LAW@2023::Art-29.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-30",
+      "target": "KSA-PDPL-LAW@2023::Art-30.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-30",
+      "target": "KSA-PDPL-LAW@2023::Art-30.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-30",
+      "target": "KSA-PDPL-LAW@2023::Art-30.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-30",
+      "target": "KSA-PDPL-LAW@2023::Art-30.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-30",
+      "target": "KSA-PDPL-LAW@2023::Art-30.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.5"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-31",
+      "target": "KSA-PDPL-LAW@2023::Art-31.6"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-33",
+      "target": "KSA-PDPL-LAW@2023::Art-33.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-33",
+      "target": "KSA-PDPL-LAW@2023::Art-33.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-33",
+      "target": "KSA-PDPL-LAW@2023::Art-33.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-33",
+      "target": "KSA-PDPL-LAW@2023::Art-33.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-35",
+      "target": "KSA-PDPL-LAW@2023::Art-35.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-35",
+      "target": "KSA-PDPL-LAW@2023::Art-35.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-35",
+      "target": "KSA-PDPL-LAW@2023::Art-35.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-35",
+      "target": "KSA-PDPL-LAW@2023::Art-35.4"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-36",
+      "target": "KSA-PDPL-LAW@2023::Art-36.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-36",
+      "target": "KSA-PDPL-LAW@2023::Art-36.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-36",
+      "target": "KSA-PDPL-LAW@2023::Art-36.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-37",
+      "target": "KSA-PDPL-LAW@2023::Art-37.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-37",
+      "target": "KSA-PDPL-LAW@2023::Art-37.2"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-37",
+      "target": "KSA-PDPL-LAW@2023::Art-37.3"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-38",
+      "target": "KSA-PDPL-LAW@2023::Art-38.1"
+    },
+    {
+      "type": "contains",
+      "source": "KSA-PDPL-LAW@2023::Art-38",
+      "target": "KSA-PDPL-LAW@2023::Art-38.2"
+    }
+  ]
+}

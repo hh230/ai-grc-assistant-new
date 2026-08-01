@@ -1,0 +1,38 @@
+[project]
+name = "document-read-model"
+version = "0.1.0"
+description = "Rasheed V2 Document Read Model — the product-side read model behind the Knowledge view (Domain-Model §3 gap; V1 Execution Slice S4). A tenant-scoped, fail-closed projection that answers 'what evidence do we have?' The frozen Core stores no Document (knowledge-runtime ingests files into retrievable CHUNKS only); this package records that a document exists — its evidence_kind, ingestion status, filename, uploaded_at, size — and groups documents into EVIDENCE COLLECTIONS (by evidence_kind), the unit the product is built around. CQRS read side only: it writes no chunks (ingestion stays knowledge-runtime's job, behind the projection) and exposes no chunk/embedding/pgvector detail. Ships an in-memory adapter (no database needed) plus a Postgres adapter behind the same port."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+]
+
+[project.optional-dependencies]
+# The Postgres adapter's driver — kept optional so the package (and the pure in-memory adapter) install
+# and import with no driver present.
+postgres = [
+    "psycopg[binary]>=3.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["document_read_model"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# psycopg is an optional extra (the Postgres adapter loads it lazily); our own code stays strict.
+[[tool.mypy.overrides]]
+module = "psycopg.*"
+ignore_missing_imports = true

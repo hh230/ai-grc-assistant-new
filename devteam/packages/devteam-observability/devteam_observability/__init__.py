@@ -1,0 +1,96 @@
+"""Live runtime observability for the Autonomous Platform Dev Team (ADR 0061; CLAUDE.md §11, §19).
+
+A passive layer that turns the running dev-team agents into observable participants without touching
+them. The public surface is the roster-neutral ``core`` — the extension seam. The DevTeam *adapter*
+(the piece that maps ``devteam_protocol`` activity onto ``core`` events) lands alongside it and is
+re-exported here as it arrives; a second agent system would be a further adapter, never a change to
+``core`` (owner constraint: extensible without redesign).
+"""
+
+from __future__ import annotations
+
+from devteam_observability.adapter import (
+    DevTeamObservability,
+    MissionEventBridge,
+    ObservingExecutor,
+    ResultCourier,
+    StepCapture,
+    agent_id_for,
+    devteam_view_from_journal,
+    role_for_tool,
+    seed_roster,
+)
+from devteam_observability.core import (
+    JOURNAL_FILENAME,
+    JOURNAL_SCHEMA_VERSION,
+    AgentAssigned,
+    AgentCompleted,
+    AgentDecisionRecorded,
+    AgentHandoffOccurred,
+    AgentId,
+    AgentPhase,
+    AgentRuntimeRegistry,
+    AgentRuntimeState,
+    AgentSession,
+    AgentStarted,
+    AgentStatus,
+    AgentStatusChanged,
+    AgentSubsystem,
+    ArtifactRef,
+    CompositeObserver,
+    DecisionRecord,
+    HandoffSource,
+    JournalingObserver,
+    JournalReader,
+    MissionEventKind,
+    MissionObserved,
+    MissionRuntimeState,
+    RuntimeEvent,
+    RuntimeObserver,
+    RuntimeStateView,
+    SessionStatus,
+    build_view_from_journal,
+    now,
+)
+
+__all__ = [
+    "JOURNAL_FILENAME",
+    "JOURNAL_SCHEMA_VERSION",
+    "AgentAssigned",
+    "AgentCompleted",
+    "AgentDecisionRecorded",
+    "AgentHandoffOccurred",
+    "AgentId",
+    "AgentPhase",
+    "AgentRuntimeRegistry",
+    "AgentRuntimeState",
+    "AgentSession",
+    "AgentStarted",
+    "AgentStatus",
+    "AgentStatusChanged",
+    "AgentSubsystem",
+    "ArtifactRef",
+    "CompositeObserver",
+    "DecisionRecord",
+    "DevTeamObservability",
+    "HandoffSource",
+    "JournalReader",
+    "JournalingObserver",
+    "MissionEventBridge",
+    "MissionEventKind",
+    "MissionObserved",
+    "MissionRuntimeState",
+    "ObservingExecutor",
+    "ResultCourier",
+    "RuntimeEvent",
+    "RuntimeObserver",
+    "RuntimeStateView",
+    "SessionStatus",
+    "StepCapture",
+    "agent_id_for",
+    "build_view_from_journal",
+    "devteam_view_from_journal",
+    "now",
+    "role_for_tool",
+    "seed_roster",
+]

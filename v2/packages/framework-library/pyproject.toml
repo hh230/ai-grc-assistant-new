@@ -1,0 +1,37 @@
+[project]
+name = "framework-library"
+version = "0.1.0"
+description = "Rasheed V2 Framework Library (ADR 0050) — the first real GRC tool. Represents compliance frameworks as DATA (CLAUDE.md §13: frameworks are data, not code) and exposes one deterministic, read-only Tool (ControlLibraryTool) over them: look up controls by code, theme, or title keyword, with the matched control ids as provenance. A new framework (NIST, CIS, PCI, SOC2) is added by dropping in a data file — no code change. Bundled: the complete ISO/IEC 27001:2022 Annex A catalog (93 controls). Runtime deps are the pure tool-registry + pipeline-contracts only — no LLM stack (the grounded normative text is the Pipeline Tool's job)."
+requires-python = ">=3.12"
+dependencies = [
+    "tool-registry",
+    "pipeline-contracts",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "mission-engine",
+    "pipeline-tool",
+    "event-bus",
+]
+
+[tool.uv.sources]
+tool-registry = { path = "../tool-registry", editable = true }
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+pipeline-tool = { path = "../pipeline-tool", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["framework_library"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"framework_library/data" = "framework_library/data"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

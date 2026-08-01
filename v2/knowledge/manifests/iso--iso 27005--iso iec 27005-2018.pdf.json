@@ -1,0 +1,50 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "iso--iso 27005--iso iec 27005-2018.pdf",
+  "filename": "ISO IEC 27005-2018.pdf",
+  "extension": ".pdf",
+  "category": "ISO",
+  "relative_path": "ISO/ISO 27005/ISO IEC 27005-2018.pdf",
+  "size_bytes": 2116015,
+  "last_modified": "2026-07-12T14:04:47.904989+00:00",
+  "checksum_sha256": "bb9b331d917487f41f420a21b59c3b0c72b732b3a158fadbf6bebf7eeb6838a7",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdfium2",
+  "parser_fallback": true,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": false,
+      "error": "PdfStreamError: Stream has ended unexpectedly"
+    },
+    {
+      "backend": "pypdfium2",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 60,
+  "character_count": 150203,
+  "extraction_duration": 0.35723362502176315,
+  "parsed_at": "2026-07-12T16:10:05.907397+00:00",
+  "error": null,
+  "document_profile": "iso_standard",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 195,
+  "structure_profile_used": "standard_clause",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.025501541094854474,
+  "chunked_at": "2026-07-12T16:10:05.937717+00:00",
+  "chunking_error": null
+}

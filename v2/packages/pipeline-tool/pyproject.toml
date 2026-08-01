@@ -1,0 +1,38 @@
+[project]
+name = "pipeline-tool"
+version = "0.1.0"
+description = "Rasheed V2 Pipeline Tool (Phase 15, step 3) — the first Tool and the first vertical slice. PipelineTool wraps the existing AI Orchestrator as a registered Tool; RegistryExecutor implements the Mission Engine's ExecutionPort by resolving a step to a Tool via the Tool Registry and invoking it. The path Mission → ExecutionPort → Pipeline Tool → AI Orchestrator → Answer runs end to end. This is a composition/adapter package (it wires existing pieces together); it adds no new domain and imports no LLM SDK."
+requires-python = ">=3.12"
+dependencies = [
+    "ai-orchestrator",
+    "mission-engine",
+    "tool-registry",
+    "pipeline-contracts",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+decision-engine = { path = "../decision-engine", editable = true }
+retrieval-engine = { path = "../retrieval-engine", editable = true }
+context-builder = { path = "../context-builder", editable = true }
+prompt-orchestrator = { path = "../prompt-orchestrator", editable = true }
+generation-engine = { path = "../generation-engine", editable = true }
+answer-validation = { path = "../answer-validation", editable = true }
+pipeline-tracing = { path = "../pipeline-tracing", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+ai-orchestrator = { path = "../ai-orchestrator", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+tool-registry = { path = "../tool-registry", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pipeline_tool"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

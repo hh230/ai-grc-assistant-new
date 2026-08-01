@@ -31,6 +31,24 @@
       "runtimeExecutable": "uv",
       "runtimeArgs": ["run", "python", "-m", "grc_worker.regulation_ingestion_loop"],
       "port": 8091
+    },
+    {
+      "name": "knowledge-center",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "v2/apps/knowledge-center", "run", "dev"],
+      "port": 3111
+    },
+    {
+      "name": "mission-web-spike",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "v2/apps/mission-web-spike", "run", "dev"],
+      "port": 5199
+    },
+    {
+      "name": "devteam-dashboard",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--directory", "devteam/packages/devteam-dashboard", "python", "-m", "devteam_dashboard"],
+      "port": 8787
     }
   ]
 }

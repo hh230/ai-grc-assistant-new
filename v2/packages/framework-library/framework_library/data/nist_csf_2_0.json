@@ -1,0 +1,143 @@
+{
+  "id": "framework:nist_csf",
+  "name": "NIST Cybersecurity Framework 2.0",
+  "version": "2.0",
+  "region": "INT",
+  "languages": [
+    "en"
+  ],
+  "controls": [
+    {
+      "id": "nist_csf:GV.OC",
+      "code": "GV.OC",
+      "title": "Organizational Context",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:GV.RM",
+      "code": "GV.RM",
+      "title": "Risk Management Strategy",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:GV.RR",
+      "code": "GV.RR",
+      "title": "Roles, Responsibilities, and Authorities",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:GV.PO",
+      "code": "GV.PO",
+      "title": "Policy",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:GV.OV",
+      "code": "GV.OV",
+      "title": "Oversight",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:GV.SC",
+      "code": "GV.SC",
+      "title": "Cybersecurity Supply Chain Risk Management",
+      "domain": "Govern"
+    },
+    {
+      "id": "nist_csf:ID.AM",
+      "code": "ID.AM",
+      "title": "Asset Management",
+      "domain": "Identify"
+    },
+    {
+      "id": "nist_csf:ID.RA",
+      "code": "ID.RA",
+      "title": "Risk Assessment",
+      "domain": "Identify"
+    },
+    {
+      "id": "nist_csf:ID.IM",
+      "code": "ID.IM",
+      "title": "Improvement",
+      "domain": "Identify"
+    },
+    {
+      "id": "nist_csf:PR.AA",
+      "code": "PR.AA",
+      "title": "Identity Management, Authentication, and Access Control",
+      "domain": "Protect"
+    },
+    {
+      "id": "nist_csf:PR.AT",
+      "code": "PR.AT",
+      "title": "Awareness and Training",
+      "domain": "Protect"
+    },
+    {
+      "id": "nist_csf:PR.DS",
+      "code": "PR.DS",
+      "title": "Data Security",
+      "domain": "Protect"
+    },
+    {
+      "id": "nist_csf:PR.PS",
+      "code": "PR.PS",
+      "title": "Platform Security",
+      "domain": "Protect"
+    },
+    {
+      "id": "nist_csf:PR.IR",
+      "code": "PR.IR",
+      "title": "Technology Infrastructure Resilience",
+      "domain": "Protect"
+    },
+    {
+      "id": "nist_csf:DE.CM",
+      "code": "DE.CM",
+      "title": "Continuous Monitoring",
+      "domain": "Detect"
+    },
+    {
+      "id": "nist_csf:DE.AE",
+      "code": "DE.AE",
+      "title": "Adverse Event Analysis",
+      "domain": "Detect"
+    },
+    {
+      "id": "nist_csf:RS.MA",
+      "code": "RS.MA",
+      "title": "Incident Management",
+      "domain": "Respond"
+    },
+    {
+      "id": "nist_csf:RS.AN",
+      "code": "RS.AN",
+      "title": "Incident Analysis",
+      "domain": "Respond"
+    },
+    {
+      "id": "nist_csf:RS.CO",
+      "code": "RS.CO",
+      "title": "Incident Response Reporting and Communication",
+      "domain": "Respond"
+    },
+    {
+      "id": "nist_csf:RS.MI",
+      "code": "RS.MI",
+      "title": "Incident Mitigation",
+      "domain": "Respond"
+    },
+    {
+      "id": "nist_csf:RC.RP",
+      "code": "RC.RP",
+      "title": "Incident Recovery Plan Execution",
+      "domain": "Recover"
+    },
+    {
+      "id": "nist_csf:RC.CO",
+      "code": "RC.CO",
+      "title": "Incident Recovery Communication",
+      "domain": "Recover"
+    }
+  ]
+}

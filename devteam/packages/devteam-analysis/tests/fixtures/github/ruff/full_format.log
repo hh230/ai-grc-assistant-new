@@ -1,0 +1,32 @@
+2026-07-09T17:44:20.5561893Z E501 Line too long (118 > 100)
+2026-07-09T17:44:20.5562629Z   --> apps/api/openapi/generate.py:28:101
+2026-07-09T17:44:20.5563101Z    |
+2026-07-09T17:44:20.5563639Z 26 |     output.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+2026-07-09T17:44:20.5564371Z 27 |     operations = sum(
+2026-07-09T17:44:20.5565069Z 28 |         1 for item in spec["paths"].values() for method in item if method in {"get", "post", "put", "delete", "patch"}
+2026-07-09T17:44:20.5565856Z    |                                                                                                     ^^^^^^^^^^^^^^^^^^
+2026-07-09T17:44:20.5566459Z 29 |     )
+2026-07-09T17:44:20.5566942Z 30 |     print(f"wrote {output} ({len(spec['paths'])} paths, {operations} operations)")
+2026-07-09T17:44:20.5567535Z    |
+2026-07-09T17:44:20.5567683Z 
+2026-07-09T17:44:20.5567955Z UP035 [*] Import from `collections.abc` instead: `Mapping`
+2026-07-09T17:44:20.5568497Z   --> packages/domain/grc_domain/knowledge/value_objects.py:11:1
+2026-07-09T17:44:20.5568997Z    |
+2026-07-09T17:44:20.5569325Z  9 | from dataclasses import dataclass
+2026-07-09T17:44:20.5569739Z 10 | from datetime import datetime
+2026-07-09T17:44:20.5570226Z 11 | from typing import ClassVar, Mapping
+2026-07-09T17:44:20.5570664Z    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-07-09T17:44:20.5571034Z 12 |
+2026-07-09T17:44:20.5571503Z 13 | from ..shared.identifiers import (
+2026-07-09T17:44:20.5571872Z    |
+2026-07-09T17:44:20.5572258Z help: Import from `collections.abc`
+2026-07-09T17:44:20.5572526Z 
+2026-07-09T17:44:20.5572707Z I001 [*] Import block is un-sorted or un-formatted
+2026-07-09T17:44:20.5573303Z   --> packages/domain/tests/extraction/test_extraction_run.py:2:1
+2026-07-09T17:44:20.5573811Z    |
+2026-07-09T17:44:20.5574270Z  1 |   """Unit tests for the ExtractionRun aggregate lifecycle and stage tracking."""
+2026-07-09T17:44:20.5574745Z  2 | / from __future__ import annotations
+2026-07-09T17:44:20.5575064Z  3 | |
+2026-07-09T17:44:20.5575298Z  4 | | import pytest
+2026-07-09T17:44:20.5575597Z  5 | |
+2026-07-09T17:44:20.5575860Z  6 | | from grc_domain.extraction import (

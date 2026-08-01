@@ -39,6 +39,7 @@ async function callRegulationReviewApi<T>(
   actor: ActorContext,
   method: "GET" | "POST",
   path: string,
+  options: { onUnreachable?: "error" | "warn" } = {},
 ): Promise<T> {
   const url = new URL(`/api/v1/regulation-review${path}`, apiBaseUrl());
 
@@ -50,8 +51,20 @@ async function callRegulationReviewApi<T>(
       cache: "no-store",
     });
   } catch (error) {
-    logger.error("regulation_review_upstream_unreachable", { url: url.toString(), error });
-    throw new UpstreamError("Could not reach the Regulation Review backend.");
+    // "warn" is for read-only call sites that degrade gracefully when the backend isn't
+    // deployed in this environment (see listPendingRegulationVersions) — logged, but not
+    // reported to Sentry (logger.error is the only level that reports; see logger.ts).
+    // Consequential calls (detail/approve/reject) keep the default "error" so a live backend
+    // actually going unreachable still alerts.
+    if (options.onUnreachable === "warn") {
+      logger.warn("regulation_review_upstream_unreachable", {
+        url: url.toString(),
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    } else {
+      logger.error("regulation_review_upstream_unreachable", error, { url: url.toString() });
+    }
+    throw new UpstreamError("Could not reach the Regulation Review backend.", true);
   }
 
   if (!response.ok) {
@@ -123,11 +136,19 @@ function toPendingVersion(dto: PendingRegulationVersionDto): PendingRegulationVe
 export async function listPendingRegulationVersions(
   actor: ActorContext,
 ): Promise<PendingRegulationVersion[]> {
-  const dtos = await callRegulationReviewApi<PendingRegulationVersionDto[]>(
-    actor,
-    "GET",
-    "/pending",
-  );
+  let dtos: PendingRegulationVersionDto[];
+  try {
+    dtos = await callRegulationReviewApi<PendingRegulationVersionDto[]>(actor, "GET", "/pending", {
+      onUnreachable: "warn",
+    });
+  } catch (error) {
+    // The backend not being reachable (e.g. apps/api isn't deployed in this environment) is a
+    // known, expected condition for this read-only list — degrade to "nothing pending" instead
+    // of failing the whole workspace page. A genuinely misbehaving (but reachable) backend
+    // still throws below, since that's worth alerting on.
+    if (error instanceof UpstreamError && error.unreachable) return [];
+    throw error;
+  }
   return dtos.map(toPendingVersion);
 }
 

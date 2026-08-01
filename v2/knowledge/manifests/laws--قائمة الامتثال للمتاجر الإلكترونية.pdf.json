@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--قائمة الامتثال للمتاجر الإلكترونية.pdf",
+  "filename": "قائمة الامتثال للمتاجر الإلكترونية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/قائمة الامتثال للمتاجر الإلكترونية.pdf",
+  "size_bytes": 292769,
+  "last_modified": "2026-06-26T19:32:10.995641+00:00",
+  "checksum_sha256": "d5a91e3b69f48ea4db5e32a23cc6a11d38636913418686a4e6f7a71b87cc0865",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 1,
+  "character_count": 1254,
+  "extraction_duration": 0.014498332981020212,
+  "parsed_at": "2026-07-12T16:10:43.496395+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 2,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.0,
+  "chunking_duration": 0.0003954159328714013,
+  "chunked_at": "2026-07-12T16:10:43.497241+00:00",
+  "chunking_error": null
+}

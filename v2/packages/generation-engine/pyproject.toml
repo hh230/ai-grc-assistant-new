@@ -1,0 +1,31 @@
+[project]
+name = "generation-engine"
+version = "0.1.0"
+description = "Rasheed V2 Generation Engine (Phase 12). Executes a provider-agnostic LLMRequest through the shared GenerationProvider port, adding retry, execution timing, metrics, and provider-independent error translation. Owns the provider adapters (OpenAI, Claude, Gemini, Ollama), each behind an optional SDK extra. It never chooses providers or models, never routes, never falls back, never modifies prompts, never validates answers — it executes exactly the request it receives. Depends only on pipeline-contracts."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+]
+
+[project.optional-dependencies]
+# Each adapter's SDK is opt-in; the engine itself never imports any of them.
+openai = ["openai>=1.50.0"]
+claude = ["anthropic>=0.40.0"]
+gemini = ["google-genai>=1.0.0"]
+ollama = ["ollama>=0.4.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["generation_engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

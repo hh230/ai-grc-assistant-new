@@ -1,0 +1,616 @@
+ 
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+  
+ 
+VENDOR SERVICES AGREEMENT 
+ 
+This Vendor Services Agreement No.       ("Agreement"), effective       (if left blank, the effective date shall be the date of last signature below), is made 
+between Note to Drafter : Add Supplier name.], (  individual;  partnership,  corporation or limited liability company)  (Note to Drafter : Add Supplier 
+company registration number) with offices located at Note to Drafter: Add Supplier address ("Service Provider" or “Supplier) and SAS Middle East, a company 
+incorporated in the Kingdom of Saudi Arabia ("KSA") with commercial registration number 1010304900, whose registered office i s 2nd Floor, Building C4, 
+Business Gate, Airport Road, Exit 8, Riyadh, KSA   (“SAS”or “Customer”). When completed and executed by both parties, separate Work Authorizations shall 
+specify the Services to be provided and SAS' payment obligation for such Services.  
+ 
+ 
+ 
+1. Definitions  
+1.1. The following definitions and rules of interpretation apply in this 
+Agreement: 
+Affiliate: in relation to a party, any entity that directly or indirectly controls, 
+is controlled by, or is under common control with that party at the date of 
+this Agreement. 
+Applicable Laws: in relation to a party, all applicable laws, statutes, 
+regulations from time to time in force  and binding and/or enforceable 
+against such party. 
+Business Day: a day, other than a weekend day or public holiday in KSA. 
+Business Hours: the period from 9.00 am to 5.00 pm on any Business Day.  
+Charges: the sums payable for the Services as set out in a Work 
+Authorization. 
+Confidential Information: Shall mean all information and materials 
+disclosed by either Party to the other Party or acquired by either Party or 
+any person acting on its behalf during the performance of its obligation 
+under the Agreement, whether commercial, financial, technical or 
+otherwise, whether or not marked confidential and however disclosed, 
+and all matters arising during the performance of the Agreement, 
+including without limitation, information that relates to business affairs, 
+services and personnel.  
+ 
+Controller, processor, data subject, personal data, personal data breach, 
+processing and appropriate t echnical measures  (and analogous 
+terminology): as defined in the Data Protection Legislation.  
+Customer's Equipment: any equipment, including tools, systems, cabling or 
+facilities, provided by the Customer, its agents, subcontractors or 
+consultants which is used directly or indirectly in the supply of the Services 
+including any such items specified in a Work Authorization 
+Customer Materials: all documents, information, items and materials in any 
+form, whether owned by the Customer or a third party, which are  provided 
+by the Customer to the Supplier in connection with the Services 
+Data Protection Legislation: the UK Data Protection Legislation  and any 
+European Union legislation relating to personal data and all other legislation 
+and regulatory requirements in force from time to time which apply to a 
+party relating to the use of personal data (including, without limitation, the 
+privacy of electronic communications.  all applicable data protection and 
+privacy legislation in force from time to time in the UK including the General 
+Data Protection Regulation ((EU) 2016/679); the Data Protection Act 2018; 
+the Privacy and Electronic Communications Directive 2002/58/EC (as 
+updated by Directive 2009/136/EC) and the Privacy and Electronic 
+Communications Regulations 2003 (S I 2003/2426) as amended , and the 
+Data Protection Legislation as applicable in  KSA 
+Deliverables: any output of the Services to be provided by the Supplier to 
+the Customer as specified in a Work Authorization. 
+Intellectual Property Rights  (IPR): means tradem arks (registered or 
+unregistered), service marks, trade names, logos, devices, domain names, 
+business names, get -up, logos, patents, inventions, registered and 
+unregistered design rights, copyright and related rights, moral rights, 
+database rights, data, s pecifications, know how, trade secrets, rights in 
+confidential information and all other similar rights in any part of the world 
+including any registration of such rights and applications and rights to apply 
+for such registrations.  
+Milestone: a date by whi ch a part or all of the Services is to be completed, 
+as set out in a Work Authorization. 
+SAS Marks: means those designated as such within a Work Authorization.  
+Supplier Marks; means those designated as such within a Work 
+Authorization. 
+Services; means work performed by Service Provider for SAS or its 
+subsidiaries pursuant to a Work Authorization.  
+Supplier's Equipment: any equipment, including tools, systems, cabling or 
+facilities, provided by the Supplier to the Customer and used directly or 
+indirectly in the supply of the Services, including any such items specified in 
+a Work Authorization but excluding any such items which are the subject of 
+a separate agreement between the parties under which title passes to the 
+Customer. 
+VAT: value added tax or analogous tax chargeable in relation to the Services. 
+Work Authorization ; means a proposal, quote, SAS -issued purchase order 
+or other mutually agreed -upon written vehicle for ordering Services under 
+this Agreement. Each Work Authorization incorporates th e terms of this 
+Agreement. 
+1.2.  A person includes a natural person, corporate or unincorporated 
+body (whether or not having separate legal personality).  
+ 
+1.3.  The Schedules form part of this Agreement and shall have effect as if 
+set out in full in the body of this Agreement. Any reference to this 
+Agreement includes the Schedules.  
+ 
+1.4.  A reference to a company shall include any company, corporation or 
+other body corporate, wherever and however inco rporated or 
+established. 
+ 
+1.5. Unless the context otherwise requires, words in the singular shall 
+include the plural and in the plural shall include the singular.  
+ 
+1.6. Unless the context otherwise requires, a reference to one gender 
+shall include a reference to the other gender.  
+  
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+1.7. This Agreement shall be binding on, and enure to the benefit of, the 
+parties to this Agreement and their respective personal 
+representatives, successors and permitted assigns, and references to 
+any party shall include that p arty's personal representatives, 
+successors and permitted assigns.  
+ 
+1.8. A reference to a statute or statutory provision shall include all 
+subordinate legislation made from time to time under that statute or 
+statutory provision. 
+. 
+2. Term and Termination 
+2.1 This Agre ement will remain in effect until terminated in accordance 
+with this Section 2. 
+2.2 Either party may terminate this Agreement for convenience upon not 
+less than 30 days  prior written notice to the other party, without the 
+need for a court order.  
+2.3 Either party may terminate this Agreement , without the need for a 
+court order,  upon material breach by the other party if not cured 
+within thirty (30) days of the breaching party’s receipt of the 
+nonbreaching party’s written notice.   
+2.4 Upon termination of this Agr eement or any Work Authorization for 
+any reason, Service Provider shall promptly return all SAS property of 
+whatever nature or kind provided under the applicable Work 
+Authorization(s).  Service Provider shall also furnish to SAS all work in 
+progress or por tions thereof in whatever form. SAS will pay Service 
+Provider for any Services which have been completed and delivered as 
+of the date of termination.  
+2.5 The parties’ rights and obligations under Sections 3, 5, and 6  and 
+Subsection 4.6 shall survive the termin ation of this Agreement and/or 
+any Work Authorization.  
+3. Payment for Services   
+3.1 SAS will pay Service Provider according to the agreed -upon fees set 
+forth in the Work Authorization.  
+3.2 SAS shall withhold from any and all payments made by SAS to Service 
+Provider any and all amounts SAS shall be required to withhold under 
+Applicable Law in respect of withholding taxes or any other duties, fees 
+and other impositions as may be levied under Applicable Law.  SAS 
+shall not gross up or be required to gross up any paymen ts in respect 
+of any such withholding taxes or any other duties, fees and other 
+impositions as may be levied under Applicable Law.  
+3.3 Any additional services requested by SAS or any change in the scope 
+of Services in a specific Work Authorization must be (i) evidenced by 
+an additional or amended Work Authorization referencing this 
+Agreement and the applicable purchase order, and (ii) pre-approved 
+in writing by an authorized representative of SAS. Otherwise, any work 
+that exceeds or alters the scope of Services  described in a Work 
+Authorization shall be provided at no additional charge.  
+3.4 SAS will pay for actual expenses incurred by Service Provider related 
+to the Services, provided that all such expenses are reasonable, have 
+been pre-approved by an authorized rep resentative of SAS and are in 
+accordance with SAS’ Travel Policy, available upon request.  
+3.5 Unless otherwise specified in the applicable Work Authorization, 
+Service Provider shall invoice SAS for the Services and pre -approved 
+expenses upon completion of the Services.  Invoices submitted to SAS 
+for payment must reference the appropriate purchase order; failure to 
+do so will result in the invoice being returned to Service Provider 
+unpaid.  
+3.6 SAS will pay all undisputed amounts invoiced within forty-five (45)  
+days of receipt of the invoice.  In no event will final payment be made 
+until all Services identified in a Work Authorization have been 
+accepted by SAS.   
+4. Service Provider Respo nsibilities 
+4.1 Unless otherwise expressly specified in the applicable Work 
+Authorization, Service Provider shall not subcontract any of Service 
+Provider's obligations hereunder without the prior written consent of 
+SAS.   Service Provider agrees to abide by SAS’ Business Partner Code 
+of Conduct.   
+4.2 Service Provider shall not access SAS’ computing resources without 
+SAS’ prior written authorization.  Service Provider agrees to reasonably 
+cooperate with SAS to provide the information necessary for SAS to 
+engage a third party vendor to perform background verification for 
+each person who will require access to SAS’ computing resources. 
+Failure to comply with this Section 4.2 may result in termination of this 
+Agreement. 
+4.3 Service Provider, assumes the responsibility for payment of all taxes, 
+as well as all payroll taxes and any other fees or contributions arising 
+from the operation of Service Provider's business.  Service Provider 
+shall be responsible for any liability or d amages resulting from a 
+breach of this Subsection 4.3. 
+4.4 Unless otherwise expressly specified in the applicable Work 
+Authorization or in the description of insurance below, Service 
+Provider shall for the term of this Agreement provide and maintain in 
+full fo rce and effect, at no additional cost to SAS, the following 
+minimum amounts of insurance:  
+Commercial General Liability * - coverage on a primary, non -
+contributing, occurrence basis with coverage for (i) 
+premises/operations (including medical payments),  (ii ) 
+products/completed operations, and (iii) personal injury. Minimum 
+limits for bodily injury and property damage shall be $1,000,000 each 
+occurrence.  If Service Provider will be onsite at SAS’ premises, this 
+policy must include SAS as an additional insure d in relation to the 
+Services. 
+Commercial Automobile Liability* - covering all motor vehicles, owned 
+or non-owned, used by Service Provider in providing Services, with a 
+minimum limit of $1,000,000 each accident for bodily injury and 
+property damage. This insurance is not required if Service Provider will 
+not be onsite at SAS’ premises.   
+Workers' Compensation - sufficient to meet statutory liability limits in 
+the state in which the Services are being performed; and Employer's 
+Liability - minimum limits of $500,000 each accident.  
+Professional Liability - coverage of $1,000,000 per occurrence/claims -
+made basis, if specified in the applicable Work Authorization.  
+Cyber Liability – coverage of $5,000,000 per occurrence and aggregate, 
+covering network and privacy  risks (including coverage for 
+unauthorized access, failure of security, breach of privacy perils, 
+wrongful disclosure of information, notification costs, and regulatory 
+defense) in the performance of Services for SAS or on behalf of SAS, if 
+specified in the applicable Work Authorization. Such insurance shall be 
+maintained in force at all times during the term of this Agreement and 
+for a period of two (2) years thereafter for Services completed during 
+the term of this Agreement.  
+*or Umbrella Liability coverage sufficient to meet limits stated above.   
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+4.5 A Certificate or Memorandum of Insurance evidencing the required 
+coverage and limits will be furnished to SAS before any Services are 
+performed under this Agreement and annually thereafter.   
+4.6 Service Provider shall treat as confidential and shall not directly or 
+indirectly use, disseminate, disclose or publish any data or information 
+obtained during the performance of Services related to SAS facilities 
+and computer resources, research, process, prod ucts and product 
+development, customers, purchasing, accounting, personnel or other 
+internal matters, which is not available to the public or which is not 
+otherwise a matter of public record.  No right or license, express or 
+implied, is granted hereunder f or the use of any of SAS’ trademarks, 
+logos or other proprietary information, including but not limited to use 
+of SAS’ name or logo in a customer list.  
+ 
+5. Warranties and Indemnification  
+5.1 Service Provider warrants that Service Provider shall render Services 
+(i) in a diligent, conscientious and workmanlike manner; and (ii) in 
+strict compliance with all applicable laws and government regulations, 
+codes and ordinances. 
+5.2 Service Provider warrants that Service Provider is under no obligation 
+or restriction that would  in any way prevent or interfere with Service 
+Provider's ability to perform the obligations under this Agreement.  
+5.3 Service Provider warrants that any materials provided by Service 
+Provider or its subcontractors in connection with the delivery of 
+Services wi ll not infringe upon any patents, copyrights or any other 
+rights of third parties. 
+5.4 Service Provider warrants that any goods supplied under this 
+Agreement are free and clear of all liens, claims, or encumbrances of 
+any kind. Service Provider further warrant s that all goods are new 
+unless otherwise stated and are fit for the purpose for which such 
+goods are ordinarily employed.  Service Provider represents that it is 
+authorized to transfer manufacturer’s warranties to SAS.   
+5.5 Service Provider assumes full resp onsibility for performance of 
+Services by Service Provider and any of its employees or 
+subcontractors. Service Provider agrees to indemnify and hold SAS 
+harmless from any liability, debt, cost, damages and reasonable 
+attorneys' fees to the extent caused by  or arising out of such 
+performance of Services by Service Provider, its employees or 
+subcontractors, including but not limited to third party claims arising 
+from breach of any warranty hereunder and injury to persons or 
+damage to property. 
+5.6 Service Provide r warrants it is entitled to enter into this Agreement 
+and to carry out its duties under it . 
+5.7 Service Provider warrants it shall ensure that while any of its personnel 
+are on the Customer premises that they will conform to all relevant 
+codes of staff and security practice including, but not limited to health 
+and safety regulations, IT policies and mobile phone policies.  
+5.8 In addition Service Provider warrants (a) that Service Provider and 
+permitted subcontractors shall render Services on SAS’ premises: (i) in 
+a diligent, conscientious, and workmanlike manner and (ii) in strict 
+compliance with all Applicable Laws and governm ent regulations, 
+codes, ordinances, proclamations, or orders, including, but not limited 
+to, taking all required actions and safeguards relating to any public 
+health emergency, including the COVID -19 pandemic, and (b) that, 
+without limiting any portion of subsections (i) and (ii) above, all 
+Services on SAS’ premises shall be performed by employees and 
+permitted subcontractors who, based on all required and/or 
+reasonable inquiry, verification and/or testing, are not believed or 
+known to have COVID -19 or any other communicable disease (unless 
+such status is otherwise protected by law).  In addition to and without 
+limiting any of the indemnification obligations in the Agreement, 
+Service Provider shall indemnify and hold SAS harmless from any 
+liability, debt, co st, damages and reasonable attorneys' fees to the 
+extent caused by or arising out of the performance of Services by 
+Service Provider, its employees or subcontractors, including, but not 
+limited to, third party claims arising from breach of any warranty 
+hereunder and injury to persons or damage to property . 
+5.9 In any event, neither party shall be liable for any (a) loss of profits 
+(whether actual or anticipated); (b) loss of revenue; (c) loss of 
+anticipated savings; (d) loss of business; (e) loss of opportunity; (f) loss 
+of goodwill; or for any indirect, special, consequential or incidental loss 
+or damage however arising. Notwithstanding the above, nothing in 
+this Agreement shall exclude or limit the liability of either party for, 
+death or personal injury caused  by the negligence of a party, or for  
+deceit or any fraudulent misrepresentation.  
+5.10 The total amount the Supplier may recover from SAS during the Period 
+for all claims relating to the Agreement is limited in the aggregate to 
+100% of fees paid. 
+5.11 Nothing in this condition shall be interpreted as excluding liability for 
+negligence resulting in death or personal injury.  
+6. INTELLECTUAL PROPERTY  
+6.1 SAS shall be the sole owner of all proceeds in any form developed 
+pursuant to this Agreement (“Work Product”), including but not 
+limited to any marketing collateral in tangible or electronic form, 
+any notes or other written materials; and any research, inc luding 
+interviews.  
+6.2 The Supplier agrees that all IPR in the Work Product are 
+automatically assigned at the time of creation, without any 
+requirement of further consideration.   
+6.3 Upon SAS’ request, Supplier shall take such further actions as may 
+be required to give full and proper effect to such assignment(s). 
+Supplier further agrees that SAS shall have the sole and exclusive 
+right to use, exploit, merchandise, and publish the Work Product in 
+any form and in any and all media, whether now known or 
+hereafter devised, throughout the world, in all languages, as SAS in 
+its sole discretion shall determine.   If and to the extent that, 
+according to the law of any jurisdiction, at any time such rights, 
+title, and interest do not vest or cannot be assigned by Supplier as 
+provided in this section, Supplier herewith irrevocably agrees to 
+assign, convey and transfer and hereby does assign, convey and 
+transfer to SAS all rights that can be assigned pursuant to this 
+section to the fullest extent possible and permissible and 
+irrevocably agrees to grant, and hereby does grant, to SAS an 
+unlimited, exclusive, irrevocable, worldwide, assignable, 
+transferable, perpetual, sub-licenseable and royalty -free license to 
+use, exploit and commercialize in any manner now known or in the 
+future discovered and for whatever purpose, any rights that did not 
+vest and/or cannot be assigned as contemplated by this section.   
+6.4 Any use of the Work Product by the Supplier is at the sole discretion 
+of and subject to prior written approval from SAS.  Su pplier 
+understands and agrees that SAS owns or controls all assets, 
+images, marketing collateral, and other materials that SAS and its 
+authorized contractors provide to Supplier (“SAS Assets”), including 
+any SAS Assets provided via SAS’ electronic asset ma nagement 
+system, and that Supplier has no right or interest to use the SAS 
+Assets other than to perform the Services hereunder.   
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+6.5 Upon termination of this Agreement and the relevant Work 
+Authorization (or upon termination or expiration of any Schedule 
+hereunder) the Supplier shall return or destroy the SAS Assets as 
+provided in the Confidentiality Section.  
+6.6 Supplier agrees that it will appropriately manage access to the 
+online resources provided by SAS including but not limited to:  
+6.6.1 restricting access to auth orized Supplier employees only;  
+6.6.2 confining portal use solely to the scope and duration of Services 
+(detailed in a particular Schedule - to be added if there is a 
+Schedule attached to the Agreement), and  
+6.6.3 decommissioning login credentials immediately upon 
+completion of a project and/or when individuals leave Supplier’s 
+employment.  
+6.7 To the fullest extent allowed by law, Supplier hereby expressly and 
+irrevocably waives in favour of SAS or its nominee, any and all moral 
+rights arising under statute, treaty or at common law that Supplier 
+has now or may have in the future with respect to any Work 
+Product prepared by Supplier hereunder.  Such moral rights 
+include, without limitation, the right to attribution of authorship, 
+the right to restrain distortion and modific ation and the right to 
+prohibit any use of any such Work Product in association with a 
+product, service, cause or institution that might be prejudicial to 
+Supplier’s honour or reputation.  
+6.8 Neither Party shall acquire any interest in the other’s IPR, except as 
+expressly provided in the Work Authorization.  
+6.9 Supplier warrants that it has procured SAS with a worldwide, 
+nonexclusive, royalty-free, non-transferable, irrevocable licence to 
+use the IPR in the Supplier’s Marks solely for purposes of enabling 
+SAS to ex ploit its rights and comply with its obligations under this 
+Agreement.  
+6.10 Supplier warrants that it is the owner or licensee of the IPR in the 
+Supplier’s Materials, and that the use of the Supplier’s Marks by 
+SAS shall not infringe any third party’s IPR  
+6.11 Supplier will defend and indemnify SAS with respect to any claim 
+made against SAS for IPR violation or infringement relating to the 
+Supplier’s Marks. SAS agrees to notify Supplier in writing of any 
+such claim, to allow Supplier to control the litigation or  settlement 
+of any such claim and to cooperate with Supplier in the 
+investigation, defence and settlement thereof. Supplier shall 
+indemnify SAS by paying for the costs and legal fees SAS incurs. SAS 
+may participate at SAS’s own expense. For the avoidance o f doubt, 
+this clause will not apply if the claim also relates to an IPR violation 
+or infringement relating to SAS’s marks.  
+6.12 SAS hereby grants the Supplier a worldwide, nonexclusive, royalty -
+free, non -transferable, revocable licence for the term of this 
+Agreement to use the SAS Marks strictly for the purposes of 
+enabling the Supplier to perform its obligations under this 
+Agreement.  SAS shall retain all its IPR used as part of this 
+Agreement and any goodwill derived from the Supplier’s use of 
+SAS’s IPR, including the SAS Marks, shall be for the benefit of SAS.  
+6.13 The Supplier shall:  
+6.13.1 use the SAS Marks in the form and manner in which they are 
+supplied by SAS, and subject to SAS’s prior written approval and 
+in accordance with SAS Trademark and Logo Guidelines; and   
+6.13.2 not acquire any interest in the SAS Marks, not (knowingly) do 
+anything which may endanger SAS’s rights in the SAS Marks, and 
+not use or apply to register any of the SAS Marks or any trade 
+mark that is confusingly similar to a SAS Mark  
+7. ANTI-BRIBERY 
+7.1 Each Party shall: 
+7.1.1 comply with all Applicable Laws, statutes and regulations 
+relating to anti-bribery, anti-corruption, anti-fraud and/or the 
+offering of any unlawful or improper inducement when carrying 
+any activities under this Agreement;  
+7.1.2 notify its officers, directors, consultants and agents of the ir 
+obligations under this section; and  
+7.1.3 ensure that each of its subcontractors and suppliers shall 
+comply with any applicable anti-bribery and anti-corruption 
+laws in force; 
+7.1.4 The Supplier confirms it has read SAS’s anti -bribery and anti-
+corruption policies available at 
+https://www.sas.com/en_gb/company -information/corporate-
+social-responsibility.html#governance  and agrees to maintain its 
+own substantially similar policies and procedures to ensure 
+compliance with the applicable laws, and will enforce these 
+where appropriate; 
+ 
+8. ANTI- SLAVERY 
+8.1 In performing its obligations under the Agreement, the Supplier shall:  
+8.1.1 comply with all applicable anti -slavery and human trafficking 
+laws, statutes, regulations and codes from time to time in force 
+including but not limited t o the Modern Slavery Act 2015; and  
+8.1.2 read and understand SAS’s modern slavery statement available 
+at https://www.sas.com/en_gb/company -
+information/corporate-socialresponsibility.html#governance  
+(SAS Modern Slavery Statement) and SAS’s policies regarding 
+doing business in an ethical and transparent manner as referred 
+to in the SAS Modern Slavery Statement (SAS Anti -Slavery 
+Policies), and shall maintain its own substantially similar policies 
+and procedures to ensure compliance with the applicable laws, 
+and enforce these where appropriate.  
+9. Confidential Information 
+9.1 Both Parties undertake to each other:  
+9.2 To keep confidential all Confidential Information belonging to the 
+other at any time during the Agreement and for a period of five 
+years after termination; 
+9.3 To treat Confidential Information belonging to the other with the 
+degree of care as it uses for its own Confidential Information but in 
+no event less than a commercially reasonable standard of care; 
+9.4 Not without the written consent of the other, to disclose Confidential 
+Information in whole or in part save to those of its employees,  
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+agents and subcontractors involved in the provision or receipt of 
+the Services and who need to know the Confidential Information in 
+question      
+9.5 To use the Confidential Information belonging to the other solely in 
+connection with the provision or receipt of the Services and not for 
+its own benefit or the benefit of any third party;  
+9.6 To make all relevant employees and subcont ractors aware of the 
+provisions of this clause 9 and to take all reasonable steps to ensure 
+that its employees, agents, and subcontractors comply with the 
+provisions of this clause 9 
+9.7 The provisions of clauses 9.1 to 9.5 shall not apply to any information 
+which is received from a third party who lawfully acquired it and 
+who is under no obligation restricting its disclosure.  
+9.8 Except as permitted in clause 9.9, each party undertakes that it shall 
+not at any time, disclose to  any person certain Confidential 
+Information of the other party concerning the other party’s 
+business, plan, customer, clients, suppliers, technology, products 
+and other information which the other party holds. Confidential 
+Information shall also include i nformation of either party in a 
+tangible or intangible form that is marked or designated as 
+confidential.  
+9.9 Each party may disclose the other party's Confidential Information: 
+9.9.1 to its employees, officers, representatives or advisers who need 
+to know such information for the purposes of exercising the 
+party's rights or carrying out its obligations under or in 
+connection with this Agreement.; and 
+9.9.2  as may be required by law, a court of competent jurisdiction or 
+any governmental or regulatory authority.  
+9.10 In the event that the Confidential Information must be disclosed 
+pursuant to judicial order or requirement of law, the receiving party 
+shall immediat ely notify the disclosing party of such order or 
+requirement and shall take all available steps to limit such 
+disclosure. 
+9.11 No party shall use any other party's Confidential Information for any 
+purpose other than to exercise its rights and perform its obligations 
+under or in connection with this Agreement. 
+9.12 Upon termination, Supplier agrees to return any SAS Confidential 
+Information and all copies thereof (including electronic copies), or 
+destroy the Confidential Information. In the event of destruction, 
+Supplier shall have an authorized representative certify this to SAS.  
+9.13 Supplier shall not remove any proprietary, copyright, trade secret or 
+other legend from any form of the SAS Confidential Information.  
+Supplier shall not copy or reproduce, in whole or in par t, any 
+Confidential Information without written authorization of SAS.  
+Supplier agrees that should any unauthorized disclosure or use of 
+SAS Confidential Information be made by Supplier, Supplier will (i) 
+immediately notify SAS of same; (ii) take all reaso nably necessary 
+steps to prevent further unauthorized disclosure and/or use; (iii) 
+cooperate with SAS in its efforts to secure the Confidential 
+Information and protect SAS’ proprietary rights therein.  
+9.14 Each party shall ensure that its employees, officers, representatives or 
+advisers to whom it discloses the other party's Confidential 
+Information complies with this Schedule.  
+9.15 The obligations in this section survive termination of this Agreement. 
+10. General 
+10.1 SAS has the right to inspect work at any time, stop work, require 
+changes to the work, and request modifications to the Services to 
+address safety and environmental concerns affecting SAS or its 
+employees.  
+10.2 SAS reserves the right to employ other providers of the same or similar 
+services as those provided by the Service Provider hereunder. 
+10.3 Each party is an independent contractor under this Agreement, 
+without any authority to bind the other.  Nothing in this Agreement 
+constitutes nor shall be deemed to consti tute either party being an 
+agent of the other party, whether for the purposes of any applicable 
+commercial agencies law or otherwise.  
+ 
+10.4 This Agreement may not be assigned in whole or in part by the Service 
+Provider without the prior written permission of SA S.  Any attempt to 
+do so is void.  This Agreement shall be binding on the parties and upon 
+their respective heirs, administrators, successors, and permitted 
+assigns. 
+10.5 All notices, including address change, required to be sent hereunder 
+shall be in writing and shall be deemed to have been given when 
+delivered to the respective representatives listed in the applicable 
+Work Authorization. Legal notices to SAS must be sent to the attention 
+of the Office of the General Counsel.  
+10.6 Third party rights. No one other than a party to this Agreement shall 
+have any right to enforce any of its terms.  
+10.7 To the extent that either party has acquired or later acquires any 
+immunity (sovereign  or otherwise) from any legal action, suit, or 
+proceeding, from jurisdiction of any court, or from setoff or any legal 
+process with respect to itself or any of its property, such party 
+irrevocably waives and agrees not to plead or claim such immunity 
+with respect to any action, suit or proceeding brought under or in 
+relation to this Agreement . 
+10.8 Governing law. This Agreement and any dispute or claim (including 
+non-contractual disputes or claims) arising out of or in connection with 
+it or its subject matter or  formation  shall be governed by, and 
+construed in accordance with, the law s of England and Wales.  
+10.9 Jurisdiction. Any dispute arising out of or in connection with this 
+Agreement, including any question regarding its existence, validity or 
+termination, shall  be referred to and finally resolved by arbitration 
+under the Arbitration Rules of the Dubai International Arbitration 
+Centre, which Rules are deemed to be incorporated by reference into 
+this clause.  The number of arbitrators shall be three.  The seat of 
+arbitration shall be the Dubai International Financial Centre (DIFC). The 
+language to be used in the arbitration shall be English. . 
+10.10 If any part of this Agreement is held unenforceable or invalid, the 
+remaining provisions shall remain in full force and effect. 
+10.11 The waiver by either party of any default or breach of this Agreement 
+shall not constitute a waiver of any other or subsequent default or 
+breach.   
+10.12 The parties acknowledge that they have read this Agreement, 
+understand it, and agree to be bound by its terms and conditions.  
+Further, they agree that the complete, exclusive and final statement 
+of agreement between the parties relating to the subject matter shall 
+consist of this Agreement and any Exhibits or Work Authorizations 
+thereto.  If the terms o f this Agreement conflict with the terms of a 
+Work Authorization, the terms of the Work Authorization shall control.  
+ 
+Confidential 
+LGL5000/Oct19 
+ 
+This Agreement supersedes all proposals or other prior agreements 
+not referencing this Agreement, oral or written, and all other 
+communications between the parties relating to the subject.  This 
+Agreement cannot be modified except by a subsequent writing signed 
+by an authorized representative of Service Provider and SAS.  
+ 
+ 
+Signature page follows. 
+  
+ 
+Executed by Service Provider:       
+ 
+ Executed by SAS Middle East 
+ 
+ 
+Authorized Signature:  
+ 
+ _________________________________________________________  
+ 
+  
+Authorized Signature: 
+ 
+ ___________________________________________________________  
+ 
+ 
+Name:            
+  
+Name:        
+ 
+ 
+Title:         
+ 
+  
+Title:         
+ 
+ 
+Date:        
+ 
+  
+Date:       
+ 
+ 
+ 
+LGL5000/Oct19 
+ 
+ 
+SAS and all other SAS Institute Inc. product or service names are registered trademarks or trademarks of SAS Institute Inc. i n the USA and other countries.  ® 
+indicates USA registration.  Other brand and product names are trademarks of their respective companies.  
+ 
+ 
+ 

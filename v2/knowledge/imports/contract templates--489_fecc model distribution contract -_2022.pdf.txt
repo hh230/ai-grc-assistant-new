@@ -1,0 +1,1195 @@
+www.fecc.org
+Model
+Distribution
+Contract
+EU Competition requirements and law applicable to
+Distribution
+Rue du Luxembourg 16
+1000 Brussels, Belgium
+Tel. +32 26 79 02 60
+Fax. +32 26 72 73 55Disclaimer
+This Model Distribution Contract is a sample document for information purposes only, and must not be
+construed as legal advice. This model contract is provided as is, without any express or implied warranty,
+including but not limited to warranties of merchantability, satisfactory quality, or fitness for a particular
+purpose. Please do not use this model contract without checking with your legal counsel. You are
+responsible for your own compliance with all the laws and requirements applicable to your business. This
+document does not represent the views of any company or member represented by Fecc.
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022Table of Contents
+Model Distribution Contract ............................................................................................ 3
+Examples of Annexes....................................................................................................... 16
+Supplement ...................................................................................................................... 17
+A. Distribution Contract - General checklist ............................................................... 17
+B. Law applicable to Distribution agreements ............................................................ 21
+C. EU Competition Law and Distribution ................................................................... 26
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in autumn 20221.1.
+1.2.
+1.3.
+Effective date of the contract – [insert date]
+"Products" shall mean those products listed in Schedule 1.
+“Products specifications” –relevant specifications for the Products as set out in Schedule
+2.
+"Territory" shall mean those areas listed in Schedule 3.
+“Intellectual property rights" shall mean trademarks and trade names and any other
+intellectual and industrial property rights related to the Products at any time during the
+term of this contract [Listed in Schedule 4].
+“Applicable laws” - means all laws that are applicable to this contract or the activities
+detailed under it as the same may be amended and in force from time to time.
+"Confidential information" means any information disclosed by one Party to the other
+under or in connection with this contract which should reasonably be considered to be
+confidential or proprietary given the nature of the information and the circumstances of
+the disclosure. Confidential information does not include information that: (a) is or
+1.4.
+1.5.
+1.6.
+1.7.
+Model Distribution Contract
+Between [ full legal entity name, address of registered office, registered with/in and
+havingregistration no, duly represented by …(Name of authorized signatory)]
+………………………………………………………………………..
+……………………………………………………………………….
+"the SUPPLIER",
+AND
+[full legal entity name, address of registered office, registered with/in and having
+registrationno, duly represented by …(Name of authorized signatory)]
+…………………………………………………………………………
+……………………………………………………………………….
+"the DISTRIBUTOR",
+made on [insert] day of [insert month] [insert year]
+Hereinafter referred to individually as a ‘Party’ and collectively as the ‘Parties’.
+WHEREBY IT IS AGREED as follows,
+1. DEFINITIONS
+The following terms shall have the meaning given below,
+becomes generally known to the public through no fault of or breach of this contract by
+the receiving party (b) is rightfully known by the receiving party at the time of disclosure
+without an obligation of confidentiality (c) is independently developed by the receiving
+3
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 20221.8. “Order” –issued by the Distributor to the Supplier for delivery of the Products as under
+this contract.
+“Schedule” –refers to a Schedule to this contract.
+“Force majeure” - an event beyond the reasonable control of the party, including but
+without any limitation, an act of God, war, riot, public disorder, economic sanctions, fire,
+flood, explosion and epidemic.
+“Latent defect” - means a defect which exists at the time of acceptance but cannot be
+discovered by a reasonable inspection on receipt of the Products at delivery.
+1.9.
+1.10.
+1.11.
+party without use of the disclosing party's confidential information or (d) the receiving
+party rightfully obtains from a third party without restriction on use or disclosure.
+      
+   
+  
+      
+   
+  
+2.  APPOINTMENT
+The  Supplier  has  selected  the  Distributor  on  the  basis  of  the  Distributors  experience,  sales
+infrastructure  and  qualifications,  including  the  Distributors  reputation  for  proper  business
+conduct and general compliance with applicable laws.
+The  Supplier   appoints  the   Distributor  as   it’s  [Exclusive/  Non-exclusive]1  Distributor,
+who  accepts  to  purchase,  market,  distribute  and  sell  the  Products  in  the  territory  based
+on  the  terms and conditions expressed in this contract.
+3.  GENERAL PRINCIPLE OF  GOOD FAITH
+Parties  will  carry  out  their  obligations  under  this  contract  in  good  faith  and  in  accordance
+with the general principle of fair dealing;  the provisions of this contract and  any statements
+made by the  Parties in connection with the contract shall be interpreted in good faith.
+4.  DISTRIBUTOR STATUS
+a. The  Distributor  shall  not  represent  itself  as  an  agent  of  the  Supplier  and  shall  have  no 
+power to bind or obligate  the Supplier  in any  contract or obligation.
+b. This  contract does not intend to constitute, create, give effect or otherwise recognize the  
+relationship  of  employer  and  employee,  franchisor  and  franchisee,  a  joint  venture,
+partnership or formal business entity of any kind. Each  Party shall be at all times and for  
+all  purposes  an  independent  contractor  and  neither  Party  shall  have  any  authority  to 
+create  any  obligation  of  any  kind,  expressed  or  implied,  on  behalf  of  the  other  Party 
+except as and to the extent provided for in this  contract.
+4
+1  This being a Model contract  -  based on the choice of exclusive or non-exclusive,  clauses  mentioned  below can be
+  used, modified  or removed.
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022 
+   
+ 
+                 
+   
+                
+             
+                
+  
+            
+  
+ 
+ 
+ 
+ 
+              
+ 
+ 
+             
+              
+  
+               
+              
+ 
+              
+ 
+ 
+   
+ 
+                 
+   
+                
+             
+                
+  
+            
+  
+ 
+ 
+ 
+ 
+              
+ 
+ 
+             
+              
+  
+               
+              
+ 
+              
+  
+c. The Distributor shall operate in the Distributor’s own name and on its own behalf in the  
+Territory  as specified in  this contract. The Distributor shall not, accordingly, be entitled  
+to act in the other Party’s name or on the other Party’s behalf  without the latter’s written
+authorization beforehand.
+d. In  the  case  where  the  Distributor  is  unwilling  or  unable  to  act  as  buyer  and  re-seller  it 
+may write to the  Supplier  suggesting a direct sale to the customer. The Distributor shall  
+not  be  entitled  to  any  fee  or  other  remuneration  for  prospecting  a  direct  sale  which  the 
+Supplier  subsequently  carries  out,  except  as  otherwise  agreed  by  the  Parties  in  writing 
+before the sale is completed.
+[or]
+In  the  case  where  the  Distributor  is  unwilling  or  unable  to  act  as  buyer  and  re-seller  it
+may write to the  Supplier  suggesting a direct sale to the customer. The Distributor shall
+not  be  entitled  to  remuneration  for  prospecting  a  direct  sale  which  the  Supplier
+subsequently carries out  of…..  [Specify].
+5.  OBLIGATIONS OF THE DISTRIBUTOR
+a. The Distributor shall buy and sell the Suppliers Products as specified in this contract, in  
+its own name and for its own account and shall then sell them to third parties domiciling  
+within the Territory in its own name and for its own account. The Distributor shall use its  
+best  commercial  and  business  efforts  to  promote  the  sales  of  the  Products  within  the 
+Territory and in its own name and for its own account.
+b. The Distributor shall not actively solicit any sales of the Products outside of the Territory  
+specified in this contract. The Distributor shall restrict his efforts to advertise and solicit  
+sales  of  the  Products  to  activities  executed  within  the  Territory.  However,  if  the 
+Distributor  sells  Products  to  third  parties  residing  outside  of  the  Territory;  this  shall  not 
+give rise to any claim for commission payment.
+c. The Distributor shall  advertise, promote, distribute and sell the Products in the Territory  
+and  to  further  this  employ  and  train  a  sales  organization  adequate  to  properly  (i)  solicit 
+the  sale  of  the  Products,  (ii)  respond  to  inquiries  from  the  Territory  concerning  the 
+Products, and (iii) efficiently process orders for the Products and visit clients.
+d. The Distributor is authorised to sub-contract transport, logistics and warehousing services  
+to  third  parties  in  the  context  of  the  performance  of  its  obligations  under  this  contract,
+5
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022provided that the services provided by such third parties comply with the requirements set
+out in this contract.
+e. The Distributor [ INSERT - undertakes not to OR is free to ] represent, distribute or sell
+within the Territory specified in this contract any product which might be in direct
+competition with the Suppliers Products, at any time after the coming into force of this
+contract and throughout its duration.
+f. The Distributor [ INSERT is OR is not ] the sole dealer for the Products. The Supplier
+undertakes [INSERT not to OR is free ] to appoint other distributors as agents or dealers
+for the distribution of the Products within the Territory.
+g. The Distributor shall convey any complaints received about defects in the Products to the
+Supplier.
+h. The Distributor shall keep all stocks of the Products which it holds in appropriate
+conditions or special conditions if specified in this contract.
+i. The Distributor shall describe itself in all dealings with the Products and in all associated
+advertising and promotional material as [ INSERT SUPPLIER NAME ] authorized
+distributor. Marketing and image building costs and policies will be agreed upon between
+the Parties, paid for in full or/and partly (…%) by the [ INSERT
+DISTRIBUTOR/SUPPLIER accordingly]
+j. The Distributor shall keep the Supplier regularly informed about relevant market
+information concerning the Products in the Territory and shall furnish the Supplier with
+an annual report [ INSERT on…day/month…of the year ] reflecting planned development
+of sales and other relevant data as may be requested by the Supplier.
+k. The Distributor shall obtain and maintain all required permits, licenses, and Government
+authorizations, and shall comply with relevant Product certification or qualification
+requirements necessary to sell the Products in the specified Territory and with other laws,
+rules, and regulations of the appropriate governmental authorities applicable to the
+performance of its obligations under this contract. Costs incurred on Product related
+requirements/registrations shall be borne by the Supplier.
+l. The Distributor shall abide by recognized industry standards and guidance as to general
+safety, storage, handling, transportation and sale of the Products in the specified Territory,
+including without limitation those expressed and developed by the European Association
+of Chemical Distributors (Fecc).
+6
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022 
+             
+            
+  
+            
+ 
+            
+              
+ 
+ 
+              
+              
+            
+  
+ 
+             
+            
+             
+ 
+ 
+            
+ 
+ 
+             
+            
+  
+            
+ 
+            
+              
+ 
+ 
+              
+              
+            
+  
+ 
+             
+            
+             
+ 
+ 
+            
+  
+6.  OBLIGATIONS OF THE SUPPLIER
+The Supplier undertakes:
+a. To  supply  the  contractual  Product/s  ordered  in  accordance  to  the  terms  of  this  contract.
+The  Supplier  may  not  reject  orders  received  from  the  Distributor  without  giving  the
+reasons for  the  refusal.
+b. The  Supplier  undertakes  to  keep  the  Distributor  competitive  especially  in  terms  of 
+quantity and prices.
+c. The Supplier shall reserve the right to alter or discontinue single Products. The Products  
+shall  not  be  changed  considerably  hereby.  However,  the  Supplier  shall  render  the 
+Distributor  at  least  [insert]  months  advance  notice  if  the  Supplier  intends  to  take  a 
+Product out of its product portfolio  or to alter it.
+d. Where the Supplier replaces or updates any of the Products, or expands its product range  
+with a product falling within the expertise and competence of the Distributor (including,
+but  not  limited  to  varieties  of  an  existing  Product),  such  replacement,  updates  or  new 
+products  shall  be  considered  as  a  Product  falling  within  the  scope  of  this  contract  and
+[INSERT Schedule no] shall be automatically amended accordingly.
+e. The Supplier will provide the Distributor, free of charge, with all information, documents,
+samples  and  advertising  material  necessary  for  sales  of  the  contractual  Products.  The 
+Supplier will pay transport costs and clearance charges of such material.  On termination 
+of this contract, the documents, advertising material and samples must be returned by the  
+Distributor  to  the  Supplier.  This  provision  may  not  affect  the  intellectual  or  industrial 
+property rights of the Supplier.
+f. The  Supplier  undertakes  to  forward  to  the  Distributor  all  orders,  communications  and 
+inquiries  he  receives  directly  from  the  contractual  territory  [INSERT  this  clause  only  if 
+applicable].
+g. The Supplier shall be entitled to grant distribution or sales rights to other representatives  
+or  distributors in the Territory and to make direct deliveries to customers in the Territory
+[INSERT this clause only if applicable].
+h. The  Supplier  will  provide  the  Distributor  with  all  information  reasonably  necessary  to 
+carry out his obligations as a Distributor.
+7
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022      
+ 
+  
+             
+             
+              
+            
+               
+           
+              
+ 
+ 
+              
+               
+            
+             
+             
+        
+  
+      
+ 
+  
+             
+             
+              
+            
+               
+           
+              
+ 
+ 
+              
+               
+            
+             
+             
+        
+  
+i. The Supplier  shall  organize  and provide  adequate technical training/technical support  of 
+Distributor’s staff where deemed necessary  and as soon as possible.
+j. The Supplier shall  provide general product training sessions from time to time in addition 
+to aforesaid technical training sessions.
+k. The  Parties  may  agree  to  organize  joint  visits  to  Distributor’s  customers  for  supplying 
+relevant  information  related  to  the  Products  and/or  their  use,  as  well  as  providing 
+technical service if viable and if so desired by the customer.
+l. The  Supplier  shall  ensure  that  the  Products  are  manufactured  and  supplied  as  per  the 
+Product  Specifications  in  this  contract,  applicable  laws  and  shall  continue  to  meet  the
+Product Specifications during the entire shelf life.
+m. The  Supplier  shall  ensure  that  the  Products  comply  in  form  and  content  with  the  legal 
+provisions  and  requirements  of  the  country  or  countries  comprising  the  Territory 
+expressed in this contract.
+n. The  Product  shall  be  delivered  to  the  Distributor  in  an  undamaged  condition  and  shall 
+remain the responsibility of the Supplier until delivery is completed.
+o. The Supplier shall ensure that the Distributor receives all documentation and certificates  
+of conformity or analysis required and that these are  as required by the Distributor.
+p. The  Supplier  shall  ensure  that  the  Products  specified  in  this  contract  are  of  satisfactory 
+and merchantable quality and are free from defects, liens and encumbrances.
+7. CONDITIONS PERTAINING TO ORDER, DELIVERY AND ACCEPTANCE
+a. The Distributor shall purchase the Product/s by written Orders and request a delivery date.
+An  Order  shall  be  binding  only  when  the  Supplier  accepts  it  in  writing.  Acceptance  of 
+order/s  shall  be  confirmed  in  writing  within  [INSERT  days]  Business  Days  following 
+receipt of the Order.
+b. Unless  agreed  otherwise  in  writing,  the  delivery  conditions  of  the  Products  shall  take 
+place in accordance with [INSERT Incoterm and location].
+c. Either  Party  may,  on  promptly  informing  the  other  Party  in  writing,  suspend  its 
+contractual  obligations  should  they  prove  objectively  impossible  or  unreasonably
+8
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022           
+             
+           
+ 
+            
+          
+ 
+                
+             
+              
+     
+     
+           
+  
+  
+          
+            
+         
+      
+            
+     
+              
+ 
+ 
+     
+    
+  
+ 
+ 
+  
+           
+             
+           
+ 
+            
+         
+ 
+               
+            
+             
+      
+    
+           
+   
+   
+         
+           
+         
+      
+           
+     
+              
+ 
+ 
+    
+   
+  
+  
+burdensome  to  perform  due  to  some  unforeseeable  hindrance  beyond  its  control  (e.g.
+Force Majeure), and shall not thereby incur any liability for default.
+d. Where  the  Distributor  discovers  any  defects  in  the  Product/s  which  are  apparent  on 
+reasonable  visual  inspection  the  Distributor  shall  notify  the  Supplier  in  writing  within
+[INSERT days]  Business Days of receipt thereof and shall provide reasons for rejection.
+e. The  Distributor  shall  notify  the  Supplier  of  any  Latent  Defect/s  in  writing  within
+[INSERT  days]  Business  Days  following  its  discovery  and  shall  provide
+details  accordingly.
+f. In  the  case  of  rejection  of  delivery  due  to  defects  by  the  Distributor,  the  Supplier  shall
+supply,  within  a  maximum  of  [INSERT  days]  Business  Days  from  the  request  by
+the  Distributor  or  such  other  period  as  the  Parties  may  agree,  replacement  Products  (of
+the  same quantity as those  rejected by  the Distributor)  free of charge  which are in 
+accordance  with the Product Specifications  and terms and conditions of  this  contract.
+Supplier shall  promptly  notify  the  Distributor  that  it  is  unable  to  supply 
+replacement  Product,whereupon  (without prejudice) the Distributor shall be entitled to  
+obtain from any other  supplier such quantity of  the Products as the Supplier has been  
+unable to supply, and any  additional  costs  and  expenses  incurred  by  the  Distributor  in
+relation  thereto  shall  be  promptly  paid  by  the  Supplier  to  the  Distributor
+following  receipt  of  reasonable  substantiating  documentation  and  within  [INSERT 
+days]  Business  days  of  receipt  of  documentation.
+g. The  Supplier  shall  reimburse  the  Distributor  for  reasonable  costs  and  expenses  incurred
+as a result of the rejection  within  [INSERT]  Business days  and  the Distributor shall not
+be
+required to pay for any rejected Products.
+h. The  Distributor  shall  suspend  orders  until  the  Parties  agree  that  any  quality  concerns  or 
+defects in relation to the Products have  been satisfactorily addressed.
+8.  PRICES AND PAYMENT TERMS
+a. The prices,  payment terms  and  Conditions of Sale  in effect at the time of concluding this
+contract  are listed in  Schedule [Specify].  If there is any inconsistency between the
+terms  or/and  Conditions of Sale and the terms of this contract, the latter shall prevail.
+b. The Parties shall agree to the prices for the next calendar year by the end of each current
+year. Should the Parties fail to reach such an agreement by that date, each Party shall be
+entitled to terminate the contract in writing, and by observing a notice period of
+[Specify
+9
+FECC  MODEL DISTRIBUTION CONTRACT  Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022            
+            
+     
+  
+   
+ 
+            
+    
+   
+      
+ 
+    
+     
+            
+ 
+               
+               
+              
+   
+ 
+                 
+  
+           
+     
+             
+             
+ 
+  
+no.]  months.  Until  the  Parties  reach  an  agreement  or  during  the  time  
+between the  termination  notice  and  the  actual  termination,  the  prices  and  terms
+of  the  previous  apply.tocontinueshallyearcalendar  ordersAll  received  and
+confirmed  by the Supplier
+  
+   
+ 
+           
+    
+   
+      
+ 
+    
+     
+            
+ 
+               
+               
+              
+   
+ 
+                 
+  
+           
+     
+             
+             
+ 
+  
+prior to the change in prices shall be invoiced at the price in effect before the change.
+c. The Distributor shall not be bound in any way by the prices paid to the Supplier, but  said 
+Distributor  shall determine at his own risk the prices for the sale of  the Products to third  
+parties.
+9.  INTELLECTUAL PROPERTY
+a. [The  Supplier  shall  grant  to  the  Distributor  a  non-exclusive,  irrevocable,  royalty  free
+license  to use its logo,  trademarks and trade names as set out in Schedule  [Specify]  of
+this  contract  subject to the restrictions  specified below.] [Use if applicable]
+[or]
+The Distributor may /  may not  use the Suppliers ’  logo,  trademarks  or other  trade names
+other than  to identify and advertise the Products in the course of performing this contract,
+and only in the exclusive interest of the  Supplier.  [Alternative clause  –  Use if applicable]
+b. The  Distributor shall not permit  the trademarks  to be used  by third parties or register any  
+of  the  Supplier’s  patents,  trademarks,  trade  or  brand  names,  registered  designs  or  other
+intellectual property rights without the prior consent of the  Supplier.
+c. The  Distributor  shall  notify  the  Supplier  of  any  unauthorized  use  in  the  Territory  of  its 
+trademarks.  At  the  request  of  the  Supplier  the  Distributor  shall  take  part  in  or  give 
+assistance  in  respect  of  any  legal  proceedings  and  execute  any  documents  and  take  any 
+action reasonably necessary to protect the trademarks in the Territory.  Costs incurred  in 
+doing so shall be borne  by the Supplier.
+d. On  expiry  of  this  contract  all  licenses  referred  to  in  this  Clause  9  shall  expire  and  the 
+Distributor agrees to immediately cease use of the  Supplier’s  intellectual property.
+e. The  Supplier  shall  indemnify  the  Distributor  from  and  against  any  losses,  claims,
+damages,  awards, penalties, legal  fees or injuries  incurred, which may  arise out of or in  
+connection  with  any  third  party  claim  of  an  alleged  infringement  of  an  Intellectual 
+Property  Right  or  any  other  third  party  right  resulting  from  the  purchase,  import,  use,
+storage, transport or resale of the Products by the Distributor in accordance with the terms 
+of this contract.
+10
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 202210. CONFIDENTIALITY
+a. Both Parties shall keep confidential the specific terms of this Contract and all non-public
+information including information relating to the Products and not disclose them to third
+parties save to such employees or contractors on a need to know for the purposes of
+performing this contract. The Parties will be liable for any breach by their authorized
+recipients.
+b. The Parties acknowledge that the terms and conditions of this contract may be disclosed
+if legally compelled by any relevant authority. The Parties may disclose the terms of this
+contract to any government authority or to any competent legal authority as long as and to
+the extent reasonably possible, and each Party consults with the other Party before such
+announcement on the proposed form, timing, nature and purpose of the announcement.
+c. If so requested by the Disclosing Party, upon termination or expiration of this contract all
+Confidential Information shall be returned or destroyed, as it may direct.
+11. ANTI-BRIBERY COMPLIANCE
+a. Both Parties will at all times ensure compliance with applicable anti-bribery legislation
+[Specify], and will where necessary, and at their own expense, provide training and
+guidance to its own staff to ensure compliance.
+b. Both Parties shall undertake to ensure that its employees (including its subcontractors,
+agents and other intermediaries) will not, offer, give or agree to give any person
+whosoever, or solicit, accept or agree to accept from any person, either directly or
+indirectly, anything of value in order to obtain, influence, induce or reward any improper
+advantage.
+12. FORCE MAJEURE
+a. Neither Party shall be liable for delay or failure to perform any obligations under this
+contract if the delay or failure is caused by any circumstances beyond its reasonable
+control, including but not limited to Acts of God, war, civil disorder or industrial disputes.
+If such delay or failure continues for a period of at least [ Specify period, e.g. 30-90 days ]
+the Party not subject to the force majeure shall be entitled to terminate this contract by
+written notice to the other.
+b. The corresponding obligations of the unaffected Party shall be suspended to the same
+extent as those of the affected Party.
+11
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022c. The affected Party shall not be in breach of this contract provided it notifies the
+unaffected Party in writing as soon as possible setting out the nature and extent of the
+Force Majeure circumstances and uses all reasonable actions to mitigate or avoid the
+effect of the Force Majeure.
+13. LIABILITY
+a. Either Party shall indemnify, defend and hold harmless the other Party, in full against all
+claims, liabilities, losses, damages, costs, penalties, legal costs and expenses awarded
+against or incurred or paid by it as a direct result of:
+i. A breach of any warranty given by such Party or obligation imposed on such
+Party under this contract;
+ii. Any claim that the Products infringe, or their importation, use, supply or resale
+infringes any Intellectual Property Rights or other third party rights; and
+iii. Any act or omission or breach of statutory duty of the Supplier or its employees,
+directors, officers, agents or sub-contractors in manufacturing, supplying, and
+delivering the Product.
+iv. A Party will not be held liable for any death, injury or damage solely resulting
+from the negligent act, misconduct or omission of the other Party.
+v. The Supplier shall effect and maintain with a reputable insurance company a
+policy or policies of insurance covering all matters which are the subject of
+indemnities under this contract consistent with industry standards and as otherwise
+provided in this contract.  The Supplier shall at the request of the Distributor produce
+the relevant policy or policies together with receipts or other evidence of payment of
+the latest premium due there under. Upon the Distributor’s request, the Supplier shall
+notify the Distributor in writing of the maximum levels of indemnity insured and
+shall advise the Distributor of any material changes with respect to the terms and
+conditions of the insurance policy. During the duration of this contract the Supplier
+shall not do or omit to do any matter or thing which may prejudice or render voidable
+such insurance.
+vi. Neither Party nor its Affiliates shall in any circumstances have any liability of any
+type for any special, incidental, indirect or consequential damages, including but not
+limited to loss of profit, loss of opportunity, loss of use, loss of goodwill, loss of
+anticipated savings or loss of business, arising out of or in connection with this
+12
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022Where the conduct of either Party is likely to have a serious or detrimental effectii.
+upon the other Party’s business, products and affairs.
+If either Party becomes insolvent or unable to deliver or if bankruptcy proceedingsiii.
+have been initiated or if a liquidator has been appointed.
+contract, other than with respect to the Supplier's breach of ……[Specify
+obligation] obligation as set forth in …….[Specify] and for claims related to
+mandatory product liability laws.
+14. DURATION AND TERMINATION
+a. This contract shall enter into force on the Effective Date and shall be in force for a term
+of [Specify] years.
+{This contract will be automatically renewed for [ Specify] years, if not terminated by
+either Party} [Use if applicable].
+b. This contract may be terminated without prejudice to Clause 14.a or any right or remedy
+either Party may have against the other for breach or non-performance of this contract if
+any of the following circumstances arise:
+i. Either Party commits a serious or grave breach of this contract or persistent
+breaches of this contract including, but not limited to, non-performance, default or
+neglect of that Party's duties under this contract and such breach remains un-
+remedied for [ Specify period, e.g. 30 days ] after notice of such breach has been
+given by the non-defaulting party.
+iv.  Where either Party commits any acts of dishonesty, fraud or theft.
+c. Such  termination  will  take  place  with  immediate  effect  on  written  notice  to  the  other 
+party and without  prejudice to any remedy either  Party may have against the other for any 
+breach  committed  prior  to  the  date  of  such  termination  or  which  gave  rise  to  the 
+termination.
+d. Upon  such  termination  the  Distributor  shall  sell  and  the  Supplier  shall  buy  back  all  the 
+Products falling within the classes set out in Schedule [Specify].
+e. Upon  termination  the  Distributor  shall  have  no  further  rights  to  use  the  Supplier’s 
+trademarks in any way whatsoever.
+13
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022FECC MODEL DISTRIBUTION CONTRACT
+f. If  the  Supplier  partially  or  completely  terminates  the  contract  in  the  absence  of  a 
+substantial breach of contract by the Distributor  {and in case the contract expires  [use  
+if applicable]},  the  Distributor  will  be  entitled  to  compensation.  The  amount  of  
+such compensation  shall  equal  [Specify]  %  of  the  average  yearly  invoice  value  
+between Supplier and Distributor during the period of validity of the  contract.
+g. In particular, the  Distributor  will be entitled to compensation if he has created a clientele  
+and/or  a  network  of  sub-distributors,  thus  leaving  the  Supplier  a  large  increase  in
+  goodwill  value  from  which  he  will  benefit  after  the  contract  is  terminated
+[Use  if
+applicable].
+15.  JURISDICTION AND  DISPUTE RESOLUTION
+a. The Parties hereby acknowledge and declare that this contract is subject to  and governed 
+by [Specify Law]  and the jurisdiction of the  [Specify Country] courts.
+b. Any dispute arising out of or in connection with this contract shall  be settled, if possible  
+by friendly negotiation and in good  faith by the  Parties.  If settlement  cannot be reached  
+by negotiation, the dispute shall be finally resolved by  [Specify no. e.g. single ]  
+arbitrator pursuant to the Rules of Conciliation and Arbitration of  [Specify].  The Place of 
+arbitration will be [Specify] and the arbitration proceedings shall be conducted in English  
+[or  Specify language]. Any arbitration award or decision shall be final and binding on 
+the Parties to
+this contract.
+16.  MISCELLANEOUS
+a. Any  notice  given  by  either  of  the  Parties  shall  be  served  on  the  other  Party  by  personal 
+delivery, pre-paid recorded delivery, first class post, telex or facsimile  transmission to the 
+receiving Party's address set out in this  contract  or such subsequent addresses as may be  
+notified by the Parties to each other.
+b. Each Party will pay the costs and expenses incurred by it in connection with entering into  
+this  contract.
+c. At any time during the term of this  contract, the Parties may assign any or all of its rights  
+or transfer any or all of its obligations hereunder to any Affiliate.
+d. Entire contract:  [use  where  applicable]
+14Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022(Distributor)(Supplier)
+(Distributor)(Supplier)
+i. It is hereby declared that the foregoing paragraphs, sub paragraphs and clauses of this
+contract shall be read and construed independently of each other.  Should any part of
+this contract or its paragraphs, sub paragraphs or clauses be found invalid it shall not
+affect the remaining paragraphs, sub paragraphs and clauses.
+ii. The Schedules to this contract constitute an integral part thereof.
+iii. Failure by either Party to enforce any accrued rights under this contract is not to be
+taken as or deemed to be a waiver of those rights unless the waiving Party
+acknowledges the waiver in writing.
+iv. No addition to or modification of any clause in this contract shall be binding on the
+Parties unless made in writing and signed by the signatories to this contract or their
+duly authorized representatives.
+v. This contract sets out the entire agreement and understanding of the Parties and is in
+substitution of any previous written or oral agreement between the Parties.
+vi. Reference to any Statutory Provisions in this contract shall include any Statutory
+Provisions, which amends or replaces it.
+Read, approved and signed in/at
+Place/Date Place/Date
+FECC MODEL DISTRIBUTION CONTRACT
+15
+Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022Annexes/ Schedules2
+2 Indicative list only.
+FECC MODEL DISTRIBUTION CONTRACT
+Examples of Annexes/Schedules
+a. Product details and specifications
+b. Territory details
+c. Price List and Payment terms and conditions
+d. Supply  terms and conditions
+e. Contract Execution Specifications
+f. Quality specifications and requirements if applicable
+g. Indent business
+h. Implications of REACH on the scope and purpose of the agreement/contract. e.g., it can 
+be provided that:
+ Substances of Very High Concern (SVHC) are explicitly excluded from the contract;
+ The  burdensome  task  of  communicating  information  about  the  presence  of  a  SVHC
+(in a concentration above 0.1% w/  or 0.1% according  to Member State  definitions) is 
+set forth and organized in the contract;
+ The  parties  can  agree  in  the  contract  to  provide  each  other  with  prior  notice  of 
+reclassification,  authorization  or  restrictions  under  REACH  and  make  this  a  reason 
+for amending or terminating the contract;
+ The parties can agree on a specific clause in the contract dealing with a procedure for  
+jointly handling reclassification,  authorization  or restrictions tasks.
+i. Implications of the Biocidal Products  regulation  on contractual requirements.
+j. Use by dates/ optimal use by date  –  There are may be no legal requirement on distributors 
+to include use by dates or optimum  use periods on labels. However, if the distributor does 
+so  under  instruction  from  the  principal  then  the  conditions  need  to  be  specified  in  the 
+contract e.g. what happens with products after the date/period.
+16
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022Supplement
+A. DISTRIBUTION CONTRACT – CHECKLIST3
+1. Parties
+ Who are the parties to this contract?
+ Key contact details & details of legal entities of both parties
+2. Description of the product
+ E.g. Individual product or product line
+3. Type of distribution contract
+ Non-exclusive/ exclusive
+4. Territorial requirements
+ Identify territory
+5. Duration
+ Specify duration
+ Renewal/Expiry, if applicable
+6. Dates
+ Contract date
+ Commencement date
+Obligations of the Distributor
+Obligations of the Supplier
+9. Supply of products
+ E.g. Manner in which the supply of products to the distributor is
+3 This is a sample checklist only.
+FECC MODEL DISTRIBUTION CONTRACT 17Original version of 2014; reviewed and updated under EU antitrust 
+law in autumn 2022determined
+Order procedure
+10. Pricing
+ Set out the manner in which pricing is to be determined
+11. Costs
+ E.g. In relation to storage, sales, warranty etc and who pays?
+12. Payment terms and conditions
+ Time, currency and method of payment
+ Payment of any associated taxes
+13. Ownership and Risk
+ When does title/risk pass to the distributor?
+14. Competition/ Competitor’s Products
+ Can the distributor sell suppliers’ competitors’ products?
+15. New products – first right of refusal (if applicable)
+ Gives the distributor first right of refusal to market new products or
+services of the Supplier in the defined territory and market.
+16. Compliance with applicable regulatory regimes
+ E.g. Pertaining to import/export, safety, labelling etc.
+17. Trademarks and Intellectual Property
+ Rights of the distributor to use suppliers’ trademarks and other
+intellectual properties
+18. Promotion of the products,  e.g.
+ Who is responsible for marketing and promotion?
+FECC MODEL DISTRIBUTION CONTRACT
+  18
+Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 2022Will marketing and promotions costs be shared?
+19. After-sales services if any
+ Who is responsible for after sales issues?
+ Product liability insurance?
+20. Sales targets if any
+21. Warranty of the Products
+ What obligations does the distributor have?
+ Product/goods or services warranty
+22. Shipping and delivery provisions
+ E.g. inspection, possession, title, risk of loss, insurance, change of
+circumstances.
+23. Defective Products
+ What happens if the distributor receives defective products?
+ Recall
+24. Termination of the Contract
+ Termination triggers e.g. breach of contract.
+ How can the contract be terminated?
+ Notice period.
+25. Post-termination obligations, e.g.
+ Cessation of use of trademarks
+ Supplier’s right or obligation to repurchase inventory
+ Will the distributor be allowed to sell-off stock and for what period?
+FECC MODEL DISTRIBUTION CONTRACT
+  19
+Original version of 2014; reviewed and updated under EU antitrust law in 
+autumn 202226. Indemnity
+ What indemnities are to be provided for by the parties? E.g. in case
+of injury resulting from use of the product.
+27. Governing Law / Jurisdiction
+ Which country’s law prevails in the case of a dispute?
+ Mediation and arbitration clauses, who pays costs?
+28. Confidentiality requirements
+ E.g. information pertaining to the product/s
+29. Force majeure clause
+SCHEDULE/ ANNEXES4
+List and description of products that Distributor will seek sales
+of.
+Specify geographical territory in which Distributor will operate.
+Provide details of product trademarks licensed and approved
+format of use to the Distributor by the Supplier.
+Provide list of products that the Supplier will buy back from the
+Distributor on termination of the contract.
+Quality assurance provisions if any.
+Etc.
+4 Indicative only.
+FECC MODEL DISTRIBUTION CONTRACT 20Original version of 2014; reviewed and updated under EU antitrust 
+law in autumn 2022B. LAW APPLICABLE TO DISTRIBUTION AGREEMENTS5
+COUNTRY APPLICABLE LAW/LEGISLATION
+ARGENTINA
+ No specific framework/provisions.
+ According to the Argentine Civil Code depends on terms and conditions of contracts.
+AUSTRIA
+ No specific provisions.
+ Rules established by Austrian Supreme Court/practical experience/case law.
+ In some case provisions of Austrian Commercial Agents Act (ACAA).
+BELGIUM
+nilateral termination of Exclusive Distributorship Agreements gratedLaw applicable  “U
+ationfor an indefinite dur ” (1961) (ACT)
+f case lawoMore than 50 years
+o most Agreements and when not provisions governed by BelgianACT is applicable t
+Contract Law.
+ns to applyACT has 3 conditio – exclusive distributor; in the territory of Belgium and
+ite period.appointed for indefin
+BRAZIL
+No specific legislation protecting distributors, distribution agreements are governed by
+the Brazilian Civil Code.
+BULGARIA
+ons protecting distributors.No specific provisi
+w, relationship between a distributor and a supplier can be classifiedUnder Bulgarian la
+agency or as a continuous supply agreement depending on the rightseither as commercial
+ut.and obligations set o
+dent the distributor the less likely will it qualify as a commercialThe more indepen
+ial agent acts on behalf of the principal while the distributor acts onagent. The commerc
+ears the risk of its own economic activity.its own behalf and b
+regulated by Bulgarian Commercial Act (Art.32-48).yCommercial agenc
+CHINA
+       
+ 
+ 
+  
+      
+ 
+ 
+   
+  
+5  This section  includes  an  overview of the  legislation  over multiple jurisdictions as of 2014 but has not been 
+updated and does not cover all aspects of the  law and requirements for these jurisdictions that may apply to your 
+business. While the laws and requirements on  this topic continue to evolve and develop, you should consult with 
+your legal counsel to check for completeness  of  this  information, as well as ensure your compliance with all the 
+laws and requirements applicable to your business.
+FECC  MODEL DISTRIBUTION CONTRACT  Original version of 2014      21COUNTRY APPLICABLE LAW/LEGISLATION
+Distribution agreements are covered by Contract Law of the People's Republic of China
+(PRC).
+Anti-monopoly Law of the PRC also has relevant provisions (i.e. prohibited behavior)
+International sales and distribution provisions covered by Foreign Trade Law of the
+PRC and PRC Regulations for the Control of Foreign Exchange.
+CYPRUS
+ No specific provisions protecting distributors.
+ Cyprus Contract law
+CZECH Rep.
+No specific provisions.
+Czech Commercial code applies – does not recognize distribution agreements.
+Distribution agreements can be considered commercial representation, sales contract or
+contract having aspects of the two.
+DENMARK
+ No specific provisions covering distributors.
+ General principles of Danish Contract law and Danish Commercial Agents Act apply.
+ESTONIA
+ No specific provisions.
+ Provisions of the Estonian Law of Obligations Act apply.
+FINLAND
+ No specific provisions.
+ Applicable law – Finnish Contract law and Sale of Goods legislation.
+FRANCE
+ No specific provisions.
+ Provisions of the French Commercial Code apply.
+GERMANY
+No specific statutory provisions.
+Provisions of the German Commercial Code (HGB) apply. Sections of the HGB
+implement the Agency Directive but also go beyond the scope of the Agency Directive.
+General contractual principles and rules developed by the Courts also apply.
+GREECE
+Commercial agency – Presidential Decree 219/1991.
+Law 3557/2007 – provisions for exclusive distributors.
+When there is a degree of integration with the supplier commercial organization –
+commercial agency principles will be applied (according to Greek Case law).
+22
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014COUNTRY APPLICABLE LAW/LEGISLATION
+HUNGARY
+ No specific provisions.
+ General provisions of the Hungarian Civil Code.
+INDIA
+No specific statutory provisions.
+General Contract Law. At present the Indian Contract Act may be divided into two parts
+Part 1:deals with the General Principles of Law of Contract;
+Part 2: deals with Special kinds of Contracts such as (a) Contract of Indemnity and
+Guarantee (b) Contract of Bailment and Pledge (c) Contract of Agency.
+IRELAND
+ No specific provisions.
+ General principles of Irish Contract Law.
+ITALY
+ons.No specific provisi
+ents fall under the general category ofDistribution agreem ‘sale agreements’.
+Provisions applicable - Italian Civil code.General legislative
+g lawChoice of governin – parties are free to select any law to govern the contract. If
+law the distribution agreement shall be governed by the law of thesilent on governing
+stributor is based.country where the di
+ject to Italian Law - Further, where one party is not Italian it dependsBased in Italy - Sub
+ion of the distribution agreement.on the date of execut
+17 December 2009- Until – Rules of 1980 Rome Convention on
+tractual Obligations.Con
+17 December 2009- After – EU Regulation 593/2008 on Contractual
+gations.obli
+LATVIA
+ No specific provisions.
+ Provisions of Latvian Commercial Law and Civil Law applicable
+LITHUANIA
+ Distribution contracts are covered by section of Civil Code of the Rep. of Lithuania.
+ For aspects not covered – applicable law - General Rules of Civil law.
+LUXEMBOURG
+ No specific provisions.
+ General Contracts law applicable.
+MEXICO
+23
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014COUNTRY APPLICABLE LAW/LEGISLATION
+A distribution agreement is a non-regulated agreement under Mexican law, hence the
+agreement is regulated by the terms and conditions of the agreement.
+NETHERLANDS
+ No specific provisions.
+ General provisions of Dutch Contract law apply and terms of the agreement.
+NORWAY
+No specific provisions.
+General contractual law.
+If nature of the distribution agreement is similar to an agency agreement – Agency Act
+will apply.
+POLAND
+ No specific provisions.
+ Provisions of the Polish Civil Code apply.
+PORTUGAL
+ No specific provisions.
+ General principles of Contract law.
+ Provisions of the Portuguese Agency Law applicable.
+ROMANIA
+ No specific provisions.
+ General Commercial/Contract law and Consumer protection legislation apply.
+RUSSIA
+ No specific provisions.
+ Provisions of the Russian Civil code applicable.
+SLOVAKIA
+No specific provisions.
+Law applicable will be chosen by the parties subject to Slovak conflict of law’s
+provisions.
+Slovak law does not differentiate distribution agreements – thus the agreement is
+considered a commercial representation, exclusive sales contract or combination of both.
+SLOVENIA
+ No specific provisions.
+ Provisions of the Slovenian Obligations Code applicable.
+SPAIN
+24
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014COUNTRY APPLICABLE LAW/LEGISLATION
+ No specific provisions.
+ Provisions of Spanish Civil Code and Commercial code apply.
+SWEDEN
+ No specific provisions.
+ Terms of the agreement and general principles of Swedish contract law apply.
+SWITZERLAND
+Rules applicable to distribution developed in particular by case law.
+Statutory provisions for Agency and for ordinary partnership of the Swiss Code of
+Obligations are applicable (depending on the agreement).
+UKRAINE
+ No specific provisions.
+ Ukrainian Civil Code and Commercial Code (and sale of goods) applicable.
+UNITED KINGDOM
+ No specific provisions.
+ General aspects of English Contract law and principles from case law.
+UNITED STATES
+Article 2 of the Uniform Commercial Code governs sale of goods – adopted by all states
+except Louisiana.
+Depends on choice of laws of a State.
+General principles of Contract law and terms of the agreement.
+25
+FECC MODEL DISTRIBUTION CONTRACT Original version of 2014C. EU COMPETITION LAW AND DISTRIBUTION CONTRACTS:
+COMPLIANCE MATTERS
+Competition rules applying to undertakings - Treaty on the Functioning of the European
+Union (TFEU)
+- Core Provisions
+1. Article 101(ex Article 81 Treaty establishing the European Community -TEC)
+1. The following shall be prohibited as incompatible with the internal market: all agreements
+between undertakings, decisions by associations of undertakings and concerted practices
+which may affect trade between Member States and which have as their object or effect the
+prevention, restriction or distortion of competition within the internal market, and in
+particular those which:
+(a) directly or indirectly fix purchase or selling prices or any other trading conditions;
+(b) limit or control production, markets, technical development, or investment;
+(c) share markets or sources of supply;
+(d) apply dissimilar conditions to equivalent transactions with other trading parties, thereby
+placing them at a competitive disadvantage;
+(e) make the conclusion of contracts subject to acceptance by the other parties of supplementary
+obligations which, by their nature or according to commercial usage, have no connection
+with the subject of such contracts.
+2. Any agreements or decisions prohibited pursuant to this Article shall be automatically void.
+3. The provisions of paragraph 1 may, however, be declared inapplicable in the case of:
+- any agreement or category of agreements between undertakings,
+- any decision or category of decisions by associations of undertakings,
+- any concerted practice or category of concerted practices,
+which contributes to improving the production or distribution of goods or to promoting
+technical or economic progress, while allowing consumers a fair share of the resulting benefit,
+and which does not:
+(a) impose on the undertakings concerned restrictions which are not indispensable to the
+attainment of these objectives;
+(b) afford such undertakings the possibility of eliminating competition in respect of a
+substantial part of the products in question.
+  26
+FECC MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 20222. Article 102 (ex Article 82 TEC)
+Any abuse by one or more undertakings of a dominant position within the internal market or in
+a substantial part of it shall be prohibited as incompatible with the internal market in so far as it
+may affect trade between Member States.
+Such abuse may, in particular, consist in:
+(a) directly or indirectly imposing unfair purchase or selling prices or other unfair trading
+conditions;
+(b) limiting production, markets or technical development to the prejudice of consumers;
+(c) applying dissimilar conditions to equivalent transactions with other trading parties, thereby
+placing them at a competitive disadvantage;
+(d) making the conclusion of contracts subject to acceptance by the other parties of
+supplementary obligations which, by their nature or according to commercial usage, have
+no connection with the subject of such contracts.
+3. Article 103 (ex Article 83 TEC)
+The appropriate regulations or directives to give effect to the principles set out in Articles 101
+and 102 shall be laid down by the Council, on a proposal from the Commission and after
+consulting the European Parliament.
+The regulations or directives referred to in paragraph 1 shall be designed in particular:
+(a) to ensure compliance with the prohibitions laid down in Article 101(1) and in Article 102 by
+making provision for fines and periodic penalty payments;
+(b) to lay down detailed rules for the application of Article 101(3), taking into account the need
+to ensure effective supervision on the one hand, and to simplify administration to the greatest
+possible extent on the other;
+(c) to define, if need be, in the various branches of the economy, the scope of the provisions of
+Articles 101 and 102;
+(d) to define the respective functions of the Commission and of the Court of Justice of the
+European Union in applying the provisions laid down in this paragraph;
+(e) to determine the relationship between national laws and the provisions contained in this
+Section or adopted pursuant to this Article.
+ 
+ 
+            
+ 
+ 
+4. Article 104  (ex Article 84 TEC)
+Until  the  entry  into  force  of  the  provisions  adopted  in  pursuance  of  Article  103, the  authorities
+in  Member  States  shall  rule  on  the  admissibility  of  agreements,  decisions  and  concerted
+practices  and  on  abuse  of  a  dominant  position  in  the internal  market  in  accordance  with  the  law
+of their country and with the provisions of Article 101, in particular paragraph 3, and of Article
+102.
+  27
+FECC  MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 20225. Article 105 (ex Article 85 TEC)
+1. Without prejudice to Article 104, the Commission shall ensure the application of the
+principles laid down in Articles 101 and 102. On application by a Member State or on its own
+initiative, and in cooperation with the competent authorities in the Member States, which shall
+give it their assistance, the Commission shall investigate cases of suspected infringement of
+these principles. If it finds that there has been an infringement, it shall propose appropriate
+measures to bring it to an end.
+2. If the infringement is not brought to an end, the Commission shall record such infringement
+of the principles in a reasoned decision. The Commission may publish its decision and authorise
+Member States to take the measures, the conditions and details of which it shall determine,
+needed to remedy the situation.
+3. The Commission may adopt regulations relating to the categories of agreement in respect of
+which the Council has adopted a regulation or a directive pursuant to Article 103(2)(b).
+6 See, Summaries of EU Legislation, Competition
+      
+Block Exemption Regulations/  Exemptions  for vertical supply and distribution agreements6
+Whether  a  vertical  agreement  actually  restricts  competition  or  not  will  often  depend  on  the 
+market  structure.  The  Commission has adopted Regulation  (EU) 2022/720 7, the Block
+Exemption Regulation  (the BER), which provides a safe harbour for most vertical agreements.
+The BER renders, by block exemption, the prohibition of Article 101(1) TFEU inapplicable to  
+vertical  agreements  which  fulfil  certain  requirements.  The  Commission  has  also 
+published  guidelines on vertical restraints.
+- Requirements for application of the Block Exemption Regulation
+The  first  requirement  is  that  the  agreement  does  not  contain  any  of  the hardcore  restrictions  
+set
+ 
+out  in  the  BER.  The  second  requirement  concerns  a market  share  cap of  30  %  for  both   
+suppliers and buyers. Thirdly, the BER contains conditions relating to three  specific restrictions.
+ Hardcore restrictions
+a. Suppliers are not allowed to fix the (minimum) price at which distributors can resell their  
+products.
+b. Distributors  must  remain  free  to  decide  where  and  to  whom  they  sell.  The  BER  contains 
+exceptions  to  this  rule,  which,  for  instance,  enable  companies  to  operate  an  exclusive 
+distribution system or a selective distribution system.
+c. Selected distributors, while being prohibited to sell to unauthorised distributors, cannot be  
+restricted in the end-users to whom they may sell. Secondly, t
+d. The  appointed  distributors  must  remain  free  to  sell  or  purchase  the  contract  goods  to  or
+from other appointed distributors within the network.
+e. An agreement between a manufacturer of spare parts and a buyer which incorporates these
+parts  into  its  own  products  may  not  prevent  or  restrict  sales  by  the  manufacturer  of  these
+spare parts to end users, independent repairers or service providers.
+ 
+      
+28
+ 
+  
+ 7  OJ L 134, 11.5.2022, p. 4–13 - https://eur-lex.europa.eu/eli/reg/2022/720/oj
+FECC MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022Downloadable Compilations of EU antitrust legislation
+6. Vol.1. General Rules -
+http://ec.europa.eu/competition/antitrust/legislation/handbook_vol_1_en.pdf
+7.
+http://ec.europa.eu/competition/antitrust/legislation/handbook_vol_2_en.pdf
+8.
+Vol.2  –  General Block exemption  –  Regulations and Guidelines  (outdated)
+ 
+ 
+ 
+ 
+    
+ 
+  
+  
+ 
+ 
+ 
+             
+ 30% market share cap
+A vertical agreement is covered by this BER if both  the supplier and the buyer of the goods or  
+services do not have a market share exceeding 30  %. For the supplier, it is its market share on  
+the relevant supply market, i.e. the market on which it sells the goods or services that is decisive 
+for the application of the block exemption. For the buyer, it is its market share on the relevant  
+purchase market, i.e. the market on which it purchases the goods or services, which is decisive
+for the application of the BER.
+  Excluded restrictions
+The  BER  regulation  applies  to  all  vertical  restraints  other  than  the  abovementioned  hardcore 
+restraints. However, it does impose specific conditions on three vertical restraints:
+a. non-compete obligations during the contract;
+b. non-compete obligations after termination of the contract;
+c. the exclusion of specific brands in a selective distribution system.
+d. non-compete obligations imposed on buyers of online intermediation services not to offer,
+sell or resell goods or services to end users under more favorable conditions via competing
+online intermediation services.
+EU Cartel Legislation  -
+http://ec.europa.eu/competition/cartels/legislation/cartel_compilation_en.pdf
+ 
+  
+ 
+ 
+    
+ 
+9. EU Merger control legislation  -
+http://ec.europa.eu/competition/mergers/legislation/merger_law_2013_web.pdf
+10. Vertical Agreements and Guidelines  -
+https://competition-policy.ec.europa.eu/antitrust/legislation/vertical-block-exemptions_en
+11. Horizontal Agreements  -
+  https://competition-policy.ec.europa.eu/antitrust/legislation/horizontal-block-exemptions_en
+12. Changes to EU Competition Law after the entry into force of the Treaty of Lisbon (1 December
+2009) -  http://ec.europa.eu/competition/information/treaty.html
+Other resources
+13. Summaries and checklists: EU Competition Rules applicable to firms  -
+http://europa.eu/legislation_summaries/competition/firms/index_en.htm
+29
+FECC MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 202214. DG Competition's Antitrust Manual of Procedures -
+http://ec.europa.eu/competition/antitrust/antitrust_manproc_3_2012_en.pdf
+15. Inspection explanatory note: Describes what happens during an inspection and clarifies the rights
+and obligations of the company being inspected -
+http://ec.europa.eu/competition/antitrust/legislation/explanatory_note.pdf
+16. European Commission Antitrust/Cartels - practical Information -
+http://ec.europa.eu/competition/antitrust/information_en.html
+17. European Commission brochure – Compliance Matters - http://bookshop.europa.eu/is-
+bin/INTERSHOP.enfinity/WFS/EU-Bookshop-Site/en_GB/-/EUR/ViewPublication-
+Start?PublicationKey=KD3211985
+  30
+FECC MODEL DISTRIBUTION CONTRACT
+Original version of 2014; reviewed and updated under EU antitrust law in autumn 2022

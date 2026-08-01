@@ -1,0 +1,4 @@
+# Regression fixture: a real monitor log, intentionally version-controlled so the log reader's
+# tests are deterministic in CI. This overrides the root `*.log` ignore for everything under
+# this fixtures/ directory (matches devteam-analysis/tests/fixtures/.gitignore's convention).
+!*.log

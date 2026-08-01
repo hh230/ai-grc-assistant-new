@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.rasheed.devteam-monitor</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/venv/bin/python</string>
+    <string>-m</string>
+    <string>devteam_runtime.monitor</string>
+    <string>--repo</string>
+    <string>hh230/ai-grc-assistant-new</string>
+    <string>--repo-root</string>
+    <string>/Users/x/AI GRC Assistant</string>
+    <string>--poll-seconds</string>
+    <string>60</string>
+    <string>--max-attempts</string>
+    <string>3</string>
+  </array>
+  <key>StandardErrorPath</key>
+  <string>/Users/x/Library/Logs/devteam-monitor/monitor.err.log</string>
+  <key>StandardOutPath</key>
+  <string>/Users/x/Library/Logs/devteam-monitor/monitor.out.log</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+</dict>
+</plist>

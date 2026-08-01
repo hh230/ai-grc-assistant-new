@@ -1,0 +1,29 @@
+[project]
+name = "iso-27001-extractor"
+version = "0.1.0"
+description = "Rasheed V3 — ISO/IEC 27001:2022 Knowledge Extractor. First Licensed, multi-structure source behind KnowledgeExtractionPort. Extracts Annex A (4 Themes -> 93 Controls) deterministically and records a formal ExtractionNote that the Management Clauses are a Partial extraction due to rendition quality (Source != Rendition) — it describes reality, does not complete it. Proves Native!=Canonical (Theme->Category) and Storage!=Egress (Licensed: full text stored, egress_restricted). `fitz` imported lazily so the parser is testable without a document library."
+requires-python = ">=3.12"
+dependencies = [
+    "knowledge-extraction",
+    "pymupdf>=1.26",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "artifact-writers",
+]
+
+[tool.uv.sources]
+knowledge-extraction = { path = "../knowledge-extraction", editable = true }
+artifact-writers = { path = "../artifact-writers", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["iso_27001_extractor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

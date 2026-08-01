@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "nist--nist ai rmf--nist.ai.600-1.pdf",
+  "filename": "NIST.AI.600-1.pdf",
+  "extension": ".pdf",
+  "category": "NIST",
+  "relative_path": "NIST/NIST AI RMF/NIST.AI.600-1.pdf",
+  "size_bytes": 1174643,
+  "last_modified": "2026-06-26T20:37:26.931739+00:00",
+  "checksum_sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 64,
+  "character_count": 160747,
+  "extraction_duration": 1.202283125021495,
+  "parsed_at": "2026-07-12T16:12:24.912414+00:00",
+  "error": null,
+  "document_profile": "control_framework",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 165,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.45454545454545453,
+  "chunking_duration": 0.041944207972846925,
+  "chunked_at": "2026-07-12T16:12:24.958531+00:00",
+  "chunking_error": null
+}

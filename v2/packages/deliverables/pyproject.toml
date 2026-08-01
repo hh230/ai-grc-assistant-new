@@ -1,0 +1,40 @@
+[project]
+name = "deliverables"
+version = "0.1.0"
+description = "Rasheed V2 Deliverables — product roadmap P3. A pure transformation layer that turns a completed Mission's step results into STRUCTURED, exportable GRC deliverables: a generic audit-ready Deliverable (sections + provenance/citations) rendered to Markdown, and the flagship Gap Matrix (control ↔ status ↔ evidence) derived deterministically from the mission + the framework catalog. CONSUMES mission-engine (the mission) and framework-library (control codes/titles); no LLM, no Core change. The structure is real, cited, and auditable — the raw synthesis text becomes a document a customer can act on."
+requires-python = ">=3.12"
+dependencies = [
+    "mission-engine",
+    "framework-library",
+    "pipeline-contracts",
+    "python-docx>=1.2.0",
+    "reportlab>=4.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "event-bus",
+    "pypdf>=5.0.0",
+]
+
+[tool.uv.sources]
+mission-engine = { path = "../mission-engine", editable = true }
+framework-library = { path = "../framework-library", editable = true }
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["deliverables"]
+
+# reportlab ships no py.typed; consume it as an untyped import (our own code stays strict).
+[[tool.mypy.overrides]]
+module = "reportlab.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

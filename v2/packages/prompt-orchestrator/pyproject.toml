@@ -1,0 +1,42 @@
+[project]
+name = "prompt-orchestrator"
+version = "0.1.0"
+description = "Rasheed V2 Prompt Orchestrator (Phase 11). Converts a DecisionPlan + ContextPackage + UserRequest into a provider-agnostic LLMRequest: system prompt, developer instructions, workflow template, prompt policies, rendered context, user request, and an expected response contract. No LLM provider, no OpenAI/Claude/Gemini/Ollama, no generation, no RAG. Implements v2/docs/architecture/prompt-orchestrator.md."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "context-builder",
+]
+
+[dependency-groups]
+# decision-engine and retrieval-engine are dev-only: tests, examples, and benchmarks run
+# the full upstream pipeline. The runtime path depends only on the shared contracts plus
+# context-builder's pure token estimation (`budget.estimate_tokens`) — the citation rules it
+# used to borrow from context-builder now come from pipeline_contracts.citations directly.
+dev = [
+    "pytest>=8.3.0",
+    "decision-engine",
+    "retrieval-engine",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+context-builder = { path = "../context-builder", editable = true }
+decision-engine = { path = "../decision-engine", editable = true }
+retrieval-engine = { path = "../retrieval-engine", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["prompt_orchestrator"]
+# Development-only illustration/benchmark modules — kept in the source tree, never shipped in
+# the production wheel.
+exclude = [
+    "prompt_orchestrator/examples.py",
+    "prompt_orchestrator/benchmark.py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

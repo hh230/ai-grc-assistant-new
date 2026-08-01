@@ -1,0 +1,3619 @@
+{
+  "artifact": {
+    "artifact_id": "NIST-CSF@2.0~x1~p1~c1.3~dc4b39cec763",
+    "source_id": "NIST-CSF",
+    "source_version": "2.0",
+    "extractor_version": "1",
+    "protocol_version": "1",
+    "contract_version": "1.3",
+    "content_hash": "dc4b39cec763c07e435047e13118f026fdc3fba11a3e31df3d5b8f361a0bef63",
+    "generated_at": "2026-07-25T13:40:00.434579+00:00"
+  },
+  "summary": {
+    "entities": 134,
+    "structural_relationships": 128,
+    "warnings": 0,
+    "unknown": 0,
+    "counts_by_type": {
+      "Function": 6,
+      "Category": 22,
+      "Subcategory": 106
+    },
+    "state": "Ready",
+    "language": "EN",
+    "normalization": []
+  },
+  "warnings": [],
+  "entities": [
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV",
+      "parent": null,
+      "type": "Function",
+      "name": "GOVERN",
+      "number": "GV",
+      "description": "The organization’s cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function GV"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID",
+      "parent": null,
+      "type": "Function",
+      "name": "IDENTIFY",
+      "number": "ID",
+      "description": "The organization’s current cybersecurity risks are understood",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function ID"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR",
+      "parent": null,
+      "type": "Function",
+      "name": "PROTECT",
+      "number": "PR",
+      "description": "Safeguards to manage the organization’s cybersecurity risks are used",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function PR"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE",
+      "parent": null,
+      "type": "Function",
+      "name": "DETECT",
+      "number": "DE",
+      "description": "Possible cybersecurity attacks and compromises are found and analyzed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function DE"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS",
+      "parent": null,
+      "type": "Function",
+      "name": "RESPOND",
+      "number": "RS",
+      "description": "Actions regarding a detected cybersecurity incident are taken",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function RS"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC",
+      "parent": null,
+      "type": "Function",
+      "name": "RECOVER",
+      "number": "RC",
+      "description": "Assets and operations affected by a cybersecurity incident are restored",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Function RC"
+      },
+      "native_node_type": "Function",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE",
+      "parent": "NIST-CSF@2.0::DE",
+      "type": "Category",
+      "name": "Adverse Event Analysis",
+      "number": "DE.AE",
+      "description": "Anomalies, indicators of compromise, and other potentially adverse events are analyzed to characterize the events and detect cybersecurity incidents",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category DE.AE"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM",
+      "parent": "NIST-CSF@2.0::DE",
+      "type": "Category",
+      "name": "Continuous Monitoring",
+      "number": "DE.CM",
+      "description": "Assets are monitored to find anomalies, indicators of compromise, and other potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category DE.CM"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Organizational Context",
+      "number": "GV.OC",
+      "description": "The circumstances — mission, stakeholder expectations, dependencies, and legal, regulatory, and contractual requirements — surrounding the organization’s cybersecurity risk management decisions are understood",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.OC"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OV",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Oversight",
+      "number": "GV.OV",
+      "description": "Results of organization-wide cybersecurity risk management activities and performance are used to inform, improve, and adjust the risk management strategy",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.OV"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.PO",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Policy",
+      "number": "GV.PO",
+      "description": "Organizational cybersecurity policy is established, communicated, and enforced",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.PO"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Risk Management Strategy",
+      "number": "GV.RM",
+      "description": "The organization’s priorities, constraints, risk tolerance and appetite statements, and assumptions are established, communicated, and used to support operational risk decisions",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.RM"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RR",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Roles, Responsibilities, and Authorities",
+      "number": "GV.RR",
+      "description": "Cybersecurity roles, responsibilities, and authorities to foster accountability, performance assessment, and continuous improvement are established and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.RR"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC",
+      "parent": "NIST-CSF@2.0::GV",
+      "type": "Category",
+      "name": "Cybersecurity Supply Chain Risk Management",
+      "number": "GV.SC",
+      "description": "Cyber supply chain risk management processes are identified, established, managed, monitored, and improved by organizational stakeholders",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category GV.SC"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM",
+      "parent": "NIST-CSF@2.0::ID",
+      "type": "Category",
+      "name": "Asset Management",
+      "number": "ID.AM",
+      "description": "Assets (e.g., data, hardware, software, systems, facilities, services, people) that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to organizational objectives and the organization’s risk strategy",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category ID.AM"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.IM",
+      "parent": "NIST-CSF@2.0::ID",
+      "type": "Category",
+      "name": "Improvement",
+      "number": "ID.IM",
+      "description": "Improvements to organizational cybersecurity risk management processes, procedures and activities are identified across all CSF Functions",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category ID.IM"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA",
+      "parent": "NIST-CSF@2.0::ID",
+      "type": "Category",
+      "name": "Risk Assessment",
+      "number": "ID.RA",
+      "description": "The cybersecurity risk to the organization, assets, and individuals is understood by the organization",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category ID.RA"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA",
+      "parent": "NIST-CSF@2.0::PR",
+      "type": "Category",
+      "name": "Identity Management, Authentication, and Access Control",
+      "number": "PR.AA",
+      "description": "Access to physical and logical assets is limited to authorized users, services, and hardware and managed commensurate with the assessed risk of unauthorized access",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category PR.AA"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AT",
+      "parent": "NIST-CSF@2.0::PR",
+      "type": "Category",
+      "name": "Awareness and Training",
+      "number": "PR.AT",
+      "description": "The organization’s personnel are provided with cybersecurity awareness and training so that they can perform their cybersecurity-related tasks",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category PR.AT"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.DS",
+      "parent": "NIST-CSF@2.0::PR",
+      "type": "Category",
+      "name": "Data Security",
+      "number": "PR.DS",
+      "description": "Data are managed consistent with the organization’s risk strategy to protect the confidentiality, integrity, and availability of information",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category PR.DS"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.IR",
+      "parent": "NIST-CSF@2.0::PR",
+      "type": "Category",
+      "name": "Technology Infrastructure Resilience",
+      "number": "PR.IR",
+      "description": "Security architectures are managed with the organization’s risk strategy to protect asset confidentiality, integrity, and availability, and organizational resilience",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category PR.IR"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS",
+      "parent": "NIST-CSF@2.0::PR",
+      "type": "Category",
+      "name": "Platform Security",
+      "number": "PR.PS",
+      "description": "The hardware, software (e.g., firmware, operating systems, applications), and services of physical and virtual platforms are managed consistent with the organization’s risk strategy to protect their confidentiality, integrity, and availability",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category PR.PS"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.CO",
+      "parent": "NIST-CSF@2.0::RC",
+      "type": "Category",
+      "name": "Incident Recovery Communication",
+      "number": "RC.CO",
+      "description": "Restoration activities are coordinated with internal and external parties",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RC.CO"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP",
+      "parent": "NIST-CSF@2.0::RC",
+      "type": "Category",
+      "name": "Incident Recovery Plan Execution",
+      "number": "RC.RP",
+      "description": "Restoration activities are performed to ensure operational availability of systems and services affected by cybersecurity incidents",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RC.RP"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.AN",
+      "parent": "NIST-CSF@2.0::RS",
+      "type": "Category",
+      "name": "Incident Analysis",
+      "number": "RS.AN",
+      "description": "Investigations are conducted to ensure effective response and support forensics and recovery activities",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RS.AN"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.CO",
+      "parent": "NIST-CSF@2.0::RS",
+      "type": "Category",
+      "name": "Incident Response Reporting and Communication",
+      "number": "RS.CO",
+      "description": "Response activities are coordinated with internal and external stakeholders as required by laws, regulations, or policies",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RS.CO"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA",
+      "parent": "NIST-CSF@2.0::RS",
+      "type": "Category",
+      "name": "Incident Management",
+      "number": "RS.MA",
+      "description": "Responses to detected cybersecurity incidents are managed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RS.MA"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MI",
+      "parent": "NIST-CSF@2.0::RS",
+      "type": "Category",
+      "name": "Incident Mitigation",
+      "number": "RS.MI",
+      "description": "Activities are performed to prevent expansion of an event and mitigate its effects",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Category RS.MI"
+      },
+      "native_node_type": "Category",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-02",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "Potentially adverse events are analyzed to better understand associated activities",
+      "number": "DE.AE-02",
+      "description": "Potentially adverse events are analyzed to better understand associated activities",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-03",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "Information is correlated from multiple sources",
+      "number": "DE.AE-03",
+      "description": "Information is correlated from multiple sources",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-04",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "The estimated impact and scope of adverse events are understood",
+      "number": "DE.AE-04",
+      "description": "The estimated impact and scope of adverse events are understood",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-06",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "Information on adverse events is provided to authorized staff and tools",
+      "number": "DE.AE-06",
+      "description": "Information on adverse events is provided to authorized staff and tools",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-07",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "Cyber threat intelligence and other contextual information are integrated into the analysis",
+      "number": "DE.AE-07",
+      "description": "Cyber threat intelligence and other contextual information are integrated into the analysis",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.AE-08",
+      "parent": "NIST-CSF@2.0::DE.AE",
+      "type": "Subcategory",
+      "name": "Incidents are declared when adverse events meet the defined incident criteria NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 22",
+      "number": "DE.AE-08",
+      "description": "Incidents are declared when adverse events meet the defined incident criteria NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 22",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.AE-08"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM-01",
+      "parent": "NIST-CSF@2.0::DE.CM",
+      "type": "Subcategory",
+      "name": "Networks and network services are monitored to find potentially adverse events",
+      "number": "DE.CM-01",
+      "description": "Networks and network services are monitored to find potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.CM-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM-02",
+      "parent": "NIST-CSF@2.0::DE.CM",
+      "type": "Subcategory",
+      "name": "The physical environment is monitored to find potentially adverse events",
+      "number": "DE.CM-02",
+      "description": "The physical environment is monitored to find potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.CM-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM-03",
+      "parent": "NIST-CSF@2.0::DE.CM",
+      "type": "Subcategory",
+      "name": "Personnel activity and technology usage are monitored to find potentially adverse events",
+      "number": "DE.CM-03",
+      "description": "Personnel activity and technology usage are monitored to find potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.CM-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM-06",
+      "parent": "NIST-CSF@2.0::DE.CM",
+      "type": "Subcategory",
+      "name": "External service provider activities and services are monitored to find potentially adverse events",
+      "number": "DE.CM-06",
+      "description": "External service provider activities and services are monitored to find potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.CM-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::DE.CM-09",
+      "parent": "NIST-CSF@2.0::DE.CM",
+      "type": "Subcategory",
+      "name": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events",
+      "number": "DE.CM-09",
+      "description": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory DE.CM-09"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC-01",
+      "parent": "NIST-CSF@2.0::GV.OC",
+      "type": "Subcategory",
+      "name": "The organizational mission is understood and informs cybersecurity risk management",
+      "number": "GV.OC-01",
+      "description": "The organizational mission is understood and informs cybersecurity risk management",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OC-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC-02",
+      "parent": "NIST-CSF@2.0::GV.OC",
+      "type": "Subcategory",
+      "name": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered",
+      "number": "GV.OC-02",
+      "description": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OC-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC-03",
+      "parent": "NIST-CSF@2.0::GV.OC",
+      "type": "Subcategory",
+      "name": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed",
+      "number": "GV.OC-03",
+      "description": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OC-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC-04",
+      "parent": "NIST-CSF@2.0::GV.OC",
+      "type": "Subcategory",
+      "name": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated",
+      "number": "GV.OC-04",
+      "description": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OC-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OC-05",
+      "parent": "NIST-CSF@2.0::GV.OC",
+      "type": "Subcategory",
+      "name": "Outcomes, capabilities, and services that the organization depends on are understood and communicated",
+      "number": "GV.OC-05",
+      "description": "Outcomes, capabilities, and services that the organization depends on are understood and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OC-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OV-01",
+      "parent": "NIST-CSF@2.0::GV.OV",
+      "type": "Subcategory",
+      "name": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction",
+      "number": "GV.OV-01",
+      "description": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OV-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OV-02",
+      "parent": "NIST-CSF@2.0::GV.OV",
+      "type": "Subcategory",
+      "name": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks",
+      "number": "GV.OV-02",
+      "description": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OV-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.OV-03",
+      "parent": "NIST-CSF@2.0::GV.OV",
+      "type": "Subcategory",
+      "name": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed",
+      "number": "GV.OV-03",
+      "description": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.OV-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.PO-01",
+      "parent": "NIST-CSF@2.0::GV.PO",
+      "type": "Subcategory",
+      "name": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced",
+      "number": "GV.PO-01",
+      "description": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.PO-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.PO-02",
+      "parent": "NIST-CSF@2.0::GV.PO",
+      "type": "Subcategory",
+      "name": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission",
+      "number": "GV.PO-02",
+      "description": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.PO-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-01",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Risk management objectives are established and agreed to by organizational stakeholders",
+      "number": "GV.RM-01",
+      "description": "Risk management objectives are established and agreed to by organizational stakeholders",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-02",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Risk appetite and risk tolerance statements are established, communicated, and maintained",
+      "number": "GV.RM-02",
+      "description": "Risk appetite and risk tolerance statements are established, communicated, and maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-03",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes",
+      "number": "GV.RM-03",
+      "description": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-04",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Strategic direction that describes appropriate risk response options is established and communicated",
+      "number": "GV.RM-04",
+      "description": "Strategic direction that describes appropriate risk response options is established and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-05",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties",
+      "number": "GV.RM-05",
+      "description": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-06",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated",
+      "number": "GV.RM-06",
+      "description": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RM-07",
+      "parent": "NIST-CSF@2.0::GV.RM",
+      "type": "Subcategory",
+      "name": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 17",
+      "number": "GV.RM-07",
+      "description": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 17",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RM-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RR-01",
+      "parent": "NIST-CSF@2.0::GV.RR",
+      "type": "Subcategory",
+      "name": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving",
+      "number": "GV.RR-01",
+      "description": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RR-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RR-02",
+      "parent": "NIST-CSF@2.0::GV.RR",
+      "type": "Subcategory",
+      "name": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced",
+      "number": "GV.RR-02",
+      "description": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RR-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RR-03",
+      "parent": "NIST-CSF@2.0::GV.RR",
+      "type": "Subcategory",
+      "name": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies",
+      "number": "GV.RR-03",
+      "description": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RR-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.RR-04",
+      "parent": "NIST-CSF@2.0::GV.RR",
+      "type": "Subcategory",
+      "name": "Cybersecurity is included in human resources practices",
+      "number": "GV.RR-04",
+      "description": "Cybersecurity is included in human resources practices",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.RR-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-01",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders",
+      "number": "GV.SC-01",
+      "description": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-02",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",
+      "number": "GV.SC-02",
+      "description": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-03",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes",
+      "number": "GV.SC-03",
+      "description": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-04",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Suppliers are known and prioritized by criticality NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 18",
+      "number": "GV.SC-04",
+      "description": "Suppliers are known and prioritized by criticality NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 18",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-05",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties",
+      "number": "GV.SC-05",
+      "description": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-06",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships",
+      "number": "GV.SC-06",
+      "description": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-07",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship",
+      "number": "GV.SC-07",
+      "description": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-08",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",
+      "number": "GV.SC-08",
+      "description": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-08"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-09",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle",
+      "number": "GV.SC-09",
+      "description": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-09"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::GV.SC-10",
+      "parent": "NIST-CSF@2.0::GV.SC",
+      "type": "Subcategory",
+      "name": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement",
+      "number": "GV.SC-10",
+      "description": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory GV.SC-10"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-01",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Inventories of hardware managed by the organization are maintained",
+      "number": "ID.AM-01",
+      "description": "Inventories of hardware managed by the organization are maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-02",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Inventories of software, services, and systems managed by the organization are maintained",
+      "number": "ID.AM-02",
+      "description": "Inventories of software, services, and systems managed by the organization are maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-03",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Representations of the organization’s authorized network communication and internal and external network data flows are maintained",
+      "number": "ID.AM-03",
+      "description": "Representations of the organization’s authorized network communication and internal and external network data flows are maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-04",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Inventories of services provided by suppliers are maintained",
+      "number": "ID.AM-04",
+      "description": "Inventories of services provided by suppliers are maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-05",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Assets are prioritized based on classification, criticality, resources, and impact on the mission",
+      "number": "ID.AM-05",
+      "description": "Assets are prioritized based on classification, criticality, resources, and impact on the mission",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-07",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Inventories of data and corresponding metadata for designated data types are maintained",
+      "number": "ID.AM-07",
+      "description": "Inventories of data and corresponding metadata for designated data types are maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.AM-08",
+      "parent": "NIST-CSF@2.0::ID.AM",
+      "type": "Subcategory",
+      "name": "Systems, hardware, software, services, and data are managed throughout their life cycles",
+      "number": "ID.AM-08",
+      "description": "Systems, hardware, software, services, and data are managed throughout their life cycles",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.AM-08"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.IM-01",
+      "parent": "NIST-CSF@2.0::ID.IM",
+      "type": "Subcategory",
+      "name": "Improvements are identified from evaluations",
+      "number": "ID.IM-01",
+      "description": "Improvements are identified from evaluations",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.IM-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.IM-02",
+      "parent": "NIST-CSF@2.0::ID.IM",
+      "type": "Subcategory",
+      "name": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties",
+      "number": "ID.IM-02",
+      "description": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.IM-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.IM-03",
+      "parent": "NIST-CSF@2.0::ID.IM",
+      "type": "Subcategory",
+      "name": "Improvements are identified from execution of operational processes, procedures, and activities",
+      "number": "ID.IM-03",
+      "description": "Improvements are identified from execution of operational processes, procedures, and activities",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.IM-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.IM-04",
+      "parent": "NIST-CSF@2.0::ID.IM",
+      "type": "Subcategory",
+      "name": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved",
+      "number": "ID.IM-04",
+      "description": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.IM-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-01",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Vulnerabilities in assets are identified, validated, and recorded NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 19",
+      "number": "ID.RA-01",
+      "description": "Vulnerabilities in assets are identified, validated, and recorded NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 19",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-02",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Cyber threat intelligence is received from information sharing forums and sources",
+      "number": "ID.RA-02",
+      "description": "Cyber threat intelligence is received from information sharing forums and sources",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-03",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Internal and external threats to the organization are identified and recorded",
+      "number": "ID.RA-03",
+      "description": "Internal and external threats to the organization are identified and recorded",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-04",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded",
+      "number": "ID.RA-04",
+      "description": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-05",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization",
+      "number": "ID.RA-05",
+      "description": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-06",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Risk responses are chosen, prioritized, planned, tracked, and communicated",
+      "number": "ID.RA-06",
+      "description": "Risk responses are chosen, prioritized, planned, tracked, and communicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-07",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked",
+      "number": "ID.RA-07",
+      "description": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-08",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established",
+      "number": "ID.RA-08",
+      "description": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-08"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-09",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use",
+      "number": "ID.RA-09",
+      "description": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-09"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::ID.RA-10",
+      "parent": "NIST-CSF@2.0::ID.RA",
+      "type": "Subcategory",
+      "name": "Critical suppliers are assessed prior to acquisition",
+      "number": "ID.RA-10",
+      "description": "Critical suppliers are assessed prior to acquisition",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory ID.RA-10"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-01",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Identities and credentials for authorized users, services, and hardware are managed by the organization",
+      "number": "PR.AA-01",
+      "description": "Identities and credentials for authorized users, services, and hardware are managed by the organization",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-02",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Identities are proofed and bound to credentials based on the context of interactions",
+      "number": "PR.AA-02",
+      "description": "Identities are proofed and bound to credentials based on the context of interactions",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-03",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Users, services, and hardware are authenticated",
+      "number": "PR.AA-03",
+      "description": "Users, services, and hardware are authenticated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-04",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Identity assertions are protected, conveyed, and verified NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 20",
+      "number": "PR.AA-04",
+      "description": "Identity assertions are protected, conveyed, and verified NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 20",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-05",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+      "number": "PR.AA-05",
+      "description": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AA-06",
+      "parent": "NIST-CSF@2.0::PR.AA",
+      "type": "Subcategory",
+      "name": "Physical access to assets is managed, monitored, and enforced commensurate with risk",
+      "number": "PR.AA-06",
+      "description": "Physical access to assets is managed, monitored, and enforced commensurate with risk",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AA-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AT-01",
+      "parent": "NIST-CSF@2.0::PR.AT",
+      "type": "Subcategory",
+      "name": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind",
+      "number": "PR.AT-01",
+      "description": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AT-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.AT-02",
+      "parent": "NIST-CSF@2.0::PR.AT",
+      "type": "Subcategory",
+      "name": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind",
+      "number": "PR.AT-02",
+      "description": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.AT-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.DS-01",
+      "parent": "NIST-CSF@2.0::PR.DS",
+      "type": "Subcategory",
+      "name": "The confidentiality, integrity, and availability of data-at-rest are protected",
+      "number": "PR.DS-01",
+      "description": "The confidentiality, integrity, and availability of data-at-rest are protected",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.DS-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.DS-02",
+      "parent": "NIST-CSF@2.0::PR.DS",
+      "type": "Subcategory",
+      "name": "The confidentiality, integrity, and availability of data-in-transit are protected",
+      "number": "PR.DS-02",
+      "description": "The confidentiality, integrity, and availability of data-in-transit are protected",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.DS-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.DS-10",
+      "parent": "NIST-CSF@2.0::PR.DS",
+      "type": "Subcategory",
+      "name": "The confidentiality, integrity, and availability of data-in-use are protected",
+      "number": "PR.DS-10",
+      "description": "The confidentiality, integrity, and availability of data-in-use are protected",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.DS-10"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.DS-11",
+      "parent": "NIST-CSF@2.0::PR.DS",
+      "type": "Subcategory",
+      "name": "Backups of data are created, protected, maintained, and tested",
+      "number": "PR.DS-11",
+      "description": "Backups of data are created, protected, maintained, and tested",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.DS-11"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.IR-01",
+      "parent": "NIST-CSF@2.0::PR.IR",
+      "type": "Subcategory",
+      "name": "Networks and environments are protected from unauthorized logical access and usage NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 21",
+      "number": "PR.IR-01",
+      "description": "Networks and environments are protected from unauthorized logical access and usage NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 21",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.IR-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.IR-02",
+      "parent": "NIST-CSF@2.0::PR.IR",
+      "type": "Subcategory",
+      "name": "The organization’s technology assets are protected from environmental threats",
+      "number": "PR.IR-02",
+      "description": "The organization’s technology assets are protected from environmental threats",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.IR-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.IR-03",
+      "parent": "NIST-CSF@2.0::PR.IR",
+      "type": "Subcategory",
+      "name": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations",
+      "number": "PR.IR-03",
+      "description": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.IR-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.IR-04",
+      "parent": "NIST-CSF@2.0::PR.IR",
+      "type": "Subcategory",
+      "name": "Adequate resource capacity to ensure availability is maintained",
+      "number": "PR.IR-04",
+      "description": "Adequate resource capacity to ensure availability is maintained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.IR-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-01",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Configuration management practices are established and applied",
+      "number": "PR.PS-01",
+      "description": "Configuration management practices are established and applied",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-02",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Software is maintained, replaced, and removed commensurate with risk",
+      "number": "PR.PS-02",
+      "description": "Software is maintained, replaced, and removed commensurate with risk",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-03",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Hardware is maintained, replaced, and removed commensurate with risk",
+      "number": "PR.PS-03",
+      "description": "Hardware is maintained, replaced, and removed commensurate with risk",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-04",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Log records are generated and made available for continuous monitoring",
+      "number": "PR.PS-04",
+      "description": "Log records are generated and made available for continuous monitoring",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-05",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Installation and execution of unauthorized software are prevented",
+      "number": "PR.PS-05",
+      "description": "Installation and execution of unauthorized software are prevented",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::PR.PS-06",
+      "parent": "NIST-CSF@2.0::PR.PS",
+      "type": "Subcategory",
+      "name": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle",
+      "number": "PR.PS-06",
+      "description": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory PR.PS-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.CO-03",
+      "parent": "NIST-CSF@2.0::RC.CO",
+      "type": "Subcategory",
+      "name": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders",
+      "number": "RC.CO-03",
+      "description": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.CO-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.CO-04",
+      "parent": "NIST-CSF@2.0::RC.CO",
+      "type": "Subcategory",
+      "name": "Public updates on incident recovery are shared using approved methods and messaging NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 24 Appendix B. CSF Tiers Table 2 contains a notional illustration of the CSF Tiers discussed in Sec. 3. The Tiers characterize the rigor of an organization’s cybersecurity risk governance practices (GOVERN) and cybersecurity risk management practices (IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER). Table 2. Notional Illustration of the CSF Tiers Tier Cybersecurity Risk Governance Cybersecurity Risk Management Tier 1: Partial Application of the organizational cybersecurity risk strategy is managed in an ad hoc manner. Prioritization is ad hoc and not formally based on objectives or threat environment. There is limited awareness of cybersecurity risks at the organizational level. The organization implements cybersecurity risk management on an irregular, case-by-case basis. The organization may not have processes that enable cybersecurity information to be shared within the organization. The organization is generally unaware of the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Tier 2: Risk Informed Risk management practices are approved by management but may not be established as organization- wide policy. The prioritization of cybersecurity activities and protection needs is directly informed by organizational risk objectives, the threat environment, or business/mission requirements. There is an awareness of cybersecurity risks at the organizational level, but an organization-wide approach to managing cybersecurity risks has not been established. Consideration of cybersecurity in organizational objectives and programs may occur at some but not all levels of the organization. Cyber risk assessment of organizational and external assets occurs but is not typically repeatable or reoccurring. Cybersecurity information is shared within the organization on an informal basis. The organization is aware of the cybersecurity risks associated with its suppliers and the products and services it acquires and uses, but it does not act consistently or formally in response to those risks. Tier 3: Repeatable The organization’s risk management practices are formally approved and expressed as policy. Risk-informed policies, processes, and procedures are defined, implemented as intended, and reviewed. Organizational cybersecurity practices are regularly updated based on the application of risk management processes to changes in business/mission requirements, threats, and technological landscape. There is an organization-wide approach to managing cybersecurity risks. Cybersecurity information is routinely shared throughout the organization. Consistent methods are in place to respond effectively to changes in risk. Personnel possess the knowledge and skills to perform their appointed roles and responsibilities. The organization consistently and accurately monitors the cybersecurity risks of assets. Senior cybersecurity and non-cybersecurity executives communicate regularly regarding cybersecurity risks. Executives ensure that cybersecurity is considered through all lines of operation in the organization. NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 25 Tier Cybersecurity Risk Governance Cybersecurity Risk Management The organization risk strategy is informed by the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Personnel formally act upon those risks through mechanisms such as written agreements to communicate baseline requirements, governance structures (e.g., risk councils), and policy implementation and monitoring. These actions are implemented consistently and as intended and are continuously monitored and reviewed. Tier 4: Adaptive There is an organization-wide approach to managing cybersecurity risks that uses risk-informed policies, processes, and procedures to address potential cybersecurity events. The relationship between cybersecurity risks and organizational objectives is clearly understood and considered when making decisions. Executives monitor cybersecurity risks in the same context as financial and other organizational risks. The organizational budget is based on an understanding of the current and predicted risk environment and risk tolerance. Business units implement executive vision and analyze system-level risks in the context of the organizational risk tolerances. Cybersecurity risk management is part of the organizational culture. It evolves from an awareness of previous activities and continuous awareness of activities on organizational systems and networks. The organization can quickly and efficiently account for changes to business/mission objectives in how risk is approached and communicated. The organization adapts its cybersecurity practices based on previous and current cybersecurity activities, including lessons learned and predictive indicators. Through a process of continuous improvement that incorporates advanced cybersecurity technologies and practices, the organization actively adapts to a changing technological landscape and responds in a timely and effective manner to evolving, sophisticated threats. The organization uses real-time or near real-time information to understand and consistently act upon the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Cybersecurity information is constantly shared throughout the organization and with authorized third parties. NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 26 Appendix C. Glossary CSF Category A group of related cybersecurity outcomes that collectively comprise a CSF Function. CSF Community Profile A baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations. A Community Profile is typically developed for a particular sector, subsector, technology, threat type, or other use case. An organization can use a Community Profile as the basis for its own Target Profile. CSF Core A taxonomy of high-level cybersecurity outcomes that can help any organization manage its cybersecurity risks. Its components are a hierarchy of Functions, Categories, and Subcategories that detail each outcome. CSF Current Profile A part of an Organizational Profile that specifies the Core outcomes that an organization is currently achieving (or attempting to achieve) and characterizes how or to what extent each outcome is being achieved. CSF Function The highest level of organization for cybersecurity outcomes. There are six CSF Functions: Govern, Identify, Protect, Detect, Respond, and Recover. CSF Implementation Example A concise, action-oriented, notional illustration of a way to help achieve a CSF Core outcome. CSF Informative Reference A mapping that indicates a relationship between a CSF Core outcome and an existing standard, guideline, regulation, or other content. CSF Organizational Profile A mechanism for describing an organization’s current and/or target cybersecurity posture in terms of the CSF Core’s outcomes. CSF Quick Start Guide A supplementary resource that gives brief, actionable guidance on specific CSF-related topics. CSF Subcategory A group of more specific outcomes of technical and management cybersecurity activities that comprise a CSF Category. CSF Target Profile A part of an Organizational Profile that specifies the desired Core outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives. CSF Tier A characterization of the rigor of an organization’s cybersecurity risk governance and management practices. There are four Tiers: Partial (Tier 1), Risk Informed (Tier 2), Repeatable (Tier 3), and Adaptive (Tier 4). NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 27 Certain commercial equipment, instruments, software, or materials, commercial or non-commercial, are identified in this paper in order to specify the experimental procedure adequately. Such identification does not imply recommendation or endorsement of any product or service by NIST, nor does it imply that the materials or equipment identified are necessarily the best available for the purpose. NIST Technical Series Policies Copyright, Use, and Licensing Statements NIST Technical Series Publication Identifier Syntax How to Cite this NIST Technical Series Publication: National Institute of Standards and Technology (2024) The NIST Cybersecurity Framework (CSF) 2.0. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Cybersecurity White Paper (CSWP) NIST CSWP 29. https://doi.org/10.6028/NIST.CSWP.29 Contact Information cyberframework@nist.gov National Institute of Standards and Technology Attn: Applied Cybersecurity Division, Information Technology Laboratory 100 Bureau Drive (Mail Stop 2000) Gaithersburg, MD 20899-2000 All comments are subject to release under the Freedom of Information Act (FOIA).",
+      "number": "RC.CO-04",
+      "description": "Public updates on incident recovery are shared using approved methods and messaging NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 24 Appendix B. CSF Tiers Table 2 contains a notional illustration of the CSF Tiers discussed in Sec. 3. The Tiers characterize the rigor of an organization’s cybersecurity risk governance practices (GOVERN) and cybersecurity risk management practices (IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER). Table 2. Notional Illustration of the CSF Tiers Tier Cybersecurity Risk Governance Cybersecurity Risk Management Tier 1: Partial Application of the organizational cybersecurity risk strategy is managed in an ad hoc manner. Prioritization is ad hoc and not formally based on objectives or threat environment. There is limited awareness of cybersecurity risks at the organizational level. The organization implements cybersecurity risk management on an irregular, case-by-case basis. The organization may not have processes that enable cybersecurity information to be shared within the organization. The organization is generally unaware of the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Tier 2: Risk Informed Risk management practices are approved by management but may not be established as organization- wide policy. The prioritization of cybersecurity activities and protection needs is directly informed by organizational risk objectives, the threat environment, or business/mission requirements. There is an awareness of cybersecurity risks at the organizational level, but an organization-wide approach to managing cybersecurity risks has not been established. Consideration of cybersecurity in organizational objectives and programs may occur at some but not all levels of the organization. Cyber risk assessment of organizational and external assets occurs but is not typically repeatable or reoccurring. Cybersecurity information is shared within the organization on an informal basis. The organization is aware of the cybersecurity risks associated with its suppliers and the products and services it acquires and uses, but it does not act consistently or formally in response to those risks. Tier 3: Repeatable The organization’s risk management practices are formally approved and expressed as policy. Risk-informed policies, processes, and procedures are defined, implemented as intended, and reviewed. Organizational cybersecurity practices are regularly updated based on the application of risk management processes to changes in business/mission requirements, threats, and technological landscape. There is an organization-wide approach to managing cybersecurity risks. Cybersecurity information is routinely shared throughout the organization. Consistent methods are in place to respond effectively to changes in risk. Personnel possess the knowledge and skills to perform their appointed roles and responsibilities. The organization consistently and accurately monitors the cybersecurity risks of assets. Senior cybersecurity and non-cybersecurity executives communicate regularly regarding cybersecurity risks. Executives ensure that cybersecurity is considered through all lines of operation in the organization. NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 25 Tier Cybersecurity Risk Governance Cybersecurity Risk Management The organization risk strategy is informed by the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Personnel formally act upon those risks through mechanisms such as written agreements to communicate baseline requirements, governance structures (e.g., risk councils), and policy implementation and monitoring. These actions are implemented consistently and as intended and are continuously monitored and reviewed. Tier 4: Adaptive There is an organization-wide approach to managing cybersecurity risks that uses risk-informed policies, processes, and procedures to address potential cybersecurity events. The relationship between cybersecurity risks and organizational objectives is clearly understood and considered when making decisions. Executives monitor cybersecurity risks in the same context as financial and other organizational risks. The organizational budget is based on an understanding of the current and predicted risk environment and risk tolerance. Business units implement executive vision and analyze system-level risks in the context of the organizational risk tolerances. Cybersecurity risk management is part of the organizational culture. It evolves from an awareness of previous activities and continuous awareness of activities on organizational systems and networks. The organization can quickly and efficiently account for changes to business/mission objectives in how risk is approached and communicated. The organization adapts its cybersecurity practices based on previous and current cybersecurity activities, including lessons learned and predictive indicators. Through a process of continuous improvement that incorporates advanced cybersecurity technologies and practices, the organization actively adapts to a changing technological landscape and responds in a timely and effective manner to evolving, sophisticated threats. The organization uses real-time or near real-time information to understand and consistently act upon the cybersecurity risks associated with its suppliers and the products and services it acquires and uses. Cybersecurity information is constantly shared throughout the organization and with authorized third parties. NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 26 Appendix C. Glossary CSF Category A group of related cybersecurity outcomes that collectively comprise a CSF Function. CSF Community Profile A baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations. A Community Profile is typically developed for a particular sector, subsector, technology, threat type, or other use case. An organization can use a Community Profile as the basis for its own Target Profile. CSF Core A taxonomy of high-level cybersecurity outcomes that can help any organization manage its cybersecurity risks. Its components are a hierarchy of Functions, Categories, and Subcategories that detail each outcome. CSF Current Profile A part of an Organizational Profile that specifies the Core outcomes that an organization is currently achieving (or attempting to achieve) and characterizes how or to what extent each outcome is being achieved. CSF Function The highest level of organization for cybersecurity outcomes. There are six CSF Functions: Govern, Identify, Protect, Detect, Respond, and Recover. CSF Implementation Example A concise, action-oriented, notional illustration of a way to help achieve a CSF Core outcome. CSF Informative Reference A mapping that indicates a relationship between a CSF Core outcome and an existing standard, guideline, regulation, or other content. CSF Organizational Profile A mechanism for describing an organization’s current and/or target cybersecurity posture in terms of the CSF Core’s outcomes. CSF Quick Start Guide A supplementary resource that gives brief, actionable guidance on specific CSF-related topics. CSF Subcategory A group of more specific outcomes of technical and management cybersecurity activities that comprise a CSF Category. CSF Target Profile A part of an Organizational Profile that specifies the desired Core outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives. CSF Tier A characterization of the rigor of an organization’s cybersecurity risk governance and management practices. There are four Tiers: Partial (Tier 1), Risk Informed (Tier 2), Repeatable (Tier 3), and Adaptive (Tier 4). NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 27 Certain commercial equipment, instruments, software, or materials, commercial or non-commercial, are identified in this paper in order to specify the experimental procedure adequately. Such identification does not imply recommendation or endorsement of any product or service by NIST, nor does it imply that the materials or equipment identified are necessarily the best available for the purpose. NIST Technical Series Policies Copyright, Use, and Licensing Statements NIST Technical Series Publication Identifier Syntax How to Cite this NIST Technical Series Publication: National Institute of Standards and Technology (2024) The NIST Cybersecurity Framework (CSF) 2.0. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Cybersecurity White Paper (CSWP) NIST CSWP 29. https://doi.org/10.6028/NIST.CSWP.29 Contact Information cyberframework@nist.gov National Institute of Standards and Technology Attn: Applied Cybersecurity Division, Information Technology Laboratory 100 Bureau Drive (Mail Stop 2000) Gaithersburg, MD 20899-2000 All comments are subject to release under the Freedom of Information Act (FOIA).",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.CO-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-01",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "The recovery portion of the incident response plan is executed once initiated from the incident response process NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 23",
+      "number": "RC.RP-01",
+      "description": "The recovery portion of the incident response plan is executed once initiated from the incident response process NIST CSWP 29 The NIST Cybersecurity Framework (CSF) 2.0 February 26, 2024 23",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-02",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "Recovery actions are selected, scoped, prioritized, and performed",
+      "number": "RC.RP-02",
+      "description": "Recovery actions are selected, scoped, prioritized, and performed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-03",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "The integrity of backups and other restoration assets is verified before using them for restoration",
+      "number": "RC.RP-03",
+      "description": "The integrity of backups and other restoration assets is verified before using them for restoration",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-04",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms",
+      "number": "RC.RP-04",
+      "description": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-05",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed",
+      "number": "RC.RP-05",
+      "description": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RC.RP-06",
+      "parent": "NIST-CSF@2.0::RC.RP",
+      "type": "Subcategory",
+      "name": "The end of incident recovery is declared based on criteria, and incident- related documentation is completed",
+      "number": "RC.RP-06",
+      "description": "The end of incident recovery is declared based on criteria, and incident- related documentation is completed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RC.RP-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.AN-03",
+      "parent": "NIST-CSF@2.0::RS.AN",
+      "type": "Subcategory",
+      "name": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident",
+      "number": "RS.AN-03",
+      "description": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.AN-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.AN-06",
+      "parent": "NIST-CSF@2.0::RS.AN",
+      "type": "Subcategory",
+      "name": "Actions performed during an investigation are recorded, and the records’ integrity and provenance are preserved",
+      "number": "RS.AN-06",
+      "description": "Actions performed during an investigation are recorded, and the records’ integrity and provenance are preserved",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.AN-06"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.AN-07",
+      "parent": "NIST-CSF@2.0::RS.AN",
+      "type": "Subcategory",
+      "name": "Incident data and metadata are collected, and their integrity and provenance are preserved",
+      "number": "RS.AN-07",
+      "description": "Incident data and metadata are collected, and their integrity and provenance are preserved",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.AN-07"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.AN-08",
+      "parent": "NIST-CSF@2.0::RS.AN",
+      "type": "Subcategory",
+      "name": "An incident’s magnitude is estimated and validated",
+      "number": "RS.AN-08",
+      "description": "An incident’s magnitude is estimated and validated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.AN-08"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.CO-02",
+      "parent": "NIST-CSF@2.0::RS.CO",
+      "type": "Subcategory",
+      "name": "Internal and external stakeholders are notified of incidents",
+      "number": "RS.CO-02",
+      "description": "Internal and external stakeholders are notified of incidents",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.CO-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.CO-03",
+      "parent": "NIST-CSF@2.0::RS.CO",
+      "type": "Subcategory",
+      "name": "Information is shared with designated internal and external stakeholders",
+      "number": "RS.CO-03",
+      "description": "Information is shared with designated internal and external stakeholders",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.CO-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA-01",
+      "parent": "NIST-CSF@2.0::RS.MA",
+      "type": "Subcategory",
+      "name": "The incident response plan is executed in coordination with relevant third parties once an incident is declared",
+      "number": "RS.MA-01",
+      "description": "The incident response plan is executed in coordination with relevant third parties once an incident is declared",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MA-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA-02",
+      "parent": "NIST-CSF@2.0::RS.MA",
+      "type": "Subcategory",
+      "name": "Incident reports are triaged and validated",
+      "number": "RS.MA-02",
+      "description": "Incident reports are triaged and validated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MA-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA-03",
+      "parent": "NIST-CSF@2.0::RS.MA",
+      "type": "Subcategory",
+      "name": "Incidents are categorized and prioritized",
+      "number": "RS.MA-03",
+      "description": "Incidents are categorized and prioritized",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MA-03"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA-04",
+      "parent": "NIST-CSF@2.0::RS.MA",
+      "type": "Subcategory",
+      "name": "Incidents are escalated or elevated as needed",
+      "number": "RS.MA-04",
+      "description": "Incidents are escalated or elevated as needed",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MA-04"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MA-05",
+      "parent": "NIST-CSF@2.0::RS.MA",
+      "type": "Subcategory",
+      "name": "The criteria for initiating incident recovery are applied",
+      "number": "RS.MA-05",
+      "description": "The criteria for initiating incident recovery are applied",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MA-05"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MI-01",
+      "parent": "NIST-CSF@2.0::RS.MI",
+      "type": "Subcategory",
+      "name": "Incidents are contained",
+      "number": "RS.MI-01",
+      "description": "Incidents are contained",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MI-01"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    },
+    {
+      "source_id": "NIST-CSF",
+      "version": "2.0",
+      "entity_id": "NIST-CSF@2.0::RS.MI-02",
+      "parent": "NIST-CSF@2.0::RS.MI",
+      "type": "Subcategory",
+      "name": "Incidents are eradicated",
+      "number": "RS.MI-02",
+      "description": "Incidents are eradicated",
+      "language": "EN",
+      "authority": "Normative",
+      "license": "Public-Domain",
+      "stability": "Version-bound",
+      "confidence": "100%",
+      "provenance": {
+        "source_id": "NIST-CSF",
+        "version": "2.0",
+        "location": "Subcategory RS.MI-02"
+      },
+      "native_node_type": "Subcategory",
+      "egress_restricted": false
+    }
+  ],
+  "structural_relationships": [
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE",
+      "target": "NIST-CSF@2.0::DE.AE"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE",
+      "target": "NIST-CSF@2.0::DE.CM"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.OC"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.OV"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.PO"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.RM"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.RR"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV",
+      "target": "NIST-CSF@2.0::GV.SC"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID",
+      "target": "NIST-CSF@2.0::ID.AM"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID",
+      "target": "NIST-CSF@2.0::ID.IM"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID",
+      "target": "NIST-CSF@2.0::ID.RA"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR",
+      "target": "NIST-CSF@2.0::PR.AA"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR",
+      "target": "NIST-CSF@2.0::PR.AT"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR",
+      "target": "NIST-CSF@2.0::PR.DS"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR",
+      "target": "NIST-CSF@2.0::PR.IR"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR",
+      "target": "NIST-CSF@2.0::PR.PS"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC",
+      "target": "NIST-CSF@2.0::RC.CO"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC",
+      "target": "NIST-CSF@2.0::RC.RP"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS",
+      "target": "NIST-CSF@2.0::RS.AN"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS",
+      "target": "NIST-CSF@2.0::RS.CO"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS",
+      "target": "NIST-CSF@2.0::RS.MA"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS",
+      "target": "NIST-CSF@2.0::RS.MI"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.AE",
+      "target": "NIST-CSF@2.0::DE.AE-08"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.CM",
+      "target": "NIST-CSF@2.0::DE.CM-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.CM",
+      "target": "NIST-CSF@2.0::DE.CM-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.CM",
+      "target": "NIST-CSF@2.0::DE.CM-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.CM",
+      "target": "NIST-CSF@2.0::DE.CM-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::DE.CM",
+      "target": "NIST-CSF@2.0::DE.CM-09"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OC",
+      "target": "NIST-CSF@2.0::GV.OC-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OC",
+      "target": "NIST-CSF@2.0::GV.OC-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OC",
+      "target": "NIST-CSF@2.0::GV.OC-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OC",
+      "target": "NIST-CSF@2.0::GV.OC-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OC",
+      "target": "NIST-CSF@2.0::GV.OC-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OV",
+      "target": "NIST-CSF@2.0::GV.OV-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OV",
+      "target": "NIST-CSF@2.0::GV.OV-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.OV",
+      "target": "NIST-CSF@2.0::GV.OV-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.PO",
+      "target": "NIST-CSF@2.0::GV.PO-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.PO",
+      "target": "NIST-CSF@2.0::GV.PO-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RM",
+      "target": "NIST-CSF@2.0::GV.RM-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RR",
+      "target": "NIST-CSF@2.0::GV.RR-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RR",
+      "target": "NIST-CSF@2.0::GV.RR-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RR",
+      "target": "NIST-CSF@2.0::GV.RR-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.RR",
+      "target": "NIST-CSF@2.0::GV.RR-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-08"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-09"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::GV.SC",
+      "target": "NIST-CSF@2.0::GV.SC-10"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.AM",
+      "target": "NIST-CSF@2.0::ID.AM-08"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.IM",
+      "target": "NIST-CSF@2.0::ID.IM-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.IM",
+      "target": "NIST-CSF@2.0::ID.IM-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.IM",
+      "target": "NIST-CSF@2.0::ID.IM-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.IM",
+      "target": "NIST-CSF@2.0::ID.IM-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-08"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-09"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::ID.RA",
+      "target": "NIST-CSF@2.0::ID.RA-10"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AA",
+      "target": "NIST-CSF@2.0::PR.AA-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AT",
+      "target": "NIST-CSF@2.0::PR.AT-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.AT",
+      "target": "NIST-CSF@2.0::PR.AT-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.DS",
+      "target": "NIST-CSF@2.0::PR.DS-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.DS",
+      "target": "NIST-CSF@2.0::PR.DS-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.DS",
+      "target": "NIST-CSF@2.0::PR.DS-10"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.DS",
+      "target": "NIST-CSF@2.0::PR.DS-11"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.IR",
+      "target": "NIST-CSF@2.0::PR.IR-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.IR",
+      "target": "NIST-CSF@2.0::PR.IR-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.IR",
+      "target": "NIST-CSF@2.0::PR.IR-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.IR",
+      "target": "NIST-CSF@2.0::PR.IR-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::PR.PS",
+      "target": "NIST-CSF@2.0::PR.PS-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.CO",
+      "target": "NIST-CSF@2.0::RC.CO-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.CO",
+      "target": "NIST-CSF@2.0::RC.CO-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RC.RP",
+      "target": "NIST-CSF@2.0::RC.RP-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.AN",
+      "target": "NIST-CSF@2.0::RS.AN-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.AN",
+      "target": "NIST-CSF@2.0::RS.AN-06"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.AN",
+      "target": "NIST-CSF@2.0::RS.AN-07"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.AN",
+      "target": "NIST-CSF@2.0::RS.AN-08"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.CO",
+      "target": "NIST-CSF@2.0::RS.CO-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.CO",
+      "target": "NIST-CSF@2.0::RS.CO-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MA",
+      "target": "NIST-CSF@2.0::RS.MA-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MA",
+      "target": "NIST-CSF@2.0::RS.MA-02"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MA",
+      "target": "NIST-CSF@2.0::RS.MA-03"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MA",
+      "target": "NIST-CSF@2.0::RS.MA-04"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MA",
+      "target": "NIST-CSF@2.0::RS.MA-05"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MI",
+      "target": "NIST-CSF@2.0::RS.MI-01"
+    },
+    {
+      "type": "contains",
+      "source": "NIST-CSF@2.0::RS.MI",
+      "target": "NIST-CSF@2.0::RS.MI-02"
+    }
+  ]
+}

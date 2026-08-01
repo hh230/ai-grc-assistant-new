@@ -6,7 +6,7 @@
 
 [project]
 name = "ai-grc-assistant"
-version = "0.0.0"
+version = "2.0.0"
 description = "AI GRC Assistant — backend & AI monorepo (Python workspace root)."
 requires-python = ">=3.12"
 
@@ -104,6 +104,13 @@ dev = [
 target-version = "py312"
 line-length = 100
 src = ["apps", "packages"]
+# v2/, v3/, and devteam/ are standalone `uv` workspaces (their own pyproject.toml + ruff config
+# each), not members of this root workspace ([tool.uv.workspace] members above lists only V1
+# apps/packages). `ruff check .` from the repo root would otherwise lint them under THIS
+# (V1-scoped) config instead of their own — every one of them is independently ruff-clean under
+# its own config; verify with `uv run --directory <pkg> ruff check .`. The `v2-v3-tests` CI job
+# covers their test suites separately (devteam-ci's test_runner.py).
+extend-exclude = ["v2", "v3", "devteam"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM"]

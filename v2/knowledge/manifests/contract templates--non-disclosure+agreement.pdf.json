@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "contract templates--non-disclosure+agreement.pdf",
+  "filename": "Non-Disclosure+Agreement.pdf",
+  "extension": ".pdf",
+  "category": "Contract Templates",
+  "relative_path": "Contract Templates/Non-Disclosure+Agreement.pdf",
+  "size_bytes": 2660314,
+  "last_modified": "2026-06-26T21:46:44.042062+00:00",
+  "checksum_sha256": "2ebd00ba80f2cb742628492b936e71e8f84bc89e028ea54360d4c427178f2f11",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 9,
+  "character_count": 50129,
+  "extraction_duration": 0.07051520806271583,
+  "parsed_at": "2026-07-12T16:09:26.633982+00:00",
+  "error": null,
+  "document_profile": "contract",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 54,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.012449875008314848,
+  "chunked_at": "2026-07-12T16:09:26.647719+00:00",
+  "chunking_error": null
+}

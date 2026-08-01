@@ -1,0 +1,19 @@
+[project]
+name = "devteam-approval"
+version = "0.1.0"
+description = "The Approval Domain (S5) — a generic, resumable approval model built ON the frozen Mission Lifecycle Core, never inside it. An ApprovalRequest gates any resumable TARGET (a problem, mission, workflow, deployment, risk acceptance, policy publication) via a Policy + Required Role + expiry + an opaque resume_token; the ApprovalDecision is a separate entity so delegation / proxy / re-open / multi-stage approvals are added later without changing the request. Status: PENDING → GRANTED | REJECTED | EXPIRED | CANCELLED. Pure and domain-neutral: it produces approval state, not lifecycle events — an adapter turns a decision into a generic event for Coordinator.notify, so the Core stays frozen. Depends on nothing but the standard library."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_approval"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

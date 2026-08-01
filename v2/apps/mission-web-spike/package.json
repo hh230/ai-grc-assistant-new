@@ -1,0 +1,23 @@
+{
+  "name": "mission-web-spike",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "TEMPORARY throwaway spike for Execution Slice S1 (Missions View). The permanent Web host is deferred to S4/S5 (ADR pending). This app exists only to prove the vertical slice reaches a UI that consumes the grc-api's REST contract — and nothing deeper than it.",
+  "scripts": {
+    "dev": "vite --port 5199",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.7"
+  }
+}

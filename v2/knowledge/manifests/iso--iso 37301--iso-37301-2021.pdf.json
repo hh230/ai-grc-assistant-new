@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "iso--iso 37301--iso-37301-2021.pdf",
+  "filename": "ISO-37301-2021.pdf",
+  "extension": ".pdf",
+  "category": "ISO",
+  "relative_path": "ISO/ISO 37301/ISO-37301-2021.pdf",
+  "size_bytes": 629380,
+  "last_modified": "2026-06-26T20:04:25.061936+00:00",
+  "checksum_sha256": "25e63f0fe34e3a51dcc2ccce17f8d4b71a2f287865a0ac2e8489396308a070cd",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 15,
+  "character_count": 38670,
+  "extraction_duration": 0.47103779192548245,
+  "parsed_at": "2026-07-12T16:10:08.323667+00:00",
+  "error": null,
+  "document_profile": "iso_standard",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 49,
+  "structure_profile_used": "standard_clause",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.006013292004354298,
+  "chunked_at": "2026-07-12T16:10:08.330930+00:00",
+  "chunking_error": null
+}

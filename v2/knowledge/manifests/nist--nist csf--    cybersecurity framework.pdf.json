@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "nist--nist csf--    cybersecurity framework.pdf",
+  "filename": "    Cybersecurity Framework.pdf",
+  "extension": ".pdf",
+  "category": "NIST",
+  "relative_path": "NIST/NIST CSF/    Cybersecurity Framework.pdf",
+  "size_bytes": 1518858,
+  "last_modified": "2026-06-26T20:32:42.492498+00:00",
+  "checksum_sha256": "3c31f46fee98cac0c4323453e5109291a213b4de7fef8c058af9bf67f717433c",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 32,
+  "character_count": 69679,
+  "extraction_duration": 0.3889706250047311,
+  "parsed_at": "2026-07-12T16:12:25.350510+00:00",
+  "error": null,
+  "document_profile": "control_framework",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 81,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 0.8181818181818182,
+  "chunking_duration": 0.013673292007297277,
+  "chunked_at": "2026-07-12T16:12:25.368721+00:00",
+  "chunking_error": null
+}

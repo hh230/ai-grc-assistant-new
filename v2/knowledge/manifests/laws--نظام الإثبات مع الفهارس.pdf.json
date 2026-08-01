@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام الإثبات مع الفهارس.pdf",
+  "filename": "نظام الإثبات مع الفهارس.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام الإثبات مع الفهارس.pdf",
+  "size_bytes": 1720110,
+  "last_modified": "2026-06-26T19:25:30.758033+00:00",
+  "checksum_sha256": "af1c2d7d65f90337f3c7dc965f706ccc4bf58b336daf13c85a5daedda40309a7",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 119,
+  "character_count": 77445,
+  "extraction_duration": 7.934277625055984,
+  "parsed_at": "2026-07-12T16:10:56.194758+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 400,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.019816959043964744,
+  "chunked_at": "2026-07-12T16:10:56.225555+00:00",
+  "chunking_error": null
+}

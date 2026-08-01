@@ -1,0 +1,36 @@
+[project]
+name = "context-builder"
+version = "0.1.0"
+description = "Rasheed V2 Context Builder (Phase 10). Transforms a RetrievedContext into a clean, structured, citation-preserving ContextPackage: deduplication, parent expansion, adjacent merge, workflow-aware ordering, token budgeting, citation preservation, validation, and metrics. No prompting, no LLM, no AI answers, no RAG. Implements v2/docs/architecture/context-builder.md."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+]
+
+[dependency-groups]
+# retrieval-engine is dev-only: tests, examples, and benchmarks drive the builder through a
+# real retrieval run. The runtime build path depends only on pipeline-contracts.
+dev = [
+    "pytest>=8.3.0",
+    "retrieval-engine",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+retrieval-engine = { path = "../retrieval-engine", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["context_builder"]
+# Development-only illustration/benchmark modules — kept in the source tree, never shipped in
+# the production wheel.
+exclude = [
+    "context_builder/examples.py",
+    "context_builder/benchmark.py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

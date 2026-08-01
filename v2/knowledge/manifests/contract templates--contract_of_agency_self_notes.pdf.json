@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "contract templates--contract_of_agency_self_notes.pdf",
+  "filename": "CONTRACT_OF_AGENCY_SELF_NOTES.pdf",
+  "extension": ".pdf",
+  "category": "Contract Templates",
+  "relative_path": "Contract Templates/CONTRACT_OF_AGENCY_SELF_NOTES.pdf",
+  "size_bytes": 351575,
+  "last_modified": "2026-06-26T21:44:17.009503+00:00",
+  "checksum_sha256": "3662db64026f188c61d2e1a8a0aa5707bf1ecf1acc47cd565d1680cfca0d94ca",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 12,
+  "character_count": 23533,
+  "extraction_duration": 1.609986333991401,
+  "parsed_at": "2026-07-12T16:09:22.200128+00:00",
+  "error": null,
+  "document_profile": "contract",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 43,
+  "structure_profile_used": "contract_clause",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.004437291994690895,
+  "chunked_at": "2026-07-12T16:09:22.205878+00:00",
+  "chunking_error": null
+}

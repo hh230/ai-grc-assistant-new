@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "coso-- coso erm--erm - coso application techniques.pdf",
+  "filename": "ERM - COSO Application Techniques.pdf",
+  "extension": ".pdf",
+  "category": "COSO",
+  "relative_path": "COSO/ COSO ERM/ERM - COSO Application Techniques.pdf",
+  "size_bytes": 1699621,
+  "last_modified": "2026-06-26T20:31:35.575564+00:00",
+  "checksum_sha256": "2c7c75cdd1c296ffea7aba7d5c3d5a9129d4e56ee0555e8e08b409455b439ec3",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 113,
+  "character_count": 220102,
+  "extraction_duration": 0.8071566669968888,
+  "parsed_at": "2026-07-12T16:09:13.197659+00:00",
+  "error": null,
+  "document_profile": "control_framework",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 317,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.0516040000366047,
+  "chunked_at": "2026-07-12T16:09:13.257349+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "corporate policies--comarch ict - best practices for effective & efficient vendor management.pdf",
+  "filename": "COMARCH ICT - BEST PRACTICES FOR EFFECTIVE & EFFICIENT VENDOR MANAGEMENT.pdf",
+  "extension": ".pdf",
+  "category": "Corporate Policies",
+  "relative_path": "Corporate Policies/COMARCH ICT - BEST PRACTICES FOR EFFECTIVE & EFFICIENT VENDOR MANAGEMENT.pdf",
+  "size_bytes": 1739953,
+  "last_modified": "2026-06-26T21:36:27.650292+00:00",
+  "checksum_sha256": "8f6b01fac6c6808e54ee4f100be4cc436543cf062df22280dc00320b01b26bde",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 30,
+  "character_count": 55004,
+  "extraction_duration": 0.178201875067316,
+  "parsed_at": "2026-07-12T16:09:31.601048+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 209,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.012230749940499663,
+  "chunked_at": "2026-07-12T16:09:31.616390+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "risk management--the_use_of_bow_tie_analysis_to_risk_identification.pdf",
+  "filename": "The_Use_of_Bow_Tie_Analysis_to_Risk_Identification.pdf",
+  "extension": ".pdf",
+  "category": "Risk Management",
+  "relative_path": "Risk Management/The_Use_of_Bow_Tie_Analysis_to_Risk_Identification.pdf",
+  "size_bytes": 327160,
+  "last_modified": "2026-06-26T21:08:52.038276+00:00",
+  "checksum_sha256": "227a82ad7c5d7f8b4d6aaa30e6661f94cbd97bcedacd379f8f025334a84c7e0f",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 8,
+  "character_count": 26069,
+  "extraction_duration": 0.19127129192929715,
+  "parsed_at": "2026-07-12T16:13:03.244976+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 41,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.005697625107131898,
+  "chunked_at": "2026-07-12T16:13:03.252172+00:00",
+  "chunking_error": null
+}

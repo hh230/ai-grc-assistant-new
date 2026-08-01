@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام السوق المالية.pdf",
+  "filename": "نظام السوق المالية.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام السوق المالية.pdf",
+  "size_bytes": 619227,
+  "last_modified": "2026-06-26T19:58:40.805233+00:00",
+  "checksum_sha256": "e0f08165c4f493168a49b00e79792920cab041d99c9cf6d807d389a58a5aacf8",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 44,
+  "character_count": 38071,
+  "extraction_duration": 0.35960283398162574,
+  "parsed_at": "2026-07-12T16:11:22.871907+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 39,
+  "structure_profile_used": "fallback_window",
+  "recognizer_confidence": 0.0,
+  "chunking_duration": 0.0077697919914498925,
+  "chunked_at": "2026-07-12T16:11:22.884412+00:00",
+  "chunking_error": null
+}

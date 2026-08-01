@@ -1,0 +1,828 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MASTER SERVICES AGREEMENT AND 
+STATEMENT OF WORK 
+ 
+For: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Corporate Office 
+777 S. Harbour Island Blvd, Suite 400 
+Tampa, FL 33602 
+Phone: (813) 490-4260 
+support@concertium.com 
+www.concertium.com 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C832 ________Initials 
+ 
+ 
+Master Services Agreement 
+ 
+Name of Client:  Career Source Heartland  
+Client Address: 5901 US Hwy 27 South, Suite 1 
+City: Sebring State: Florida Zip Code: 33870 
+Primary Client Contact: Donna Doubleday E-Mail/ Phone: ddoubleday@careersourceheartland.com 
+/ (863) 385-3672 
+ 
+ 
+This Master Services Agreement ( this, “ MSA”), effective as of 07/01/2023 (the “Effective Date”) , 
+governs the purchase and sale of Services by Enablewise, LLC d/b/a Concertium (“ Concertium”) to 
+Client.  “Client” means the entity placing a purchase order (“Order”) with Concertium, and/or signing 
+and delivering to Concertium a Statement of Work (“SOW”) describing the recurring or recurring or 
+non-recurring managed and/or professional services, (the “Services”) to be provided by Concertium.  
+In the event that Client and Concertium enter into a subsequent Master Services Agreement that 
+provides the terms and conditions for the purchase by Client of Services from Concertium, then such 
+subsequent Master Services Agreement shall take precedence over and shall replace this MSA as of 
+the effective date of such subsequent Master Services Agreement.  The delivery of a signed SOW by 
+Client shall be deemed to be the irrev ocable acceptance of and agreement to this MSA by Client.  
+Concertium reserves the right to change this MSA from time to time.  In such event, Concertium shall 
+place a notification on its website that this MSA has changed and place such notification in Client 
+invoices or other written communications with the Client, and in both cases directing the Client to 
+review the revised MSA.  The MSA in effect as of the date of Concertium acceptance of any Order or 
+SOW shall be the MSA that governs the performance of that Order or SOW by Concertium and Client. 
+Each of Concertium and Client are referred to in this Agreement as a “ Party” and collectively as the 
+“Parties”. By causing a duly authorized Officer of each Party to execute this Agreement below, each 
+Party agrees to be bound by the terms of the Agreement and any Order or SOW entered into 
+hereunder, which when signed by both Parties, shall be added to this MSA from time to time during 
+the term hereof.  
+ 
+1. Services 
+Concertium shall provide certain managed and/or professional services (the “ Services”) for 
+Client as described in a SOW .  Additional SOWs for Services, when signed by both Parties, 
+shall be added to this MSA from time to time during the term hereof.  All SOWs are 
+incorporated in and form a part of this MSA and shall be governed by the terms and 
+conditions of this MSA whether the SOW expressly references this MSA or not. In the event 
+of any conflict or ambiguity as between the terms of this MSA and the terms of any SOW, the 
+terms of the SOW shall control.   
+ 
+2. Term and Termination 
+(a) Term.  This MSA, the second (2nd) of three (3) possible contract terms  shall commence 
+on the Effective Date of July 1, 2023 and continue in effect until June 30, 2024 (the “Initial 
+Term”). Either party may terminate this MSA and all SOWs agreed to hereunder for any 
+reason by sending written notice to the other party one hundred twenty (120) days prior 
+to the effective date of said termination (a “Mid -Term Termination”). Upon notice of 
+either a Non-Renewal Termination or a Mid-Term Termination of this MSA, if the Services 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+3 ________Initials 
+ 
+provided by Concertium are Managed Services, Concertium shall provide all reasonable 
+transition services to assist in the migration of the Client to a new man aged services 
+provider.  For all other Services provided by Concertium at the time of such Mid -Term 
+Termination or Non-Renewal Termination, Concertium agrees to work in good faith with 
+Client to transition any and all outstanding projects or assignments in  accordance with 
+all reasonable instructions provided  by Client. Such transition time shall be billed by 
+Concertium at Concertium’s Time and Materials Rates, as defined in any applicable SOWs.   
+ 
+(b) Termination for Bankruptcy .  In the event that either Party (i) files for bankruptcy; (ii) 
+becomes or is declared insolvent, or is the subject of any proceedings related to its 
+liquidation, insolvency or the appointment of a receiver or similar officer for it; or (iii) 
+makes an assignment for the benefit of all or substantially all of its creditors, then the 
+other Party may, by giving written notice of termination to the first Party, terminate this 
+MSA and any and all SOWs hereunder as of a date specified in such notice of termination; 
+provided, however, that Concertium shall not have the right to exercise such termination 
+so long as Client pays for the Services in advance on a month-to-month basis by certified 
+bank check or other method as agreed by Concertium.  
+ 
+(c) Termination for Cause .  Either Party may terminate this MSA or any SOW upon written 
+notice for the breach by the other Party of any material term, if such breach is not cured 
+within sixty (60) days following receipt of written notice of breach from the non-breaching 
+Party.    Termination shall be in ad dition to any other remedies that may be available to 
+the non -breaching Party. Upon termination for cause by either Party, or termination 
+under subsection (b) by either Party, Concertium shall be entitled to collect all past and 
+current amounts due and owing.  In addition, upon termination by Concertium for cause, 
+Concertium shall be entitled to accelerate all future amounts payable to Concertium 
+under each SOW or this MSA such that all remaining periodic payments of the then -
+current term of each SOW are im mediately due and owing.    Upon Termination for 
+Bankruptcy or Termination for Cause, all fees, invoices, and open balances must be paid 
+within fifteen (15) days of Client’s receive of Concertium’s invoice. 
+ 
+(d) Post Termination Assistance. Upon termination of Concertium’s Services under this MSA 
+or any Order or SOW, Concertium will provide Client with all relevant data, reports, 
+metrics, and information of or relating to Client within Concertium’s possession, custody, 
+or control. Upon termination, Concertium shall also provide Client with any hardware, 
+devices, equipment or the like purchased by Concertium on Client’s behalf that Client has 
+previously paid for whic h, at the time of termination, remain undelivered. Thereafter, 
+Concertium will have no obligation to maintain or provide Client with such data, reports 
+or metrics. Notwithstanding anything to the contrary in paragraph (a) of this Section 2 or 
+paragraph (d) of this Section 2 , Concertium shall have the right to withhold any and all 
+transition services, including access to administration rights, until Client’s balance for all 
+outstanding fees, invoices, and open balances are paid in full.   
+ 
+(e) Survival of Terms .  Sections 2 (d), 3, 5, 6, 7, 9(b), 12, 22, 23, and 25 shall  survive any 
+termination or expiration of this MSA.  Except for a termination by Concertium pursuant 
+to Sections 2(b) or 2(c) above, upon expiration or termination of this MSA, any existing 
+and uncompleted SOW will be honored by Concertium, and this MSA shall be deemed to 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+4 ________Initials 
+ 
+be extended solely for such SOW for a period of time not to exceed the then-current term 
+of the SOW.  In the event of any termination or expiration of this MSA or any SOW 
+hereunder, Client shall pay all charges that have accrued as of the applicable date of such 
+termination or expiration. 
+ 
+ 
+3. Invoicing, Payment Terms, Rate Increases 
+All Services hereunder shall be performed at the rates set forth in a SOW or Change Order.   
+Unless otherwise agreed by the Parties in a SOW or Order, Client shall prepay Concertium for 
+any hardware purchased by Concertium on behalf of Client.  Furthermore, Concertium shall 
+invoice Client monthly for all recurring Services to be provided during the following month 
+(prorated for any partial month), begin ning upon the earlier of (i) service transition 
+completion, or (ii) 60 days after signature of the SOW.  Unless otherwise agreed by the Parties 
+in a SOW, one -time start-up fees will be invoiced upon signing the corresponding SOW.  All 
+other Services will b e invoiced as described in the applicable SOW or Change Order.  
+Notwithstanding the foregoing, Concertium shall invoice Client for any third -party 
+communications tariffs or other fees incurred in connection with the Services upon 
+Concertium’s receipt of in voices for those fees.  Client agrees to pay such third -party fees 
+when invoiced by Concertium, regardless of the date of service.     
+ 
+Unless otherwise agreed by the Parties in a SOW or Order, Client shall pay to Concertium all 
+invoiced amounts within thirty (30) days of receipt of Concertium’s invoice.  If Client disputes 
+an invoice, Client shall, within thirty (30) days of its receipt of such invoice, provide written 
+notice to Concertium, detailing the fees being disputed and the basis therefor.  If Client fails 
+to dispute an invoice within fifteen (60) days, Client will be deemed to have accepted such 
+invoice in f ull.  In the event of a good faith dispute, Client shall pay all fees that are not in 
+dispute.  The Parties shall use commercially reasonable efforts to resolve all disputes as 
+promptly as possible.  In addition to other remedies available to Concertium, o verdue 
+invoices may be assessed a late payment charge of one and a half percent (1.5%) per month 
+(or the highest rate permitted by applicable law) commencing on the 31st day after the invoice 
+date.  Additionally, Client agrees to pay Concertium’s costs of collection, including reasonable 
+attorney’s fees, for all invoice balances that are not paid on or before the applicable payment 
+date. Concertium shall have the right to apply all payments received from Client to any 
+amounts due and payable by Client to Concertium under the terms of this Agreement.  If 
+Concertium issues a credit memo or credit note (a “Credit”) to Client, Client shall request 
+such be applied in full against future invoiced amounts within one hundred eighty (180) days 
+from the date of issue of the Credit.  The amount of any Credit not applied by Client within 
+the foregoing period shall be deemed to be forfeited. 
+ 
+Unless otherwise agreed to by the parties in any SOW or Change Order, to the extent that 
+Services established under this Agreement extend beyond one year after the execution of 
+the MSA, Concertium shall be entitled to increase Recurring Service (as such te rm is defined 
+in the SOW) fees during each year of the term after the initial year.  Unless stated otherwise, 
+such adjustments shall not affect Time & Materials (“ T&M”) rates.  Concertium will provide 
+Client with thirty (30) days advance written notice of any increase.  Notwithstanding the 
+foregoing, Client agrees to pay for any increase in communications tariffs or other fees 
+charged to Concertium by third parties for reasons outside of Concertium’s control. 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+5 ________Initials 
+ 
+ 
+(a) Out of Pocket Expenses . To the extent set forth  in a SOW, and only upon the advance 
+written approval of Client, Concertium shall be entitled to certain per diem expenses such 
+as expenses for travel, housing, and meals in connection with overnight travel necessary 
+and related to the performance of this Agreement.”  Absent good cause, Concertium shall 
+request approval for such expenses in writing at a reasonable time in advance of such 
+travel. The request, approval of which shall not be unreasonably withheld by Client, must 
+include the dates of such trave l, an explanation of the purpose or necessity for such 
+travel, an estimate of travel expenses expected to be incurred, and an estimate of the 
+number of Concertium employees expected to take part in such travel.  As a result, i n 
+addition to the fees for Serv ices hereunder, Client agrees to reimburse Concertium for 
+the commercially reasonable, pre -approved out-of-pocket expenses incurred by 
+Concertium or its employees that are necessary and related to the performance of this 
+Agreement. Travel time, if required and pre -approved by Client, will be charged at 
+Concertium’s standard hourly rate, but shall not exceed eight hours per day per 
+Concertium representative.  Concertium shall submit invoices to Clien t monthly for out-
+of-pocket expenses incurred during the preceding month.   
+ 
+(b) Additions & Subtractions . To the extent set forth in a SOW, in the event Client adds 
+additional personnel or devices that require Concertium support there will be an 
+additional charge equal to the device/ user/ network/ server multiplier and it shall be 
+added to the monthly recurring invoice. Personnel or device deductions are allowed . 
+Notwithstanding the foregoing,  Client is limited to a maximum of thirty percent (30%) 
+user or device reductions from the initial users or devices supported post the initial 
+onboarding during the life of the Initial Term or during the life of any twelve (12) month 
+Renewal term. Any reductions by the Client of users or devices greater than thirty percent 
+(30%) from the initial levels must be made at the start of any Renewal Term.  
+ 
+(c) Audit Rights . Concertium  shall have the right to audit Client records, systems tools 
+outputs or any other system information during the Term and for up to twelve (12) 
+months after the effective date of termination for verification that Client’s use, 
+installation, execution of the Services complies with the terms of the MSA, SOW, 
+instructions from Concertium, and all applicable laws and regulations. In connection with 
+any invoice dispute, as contemplated by this Section, Client may request in writing , and 
+Concertium shall promptly provide, an accounting of all work and activities performed by 
+Concertium in connection with that disputed invoice or portion thereof.  
+ 
+(d) Suspension of Services . In the event an undisputed invoice remains unpaid more than 
+thirty (30) days past its due date, Concertium may suspend the performance of the 
+Services hereunder until such invoice is paid.  
+ 
+ 
+  
+4. Change Order Procedures 
+Additional services requested by Client not addressed in a SOW or Order will be billed at 
+Concertium’s T&M rates (“ T&M Services ”) upon Client approval of the T&M Services or 
+signing of a Change Order.  Either Party may initiate a Change Order by submitting a written 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+6 ________Initials 
+ 
+request to the other Party along with an explanation of reasons as to why such change, 
+modification, or addition is desirable or necessary. 
+ 
+All Change Orders must contain: 
+ 
+a) a description of any additional or reduced Services to be performed and /or changes to 
+the performance required of either Party, including the estimated additional or reduced 
+number of personnel needed for such performance; 
+b) a description of any additional, reduced, or different Services to be rendered; 
+c) a statement of the impact of the additional Services, or changes to the Services, schedule, 
+costs, or other requirements of the applicable SOW; 
+d) the signatures of duly authorized individuals of each Party; 
+ 
+Within ten (10) business days of the submission of a Change Order from one  Party to the 
+other, the receiving Party shall notify the other Party of its acceptance or its rejection.  Either 
+Party may, in its sole discretion, reject any Change Order requested by the other Party.  
+However, if Concertium requests a Change Order to fi x any deficiencies in Client’s 
+infrastructure necessary to allow Concertium to successfully provide its Services under any 
+SOW, then Client must accept that Change Order or Concertium’s obligations to Client under 
+the applicable SOWs shall terminate upon r ejection of the proposed Change Order.  
+Notwithstanding anything to the contrary set forth herein, any Client proposed Change Order 
+the effect of which, whether on its own or in the aggregate with previously requested Change 
+Orders, would be to reduce the monthly fees payable to Concertium for the Service or 
+Services that are the subject of the Change Order by more than thirty percent (30%) of the 
+monthly amount payable to Concertium for such Service or Services pursuant to the 
+applicable SOW or SOWs under which such Service or Services are provided shall be deemed 
+null and void and rejected by Concertium . Notwithstanding anything in this MSA to the 
+contrary, in no event shall a rejecting Party be responsible for any damages suffered by the 
+initiating Party as a result of the refusal to accept a Change Order request.  Once accepted, 
+the terms of such Change Order shall be deemed to be incorporated into the applicable SOW. 
+ 
+ 
+5. Protection of Confidential Information 
+By virtue of this MSA, all app licable SOWs, and the performance of the Services by 
+Concertium, the Parties may be exposed to or be provided with certain confidential and 
+proprietary information of the other Party or third parties, including but not limited to 
+information designated as confidential in writing or information which ought to be in good 
+faith considered confidential and proprietary to the disclosing party.  Each Party agrees that, 
+absent the express prior written consent of the other Party to the contrary, (a) it will use 
+Confidential Information (as defined below) belonging to the other Party solely for the 
+purposes permitted under this Agreement, and (b) it will not disclose Confidential 
+Information belonging to the other to any third party other than its employees, regulat ors, 
+vendors, trading partners and/or agents reasonably requiring such Confidential Information 
+for purposes of this Agreement and who are bound by obligations of nondisclosure and 
+limited use at least as stringent as those contained herein.  Each Party wi ll promptly inform 
+the other Party if it becomes aware of a n unauthorized use or disclosure of the Confidential 
+Information of the other Party.  If a Party becomes subject to a legal requirement to disclose 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+7 ________Initials 
+ 
+the Confidential Information of the other Party, then the Party receiving the disclosure 
+request shall, prior to making disclosure thereunder, give prompt notice to the other Party 
+so that the other Party may seek a protective order at its own expense.  
+   
+For purposes hereof, “Confidential Information” shall mean (i) the terms and conditions of 
+this Agreement, and (ii) any and all information belonging to a Party, whether stored in 
+written, electronic, representational or physical form, concerning a Party’s business, which is 
+not at the rele vant time ( iii) known generally to the public through no act or omission in 
+violation of this Agreement or in violation of another duty of confidentiality to such Party, (iv) 
+furnished to the disclosing Party by a third party having the lawful right to do so, or (v) known 
+to the disclosing Party prior to disclosure hereunder (as established by written 
+documentation thereof).  Confidential Information further expressly includes, but is not 
+limited to, trade secrets, software and procedures manuals and docume ntation, computer 
+programs, data file content and organization, financial data, marketing plans, customer lists 
+and customer account information and similar information to the extent it is within the scope 
+of the preceding sentence.      
+ 
+6. Ownership of Property 
+All drawings, specifications, software, documents, manuals, materials, devices, servers, 
+equipment and all other forms of tangible and intangible property, whether existing prior to 
+or developed by Concertium in the course of performance of the Servic es and furnished to 
+Client by Concertium hereunder, shall remain the  property of Concertium or its licensors as 
+applicable and shall be used by Client for the sole purpose of the Services, and shall be 
+promptly returned upon the expiration or termination of the term of the applicable SOW or 
+as otherwise directed by Concertium. This Section does not apply to all hardware, devices, 
+software, equipment, licenses, and any other tangible or intangible property purchased by 
+Client at Concertium’s direction for Client’s own use, or any such property that is purchased 
+by Concertium on Client’s behalf for Client’s own use, as contemplated by this MSA, including 
+Section 3 hereof.  Such property shall remain the property of Client following expiration or 
+termination of the term of the applicable SOW or MSA.   
+ 
+7. Non-Solicitation 
+During the Term of this MSA and for a period of two (2) years after completion of all Services 
+under all SOWs Client shall not directly or indirectly solicit for employment or hire or engage 
+as a consultant, agent or independent contractor, any employee, consultant, agent or 
+independent contractor of Concertium who was working in connection with any SOW 
+hereunder, without Concertium’s prior written consent.  For purposes of the foregoing, a 
+person is deemed to be an employee of Concertium during the term of employment and for 
+ninety (90) days thereafter.  In the event of a knowing or intentional breach of this obligation, 
+Client shall promptly pay to Concertium, as liquidated damages and not as a penalty, an 
+amount equal to such employee’s most recent salary determined as of the date of the breach. 
+ 
+ 
+ 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+8 ________Initials 
+ 
+8. Representations   
+Client and Concertium each represent and warrant to the other, as of the Effective Date, that:  
+(a) it is validly existing and in good standing under the laws of the jurisdiction of its 
+organization; (b) it has all requisite power and authority to execute and deliver, and to 
+perform its obligations under this Agreement; (c) this Agreement has been duly authorized 
+and executed by it and constitutes its legal, valid and binding obligation; and (d) any consent 
+or authorization of any governmental authority or third party required to be obtained by it in 
+connection with this Agreement has been obtained.  
+ 
+9. Concertium’s Obligations  
+(a)  Warranties.  Concertium warrants that the Services provided hereunder will be performed 
+in conformance with the Services description contained in the applicable SOW in accordance 
+with industry standards by trained and qualified personnel.  Concertium does not warrant 
+uninterrupted or error-free operation of any Client or third-party equipment that are within 
+the scope of any Services. The Services are not designed or intended to be used to manage, 
+monitor, or control any devices requiring fail-safe operation where the failure of the devices 
+or the Services could lead to death, personal injury , or environmental damage.  Concertium 
+will endeavor to meet m inimum service levels for certain critical business functions, as 
+defined in an applicable SOW (the “SLAs”).  The effective date of the SLAs shall be 90 days 
+from service transition.    
+ 
+Client agrees that, absent any intentional wrongdoing or gross neglig ence on the part of 
+Concertium, in the event of a breach of the foregoing warranty, its only remedy shall be the 
+re-performance of the Services by Concertium, which shall be provided at no cost to Client, 
+and Client agrees to provide Concertium with written notice of any nonconformity within 
+thirty (30) days of its receipt of Concertium’s invoice  or actual knowledge of such breach .  
+Concertium warranties will not apply in the event of Client’s misuse, modification, improper 
+maintenance, unsuitab le operating environment, failure to notify Concertium of a non -
+conformance within the thirty (30) day period set forth in the preceding sentence, failure to 
+comply with instructions provided by Concertium, or damage not caused by Concertium. 
+ 
+(b)  Warranty Disclaimer.  THE WARRANTY STATED HEREIN IS THE ONLY WARRANTY WITH 
+RESPECT TO THE SUBJECT MATTER HEREOF AND IS IN LIEU OF ALL OTHER WARRANTIES, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF 
+MERCHANTABILITY AND FITNESS FOR A PA RTICULAR PURPOSE, ALL OF WHICH ARE HEREBY 
+DISCLAIMED. 
+ 
+(c)  High Risk Activities.  Client acknowledge and agrees that Concertium did not design the 
+Services for, and does not warrant the Services for use in, the operation, management, 
+support or delivery of products, services, systems, environments or otherwise relative to or 
+within environments requiring fail -safe performance, suc h as in the operation of nuclear 
+facilities, aircraft navigation or communication systems, air traffic control, life support 
+machines, surgically implanted devices, weapons systems, or other applications, devices or 
+systems in which the failure of the Serv ices could directly result in death, personal injury, or 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+9 ________Initials 
+ 
+severe physical or environmental damage (“High Risk Activities”).  CONCERTIUM DISCLAIMS 
+ANY AND ALL WARRANTIES AND LIABILITY WITH RESPECT TO THE USE OF THE SERVICES IN 
+HIGH RISK ACTIVITIES. 
+ 
+(d) Compliance with Laws. Concertium will comply with all laws and regulations applicable to 
+the Services provided, and Concertium will comply with all applicable export and import laws, 
+regulations, embargo and sanction regulations, including prohibitions on expo rt for certain 
+end uses or to certain end users.  Concertium is not responsible for determining the 
+requirements of the law and regulations applicable to Client’s business.   
+ 
+(e)  Monitoring.  For all monitoring services, if applicable, Concertium will remotely install a 
+Collector in Client’s infrastructure, usually on a secure server, to collect flow data, fault and 
+performance statistics of Client’s devices and interfaces.  Concertium retrieves data from the 
+Collector, encrypts it, and then sends it via outgoing SSL.  Collector capacity depends on the 
+number and type of metrics are being monitored and the available resources of the 
+infrastructure.  All communications made by the Collector are outbound, and the Collector 
+must be able to able to make an outgoing HTTPS connection. Concertium agrees that all data, 
+metrics or otherwise, and any source information underlying such data that is collected by 
+Concertium shall be maintained as Confidential Information of Client and Concertium agrees 
+that such informa tion will not be used for any other purpose unrelated to the Services 
+provided by Concertium to or on behalf of Client. 
+ 
+10. Client Obligations 
+(a)  Client shall, at no cost to Concertium, provide in a reasonably prompt manner, (i) all data 
+and information in the possession of Client as may be required by Concertium to perform the 
+Services; (ii) access to the Client networks and work site so that Concertium personnel may 
+perform the Services without interference; (iii) a person to act as Client’s representative, who 
+shall transmit instructions, receive information, and interpret and define Client’s policies and 
+decisions with respect to the Services; (iv) prompt notice to Concertium should Client observe 
+or otherwise become aware of any deficiency in the Services provided by Concertium; (v) data 
+and content of any database and system that Client makes available to Concertium; (vi) 
+selection and implementation of procedures and controls regar ding access, security, 
+encryption, use and transmission of data; (vii) in the event that Concertium is not providing 
+backup management and services as part of the Services, perform periodic backups and 
+maintain backup data as necessary to restore critical Client data files in the event of loss or 
+damage to such data from any cause; and (vii) any other additional information or assistance 
+as may be set forth in any SOW or reasonably requested and required by Concertium with 
+respect to the performance of the Services.  Concertium is not responsible in any manner for 
+changes or modifications made to Client’s systems by persons other than authorized 
+representatives or employees of Concertium. Concertium is in no way responsible for the 
+condition of the Client’s equipment prior to being serviced and is not responsible for  the loss of 
+use resulting from the failure or malfunction of the equipment and makes no guarantee to the 
+amount of time it may take to make an evaluation or repair. Client understands if it is necessary 
+to bring a selected piece of equipment back to Concertium ’s offices for evaluation and/or 
+repair, the client understands that they are responsible for having or requesting from Concertium 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+10 ________Initials 
+ 
+a backup copy of data prior to releasing that piece of equipment to Concertium for analysis and/or 
+repair. Client understands that if any piece of equipment fails, that any data salvage or recovery 
+attempts may result in complete data loss.  
+ 
+(b)  Client consents to Concertium’s use of Client’s name, trademark an d/or logo in 
+Concertium’s list of Clients, on its website, in social media channels, and in marketing and 
+promotional materials.  A representative of Client further agrees to participate in a video 
+testimonial to be produced by or on behalf of Concertium and at Concertium’s sole expense 
+at a mutually convenient time . The testimonial will depict, quote or otherwise be attributed 
+to Client with respect to the use of Services provided by Concertium. Client consents to use 
+of the testimonial by Concertium, its agents, representatives, successors, and assigns, on its 
+website, in social media channels, and in marketing and promotional materials.  Client will 
+not be compensated by Concertium in any way for participation in the testimonial, and no 
+such use by Concertium shall disparage Client. 
+ 
+11. Indemnification 
+Each Party (the “Indemnifying Party”) shall defend and indemnify the other Party (the “Other 
+Party”) from and against all third party claims, and resulting damages, liabilities, awards, 
+judgments, and settlem ents against the Other Party, of whatever nature, for damage to 
+tangible property and bodily injury (including death), arising out of the Indemnifying Party’s 
+negligence or intentional misconduct hereunder. The Indemnifying Party’s obligations under 
+this Section 11 shall not extend to liabilities of the Other Party to the extent arising out of the 
+Other Party’s negligence or intentional misconduct. The Other Party shall give the 
+Indemnifying Party prompt, written notice of any suit or other proceeding instituted against 
+it for which it may wish to seek indemnification hereunder.  The Other Party shall reasonably 
+cooperate and assist the Indemnifying Party in the defense of the claim. 
+ 
+12. Intellectual Property Indemnification  
+Concertium shall defend and indemnify Client from and against all third party claims, and 
+resulting damages, liabilities, awards, judgments, and settlements against Client for 
+infringement of a third party's intellectual property rights provided, however, that 
+Concertium shall not have liability under this Section to the extent that any infringement 
+claim is attributable to (i) the combination, operation or use of the Services with equipment 
+or software supplied by Client where the Services would otherwise not themse lves be 
+infringing; (ii) Concertium's compliance with designs, specifications or instructions by Client; 
+(iii) use of the Services in an environment or application for which it was not designed or 
+contemplated under this MSA or any SOW  or Order; or (iv) modifications to the Services by 
+anyone other than Concertium where the modified version is infringing. Concertium will have 
+satisfied its obligations under this Section if, after receiving notice of a claim, Concertium 
+obtains for Client the rights to continue using the Services as provided without infringement 
+or replaces or modifies the Services so they become non-infringing.  In the event Concertium 
+is able to cure as set forth in this Section, Concertium shall still defend and indemnify Client 
+from and against all third-party claims and resulting damages, liabilities, awards, judgments 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+11 ________Initials 
+ 
+and settlements, including attorneys’ fees incurred by Client in its defense, against Client that 
+are obtained or concern the time prior to cure.  
+ 
+ 
+13. Limitation of Liability 
+EXCEPT FOR A BREACH OF CONFIDENTIALITY, I N NO EVENT SHALL EITHER PARTY OR ITS 
+RESPECTIVE AFFILIATES, EMPLOYEES OR AGENTS, BE LIABLE TO THE OTHER PARTY 
+HEREUNDER FOR ANY INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, EXEMPLARY, OR 
+CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO LOST OR IMPUTED PROFITS, 
+BUSINESS INTERRUPTION, USE OF  DATA, LOST DATA OR COST OF PROCUREMENT OF 
+SUBSTITUTE SERVICES WHETHER OR NOT LIMITED TO ACTS OF GOD, COMMUNICATIONS 
+FAILURE, THEFT, DESTRUCTION OR UNAUTHORIZED ACCESS TO CLIENT’S DATA, PROGRAMS 
+OR SERVICES. NO ACTION ARISING UNDER THIS AGREEMENT, REGARDLESS OF FORM, MAY 
+BE BROUGHT BY EITHER  PARTY MORE THAN ONE YEAR AFTER THE CAUSE OF ACTION HAS 
+ARISEN.  
+ 
+14. Third-Party Products   
+Client acknowledges that certain third-party hardware and software products (“Third-Party 
+Products”) may be provided by Concertium as a “pass through” to Client and such Third -
+Party Products may be covered by a warranty offered by the third-party hardware or software 
+vendor, not Concertium.  Any Third -Party Products comprising software and which are 
+supplied with a packaged end user license agreement or a click -on license agreement 
+(collectively, "EULAs") included within such third-party software are licensed under and are 
+subject to the terms of such EULAs, and are not subject to any Concertium warranties or 
+indemnification obligations contained in Sections 9 and 11 hereof.  Client shall look solely to 
+the Third -Party Products vendor for warranty support.  Client shall be responsible for the 
+acknowledgement of and compliance with the terms and condition s of all EULAs that 
+accompany the provision of software Third -Party Products.  All Third party Products when 
+purchased will be considered the property of Client and are exempt from the provisions of 
+Section 6. 
+ 
+15. Independent Contractor 
+Each Party is acting as  an independent contractor and not as an agent, partner or joint -
+venturer with the other Party for any purpose.  Except as provided in this MSA, neither Party 
+shall have any right, power, or authority to act or to create any obligation, express or implied, 
+on behalf of the other.  Concertium shall defend and indemnify Client from and against any 
+and all claims and resulting damages, liabilities, awards, judgements, and settlements, 
+including attorney’s fees, brought to any subcontractor of Concertium against Client arising 
+out of subcontractor’s relationship with Concertium.  
+ 
+16. Subcontractors 
+Concertium reserves the right to subcontract with other individuals and businesses for the 
+provision of Services required to be performed pursuant to this MSA and any SO W. 
+Concertium shall be responsible for all payments to, as well as the direction and control of 
+the Services to be performed by its subcontractors, if any.  
+ 
+17. Acceptable Use Policy.  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+12 ________Initials 
+ 
+Client shall not use the Services in any way that violates Federal, State, Local or International 
+Law. This prohibition includes, without limitation, any actions which are threatening, 
+obscene, defamatory, libelous or which violate trade secret, copyright, paten t or other 
+intellectual property rights of a third party, or rights of privacy or publicity, violate export 
+laws, regulations, and rules (including, without limitation, the Export Administration Act and 
+the Export Administration Regulations administered by the U.S. Dept. of Commerce) or which 
+result in the spread of computer viruses, worms, time bombs or other damaging programs 
+or data files. If any breach of this policy is not cured within ten (10) days after receipt of 
+written notice from Concertium, Concertium may immediately suspend or terminate the 
+Services. 
+ 
+18. Assignment  
+Neither Party may assign this MSA, in whole or in part without the express written consent of 
+the other Party, with the exception of an assignment carried out as part of a merger, 
+restructuring, or reorganization, or pursuant to a sale or transfer of all or substantially all of 
+a Party’s assets or stock, other than any such transaction that is within the scope of Section 
+2(b) above. 
+ 
+19. Amendments  
+No provisions in either Party’s invoices o r purchase orders, or in any other business forms 
+employed by either Party, will supersede or add to the terms and conditions of this MSA, and 
+no supplement, modification or amendment of this MSA, or any SOW, shall be binding, unless 
+executed in writing by a duly authorized representative of each Party to this MSA. 
+ 
+20. Force Majeure 
+Neither Party will be liable when and to the extent its failure to perform is due to unforeseen 
+circumstances or causes beyond its reasonable control, including, but not limited to, acts of 
+God, state of war, acts of foreign or domestic terrorism, riot, em bargoes, acts of civil or 
+military authorities, national emergencies, pandemics, epidemics, diseases, fire, hurricanes, 
+flood and other weather conditions, and, provided such default or delay could not have been 
+prevented by reasonable precautions and cann ot reasonably be circumvented by the 
+nonperforming Party through the use of alternate sources, work around plans or other 
+means. 
+  
+21. Entire Agreement 
+This Agreement, together with its SOWs or Orders, constitutes the entire agreement between 
+the Parties with respect to the subject matter hereof,  and supersedes and replaces all prior 
+and contemporaneous negotiations, agreements, or understandings whether oral or written.  
+There are no agreements, understanding, representations or warranties not exp ressly 
+incorporated herein.   
+22. Governing Law; Exclusive Jurisdiction and Venue  
+This MSA and its construction and enforcement shall be governed by the laws of the State of 
+Florida, without giving effect to its conflict of law principles.  Each of the Partie s hereby 
+submits to the exclusive jurisdiction of the United States District Court for the Middle District 
+of Florida (Tampa Division) or of any Florida state court sitting in Hillsborough County for 
+purposes of all legal proceedings arising out of or rela ting to this MSA and the transactions 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+13 ________Initials 
+ 
+contemplated hereby. Each of the Parties irrevocably waives, to the fullest extent permitted 
+by law, any objection which they may have now or hereafter laying of the venue of any such 
+proceeding brought in such a court and any claim that any such proceeding brought in such 
+a court has been brought in an inconvenient forum. 
+23. Waiver of Jury Trial  
+Each of the Parties hereto hereby knowingly, voluntarily, and intentionally waives the right 
+such Party may have to a trial by jury in respect of any litigation based hereon or arising out 
+of, under, or in connection with this MSA or any SOW. This provision is a material inducement 
+for the Parties entering into this MSA. 
+24. Notices  
+Notices.  All notices under this MSA shall be in writing and will be given in person, or via email 
+or facsimile, or by certified or registered mail, or by overnight courier, to the attention of: 
+To Concertium: To Client: 
+  
+  Concertium Career Source Heartland 
+  Attn: Carren Rieger, CEO Attn: Donna Doubleday, CEO 
+  777 S. Harbour Island Blvd 
+  Suite 400 
+5901 US Hwy 27 South, Suite 1 
+Sebring, FL 33870 
+  Tampa, FL 33602  
+ 
+25. Claims  
+In the event of a dispute arising under this MSA, neither Party shall bring a claim or action 
+regardless of form more than one (1) year after the cause of action has arisen  or more than 
+one year after the Party knew or otherwise should have known such cause of action has 
+arisen. In the case of nonpayment by Client, Concertium may not bring a claim or action more 
+than two (2) years after the payment in question was due.   
+  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+14 ________Initials 
+ 
+Signatures for Contract Approval 
+IN WITNESS WHEREOF, the Parties have executed this Master Services Agreement as of the date 
+written below,  
+ 
+Client: 
+Signature: ________________________________________ 
+Name:  ___________________________________________ 
+Title: ___________________________________________ 
+Date:  ___________________________________________ 
+ 
+Concertium:  
+Signature: ________________________________________ 
+Name:  ___________________________________________ 
+Title: ___________________________________________ 
+Date:  ___________________________________________ 
+  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+6/13/2023
+President/CEO
+Carren Rieger
+6/12/2023
+Donna Doubleday
+President/CEO15 ________Initials 
+ 
+A) Managed Services Plan 
+The services listed below are included in this Managed Services Scope of Work: 
+ 
+Digital Strategy ------------------------------------------------------------------------------------------  
+▪ Discovery Sessions – Business Process and Information Technology (first 60 
+days) 
+▪ Business Review Reporting 
+▪ Annual Roadmap Sessions – IT, Software, and/or Security (upon request) 
+ 
+ Hardware Support --------------------------------------------------------------------------------------- 
+▪ All-inclusive remote support for Hardware 
+▪ 24/7/365 remote monitoring of systems and network infrastructure 
+▪ On-site Support as needed per Concertium Rate Card 
+▪ Hardware Lifecycle Management (Warranties, Expirations & Updates) 
+ 
+ Software Support ---------------------------------------------------------------------------------------- 
+• Updates & Patch Management 
+• Access to Captain’s Chair 
+  
+ Network Operations ------------------------------------------------------------------------------------- 
+• 24/7/365 remote monitoring of Client’s environment 
+• Remote monitoring of all network switches, routers & access points 
+  
+ Service Desk --------------------------------------------------------------------------------------------- 
+▪ 24/7/365 access to phone support 
+▪ All Inclusive remote support 
+▪ Incident and problem management through resolution 
+▪ Instant 256-bit encrypted remote connection 
+▪ Integrated Ticket Help Desk for easy ticket resolution 
+▪ Management of Client’s Office 365 environment 
+▪ Vendor Management Services (ISP’s/ etc.) 
+ 
+  How to schedule service: 
+1. Submit your ticket via email to support@concertium.com 
+2. Contact the Help Desk @ 813-490-4260 
+3. Submit a support request through our Captain’s Chair Mobile App 
+ 
+Service Level Objectives/ Agreements: 
+1. Priority 1 – Critical system, network or key application outage with critical impact 
+on Client’s service delivery; total loss of production service to Client environment; 
+over 25% of users or more lose system access; critical user without system access 
+which results in a significant impact to the business. 
+• 24 Hours, 7 Days a Week, 365 Days a year Coverage 
+• Mean Time to Respond – 30 minutes, 98% of Incidents 
+• Mean Time to Recover – 4 Hours, 95 % of Incidents 
+2. Priority 2 – Key component application offline; Network down, degraded, or 
+unusable; Service performance degradation; partial Client set affected 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+16 ________Initials 
+ 
+• 24 Hours, 7 Days a Week, 365 Days a year Coverage 
+• Mean Time to Respond – 45 minutes, 98% of Incidents 
+• Mean Time to Recover – 8 hours, 95% of Incidents 
+3. Priority 3 – Single Client machine or service is down, degraded, or unusable; 
+potential critical impact on service delivery; partial Client set affected 
+• 24 Hours, 7 Days a Week, 365 Days a year Coverage 
+• Mean Time to Respond – 60 minutes, 98% of Incidents 
+• Mean Time to Recover – 24 hours, 95% of Incidents 
+   
+Guaranteed Response Times: 
+For all Priority 1 (highest priority) events, Concertium will use every effort possible to 
+rectify the ticket exceeding all client expectations. Client acknowledges that some 
+events are outside of the Concertium’s control and may affect response times for 
+resolution. In this event, Concertium will maintain open communication with Client 
+contacts and regularly provide updates until resolution.   
+ 
+Backup, Disaster Recovery and Security  
+• Backup, Disaster & Recovery Plan 
+• Antivirus on all workstations & servers provided 
+• SPAM Blocking for Email Security 
+• Advanced End Point protection & monitoring services available via 24/7 SOC  
+– Optional for an additional fee 
+ 
+B) Concertium Minimum Standards Required for Services 
+Client’s IT environment and infrastructure must meet and maintain the following requirements for 
+this Scope of Work: 
+ 
+• All Servers with Microsoft Windows Operating Systems must be running actively 
+supported versions. 
+• All Server and Desktop Software must be Genuine, Licensed and Vendor-Supported.   
+• All Desktop PC’s and Notebooks/ Laptops with Micro soft Windows Operating Systems 
+must be running actively supported versions. 
+• The environment must have a currently licensed, up -to-date and Vendor -Supported 
+Server-based Antivirus Solution protecting all Servers, Desktops, Notebooks/Laptops, 
+and Email. 
+• The environment must have a currently licensed, Vendor -Supported Hardware Firewall 
+between the Internal Network and the Internet. 
+• Client’s Office 365 and Azure subscriptions will be moved to Concertium as the Digital 
+Partner of Record under Concertium’s Cloud Services Partner agreement with Microsoft 
+for billing and support services. 
+• Assessments of hardware & software will be administered by the Concertium team to 
+observe best practices. 
+• Client must have a Backup & Disaster Recovery system in place if Client does not wish for 
+Concertium to perform Backup & Disaster Recovery services.  
+• Client agre es to work constructively with Concertium to replace equipment which 
+repeatedly breaks down and consistently causes user and business interruption even 
+though repairs are accomplished at an additional cost to Client.  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+17 ________Initials 
+ 
+C) Excluded Services 
+The following services are excluded from this Scope of Work and Client will incur additional charges 
+per the standard rate card (Section D below) for any of the following: 
+ 
+• All Project work; including and not limited to migration projects, consulting 
+engagements, office relocations, major network configurations and major systems 
+upgrades. Project work will be quoted and performed through the execution of an 
+additional Order or SOW. 
+• MACDs – Move, Add, Change and Delete; billable services that provides moves, adds, 
+changes and deletes of network hardware and software or services. MACD tickets include 
+installation of software, software updates, version upgrades and patches related to line 
+of business applications (e.g. QuickBooks), installation/configuration of a new 
+workstation or device s on your network and changing access credentials. MACDs are 
+charged in standard blocks of 15 minutes at a rate of $125 /hour and will be reconciled 
+monthly.  
+• Major Software Upgrades; new version soft ware or operating system upgrades, new 
+management systems, database updates. 
+• Disasters; Recovering and rebuilding of hardware and software after floods, fires, 
+earthquakes, lightning strikes, pipe leaks and power surges/failures. 
+• Special equipment requests (i.e. equipment such as network protocol analyzers). 
+• Low-voltage network infrastructure cabling. 
+• Out of state onsite support unless previously specified in this agreement.  
+• Parts, equipment, or software for client’s environment which has not previously be en 
+outlined in this Agreement.  
+• Any Software, Licensing, or Software Renewal or Upgrade Fees of any kind not previously 
+mentioned.  
+• Any 3rd Party Vendor or Manufacturer Support or Incident Fees of any kind not previously 
+mentioned.  
+• Service and repair made necessary by the alteration or modification of equipment other 
+than that authorized by Concertium, including alterations, software installations or 
+modifications of equipment made by Client's employees or anyone other than 
+Concertium.  
+• Web services of any kind unless previously specified in this agreement.  
+• Programming code modification or software maintenance unless previously specified in 
+this agreement.  
+• Training Services of any kind unless previously outlined in this agreement.   
+  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+18 ________Initials 
+ 
+ 
+D) Fees and Expenses 
+The following fees and expenses for this Statement of Work are outlined below: 
+ 
+i. Monthly Pricing: 
+For the Services detailed above in Sections A and B of this Scope of Work the 
+following recurring fees and expenses are outlined below. Ultimate quantities are 
+subject to change based on Client’s environment and actual final onboarding 
+procedures. 
+ 
+Full Managed Services & IT Support* Qty Rate Monthly Total 
+CoreIT Managed Security and Infrastructure 
+Support (per workstation) (Includes Deep 
+Instinct) 
+55 $85.00 $4,675.00 
+Managed Resource Room Workstations 52 $40.00 $2,080.00 
+CoreIT Managed Servers (per device) 6 $150.00 $900.00 
+Managed Network Devices (per location) 4 $100.00 $400.00 
+  Subtotal $8,055.00 
+ 
+ 
+Managed Software Subscriptions & Licenses* 
+Qty Rate Monthly Total 
+Captain's Chair Dashboard 1 $200.00   $200.00  
+Streamline IT License 2 $100.00   $200.00  
+Deep Instinct AEP – Resource Room Deep Instinct 52 $7.00   $364.00  
+Email and Cloud Collaboration Suite (Per User) 77 $5.00   $385.00 
+Microsoft 365 E5 Nonprofit 2 $22.80   $45.60  
+O365 Enterprise E3 Nonprofit 48 $4.50   $216.00  
+Monthly Dark Web Scanning 1 $50.00   $50.00  
+  Subtotal $1,460.60  
+  Total  $9,515.60  
+* Actual counts will be reconciled monthly. Subscription and license pricing is subject to change by vendor. Variable hosting 
+charges based on estimated monthly consumption.  
+ 
+ 
+ii. One Time Project Fees 
+Phase/ Item  One Time Fee  
+ N/A 
+ 
+  
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83
+19 ________Initials 
+ 
+ 
+iii. Time and Materials (“T&M”) Rates: 
+The Rate Card below is applicable for all projects and exclusions to normal services unless 
+otherwise separately quoted. The client agrees to be bille d per the rate card below for all 
+such projects and services. 
+ 
+Service Type Rate Unit 
+Engineering Project Hours $175.00 Per Hour 
+Installation/ Hardware Configuration (2 Hour 
+Minimum) 
+$140.00 Per Hour 
+MACD – Move/Add/Change/Delete* $140.00 Per Hour 
+vCIO (Virtual CIO) Services $275.00 Per Hour 
+Incident Response and Remediation $350.00 Per Hour 
+Onsite Scheduled Activity (2 hour minimum) $175.00 Per Hour 
+Same Day Cancellation or site not ready fee $150.00  Per event 
+*Requests for MACD project work will be estimated and must be approved and paid for by the customer prior to 
+commencement.    
+ 
+ 
+ 
+DocuSign Envelope ID: 43B6B5BD-881E-4D48-B82D-62654E8E0C83

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--اللائحة التنفيذية لنظام السجل التجاري.pdf",
+  "filename": "اللائحة التنفيذية لنظام السجل التجاري.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/اللائحة التنفيذية لنظام السجل التجاري.pdf",
+  "size_bytes": 1046528,
+  "last_modified": "2026-06-26T19:43:00.012412+00:00",
+  "checksum_sha256": "d97cd45aa03f3a358fc3467adc6cfde3c3e224382773e33ce50ebf6754d4fca9",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 11,
+  "character_count": 13046,
+  "extraction_duration": 0.1659134579822421,
+  "parsed_at": "2026-07-12T16:10:12.814527+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 26,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.002322042011655867,
+  "chunked_at": "2026-07-12T16:10:12.817742+00:00",
+  "chunking_error": null
+}

@@ -1,0 +1,32 @@
+[project]
+name = "devteam-intake"
+version = "0.1.0"
+description = "Autonomous Platform Dev Team — Mission Intake & Correlation (ADR 0063/0064). TriggerSource normalizes any external event into one IntakeSignal; MissionCorrelator decides CreateMission vs UpdateMission against a separate correlation index; Mission Intake receives that command, never a raw event. Reuses assistant-runtime's capability/mission machinery and the event bus; adds only the intake + correlation boundary."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "event-bus",
+    "mission-engine",
+    "assistant-runtime",
+    "devteam-contracts",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../../../v2/packages/pipeline-contracts", editable = true }
+event-bus = { path = "../../../v2/packages/event-bus", editable = true }
+mission-engine = { path = "../../../v2/packages/mission-engine", editable = true }
+assistant-runtime = { path = "../../../v2/packages/assistant-runtime", editable = true }
+devteam-contracts = { path = "../devteam-contracts", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_intake"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

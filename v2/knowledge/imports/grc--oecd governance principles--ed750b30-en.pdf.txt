@@ -1,0 +1,2065 @@
+G20/OECD Principles 
+of/uni00A0Corporate Governance
+G20/OECD Principles of/uni00A0Corporate GovernanceG20/OECD Principles 
+of 
+Corporate Governance
+2023
+The G20/OECD Principles of Corporate Governance  are set out in the Appendix to the OECD Recommendation on
+Principles of Corporate Governance [OECD/LEGAL/0413] adopted by the OECD Council on 8 July 2015 and revised on
+8
+ June 2023. The Principles were endorsed by the G20 in September 2023. For access to the official text of the
+Recommendation, as well as other related information, please consult the Compendium of OECD Legal Instruments at
+https://legalinstruments.oecd.org.
+Th
+is document, as well as any data and map included herein, are without prejudice to the status of or sovereignty over
+any territory, to the delimitation of international frontiers and boundaries and to the name of any territory, city or area.
+Please cite this publication as:
+OEC
+D (2023), G20/OECD Principles of Corporate Governance 2023, OECD Publishing, Paris, 
+https://doi.org/10.1787/ed750b30-en.
+ISBN 
+978-92-64-45168-1 (print)
+ISBN 978-92-64-76182-7 (pdf)
+ISBN 978-92-64-64495-3 (HTML)
+ISBN 978-92-64-34658-1 (epub)
+Photo credits: Cover © Andrew Esson/Baseline Arts Ltd.
+Corrigenda to OECD publications may be found on line at: 
+www.oecd.org/about/publishing/corrigenda.htm.
+© 
+OECD 2023
+The use of this work, whether digital or print, is governed by the Terms and Conditions to be found at https://www.oecd.org/termsandconditions.   3 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+Preface 
+The G20/OECD Principles of Corporate Governance provide guidance to help policy makers evaluate and 
+improve the legal, regulatory and institutional framework for corporate governance, with a view to 
+supporting market confidence and integrity, economic efficiency, sustainable growth and financial stability.  
+As the main international benchmark for good corporate governance, the Principles have a global reach 
+and reflect the experiences and ambitions of a wide variety of jurisdictions with varying legal systems and 
+at different stages of development. They are also one of the Financial Stability Board’s Key Standards for 
+Sound Financial Systems. 
+These revised Principles are the outcome of 18 months of work. They reflect a strong desire from all OECD 
+and G20 Members to see the Principles offer guidance on companies’ sustainability and resilience , and 
+will help companies manage environmental and social risks, with insights on disclosure, the roles and 
+rights of shareholders as well as stakeholders and the responsibilities of company boards.  
+First, they help companies improve access to finance, particularly from capital markets. By doing so, they 
+promote investment, innovation, and productivity growth, and foster economic dynamism more broadly.  
+Second, they provide a framework to protect investors, which include households with invested savings. A 
+formal structure of procedures that promotes the transparency and accountability of board members and 
+executives to shareholders helps to build trust in markets.  
+Third, they support the sustainability and resilience of corporations which, in turn, contribute s to the 
+sustainability and resilience of the broader economy.  
+The objectives are to help improve companies’ access to financial markets in an environment where 
+investor expectations are evolving and to support investor confidence on the basis of more transparent 
+market information and reinforced investor rights. 
+The Principles will help address the growing role of institutional investors by promoting stewardship codes, 
+and the disclosure of conflicts of interest by advisory services, like proxy advisors and Environme ntal, 
+Social and Governance index providers. They also include new recommendations which reflect the 
+increasing importance of corporate debt and the role of bondholders in capital markets.  
+Policy makers, regulators, international organisations and market p articipants have an important role to 
+play in putting the Principles to good use so that countries and corporations may continue benefitting from 
+good corporate governance. The OECD will keep on working closely with all relevant national authorities 
+and other partners to promote the implementation of the Principles globally.  
+ 
+Mathias Cormann, 
+OECD Secretary-General 
+4    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+Foreword 
+The G20/OECD Principles of Corporate Governance  are the leading international standard for corporate 
+governance. They aim to help policy makers and regulators evaluate and improve legal, regulatory and 
+institutional frameworks for corporate governance, with a view to supporting market confidence and 
+integrity, economic efficiency, and financial stability. 
+The Principles underwent a comprehensive review in 2021-2023 to update them in light of recent evolutions 
+in corporate governance and capital markets. The revised Principles were adopted by the OECD Co uncil 
+at Ministerial Level in June 2023 (the Principles are embodied in the OECD Recommendation on Principles 
+of Corporate Governance [OECD/LEGAL/0413]) and endorsed by G20 Le aders in September 2023. The 
+Principles are also one of the Financial Stability Board’s Key Standards for Sound Financial Systems, and 
+form the basis for the World Bank Reports on the Observance of Standards and Codes (ROSC) in the area 
+of corporate governance. 
+The review had two major objectives: to support national efforts to improve the conditions for companies’ 
+access to finance from capital markets, and to promote corporate governance policies that support the 
+sustainability and resilience of corporations which, in turn, may contribute to the sustainability and 
+resilience of the broader economy. 
+Accordingly, a major evolution in the Principles is the new Chapter on “Sustainability and resilience” which 
+reflects the growing challenges corporations face in managing climate-related and other sustainability risks 
+and opportunities. This new Chapter also incorporates Chapter IV on “The Rol e of Stakeholders in 
+Corporate Governance” of the previous version of the Principles. A substantial number of new 
+recommendations have also been developed and integrated within the existing chapters of the Principles, 
+whose structure remains otherwise unchanged. 
+The review of the Principles was undertaken by the OECD Corporate Governance Committee, chaired by 
+Mr Masato Kanda. OECD, G20 and FSB members participate in the Committee and contributed to the 
+review on an equal footing. Important contributions were also received from the OECD’s regional corporate 
+governance roundtables in Asia and Latin America, and from Business at OECD (BIAC) and the Trade 
+Union Advisory Committee (TUAC). An online public consultation and in -person stakeholder consultation 
+were also held, and experts from relevant international organisations, notably the Financial Stability Board, 
+the International Monetary Fund, and the World Bank Group, participated in the review.  
+In order to ensure the continued accuracy and relevance of the Principles, the review was supported and 
+informed by extensive empirical and analytical work examining recent changes in both capital markets and 
+corporate governance policies and practices. The reports developed informed both the Committee’s choice 
+of priority areas for consideration during the review as well as the revisions themselves.  
+The OECD, G20 and relevant stakeholders will now endeavour to promote and monitor the effective 
+implementation of the revised Principles globally. This will include a revie w of the Methodology for 
+Assessing the Implementation of the Principles of Corporate Governance and the regular publication of 
+the OECD Corporate Governance Factbook  which assesses implementation of the Principles in a large 
+number of countries.    5 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+Table of contents 
+Preface 3 
+Foreword 4 
+About the Principles 6 
+I. Ensuring the basis for an effective corporate governance framework 9 
+II. The rights and equitable treatment of shareholders and key ownership functions 14 
+III. Institutional investors, stock markets, and other intermediaries 22 
+IV. Disclosure and transparency 27 
+V. The responsibilities of the board 34 
+VI. Sustainability and resilience 44 
+ 
+ 
+Follow OECD Publications on:
+https://twitter.com/OECD
+https://www.facebook.com/theOECD
+https://www.linkedin.com/company/organisation-eco-co operation-
+development-organis ation-cooperation-developpement-eco/
+https://www.youtube.com/user/OECDiLibrary
+https://www.oecd.org/newsletters/
+6    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+About the Principles 
+The Principles of Corporate Governance (“the Principles”) are intended to help policy makers evaluate and 
+improve the legal, regulatory, and institutional framework for corporate governance, with a view to supporting 
+economic efficiency, sustaina ble growth and financial stability. This is primarily achieved by providing 
+shareholders, board members and executives, the workforce and relevant stakeholders, as well as financial 
+intermediaries and service providers with the right information and incentives to perform their roles and help 
+to ensure accountability within a framework of checks and balances. 
+Corporate governance involves a set of relationships between a company’s management, board, 
+shareholders and stakeholders. Corporate governance a lso provides the structure and systems through 
+which the company is directed and its objectives are set, and the means of attaining those objectives and 
+monitoring performance are determined. 
+The Principles are non-binding and do not aim to provide detailed prescriptions for national legislation. The 
+Principles are not a substitute for nor should they be considered to override domestic law and regulation. 
+Rather, they seek to identify objectives and suggest various means for achieving them, typically involv ing 
+elements of legislation, regulation, listing rules, self -regulatory arrangements, contractual undertakings, 
+voluntary commitments and business practices. A jurisdiction’s implementation of the Principles will depend 
+on its national legal and  regulatory context. The Principles aim to provide a robust but flexible reference 
+for policy makers and market participants to develop their own frameworks for corporate governance. To 
+remain competitive in a changing world, corporations must innovate and adapt their corporate governance 
+practices to meet new demands and grasp new opportunities. Taking into account the costs and benefits of 
+regulation, governments have an important responsibility for shaping an effective regulatory framework 
+that provides for sufficient flexibility to allow markets to function effectively and to respond to new 
+expectations of shareholders and stakeholders. The Principles themselves are evolutionary in nature and 
+are reviewed in light of significant changes in circumstances in order to maintain their role as the leading 
+international standard to assist policy makers in the area of corporate governance.  
+Well-designed corporate governance policies can play an important role in contributing to the achievement 
+of broader economic objectives and three major public policy benefits. First, they help companies to access 
+financing, particularly from capital markets. By d oing so, they promote innovation, productivity and 
+entrepreneurship, and foster economic dynamism more broadly. For those who provide capital, either 
+directly or indirectly,  good corporate governance serves as an assurance that  they can participate and  
+share in the company’s  value creation on fair and equitable terms. It therefore affects the cost at which 
+corporations can access capital for growth. 
+This is of significant importance in today’s globalised capital markets. International flo ws of capital enable 
+companies to access financing from a much larger pool of investors. If companies and countries are to reap 
+the full benefits of global capital markets and attract long -term “patient” capital, corporate governance 
+frameworks must be credible, well understood both domestically and across borders, and aligned with 
+internationally accepted principles.    7 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+Second, well -designed corporate governance policies provide a framework to protect investors, which 
+include households with invested savings. A formal structure of procedures that promotes the transparency 
+and accountability of board members and executives to shareholders helps to build trust in markets, thereby 
+supporting corporations’ access to finance. A substantial part of the general public invests in public equity 
+markets, either directly as retail investors or indirectly through pension and investment funds. Providing them 
+with a system in which they can share in corporate value creation, knowing their rights are protected, will 
+give households access to investment opportunities that may help them to achieve higher returns for their 
+savings and retirement. Given that institutional investors increasingly allocate a large share of their portfolios 
+to foreign markets, policies to protect investors should also cover cross-border investments. 
+Third, well -designed corporate governance policies also support the sustainability and resilience of 
+corporations and in turn, may contribute to the sustainability and resilience of the broader economy. Investors 
+have increasingly expanded their focus on companies’ financial performance to include the financial risks 
+and opportunities posed by broader economic, environmental and societal challenges, and companies’ 
+resilience to and management of tho se risks. In some jurisdictions, policy makers also focus on how 
+companies’ operations may contribute to addressing such challenges. A sound framework for corporate 
+governance with respect to sustainability matters can help companies recognise and respond to the interests 
+of shareholders and different stakeholders, as well as contribute to their own long term success. Such a 
+framework should include the disclosure of material sustainability -related information that is reliable, 
+consistent and comparable, including related to climate change. In some cases, jurisdictions may interpret 
+concepts of sustainability -related disclosure and materiality in terms of applicable standards articulating 
+information that a reasonable shareholder needs in order to make investment or voting decisions. 
+The Principles are intended to be concise, understandable, and accessible to all actors with a role in 
+developing and implementing good corporate governance globally. On the basis of the Principles, it is the 
+role of gove rnment, semi-government or private sector initiatives to assess the quality of the corporate 
+governance framework and develop more detailed mandatory or voluntary provisions that can take into 
+account country-specific economic, legal, and cultural differences. 
+The Principles focus on publicly traded companies, both financial and non-financial. To the extent they are 
+deemed applicable, the Principles may also be a useful tool to improve corporate governance in companies 
+whose shares are not publicly traded. While some of the Principles may be more appropriate for larger 
+companies than for smaller ones, policy makers may wish to raise awareness of good corporate governance 
+for all companies, including smaller and unlisted companies as well as those that issue debt securities. The 
+OECD Guidelines on Corporate Governance of State-Owned Enterprises complement the Principles. Other 
+factors relevant to a company’s decision-making processes, such as environmental, anti-corruption or 
+ethical concerns, are considered not only in the Principles but also in a number of other international 
+standards including the OECD Guidelines for Multinational Enterprises , the OECD Convention on 
+Combating Bribery of Foreign Public Officials in Internati onal Business Transactions , the UN Guiding 
+Principles on Business and Human Rights, and the ILO Declaration on Fundamental Principles and Rights 
+at Work, which are referenced in the Principles. 
+The Principles do not intend to prejudice or second-guess the business judgement of market participants, 
+board members and management. What works in one or more companies or for one or more investors may 
+not necessarily be generally applicable. Companies vary in maturity, size and complexity. There is therefore 
+no single model of good corporate governance. However, the Principles follow an outcome -oriented 
+approach, suggesting some common elements that underlie good corporate governance. The Principles 
+build on these common elements and are formulated to embrace the different models that exist. 
+For example, they do not advocate any particular board structure and the term “board” as used in the 
+Principles is intended to embrace the different national models of board structures. In the typical two -tier 
+system, found in some jurisdictions, “board” as used in the Principles refers to the “supervisory board” while 
+“key executives” refers to the “management board”. In systems where the unitary board is overseen by an 8    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+internal auditor’s body, the Principles applicable to the board are also, mutatis mutandis, applicable. As 
+the definition of the term “key executive” may vary among jurisdictions and depending on context, for 
+example concerning remuneration or related party transactions, the Principles leave it to individual 
+jurisdictions to define this term in a functional manner that meets the intended outcome of the Principles. 
+The terms “corporation” and “company” are used interchangeably in the text. Throughout the Principles, 
+the term “stakeholders” refers to non-shareholder stakeholders and includes, among others, the workforce, 
+creditors, customers, suppliers and affected communities. 
+The Principles are widely used as a benchmark by individual jurisdictions around the world. They are also 
+one of the Financial Stability Board’s Key Standards for Sound Financial Systems and provide the basis 
+for assessment of the corporate governance component of the Reports on the Observance of Standards 
+and Codes (ROSC) of the World Bank. The Principles are also used as a benchmark in developing sectoral 
+corporate governance guidance by other international standard-setting bodies, including the Basel 
+Committee on Banking Supervision. Implementation of the Principles is monitored and supported through 
+the OECD Corporate Governance Factbook, peer reviews on thematic issues that compare practices across 
+jurisdictions and corporate governance regional and country reviews. 
+The Principles are presented in six chapters: I) Ensuring the basis for an effective corporate governance 
+framework; II) The rights and equitable treatment of shareholders and key ownersh ip functions; III) 
+Institutional investors, stock markets, and other intermediaries; IV) Disclosure and transparency; V) The 
+responsibilities of the board; and VI) Sustainability and resilience. 
+Each chapter is headed by a single Principle that appears in bold italics and is followed by a number of 
+supporting Principles and their sub-Principles in bold. The Principles are supplemented by annotations that 
+contain commentary on the Principles and sub-Principles and are intended to help readers understand their 
+rationale. The annotations may also contain descriptions of dominant or emerging trends and offer 
+alternative implementation methods and examples that may be useful in making the Principles operational.    9 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should promote transparent and fair markets, and the 
+efficient allocation of resources. It should be consistent with the rule of law and support effective 
+supervision and enforcement. 
+Effective corporate governance requires a sound legal, regulatory and institutional framework that market 
+participants can rely on when establishing their private contractual relations. By promoting transparent and 
+fair markets, this framework also plays an important role in fostering the trust in markets that is necessary 
+to underpin the achievement of broader economic objectives. The corporate governance framework 
+typically comprises elements of legislation, regulation, listing rules, self -regulatory arrangements, 
+contractual undertakings, voluntary commitments and business practices that are the result of a country’s 
+specific circumstances, history and tradition. The desirable mix between these elements will therefore vary 
+from country to country. 
+The legislative and regulatory elements of the corporate governance framework can usefully be 
+complemented by soft law elements such as corporate governance codes which are often based on a 
+“comply or explain” principle in order to allow for flexibil ity and to address specificities of individual 
+companies. What works well in one company, for one investor or a particular stakeholder may not necessarily 
+be applicable to corporations, investors and stakeholders that operate in another context and under different 
+circumstances. Thus, any particular element of a specific corporate governance framework may not be 
+effective in addressing a particular governance issue in all situations. Rather, the methods for encouraging 
+or requiring good corporate gov ernance practices should aim to achieve desired outcomes by adapting 
+approaches to fit particular circumstances. For example, the desired outcome of ensuring effective 
+implementation of certain corporate governance practices may be achieved more efficiently in markets 
+where institutional investors play a strong role in improving such practices in line with soft law code 
+recommendations, while in markets where investors adopt a more passive role, the regulator may choose 
+to require and enforce the implementation of certain corporate governance standards. As new experiences 
+accrue and business circumstances change, the various provisions of the corporate governance framework 
+should be reviewed and, when necessary, adjusted. 
+Jurisdictions seeking to implement the Principles should monitor their corporate governance framework with 
+the objective of maintaining and strengthening its contribution to market integrity, access to capital markets, 
+economic performance, and transparent and well -functioning mar kets. As part of this, it is important to 
+consider the interactions and complementarity between different elements of the corporate governance 
+framework and its overall ability to promote ethical, responsible and transparent corporate governance 
+practices. Such analysis is an important tool in the process of developing an effective corporate governance 
+framework. To this end, effective and timely consultation with the public is an essential element. In some 
+jurisdictions, this may need to be complemented by initiatives to inform companies and their stakeholders 
+about the benefits of implementing sound corporate governance practices. 
+Moreover, in developing a corporate governance framework, national legislators and regulators should 
+consider the need for, and the results of, effective international dialogue and co-operation. If these conditions 
+I. Ensuring the basis for an effective 
+corporate governance framework  10    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+are met, the corporate governance framework is more likely to avoid over-regulation, support the exercise 
+of entrepreneurship, and limit the risks of dam aging conflicts of interest in both the private sector and in 
+public institutions. 
+I.A. The corporate governance framework should be developed with a view to its impact on 
+corporate access to finance, overall economic performance and financial stability, the sustainability 
+and resilience of corporations, market integrity, and the incentives it creates for market participants 
+and the promotion of transparent and well functioning markets. 
+Capital markets play a key role in providing companies with funds that allow them to innovate and support 
+economic growth, as well as efficiently diversify their financing sources. Equity and bond financing also 
+support companies’ resilience to overcome temporary downturns while meeting their obligat ions to the 
+workforce, creditors and suppliers. Policy makers and regulators need to consider how the corporate 
+governance framework may encourage and impact corporate access to market -based financing. 
+The corporate form of organisation of economic activity serves as a powerful force for growth. The regulatory 
+and legal environment within which corporations operate is therefore of key importance to overall economic 
+outcomes. Policy makers also have a responsibility to put in place a framework that is capable of meeting 
+the needs of corporations operating in widely different circumstances, facilitating their development of new 
+opportunities to create value, and to determine the most efficient deployment of resources. Where 
+appropriate, corporate governance frameworks should therefore allow for proportionality, in particular with 
+respect to the size of publicly traded companies. Other factors that may call for flexibility include the 
+company’s ownership and control structure, geographical presence, sectors of activity, and the company’s 
+development stage. Policy makers should remain focused on ultimate economic outcomes, and when 
+considering policy options they will need to undertake an analysis of the impact on key variables that affect 
+the functioning of  markets, for example in terms of incentive structures, the efficiency of self -regulatory 
+systems, and dealing with systemic conflicts of interest. Transparent and well -functioning markets serve 
+to discipline market participants and promote accountability. 
+I.B. The legal and regulatory requirements that affect corporate governance practices should 
+be consistent with the rule of law, transparent and enforceable. Corporate governance codes may 
+offer a complementary mechanism to support the development and evo lution of companies’ best 
+practices, provided that their status is duly defined. 
+If new laws and regulations are needed, such as to deal with clear cases of market imperfections, they should 
+be designed in a way that makes it possible to implement and enforce them in an efficient and even-handed 
+manner covering all parties. Consultation by government and other regulatory authorities with corporations, 
+their representative organisations, shareholders, and stakeholders, is an effective way of doing this. 
+Mechanisms should also be established for parties to protect their rights. In order to avoid over-regulation, 
+unenforceable rules, and unintended consequences that may impede or distort business dynamics, policy 
+measures should be designed with a view to their overall costs and benefits. 
+Public authorities should have effective enforcement and sanctioning powers to deter dishonest behaviour 
+and provide for sound corporate governance practices. In addition, enforcement can also be pursued 
+through private action, and the effective balance between public and private enforcement will vary 
+depending upon the specific features of each jurisdiction. 
+Corporate governance objectives are also formulated in codes and standards that do not generally have 
+the status of law or regulation. Good practices recommended in such codes are usually encouraged 
+through “comply or explain” disclosure mechanisms or other variations such as “apply and/or explain”. 
+While such codes  can play an important role in improving corporate governance arrangements and 
+practices, they might leave shareholders and stakeholders with uncertainty concerning their status and 
+implementation. When codes and principles are used as a national standard or as a complement to legal    11 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+or regulatory provisions, market credibility requires that their status in terms of coverage, implementation, 
+compliance and sanctions is clearly specified. 
+I.C. The division of responsibilities among different authorities and self -regulatory bodies 
+should be clearly articulated and designed to serve the public interest. 
+Corporate governance requirements and practices are typically influenced by an array of legal domains, 
+such as company law, securities regulation, accounting and auditing standards, listing rules, insolvency law, 
+contract law, labour law, tax law, as well as potentially international law. Corporate governance practices 
+of individual companies are also often influenced by human rights and environmental laws, and 
+increasingly laws  related to digital security, data privacy and personal data protection. Under these 
+circumstances, there is a  risk that the variety of legal  influences may cause unintentional  overlaps and 
+even conflicts, which may frustrate the ability to pursue key corporate governance objectives. It is important 
+that policy makers are aware  of this risk and take measures to ensure a coherent and stable institutional 
+and regulatory framework. Effective  enforcement also requires that the allocation of responsibilities for 
+supervision, implementation and enforcement among different authorities is clearly defined and formalised 
+so that the competencies of complementary bodies and agencies are respected and used most effectively. 
+Potentially conflicting objectives, for example where the same institution is charged with attracting business 
+and sanctioning violations, should be avoided or managed through clear governance provisions. 
+Overlapping and perhaps contradictory  regulations between jurisdictions is also an issue that should be 
+monitored to avoid regulatory arbitrage and so that no regulatory vacuum is allowed to develop (i.e. issues 
+slipping through for which no authority has explicit responsibility) as well as to minimise the cost of 
+compliance with multiple systems. 
+When regulatory responsibilities or oversight are delegated to non-public bodies, notably stock exchanges, 
+it is desirable to explicitly assess why, and under what circumstances, such delegation is desirable. In 
+addition, the public authority should maintain effective safeguards to ensure that the delegated authority is 
+applied fairly, consistently, and in accordance with the law. It is also essential that the governance structure 
+of any such delegated institution be transparent and encompass the public interest, including appropriate 
+safeguards to address potential conflicts of interest. 
+I.D. Stock market regulation should support effective corporate governance. 
+Stock markets can play a meaningful role in enhancing corporate governance by establishing and enforcing 
+requirements that promote effective corporate governance by their listed issuers. Also, stock markets 
+provide facilities by which investors can express interest or disinterest in a particular issuer’s governance by 
+allowing them to buy or sell the issuer’s securities, as appropriate. The quality of stock exchanges’ rules 
+for listing and for governing trading on their facilities is therefore an important element of the corporate 
+governance framework. 
+What traditionally were called “stock exchanges” today come in a variety of shapes and forms. Most of the 
+large stock exchanges are now profit maximising and themselves publicly traded joint stock companies that 
+operate in competition with other profit  maximising stock exchanges and  trading venues. Regardless of 
+the particular structure of the stock market, policy makers and regulators should assess the proper role of 
+stock exchanges and trading venues in terms of standard setting, supervision and enforcement of 
+corporate governance  rules. This requires an analysis of how the particular business models of stock 
+exchanges affect the incentives and ability to carry out these functions. 
+I.E. Supervisory, regulatory and enforcement authorities should have the authority, autonomy, 
+integrity, resources and capacity to fulfil their duties in a professional and objective manner. 
+Moreover, their rulings should be timely, transparent and fully explained. 
+Supervisory, regulatory and enforcement responsibilities should be vested with bodies that are operationally 
+independent and accountable in the exercise of their functions and responsibilities, have adequate powers, 
+proper resources, and the capacity to perform their functions and exercise their powers, including with  12    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+respect to corporate governance. Many jurisdictions have addressed the issue of political independence 
+of the securities supervisor through the creation of a formal governing body (a board, council or 
+commission) whose members are given fixed terms of appointment. Some jurisdictions also stagger 
+appointments and make them independent from the political calendar to further enhance independence. 
+Some jurisdictions have sought to reduce potential conflicts of interest by introducing policies to restrict 
+post-employment movement  to industry through mandatory time gaps or cooling-off periods. Such 
+restrictions should take into consideration the regulators’ ability to attract senior staff with relevant 
+experience. These bodies should be able  to pursue their fu nctions without conflicts of interest  and their 
+decisions should be subject to judicial or administrative review. At the same time, supervisory staff should 
+be adequately protected against the costs related to defending their actions and/or omissions made while 
+discharging their duties in good faith. 
+To guard against conflicts of interest (including the potential for political or business interference in 
+supervisory and enforcement processes), operational independence may be reinforced by autonomy over 
+budgetary and human resource management decisions. Such autonomy should be coupled with high ethical 
+standards and accountability mechanisms, including timely, transparent and fully explained decisions that 
+are open to public and judicial scrutiny. When the number of corporate events and the volume of disclosures 
+increase, the resources of supervisory, regulatory and enforcement authorities may come under strain. As 
+a result, they will have a significant demand for fully qualified staff to provide effective oversight and 
+investigative capacity which will require adequate funding. Many jurisdictions impose levies on supervised 
+entities in combination with, or as an alternative to, government funding. This may support greater financial 
+autonomy from governments to carry out their mandates, while structuring such fees to avoid impeding 
+supervisory independence from regulated industry participants and providing adequate transparency on 
+the criteria adopted to set the fees. The ability to attract staff on competitive terms  is also important to 
+enhance the quality and independence of supervision and enforcement. 
+I.F. Digital technologies can enhance the supervision and implementation of corporate 
+governance requirements, but supervisory and regulatory authorities should give due attention to 
+the management of associated risks. 
+Many jurisdictions use digital technologies to enhance the efficiency and effectiveness of supervisory and 
+enforcement processes relat ed to corporate governance, with benefits, for example, for market integrity. 
+They can also alleviate the regulatory burden on regulated entities, which can themselves use digital tools 
+to lower compliance costs and enhance risk management capabilities. Di gital technologies may also be 
+leveraged to make regulatory compliance less onerous for companies, with a view to maintaining the rigour 
+and scope of corporate governance regulation and corporate disclosure through improvements in the 
+functioning of the existing framework. 
+Adopting digital solutions in regulatory and supervisory processes also comes with challenges and risks. 
+Important considerations include ensuring the quality of data; ensuring that staff have proper technical 
+competence; considering interoperability between systems in the development of reporting formats; and 
+managing third-party dependencies and digital security risks. When artificial intelligence and algorithmic 
+decision-making are used in supervisory processes, it is critical to maintain a human element in place to 
+mitigate against risks of incorporating existing biases in algorithmic models and the risks from an over - 
+reliance on models and digital technologies. 
+At the same time, regulators in most jurisdictions espouse the value of a technology neutral approach that 
+does not discourage innovation and the adoption of alternative technological solutions. As technologies  
+evolve and may serve to strengthen corporate governance practices, the regulatory framework may require 
+review and adjustments to facilitate their use.    13 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+I.G. Cross-border co-operation should be enhanced, including through bilateral and multilateral 
+arrangements for exchange of information. 
+High levels of cross -border ownership and trading require strong international co -operation among 
+regulators, including through bilateral and multilateral arrangements for exchange of information or jo int 
+supervisory actions. International co-operation is becoming increasingly relevant for corporate governance, 
+notably when companies or company groups are active in many jurisdictions through both listed and unlisted 
+entities, and seek multiple stock market listings on exchanges in different jurisdictions. 
+I.H. Clear regulatory frameworks should ensure the effective oversight of publicly traded 
+companies within company groups. 
+Well-managed company groups that operate under adequate corporate governance frameworks can help 
+to achieve benefits based on economies of scale, synergies and other efficiencies. Nevertheless, company 
+groups in some cases may be associated with risks of inequitable treatment of shareholders and 
+stakeholders. The prevalence of company groups in many jurisdictions has therefore heightened the need 
+for regulators to ensure that the corporate governance framework provides means to effectively monitor 
+them. If not, the extensive and complex structures of company groups may pose risks to shareholders and 
+stakeholders of publicly traded parent or subsidiary companies within group structures, including through 
+abusive related party transactions. Some group companies may also be used to shift funds within the group 
+as part of the group’s tax planning strategies, or may use the funds for board/executive remuneration or 
+dividend payments. 
+Company groups operating in different sectors and across borders call for co-operation between domestic 
+regulators and across jurisdictions to strengthen the effectiveness and consistency of regulatory oversight. 
+Such efforts may include information sharing on the activities of company groups for supervisory and 
+enforcement purposes. To this end, jurisdictions are encouraged to develop a practical definition and criteria 
+for the oversight of company groups focusing on aspects such as the controlling relationship of group 
+companies and their parent, companies’ domicile, and appropriateness of inclusion in consolidated financial 
+reporting, among other aspects. In some jurisdictions, companies have adopted protocols and governance 
+guidelines at group level as a tool to self-regulate group activity. 14    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should protect and facilitate the exercise of shareholders’ 
+rights and ensure the equitable treatment of all shareholders, including minority and foreign 
+shareholders. 
+All shareholders should have the opportunity to obtain effective redress for violation of their rights 
+at a reasonable cost and without excessive delay. 
+Equity investors have certain property rights. For example, an equity share in a publicly traded company 
+can be bought, sold, or transferred. An equity share also entitles the investor to participate in the profits of 
+the corporation, with liability limited to the amount of the investment. In addition, ownership of an equity 
+share provides a right to information about the corporation and a right to influence the corporation, primarily 
+by participating and voting in general shareholder meetings. 
+As a practical matter, however, the corporation cannot be managed by shareholder referendum. The 
+shareholding body is made up of individuals and institutions whose interests, goals, investment horizons 
+and capabilities vary. Moreover, the corporation’s management must be able to take business decisions 
+rapidly. In light of these realities and the complexity of managing the corporation’s affairs in fast moving 
+and ever changing markets, shareholders are not expected to assume responsibility for managing corporate 
+activities. The responsibility for corporate strategy and operations is typically placed in the hands of the 
+board and a management team that is selected, motivated and, when necessary, replaced by the board. 
+Shareholders’ rights to influence the corporation centre on certain fundamental issues, such as the election 
+of board members, or other means of influencing the composition of the board, amend ments to the 
+company’s organic documents, approval of extraordinary transactions, and other basic issues as specified 
+in company law and internal company statutes. These are the most basic rights of shareholders and they 
+are recognised by law in most juris dictions. Additional rights have also been established in various 
+jurisdictions, such as direct nomination of individual board members or board member slates; the ability to 
+pledge shares; the approval of distributions of profits; shareholder ability to vo te on board member and/or 
+key executive remuneration; approval of material related party transactions; and others.  
+Investors’ confidence that the capital they provide will be protected from misuse or misappropriation by 
+corporate managers, board members or controlling shareholders is an important factor in the development 
+and proper functioning of capital markets. On the contrary, an inefficient corporate governance mechanism 
+may allow corporate boards, managers and controlling shareholders the opportunity to engage in activities 
+that advance their own interests at the expense of non-controlling shareholders. In providing protection to 
+investors, a distinction can usefully be made between ex ante and ex post shareholder rights. Ex ante rights 
+are, for example, pre-emptive rights and qualified majorities for certain decisions. Ex post rights allow the 
+seeking of redress once rights have been violated. In jurisdictions where the enforcement of the legal and 
+regulatory framework is weak, it can be desirable to strengthen the ex ante rights of shareholders such as 
+II. The rights and equitable treatment of 
+shareholders and key ownership 
+functions    15 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+through low share ownership  thresholds for placing items on the agenda of the  shareholders meeting or 
+by requiring a supermajority of shareholders for certain important decisions. T he Principles support equal 
+treatment of foreign and domestic shareholders in corporate governance. They do not address government 
+policies to regulate foreign direct investment. 
+One of the ways in which shareholders can enforce their rights is to be able to initiate legal and administrative 
+proceedings against management and board members. Experience has shown that an important 
+determinant of the degree to which shareholders’ rights are protected is whether effective methods exist 
+to obtain  redress fo r grievances at  a reasonable cost and without excessive  delay. The  confidence of 
+minority investors is enhanced when the legal system provides mechanisms for minority shareholders to 
+bring lawsuits when they have reasonable grounds to believe that their rights have been violated. Some 
+countries have found that derivative lawsuits filed by minority shareholders on behalf of the company serve 
+as an efficient additional tool for enforcing directors’ fiduciary duties, if the distribution of litigation c osts is 
+adequately set. The provision of such enforcement mechanisms is a key responsibility of legislators and 
+regulators, and the capacity and quality of courts also play an important role.  
+There is some risk that a legal system that enables any investor to challenge corporate activity in the courts 
+can become prone to excessive litigation. Thus, many legal systems have introduced provisions to protect 
+management and board members against litigation abuse in the form of screening mechanisms, such as 
+a pre-trial procedure to evaluate whether the claim is non-meritorious, and safe harbours for management 
+and board  member actions (such  as the  business judgement  rule) as well  as safe  harbours for the 
+disclosure of information. In the end, a balance must be struck between allowing investors to seek 
+remedies for infringement of ownership rights and avoiding excessive litigation. 
+Many jurisdictions have found that alternative adjudication procedures, such as administrative hearings or 
+arbitration procedures org anised by the securities regulators or other bodies, are an efficient method to 
+protect shareholder rights, at least at the first instance level. Specialised court procedures can also be a 
+practical instrument to obtain timely injunctions and to gather evidence on an alleged infringement, ultimately 
+facilitating the effective redress for violations of shareholders’ rights. 
+II.A. Basic shareholder rights should include the right to: 1) secure methods of ownership 
+registration; 2) convey or transfer  shares; 3) obtain relevant and material information on the 
+corporation on a timely and regular basis; 4) participate and vote in general shareholder meetings; 
+5) elect and remove members of the board; 6) share in the profits of the corporation; and 7) ele ct, 
+appoint or approve the external auditor. 
+II.B. Shareholders should be sufficiently informed about, and have the right to approve or 
+participate in decisions concerning fundamental corporate changes such as:  1) amendments to 
+the statutes, articles of incorporation or similar governing documents of the company; 2) the 
+authorisation of additional shares; and 3) extraordinary transactions, including the transfer of 
+corporate assets that in effect result in the sale of the company. 
+The ability of companies to form partnerships and related companies, and to transfer operational assets, 
+cash flow rights and other rights and obligations to them, is important for business flexibility and for delegating 
+authority in complex organisation s. It also allows a company to divest itself of operational assets and to 
+become only a holding company. However, without appropriate checks and balances, such possibilities may 
+also be abused. 
+II.C. Shareholders should have the opportunity to participate effectively and vote in general 
+shareholder meetings, and should be informed of the rules, including voting procedures, that govern 
+general shareholder meetings. 
+II.C.1. Shareholders should be furnished with sufficient and timely information concerning the 
+date, format, location and agenda of general meetings, as well as fully detailed and timely information 
+regarding the issues to be decided at the meeting. 16    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+II.C.2. Processes, format and procedures for general shareholder meetings should allow for 
+equitable treatment of all shareholders. Company procedures should not make it unduly difficult 
+or expensive to cast votes. 
+The right to participate in general shareholder meetings is a fundamental shareholder right. M anagement 
+and controlling investors have at times sought to discourage non-controlling or foreign investors from trying 
+to influence the direction of the company. Some companies have charged fees for voting. Other potential 
+impediments include prohibitions  on proxy voting, requiring personal attendance at general shareholder 
+meetings to vote, bundling of unrelated resolutions, holding the meeting in a remote location, and allowing 
+voting by show of hands only. Still other procedures may make it practically impossible to exercise ownership 
+rights. Voting materials may be sent too close to the time of general shareholder meetings to allow investors 
+adequate time for reflection and consultation. Many companies are seeking to develop better channels of 
+communication and decision-making with shareholders. Efforts by companies to remove artificial barriers 
+to participation  in general meetings are encouraged and the corporate governance framework should 
+facilitate the use of electronic voting in absentia, including the electronic distribution of proxy materials and 
+reliable vote confirmation systems. In jurisdictions where private enforcement is weak, regulators should 
+be in a position to curb unfair voting practices. 
+II.C.3. General shareholder m eetings allowing for remote shareholder participation should be 
+permitted by jurisdictions as a means to facilitate and reduce the costs to shareholders of 
+participation and engagement. Such meetings should be conducted in a manner that ensures equal 
+access to information and opportunities for participation of all shareholders.  
+Virtual or hybrid (where certain shareholders attend the meeting physically and others virtually) general 
+shareholder meetings can help improve shareholder engagement by reducin g their time and costs of 
+participating. By using virtual platform providers, companies may incur additional costs but also streamline 
+shareholders’ access to agendas and related information, and provide a secure infrastructure and more 
+efficient means for considering and addressing shareholder comments and questions. However, due care 
+is required to ensure that remote meetings do not decrease the possibility for shareholders to engage with 
+and ask questions to boards and management in comparison to physical meetings. Some jurisdictions 
+have issued guidance to facilitate the conduct of remote meetings, including for handling shareholder 
+questions, responses and their disclosure, with the objective of ensuring transparent consideration of 
+questions by boards and management, including how questions are collected, combined, answered and 
+disclosed. Such guidance may also address how to deal with technological disruptions that may impede 
+virtual access to meetings. 
+Many companies rely on technology vendors to manage remote participation. When choosing service 
+providers, it is important to consider that they have the appropriate professionalism as well as data handling 
+and digital security capacity to support the conduct of fair and transparent shareholder meetings, with 
+technical and organisational security measures in place for each of the processing operations carried out 
+by virtue of their service, especially concerning personal data, which require stricter security measures. 
+Such processes should allow for the verification of shareholders’ identity through secured authentication 
+of attendees and ensure equal participation as well as the confidentiality and security of votes cast prior to 
+the meeting. 
+II.C.4. Shareholders should have the opportunity to ask questions to the board, including on the 
+annual external audit, to place items on the agenda of general meetings, and to propose resolutions, 
+subject to reasonable limitations. 
+In order to encourage shareholder participation in general meetings, many jurisdictions have improved the 
+ability of shareholders to place items on the agenda through a simple and clear process of filing amendments 
+and resolutions, and to submit questions in advance of the general meeting and to obtain appropriate replies 
+from management and board members in a manner that ensures their transparency. Shareholders should 
+also be able to ask questions relating to the external audit report. Companies are justified in assuring that    17 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+abuses of such oppor tunities do not occur. It is reasonable, for example, to require that in order for 
+shareholder resolutions to be placed on the agenda, they need to be supported by shareholders holding a 
+specified market value or percentage of shares or voting rights. This threshold should be determined taking 
+into account the degree of ownership concentration, in order to ensure that minority shareholders are not 
+effectively prevented from putting any items on the agenda. Shareholder resolutions that are approved and 
+fall within the competence of the shareholder meeting should be addressed by the board.  
+II.C.5. Effective shareholder participation in key corporate governance decisions, such as the 
+nomination and election of board members, should be facilitated. Sharehol ders should be able to 
+make their views known, including through votes at shareholder meetings, on the remuneration of 
+board members and/or key executives, as applicable. The equity component of compensation 
+schemes for board members and employees should be subject to shareholder approval. 
+Electing the members of the board is a basic shareholder right. For the election process to be effective, 
+shareholders should be able to participate in the nomination of board members and vote on individual 
+nominees or on different lists of nominees. To this end, shareholders have access in a number of jurisdictions 
+to the company’s voting materials which are made available to shareholders, subject to conditions to prevent 
+abuse. With respect to nomination of candidates, boards in many companies have established nomination 
+committees to ensure proper compliance and transparency with established nomination procedures and 
+to facilitate and co-ordinate the search for a balanced, diverse and qualified board. It is regarded as good 
+practice for independent board members to have a key role on this committee. To further improve the 
+selection process, the Principles also call for full and timely disclosure of the experience and background 
+of candidates  for the board and the nomination process, which will allow an informed assessment of the 
+abilities and suitability of each candidate. It is required or considered good practice in some jurisdictions 
+to also disclose  information about any other board positions or committee memberships that nominees 
+hold, and in some jurisdictions also positions that they are nominated for. 
+The Principles call for the disclosure of remuneration of board members and key executives. In particular, 
+it is important for shareholders to know the remuneration policy, as well as the total value and structure of 
+remuneration arrangements made pursuant to this policy. Shareholders also have an interest in how 
+remuneration and company performance are linked when they assess the  capability of the board and the 
+qualities they should seek in nominees for the board. The different forms of say-on-pay (binding or advisory 
+vote, ex ante and/or ex post, board members and/or key executives covered, individual and/or aggregate 
+compensation, remuneration policy and/or actual remuneration) play an important role in conveying the 
+strength and tone of shareholder sentiment to the board. In the case of equity-based schemes, their potential 
+to dilute shareholders’ capital and to powerfully determine managerial incentives means that they should 
+be approved by shareholders, either for individuals or for the policy of the scheme as a whole. Shareholder 
+approval should also be required for any material changes to existing schemes.  
+II.C.6. Shareholders should be able to vote in person or in absentia, and equal effect should be 
+given to votes whether cast in person or in absentia. 
+The objective of facilitating shareholder identification and participation suggests that jurisdictions an d/or 
+companies promote the enlarged use of information technology in voting, including secure electronic voting 
+in all publicly traded companies for both remote and in person meetings. The Principles recommend that 
+voting by proxy be generally accepted. Indeed, it is important for the promotion and protection of shareholder 
+rights that investors can rely on directed proxy voting. The corporate governance framework should ensure 
+that proxies are voted in accordance with the direction of the proxy  holder. In those jurisdictions where 
+companies are allowed to obtain proxies, it is important to disclose how the chair of the meeting (as the usual 
+recipient of shareholder proxies obtained by the company) will exercise the voting rights attached to 
+undirected proxies. Where proxies are held by the board or management for company pension funds and  
+for employee stock ownership plans, the directions for voting should be disclosed. It is required or considered 18    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+good practice in many jurisdictions that tre asury shares and shares of the company held by subsidiaries 
+should not be allowed to vote, nor be counted for quorum purposes. 
+II.C.7. Impediments to cross-border voting should be eliminated. 
+Foreign investors often hold their shares through chains of intermediaries. Shares are typically held in 
+accounts with securities intermediaries who in turn hold accounts with other intermediaries and central 
+securities depositories in other jurisdictions, while the publicly traded company resides in a third jurisdiction. 
+Such cross-border chains cause special challenges with respect to determining the entitlement of foreign 
+investors to use their voting rights, and the process of communicating with such investors. In combination 
+with business practices which provide only a very short notice period, shareholders are often left with only 
+very limited time to react to a convening notice by the company and to make informed decisions concerning 
+items for decision. This makes cross-border voting difficult. The legal and regulatory framework should clarify 
+who is entitled to control the voting rights in cross -border situations and where necessary to simplify the 
+depository chain. Moreover, notice periods should ensure that foreign investors in effect have the same 
+opportunities to exercise their ownership functions as domestic investors. To further facilitate voting by 
+foreign investors, laws, regulations and corporate practices should allow participation through electronic 
+means in a non-discriminatory way. 
+II.D. Shareholders, including institutional shareholders, should be allowed to consult with each 
+other on issues concerning their basic shareholder rights as defined in the Principles, subject to 
+exceptions to prevent abuse. 
+It has long been recognised that in companies with dispersed ownership, individual shareholders might have 
+too small a stake in the company to warrant the cost of taking action or for making an investment in monitoring 
+performance. Moreover, if small shareholders did invest resources in such activities, others would also gain 
+without having contributed (i.e. they are “free riders”). In many instances institutional investors limit their 
+ownership stake in individual companies because it is beyond their capacity or would require investing more 
+of their assets in one company than may be prudent or permitted. To overcome this asymmetry which favours 
+diversification, they should be allowed, and even encouraged, to co-operate and co-ordinate their actions 
+in nominating  and electing board members, placing proposals on the agenda, and holding discussions 
+directly with a company in order to improve its corporate governance, subject to shareholders’ compliance 
+with applicable  law, including, for example, beneficial ownership reporting requirements. Some major 
+institutional investors have established initiatives to facilitate the co -ordination of their engagement, for 
+example to address climate -related concerns. When publicly traded companies have controlling 
+shareholders, these actions  also safeguard the interests of minority shareholders while increasing their 
+voice in company matters. More generally, shareholders should be allowed to communicate with each other 
+without having to comply with the formalities of proxy solicitation. 
+It must be recognised, however, that co-operation among investors could also be used to manipulate markets 
+and to obtain control over a company, with a view to bypass takeover or disclosure regulations which may 
+otherwise apply. Moreover, co-operation might also be for the purpose of circumventing competition law. 
+Safeguards may be needed to prevent anticompetitive behaviour and abusive actions, particularly in 
+jurisdictions where institutional investors are significant owners in publicly traded companies and their co- 
+ordinated actions could have stronger influence on companies’ decisions. Disclosure of the co ordination 
+policy could provide clarity to the market on the scope of such actions. However, if co -operation does not 
+clearly involve issues of corporate control, or conflict with concerns about market efficiency and fairness, 
+the benefits of more effective ownership may still be obtained. To provide clarity and certainty among 
+shareholders, regulators may issue guidance on forms of co-ordination and agreements that do or do not 
+constitute such acting in concert in the context of takeover, competition and other rules.     19 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+II.E. All shareholders of the same series of a class should be treated equally. All investors should 
+be able to obtain information about the rights attached to all series and classes of shares before they 
+purchase. Any changes in economic or voting rights should be subject to approval by those classes 
+of shares which are negatively affected. 
+The optimal capital structure of the company is best decided by the management and the board, subject 
+to the approval of the shareholders. Some companies issue preferred (or preference) shares which have 
+a preference in respect of receipt of the profits of the company but which normally have limited or no voting 
+rights. Companies may also issue participation certificates or shares with limited or no voting rights, which 
+would presumably trade at different prices than  shares with full voting rights. All of t hese structures may  
+be effective in distributing risk and reward in ways that are thought to be in the best interests of the company 
+and to cost-efficient financing. 
+Within any series of a class, all shares should carry the same rights. Investors can expec t to be informed 
+regarding their voting rights before they invest. Once they have invested, their rights should not be changed 
+unless those holding voting shares have had the opportunity to participate in the decision. Proposals to 
+change the voting rights of different series and classes of shares should be submitted for approval at general 
+shareholder meetings by a specified (normally higher) majority of voting shares in the affected categories. 
+II.F. Related party transactions should be approved and conducted in a manner that ensures 
+proper management of conflicts of interest and protects the interests of the company and its 
+shareholders. 
+II.F.1. Conflicts of interest inherent in related party transactions should be addressed. 
+The potential abuse of related party transactions is an important policy issue in all markets, but particularly 
+in those where corporate ownership is concentrated and corporate groups prevail. Banning these 
+transactions is normally not a solution as there is nothing wrong per se with entering into transactions with 
+related parties, provided that the conflicts of interest inherent in those transactions are adequately 
+addressed, including through proper monitoring and disclosure. Thi s is all the more important where 
+significant portions of income and/or costs arise from transactions with related parties.  
+Jurisdictions should put in place an effective framework for clearly flagging these transactions. They should 
+include broad but precise definitions of what is understood to be a related party. They should also include 
+rules to disregard some of these transactions when they are not material because they do not exceed ex 
+ante thresholds, can be regarded as recurrent and taking place at verifiable market terms, or take place with 
+subsidiaries where no specific interest of a related party is present. Once the related party transactions have 
+been identified, jurisdictions set procedures for approving them in a manner that minimises their negative 
+potential. In many jurisdictions, great emphasis is placed on board approval supported by the audit 
+committee review, often with a prominent role for independent members.  Jurisdictions may also  require 
+the board  to justify the interest of the transaction for the company and the fairness of its terms. Many 
+jurisdictions require or recommend as good practice for interested board members to abstain from board 
+decisions on related party transactions. 
+As an alternative or complement to board approval, shareholders may be given a say in approving certain 
+transactions, which in some jurisdictions requires the approval of non -interested shareholders. This may 
+include, in particular, large or non-routine transactions or those in which board members have an interest. 
+Some jurisdictions also require an opinion or evaluation on the fairness of the transaction’s proposed price 
+or value by an external auditor or independent outside specialist, in some cases as a precon dition for 
+shareholder approval. 20    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+II.F.2. Members of the board and key executives should be required to disclose to the board 
+whether they, directly, indirectly or on behalf of third parties, have a material interest in any 
+transaction or matter directly affecting the corporation. 
+Members of the board, key executives and, in some jurisdictions, controlling shareholders have an obligation 
+to inform the board where they have a business, family or other special relationship outside of the company 
+that could affect their judgement with respect to a particular transaction or matter affecting the company. 
+Such special relationships include situations where executives and board members have a relationship with 
+the company via their association with a shareholder who is in a position to exercise control. Where a material 
+interest has been declared, many jurisdictions require or recommend as good practice for that person not 
+to be involved in any decision involving the transaction or matter and for the decision of the board to be 
+specifically motivated against the presence of such interest and/or to justify the interest of the transaction 
+for the company, notably by mentioning the terms of the transaction. 
+II.G. Minority shareholders should be protected from abusive actions by, or in the interest of, 
+controlling shareholders acting either directly or indirectly, and should have effective means of 
+redress. Abusive self-dealing should be prohibited. 
+Many publicly traded companies have controlling shareholders. While the presence of controlling 
+shareholders can reduce the agency problem through closer monitoring of management, weaknesses in 
+the legal and regulatory framework may lead to the abuse of other shareholders in the company. Abusive 
+self- dealing occurs when persons having close relationships to the company, including controlling 
+shareholders, exploit those relationships to the detriment of the company and investors.  
+The potential for abuse is marked where the legal system allows, and  the market accepts, controlling 
+shareholders to exercise a level of control  that does not correspond to the level of risk that they assume 
+as owners by exploiting legal devices to separate ownership from control. Such abuse may be carried out 
+in various ways, including the extraction of direct private benefits via high pay and bonuses for employed 
+family members and associates, inappropriate related party transactions, systematic bias in business 
+decisions and changes in the capital structure through special issuance of shares favouring the controlling 
+shareholder. In addition to disclosure, a key mechanism for addressing such potential for abuse is the 
+existence of a clearly articulated duty of loyalty by board members to the company and to all shareholders. 
+Indeed, abuse of  minority shareholders is most pronounced in those jurisdictions where the legal and 
+regulatory framework is weak in this regard. A particular issue arises in some jurisdictions where groups of 
+companies are prevalent and where the duty of loyalty of a board member might be ambiguous and even 
+interpreted as to the group. In these cases, some jurisdictions have developed sets of rules to control 
+negative effects, including by specifying  that a transaction in favour of another group company must be 
+offset by receiving a corresponding benefit from other companies of the group. A key underlying principle 
+for board members who are working within the structure of a group of companies is that even though a 
+company might be controlled by another company,  the duty of loyalty of a board member is related to the 
+company and all of its shareholders and not to the controlling company of the group. 
+Other common provisions to protect minority shareholders that have proven effective include pre -emptive 
+rights in relation to share issues, qualified majorities for certain shareholder decisions and the possibility 
+to use cumulative voting in electing memb ers of the board. Considering that some group structures may 
+lead to disproportionate and opaque control, and the risks this may create with respect to the rights of non 
+controlling shareholders, some jurisdictions place limitations on certain structures of company groups such 
+as cross -shareholdings. Under certain circumstances, some jurisdictions require or permit controlling 
+shareholders to buy -out the remaining shareholders at a share price that is established through an 
+independent appraisal. This is pa rticularly important when controlling shareholders decide to de -list a 
+company. Other means of improving minority shareholder rights include derivative and class action lawsuits. 
+Most regulators have established mechanisms to receive and investigate complaints from shareholders, and 
+some have the possibility to support lawsuits through disclosure of relevant information (including    21 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+whistleblowing mechanisms) and/or funding. With the common aim of improving market credibility, the 
+choice and ultimate design of different provisions to protect minority shareholders necessarily depends on 
+the overall regulatory framework and the national legal system. 
+II.H. Markets for corporate control should be allowed to function in an efficient and transparent 
+manner. 
+II.H.1. The rules and procedures governing the acquisition of corporate control in capital markets, 
+extraordinary transactions such as mergers, and sales of substantial portions of corporate assets, 
+should be clearly articulated and disclosed so that investors understand their rights and recourse. 
+Transactions should occur at transparent prices and under fair conditions that protect the rights 
+of all shareholders according to their class. 
+II.H.2. Anti-takeover devices should not be used to shield manag ement and the board from 
+accountability. 
+In some jurisdictions, companies employ anti -takeover devices. However, both investors and stock 
+exchanges have expressed concern over the possibility that widespread use of anti-takeover devices may 
+be a serious impediment to the functioning of the market for corporate control. In some instances, takeover 
+defences can simply be devices to shield the management or the board from shareholder monitoring. In 
+implementing any anti -takeover devices and in dealing with takeover proposals, the fiduciary duty of the 
+board to shareholders and the company must remain paramount. Some jurisdictions provide options for exit 
+at a fair and reasonable market price to dissenting shareholders in case of major corporate restructurings 
+including mergers and amalgamations. 22    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should provide sound incentives throughout the investment 
+chain and provide for stock markets to function in a way that contributes to good corporate 
+governance. 
+In order to be effective, the legal and regulatory framework for corporate governance must be developed 
+with a view to the economic reality in which it is to be implemented. In many jurisdictions, the real world of 
+corporate governance and ownership is no longer characterised by a straight and uncompromised 
+relationship between the performance of the company and the income of the ultimate beneficiaries of 
+shareholdings. In reality, the investment chain is often long and complex, with numerous intermediaries that 
+stand between the ultimate beneficiary and the company. The presence of intermediaries acting as 
+independent decision makers influences the incentives and the ability to engage in corporate governance. 
+The share of investments held by institutional i nvestors such as mutual funds, pension funds, insurance 
+companies and hedge funds has increased significantly, and many of their assets are managed by 
+specialised asset managers. The ability and interest of institutional investors and asset managers to engage 
+in corporate governance vary widely. For some, engagement in corporate governance, including the 
+exercise of voting rights, is a natural part of their business model. Others may offer their beneficiaries and 
+clients a business model and investment strategy that does not include or motivate spending resources on 
+active shareholder engagement. If shareholder engagement is not part of the institution’s business model 
+and investment strategy, mandatory requirements to engage, for example through voting, may or may not 
+be effective and could potentially lead to a box-ticking approach. 
+The Principles recommend that institutional investors disclose their policies for corporate governance with 
+respect to their investments. Voting at shareholder meetings is, however, only one channel for shareholder 
+engagement. Direct contact and dialogue with the board and management represent other forms of 
+shareholder engagement that are frequently used. In many jurisdictions, codes on shareholder engagement 
+(“stewardship codes”) have been introduced as a complementary governance tool with the aim of 
+strengthening both institutional investor accountability and their role in holding company boards and 
+management accountable. Where corporate governanc e codes apply on a “comply or explain” basis, the 
+role of institutional  investors as shareholders is particularly important in holding companies accountable 
+for their explanations of departures from the provisions of those codes. 
+III.A. The corporate governance framework should facilitate and support institutional investors’ 
+engagement with their investee companies. Institutional investors acting in a fiduciary capacity 
+should disclose their policies for corporate governance and voting with respect to their investments, 
+including the procedures that they have in place for deciding on the use of their voting rights. 
+Stewardship codes may offer a complementary mechanism to encourage such engagement.  
+The effectiveness and credibility of the entire corporate governance framework and company oversight could 
+depend in part on institutional investors’ willingness and ability to make informed use of their shareholder 
+rights and effectively exercise their ownership functions in companies in which they invest. Whi le this 
+principle does not necessarily require institutional investors to vote their shares, it calls for potential 
+III. Institutional investors, stock markets, 
+and other intermediaries    23 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+disclosure of their policies on how they exercise their shareholder rights with due consideration to cost 
+effectiveness. For institutions acting in a fiduciary capacity, such as pension funds, collective investment 
+schemes and some activities of insurance companies, as well as asset managers, the right to vote could 
+be considered  part of the value of the investment being undertaken on behalf of their clients. Failure to 
+exercise the ownership rights could potentially result in a loss to the investor who should therefore be made 
+aware of the policy to be followed by the institutional investors. 
+In some jurisdictions, the demand for disclosure of policies for corporate governance and voting to the market 
+is quite detailed and includes requirements for explicit strategies regarding the circumstances in which the 
+institution will intervene in a company, the approach it will use for such intervention, and how it will assess 
+the effectiveness of the str ategy. Disclosure of actual voting records is recognised as good practice, 
+especially where an institution has a declared policy to vote. Disclosure is either to their clients (only with 
+respect to the securities of each client) or, in the case of investme nt advisors to registered investment 
+companies, to the market via public disclosure. 
+As part of an engagement policy, institutional investors can establish a continued dialogue with portfolio 
+companies either on company -specific matters or non -diversifiable factors affecting their entire portfolio. 
+Such a dialogue between institutional investors and companies should be encouraged, although it is 
+incumbent on the company to treat all investors equally and not to divulge information to the institutional 
+investors which is not at the same time made available to the market. The additional information provided 
+by a company would normally therefore include general background information about the markets in which 
+the company is operating and further elaboration of information already available to the market. 
+Stewardship codes have become a well-established practice in many jurisdictions as a complement to other 
+disclosure requirements for institutional investors on their engagement and voting policies. Most codes on 
+shareholder engagement leave it to institutional investors’ discretion whether to apply the code or not. This 
+voluntary and flexible approach has been conceived to allow investors to adapt the codes to their respective 
+investment strategies. Some jurisdictions also have established an implementation mechanism for such 
+codes to ensure compliance and to promote best practice reporting. Some jurisdictions also value carrying 
+out periodic updates and monitoring of  these codes to ensure their relevance and oversee their effective 
+implementation. 
+When institutional investors have developed and disclosed corporate governance and stewardship policies, 
+effective implementation requires that they also set aside the appropriate human and financial resources 
+to pursue these policies in a way that their beneficiaries and portfolio companies can expect. The nature 
+and practical implementation of active corporate governance and voting policies by such institutional 
+investors, including staffing, should be transparent to clients who rely on institutional investors with active 
+corporate governance and stewardship policies. 
+III.B. Votes should be cast by custodians or nominees in line with the directions of the beneficial 
+owner of the shares. 
+Custodian institutions holding securities as nominees for customers should not be permitted to cast the votes 
+on those securities unless they have received specific instructions to do so. In some jurisdictions, listing 
+requirements contain broad lists of items on which custodians may not vote without instruction, while leaving 
+this possibility open for certain routine items. Rules should require that either investment advisors or 
+custodian institutions provide shareholders with timely information concerning their options in the exercise 
+of their voting rights. Shareholders may elect to vote by themselves or to delegate all voting rights to 
+custodians. Alternatively, shareholders may choose to be informed of all upcoming shareholder votes and 
+may decide to cast some votes while delegating some voting rights to the custodian.  
+Holders of depository receipts should be provided with the same ultimate rights and practical opportunities 
+to participate in corporate governance as are accorded to holders of the underlying shares. Where the direct 
+holders of shares may use proxies, the depositary, trust office or equivalent body should therefore issue 24    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+proxies on a timely basis to depository receipt holders. The depository receipt holders should be able 
+to issue binding voting instructions with respect to the shares, which the depositary or trust office holds on 
+their behalf. 
+It should be noted that this principle does not apply to the exercise of voting rights by trustees or other 
+persons acting under a special legal mandate (such as, for example, bankruptcy receivers and estate 
+executors). 
+III.C. Institutional investors actin g in a fiduciary capacity should disclose how they manage 
+material conflicts of interest that may affect the exercise of key ownership rights regarding their 
+investments. 
+The incentives for intermediary owners to vote their shares and exercise key ownership functions may, under 
+certain circumstances, differ from those of direct owners. Such differences may sometimes be commercially 
+sound but may also arise from conflicts of interest which are particularly acute when the fiduciary institution 
+is a subsidiary or an affiliate of another financial institution, and especially an integrated financial group. 
+When such conflicts arise from material business relationships, for example through an agreement to 
+manage the portfolio company’s funds, they should be identified and disclosed. 
+At the same time, institutions should disclose what actions they are taking to minimise the potentially negative 
+impact on their ability to exercise key shareholder rights to the extent applicable under a jurisdiction’s law. 
+Such actions may include the separation of bonuses for fund management from those related to the 
+acquisition of new business elsewhere in the organisation. Fee structures for asset management and other 
+intermediary services should be transparent. 
+III.D. The corporate governance framework should require that entities and professionals that 
+provide analysis or advice relevant to decisions by investors, such as proxy advisors, analysts, 
+brokers, ESG rating and data providers, credit rating agencies and index providers, where regulated, 
+disclose and minimise conflicts of interest that might compromise the integrity of their analysis or 
+advice. The methodologies used by ESG rating and data providers, credit rating agencies, index 
+providers and proxy advisors should be transparent and publicly available.  
+The investment chain from ultimate owners to corporations involves not only multiple intermediary owners 
+but also a wide variety of professions that offer advice and services to intermediary owners. Proxy advisors 
+who offer recommendations to institutional investors on how to vote and sell services that help in the process 
+of voting are among the most relevant from a direct corporate governance perspective. In some cases, proxy 
+advisors also offer corporate governance-related consulting services to corporations. Credit rating agencies 
+rate companies according to their ability to meet their debt obligations and ESG rating providers rate 
+companies according to various environmental, social and governance (ESG) criteria. Analysts and brokers 
+perform similar roles and face the same potential conflicts of interest. 
+Considering the importance of – and sometimes dependence on – various services in corporate governance, 
+the corporate governance framework should promote the integrity of regulated entities and professionals 
+that provide analysis or advice relevant to decisions by investors, such as proxy advisors, analysts, brokers, 
+ESG rating and data providers , credit rating agencies, and index providers. These service providers, 
+particularly ESG rating and index providers, can have significant impact on companies’ governance and 
+sustainability policies and practices given their rating methodologies and index i nclusion criterion. 
+Therefore, the methodologies used by regulated service providers that produce ratings, indices and data 
+should be transparent and publicly available to clients and market participants. This is particularly important 
+when they are also referenced as metrics for regulatory purposes. Exclusive reliance on ratings in regulation 
+may raise questions, while the process for deciding which ratings are eligible for use for regulatory purposes 
+should be transparent and could be subject to evaluation at various levels of frequency. IOSCO’s November 
+2022 Call for Action covers good practices for ESG ratings and data providers and is addressed to voluntary    25 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+standard- setting bodies and industry associations operating in financial markets to promote good practices 
+among their members. 
+At the same time, conflicts of interest may arise and affect judgement, such as when the provider of advice, 
+rating or data is also  seeking to provide other services to the company in question, when the provider or 
+its owner have a direct material interest in the company or its competitors, or when the rating provider is at 
+the same time an index provider who will decide on companies’ inclusion in an index based on the rating 
+they produce.  Many jurisdictions have adopted regulations or voluntary codes of conduct or have 
+encouraged the implementation of self -regulatory codes designed to mitigate such conflicts of interest or 
+other risks related to integrity, and have provided for private and/or public monitoring arrangements. 
+Many jurisdictions require or recommend that proxy advisors disclose publicly and/or to investor clients the 
+research and methodology that underpin their recommendations, and the criteria for their voting policies 
+relevant for their clients. Some jurisdictions require that proxy advisors apply and disclose a code of conduct, 
+and disclose information on their research, advice and voting recommendations and any conflict of interest 
+or business relationships that may influence the ir research, advice or voting recommendations, and the 
+actions they have undertaken to eliminate, mitigate or manage the actual or potential conflicts of interest. 
+In some cases, requirements for proxy advisors include developing appropriate human and operational 
+resources to effectively perform their functions. 
+III.E. Insider trading and market manipulation should be prohibited and the applicable rules 
+enforced. 
+As insider trading and market manipulation undermine public confidence in and the effective functioning of 
+capital markets, they are prohibited by securities regulations, company law and/or criminal law in most 
+jurisdictions. These practices can be seen as constituting a breach of good corporate governance as they 
+violate the principle of equitable treatment of shareholders. However, the effectiveness of such prohibition 
+depends on vigorous enforcement action. 
+III.F. For companies who are listed in a jurisdiction other than their jurisdiction of incorporation, 
+the applicable corporate governance laws and regulations should be clearly disclosed. In the case 
+of cross-listings, the criteria and procedure for recognising the listing requirements of the primary 
+listing should be transparent and documented. 
+It is increasingly common that companies are listed or traded at venues located in a different jurisdiction than 
+the one where the company is incorporated. This may create uncertainty among investors about which 
+corporate governance rules and regulations apply to that company. It may concern everything from 
+procedures and locations for the annual shareholder meeting to minority rights. The company should 
+therefore clearly disclose which jurisdiction’s rules are applicable. When key corporate go vernance 
+provisions fall under another jurisdiction than the jurisdiction of trading, the main differences should be noted. 
+Another important consequence of increased internationalisation and integration of stock markets is the 
+prevalence of secondary listings of an already listed company on another stock exchange, so called cross- 
+listings. Companies with cross-listings are often subject to the regulations and authorities of the jurisdiction 
+where they have their primary listing. In case of a secondary lis ting, exceptions from local listing rules are 
+typically granted based on the recognition of the listing requirements and corporate governance regulations 
+of the exchange where the company has its primary listing. Stock markets should clearly disclose the rules 
+and procedures that apply to cross listings and related exceptions from local corporate governance rules.  
+III.G. Stock markets should provide fair and efficient price discovery as a means to help promote 
+effective corporate governance. 
+Effective corporate governance means that shareholders should be able to monitor and assess their 
+corporate investments by comparing market -related information with the company’s information about its 
+prospects and performance. When shareholders believe it is advantageous, they can either use their voice 26    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+to influence corporate behaviour, sell their shares (or buy additional shares), or re -evaluate a company’s 
+shares in their portfolios. The quality of and access to market information including f air and efficient price 
+discovery regarding their investments is therefore important for shareholders to exercise their rights.  
+All types of investors, whether they follow active or passive investment strategies, have relevant roles to play 
+in contributing to well-functioning capital markets and efficient price discovery. In this regard, the quality of 
+and access to market and company-specific information is key, notably for those using this information to 
+follow active corporate governance strategies.    27 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should ensure that timely and accurate disclosure is made 
+on all material matters regarding the corporation, including the financial situation, performance, 
+sustainability, ownership, and governance of the company. 
+In most jurisdictions a large amount of information, both mandatory and voluntary, is compiled on publicly 
+traded and large unlisted companies, and subsequently disseminated to a broad range of users. Public 
+disclosure is typically required, at a minimum, on an annual basis though some jurisdictions require periodic 
+disclosure on a semi -annual or quarterly basis, or ad hoc disclosure in the case of material related party 
+transactions and other material developments affecting the company. Companies often make voluntary 
+disclosure that goes beyond minimum disclosure requirements in response to market demand.  
+The Principles support timely disclosure of all material developments that arise between regular reports. 
+They also support simultaneous reporting of material or required information to all shareholders in order to 
+ensure their equitable treatment, a fundamental principle that companies must uphold.  
+Disclosure requirements should not place unreasonable administrative or cost burdens on companies. Nor 
+should companies be expected to disclose information that may endanger their competitive position unless 
+disclosure is necessary to fully inform an investor’s decisions and to avoid misleading the investor. In order 
+to determine what information should be disclosed at a minimum, many jurisdictions apply the concept of 
+materiality. Material information can be defined as information whose omission or misstatement can 
+reasonably be expected to influence an investor’s assessment of a company’s value. This would typically 
+include the value, timing and certainty of a company’s future cash flows. Material information can also be 
+defined as information that a reasonable investor would consider important in making an investment or voting 
+decision. 
+A strong disclosure regime that promotes real transparency is a pivotal feature of market-based monitoring 
+of companies and is central to shareholders’ ability to exercise their shareholder rights on an informed basis. 
+Experience shows that disclosure can also be a powerful tool for influencing the behaviour of companies 
+and for protecting investors. A strong disclosure regime can help to attract capital and maintain confidence 
+in capital markets. By contrast, weak disclosure and non-transparent practices can contribute to unethical 
+behaviour and to a loss of market integrity at great cost, not just to the company and its shareholders but 
+also to the economy as a whole. Shareholders and potential investors require access to regular, timely, 
+reliable and comparable information in sufficient detail for them to assess the performance of the company’s 
+management, and make informed decisions about the valuation, ownership and voting of shares. Insufficient 
+or unclear information may hamper the ability of the markets to function, increase the cost of capital, and 
+result in a poor allocation of resources. 
+While corporate disclosure should focus on what is material to investors’ decisions and may include an 
+assessment of a company’ s value, it may also help improve public understanding of the structure and 
+activities of companies, corporate policies and performance with respect to environmental, social and 
+governance matters. 
+IV. Disclosure and transparency 28    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+IV.A. Disclosure should include, but not be limited to, material information on: 
+IV.A.1. The financial and operating results of the company. 
+Audited financial statements showing the financial performance and the financial situation of the company 
+(most typically including the balance sheet, the profit and loss statement, the cash flow statement and notes 
+to the financial statements) are the most widely used source of information on companies. They enable 
+appropriate monitoring to take place and also help to value securities. Management’s discussion and 
+analysis of operations is typically included in annual reports. This discussion is most useful when read in 
+conjunction with the accompanying financial statements. Investors are particularly interested in information 
+that may shed light on the future performance of the company. 
+Arguably, failures of governance can often be linked to the failure to disclose the “whole picture”. It is 
+therefore important that transactions relating to an entire company group be disclosed in line with high quality 
+internationally recognised standards and include information about contingent liabilities and off -balance 
+sheet transactions, as well as special purpose entities. 
+IV.A.2. Company objectives and sustainability-related information. 
+In addition to their comme rcial objectives, companies should disclose material policies and performance 
+metrics related to environmental and social matters, as elaborated on sustainability disclosure in Chapter 
+VI. 
+IV.A.3. Capital structures, group structures and their control arrangements. 
+Some capital structures such as pyramid structures, cross-shareholdings and shares with limited or multiple 
+voting rights allow shareholders to exercise a degree of control over the corporation disproportionate to their 
+equity ownership in the company. 
+Company groups are often complex structures that involve several layers of subsidiaries, including across 
+different sectors and jurisdictions. These structures may limit the ability of non -controlling shareholders of 
+the parent and subsidiary companies to influence corporate policies and understand the risks involved, and 
+may allow controlling shareholders to extract private benefits from group companies.  
+In addition to ownership relations, other devices can affect control over the  corporation. Shareholder 
+agreements are a common means for groups of shareholders, who individually may hold relatively small 
+shares of total equity, to act in concert so as to constitute an effective majority, or at least the largest single 
+block of shareholders. Shareholder agreements usually give those participating in the agreements 
+preferential rights to purchase shares if other parties to the agreement wish to sell. These agreements can 
+also contain provisions that require those accepting the agr eement not to sell their shares for a specified 
+time. Shareholder agreements can cover issues such as how the board or the chair will be selected. The 
+agreements can also oblige those in the agreement to vote as a block. Some jurisdictions have found it 
+necessary to closely monitor such agreements and to limit their duration.  
+Voting caps limit the number of votes that a shareholder may cast, regardless of the number of shares the 
+shareholder may actually possess. Voting caps therefore redistribute control and may affect the incentives 
+for shareholder participation in shareholder meetings. 
+Given the potential of these mechanisms to redistribute the influence of shareholders on company policy, 
+and also its relevance for the enforcement of takeover regulation, the disclosure of such capital structures, 
+group structures and their control arrangements should be required. Disclosure about such schemes also 
+allows shareholders, debtholders and potential investors to make better informed decisions.  
+IV.A.4. Major share ownership, including beneficial owners, and voting rights. 
+One of the basic rights of investors is to be informed about the ownership structure of the company and their 
+rights vis-à-vis the rights of other owners. The right to such information should also extend to information 
+about the structure of a group of companies and intra -group relations. Such disclosures should make the    29 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+objectives, nature and structure of the group transparent. Disclosure of ownership data should be provided 
+once certain thresholds of ownership are passed. In equity markets characterised by dispersed ownership 
+structures where small shareholdings may exert significant influence over a company, these thresholds 
+could be set lower. Such disclosure might include data on major shareholders and others that, directly or 
+indirectly, may significantly influence or control the company through, for example, special voting rights, 
+shareholder agreements, the ownership of controlling or large blocks of shares, the use of holding company 
+structures involving layering of companies or significant cross -shareholding relationships and cross 
+guarantees. It is also required or considered good practice in some jurisdictions to disclose shareholdings 
+of directors, including non-executives, and it is good practice that such disclosure is made on an ongoing 
+basis. 
+For enforcement purposes in particular, and to identify potential conflicts of interest, related party 
+transactions, insider trading and market manipulation, information abo ut record ownership needs to be 
+complemented with current information about beneficial ownership. An increasing number of jurisdictions 
+use a centralised national registry while others may require a company-level registry to facilitate access to 
+up-to-date and accurate information on beneficial ownership. In cases where such registries are not 
+available, information about the beneficial owners should be obtainable at least by regulatory and 
+enforcement agencies and/or through the judicial process. In additi on, guidance issued by the Financial 
+Action Task Force and the IMF that advocates a multi-pronged approach to ensure availability of information 
+on beneficial ownership can be useful in this regard. 
+IV.A.5. Information about the composition of the board an d its members, including their 
+qualifications, the selection process, other company directorships and whether they are regarded 
+as independent by the board. 
+Investors require information on individual board members and key executives in order to evaluate t heir 
+experience and qualifications and assess any potential conflicts of interest that might affect their judgement. 
+Information is also important to enable investors to assess the collective experience and qualifications of 
+the board.  For board members, standardised information should include their qualifications, share 
+ownership in the company, membership of other boards and board committees, other executive positions, 
+and whether they  are considered by the board to be an independent member. This information may also 
+refer to directors’ compliance with applicable independence criteria. It is important to disclose membership 
+of other boards not only  because it is an indication of experience and possible time pressures facing a 
+member of the board, but also because it may reveal potential conflicts of interest and makes transparent 
+the degree to which there are inter-locking boards. 
+Several jurisdictions have concluded that companies should disclose the selection process and especially 
+whether it was open to a broad field of candidates. Such information should be provided in advance of any 
+decision by the general shareholder’s meeting  or on a continuing basis if the situation has changed 
+materially. 
+Many jurisdictions require or recommend disclosure of the composition of boards, including on gender 
+diversity. Such disclosure may also extend to other criteria such as age and other demog raphic 
+characteristics, in addition to professional experience and expertise. Some jurisdictions that have 
+established such  requirements or recommendations in  codes also request disclosure on a  “comply or 
+explain” basis. In some cases this includes the disclosure of the composition of management boards in two-
+tier board systems, and of executive or other senior management positions.  
+IV.A.6. Remuneration of members of the board and key executives. 
+Information about board and executive remuneration is also of concern to shareholders, including the link 
+between remuneration and the company’s long-term performance, sustainability and resilience. 
+Companies are  generally expected to disclose timely information including material changes on the 
+remuneration policies applied  to board members and key executives, as well as remuneration levels or 30    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+amounts on a standardised and comparable basis, so that investors can assess the costs and benefits of 
+remuneration plans and the contribution of incentive schemes, such as stock option schemes, to company 
+performance. Disclosure on an individual  basis (including  termination and retirement  provisions) is 
+increasingly regarded as good practice and is now required or recommended in most jurisdictions. Some of 
+these jurisdictions call for remuneration of a certain number of the highest paid executives to be disclosed, 
+while in others it is confined to specified positions. The existence of directors’ and corporate officers’ liability 
+insurance may also change managerial incentives, thus warranting disclosure of liability insurance policies. 
+The use of sustaina bility indicators in remuneration may also warrant disclosure that allows investors to 
+assess whether indicators are linked to material sustainability risks and opportunities and incentivise a 
+long-term view. 
+IV.A.7. Related party transactions. 
+To ensure that the company is being run with due regard to the interests of all its investors, it is essential 
+to fully disclose all material related party transactions and the terms of such transactions to the market 
+individually. In many jurisdictions this is indeed already a legal requirement. In case the jurisdiction does 
+not define  materiality, companies should be  required to also disclose the policy/criteria adopted for 
+determining material related party transactions. Related parties should at least include entities that control 
+or are under common control with the company, significant shareholders including members of their 
+families and key management personnel. While the definition of related parties in internationally accepted 
+accounting standards provides a useful reference, the corporate governance framework should ensure 
+that all related parties are properly identified and that in cases where specific interests of related parties 
+are present, material transactions with consolidated subsidiaries a re also disclosed. Complicated group 
+structures may increase  the opaqueness inherent in related party transactions and the possibility of 
+circumventing disclosure requirements. Special consideration should be given to whether the corporate 
+governance framework properly identifies all related parties in jurisdictions with complex group structures 
+involving publicly traded companies. 
+Transactions involving the major shareholders (or their close family, relations, etc.), either directly or 
+indirectly, are potentially the most difficult type of related party transactions to monitor with a view to ensuring 
+equal treatment of all shareholders. In some jurisdictions, shareholders above a limit as low as five per cent 
+of shareholding are obliged to report transactions. Disclosure requirements include the nature of the 
+relationship where control exists, and the nature, value and number of transactions with related parties, 
+grouped as appropriate. Given the inherent opaqueness of many transactions, the obligation may need to 
+be placed on the beneficiary to inform the board about the transaction, which in turn should disclose it to 
+the market. This should not absolve the company from maintaining its own monitoring, which is an 
+important task for the board. 
+To make disclosure more informative, many  jurisdictions distinguish related party transactions  according 
+to their materiality, terms and conditions. Ongoing disclosure of material transactions is required, with a 
+possible exception for recurr ent transactions on “market terms”, which can be disclosed only in periodic 
+reports. To be effective, disclosure thresholds may need to be based mainly on quantitative criteria, but 
+avoidance of disclosure through splitting of transactions with the same related party should not be permitted. 
+IV.A.8. Foreseeable risk factors. 
+Users of financial information and market participants need information on reasonably foreseeable material 
+risks that may include: risks that are specific to the industry or the geographical areas in which the company 
+operates; dependence on commodities and supply chains; financial market risks including interest rate or 
+currency risk; risks related to derivatives and off-balance sheet transactions; business conduct risks; digital 
+security risks; compliance risks; and sustainability risks, notably climate-related risks. 
+The Principles envision the disclosure of sufficient and comprehensive information to fully inform investors 
+and other users of the reasonably foreseeable material risks of the company. Disclosure of risk is most    31 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+effective when it is tailored to the particular company and industry in question. Disclosure about the system 
+for monitoring and managing risk is increasingly regarded as good practice, including the nature and 
+effectiveness of related due diligence processes. 
+IV.A.9. Governance structures and policies, including the extent of compliance with national 
+corporate governance codes or policies and the process by which they are implemented.  
+Companies should report their corporate governance practices and such disclosure should be mandated 
+as part  of the regular reporting. Companies should implement corporate governance principles set, or 
+endorsed, by the regulatory or listing authority with mandatory reporting on a “comply or explain” or similar 
+basis. In most  jurisdictions, a national report reviewing adherence to the corporate governance code by 
+publicly traded companies  is published as a good practice to support effective disclosure and 
+implementation of “comply or explain” codes. 
+Disclosure of the governance structures and policies of the company, including, in the case of non operating 
+holding companies, that of significant subsidiaries, is important for the assessment of a company’s 
+governance and should cover the division of authority between shareholders, management and board 
+members. Companies should clearly disclose the different roles and responsibilities of the CEO and/or chair 
+and, where a single person combines both roles, the rationale for this arrangement. It is also good practice 
+to disclose the articles of association, board charters and, where applicable, committee structur es and 
+charters. 
+As a matter of transparency, procedures for shareholders meetings should ensure that votes are properly 
+counted and recorded, and that a timely announcement of the outcome is made.  
+IV.A.10.  Debt contracts, including the risk of non-compliance with covenants. 
+Under normal circumstances, shareholders and directors control the major decisions taken by a company. 
+However, certain provisions in corporate bonds and other debt contracts may significantly limit the discretion 
+of manageme nt and shareholders, such as covenants that restrict dividend payouts, require creditors’ 
+approval for the divestment of major assets, or penalise debtors if financial leverage exceeds a 
+predetermined threshold. Moreover, under financial stress but before bankruptcy, companies may choose 
+to negotiate a waiver of compliance with a covenant, when existing creditors may require changes in the 
+business. As a consequence, the timely disclosure of material information on debt contracts, including the 
+impact of material risks related to a covenant breach and the likelihood of their occurrence, in accordance 
+with applicable standards, is necessary for investors to understand a company’s business risks.  
+IV.B. Information should be prepared and disclosed in accordance  with internationally 
+recognised accounting and disclosure standards. 
+The application of high quality accounting and disclosure  standards is expected to significantly improve  
+the ability  of investors to monitor the company by providing increased relevance, reliability and 
+comparability of reporting, and improved insight into  company performance and risks. Most jurisdictions 
+mandate the use of internationally recognised standards for financial reporting, which can serve to improve 
+transparency and the comparability of financial statements and other financial reporting between 
+jurisdictions. Such standards should  be developed through open, independent and public processes 
+involving the private sector and other interested parties such as investors, professional associations and 
+independent experts. High quality domestic standards can be achieved by making them consistent with 
+one of the internationally recognised accounting standards. 32    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+IV.C. An annual external audit should be conducted by an independent, competent and qualified 
+auditor in accordance with internationally recognised auditing, ethical and independence 
+standards in order to provide reasonable assurance to the board and shareholders on whether the 
+financial statements are prepared, in all material respects, in accordance with an applicable financial 
+reporting framework. 
+The external auditor provides an opinion as to whether the financial statements present fairly, in all material 
+respects, the financial position and financial performance of a company. The external auditor’s report should 
+also include an acknowledgement that the financial statements are the responsibility of the company’s 
+management. In some jurisdictions, the external auditors are also required to rep ort on the company’s 
+corporate governance or internal controls over financial reporting. 
+The independence and ethical conduct of external auditors and their accountability to shareholders should 
+be required and they should conduct the audit in the public i nterest. Moreover, the IOSCO Principles of 
+Auditor Independence and the Role of Corporate Governance in Monitoring an Auditor’s Independence  
+states that “standards of auditor independence should establish a framework of principles, supported by a 
+combination of prohibitions, restrictions, other policies and procedures and disclosures, that addresses at 
+least the following threats to independence: self-interest, self-review, advocacy, familiarity and intimidation”. 
+Monitoring threats to independence should be the responsibility of both the external auditor and the audited 
+company, including its audit committee or an equivalent body. 
+The audit committee or an equivalent body should provide oversight of the internal audit activities and should 
+also be charged with overseeing the overall relationship with the external auditor including the appointment, 
+reappointment and compensation of external auditors, as well as approving and monitoring the nature of 
+non-audit services provided by the auditor to the company. Provision of non-audit services by the external 
+auditor to a company can impair their independence and might involve them auditing their own work or 
+present other threats to independence. To deal with such potential threats, some jurisdictions require the 
+disclosure of payments to external auditors for non-audit services. Examples of other provisions designed 
+to promote external auditor independence include a ban or severe limitation on the nature of non -audit 
+work which can be undertaken by an auditor for their audit client; periodic communications to the audit 
+committee discussing  the nature, timing and fees of the non-audit work (including the approval of such 
+work) as well as relationships that may threaten auditor independence; mandatory rotation of auditors 
+(either partners or in some  cases the audit company); a fixed tenure for auditors; joint audits; a temporary 
+ban on the employment of  an ex-auditor by the audited company; and prohibiting auditors or their 
+dependents from having a financial stake or management role in the companies they audit. Some 
+jurisdictions take a more direct regulatory approach and limit the percentage of non -audit income that the 
+auditor can receive from a particular client or limit the total percentage  of auditor income that can come 
+from one client. 
+Further, a system of audit oversight and audit regulation plays an important role in enhancing auditor 
+independence and audit quality. Consistent with the Core Principles of the International Forum of 
+Independent Audit Regulators (IFIAR), the designation of an audit regulator, independent from the 
+profession, and who, at a minimum, conducts recurring inspections of auditors undertaking audits of public 
+interest entities, contributes to ensuring high quality audits that serve the public interest. In addition, 
+regulators should have at their disposal a comprehensive and effective range of regulatory tools, including 
+disciplinary measures/sanctions, independent investigatory powers vis -à-vis auditors under their  
+jurisdictions, and the authority to communicate disciplinary measures/sanctions to the public to address 
+any breaches of professional or statutory duties by an external auditor in a proportionate manner.  
+Finally, an issue which has arisen in some jurisdictions concerns the pressing need to ensure the 
+competence of the audit profession. A registration process for individuals to confirm their qualifications is 
+considered good practice or required in some jurisdictions. This needs, however, to be supported by ongoing    33 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+training and monitoring of work experience to ensure appropriate levels of professional competence and 
+scepticism. 
+IV.D. External auditors should be accountable to the shareholders and owe a duty to the company 
+to exercise due professional care in the conduct of the audit in the public interest. 
+The practice that external auditors are recommended by an independent audit committee of the board or 
+an equivalent body and are elected, appointed or approved either by that committee/b ody or by the 
+shareholders’ meeting directly can be regarded as good practice since it clarifies that the external auditor 
+should be accountable to the shareholders. It also underlines that the external auditor owes a duty of 
+professional care to the company rather than any individual or group of corporate managers that they may 
+interact with for the purpose of their work. This practice, however, should not be seen as precluding other 
+bodies such as the audit committee from making such appointments. To enha nce accountability to 
+shareholders, shareholders should have the possibility to communicate directly with the audit committee 
+or an equivalent body regarding its oversight of the external auditor, for example by disclosures, including 
+of the methodology for assessing the auditor’s performance, or by participation of the audit committee or 
+external auditor in shareholder meetings. 
+IV.E. Channels for disseminating information should provide for equal, timely and cost -efficient 
+access to relevant information by users. 
+Channels for the dissemination of information can be as important as the content of the information itself. 
+While the disclosure of information is often provided for by legislation, filing and access to information can 
+be cumbersome and costly. Filing of statutory reports has been greatly enhanced in some jurisdictions by 
+electronic filing and data retrieval systems. Jurisdictions should move to the next stage by integrating 
+different sources of company information, including shareholder filings. Easily accessible and user friendly 
+company websites also provide the opportunity for improving information dissemination, and most 
+jurisdictions now require or recommend companies to have a website that provides relevant and significant 
+information about the company itself. 
+Provisions for ongoing disclosure which includes periodic disclosure and continuous or current disclosure 
+which must be provided on an ad hoc basis should be required. With respect to continuous/current 
+disclosure, good practice is to call for “immediate” disclosure of material developments, whether this means 
+“as soon as possible” or is defined as a prescribed maximum number of specified days. The IOSCO 
+Principles for Periodic Disclosure by Listed Entities set guidance for the periodic reports of companies that 
+have securities listed or admitted to trading on a regulated market in which retail investors participate. The 
+IOSCO Principles for Ongoing Disclosure and Material Development Reporting by Listed Entities set forth 
+common principles of ongoing disclosure and material development reporting for listed companies.  34    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should ensure the strategic guidance of the company, the 
+effective monitoring of management by the board, and the board’s accountability to the company 
+and the shareholders. 
+Board structures and procedures vary both within and among  jurisdictions. Some jurisdictions have two 
+tier boards that separate the supervisory function and the management function into different bodies. Such 
+systems typically have a “supervisory board” composed of non-executive board members, often including 
+employee representatives, and a “management board” composed entirely of executives. Other jurisdictions 
+have “unitary” boards, which bring together executive and non -executive board members. In some 
+jurisdictions, there is also an additional statutory body for audit purposes. The Principles are intended to 
+apply to whatever board structure is charged with the functions of governing the company and monitoring 
+management. 
+Together with guiding corporate strategy, the board is chiefly responsible for monitoring managerial 
+performance and achieving an adequate return for shareholders, while preventing conflicts of interest and 
+balancing competing demands on the corporation. In order for boards to effectively fulfil their responsibilities, 
+they must be able to exercise objective and independent judgement. Another important board responsibility 
+is to oversee the risk management system and mechanisms designed to ensure that the corporation obeys 
+applicable laws, including relating to tax, competition, labour, human rights, environmental, equal 
+opportunity, digital security, data privacy and personal data protection , and health and safety. In some 
+jurisdictions, companies have found it useful to explicitly articulate the responsibilities that the board 
+assumes and those for which management is accountable. 
+The board is not only accountable to the company and its shar eholders but also has a duty to act in their 
+best interests. In addition, boards are expected to take account of, and deal fairly with, stakeholder interests 
+including those of the workforce, creditors, customers, suppliers and affected communities. 
+V.A. Board members should act on a fully informed basis, in good faith, with due diligence and 
+care, and in the best interest of the company and the shareholders, taking into account the interests 
+of stakeholders. 
+This Principle states the two key elements of the fiduciary duty of board members: the duty of care and the 
+duty of loyalty. The duty of care requires board members to act on a fully informed basis, in good faith, with 
+due diligence and care. In some jurisdictions there is a standard of reference which is the behaviour that 
+a reasonably prudent person would exercise in similar circumstances. Good practice takes acting on a fully 
+informed basis to mean that board members should be satisfied that key corporate information and 
+compliance systems are fundamentally sound and underpin the key monitoring role of the board advocated 
+by the Principles. In many jurisdictions, this meaning is already considered an element of the duty of care, 
+while in others it is required by securities regulation, accounting standards, etc. 
+The duty of loyalty is of central importance, since it underpins the effective implementation of other principles 
+relating to, for example, the equitable treatment of shareholders, monitoring of related party transactions and 
+the establishment of the remuneration policy for key executives and board members. It is also a key principle 
+for board members who are working within the structure of a group of companies: even though a company 
+V. The responsibilities of the board    35 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+might be controlled by another company, the duty of loyalty for a board member relates to the company and 
+all its shareholders and not to the controlling company of the group. 
+Board members should take account of, among other things, the interests of stakeholders, when making 
+business decisions in the interest of the company’s long-term success and performance and in the interest 
+of its shareholders. This may help companies, for example, to attract, retain and develop more productive 
+employees, to be supported by the communities in which they operate, and to have more loyal customers, 
+thus creating value for their shareholders. 
+V.A.1. Board members should be protected against litigation if a decision was made in good faith 
+with due diligence. 
+Protecting board members and management against litigation, if they made a business decision diligently, 
+with procedural due care, on a duly informed basis and without any conflicts of interest, will better enable 
+them to assume the risk of a decision that is expected to benefit the company but which could eventually 
+be unsuccessful. Subject to these conditions, such a safe harbour would apply even if there are clear short- 
+term costs and uncertain long-term negative impacts to the company, as long as managers diligently assess 
+whether the decision could be reasonably expected to contribute to the long-term success and performance 
+of the company. 
+V.B. Where board decisions may affect different shareholder groups differently, the board 
+should treat all shareholders fairly. 
+In carrying out its duties, the board should not be viewed, or act, as an assembly of individual representatives 
+from various constituencies. While specific board members may indeed be nominated or elected by certain 
+shareholders (and sometimes contested by others), it is important that board members carry out their duties 
+in an even-handed manner with respect to all shareholders. This is particularly important in the presence 
+of controlling shareholders who de facto may be able to select a majority of or all board members. 
+V.C. The board should apply high ethical standards. 
+The board has a key role in setting the ethical tone of a company, not only through its own actions, but also 
+in appointing and overseeing key executives and consequently the management in general. High ethical 
+standards are in the long-term interests of the company as a means to make it credible and trustworthy, 
+not only in day -to-day operations,  but also with  respect to longer term  commitments. To  make the 
+objectives of the  board clear and operational, many companies have found it useful to develop company 
+codes of conduct based on, among others, professional standards and sometimes broader codes of 
+behaviour, and to communicate them throughout the organisation. This may include a commitment by the 
+company (including its subsidiaries) to comply with the OECD Guidelines for Multinational Enterprises and 
+associated due diligence standards. Similarly, jurisdictions are increasingly demanding that boards  
+oversee the lobbying, finance and tax planning strategies, thus providing authorities with timely and 
+targeted information and discouraging practices, for example the pursuit of aggressive tax planning 
+schemes, that do not contribute to the long -term interests of the company and its shareholders, and can 
+cause legal and reputational risks. 
+Company-wide codes serve as a standard for conduct by both the board and key executives, setting the 
+framework for the exercise of judgement in dealing with varying and often conflicting constituencies. At a 
+minimum, the code of ethics should set clear limits on the pursuit of private interests, including dealings in 
+the shares of the company. An overall framework for ethical conduct goes beyond compliance with the law, 
+which should always be a fundamental requirement. 36    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+V.D. The board should fulfil certain key functions, including: 
+V.D.1. Reviewing and guiding corporate strategy, major plans of action, annual budgets and 
+business plans; setting performance objectives; monitoring implementation and corporate 
+performance; and overseeing major capital expenditures, acquisitions and divestitures.  
+The board is tasked with setting the overall strategy of the company; determining the company’s policies; 
+assessing and guiding performance; and overseeing the company’s financial operations. It makes important 
+decisions as a fiduciary on behalf of the company and its shareholders. The structure and processes for 
+carrying out these functions may vary across companies, fo r example with respect to size and industry or 
+allocation of responsibilities between the supervisory and management boards in two-tier board systems. 
+To ensure transparency on the board’s duties, some jurisdictions recommend their inclusion in a board 
+charter, the articles of association or the corporate bylaws. 
+V.D.2. Reviewing and assessing risk management policies and procedures. 
+Establishing a company’s risk appetite and culture, and overseeing its risk management, including internal 
+control, are of major importance for boards and are closely related to corporate strategy. It involves oversight 
+of the accountabilities and responsibilities for managing risks, specifying the types and degree of risk that 
+a company is willing to accept in pursuit of its goals, and how it will manage the risks it creates through its 
+operations and relationships. The board’s oversight thus provides crucial guidance to management in 
+handling risks to meet the company’s desired risk profile. 
+When fulfilling these key functions, the board should ensure that material sustainability matters are 
+considered. With a view to increasing resilience, boards should also ensure that they have adequate 
+processes in place within their risk ma nagement frameworks to deal with significant external company - 
+relevant risks, such as health crises, supply chain disruptions and geopolitical tensions. These frameworks 
+should work ex ante (as companies should foster their resilience in the event of a cr isis) and ex post (as 
+companies should be able to set up crisis management processes at the onset of a sudden negative event). 
+Of notable importance is the management of digital security risks, which are dynamic and can change rapidly. 
+Risks may relate, among other matters, to data security and privacy, the handling of cloud solutions, 
+authentication methods, and security safeguards for remote personnel working on external networks. As with 
+other risks, these risks should be integrated more broadl y within the overall cyclical company risk 
+management framework. 
+Another important issue is the development of a tax risk management policy. Comprehensive risk 
+management strategies and systems adopted by boards should include tax management and tax 
+compliance risks, with a view to ensuring that the financial, regulatory and reputational risks associated with 
+taxation are fully identified and evaluated. 
+To support the board in its oversight of risk management, some companies have established a risk 
+committee and/or expanded the role of the audit committee, following regulatory requirements or 
+recommendations on risk management and the evolution of the nature of risks. OECD due diligence 
+standards on responsible business conduct are also designed to h elp companies in identifying and 
+responding to environmental and social risks and impacts stemming from their operations and supply chains. 
+V.D.3. Monitoring the effectiveness of the company’s governance practices and making changes 
+as needed. 
+Monitoring of governance by the board includes continuous review of the internal structure of the company 
+to ensure that there are clear lines of accountability for management throughout the organisation. Such 
+monitoring should also include whether the company’s governance framework remains appropriate in light 
+of material changes to the company’s size, complexity, business strategy, markets, and regulatory 
+requirements. In addition to requiring the monitoring and disclosure of corporate governance practices on 
+a regular  basis, at least in summary form, many jurisdictions have  moved to recommend, or indeed    37 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+mandate, assessment by boards of their performance and of the performance of their committees, 
+individual board members, the chair and the CEO. 
+V.D.4. Selecting, overseeing and monitoring the performance of key executives, and, when 
+necessary, replacing them and overseeing succession planning. 
+The board should oversee the performance of key executives and monitor that their actions are consistent 
+with the strategy and policies approved by the board. The board should select the CEO and may select other 
+key executives. In exercising this fundamental function, the board may be assisted by a nomination 
+committee which may be tasked with defining the profiles of the CEO and board members, and making 
+recommendations to the board on their appointment. Ma ny jurisdictions require or recommend that all or 
+a majority of members of the nomination committee be independent directors. The nomination committee 
+may also help guide talent management and review policies related to the selection of key executives. In 
+most two-tier board systems, the supervisory board is responsible for appointing the management board 
+which normally comprises most of the key executives. The board should also be responsible for succession 
+planning for the CEO and may also be for other key executives, with a view to ensuring business continuity. 
+While comprising contingency mechanisms, succession planning could also be a long-term strategic tool 
+to support talent development and diversity. 
+V.D.5. Aligning key executive and board remuneration with the longer term interests of the 
+company and its shareholders. 
+It is regarded as good practice for boards to develop and disclose a remuneration policy statement covering 
+board members and key executives, as well as to disclose their remuneration levels set pursuant to this 
+policy. Such policy statements may specify, especially with respect to executives, the relationship between 
+remuneration and performance with ex ante criteria linked to performance, and include measurable 
+standards that emphasise the long -term interests of the company and the shareholders over short -term 
+considerations. Such measurable standards among others may relate to total shareholder return  and 
+appropriate sustainability goals and metrics. Policy statements generally tend to set conditions for payments 
+to board members for extra-board activities, such as consulting. They also often specify terms to be observed 
+by board members and key execut ives about holding and trading the stock of the company, and the 
+procedures to be followed in granting and re -pricing options. In some jurisdictions, policy statements also 
+provide guidance on the payments to be made when hiring and/or terminating the contract of an executive. 
+The board may also monitor the implementation of the policy statement on remuneration.  
+Many jurisdictions recommend or require that remuneration policy and contracts for board members and 
+key executives be handled by a special committee of the board comprising either wholly or a majority of 
+independent directors and excluding executives that serve on each other’s remuneration committees, which 
+could lead to conflicts of interest. The introduction of malus and claw -back provisions is considered good 
+practice. They grant the company the right to withhold and recover compensation from executives in cases 
+of managerial fraud and other circumstances, for example when the company is required to restate its 
+financial statements due to material noncompliance with financial reporting requirements. 
+The design of remuneration policies and contracts for board members and key executives is critical to set 
+incentives that are aligned with a company’s business strategy, corporate governance framework and risk 
+management. These policies, however, may not fulfil their goal if they are frequently adjusted in the absence 
+of a significant change in the business strategy or a structural transformation of the context in which the 
+company operates. Specifically, the likelihood of a significant economic downturn is a factor that companies 
+reasonably should consider when designing their remuneration policies and may not necessarily justify an 
+adjustment of these policies. 38    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+V.D.6. Ensuring a formal and transparent board nomination and election process. 
+The Principles promote an active role for shareholders in the nomination and election of board members. 
+The board, with the support of a nomination committee if established, has an essential role to play in ensuring 
+that the nomination and election processes are respected. First, while actual procedures for nomination may 
+differ among jurisdictions, the board has the responsibility to make sure that established procedures are 
+transparent and respected. Second, the board has a key role in defining the collective or individual profile 
+of board members that the company may need at any given time, considering the appropriate knowledge, 
+competencies and expertise to complement the existing skills of the board. Third, the board or nomination 
+committee has the responsibility to identify potential candidates to meet desired profiles and propose them 
+to shareholders, and/or consider those candidates advanced by shareholders. The board’s engagement and 
+dialogue with shareholders may support the effective implementation of thes e processes, provided that 
+the board ensures transparency, equal treatment and that inside and business sensitive information is not 
+disclosed. It is considered good practice to conduct open search processes extending to a broad range of 
+backgrounds to respond to diversity objectives and evolving risks to the company. 
+V.D.7. Monitoring and managing potential conflicts of interest of management, board members 
+and shareholders, including misuse of corporate assets and abuse in related party transactions. 
+The board should oversee the implementation and operation of policies to identify potential conflicts of 
+interest. Where these conflicts cannot be prevented, they should be properly managed. It is an important 
+function of the board to oversee  the internal control systems covering financial reporting and the use of 
+corporate assets and to guard against abusive related party transactions. This function is often  assigned 
+to the internal auditor who should maintain direct access to the board. Where other corporate officers such 
+as the general counsel are responsible, it is important that they maintain similar reporting responsibilities as 
+the internal auditor. 
+In fulfilling its control oversight responsibilities, it is important for the board to ov ersee the company’s 
+whistleblowing policy in order to ensure the integrity, independence and confidentiality of whistleblowing 
+processes, and to encourage the reporting of unethical/unlawful behaviour without fear of retribution. The 
+existence of a publicl y available company code of ethics should aid this process, which should be 
+underpinned by legal protection for the individuals concerned. A contact point for employees who wish to 
+confidentially report concerns about unethical or illegal behaviour that might also compromise the integrity 
+of financial statements should be offered by the audit committee or by an ethics committee or equivalent 
+body. 
+V.D.8. Ensuring the integrity of the corporation’s accounting and reporting systems for disclosure, 
+including the independent external audit, and that appropriate control systems are in place, in 
+compliance with the law and relevant standards. 
+The board should demonstrate a leadership role to ensure that an effective means of risk oversight is in 
+place. Ensuring the integrity of the essential reporting and monitoring systems will require that the board sets 
+and enforces clear lines of responsibility and accountability throughout the organisation. The board will also 
+need to ensure that there is appropriate oversight by senior management. 
+Normally, this includes the establishment of an internal audit function. This function can play a critical role 
+in providing ongoing support to the audit committee of the board or an equivalent body of its comprehensive 
+oversight of the internal controls and operations of the company. The role and functions of internal audit vary 
+across jurisdictions, but they can include assessment and evaluation of governance, risk management, 
+and internal  control processes. It is considered good practice for the internal auditors to report to an 
+independent audit committee of the board or an equivalent body which is also responsible for managing 
+the relationship with  the external auditor, thereby allowing  a co-ordinated response by the board. Both 
+internal and external audit functions should be clearly articulated so that the board can maximise the quality 
+of assurance it receives. It should also be regarded as good practice for the audit committee, or equivalent    39 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+body, to review and report to the board the most critical policies which are the basis for financial and other 
+corporate reports. However, the board should retain final responsibility for oversight of the company’s risk 
+management system and  for ensuring the integrity of  the reporting systems. Some jurisdictions have  
+provided for the  chair of the board to report on the internal control process. Companies with large or 
+complex risks (financial and non- financial), including company groups, should consider introducing similar 
+reporting systems, including direct reporting to the board, with regard to group-wide risk management and 
+oversight of controls. 
+Companies are also well advised to establish and ensure the effectiveness of internal controls, ethics, and 
+compliance programmes or measures to comply with applicable laws, regulations and standards, including 
+statutes criminalising the bribery of foreign public officials, as required under the OECD Anti -Bribery 
+Convention, and other forms of bribery and corruption. Moreover, compliance must also relate to other laws 
+and regulations such as those covering securities, taxation, competition, and work and safety conditions. 
+Other laws that may be applicable include those relating to human rights, the environment, fraud and money 
+laundering. Such compliance programmes will also underpin the company’s code of ethics. To be effective, 
+the incentive structure of the business needs to be aligned with its ethical and professional standards so that 
+adherence to these values is rewarded and breaches of law are met with dissuasive consequences or 
+penalties. Compliance programmes should also extend to subsidiaries and where possible to third parties, 
+such as agents and other intermediaries, consultants,  representatives, distributors, contractors and 
+suppliers, consortia, and joint venture partners. 
+V.D.9. Overseeing the process of disclosure and communications. 
+The functions and responsibilities of the board and management with respect to disclosure and 
+communication need to be clearly established by the board. In some jurisdictions, the appointment of an 
+investor relations officer who reports directly to the boa rd is considered good practice for publicly traded 
+companies. 
+V.E. The board should be able to exercise objective independent judgement on corporate affairs. 
+In order to exercise its duties of monitoring managerial performance, preventing conflicts of inte rest and 
+balancing competing demands on the corporation, it is essential that the board is able to exercise objective 
+judgement. In the first instance this will mean independence and objectivity with respect to management with 
+important implications for the composition and structure of the board. Board independence in these 
+circumstances usually requires that a sufficient number of board members, as well as members of key 
+committees, will need to be independent of management. 
+In jurisdict ions with single tier board systems, the objectivity of the board and its independence from 
+management may be strengthened by the separation of the  role of chief executive and  chair. Separation 
+of the two posts is regarded as good practice, as it can help to achieve an appropriate balance of power, 
+increase accountability and improve the board’s capacity for decision-making independent of management. 
+The designation of a lead director who is independent of management is also regarded as a good practice 
+alternative in some jurisdictions if that role is defined with sufficient authority to lead the board in cases where 
+management has clear conflicts. Such mechanisms can also help to ensure high quality governance of the 
+company and the effective functioning of the board. The chair or lead independent director may, in some 
+jurisdictions, be supported by a company secretary. 
+In the case of two -tier board systems, the absence of executive directors from the supervisory board 
+strengthens independence from management. In such systems, consideration should be given to whether 
+corporate governance concerns might arise if there is a tradition for the head of the lower board becoming 
+the chair of the supervisory board on retirement. 
+The manner in which board objectivity might be underpinned also depends on the ownership structure of 
+the company. A controlling shareholder has considerable powers to appoint the board, and indirectly the 40    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+management. However, in this case, the board still has a fiduciary responsibility to the company and to all 
+shareholders including minority shareholders. 
+The variety of board structures, ownership patterns and practices in different jurisdictions will thus require 
+different approaches to the issue of board objectivity. In many instances objectivity requires that a sufficient 
+number of board members not be employed by the company or its affiliates and not be closely related to 
+the company or its management through significant economic, family or other ties. This does not prevent 
+shareholders from being board members. In others, independence from controlling and substantial 
+shareholders will need to be emphasised, in particular if the ex ante rights of minority shareholders are weak 
+and opportunities to obtain redress are limited. This has led to both codes and the law in most jurisdictions 
+to call for some board members to be independent of controlling and substantial shareholders, 
+independence extending to not being their representative or having close business ties with them. In other 
+cases, parties such as particular creditors can also exercise significant influence. While jurisdictions’ 
+definitions of what constitutes a substantial shareholder vary, minimum thresholds are common. Where 
+there is a party in a special position to influence the company, there should be stringent tests to ensure the 
+objective judgement of the board. 
+In defining independence for members of the board, some national codes of corporate governance or 
+exchange listing standards have spe cified quite detailed presumptions for non -independence. While 
+establishing necessary conditions, such “negative” criteria defining when an individual is not regarded as 
+independent can usefully be complemented by “positive” examples of qualities that will  increase the 
+probability of effective independence. While national approaches to defining independence vary, a range 
+of criteria are used, such as the absence of relationships with the company, its group and its management, 
+the external auditor of the company and substantial shareholders, as well as the absence of remuneration, 
+directly or indirectly, from the company or its group other than directorship fees. The board may also be 
+required to make an affirmative finding that a director is independent of the company because they have 
+no material relationship with the company or that the director has no relationship which would interfere with 
+the exercise of independent judgement in carrying out the responsibilities of a director. Many jurisdictions 
+also set a maximum tenure for directors to be considered independent. 
+Independent board members can contribute significantly to the decision-making of the board. They can bring 
+an objective view to the evaluation of the performance of the board and management. In addition, they can 
+play an important role in areas where the interests of management, the company and its shareholders may 
+diverge such as executive remuneration, succession planning, changes of corporate control, take -over 
+defences, large acquisitions and the audit function. In order for them to play this key role, it is desirable that 
+boards declare who they consider to be independent and the criterion for this judgement. Some jurisdictions 
+also require separate meetings of independent directors on a periodic basis. 
+V.E.1. Boards should consider assigning a sufficient number of independent board members 
+capable of exercising independent judgement to tasks where there is a potential for conflicts of 
+interest. Examples of such key responsibilities are ensuring the integrity of financial and other 
+corporate reporting, the review of related party transactions, and nomination and remuneration of 
+board members and key executives. 
+While the responsibility for corporate reporting, remuneration and nomination is frequently with the board 
+as a whole, independent board members can provide additional assurance to market participants that their 
+interests are safeguarded. The board should consider establishing specific committees to consider 
+questions where there is a potential for conflicts of interest. These committees should require a minimum 
+number or be composed entirely of independent members. In some jurisdictions it is good practice that 
+these committees  be chaired by an independent non-executive member. In some jurisdictions, 
+shareholders have direct responsibility for nominating and electing independent directors to specialised 
+functions.    41 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+V.E.2. Boards should consider setting up specialised committees to support the full board in 
+performing its functions, in particular the audit committee – or equivalent body – for overseeing 
+disclosure, internal controls and audit -related matters. Other committees, such as remuneration, 
+nomination or risk management, may provide support to the board depending upon the company’s 
+size, structure, complexity and risk profile. Their mandate, composition and working procedures 
+should be well defined and disclosed by the board which retains full responsibility for the decisions 
+taken. 
+Where justified in terms of the size, structure, sector or level of development of the company as well as the 
+board’s needs and the profile of its members, the use of committees may improve the work of the board and 
+allow for a deeper focus on specific areas. In order to evaluate the merits of board committees, it is important 
+that the market receives a full and clear picture of their mandate, scope, working procedures and 
+composition. Such information is particularly important in the many jurisdictions where boards are required 
+to establish independent audit committees with powers to oversee the relationship with the external auditor. 
+Audit committees should also be able to oversee the effectiveness and integrity of the internal control system, 
+which may include the internal audit function.  
+Most jurisdictions establish binding rules for the conduct and functions of an independent audit committee, 
+and recommend nomination and remuneration committees on a “comply or explain” basis. While risk 
+committees are commonly required for companies in the financial sector, a number of jurisdictions also 
+regulate risk management responsibilities of non -financial companies, requiring or recommending 
+assigning this role to either the audit committee or a dedicated risk committee. The separation of the functions 
+of the audit and risk committees may be valuable given the greater recognition of risks beyond financial risks, 
+to avoid audit committee overload and to allow more time for risk management issues.  
+The establishment of committees to advise on additional issues should remain at the discretion of the 
+company and should be flexible and proportional according to the needs of the board. Some boards have 
+created a sustainability committee to advise the board on social and environmental risks, opportunities, goals 
+and strategies, including related to climate. Some boards have also established a committee to advise on 
+the management of digital security risks as well as on the company’s digital transformation. Ad hoc or special 
+committees can also be temporarily set up to respond to specific needs or corporate transactions. Disclosure 
+need not extend to specific committees set up to deal with, for example, confidential commercial 
+transactions. When established, committees should have access to the necessary information to comply 
+with their duties, receive appropriate funding and engage outside experts or counsels.  
+Committees have monitoring and advisory roles, and it should be well understood that the board as a whole 
+remains fully responsible for the decisions taken unless legally defined otherwise, and its oversight and 
+accountability should be clear. 
+V.E.3. Board members should be able to commit themselves effectively to their responsibilities. 
+Service on too many boards or committees can interfere with the performance of board me mbers. Some 
+jurisdictions have limited the number of board positions that can be held. Specific limitations may be less 
+important than ensuring that members of the board enjoy legitimacy and confidence in the eyes of 
+shareholders. Disclosure about other bo ard and committee memberships and chair responsibilities to 
+shareholders is therefore a key instrument to improve board and committee nominations. Achieving 
+legitimacy would also be facilitated by the publication of attendance records for individual board members 
+(e.g. whether they have missed a significant number of meetings) and any other work undertaken on behalf 
+of the board and the associated remuneration. 42    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+V.E.4. Boards should regularly carry out evaluations to appraise their performance and assess 
+whether they possess the right mix of background and competences, including with respect to 
+gender and other forms of diversity. 
+In order to improve board practices and the performance of its members, an increasing number of 
+jurisdictions now encourage companies to engage in board and committee evaluation and training . Many 
+corporate governance codes recommend an annual evaluation of the board, which may periodically be 
+supported by external facilitators to increase objectivity. 
+Unless certain qualifications are required, such as for financial institutions, board members may need to 
+acquire appropriate skills upon appointment through training or other means. Thereafter, such measures 
+may also support board members to remain abreast of relevant new law s, regulations, and changing 
+commercial and other risks. 
+In order to avoid groupthink and bring a diversity of thought to board discussion, evaluation mechanisms 
+may also support boards to consider if they collectively possess the right mix of background a nd 
+competences. This may be based on diversity criteria such as gender, age or other demographic 
+characteristics, as well as on experience and expertise, for example on accounting, digitalisation, 
+sustainability, risk management or specific sectors. 
+To enhance gender diversity, many jurisdictions require or recommend that publicly traded companies 
+disclose the gender composition of boards and of senior management. Some jurisdictions have established 
+mandatory quotas or voluntary targets for female participation on boards with tangible results. Jurisdictions 
+and companies should also consider additional and complementary measures to strengthen the female 
+talent pipeline throughout the company and reinforce other policy measures aimed at enhancing board and 
+management diversity. Complementary measures may emanate from government, private and public-
+private initiatives and may, for example, take the form of advocacy and awareness -raising activities; 
+networking, mentorship and training programmes; establishment  of supporting bodies (women business 
+associations); certification, awards or compliant company lists to activate peer pressure; and the review of 
+the role of the nomination committee and of recruitment methods. Some jurisdictions have also established 
+guidelines or requirements intended to ensure consideration of other forms of diversity, such as with respect 
+to experience, age and other demographic characteristics. 
+V.F. In order to fulfil their responsibilities, board members should have access to accurat e, 
+relevant and timely information. 
+Board members require relevant information on a timely basis in order to support their decision-making. Non- 
+executive board members do not typically have the same access to information as key managers within 
+the company. The contributions of non-executive board members to the company can be enhanced by 
+providing access to certain key managers within the company such as, for example, the company 
+secretary, the internal auditor, and the head of risk management or chief risk officer, and granting recourse 
+to independent external advice at the expense of the company. 
+In order to fulfil their responsibilities, board members should have access to and ensure that they obtain 
+accurate, relevant and timely information. In cases when a publicly traded company is the parent of a group, 
+the regulatory framework should also ensure board members’ access to key information about the activities 
+of its subsidiaries to manage group -wide risks and implement group-wide objectives. When board 
+committees are established, efficient mechanisms should be put in place to ensure that the entire board 
+has access to relevant information. At the same time, the regulatory framework should maintain safeguards 
+to ensure  that insiders will not use such information for their personal gain or that of others. Where 
+companies rely on complex risk management models, board members should be made aware of the 
+possible shortcomings of such models.    43 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+V.G. When employee representation on the board is mandated, mechanisms should be 
+developed to facilitate access to information and training for employee representatives, so that this 
+representation is exercised effectively and best contributes to the enhancement of board ski lls, 
+information and independence. 
+When employee representation on boards is mandated by the law or collective agreements, or adopted 
+voluntarily, it should be applied in a way that maximises its contribution to the board’s independence, 
+competence, inform ation and diversity. Employee representatives should have the same duties and 
+responsibilities as all other board members, and should act in the best interest of the company.  
+Procedures should be established to facilitate access to  information, training and expertise, and ensure  
+the independence of employee board members from the CEO and executives. These procedures should 
+also include adequate and transparent appointment procedures, rights to report to employees on a regular 
+basis – provided that board confidentiality requirements are duly respected – training, and clear procedures 
+for managing conflicts of interest. A positive contribution to the board’s work will also require acceptance 
+and constructive collaboration by other members of the board as well as by management. 
+ 44    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+The corporate governance framework should provide incentives for companies and their investors 
+to make decisions and manage their risks, in a way that contributes to the sustainability and 
+resilience of the corporation. 
+Companies play a central role in our economies by creating jobs, contributing to innovation, generating 
+wealth, and providing essential goods and services. Countries have made commitments to transition to a 
+sustainable, net -zero/low-carbon economy in line with the Paris Agreement and the Sustainable 
+Development Goals, which will require companies to respond to rapidly changing regulatory and business 
+circumstances taking into account any applicable policies and transition paths followed by different 
+jurisdictions. In addition, many companies and investors are setting voluntary goals or otherwise taking steps 
+to anticipate a future transition towards sustainable development. A sound corporate governance framework 
+would allow investors and companies to consider and manage the potential risks and opportunities 
+associated with such transition pathways, which in turn may contribute to the sustainability and resilience 
+of the economy. 
+In addition, investors are increasingly considering disclosures about how companies assess, identify and 
+manage material climate change and other sustainability risks and opportunities, including for human capital 
+management. In response, many jurisdictions require or plan to require disclosures about companies’ 
+exposure to and management of sustainability matters. A core feature of these disclosures is to provide 
+investors with a better understanding of the governance and management structures and processes for 
+managing climate and other sustainability risks and identifying rela ted opportunities. The corporate 
+governance framework should support both the sound management of these risks and the consistent, 
+comparable and reliable disclosure of material information in order to support investors’ financial, investment 
+and voting decisions. The combination of sound governance and clear disclosures will promote fair markets 
+and the efficient allocation of capital, while supporting companies’ long-term growth and resilience. 
+Several jurisdictions have oriented their capital ma rket policies to foster a more sustainable and resilient 
+corporate sector. In doing so, such policies should aim to also preserve access to capital markets by 
+preventing prohibitively high costs of listing a company while still ensuring that investors have access to 
+the information necessary to allocate capital efficiently to companies. Investors, directors and key 
+executives must also be open to a constructive dialogue on the best strategy to support the company’s 
+sustainability and resilience. A company that takes account of stakeholder interests may be better able to 
+attract productive workforce, support from the communities in which it operates, and more loyal customers. 
+In jurisdictions that allow for or require the consideration of stakeholder s’ interests, companies should still 
+consider the financial interests of their shareholders. A profitable company provides jobs for its workforce 
+and creates value for investors, many of whom are part of the general public and have invested their 
+retirement savings. 
+Corporate directors are not expected to be responsible for resolving major environmental and societal 
+challenges stemming from their duties alone. To guide corporate activities, sectoral policies that make 
+companies internalise environmental and social externalities as well as corporate governance frameworks 
+that set predictable boundaries within which directors have to exercise their fiduciary duties should be 
+considered by policy makers. These policies could relate to, for instance, environmental regulation, or 
+VI. Sustainability and resilience    45 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+directly investing in or incentivising research and development of technologies that may contribute to 
+addressing major environmental challenges. 
+VI.A. Sustainability-related disclosure should be consistent, comparable and reliable, and 
+include retrospective and forward -looking material information that a reasonable investor would 
+consider important in making an investment or voting decision. 
+To ensure the efficiency of capital markets, investors must be able to compare different companies’ past 
+performance and future prospects and then decide how to allocate their capital and engage with companies. 
+With the emergence and greater awareness of environmental and social risks, investors have been 
+demanding better disclosure from companies on governance, strategy, risk management (e.g. overall results 
+of risk assessments for different climate change scenarios) and sustainability-related metrics (for example 
+related to greenhouse gas emissions and biodiversity) that are material for inve stors when assessing a 
+company’s business perspectives and risks. 
+While stakeholders may not typically be the primary users of corporate sustainability -related disclosure, 
+disclosures may benefit such stakeholders. For instance, disclosure on collective bargaining coverage and 
+mechanisms for workforce representation may be both material for an investor’s assessment of a company’s 
+value and relevant to its workforce and other stakeholders. 
+At the same time, sustainability-related disclosure frameworks need to be flexible in relation to the existing 
+capacities of companies and relevant institutions. Limiting mandatory sustainability -related disclosure to 
+publicly traded companies might result in a disincentive for companies to go public. With these challenges 
+in mind, policy makers may need to devise sustainability -related disclosure requirements that are flexible 
+with respect to the size of the company and its stage of development. 
+Companies and their service providers, as well as regulators themselves, may face a learning curve in their 
+understanding of sustainability matters and might need time to develop adequate processes and good 
+practices. This may justify prioritising disclosure requirements of some of the most relevant sustainability 
+matters, phasing in other requirements such as for independent, external assurance, or establishing some 
+recommendations in “comply or explain” corporate governance codes. 
+VI.A.1. Sustainability-related information could be considered material if it can reas onably be 
+expected to influence an investor’s assessment of a company’s value, investment or voting 
+decisions. 
+Without prejudice to voluntary initiatives or specific environmental regulations that may contain additional 
+disclosure requirements, corporate d isclosure frameworks require at a minimum information on what is 
+material to investors’ assessment of a company’s value, investment or voting decisions. This assessment 
+typically includes the value, timing and certainty of a company’s future cash flows ove r the short, medium 
+and long-term. 
+Material sustainability -related information could include environmental and social matters that can 
+reasonably be expected to affect a company’s asset value and its ability to generate revenues and long-term 
+growth. However, a company’s own impact on society and the environment could also be considered 
+material if it is expected to affect the company’s value, such as environmental liabilities under a jurisdiction’s 
+existing laws or regulations, or greenhouse gas (GHG) emissions that may be capped or taxed in the future. 
+Likewise, human rights and human capital policies, such as training programmes, retention policies, 
+employee share ownership plans, and diversity strategies, can communicate important information on the 
+competitive strengths of companies to market participants. 
+The determination of which information is material may vary over time, and according to the local context, 
+company-specific circumstances, and jurisdictional requirements. The assessment of material information 
+may also consider sustainability matters that are critical to a company’s workforce and other key 
+stakeholders. For example, sustainability risks that may not seem to be financially material in the short-46    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+term but that are relevant to society may become  financially material for a company in the long-term. In 
+addition, some jurisdictions also consider what is material to investors to include companies’ influence on 
+non- diversifiable risks. For example, an investor may consider that the value created by a profit maximising 
+major carbon emitting company in their portfolio would be offset by losses in the value of other investee 
+companies affected by climate change. In this context, some jurisdictions may also require or recommend 
+disclosing sustainability matters critical to a company’s key stakeholders or a company’s influence on non-
+diversifiable risks. 
+VI.A.2. Sustainability-related disclosure frameworks should be consistent with high quality, 
+understandable, enforceable and internationally recognised standards that facilitate the 
+comparability of sustainability-related disclosure across companies and markets. 
+The efficiency of capital markets is enhanced if investors are able to compare sustainability -related 
+disclosure by companies, including those listed in different jurisdictions, helping investors decide how best 
+to allocate their capital and engage with companies. Consistency and interoperability between regional or 
+national sustainability-related disclosure frameworks and internationally recognised standards can still 
+allow for flexibility of complementary local requirements, including on matters where specific geographical 
+characteristics or jurisdictional requirements may influence materiality. 
+VI.A.3 Disclosure of sustainability matters, financial reporting and other corporate information 
+should be connected. 
+Corporate disclosure frameworks, including financial reporting standards and regulatory filing requirements 
+(e.g. public offering prospectuses), should have the same goal of providing information that a reasonable 
+investor would consider important in making an investment and voting decision. It follows that information 
+understood as material in a sustainability -related report should also be consid ered and assessed in the 
+preparation and presentation of the financial statements. The same level of rigour applied to the 
+measurement and reporting of financial information  should be applied to the measurement and reporting 
+of sustainability -related information. Ensuring such connectivity between different corporate disclosures 
+implies the consideration of material sustainability matters in financial estimates and assumptions in the 
+financial statements, as well as in the disclosure of risks that have had or are likely to have a material 
+impact on a company’s business. 
+VI.A.4. If a company publicly sets a sustainability-related goal or target, the disclosure framework 
+should provide that reliable metrics are regularly disclosed in an easily accessible form to allow 
+investors to assess the credibility and progress towards meeting the announced goal or target.  
+Sustainability-related goals, such as GHG emissions reduction targets or goals established under climate 
+transition plans, can affect an investor’s assessment of the value, timing and certainty of a company’s future 
+cash flows. These goals may also help a company to attract funding from investors to whom the relevant 
+sustainability matters are important. Both from a market efficiency and an investor protection perspective, 
+if a company publicly sets a sustainability -related goal or target, the disclosure framework should require 
+sufficient disclosure of consistent, comparable and reliable metrics. This would allow investors to assess 
+the credibility of the announced goal and management’s progress towards meeting it. The disclosure may 
+include, for instance, the definition of interim targets when a long-term goal is announced, annual consistent 
+disclosure of relevant sustainability metrics, and possible corrective actions the company intends to take 
+to address underperformance against a target. 
+VI.A.5. Phasing in of requirements should be considered for annual assurance attestations by an 
+independent, competent and qualified attestation service provider in accordance with high quality 
+internationally recognised assurance standards in order to provide an external and objective 
+assessment of a company’s sustainability-related disclosure. 
+Sustainability-related disclosures reviewed by an independent, competent and qualified attestation service 
+provider may enhance investors’ confidence in the information disclosed and the possibility to compare    47 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+sustainability-related information between companies. Wherever high quality assurance for all disclosed 
+sustainability-related information might not be possible or is too costly, mandatory assessment for the most 
+relevant sustainability-related metrics or disclosures, such as GHG emissions, may be considered. 
+However, greater convergence of the level of assurance between financial statements and sustainability -
+related disclosures should be the long-term goal. 
+VI.B. Corporate governance frameworks should allow for dialogue between a company, its 
+shareholders and stakeholders to exchange views on sustainabi lity matters as relevant for the 
+company’s business strategy and its assessment of what matters ought to be considered material. 
+General shareholder meetings provide an important forum for a structured decision -making process. 
+Dialogue between companies, s hareholders, the workforce and other stakeholders may also play an 
+essential role in informing management’s decision -making process and in building trust in a long -term 
+business strategy. While such dialogue may be useful for a range of issues, this is not ably important for 
+decisions to improve a company’s sustainability and resilience, which may represent short -term cash 
+outflows while generating long-term benefits. Such dialogue may also prove helpful for the company 
+to assess which sustainability matters are material and, therefore, should be disclosed. When in dialogue 
+with shareholders, the company should comply with the principle of equitable treatment of shareholders.  
+VI.B.1. When corporate governance frameworks allow for existing companies to adopt corporate 
+forms that incorporate both for-profit and public benefit objectives, such frameworks should provide 
+for due consideration of dissenting shareholder rights. 
+A number of jurisdictions have frameworks for the establishment of public benefit c orporations or other 
+specific corporate forms that enable companies to incorporate both for-profit and public benefit objectives, 
+that allow them to pursue explicit objectives related to environmental and social matters. In such cases where 
+an existing for-profit company adopts public benefit objectives, it is important to have mechanisms in place 
+that provide for the due consideration of dissenting shareholder rights. Possible solutions to protect the 
+interests of dissenting shareholders could include requiring the consent of minority shareholders or a 
+supermajority shareholders’ approval for a company to add public benefit goals to its articles of association, 
+or providing the right for dissenting shareholders to sell their shares back to the c ompany at a fair price. 
+VI.C. The corporate governance framework should ensure that boards adequately consider 
+material sustainability risks and opportunities when fulfilling their key functions in reviewing, 
+monitoring and guiding governance practices, disclosure, strategy, risk management and internal 
+control systems, including with respect to climate-related physical and transition risks. 
+When fulfilling their key functions, boards are increasingly ensuring that material sustainability matters are 
+also considered. Notably, the board has a role in ensuring that effective governance and internal controls 
+are in place to improve the reliability and credibility of sustainability-related disclosure. For instance, boards 
+may assess if and how sustainability matters affect companies’ risk profiles. Such assessments may also 
+relate to key executive remuneration and nomination (e.g. whether targets integrated into executives’ 
+compensation plans would be quantifiable, linked to financially material  risks and incentivise a long -term 
+view) or how sustainability is approached by the board and its committees. OECD due diligence standards 
+on responsible business conduct can provide an important framework for embedding sustainability factors 
+in risk management systems and processes. 
+VI.C.1. Boards should ensure that companies’ lobbying activities are coherent with their 
+sustainability-related goals and targets. 
+Boards should effectively oversee the lobbying activities management conducts and finances on behalf of 
+the company, in order to ensure that management gives due regard to the long -term strategy for 
+sustainability adopted by the board. For instance, lobbying against any carbon pricing policy may be 
+expected to increase a company’s short-term profits but not be in line with the company’s goal to make an 48    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+orderly transition to a low carbon economy. In some jurisdictions, boards also have a role in overseeing 
+the disclosure of political donations, including related to lobbying activities.  
+VI.C.2. Boards should assess whether the company’s capital structure is compatible with its 
+strategic goals and its associated risk appetite to ensure it is resilient to different scenarios. 
+The management and board members are best placed to decide if the capital structure of a company is 
+compatible with the strategic goals and its associated risk appetite, within existing restrictions established 
+by shareholders. In order to ensure the company’s financial soundness, the board should monitor the 
+capital structure and capital sufficiency with due consideration to different scenarios, including those with 
+low probability but high impact. 
+VI.D. The corporate governance framework should consider the rights, roles and interests of 
+stakeholders and encourage a ctive co -operation between companies, shareholders and 
+stakeholders in creating value, quality jobs, and sustainable and resilient companies.  
+Corporate governance aims to encourage the various stakeholders in the company to undertake 
+economically optimal levels of investment in company-specific human and physical capital. For workers, 
+the company they work for is not only their source of income but also where they spend a large part of their 
+lives and the company’s long-term sustainability is important to them. The competitiveness and ultimate 
+success of a corporation is the result of teamwork that embodies contributions from a range of different 
+resource providers including investors, the workforce, creditors, customers, affected communities, suppliers 
+and other stakeholders. Corporations should recognise that the contributions of stakeholders constitute a 
+valuable resource for building competitive and profitable businesses. It may, therefore, be in the long-term 
+interest of corporations to foster value-creating co-operation among stakeholders. 
+VI.D.1. The rights of stakeholders that are established by law or through mutual agreements are to 
+be respected. 
+The rights of stakeholders are to a large extent established by law (e.g. labour, business, commercial, 
+environmental, and insolvency laws) or by contractual relations that companies must respect. In some 
+jurisdictions, it is mandatory for companies to carr y out human rights and environmental due diligence. 
+Nevertheless, even in areas where stakeholder interests are not legislated or established by contract, 
+many companies make additional commitments to stakeholders, given that concern over corporate 
+reputation and corporate performance often requires the recognition of broader interests. This may in some 
+jurisdictions be achieved by companies using the OECD Guidelines for Multinational Enterprises  and 
+associated due diligence standards for risk -based due dil igence to identify, prevent and mitigate actual 
+and potential adverse impacts of their business, and account for how these impacts are addressed.  
+VI.D.2. Where stakeholder interests are protected by law, stakeholders should have the opportunity 
+to obtain effective redress for violation of their rights at a reasonable cost and without excessive 
+delay. 
+The legal framework and process should be transparent and not impede the ability of stakeholders to 
+communicate and to obtain redress fo r the violation of rights at a reasonable cost and without excessive 
+delay. 
+VI.D.3. Mechanisms for employee participation should be permitted to develop. 
+The degree to which employees participate in corporate governance depends on national laws and 
+practices, and may vary from company to company as well. In the context of corporate governance, 
+mechanisms for participation may benefit companies directly as well as indirectly through the readiness by 
+employees to invest in firm specific skills. Example s of mechanisms for employee participation include 
+employee representation on boards and governance processes such as works councils that consider 
+employee viewpoints in certain key decisions. International conventions and national norms also recognise 
+the rights of employees to information, consultation and negotiation. With respect to performance    49 
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+enhancing mechanisms, employee stock ownership plans or other profit sharing mechanisms can be found 
+in many jurisdictions.  Pension commitments are also often an element of the relationship between the 
+company and its past and present employees. Where such commitments involve establishing an 
+independent fund, its trustees should be independent of the company’s management and manage the fund 
+in the interest of all beneficiaries. 
+VI.D.4. Where stakeholders participate in the corporate governance process, they should have 
+access to relevant, sufficient and reliable information on a timely and regular basis.  
+Where laws and practice of corporate governance frameworks provide for participation by stakeholders, it 
+is important that stakeholders have access to information necessary to fulfil their responsibilities.  
+VI.D.5. Stakeholders, including individual workers and their representative bodies, should be able 
+to freely communicate their concerns about illegal or unethical practices to the board and/or to the 
+competent public authorities, and their rights should not be compromised for doing this.  
+Unethical and illegal practices by corporate officers may not only violate the rights of stakeholders but also 
+be detrimental to the company in terms of reputational effects. It is therefore important for companies 
+to establish a confidential whistleblowing policy with procedures and safe-harbours for complaints by 
+workers, either  personally or through their representative bodies, and others outside the company, 
+concerning illegal and unethical behaviour. The board should be encouraged to protect these individuals 
+and representative bodies and to give them confidenti al direct access to someone independent on the 
+board, often a member of an audit or an ethics committee. Some companies have established an 
+ombudsman to deal with complaints. Relevant authorities have also established confidential phone and e-
+mail faciliti es to receive complaints. While in certain jurisdictions representative workforce bodies 
+undertake the tasks of conveying concerns  to the company, individual workers should not be precluded 
+from, or be less protected, when acting alone. In the absence of timely remedial action or in the face of 
+reasonable risk of negative action to a complaint  regarding contravention of the law,  workers are 
+encouraged to report their bona fide complaint to the competent authorities. Many jurisdictions also provide 
+for the possibility to bring cases of alleged violations of the OECD Guidelines for Multinational Enterprises 
+to the relevant National Contact Point. The company should refrain from discriminatory or disciplinary 
+actions against such workers or bodies. 
+VI.D.6. The exercise of the rights of bondholders of publicly traded companies should be 
+facilitated. 
+The extended and substantial rise in the use of bond financing by publicly traded companies and their 
+subsidiaries warrants greater attention to the role and rights of bondholders in corporate governance, as well 
+as its importance for the resilience of companies. 
+In bond issuances offered to a large number of investors, an independent bond trustee is typically assigned 
+to represent them, review instances of covenant default and protect the interests of bondholders during debt 
+restructuring. While the exact scope of a trustee’s activities is generally contractually defined, policy makers 
+may enact regulation regarding the eligibility of a trustee and its duties prior to and during a default. 
+The exercise of bondholder rights can also be facilitated by incentivising institutional investors to monitor 
+and engage with companies. Institutional investors have different business models and liability structures, 
+and therefore face distinct incentives to be more or less active as bondholders. Corporate governance 
+frameworks can, however, spur investors to be more active as creditors, such as recommending in a 
+stewardship code that signatories can actively exercise their rights with respect to corporate bonds. Further, 
+market initiatives may be useful to set standards and incentivise the use of enforceable and clearly defined 
+covenants. The use of adjustable financial metrics that leave issuers the discretion to define whether they 
+comply with covenants may need to be avoided. 50    
+G20/OECD PRINCIPLES OF CORPORATE GOVERNANCE © OECD 2023 
+  
+Out-of-court debt restructuring, such as a distressed debt exchange, is often more cost-effective than formal 
+bankruptcy proceedings and its use may, therefore, be facilitated. In addition to adhering to internationally 
+recognised benchmarks for creditor rights and insolvency frameworks, countries could benefit from 
+facilitating bondholders’ participation in publicly traded companies’ out -of-court debt restructuring.  For 
+instance, clear guidance on how insider trading rules may apply during a debt restructuring or a covenant 
+waiver negotiation could provide more comfort for bondholders to take part in such processes. Another 
+possibility would be to make the identification of bondholders easier so that corporate debtors can quickly 
+find them to start a debt restructuring negotiation. However, this is subject to jurisdictional legislation, such 
+as the resolution and restructuring regime applicable to banks and credit institutions in several jurisdictions. 
+VI.D.7. The corporate governance framework should be complemented by an effective and efficient 
+insolvency framework and by effective enforcement of creditor rights.  
+Creditors are key stakeholders and the terms, volume and type of credit extended to companies will depend 
+importantly on their rights and on their enforceability. Companies with a good corporate governance record 
+are generally able to borrow larger sums on more favourable terms than those with poor re cords or which 
+operate in less transparent markets. The framework for corporate insolvency varies widely across countries. 
+In some countries, when companies are nearing insolvency, the legislative framework imposes a duty on 
+directors to act in the interes ts of creditors, who might therefore play a prominent role in the governance 
+of the company. 
+Creditor rights also vary, ranging from secured bondholders to unsecured creditors. Insolvency procedures 
+usually require efficient mechanisms for reconciling the interests of different classes of creditors. In many 
+jurisdictions provision is made for special rights such as through “debtor in possession” financing which 
+provides incentives/protection for new funds made available to the company in ban kruptcy. 
+ 
+ G20/OECD Principles of Corporate Governance
+The G20/OECD Principles of Corporate Governance help policy makers evaluate and improve the legal, 
+regulatory and institutional framework for corporate governance. They identify the key building blocks 
+for a sound corporate governance framework and offer practical guidance for implementation at the national 
+level. The Principles also provide guidance for stock exchanges, investors, corporations and others that have 
+a role in developing good corporate governance.
+9HSTCQE*efbgib+
+PRINT ISBN 978-92-64-45168-1
+PDF ISBN 978-92-64-76182-7
+G20/OECD Principles of Corporate Governance

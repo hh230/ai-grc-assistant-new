@@ -1,0 +1,480 @@
+مقيد– عام  
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+  
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+White: Sharing Indicator 
+Document Classification: Public 
+Data Cybersecurity Controls 
+(DCC -1:2022)  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+2Document Classification: Public 
+White: Sharing Indicator   
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+In the Name of Allah, 
+The Most Gracious, 
+The Most Merciful 
+DISCLAIMER: The following controls will be governed by and implemented in 
+accordance with the laws of the Kingdom of Saudi Arabia, and must be subject 
+to the exclusive jurisdiction of the courts of the Kingdom of Saudi Arabia. 
+Therefore, the Arabic version will be the binding language for all matters relating 
+to the meaning or interpretation of this document.  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+3Document Classification: Public 
+White: Sharing Indicator   
+ 
+Traffic Light Protocol (TLP):  
+This marking protocol is widely used around the world. It has four colors 
+(traffic lights): 
+ 
+• 
+• 
+• 
+• 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+4Document Classification: Public 
+White: Sharing Indicator   
+Table of Contents 
+ 
+5 Executive Summary 
+6 Introduction 
+7 Objectives 
+7 Scope of Work and Applicability 
+7   DCC Scope of Work    
+7   DCC Statement of Applicability 
+8 Implementation and Compliance 
+8 Update and Review 
+9 DCC Domains and Structure 
+9   Main domains and subdomains of DCC 
+10   Structure 
+11 DCC Controls 
+20 Appendices 
+20 Appendix (A): Relationship with the Essential Cybersecurity Controls 
+22 Appendix (B): Terms and Definitions 
+24 
+25 
+Appendix (C): List of Abbreviations 
+Appendix (D): Relationship with Data Lifecycle 
+ 
+List of Tables 
+10 Table 1: DCC Structure 
+22 Table 2: Terms and Definitions 
+24 Table 3: List of Abbreviations 
+25 Table 4: Relationship with Data Lifecycle 
+ 
+List of Figures and Illustrations 
+9 Figure 1: DCC Main Domains and Subdomains 
+10 Figure 2: Controls Coding Scheme 
+10 Figure 3: DCC Structure 
+20 Figure 4: Guide to Colors of Subdomains in Figure 5 
+21 Figure 5: DCC and ECC Subdomains 
+ 
+ 
+ 
+ 
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+5Document Classification: Public 
+White: Sharing Indicator   
+Executive Summary 
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+6Document Classification: Public 
+White: Sharing Indicator   
+Introduction 
+ 
+• 
+• 
+• 
+• 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+7Document Classification: Public 
+White: Sharing Indicator   
+Objectives 
+ 
+• 
+• 
+• 
+ 
+Scope of Work and Applicability 
+DCC Scope of Work  
+DCC Statement of Applicability   
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+8Document Classification: Public 
+White: Sharing Indicator   
+Implementation and Compliance 
+ 
+ 
+Update and Review 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+9Document Classification: Public 
+White: Sharing Indicator   
+DCC Domains and Structure 
+Main domains and subdomains of DCC 
+ 
+ 
+1. Cybersecurity 
+Governance 
+2. Cybersecurity 
+Defense 
+3. Third-Party and 
+Cloud Computing 
+Cybersecurity 
+ 
+                        
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+10Document Classification: Public 
+White: Sharing Indicator   
+Structure 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Data Cybersecurity Controls 
+ Version No. 
+ Year of Issuance 
+DCC 
+ 1 
+ 2022 
+2 
+ 3 
+ 2 
+ 6 
+Sub-Control No. 
+Main Control No. 
+Subdomain No. 
+Main domain No. 
+1  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+11Document Classification: Public 
+White: Sharing Indicator   
+Data Cybersecurity Controls 
+ 
+                       Cybersecurity Governance 
+ 
+1  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+12Document Classification: Public 
+White: Sharing Indicator   
+ 
+  
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+13Document Classification: Public 
+White: Sharing Indicator   
+                       Cybersecurity Defense 
+ 
+ 
+2 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+14Document Classification: Public 
+White: Sharing Indicator   
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+15Document Classification: Public 
+White: Sharing Indicator   
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+16Document Classification: Public 
+White: Sharing Indicator   
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+17Document Classification: Public 
+White: Sharing Indicator   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+18Document Classification: Public 
+White: Sharing Indicator   
+ 
+                         Third-Party and Cloud Computing Cybersecurity     
+   
+    
+3 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+19Document Classification: Public 
+White: Sharing Indicator   
+  
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+20Document Classification: Public 
+White: Sharing Indicator   
+Appendices 
+Appendix (A):  The relationship with the Essential Cybersecurity 
+Controls (ECC) 
+• 
+• 
+• 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+21Document Classification: Public 
+White: Sharing Indicator   
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+  
+ 
+  
+  
+ 
+  
+  
+ 
+  
+  
+ 
+  
+  
+ 
+  
+  
+  
+ 
+  
+ 
+  
+ 
+  
+  
+ 
+ 
+  
+ 
+ 
+  
+  
+ 
+                          
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+22Document Classification: Public 
+White: Sharing Indicator   
+Appendix (B): Terms and Definitions 
+ 
+• 
+• 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+23Document Classification: Public 
+White: Sharing Indicator   
+• 
+• 
+• 
+• 
+• 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+24Document Classification: Public 
+White: Sharing Indicator   
+Appendix (C): List of the Abbreviations 
+ 
+   
+   
+   
+ 
+ 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+25Document Classification: Public 
+White: Sharing Indicator   
+Appendix (D): The Relationship with Data Lifecycle 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+26Document Classification: Public 
+White: Sharing Indicator   
+ 
+ 
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+27Document Classification: Public 
+White: Sharing Indicator    
+ 
+                                   Data                               
+Data Cybersecurity Controls 
+28Document Classification: Public 
+White: Sharing Indicator   

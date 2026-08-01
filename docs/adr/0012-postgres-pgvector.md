@@ -1,9 +1,15 @@
 # ADR 0012: PostgreSQL + pgvector as the primary data store
 
-- Status: Accepted
+- Status: Accepted — **access-mechanism clause amended in scope for V2 by [ADR 0045](./0045-v2-persistence-mechanism.md)**
 - Date: 2026-06-26
 - Deciders: Architecture team
-- Related: CLAUDE.md §4, §12, §20; ADR 0008
+- Related: CLAUDE.md §4, §12, §20; ADR 0008; **ADR 0045 (V2 persistence mechanism — reconciliation)**
+
+> **Scope note (added 2026-07-17):** the store choice below (PostgreSQL + pgvector) stands unchanged.
+> The **access-mechanism** sentence in *Decision* (async SQLAlchemy + Alembic + "no raw SQL") is
+> **V1-scoped**; **V2** uses synchronous psycopg3 + raw *parameterized* SQL behind Ports & Adapters
+> with ordered `.sql` migrations — see [ADR 0045](./0045-v2-persistence-mechanism.md). This ADR's
+> Decision text is left immutable, per the ADR process; ADR 0045 carries the V2 reconciliation.
 
 ## Context
 

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "corporate policies--acsom1102pdf-56448.pdf",
+  "filename": "acsom1102pdf-56448.pdf",
+  "extension": ".pdf",
+  "category": "Corporate Policies",
+  "relative_path": "Corporate Policies/acsom1102pdf-56448.pdf",
+  "size_bytes": 105943,
+  "last_modified": "2026-06-26T21:28:25.774158+00:00",
+  "checksum_sha256": "d4715142079feab279297144223849cf58eca2766aa851f527dc24c938e2c3a5",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 12,
+  "character_count": 22277,
+  "extraction_duration": 0.17730008403304964,
+  "parsed_at": "2026-07-12T16:09:44.827971+00:00",
+  "error": null,
+  "document_profile": "corporate_policy",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 60,
+  "structure_profile_used": "policy_procedure",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.005801334045827389,
+  "chunked_at": "2026-07-12T16:09:44.835246+00:00",
+  "chunking_error": null
+}

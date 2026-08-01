@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "nist--nist sp 800-171--nist.sp.800-171r2.pdf",
+  "filename": "NIST.SP.800-171r2.pdf",
+  "extension": ".pdf",
+  "category": "NIST",
+  "relative_path": "NIST/NIST SP 800-171/NIST.SP.800-171r2.pdf",
+  "size_bytes": 1539170,
+  "last_modified": "2026-07-12T14:23:43.155810+00:00",
+  "checksum_sha256": "298bdbfcf6a4890a564b225c893230a0b32b2e69e3b98dd898aaeb1d544c5e12",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 114,
+  "character_count": 303090,
+  "extraction_duration": 1.8263344580773264,
+  "parsed_at": "2026-07-12T16:12:28.654497+00:00",
+  "error": null,
+  "document_profile": "control_framework",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 829,
+  "structure_profile_used": "standard_clause",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.052411874989047647,
+  "chunked_at": "2026-07-12T16:12:28.722946+00:00",
+  "chunking_error": null
+}

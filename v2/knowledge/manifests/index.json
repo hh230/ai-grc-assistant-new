@@ -1,0 +1,1060 @@
+{
+  "manifest_version": "1.3",
+  "generated_at": "2026-07-12T16:13:32.137645+00:00",
+  "document_count": 117,
+  "documents": [
+    {
+      "document_id": "cma--قواعد الإدراج.pdf",
+      "filename": "قواعد الإدراج.pdf",
+      "category": "CMA",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "26e2d76f58da3ce0b3b79d4749302d68b4f2636feec3993e411712b48e517a85",
+      "manifest_path": "cma--قواعد الإدراج.pdf.json"
+    },
+    {
+      "document_id": "cma--لوائح الحوكمة.pdf",
+      "filename": "لوائح الحوكمة.pdf",
+      "category": "CMA",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "c1fafe0fa9ac6190acfd1bfe9476198a06421ee25ca08025a6eea6f1c865b2e5",
+      "manifest_path": "cma--لوائح الحوكمة.pdf.json"
+    },
+    {
+      "document_id": "cobit--cobit 2019--    cobit 2019 framework.pdf",
+      "filename": "    COBIT 2019 Framework.pdf",
+      "category": "COBIT",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "ee2300d4660fa0a8ae719a3662cbdc9ead7d8f8ebe37acb4fd7ef4de041da127",
+      "manifest_path": "cobit--cobit 2019--    cobit 2019 framework.pdf.json"
+    },
+    {
+      "document_id": "coso-- coso erm--erm - coso application techniques.pdf",
+      "filename": "ERM - COSO Application Techniques.pdf",
+      "category": "COSO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "2c7c75cdd1c296ffea7aba7d5c3d5a9129d4e56ee0555e8e08b409455b439ec3",
+      "manifest_path": "coso-- coso erm--erm - coso application techniques.pdf.json"
+    },
+    {
+      "document_id": "coso--internal control--    internal control framework.pdf",
+      "filename": "    Internal Control Framework.pdf",
+      "category": "COSO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "45bcf0288aa4e959ec2b5f943e03fe0c168827411928319bcaf62986dfd2e61a",
+      "manifest_path": "coso--internal control--    internal control framework.pdf.json"
+    },
+    {
+      "document_id": "compliance--    corporate compliance.pdf",
+      "filename": "    Corporate Compliance.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "28d17c3884a41e345c9ee639b230b9703487110b74bfaba4fa57e198436cbe33",
+      "manifest_path": "compliance--    corporate compliance.pdf.json"
+    },
+    {
+      "document_id": "compliance--a guide for developing and implementing a corporate compliance program - fr.pdf",
+      "filename": "A Guide for Developing and Implementing a Corporate Compliance Program - FR.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a433b75e11d964b3a63cee2987a9fd7536d80112397ff980af589981287759b8",
+      "manifest_path": "compliance--a guide for developing and implementing a corporate compliance program - fr.pdf.json"
+    },
+    {
+      "document_id": "compliance--eisai-compliance-handbook-7th-edition-english-version.pdf",
+      "filename": "Eisai-Compliance-Handbook-7th-edition-English-version.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "88099b2f7c120affb72e7a4c481ec377d648db4c972d9c00e2b7d0a2b71d8899",
+      "manifest_path": "compliance--eisai-compliance-handbook-7th-edition-english-version.pdf.json"
+    },
+    {
+      "document_id": "compliance--ethics-and-compliance-handbook.pdf",
+      "filename": "Ethics-and-Compliance-Handbook.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "58a748e539826fcf7e55ed38e3a1ade6ca4bc18a0e2f2feb176f704c8e1f70cd",
+      "manifest_path": "compliance--ethics-and-compliance-handbook.pdf.json"
+    },
+    {
+      "document_id": "compliance--hhs-oig-gcpg-2023.pdf",
+      "filename": "HHS-OIG-GCPG-2023.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "251bd8dfdc3c31cb82671691ebd8ab7ddaa0d9b99fea6a3e4a2daa08d09a0681",
+      "manifest_path": "compliance--hhs-oig-gcpg-2023.pdf.json"
+    },
+    {
+      "document_id": "compliance--cms.pdf",
+      "filename": "cms.pdf",
+      "category": "Compliance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "075eab57e75d852b473c98345cece9dba48bb1050865f6e86b864c58e1ea717c",
+      "manifest_path": "compliance--cms.pdf.json"
+    },
+    {
+      "document_id": "contract templates--489_fecc model distribution contract -_2022.pdf",
+      "filename": "489_Fecc Model Distribution Contract -_2022.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4fdfa807bd0a60b34080d8fbb3bb3fb25263965644b50e3c73489989908d128c",
+      "manifest_path": "contract templates--489_fecc model distribution contract -_2022.pdf.json"
+    },
+    {
+      "document_id": "contract templates--annex 2 sample partnership agreement innovative partnerships_05_12_2022 (1).pdf",
+      "filename": "Annex 2 Sample Partnership Agreement innovative partnerships_05_12_2022 (1).pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "965144a7736c9ab0e742ccfa6467972b05dbe0f75b66a35f3eadd92d29e5db14",
+      "manifest_path": "contract templates--annex 2 sample partnership agreement innovative partnerships_05_12_2022 (1).pdf.json"
+    },
+    {
+      "document_id": "contract templates--attachment 2 - master service agreement template.pdf",
+      "filename": "Attachment 2 - Master Service Agreement Template.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "b33496a62f4c82440ab827b5ce3be94f6bd38fb13814e661e68267f511fd0820",
+      "manifest_path": "contract templates--attachment 2 - master service agreement template.pdf.json"
+    },
+    {
+      "document_id": "contract templates--basic-non-disclosure-agreement.pdf",
+      "filename": "Basic-Non-Disclosure-Agreement.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "203788e953b24dddab8f335632ab258ce98d436349be26acedd929a511e34e4e",
+      "manifest_path": "contract templates--basic-non-disclosure-agreement.pdf.json"
+    },
+    {
+      "document_id": "contract templates--contract_of_agency_self_notes.pdf",
+      "filename": "CONTRACT_OF_AGENCY_SELF_NOTES.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "3662db64026f188c61d2e1a8a0aa5707bf1ecf1acc47cd565d1680cfca0d94ca",
+      "manifest_path": "contract templates--contract_of_agency_self_notes.pdf.json"
+    },
+    {
+      "document_id": "contract templates--commercial-agency-models.pdf",
+      "filename": "Commercial-agency-models.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "90c1a304c793a68cddee558694eea05fbf94c9a5c6c345a2c08b0fd6387d07c8",
+      "manifest_path": "contract templates--commercial-agency-models.pdf.json"
+    },
+    {
+      "document_id": "contract templates--distribution agreement.pdf",
+      "filename": "Distribution Agreement.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "69d131562913be1d101c9571b2eb7030c6fbd0f0b4f67c01422062d2625fa3fa",
+      "manifest_path": "contract templates--distribution agreement.pdf.json"
+    },
+    {
+      "document_id": "contract templates--franchise agreement - retail.pdf",
+      "filename": "Franchise Agreement - Retail.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "efce17aa3d99dacf1d42021533e13a401489aba5aee2d647ffa767dfa67b62f9",
+      "manifest_path": "contract templates--franchise agreement - retail.pdf.json"
+    },
+    {
+      "document_id": "contract templates--ksa_labourlaw_annex38.pdf",
+      "filename": "KSA_labourlaw_annex38.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "826d0a7c7c5a097d6cbd06be8ea9ca2861453ab431b96f6fc38d7fa497790ffd",
+      "manifest_path": "contract templates--ksa_labourlaw_annex38.pdf.json"
+    },
+    {
+      "document_id": "contract templates--labor law.pdf",
+      "filename": "LABOR LAW.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "eefc413f2b943103522ae829330459f1ea8e1d4200191a8bc5cac41341cc40b8",
+      "manifest_path": "contract templates--labor law.pdf.json"
+    },
+    {
+      "document_id": "contract templates--non-disclosure agreement form.pdf",
+      "filename": "Non-Disclosure Agreement Form.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "ee6aabef5a829e459969f17e1117cd70cfc1f21f179052b6a43708e51b1ce3f3",
+      "manifest_path": "contract templates--non-disclosure agreement form.pdf.json"
+    },
+    {
+      "document_id": "contract templates--non-disclosure+agreement.pdf",
+      "filename": "Non-Disclosure+Agreement.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "2ebd00ba80f2cb742628492b936e71e8f84bc89e028ea54360d4c427178f2f11",
+      "manifest_path": "contract templates--non-disclosure+agreement.pdf.json"
+    },
+    {
+      "document_id": "contract templates--doc_4.pdf",
+      "filename": "doc_4.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "dae46aaae9f740a3e443f9c7839d6532e1431608490303655c2a0590d69adb42",
+      "manifest_path": "contract templates--doc_4.pdf.json"
+    },
+    {
+      "document_id": "contract templates--enable-shareholders-agreement-redacted.pdf",
+      "filename": "enable-shareholders-agreement-redacted.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "6e14028df9ec4cd5f8a76de55ba47df0ccab0837ee5376d1560877dab93a1d41",
+      "manifest_path": "contract templates--enable-shareholders-agreement-redacted.pdf.json"
+    },
+    {
+      "document_id": "contract templates--masterassurences.pdf",
+      "filename": "masterassurences.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "0b47decf00b3803a0a2a7c08c7c3344468fa70beceff7073625ffa47d4408487",
+      "manifest_path": "contract templates--masterassurences.pdf.json"
+    },
+    {
+      "document_id": "contract templates--mlh-saas-agreement.pdf",
+      "filename": "mlh-saas-agreement.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "fa77a91c5d1fcb47a422bb213b5506181b4ff2d84b81c7bca91b45c740055239",
+      "manifest_path": "contract templates--mlh-saas-agreement.pdf.json"
+    },
+    {
+      "document_id": "contract templates--shareholderagreement.pdf",
+      "filename": "shareholderagreement.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "0cae65e51ff567954b2fefe0f50a93bfc0a2db3d9c12454f0c68275bc8f04c91",
+      "manifest_path": "contract templates--shareholderagreement.pdf.json"
+    },
+    {
+      "document_id": "contract templates--vendor-services-agreement-ksa.pdf",
+      "filename": "vendor-services-agreement-ksa.pdf",
+      "category": "Contract Templates",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "1d05fe90603c5fe54b2cf50a1a47ace5b8c5c3033863a71f3d2972458d143dd5",
+      "manifest_path": "contract templates--vendor-services-agreement-ksa.pdf.json"
+    },
+    {
+      "document_id": "contract templates--نموذج-عقد-saas.docx",
+      "filename": "نموذج-عقد-SaaS.docx",
+      "category": "Contract Templates",
+      "extension": ".docx",
+      "status": "parsed",
+      "checksum_sha256": "13ac2d51293ad8e5998a9cc21e861c5300ab6631e31b1bc4314f612bfb62d481",
+      "manifest_path": "contract templates--نموذج-عقد-saas.docx.json"
+    },
+    {
+      "document_id": "corporate policies--approved-procurement-policy.pdf",
+      "filename": "APPROVED-Procurement-Policy.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "cddceadfbf5964cf60f7e00eed6382535c5c700e2d5680d5fc03fa02ab8e1af4",
+      "manifest_path": "corporate policies--approved-procurement-policy.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--annex-8-travel-policy.pdf",
+      "filename": "Annex-8-Travel-Policy.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "85797dd9a6c4031fc9ad6595ccc21b92b17c404c7919b4e3cb262cbcdaa2fe10",
+      "manifest_path": "corporate policies--annex-8-travel-policy.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--comarch ict - best practices for effective & efficient vendor management.pdf",
+      "filename": "COMARCH ICT - BEST PRACTICES FOR EFFECTIVE & EFFICIENT VENDOR MANAGEMENT.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8f6b01fac6c6808e54ee4f100be4cc436543cf062df22280dc00320b01b26bde",
+      "manifest_path": "corporate policies--comarch ict - best practices for effective & efficient vendor management.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--code-of-conduct-english-2.pdf",
+      "filename": "Code-of-Conduct-English-2.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "b10bfc1d71489b5a07c4d9393eb647312c7a6cd877ca9072f1e63f935f1d072e",
+      "manifest_path": "corporate policies--code-of-conduct-english-2.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--code_of_conduct_-_english_final2.pdf",
+      "filename": "Code_of_Conduct_-_English_final2.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a372be1de5fe78c9b48946512282604c36550bea25c4d110c36c5cd8217d3d5a",
+      "manifest_path": "corporate policies--code_of_conduct_-_english_final2.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--data-privacy-policy-.pdf",
+      "filename": "Data-Privacy-Policy-.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "87c62df5fffc5140c5a77c7f3a8339aec7fe56510144ad5e6036e62daa9d6d5c",
+      "manifest_path": "corporate policies--data-privacy-policy-.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--hr policy manual 2023 (8).pdf",
+      "filename": "HR Policy Manual 2023 (8).pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "25c147517b2240fb8d6c954d83241684cbc5b83b18179d8a0d819a775d528167",
+      "manifest_path": "corporate policies--hr policy manual 2023 (8).pdf.json"
+    },
+    {
+      "document_id": "corporate policies--privacypolicyguideline.pdf",
+      "filename": "PrivacyPolicyGuideline.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "fa42033cde5c45d5ed5292887f740bf4f51bd16082648a7700b0a033faa72d9e",
+      "manifest_path": "corporate policies--privacypolicyguideline.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--travel-and-tourism-services-regulations-en-v012.pdf",
+      "filename": "Travel-and-Tourism-Services-Regulations-En-V012.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "c435a5b376fab07ecd582cc7c58566e85aa3cb69bdc697b026dde181e7799529",
+      "manifest_path": "corporate policies--travel-and-tourism-services-regulations-en-v012.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--whistle blowing.pdf",
+      "filename": "Whistle Blowing.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "6e9d7e5d43f087c50f255f49990b9126d887a5b084427116a2360a6bd6e3132b",
+      "manifest_path": "corporate policies--whistle blowing.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--acsom1102pdf-56448.pdf",
+      "filename": "acsom1102pdf-56448.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "d4715142079feab279297144223849cf58eca2766aa851f527dc24c938e2c3a5",
+      "manifest_path": "corporate policies--acsom1102pdf-56448.pdf.json"
+    },
+    {
+      "document_id": "corporate policies--information_security_policy_0.pdf",
+      "filename": "information_security_policy_0.pdf",
+      "category": "Corporate Policies",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "ee756ded5a11ac0cc88ab598e8b0557d62dca242388693f0293f6941f0110f9f",
+      "manifest_path": "corporate policies--information_security_policy_0.pdf.json"
+    },
+    {
+      "document_id": "grc--basel operational risk--bcbs195.pdf",
+      "filename": "bcbs195.pdf",
+      "category": "GRC",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "d9491f870b4d8ffafa78b45923ada75b3e93223fca2f0ca069e8e3b708a108fc",
+      "manifest_path": "grc--basel operational risk--bcbs195.pdf.json"
+    },
+    {
+      "document_id": "grc--king iv--iodsa_king_iv_report_-_webversion.pdf",
+      "filename": "IoDSA_King_IV_Report_-_WebVersion.pdf",
+      "category": "GRC",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "c6d0f560efddf714c43a9ca4ea382818d3536a0d841a56d40a89ced3c0646a23",
+      "manifest_path": "grc--king iv--iodsa_king_iv_report_-_webversion.pdf.json"
+    },
+    {
+      "document_id": "grc--oecd governance principles--ed750b30-en.pdf",
+      "filename": "ed750b30-en.pdf",
+      "category": "GRC",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "361f2b970974e3267ee4ef32033afd1a5f056885adb1b82b3d3fabfe8c7001a8",
+      "manifest_path": "grc--oecd governance principles--ed750b30-en.pdf.json"
+    },
+    {
+      "document_id": "grc--three lines model--tlm_assurance_advice_support_effective_gov_en.pdf",
+      "filename": "tlm_assurance_advice_support_effective_gov_en.pdf",
+      "category": "GRC",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a902f6d321112cd29cb3d9f8a29cb06c8816f4b7dc6185e1224c1a756f570b5d",
+      "manifest_path": "grc--three lines model--tlm_assurance_advice_support_effective_gov_en.pdf.json"
+    },
+    {
+      "document_id": "governance--corporate governance--corporategovernanceregulations1.pdf",
+      "filename": "CorporateGovernanceRegulations1.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "bd2c3bcaf4dfcf3a47dbd8c6931e4be75e8997a577f28267e40f0f8e27c9f5d2",
+      "manifest_path": "governance--corporate governance--corporategovernanceregulations1.pdf.json"
+    },
+    {
+      "document_id": "governance--corporate governance--iodsa_king_iv_report_-_webversion.pdf",
+      "filename": "IoDSA_King_IV_Report_-_WebVersion.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "c6d0f560efddf714c43a9ca4ea382818d3536a0d841a56d40a89ced3c0646a23",
+      "manifest_path": "governance--corporate governance--iodsa_king_iv_report_-_webversion.pdf.json"
+    },
+    {
+      "document_id": "governance--digital government--publication.pdf",
+      "filename": "publication.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "3db750da71c97a0418b28b3ba15bdef07737572232a43de733154eaad848ca1a",
+      "manifest_path": "governance--digital government--publication.pdf.json"
+    },
+    {
+      "document_id": "governance--digital government--نسخة من publication.pdf",
+      "filename": "نسخة من publication.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4fccac920fed21ccb4a912c179ca84e17dae5be8a1cdf354895ceff1aa221536",
+      "manifest_path": "governance--digital government--نسخة من publication.pdf.json"
+    },
+    {
+      "document_id": "governance--governance guides--booklet_13.pdf",
+      "filename": "Booklet_13.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "71049ebb876382a973f0deaf87019f39e50db2de5fd858f9e57fd37646f3f4c4",
+      "manifest_path": "governance--governance guides--booklet_13.pdf.json"
+    },
+    {
+      "document_id": "governance--it governance--ed750b30-en.pdf",
+      "filename": "ed750b30-en.pdf",
+      "category": "Governance",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "361f2b970974e3267ee4ef32033afd1a5f056885adb1b82b3d3fabfe8c7001a8",
+      "manifest_path": "governance--it governance--ed750b30-en.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 22301--iso-22301-2019-2.pdf",
+      "filename": "ISO-22301-2019-2.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "9281d37c68010d10b18a270f89bbd367117326f8c56cc25d8a6c4666637b54dc",
+      "manifest_path": "iso--iso 22301--iso-22301-2019-2.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 27001--iso 27001-2022 rm.pdf",
+      "filename": "ISO 27001-2022 rm.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "843a6728009540947b2c5531f94b4cf1fb698d5bf3b51b324c8801e3e01c5b78",
+      "manifest_path": "iso--iso 27001--iso 27001-2022 rm.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 27002--iso 27002.pdf",
+      "filename": "ISO 27002.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "1da41b305cce13c7d9150e8ceb520eb13d082d8a80080f9768a5dc9f2900b7e2",
+      "manifest_path": "iso--iso 27002--iso 27002.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 27005--iso iec 27005-2018.pdf",
+      "filename": "ISO IEC 27005-2018.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "bb9b331d917487f41f420a21b59c3b0c72b732b3a158fadbf6bebf7eeb6838a7",
+      "manifest_path": "iso--iso 27005--iso iec 27005-2018.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 27017 (cloud security)--iso iec 27017-2015.pdf",
+      "filename": "ISO IEC 27017-2015.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "baa45e80a596e7eb929fd3450dcf1ea6f96ec07f6cca12aa0efe552c2fe0bf5a",
+      "manifest_path": "iso--iso 27017 (cloud security)--iso iec 27017-2015.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 31000--iso 31000.pdf",
+      "filename": "ISO 31000.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "6e983b542486d45a7beefd6395755b2782679a60c7fcc09d17ead45dded15412",
+      "manifest_path": "iso--iso 31000--iso 31000.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 37001--iso 37001.pdf",
+      "filename": "ISO 37001.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "01c8cb4edadfb0d5196d76d97110affcc8027ea772d35b0d68f023e40645065c",
+      "manifest_path": "iso--iso 37001--iso 37001.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 37300--iso 37300.pdf",
+      "filename": "ISO 37300.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "b80255bddb7a80cb81c0cc262b11b192009e0d0e0e0d9e82c05bd12c8bc161e7",
+      "manifest_path": "iso--iso 37300--iso 37300.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 37301--iso-37301-2021.pdf",
+      "filename": "ISO-37301-2021.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "25e63f0fe34e3a51dcc2ccce17f8d4b71a2f287865a0ac2e8489396308a070cd",
+      "manifest_path": "iso--iso 37301--iso-37301-2021.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 42001--scan-iso-420012023_-web.pdf",
+      "filename": "SCAN-ISO-420012023_-Web.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "d50103cc0af6d2322c60753ab4a6d9cc54594bc78163481322bf80ee2f75a896",
+      "manifest_path": "iso--iso 42001--scan-iso-420012023_-web.pdf.json"
+    },
+    {
+      "document_id": "iso--iso 9001--iso 9001.pdf",
+      "filename": "ISO 9001.pdf",
+      "category": "ISO",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "f96c34c65fd35d55540685e97d5c818acce1e012caa835f8f476cb8eec509df4",
+      "manifest_path": "iso--iso 9001--iso 9001.pdf.json"
+    },
+    {
+      "document_id": "internal audit--global internal audit standards 2024--global-internal-audit-standards-arabic.pdf",
+      "filename": "global-internal-audit-standards-arabic.pdf",
+      "category": "Internal Audit",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "7c83eb32aca7a07b8485f6fe3ac36526348be13c0fe28b36952e5935d7126117",
+      "manifest_path": "internal audit--global internal audit standards 2024--global-internal-audit-standards-arabic.pdf.json"
+    },
+    {
+      "document_id": "internal audit--global internal audit standards 2024--globalinternalauditstandards_2024january9.pdf",
+      "filename": "globalinternalauditstandards_2024january9.pdf",
+      "category": "Internal Audit",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "26eb6a8192e9b92939eea81dc82e371412192a12b6cea820e54477bf29eb18ce",
+      "manifest_path": "internal audit--global internal audit standards 2024--globalinternalauditstandards_2024january9.pdf.json"
+    },
+    {
+      "document_id": "internal audit--global internal audit standards 2024--globalinternalauditstandards_2024january9_printable-2.pdf",
+      "filename": "globalinternalauditstandards_2024january9_printable-2.pdf",
+      "category": "Internal Audit",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "57d563d2bd0b1d6da0dc6bef43fc1d302b486937c80df0be4841773e7988c9d5",
+      "manifest_path": "internal audit--global internal audit standards 2024--globalinternalauditstandards_2024january9_printable-2.pdf.json"
+    },
+    {
+      "document_id": "laws--اللائحة التنفيذية لنظام الأسماء التجارية.pdf",
+      "filename": "اللائحة التنفيذية لنظام الأسماء التجارية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4e32c8836612b355e5575c37f47812a19bef32cf2ea2bd2d1fb79075b2e00eee",
+      "manifest_path": "laws--اللائحة التنفيذية لنظام الأسماء التجارية.pdf.json"
+    },
+    {
+      "document_id": "laws--اللائحة التنفيذية لنظام السجل التجاري.pdf",
+      "filename": "اللائحة التنفيذية لنظام السجل التجاري.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "d97cd45aa03f3a358fc3467adc6cfde3c3e224382773e33ce50ebf6754d4fca9",
+      "manifest_path": "laws--اللائحة التنفيذية لنظام السجل التجاري.pdf.json"
+    },
+    {
+      "document_id": "laws--أنظمة جرائم الوظيفة العامة والأموال.pdf",
+      "filename": "أنظمة جرائم الوظيفة العامة والأموال.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "39ac3a58310e965795d0ad3f104510a029f0a1abfbe5f2f47710945b5e56f4ee",
+      "manifest_path": "laws--أنظمة جرائم الوظيفة العامة والأموال.pdf.json"
+    },
+    {
+      "document_id": "laws--قائمة الامتثال للمتاجر الإلكترونية.pdf",
+      "filename": "قائمة الامتثال للمتاجر الإلكترونية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "d5a91e3b69f48ea4db5e32a23cc6a11d38636913418686a4e6f7a71b87cc0865",
+      "manifest_path": "laws--قائمة الامتثال للمتاجر الإلكترونية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام الاستثمار ولائحته التنفيذية.pdf",
+      "filename": "نظام الاستثمار ولائحته التنفيذية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "53dc64ba74056502ee0ceac5bf43e699f372cf7aa5e16431d9cd533441780682",
+      "manifest_path": "laws--نظام الاستثمار ولائحته التنفيذية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام الأسماء التجارية.pdf",
+      "filename": "نظام الأسماء التجارية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "e1f2379cd4742e5cbd9597be10662dbcee31c10915caeb3c8a99d8ca4a08ce82",
+      "manifest_path": "laws--نظام الأسماء التجارية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام الإثبات مع الفهارس.pdf",
+      "filename": "نظام الإثبات مع الفهارس.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "af1c2d7d65f90337f3c7dc965f706ccc4bf58b336daf13c85a5daedda40309a7",
+      "manifest_path": "laws--نظام الإثبات مع الفهارس.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام الإفلاس ولوائحه وقواعده.pdf",
+      "filename": "نظام الإفلاس ولوائحه وقواعده.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a244cb3be5fa03e1032cbc3459279aefbd78a6df44653f510f84c0ff41e6a904",
+      "manifest_path": "laws--نظام الإفلاس ولوائحه وقواعده.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام التجارة الالكترونية.pdf",
+      "filename": "نظام التجارة الالكترونية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "63b63e979c7345416b74a62cc3e09599fc8c0c34ac02215c43de86623483b621",
+      "manifest_path": "laws--نظام التجارة الالكترونية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام السجل التجاري.pdf",
+      "filename": "نظام السجل التجاري.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "320f645d34ab8d94dfb7d18f82be4d9a903f5d89223cc8128999b29f2aac9949",
+      "manifest_path": "laws--نظام السجل التجاري.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام السوق المالية.pdf",
+      "filename": "نظام السوق المالية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "e0f08165c4f493168a49b00e79792920cab041d99c9cf6d807d389a58a5aacf8",
+      "manifest_path": "laws--نظام السوق المالية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام الشركات ولوائحه التنفيذية.pdf",
+      "filename": "نظام الشركات ولوائحه التنفيذية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "cd3b7a081062cc99ac6ed99e77d246b7e4aeb36a8ae3d17fbd9a929d6c83788b",
+      "manifest_path": "laws--نظام الشركات ولوائحه التنفيذية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام العمل ولوائحه التنفيذية.pdf",
+      "filename": "نظام العمل ولوائحه التنفيذية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "f9434f4fb293bba2e41345533f5d6180dceb8e3e6a52d63f2048ff1b83b1481f",
+      "manifest_path": "laws--نظام العمل ولوائحه التنفيذية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf",
+      "filename": "نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8723dcfddaa1ac28f97dfe4d2412972ecd45be16ab16ab37e485ac696ae6c885",
+      "manifest_path": "laws--نظام المرافعات الشرعية ولوائحه التنفيذية مع الفهارس.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام المعاملات المدنية مع الفهارس.pdf",
+      "filename": "نظام المعاملات المدنية مع الفهارس.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "e701a768e260cb77fb8470a69cf9723f95466aa56dfa250fd9097404fae2be35",
+      "manifest_path": "laws--نظام المعاملات المدنية مع الفهارس.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام المنافسة ولائحته التنفيذية.pdf",
+      "filename": "نظام المنافسة ولائحته التنفيذية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a20900ccb45bdd7978e5e2477aa6e7ecd616566c55039dd7ee8f693a4faddbd7",
+      "manifest_path": "laws--نظام المنافسة ولائحته التنفيذية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام حماية البيانات الشخصية.pdf",
+      "filename": "نظام حماية البيانات الشخصية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "cf09d6fcbd88d4322ba68ac7a99fe521044c681e3e8d7655bdcbd6d9e247badf",
+      "manifest_path": "laws--نظام حماية البيانات الشخصية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام مكافحة التستر ولوائحه التنفيذية.pdf",
+      "filename": "نظام مكافحة التستر ولوائحه التنفيذية.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "9c212a226648214606daa25d9b1eecaa1301bf5615b008d8b30580bd423b53fb",
+      "manifest_path": "laws--نظام مكافحة التستر ولوائحه التنفيذية.pdf.json"
+    },
+    {
+      "document_id": "laws--نظام مكافحة غسل الأموال.pdf",
+      "filename": "نظام مكافحة غسل الأموال.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "be1764fb234388f76067983761e96ef690f63cff147fa03e6d1557f6c81d2d6d",
+      "manifest_path": "laws--نظام مكافحة غسل الأموال.pdf.json"
+    },
+    {
+      "document_id": "laws--‎⁨عقد التأسيس شركة دليل الامتياز للمحاماة والاستشارات القانونية⁩.pdf",
+      "filename": "‎⁨عقد التأسيس شركة دليل الامتياز للمحاماة والاستشارات القانونية⁩.pdf",
+      "category": "Laws",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "951c9b3f236c24af49865c558ba2eb01f9ad30791eaf030ae8bd6a7e09ad0ef1",
+      "manifest_path": "laws--‎⁨عقد التأسيس شركة دليل الامتياز للمحاماة والاستشارات القانونية⁩.pdf.json"
+    },
+    {
+      "document_id": "nist--ai rmf playbook--nist.cswp.40.ipd.pdf",
+      "filename": "NIST.CSWP.40.ipd.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8d44a59323f56ce380c3da53497e7dd4cc4af04a4fc07a0e4761bfe35ccefe72",
+      "manifest_path": "nist--ai rmf playbook--nist.cswp.40.ipd.pdf.json"
+    },
+    {
+      "document_id": "nist--nist ai rmf--nist.ai.600-1.pdf",
+      "filename": "NIST.AI.600-1.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+      "manifest_path": "nist--nist ai rmf--nist.ai.600-1.pdf.json"
+    },
+    {
+      "document_id": "nist--nist csf--    cybersecurity framework.pdf",
+      "filename": "    Cybersecurity Framework.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "3c31f46fee98cac0c4323453e5109291a213b4de7fef8c058af9bf67f717433c",
+      "manifest_path": "nist--nist csf--    cybersecurity framework.pdf.json"
+    },
+    {
+      "document_id": "nist--nist cswp--nist.cswp.40.ipd.pdf",
+      "filename": "NIST.CSWP.40.ipd.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8d44a59323f56ce380c3da53497e7dd4cc4af04a4fc07a0e4761bfe35ccefe72",
+      "manifest_path": "nist--nist cswp--nist.cswp.40.ipd.pdf.json"
+    },
+    {
+      "document_id": "nist--nist privacy framework--nist.cswp.40.ipd.pdf",
+      "filename": "NIST.CSWP.40.ipd.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8d44a59323f56ce380c3da53497e7dd4cc4af04a4fc07a0e4761bfe35ccefe72",
+      "manifest_path": "nist--nist privacy framework--nist.cswp.40.ipd.pdf.json"
+    },
+    {
+      "document_id": "nist--nist sp 800-171--nist.sp.800-171r2.pdf",
+      "filename": "NIST.SP.800-171r2.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "298bdbfcf6a4890a564b225c893230a0b32b2e69e3b98dd898aaeb1d544c5e12",
+      "manifest_path": "nist--nist sp 800-171--nist.sp.800-171r2.pdf.json"
+    },
+    {
+      "document_id": "nist--nist sp 800-37--nist.sp.800-37r2.pdf",
+      "filename": "NIST.SP.800-37r2.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4f75e1136bb905a654f1bcd9eefefb4108f47597276ee5eec0688f6d96f6a01d",
+      "manifest_path": "nist--nist sp 800-37--nist.sp.800-37r2.pdf.json"
+    },
+    {
+      "document_id": "nist--nist sp 800-53--nist.sp.800-53r5.pdf",
+      "filename": "NIST.SP.800-53r5.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "fc63bcd61715d0181dd8e85998b1e6201ae3515fc6626102101cab1841e11ec6",
+      "manifest_path": "nist--nist sp 800-53--nist.sp.800-53r5.pdf.json"
+    },
+    {
+      "document_id": "nist--nist sp 800-61--nist.sp.800-61r2.pdf",
+      "filename": "NIST.SP.800-61r2.pdf",
+      "category": "NIST",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "b1c5ead0632dcfb979c59d8c462b094ad2465ddaf62d5c246289d6d9b4419df1",
+      "manifest_path": "nist--nist sp 800-61--nist.sp.800-61r2.pdf.json"
+    },
+    {
+      "document_id": "oceg--grc assessment framework--grc assessment framework v3.5.1-protected.pdf",
+      "filename": "GRC Assessment Framework v3.5.1-protected.pdf",
+      "category": "OCEG",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "3043ff6ea7d1cc02688c5f0faed7cbcc0de2deb8f167e3cc0677a869a22dac94",
+      "manifest_path": "oceg--grc assessment framework--grc assessment framework v3.5.1-protected.pdf.json"
+    },
+    {
+      "document_id": "oceg--grc assessment framework--مدقق.pdf",
+      "filename": "مدقق.pdf",
+      "category": "OCEG",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "045c986cfd897a765ff87ca2f29a0e98591d5147fa4ecf8368e5424f69090e5e",
+      "manifest_path": "oceg--grc assessment framework--مدقق.pdf.json"
+    },
+    {
+      "document_id": "oceg--grc capability model--grc capability model v3.5-ar-revision-2024-11-20.pdf",
+      "filename": "GRC Capability Model v3.5-AR-revision-2024-11-20.pdf",
+      "category": "OCEG",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "38fb2d76aca5c9d1e06da8987f51132174a00351f95b92daf66a71538c1fd117",
+      "manifest_path": "oceg--grc capability model--grc capability model v3.5-ar-revision-2024-11-20.pdf.json"
+    },
+    {
+      "document_id": "risk management--64355_riskapp_a4_web.pdf",
+      "filename": "64355_riskapp_a4_web.pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "9b45a9aef92b5e3a72175122356865575743124ddb53cf53362a37a56644916c",
+      "manifest_path": "risk management--64355_riskapp_a4_web.pdf.json"
+    },
+    {
+      "document_id": "risk management--enterprise risk management. a guide for ebmo's.pdf",
+      "filename": "Enterprise Risk Management. A guide for EBMO's.pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "9ce5611561d6f687e0a5a30e8885d8f3d22d131c06e332a13024299b15f3cca5",
+      "manifest_path": "risk management--enterprise risk management. a guide for ebmo's.pdf.json"
+    },
+    {
+      "document_id": "risk management--iso-31000.pdf",
+      "filename": "ISO-31000.pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "7bfd4a363756a69a52faa9e62f15a8d411044926f3386960a509fac1cc619b6b",
+      "manifest_path": "risk management--iso-31000.pdf.json"
+    },
+    {
+      "document_id": "risk management--risk management concepts and guidance 5ed [2015].pdf",
+      "filename": "Risk Management Concepts and Guidance 5ed [2015].pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "6ce608ae2c2055b326c098433a929f6934c819729ec7fd1d3bc023ca73afb7d5",
+      "manifest_path": "risk management--risk management concepts and guidance 5ed [2015].pdf.json"
+    },
+    {
+      "document_id": "risk management--riskregisterdevelopmentandimplementation.docx17.pdf",
+      "filename": "RiskRegisterDevelopmentandImplementation.docx17.pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "dbf6ba96e207a42d954d0c3c11460ecd2bc1bb62ed0c11e51cf8781f079c3790",
+      "manifest_path": "risk management--riskregisterdevelopmentandimplementation.docx17.pdf.json"
+    },
+    {
+      "document_id": "risk management--the_use_of_bow_tie_analysis_to_risk_identification.pdf",
+      "filename": "The_Use_of_Bow_Tie_Analysis_to_Risk_Identification.pdf",
+      "category": "Risk Management",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "227a82ad7c5d7f8b4d6aaa30e6661f94cbd97bcedacd379f8f025334a84c7e0f",
+      "manifest_path": "risk management--the_use_of_bow_tie_analysis_to_risk_identification.pdf.json"
+    },
+    {
+      "document_id": "sdaia--compliance guide--دليل امتثال أصحاب العمل.pdf",
+      "filename": "دليل امتثال أصحاب العمل.pdf",
+      "category": "SDAIA",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "115321508ba4482dd4ecbac005def46e9403da0a87106046885abe96949b521e",
+      "manifest_path": "sdaia--compliance guide--دليل امتثال أصحاب العمل.pdf.json"
+    },
+    {
+      "document_id": "sdaia--data transfer--    أدلة نقل البيانات.pdf",
+      "filename": "    أدلة نقل البيانات.pdf",
+      "category": "SDAIA",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4af0b5ddd791fdd9931718ce99f0d8ac8a153223de62132aec609729265bb368",
+      "manifest_path": "sdaia--data transfer--    أدلة نقل البيانات.pdf.json"
+    },
+    {
+      "document_id": "sdaia--pdpl--    أدلة pdpl.pdf",
+      "filename": "    أدلة PDPL.pdf",
+      "category": "SDAIA",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "2f5ecc99651969e13229b3ea84956ccb3b32cefc8219b96a950a898e37a27bd9",
+      "manifest_path": "sdaia--pdpl--    أدلة pdpl.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca ccc--ccc-en.pdf",
+      "filename": "ccc-en.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "5c1e9f3fe6ae7a2be830fb44c5abeb8ac3a12abace27e447b0ca062143de3583",
+      "manifest_path": "saudi regulations--nca ccc--ccc-en.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca cscc--cscc_assessment_and_compliance_tool_v2.0.xlsx",
+      "filename": "CSCC_Assessment_and_Compliance_Tool_v2.0.xlsx",
+      "category": "Saudi Regulations",
+      "extension": ".xlsx",
+      "status": "parsed",
+      "checksum_sha256": "b355f612f55bd8611d4b1642fe61dade1223f83bde5c30424f38b6eb3c2b1152",
+      "manifest_path": "saudi regulations--nca cscc--cscc_assessment_and_compliance_tool_v2.0.xlsx.json"
+    },
+    {
+      "document_id": "saudi regulations--nca cscc--cscc-ar.pdf",
+      "filename": "cscc-ar.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "96dcdf2e259f264a2ea33177fa9948457fdabdf2ac5e5d2f4b97f7b8b8875c0b",
+      "manifest_path": "saudi regulations--nca cscc--cscc-ar.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca dcc--data-cybersecurity-controls-.pdf",
+      "filename": "Data-Cybersecurity-Controls-.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "5eded079ed63e2fffffed9f5165e9de52f9a51e8cab588794472b6b4f55de43a",
+      "manifest_path": "saudi regulations--nca dcc--data-cybersecurity-controls-.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca ecc--ecc-2-2024---nca.pdf",
+      "filename": "ECC-2-2024---NCA.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "66165b9ec3347efced2270540e0fd00a4246107a7b3aba6a5482c7db24671230",
+      "manifest_path": "saudi regulations--nca ecc--ecc-2-2024---nca.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca otcc--otcc-1-2022-assessment-and-compliance-tool.xlsx",
+      "filename": "OTCC-1-2022-Assessment-and-Compliance-Tool.xlsx",
+      "category": "Saudi Regulations",
+      "extension": ".xlsx",
+      "status": "parsed",
+      "checksum_sha256": "e58dd7f3029182df85cbb8cb452e6c573f05f9517724526bac2acb5784107410",
+      "manifest_path": "saudi regulations--nca otcc--otcc-1-2022-assessment-and-compliance-tool.xlsx.json"
+    },
+    {
+      "document_id": "saudi regulations--nca otcc--operational-technology-cybersecurity-controls-methodogy-and-mapping-annex.pdf",
+      "filename": "Operational-Technology-Cybersecurity-Controls-Methodogy-and-Mapping-Annex.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "a31156fa7b0545378d8de1d6e12e70ba8d1571a170d44b4ee1462f5956f348cc",
+      "manifest_path": "saudi regulations--nca otcc--operational-technology-cybersecurity-controls-methodogy-and-mapping-annex.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--nca otcc--otcc_en.pdf",
+      "filename": "otcc_en.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "8c1e76719466bfc7d52ef4b0ff34cfcbb76a8995431d481aeca4e7a6e776808a",
+      "manifest_path": "saudi regulations--nca otcc--otcc_en.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--sama cybersecurity framework--sama_en_5888_ver1.pdf",
+      "filename": "SAMA_EN_5888_VER1.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "4d9f7bd0acf7504819f2dcfec25619f5ca276314c50d11c67a113de627f710de",
+      "manifest_path": "saudi regulations--sama cybersecurity framework--sama_en_5888_ver1.pdf.json"
+    },
+    {
+      "document_id": "saudi regulations--sama risk management--print manager.pdf",
+      "filename": "Print Manager.pdf",
+      "category": "Saudi Regulations",
+      "extension": ".pdf",
+      "status": "parsed",
+      "checksum_sha256": "68efe4a96ef3360793512250ab3980d5f06bdb20da3b9541971a569aa6efda67",
+      "manifest_path": "saudi regulations--sama risk management--print manager.pdf.json"
+    }
+  ]
+}

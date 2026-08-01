@@ -1,0 +1,631 @@
+Page | 1  
+ 
+PROCUREMENT POLICY 
+Prepared by the Executive Division  
+Version as of January 2024 
+ 
+TABLE OF CONTENTS 
+1. PREAMBLE ........................................................................................................................................................... 2 
+2. PURPOSE .............................................................................................................................................................. 2 
+3. SCOPE OF APPLICATION ...................................................................................................................................... 2 
+4. INSTITUTIONAL FRAMEWORK ............................................................................................................................ 2 
+5. CORE POLICY PRINCIPLES .................................................................................................................................... 3 
+6. PROCUREMENT AUTHORITY ................................................................................................................................ 4 
+7. TYPES OF REQUIREMENTS .................................................................................................................................. 4 
+8. PROCUREMENT CYCLE ........................................................................................................................................ 5 
+9. PROCUREMENT METHODS .................................................................................................................................  6 
+14. RECORD MANAGEMENT ................................................................................................................................... 10 
+15. ADDENDUMS AND EXTENSIONS ....................................................................................................................... 10 
+16. CANCELLATION OF CONTRACTS........................................................................................................................ 10 
+17. DEVIATIONS ....................................................................................................................................................... 11 
+18. CONFLICT OF INTEREST ..................................................................................................................................... 11 
+19. EXCLUSION AS A RESULT OF CORRUPT, FRAUDULENT AND OTHER UNACCEPTABLE PRACTICES ................. 11 
+20. PUBLIC DISCLOSURE .......................................................................................................................................... 13 
+21. LANGUAGE OF DOCUMENTATION ................................................................................................................... 13 
+22. DISPUTE RESOLUTION ....................................................................................................................................... 13 
+23. RISK MANAGEMENT .......................................................................................................................................... 13 
+24. POLICY CONTROLS ............................................................................................................................................. 14 
+25. GLOSSARY OF TERMS AND DEFINITIONS.......................................................................................................... 15 
+ 
+ 
+Page | 2  
+1. PREAMBLE 
+1.1 International IDEA believes in the advancement of democracy as a universal human aspiration and an 
+enabler of sustainable human development.  
+1.2 In pursuit of this mission, International IDEA requires goods and services from external sources for the 
+implementation of the projects. 
+1.3 International IDEA is mindful of the fact that it has been entrusted with both public and private funding 
+to carry out its mandate. Expenditure involving procurement processes is a significant proportion of 
+the annual budget. 
+1.4 The Procurement Policy sets out the principles that shall govern the procurement of goods and services 
+of International IDEA. 
+ 
+2. PURPOSE 
+2.1 This policy aims to ensure that International IDEA obtains the best value for money in the procurement 
+of goods and services. 
+2.2 This policy provides guidelines to promote consistent application of procurement best practice and  
+international standards and to ensure transparency and accountability. The selection, contracting,  
+management and monitoring of suppliers or service providers shall be in line with the principles of  
+efficiency and economy, equal opportunity, transparency, sustainability, best value for money and 
+other core principles per Section 5 of this policy.  
+ 
+3. SCOPE OF APPLICATION 
+3.1 This policy covers the procurement of goods and services required by International IDEA and its  
+partners and is supported by procedures that give effect to the policy requirements.  
+3.2 This policy covers the standard procurement cycle from project initiation to final delivery or 
+performance and contract completion. 
+3.3 Where relevant, in the procurement of services from individual consultants , the Individual 
+Consultancy Policy should also be applied. 
+ 
+4. INSTITUTIONAL FRAMEWORK 
+4.1 There are several regulations, policies, and procedures that influence and enable management 
+processes and as such should be read in conjunction with this policy including the: 
+a) Statutes of International IDEA. 
+b) International IDEA’s vision, mission, and strategy. 
+c) Financial Regulations. 
+d) Accounting and Financial Procedures Manual. 
+e) Individual Consultant Policy. 
+f) Procurement Procedures. 
+g) Green Policy. 
+h) Partnership Policy and Procedures. 
+i) Staff Rules. 
+j) Prevention of Fraud and Corruption Policy. Page | 3  
+k) Conflict of Interest Policy. 
+l) Recruitment Procedure. 
+m) Delegation of Authority; and 
+n) Travel Policy. 
+ 
+5. CORE POLICY PRINCIPLES 
+5.1 The procurement of goods and services shall be conducted in a manner that is based on the principles 
+set out below. 
+a) Best interest of International IDEA : to carry out procurement activities in a manner that best  
+enables the organization to reach its general and specific objectives in line with applicable  
+procurement policies and procedures. 
+b) Value for Money: the selection of the service provider will be made by balancing a combination 
+of whole-life cost, quality, and sustainability to meet International IDEA requirements. 
+c) Competition: Procurement will be carried out on a competitive basis and respect the prescribed 
+competitive thresholds. Requests for Direct Awards where a competitive process is not to be  
+undertaken should normally be limited to exceptional cases. 
+d) Equitable and Unbiased Selection: No bidder shall be unjustifiably discriminated against, and no 
+bidder shall receive an unfair competitive advantage. Contracts should however not be awarded 
+to entities determined to be ineligible in terms of this policy. 
+e) Transparency: The information on the public procurement process must be available to everyone  
+unless there is a valid reason to keep it confidential. Procurement and selection will be carried  
+out in a transparent manner. Selection criteria in the case of open competition will be clearly  
+stated and publicized. 
+f) Efficiency and Effectiveness: Procurement should be carried out in a manner that makes efficient use 
+of International IDEA’s resources. The work involved  and associated costs of a procurement 
+process should be commensurate with the character, volume, and type of procurement. It should 
+also be effective in that it meets the needs of the end -user and achieves the objectives of  
+International IDEA. The contract will be awarded to the Highest Rated Quote  or Proposal that 
+has fully complied with the terms of the procurement process. 
+g) Adequate planning: Sufficient time should be allowed for a procurement process to ensure timely  
+and successful implementation of activities and to ensure compliance with the principles of the  
+procurement policy. This includes adequate time for the required level of quality assurance,  
+review, and approval. Failure to do so risks that the procurement will be carried out in a manner 
+that is in contravention of good procurement practice or the policy or that delivery of the requisite 
+goods and services will be delayed which will impact on programme and project delivery.  
+Contracts signed after the commencement of delivery of services are not permitted.  The 
+commitment must be approved, and the relevant  contract agreements concluded before 
+activities begin. 
+h) Procurement Ethics: Trust in the integrity of the procurement function is essential to 
+International IDEA. All parties involved must observe the highest ethical standards during all  
+stages of the procurement process. Contracts must not be awarded to organizations or individuals 
+who have been involved in exclusionary behaviours. Staff Members are prohibited from accepting 
+any gift, payment, consideration, or benefit of any kind that could be considered an inducement for 
+the award of a contract. 
+i) Avoidance of Conflict -of-Interest: A conflict of interest can be broadly defined as a situation in 
+which the impartiality of a person could be questioned due to an actual or potential clash between  
+their personal and professional interests. Conflicts of interest are not necessarily unethical or  Page | 4  
+wrong, but they do have to be declared and managed where they exist. 
+j) Sustainability: Procurement of goods and services should consider the possible effects on the  
+environment, local economic circumstances, and human health and safety and preference should 
+be given to those offers that make a positive impact on the environment. 
+k) Gender responsive procurement: International IDEA encourages selection of the services, works and 
+goods considering gender equality and women’s empowerment. The service provider should be a 
+gender responsive vendor, an entity that promotes gender equality,  and meets local and 
+international labor and human rights standards.  The inclusion should be considered at all  stages of 
+the procurement process. 
+5.2 International IDEA does not unfairly restrict purchases based on the geographical origins of goods or 
+the nationality of the service providers. If there is a donor restriction, the Procuring Team must 
+coordinate this with the Procurement Officer and Executive Director.  
+5.3 Most procurement will be for new, unused goods. Should second hand or used goods be required, the 
+requisite procedures should be followed. 
+ 
+6. PROCUREMENT AUTHORITY 
+6.1 International IDEA applies decentralized procurement with different levels of delegated authority. The 
+thresholds for the delegation of procurement authority are indicated in the Procurement Procedures 
+and the Delegation of Authority document.  
+6.2 The Procuring Team shall carry out the procurement process with efficiency, impartiality, and integrity 
+and ensure that: 
+a) all procurement activities are properly documented and submitted to the relevant approver; and 
+b) the intended procurement process is in the best interest of International IDEA. 
+6.3 Authorized Staff Members having a delegated procurement authority must ensure that actions 
+undertaken under their supervision follow the Procurement Policy and all other relevant 
+policies and procedures. It is the duty of these Staff Members to have a sound knowledge and 
+understanding of procurement (and related) policies and procedures due to the authority 
+vested in them to approve the procurements.  
+6.4 The Procurement Procedures outline the segregation of duties to reduce risk. No single individual or  
+team shall control all key stages of the procurement process. Segregation of duties shall be subject to 
+regular review and monitoring by the Procurement Officer. 
+ 
+7. TYPES OF REQUIREMENTS 
+7.1 Goods and supplies - Supplies are trackable goods, such as materials,  and consumables. They tend to 
+be consumed or be in use over the short to medium-term but have a shorter lifespan than fixed assets. 
+Individually, these tend to be low-cost items but as they may be used or consumed in larger 
+quantities, the total cost may be a significant amount in any one -year period. A review of historic 
+accounts and supplier payments can provide an estimate of the annual cost of such supplies, which 
+figure can be used to determine whether there is a need to carry out a competitive procurement. 
+Consideration should be given to sustainability and environmental issues  when considering the 
+procurement of goods and supplies. 
+7.2 Fixed assets - A fixed asset is a tangible item of property with a useful life of longer than one year and  
+which exceeds the cost level set by International IDEA for capitalizing assets. According to International 
+IDEA’s accounting policies, any individual item with a cost above €2,000 is considered a fixed asset.  
+Generally, International IDEA does not purchase large quantities of fixed assets on a regular basis, but  
+only when new offices are being set up or existing offices are refurbished. Page | 5  
+7.3 General services - Services such as repairs and maintenance of equipment or furniture, janitorial or 
+security services, lease of office space, offsite storage, transport services, importation and logistics 
+services, media advertisements, health maintenance services, and other similar services. 
+7.4 Events - Events is an umbrella term in this policy to cover all types of meetings, training sessions,  
+workshops, seminars, and other similar events required as part of the programmed and institutional  
+activities of International IDEA. The events to be carried out should be guided by the Green Policy  
+principles and consider sustainability and environmental impact. The supplier that provides the venue 
+for the event is treated as the main supplier for an event. It is the expected price of this contract that  
+determines whether the procurement method should be a non -competitive or a competitive 
+process. Contracts with other suppliers for services related to the event ( e.g., translation services) 
+should follow the procurement method for services.  
+7.5 Consulting Services - These are activities requiring external technical and professional expertise beyond 
+International IDEA internal capacity, such as research, feasibility studies, and related services, and are 
+provided by individual consultants or firms. For individual consultants, please refer to the Individual 
+Consultant Policy. 
+7.6 Intellectual Property - The procurement of intellectual property may involve the commissioning of  
+papers or other original works, or services where part , or all, of the end product is original work for 
+which International IDEA needs to acquire the copyright (e.g., studies, research papers, translations of 
+copyrighted material, layout design, videos, films, other media products etc.) Even if the initial plan 
+does not include publishing it is important that consultants commissioned to do such work are 
+engaged  under an agreement that includes the correct copyright terms and conditions. In general, this 
+relates to  the production of what International IDEA classifies as Knowledge Products. 
+7.7 Partners for project implementation - These are activities where Operational Partners  are 
+responsible for implementing a part of the project for IDEA. The details will be set out in the terms 
+of reference and budget for a cooperation contract. Operational Partners require active 
+management and monitoring and these partners report with detailed expenditure listings and 
+narrative reports. It must be noted that Operational Partners are entities that are not commercial 
+service providers; to ascertain whether an agreement should be categorized as a n Operational 
+Partnership the following criteria must be utilized: 
+a) An Operational Partner (and thus a cooperation contract) is used when the activities are of a 
+sufficient size (indicatively of at least EUR 50 001) and complexity that they are required to 
+report on expenditure on a transaction-by-transaction basis and return any unspent funds. 
+b) A supply contract is used when the project is reasonably small and International IDEA is 
+satisfied to pay a fixed fee, or a variable cost.  
+ 
+8. PROCUREMENT CYCLE 
+8.1 The procurement cycle consists of five (5) steps as follows: 
+a) Annual procurement planning. 
+b) Transaction specific procurement planning. 
+c) Conducting the procurement process. 
+d) Contract preparation; and 
+e) Contract management. 
+8.2 Annual Procurement Planning – This is the process of assessing the procurement needs for  
+International IDEA to determine the procurement strategy. It is considered an important tool for 
+managing procurement needs in an effective, efficient, and timely manner, as the key to meeting 
+the procurement principles lies in procurement planning. To facilitate efficient planning of 
+resources, effective procurement, and delivery and implementation of the projects, Programmes, Page | 6  
+and Procuring Teams shall prepare and maintain annual procurement plans.  
+8.3 Transaction specific procurement planning - When planning specific procurements, the 
+following  should be considered: 
+a) Budget - Preparation of cost estimates and confirmation of budgeted funds. The procuring Teams  
+should plan to purchase goods or services as far in advance as practical and include them in their 
+budget. A project must accomplish objectives according to the established budget. The estimated  
+cost of the requirement can be derived from the previous records of purchase, or if no previous 
+purchase for this type of requirement exists, the Procuring Team can review the current market 
+price by market research or request potential suppliers or service providers for an indicative 
+quote. 
+b) Requirement Definition – Defining the procurement requirements and setting clear specifications is 
+the key to securing compliant offers or proposals. The Procuring Team should identify the precise 
+needs of the project. In cases where the specifications are not fully known, market  research 
+should be conducted to check the availability in the market. F or IT goods this must be  
+coordinated with the HQ IT Team to ensure that the specifications are correct. 
+c) Procurement Method - During the planning stage, the selection of the appropriate procurement 
+method to be used should be determined. The method to be used is based on the procurement 
+value, the market conditions, operational environment, and donor’s requirements. 
+8.4 Procurement Process - After planning, the Procuring Team will conduct the procurement process  
+following the procurement method according to the procurement threshold and specific requirements 
+of the procurement. 
+8.5 Contract Preparation - The draft contract should be prepared after the evaluation has been conducted 
+and the recommended supplier or service provider has been identified. International IDEA uses  
+standard templates to formalize contract agreements with suppliers. In addition, the supplier’s own  
+standard template may be used where it is considered more appropriate and their terms and  
+conditions are acceptable, although in this case a declaration of honor (Annex F3) is required. The 
+templates used by International IDEA range from a simple one-page Purchaser Order raised in UBW to 
+a more detailed     contract document with annexes outlining the general terms and conditions, the 
+terms of reference, and a budget. The type of template used depends on the procurement category, 
+the nature of the service and the value of the contract. Contracts may only be signed by International 
+IDEA once the relevant requisition is approved.  
+8.6 Contract Management - The contract management stage is defined as the period between the signing 
+of the contract or agreement and the satisfactory completion of the assignment. The value and  
+complexity of the contract will determine the level of input required to manage a contract. The Project 
+Manager is the Staff Member responsible for managing the contract but may delegate some of the  
+administrative aspects of contract management. The Project Manager will however remain responsible 
+for the contract outcome. Payment for service or goods contracts shall be made according to the  
+specific terms of each contract against invoices issued by the service provider. The service provider  
+should be notified immediately and in writing of any failure in performance or deliveries and a 
+penalty should be applied according to the agreement. 
+ 
+9. PROCUREMENT METHODS 
+9.1 Within the relevant thresholds the process shall be open to all legal and natural  persons, regardless 
+of their origin, nationality, gender or other characteristics as applicable, except for those who are 
+excluded in terms of section 19 of this Policy. 
+9.2 International IDEA does not charge an administration fee to bidders. 
+  Page | 7  
+9.3 No competition (sole sourcing) – This is contracting without competition. The Project Manager  or 
+their designate in this regard (in some cases, an administrative assistant or equivalent, oversees  
+the sourcing of quotations) will source and negotiate an agreement with one supplier, and it is not 
+necessary to obtain additional quotes.  Sole sourcing is allowed in the following circumstances: 
+a) The procurement value is € 10,000 and less. This limit is PER PROCUREMENT and not per 
+project or per Team. However, requirements should be aggregated into larger  
+purchases where practical and not split to avoid using restricted competition of a tender. 
+b) When there is a valid and ongoing Framework Agreement between International IDEA 
+and the supplier. 
+c) For goods that have no equivalent items available in the market and item cannot be 
+replaced due to compatibility issues with the current set up of the project. It should be 
+determined that the supplier is the exclusive manufacturer or distributor or if a change of 
+supplier will affect the warranty or after sales services of existing equipment. The 
+Procuring Team should secure from the supplier the certificate of manufacturer or 
+certificate of exclusive distributorship from the  principal company that manufactured the 
+product. 
+d) For services where the supplier is a recognised expert or has specific skills or 
+contextual knowledge that is required for the project that is not easily obtainable 
+elsewhere. 
+e) For reason of urgency brought by events unforeseeable by International IDEA. The urgency 
+of the requirement should be clearly defined, and the actions taken by the P rocuring Team. 
+The circumstances invoked to justify the urgency should not be attributable to poor 
+planning and or processing delays on the part of the Staff Members. 
+f) There is a compelling reason to protect the confidentiality of the project. 
+g) If it is donor or boundary partner requirement or recommendation to appoint a named 
+service provider. 
+h) If the procurement is directly related to a previous assignment. 
+9.4 Restricted Competition - The threshold for restricted competition is between €10,001 and €50,000. This 
+is a competitive process where quotes are sought from several identified suppliers. A minimum of  
+number of quotes must be sought. The quotes are evaluated, and a supplier is chosen based on the 
+selection  criteria that were indicated in the specifications document. If there is only one supplier or 
+service provider that submitted a proposal, the proposal then will be evaluated and if found to be 
+compliant will be selected. 
+9.5 Open Competition - Procurement of goods or services with an expected value over € 50,000 must be  
+carried out by public tender, unless an exception for sole sourcing as indicated above, is applicable.  
+Although not a requirement, an open competitive process can also be carried out when the value is  
+expected to be less than €50,000 if a Project Manager considers it advantageous to explore the market 
+on a wider scale to source a supplier. An open competition is a tender that is publicly advertised in  
+which qualified suppliers are asked to submit a bid or proposal to provide specific goods or services.  
+The tender is advertised on International IDEA’s website and in other media outlets as appropriate. The 
+purpose of open competition is to provide all eligible potential bidders with adequate notification and  
+to provide them equal access and fair opportunity to compete. Public tenders require careful planning 
+and adequate time to complete the process, which may be up to six months. They also require careful  
+monitoring and oversight during the process as any weakness or failure in the procedure could call the 
+integrity of the process into question and leave it open to challenge. 
+  Page | 8  
+9.6 Pre-Qualification - In certain circumstances it may be appropriate to conduct an initial competitive 
+process to preselect a  group of service providers that may then be used for specific relevant projects or 
+assignments. In this case the tender process will be used to select the service providers. Categories 
+where this may be applicable are as follows: 
+a) Expression of Interest (EOI)- A request for an Expressions of Interest (EOI) is a method used 
+to advertise a general assignment and solicit suppliers who are interested in being 
+considered for inclusion on a shortlist. Suppliers are generally required to submit a CV or a 
+proposal. This can be a cost-effective way of testing the market and identifying potential 
+suppliers to create a shortlist for future use or to allocate a one-off assignment. Depending 
+on the purpose, the request for an EOI may include specific shortlist criteria. A request for 
+an EOI comprises a written notice indicating the general nature of the services  or goods 
+required and the shortlist criteria if applicable. It could also include detailed terms of 
+reference in the case of a specific assignment. The request should be advertised on 
+International IDEA’s website and/or on other media sites as  deemed appropriate. 
+b) Pre-qualification- Pre-qualification is a procurement method used to establish whether 
+suppliers are qualified in accordance with predetermined criteria to carry out an 
+assignment or provide a service. This is carried out in advance of a formal competitive 
+process but only those suppliers who qualify are then invited to bid or submit a proposal 
+for the assignment in question. The Project Manager in collaboration with the Accounting 
+and Treasury Team will carry out an initial market search to identify the relevant suppliers 
+and evaluate them against predetermined criteria. An intermediary agency may also be 
+used in this process. The documents sent to the  pre-qualified supplier will be standard 
+tender documents, such as an invitation to submi t a proposal and the terms of reference. 
+Pre-qualification is a method suited to the following types of procurement:  
+• a complex or specialized type of assignment (e.g., an ERP system). 
+• a service which is procured on a regular basis where it is useful to have a roster of 
+qualified service providers available; or 
+• a service that presents risk concerns 
+c) Call for Papers- Occasionally, International IDEA carries out a “Call for Papers” whereby  
+consultants are requested to submit an abstract of a paper based on a specified subject. The 
+purpose is to select a shortlist of consultants to write a longer paper, based on the abstract. 
+The amount involved is usually low and so does not fall over the threshold for an open  
+competition. However, it does involve the need to openly advertise and must therefore  
+follow a transparent process. 
+9.7 Use of Procurement Agents- Certain services (in many cases, these are also renewable services) by 
+their nature require the use of an intermediary,  for example, insurance policies and office rental 
+agreements. It may also be beneficial to use an agent  in the case of a more complex and specialized 
+procurement. In such situations, International  IDEA reserves the right to engage an intermediary 
+agency to source and evaluate suppliers on its  behalf as set out in the Procurement Procedures .  
+  Page | 9  
+10. SERVICE PROVIDER MANAGEMENT 
+10.1 Verification/Accreditation – The process of verification confirms that a service provider exists, is 
+appropriately registered as applicable, and has the capacity to deliver on the procurement 
+requirements. To ensure that International IDEA uses suppliers (also called vendors or service 
+providers) that have the relevant experience and expertise, the Procuring Team shall perform vendor 
+verification for all procurements of EUR 50,001 and above and for high-risk procurements in 
+accordance with the procurement Procedures. Service Providers endorsed by donors and partners 
+shall likewise be subject to verification as applicable. If vendors endorsed by donors fail to pass the 
+verification process, International IDEA shall inform the donor or partner in writing. 
+10.2 Performance Evaluation - Performance evaluations shall be completed periodically for each vendor in 
+accordance with the Procurement Procedures. 
+ 
+11. GROUNDS FOR REJECTION OF BIDS AND OR CANCELLATION OF THE PROCUREMENT PROCESS  
+11.1 The Procuring Team (or Evaluation Committee in the case of a tender) may recommend to the Procurement 
+Officer that the procurement process  be declared as unsatisfactory, and thus needs to be re -run or 
+cancelled, when any of the following occur: 
+a) All proposals received were declared non-responsive to the requirements, or no quotes / proposals 
+/ bids were received. 
+b) The Terms of Reference of the project / assignment have been fundamentally altered. 
+c) Exceptional circumstances where the project cannot start or is significantly delayed, e.g., as a result 
+of delays in signing a grant agreement from a donor, or fundamental changes in the project design. 
+d) All responsive proposals are either in excess of the available funds or are substantially higher than 
+the cost estimate. 
+e) There were flaws in the process that prevented fair competition. 
+f) A Service Provider refuses to accept the award of contract and there are no other qualified Service 
+Providers identified in the process. 
+g) The Procuring Team or the Evaluation Committee may decide to cancel the procurement process if 
+in their view that it may lead to situations that would be disadvantageous to International IDEA. 
+11.2 The Procuring Team, generally in coordination wit h the Procurement Officer, shall make the final decision 
+to declare a procurement process  void. After canceling a procurement process, th e Procuring Team may 
+decide either to restart the process or not to award the contract. 
+ 
+12. ACCEPTANCE OF SERVICES AND OR GOODS 
+12.1 The Project Manager must carefully check the goods and deliverables supplied by vendors to ensure that 
+these comply with the requirements stated in the contract or purchase order.  
+12.2 If the goods or services are found to be unsatisfactory, the vendor  must be notified immediately to rectify 
+the situation. Goods and services must only be accepted once they have been deemed to be satisfactory 
+and in compliance with the requirements.  
+12.3 Final payment should only be processed once all the deliverables are fully inspected and ac cepted by the 
+Project Manager, which is evidenced by the acceptance of a Goods Received Note (GRN) in the system .  
+ 
+13. UBW AS PROCUREMENT TOOL 
+13.1 UBW can be used to assist in procurement management by the tracking of requisitions, POs, contracts and 
+reporting. The system can monitor requisition workflows, PO’s and contracts.  Page | 10  
+13.2 Other manual procurement tasks remain outside UBW such as sourcing of quotations, evaluations , tender 
+processes and the preparation of contracts, as well as the approval of term and framework contracts.  
+ 
+14. RECORD MANAGEMENT 
+14.1 Offices must ensure proper filing and safekeeping of procurement documents. Documents will be retained 
+for seven years unless otherwise specified by the donor.  
+ 
+15. ADDENDUMS AND EXTENSIONS 
+15.1 Contracts may need to be modified if circumstances affecting  project implementation change after 
+the contract is signed. Contract modifications must be formalized in an addendum to the contract  
+signed by both parties. 
+15.2 In the case of high value or complex contracts it is likely that changing circumstances will 
+require modifications to the scope, work plan or deliverables under the contract. These 
+should be anticipated in the planning stage and included in the specifications for the service. 
+In addition, a change control procedure should be included in the initial contract that outlines 
+the types of modifications allowed and the procedure to be followed. 
+15.3 The following changes may be made without invoking a new procurement procedure, namely: 
+a) Changes to supplier details, such as a change of name or bank details. These should be  
+formalized through an addendum to the contract except in the case of changes to contact 
+details which may be notified by the service provider in writing. 
+b) If the time for performance is extended. A ‘grace period’ of ten working days will apply to all  
+contracts that experience delays, during which the need for an addendum will be waived. Any 
+further delays to the performance period will require a formal written addendum. 
+c) Inclusion or exclusion of VAT and other applicable taxes 
+15.4 The following changes require a new procurement process which would normally be a Request for 
+Direct Award, namely: 
+a) Major changes, such as a fundamental alteration to the TOR or Description of Action, may not 
+be made by means of an addendum. 
+b) Unit prices, particularly fee rates, may not be changed by means of an addendum. 
+c) complementary services that have become necessary to perform due to unforeseen  
+circumstances. These complementary services must be technically and economically inseparable 
+from the main contract. 
+d) supplementary services that consist of the repetition of similar services entrusted to the 
+contractor under the initial contract. 
+e) New procurement processes resulting from changes above will be approved in terms of the 
+Delegation of Authority. 
+ 
+16. CANCELLATION OF CONTRACTS 
+16.1 In exceptional circumstances, it may be considered in the best interests of International IDEA to cancel 
+a contract due to, inter alia, non-performance by a service provider. It may also be the case that a  
+service provider wishes to cancel a contract. In these circumstances the Secretary -General, or the 
+relevant Director will consider and approve the cancellation. 
+ Page | 11  
+17. DEVIATIONS 
+17.1 In exceptional circumstances, it may be considered in the best interests of International IDEA to deviate 
+from the Procurement Policy or Procedures. The Secretary-General or their delegate has the authority 
+to waive the application of certain provisions of the Policy and related procedures. 
+ 
+18. CONFLICT OF INTEREST 
+18.1 All stakeholders in the procurement process are required to provide professional, objective, and  
+impartial services or advice and always hold International IDEA's interest’s paramount, without any  
+consideration for future work, and to strictly avoid conflicts with other assignments or their own  
+interests. They shall not be contracted for any activities that would be in conflict with their prior or  
+current obligations to other parties, or that may place them in a position of not being able to carry out 
+the assignment in the best interest of International IDEA. 
+18.2 It is the responsibility of International IDEA Staff Members to properly disclose any conflicts and address  
+these in terms of the Conflict  of Interest Policy and the instruction to disclose the conflict of interest  
+should also be shared by the procuring Team to tenderers and potential service providers. 
+ 
+19. EXCLUSION AS A RESULT OF CORRUPT, FRAUDULENT AND OTHER UNACCEPTABLE PRACTICES 
+19.1 International IDEA, and all service providers shall observe the Code of Conduct during the  
+procurement and execution of the contract. To this end, the following are considered unacceptable  
+practices and may lead to the exclusion of a service provider from a tender process or termination of  
+the contract if the circumstances arise or come to the attention of International IDEA after the  
+contract is signed. In this context the exclusion applies to the service provider or if the service provider 
+is a legal entity a natural person with power of representation, decision -making or control over the 
+legal entity. Grounds for exclusion are if: 
+a) the service provider is bankrupt, subject to insolvency or winding up procedures, its assets are  
+being administered by a liquidator or by a court, it is in an arrangement with creditors, its  
+business activities are suspended , or it is in any analogous situation arising from a similar  
+procedure provided for under national legislation or regulations. 
+b) it has been established by a final judgement or a final administrative decision that the service  
+provider is in breach of  its obligations relating to the  payment of taxes  or social security  
+contributions in accordance with the law of the country in which it is established, with those of  
+the country in which International IDEA is located or those of the country of the performance of 
+the contract. 
+c) it has been established by a final judgement or  a final administrative decision that the service  
+provider is guilty of grave professional misconduct by having violated applicable laws or 
+regulations or ethical standards of the profession to which the service provider belongs, or by  
+having engaged in any wrongful conduct which has an impact on its professional credibility where  
+such conduct denotes wrongful intent or gross negligence, including, in particular, any of the  
+following: 
+• fraudulently or negligently misrepresenting information required for the verification of the 
+absence of grounds for exclusion or the fulfilment of selection criteria or in the performance  
+of a contract. 
+• entering into agreement with other persons with the aim of distorting competition. 
+• violating intellectual property rights. 
+• attempting to influence the decision -making process of International IDEA during the award 
+procedure. Page | 12  
+• attempting to obtain confidential information that may confer upon it undue advantages  
+in the award procedure. 
+d) it has been established by a final judgement that the service provider is guilty of any of the  
+following: 
+• fraud, within the meaning of Article 1 of the Convention on the protection of the European 
+Communities' financial interests, drawn up by the Council Act of 26 July 1995. 
+• corruption, as defined in Article 3 of the Convention on the fight against corruption  
+involving officials of the European Communities or officials of EU Member States, drawn up by 
+the Council Act of 26 May 1997, and in Article 2(1) of Council Framework Decision  
+2003/568/JHA, as well as corruption as defined in the legal provisions of the country where 
+International IDEA is located, the country in which the person is established or the country 
+of the performance of the contract. 
+• participation in a criminal organisation, as defined in Article 2 of Council Framework  
+Decision 2008/841/JHA. 
+• money laundering or terrorist financing, as defined in Article 1 of Directive 2005/60/EC of 
+the European Parliament and of the Council. 
+• terrorist-related offences or offences linked to terrorist activities, as defined in Articles 1  
+and 3 of Council Framework Decision 2002/475/JHA, respectively, or inciting, aiding,  
+abetting, or attempting to commit such offences, as referred to in Article 4 of that Decision. 
+• child labour or other forms of trafficking in human beings as defined in Article 2 of Directive 
+2011/36/EU of the European Parliament and of the Council. 
+e) the service provider has shown significant deficiencies in complying with the main obligations in 
+the performance of a contract financed by International IDEA, which has led to its early 
+termination or to the application of liquidated damages or other contractual penalties, or which 
+has been discovered following checks, audits, or investigations. 
+f) it has been established by a final judgment or final administrative decision that the service  
+provider has committed an irregularity within the meaning of Article 1(2) of Council Regulation  
+(EC, Euratom) No 2988/95. 
+g) for the situations of grave professional misconduct, fraud, corruption, other criminal offences,  
+significant deficiencies in the performance of the contract or irregularity, the applicant is subject 
+to: 
+• facts established in the context of audits or investigations carried out by International IDEA, or 
+that International IDEA becomes aware of whatsoever the source of this information. 
+• non-final administrative decisions which may include disciplinary measures taken by the 
+competent supervisory body responsible for the verification of the application of 
+standards of professional ethics. 
+• decisions of the ECB, the EIB, the European Investment Fund or international organisations. 
+• decisions of the European Commission relating to the infringement of the Union's 
+competition rules or of a national competent authority relating to the infringement of  
+Union or national competition law; or 
+• decisions of exclusion by an authorizing officer of an EU institution, of a European office or 
+of an EU agency or body. 
+h) The service provider is an entity created with the intent to circumvent fiscal, social, or other legal 
+obligations (shell company.) 
+i) The service provider is subject to sanction by the United Nations or a Donor. Staff Members with 
+responsibility for procurement must satisfy themselves with regard to the non -involvement of Page | 13  
+service providers  in terrorist and / or criminal activities by ensuring that such entities are not 
+included in a Donor’s or IDEA’s sanction lists. Certain donors require conformity with their own 
+proscription lists, and this should be taken into consideration prior to contracting the Consultant. 
+An example of a donor’s sanction list link as follows:  
+https://data.europa.eu/euodp/en/data/dataset/consolidated -list-of-persons-groups-and-
+entities-subject-to-eu- financial-sanctions) 
+19.2 If a service provider declares one of the situations of exclusion listed above, it should indicate the  
+measures it has taken to remedy the exclusion situation, thus demonstrating its reliability. These  
+measures may include technical, organisational and personnel measures to prevent further  
+occurrence, compensation of damage or payment of fines. The relevant documentary evidence which 
+appropriately illustrates the remedial measures taken should be provided. 
+19.3 In determining whether the circumstances warrant exclusion of the service provider proportionality  
+and the extent of remedial measures applied shall be considered. In this context proportionality means 
+the seriousness of the situation, including the impact on International IDEA’s financial interests and 
+image, the time which has elapsed since the relevant conduct, its duration and its recurrence, the  
+intention or degree of negligence, and the value of the transaction. The decision to appoint a service  
+provider that has circumstances that warrant exclusion will vest with the Secretary -General who will 
+consider the proportionality of the circumstance and the remedial measures in place.
+ 
+ 
+20. PUBLIC DISCLOSURE 
+20.1 In line with the guiding principle of transparency, International IDEA publishes information on its 
+procurement activities on its website in line with the Publication of Information Policy. 
+ 
+21. LANGUAGE OF DOCUMENTATION 
+21.1 All the contract templates used by International IDEA are in English. All contracts with a value of 
+€10,000 or more should be in English, and they must be translated if this is not the original language of 
+the contract. If this is not feasible then an English summary of the main terms and conditions will 
+suffice. 
+ 
+22. DISPUTE RESOLUTION 
+22.1 Whenever possible, an attempt shall be made to settle any dispute arising from the interpretation or  
+execution of a contract by informal negotiations between the supplier or service provider and the Project  
+Manager. If informal negotiations are unsuccessful in settling disputes, these should be escalated to the 
+Executive Director to consider for recommendation to the Secretary -General in terms of the General  
+Conditions of Contract. 
+ 
+23. RISK MANAGEMENT 
+23.1 Risk analysis and risk management is carried out under policies approved by International IDEA. 
+23.2 There are a variety of risks inherent in the procurement process. The impact of any unwanted event  
+occurring and the likelihood of that happening will vary depending on the nature and value of the  
+procurement. Staff Members involved in procurement are required to consider risk when planning  
+procurement processes, and in the management of contracts. There are also risks of damage to  the 
+Institute's credibility, reputation and funding if the task is not delivered excellently and on time.  
+  Page | 14  
+ 
+24. POLICY CONTROLS 
+24.1 This Procurement Policy supersedes all previous Procurement Policies and may be amended from time 
+to time as deemed necessary to reflect changes in best procurement practice. 
+24.2 The Policy is established under the framework of International IDEA's Financ ial Regulations. In 
+accordance with section 7 .1 of the Financ ial Regulations, the Secretary -General has the ultimate 
+authority in relation to the policy and may delegate authority as required. 
+24.3 Interpretation authority contained in the Procurement Policy is vested in the Executive Director, who  
+has the authority to rule on any cases of ambiguity in the interpretation and application of the Policy. 
+24.4 International IDEA as a whole is responsible for executing this policy. The Executive Director must report on 
+the policy and specific problems experienced in its implementation as required and is authorized to 
+propose standard operating procedures in support of this policy if required. 
+24.5 Sanctions may be imposed in terms of the Disciplinary Procedure on any Staff Member that fails to  
+comply with this policy. 
+24.6 No amendment(s) may be made to any section of this policy without following the appropriate  
+procedures. 
+24.7 Any deviation from this policy must be expressly approved in writing by the Secretary General or their 
+delegate. 
+24.8 This policy was approved on 25 January 2024  and will be of immediate effect applying to all new  
+contracts or extensions after that date. Page | 15  
+25. GLOSSARY OF TERMS AND DEFINITIONS 
+25.1 Bid - a quotation or tender submitted by a bidder. 
+25.2 Contract - An agreement between two or more parties with specific terms and conditions including 
+a Services Contract, a Commissioning Contract, or a Framework Contract. 
+25.3 Deliverables - the tangible outputs of a contract. Examples are a research paper, an evaluation study 
+or hotel accommodation. 
+25.4 Deviation - a decision made not to follow the Procurement Policy or Procedures due to 
+exceptional circumstances in the best interests of International IDEA. 
+25.5 Donor - an Institution providing external funding to International IDEA 
+25.6 Enterprise Resource Planning (ERP) System -  an IT System that is used by an organization to manage and  
+integrate its data and work processes. In International IDEA the current system is called Unit4 Business 
+World (UBW). 
+25.7 Expression of  Interest (EOI) - inviting suppliers to  indicate their  interest in taking on  a specific 
+assignment or to join a roster of qualified suppliers who may then be requested to compete for a specific  
+assignment or be considered for future assignments. 
+25.8 Highest Rated Proposal - the bid determined to the best bid after the evaluation and rank highest among  
+the proposals. 
+25.9 Sole Sourcing - the process of selecting a supplier without considering alternative suppliers.  
+25.10 Tender - a procurement method in which any qualified supplier in the open market can be invited 
+to submit a quote to provide goods or services required by International IDEA. It is also known as a 
+public tender. 
+25.11 Procurement - the formal process of acquisition of goods and services.  
+25.12 Project Manager- the Staff Member named as the person responsible for one or more projects that form  
+part of the current programme and budget. 
+25.13 Request for Direct Award (RDA) – the specific identification of a given service provider in selected  
+circumstances. 
+25.14 Request for Proposal (RFP) - one of the soliciting documents used in an open competition to source 
+a supplier to carry out a service. It informs a potential bidder of the requirements ( e.g., experience) 
+necessary to carry out the assignment and the procedures to follow in submitting a proposal. 
+25.15 Requirements - a general term to describe the needs of a service or assignment. 
+25.16 Restricted Competition - the process of selecting a supplier based on comparing several proposals or 
+quotations from a range of identified Suppliers. 
+25.17 Services - the outputs to be provided by a service provider. 
+25.18 Specifications - a detailed description of the attributes of an item, typically used when purchasing goods  
+and supplies. 
+25.19 Service Provider - any contractor, service provider, consultant or vendor who is contracted to provide 
+goods or services to International IDEA. 
+25.20 Terms of Reference - a detailed description of what is required from an assignment, outlining such  
+matters as the context, scope of work, deliverables,  and deadlines; used in conjunction  with the 
+procurement of services. 
+25.21 Thresholds - the monetary values prescribed by International IDEA to establish which Procurement  
+Method must be used in relation to the different procurement categories. 

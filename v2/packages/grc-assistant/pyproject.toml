@@ -1,0 +1,82 @@
+[project]
+name = "grc-assistant"
+version = "0.1.0"
+description = "Rasheed V2 GRC Assistant — the product composition root (ADR 0046). It wires the already-frozen Execution Platform (tool-registry + pipeline-tool's RegistryExecutor + PipelineTool) into the Assistant so Mission steps run REAL tools through the Tool Registry instead of the reference EchoExecutor. This is the 'replace Echo once' assembly: build a tool-backed MissionRuntime, then build the Assistant over it — every capability (Simple Question, Risk Assessment, …) now executes through the real platform with no change to the Assistant or the Mission/Core layers. Composition only — no new domain, no LLM SDK."
+requires-python = ">=3.12"
+dependencies = [
+    "assistant-runtime",
+    "mission-integration",
+    "pipeline-tool",
+    "tool-registry",
+    "framework-library",
+    "llm-tools",
+    "search-tools",
+    "mission-store",
+    "pipeline-contracts",
+    "ai-orchestrator",
+    "decision-engine",
+    "retrieval-engine",
+    "context-builder",
+    "prompt-orchestrator",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "psycopg[binary]>=3.2",
+    "knowledge-runtime",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+decision-engine = { path = "../decision-engine", editable = true }
+retrieval-engine = { path = "../retrieval-engine", editable = true }
+context-builder = { path = "../context-builder", editable = true }
+prompt-orchestrator = { path = "../prompt-orchestrator", editable = true }
+generation-engine = { path = "../generation-engine", editable = true }
+answer-validation = { path = "../answer-validation", editable = true }
+pipeline-tracing = { path = "../pipeline-tracing", editable = true }
+ai-orchestrator = { path = "../ai-orchestrator", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+mission-store = { path = "../mission-store", editable = true }
+mission-integration = { path = "../mission-integration", editable = true }
+tool-registry = { path = "../tool-registry", editable = true }
+pipeline-tool = { path = "../pipeline-tool", editable = true }
+framework-library = { path = "../framework-library", editable = true }
+llm-tools = { path = "../llm-tools", editable = true }
+search-tools = { path = "../search-tools", editable = true }
+knowledge-runtime = { path = "../knowledge-runtime", editable = true }
+assistant-runtime = { path = "../assistant-runtime", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grc_assistant"]
+
+# The AI-pipeline packages are fully hinted but ship no py.typed / are not held to mypy --strict, so
+# the composition root consumes them as untyped imports; grc-assistant's own code stays strict.
+[[tool.mypy.overrides]]
+module = "ai_orchestrator.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "decision_engine.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "retrieval_engine.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "context_builder.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "prompt_orchestrator.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,29 @@
+[project]
+name = "ksa-pdpl-law-extractor"
+version = "0.1.0"
+description = "Rasheed V3 — KSA PDPL Law Knowledge Extractor. First Arabic source behind KnowledgeExtractionPort. Extracts Article -> Provision (contract 6.1), numbering articles by document order. Canonical type is decided by legal FUNCTION not node name: every sub-item is natively a Provision but maps to Definition or Requirement via a structural definitions-detector (never by article number). NFKC normalization is a STEP (PROTO-EXT-1), not logic. Records a content-fidelity ExtractionNote for bidi-reversed body lines and never algorithmically repairs them (Structural Completeness != Content Fidelity). PDPL is Public-Domain."
+requires-python = ">=3.12"
+dependencies = [
+    "knowledge-extraction",
+    "pymupdf>=1.26",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "artifact-writers",
+]
+
+[tool.uv.sources]
+knowledge-extraction = { path = "../knowledge-extraction", editable = true }
+artifact-writers = { path = "../artifact-writers", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ksa_pdpl_law_extractor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

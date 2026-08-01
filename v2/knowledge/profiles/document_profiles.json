@@ -1,0 +1,94 @@
+{
+  "_comment": "Document Profile catalog (architecture doc v1.1, §2/§2.1/§2.2). Data, not code — a new document is a data change here, never a code change. See v2/packages/knowledge-importer/knowledge_importer/chunking/profiles.py for the loader.",
+
+  "profiles": {
+    "iso_standard": {
+      "display_name": "ISO Standard",
+      "description": "Hierarchical clause + Annex control numbering (ISO 27001, 31000, 37301, ...).",
+      "recognizer": "standard_clause",
+      "skeleton": { "kind": "fixed_iso" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "control_framework": {
+      "display_name": "Control Framework",
+      "description": "Looser hierarchical control/practice numbering (NIST, COBIT, COSO).",
+      "recognizer": "standard_clause",
+      "skeleton": { "kind": "loose_hierarchical" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "law": {
+      "display_name": "Law",
+      "description": "Chapter/Article structure, often with a Royal Decree-style preamble.",
+      "recognizer": "regulation_article",
+      "skeleton": { "kind": "chapter_article" },
+      "language_handling": "bilingual_ar_en",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "regulation": {
+      "display_name": "Regulation",
+      "description": "Article/Chapter structure, typically implementing rules under a Law; includes NCA ECC's domain-control-subcontrol grammar.",
+      "recognizer": "regulation_article",
+      "skeleton": { "kind": "chapter_article" },
+      "language_handling": "bilingual_ar_en",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "corporate_policy": {
+      "display_name": "Corporate Policy",
+      "description": "Named-heading structure (Purpose/Scope/Policy Statement/Enforcement, or ALL-CAPS section titles).",
+      "recognizer": "policy_procedure",
+      "skeleton": { "kind": "heading_vocabulary", "mode": "policy" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "procedure": {
+      "display_name": "Procedure",
+      "description": "Step-by-step structure with ordered/lettered steps and RACI-style tables.",
+      "recognizer": "policy_procedure",
+      "skeleton": { "kind": "step_sequence", "mode": "procedure" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "contract": {
+      "display_name": "Contract",
+      "description": "Numbered clause hierarchy with defined terms and schedules/annexes.",
+      "recognizer": "contract_clause",
+      "skeleton": { "kind": "numbered_clause" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    },
+    "spreadsheet": {
+      "display_name": "Spreadsheet",
+      "description": "Sheet/row/column structure, format-determined.",
+      "recognizer": "tabular",
+      "skeleton": { "kind": "tabular" },
+      "language_handling": "monolingual",
+      "fallback_windowing": { "window_chars": 1200, "overlap_chars": 150 }
+    }
+  },
+
+  "category_defaults": {
+    "ISO": "iso_standard",
+    "NIST": "control_framework",
+    "COBIT": "control_framework",
+    "COSO": "control_framework",
+    "Laws": "law",
+    "Saudi Regulations": "regulation",
+    "CMA": "regulation",
+    "SDAIA": "regulation",
+    "Contract Templates": "contract",
+    "Corporate Policies": "corporate_policy",
+    "Governance": "corporate_policy",
+    "Compliance": "corporate_policy",
+    "Risk Management": "corporate_policy",
+    "Internal Audit": "corporate_policy",
+    "OCEG": "corporate_policy"
+  },
+
+  "format_overrides": {
+    "xlsx": "spreadsheet"
+  },
+
+  "explicit_overrides": {}
+}

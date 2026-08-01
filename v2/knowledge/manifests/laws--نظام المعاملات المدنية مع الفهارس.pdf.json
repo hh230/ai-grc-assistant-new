@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.3",
+  "document_id": "laws--نظام المعاملات المدنية مع الفهارس.pdf",
+  "filename": "نظام المعاملات المدنية مع الفهارس.pdf",
+  "extension": ".pdf",
+  "category": "Laws",
+  "relative_path": "Laws/نظام المعاملات المدنية مع الفهارس.pdf",
+  "size_bytes": 4679936,
+  "last_modified": "2026-06-26T19:25:02.397735+00:00",
+  "checksum_sha256": "e701a768e260cb77fb8470a69cf9723f95466aa56dfa250fd9097404fae2be35",
+  "discovered_at": "2026-07-12T16:09:06.169769+00:00",
+  "stages_completed": [
+    "intake",
+    "parsing",
+    "profile_assignment",
+    "chunking"
+  ],
+  "status": "parsed",
+  "parsed": true,
+  "parser": "pdf",
+  "parser_used": "pypdf",
+  "parser_fallback": false,
+  "parser_attempts": [
+    {
+      "backend": "pypdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "failure_reason": null,
+  "page_count": 218,
+  "character_count": 168058,
+  "extraction_duration": 16.909773332998157,
+  "parsed_at": "2026-07-12T16:12:13.399434+00:00",
+  "error": null,
+  "document_profile": "law",
+  "profile_assignment_source": "category_default",
+  "chunked": true,
+  "chunk_count": 803,
+  "structure_profile_used": "regulation_article",
+  "recognizer_confidence": 1.0,
+  "chunking_duration": 0.039526417036540806,
+  "chunked_at": "2026-07-12T16:12:13.455786+00:00",
+  "chunking_error": null
+}

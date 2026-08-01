@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dev Team — Operations Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">🛡️</span>
+        <div>
+          <div class="title">Operations Dashboard</div>
+          <div class="subtitle" id="repo-label">—</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span id="health-pill" class="pill pill-unknown">health: —</span>
+        <button id="notify-btn" class="ghost-btn" title="Enable browser notifications">🔔 Notify</button>
+        <span id="refresh-dot" class="refresh-dot" title="Auto-refreshing"></span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <a href="#executive" data-tab="executive">Executive</a>
+      <a href="#overview" data-tab="overview">Overview</a>
+      <a href="#operations" data-tab="operations">Operations</a>
+      <a href="#pipeline" data-tab="pipeline">Missions</a>
+      <a href="#agents" data-tab="agents">Agents</a>
+      <a href="#lifecycle" data-tab="lifecycle">Lifecycle</a>
+      <a href="#jobs" data-tab="jobs">Jobs</a>
+      <a href="#connectors" data-tab="connectors">Connectors</a>
+      <a href="#missions" data-tab="missions">Open Missions</a>
+      <a href="#logs" data-tab="logs">Logs</a>
+      <a href="#metrics" data-tab="metrics">Metrics</a>
+      <a href="#settings" data-tab="settings">Settings</a>
+    </nav>
+
+    <main id="view">
+      <div class="loading">Loading…</div>
+    </main>
+
+    <footer class="foot">
+      <span>Presentation only — observes the running monitor and drives the existing approval gate.</span>
+      <span id="clock"></span>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

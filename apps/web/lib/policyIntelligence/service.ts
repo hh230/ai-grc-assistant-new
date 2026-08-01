@@ -38,6 +38,7 @@ async function callPolicyIntelligenceApi<T>(
   actor: ActorContext,
   path: string,
   params?: Record<string, string | undefined>,
+  options: { onUnreachable?: "error" | "warn" } = {},
 ): Promise<T> {
   const url = new URL(`/api/v1/policy-intelligence${path}`, apiBaseUrl());
   for (const [key, value] of Object.entries(params ?? {})) {
@@ -51,8 +52,20 @@ async function callPolicyIntelligenceApi<T>(
       cache: "no-store",
     });
   } catch (error) {
-    logger.error("policy_intelligence_upstream_unreachable", { url: url.toString(), error });
-    throw new UpstreamError("Could not reach the Policy Intelligence backend.");
+    // "warn" is for read-only call sites that degrade gracefully when the backend isn't
+    // deployed in this environment (see listObligations) — logged, but not reported to
+    // Sentry (logger.error is the only level that reports; see logger.ts). Scan/review
+    // results and any future mutating calls keep the default "error" (see the
+    // graceful-degradation policy on UpstreamError in lib/errors.ts).
+    if (options.onUnreachable === "warn") {
+      logger.warn("policy_intelligence_upstream_unreachable", {
+        url: url.toString(),
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    } else {
+      logger.error("policy_intelligence_upstream_unreachable", error, { url: url.toString() });
+    }
+    throw new UpstreamError("Could not reach the Policy Intelligence backend.", true);
   }
 
   if (!response.ok) {
@@ -104,11 +117,21 @@ export async function listObligations(
   actor: ActorContext,
   controlDomain?: string,
 ): Promise<ObligationEvidence[]> {
-  const data = await callPolicyIntelligenceApi<{ obligations: ObligationEvidenceDto[] }>(
-    actor,
-    "/obligations",
-    { control_domain: controlDomain },
-  );
+  let data: { obligations: ObligationEvidenceDto[] };
+  try {
+    data = await callPolicyIntelligenceApi<{ obligations: ObligationEvidenceDto[] }>(
+      actor,
+      "/obligations",
+      { control_domain: controlDomain },
+      { onUnreachable: "warn" },
+    );
+  } catch (error) {
+    // Pipeline-classified obligations list — an unreachable backend degrades to "no confirmed
+    // obligations yet" instead of failing the whole workspace page (see the
+    // graceful-degradation policy on UpstreamError in lib/errors.ts).
+    if (error instanceof UpstreamError && error.unreachable) return [];
+    throw error;
+  }
   return data.obligations.map(toObligationEvidence);
 }
 

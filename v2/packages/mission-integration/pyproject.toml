@@ -1,0 +1,39 @@
+[project]
+name = "mission-integration"
+version = "0.1.0"
+description = "Rasheed V2 Mission Integration layer — the composition root that wires the frozen Mission Engine, Mission Store, Unit of Work, Transactional Outbox, Outbox Relay, Delivery Bus, and Audit Sink into one end-to-end flow. Integration & verification only: it adds no feature and changes no frozen component (no ADR, port, or engine change). It owns only the wiring — how a transition's Engine/Store/OutboxSink share one UnitOfWork connection so state and events commit atomically, and how the relay later drains committed rows onto a Delivery Bus whose subscriber is the Audit Sink."
+requires-python = ">=3.12"
+dependencies = [
+    "pipeline-contracts",
+    "mission-engine",
+    "mission-store",
+    "event-bus",
+]
+
+[project.optional-dependencies]
+# The integration path is PostgreSQL-backed end-to-end, but the driver is imported lazily
+# (inside the methods that touch the DB), matching the store/relay, so the package still
+# imports without it.
+postgres = ["psycopg[binary]>=3.2"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "psycopg[binary]>=3.2",
+]
+
+[tool.uv.sources]
+pipeline-contracts = { path = "../pipeline-contracts", editable = true }
+mission-engine = { path = "../mission-engine", editable = true }
+mission-store = { path = "../mission-store", editable = true }
+event-bus = { path = "../event-bus", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mission_integration"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

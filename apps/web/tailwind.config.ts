@@ -35,6 +35,14 @@ const config: Config = {
           soft: "var(--accent-soft)",
           foreground: "var(--accent-fg)",
         },
+        brand: {
+          DEFAULT: "var(--brand)",
+          hover: "var(--brand-hover)",
+          active: "var(--brand-active)",
+          border: "var(--brand-border)",
+          focus: "var(--brand-focus)",
+          foreground: "var(--brand-foreground)",
+        },
         gold: {
           DEFAULT: "var(--gold)",
           soft: "var(--gold-soft)",

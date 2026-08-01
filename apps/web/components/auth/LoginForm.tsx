@@ -3,8 +3,9 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Loader2, Lock, Mail, ShieldHalf, TriangleAlert } from "lucide-react";
+import { ArrowRight, Loader2, Lock, Mail, TriangleAlert } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { LogoMark } from "@/components/ui/Logo";
 import { DEFAULT_AUTHENTICATED_PATH } from "@/lib/auth/config";
 
 /** Restrict post-login redirects to in-app paths to prevent open-redirect abuse. */
@@ -50,9 +51,7 @@ export function LoginForm() {
   return (
     <div className="w-full max-w-sm">
       <div className="mb-8 flex flex-col items-center text-center">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-hairline-strong bg-surface-2 shadow-soft">
-          <ShieldHalf className="h-6 w-6 text-accent-foreground" strokeWidth={1.75} />
-        </div>
+        <LogoMark size={44} priority />
         <h1 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
           {t("title")}
         </h1>

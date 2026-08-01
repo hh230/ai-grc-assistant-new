@@ -26,6 +26,18 @@
   --accent-soft: rgba(91, 58, 34, 0.08);
   --accent-fg: #3d2716;
 
+  /* Brand — extracted directly from the Rasheed logo mark (#553b26), not chosen
+     independently. Hover/active are the same hue darkened; border/focus are the
+     same hue at low opacity, matching the --border/--accent-soft pattern above. */
+  --brand: #553b26;
+  --brand-hover: #402c1d;
+  --brand-active: #2e2015;
+  --brand-border: rgba(85, 59, 38, 0.18);
+  --brand-focus: rgba(85, 59, 38, 0.35);
+  /* Text/icon color for content placed on a solid --brand surface — reuses the
+     site's own --bg cream rather than introducing a new white. */
+  --brand-foreground: #fbf8f3;
+
   --gold: #b8923f;
   --gold-soft: rgba(184, 146, 63, 0.12);
 

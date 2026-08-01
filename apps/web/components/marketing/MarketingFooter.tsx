@@ -1,8 +1,8 @@
 "use client";
 
-import { ShieldHalf } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/ui/Logo";
 
 const COLUMNS = [
   {
@@ -39,14 +39,7 @@ export function MarketingFooter() {
       <div className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-hairline-strong bg-surface shadow-soft">
-                <ShieldHalf className="h-[18px] w-[18px] text-accent" strokeWidth={1.75} />
-              </div>
-              <span className="text-sm font-semibold tracking-tight text-foreground">
-                {tCommon("appName")}
-              </span>
-            </div>
+            <Logo size={22} wordmark={tCommon("appName")} wordmarkClassName="text-sm font-semibold" />
             <p className="mt-3 max-w-[220px] text-xs text-foreground-muted">{t("tagline")}</p>
           </div>
 

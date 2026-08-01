@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
+import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 
 const LINK_KEYS = [
@@ -26,9 +27,7 @@ export function MarketingNav() {
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            {tCommon("appName")}
-          </span>
+          <Logo size={26} wordmark={tCommon("appName")} priority />
         </Link>
 
         <nav className="ms-4 hidden flex-1 items-center gap-1 lg:flex" aria-label="Main">

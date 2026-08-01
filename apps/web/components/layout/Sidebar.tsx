@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/components/auth/SessionProvider";
+import { Logo } from "@/components/ui/Logo";
 import {
   PRIMARY_NAV,
   FOOTER_NAV,
@@ -84,12 +85,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
     <aside className="flex h-full w-[248px] shrink-0 flex-col border-e border-hairline bg-canvas">
       {/* Brand — also the fastest route to the dashboard */}
       <Link href="/dashboard" onClick={onNavigate} className="flex h-16 items-center px-5">
-        <div className="leading-tight">
-          <p className="text-xl font-bold tracking-tight text-foreground">
-            {tCommon("appName")}
-          </p>
-          <p className="text-2xs text-foreground-muted">{t("brandTagline")}</p>
-        </div>
+        <Logo size={30} wordmark={tCommon("appName")} tagline={t("brandTagline")} priority />
       </Link>
 
       <div className="mx-5 h-px bg-hairline-x" />

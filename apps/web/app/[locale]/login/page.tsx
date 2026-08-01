@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
+import { Logo } from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Sign in · Rasheed",
@@ -22,9 +23,9 @@ export default async function LoginPage() {
       />
       <Link
         href="/"
-        className="absolute start-6 top-6 text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
+        className="absolute start-6 top-6 transition-opacity hover:opacity-80"
       >
-        {tCommon("appName")}
+        <Logo size={22} wordmark={tCommon("appName")} wordmarkClassName="text-sm font-semibold" />
       </Link>
       <div className="absolute end-6 top-6">
         <LanguageSwitcher />

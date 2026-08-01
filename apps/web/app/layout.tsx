@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // Resolves the absolute URL for the app/opengraph-image.png / app/icon.png file
+  // conventions below; falls back to localhost in dev/when unset.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   title: "Rasheed",
   description:
     "Enterprise Governance, Risk, Compliance and AI platform — real-time posture across regulated frameworks.",

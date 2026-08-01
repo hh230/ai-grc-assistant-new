@@ -1,0 +1,10 @@
+2026-07-29 00:49:44,106 INFO devteam.monitor: watching hh230/ai-grc-assistant-new every 60s
+2026-07-29 00:49:45,715 INFO devteam.monitor: monitoring 2 open PR(s)
+2026-07-29 00:49:47,001 INFO devteam.monitor: PR 12: opened mission m-aaa (attempt 1) — awaiting_approval
+2026-07-29 00:49:48,002 INFO devteam.monitor: PR 13: opened mission m-bbb (attempt 1) — cancelled
+2026-07-29 00:50:45,715 INFO devteam.monitor: monitoring 2 open PR(s)
+2026-07-29 00:50:47,003 INFO devteam.monitor: PR 12: opened mission m-ccc (attempt 2) — awaiting_approval
+2026-07-29 00:51:45,720 INFO devteam.monitor: monitoring 1 open PR(s)
+2026-07-29 00:51:47,100 INFO devteam.monitor: PR 12: CI is green — chain resolved
+2026-07-29 00:52:45,720 WARNING devteam.monitor: chain pr-14 EXHAUSTED after 3 attempt(s): CI still failing after 3 attempt(s) (max_attempts=3); needs human intervention
+<frozen runpy>:128: RuntimeWarning: 'devteam_runtime.monitor' found in sys.modules after import of package 'devteam_runtime', but prior to execution of 'devteam_runtime.monitor'; this may result in unpredictable behaviour

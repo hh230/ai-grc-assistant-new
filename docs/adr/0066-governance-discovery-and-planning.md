@@ -1,8 +1,10 @@
 # ADR 0066: Governance Discovery & Planning — the AI Governance Planning Engine
 
 - Status: Accepted — **Phase 3 (Mission, LLM roles, Plan Execution, versioning, Production
-  Hardening) closed 2026-08-03**, design and data-integrity within its declared scope (Phase 4/5
-  and the separately-tracked Wave 1 executor migration remain open — see "Revision history")
+  Hardening) and the Phase 4 Product Flow Simplification (unified Discovery → Report → Plan
+  journey, the first real frontend wiring of the Mission bridge) closed 2026-08-03**, within their
+  declared scope (Phase 5 — seed sector data beyond `core`/`technology`/`cloud_provider` — and the
+  separately-tracked Wave 1 executor migration remain open — see "Revision history")
 - Date: 2026-08-02
 - Deciders: Product owner; platform engineering
 - Related: CLAUDE.md §3, §6, §8, §9, §13, §15, §19, §23; ADR 0042 (Mission Engine), 0043 (Mission
@@ -830,3 +832,54 @@ New keys are proposed by adding to this appendix via PR, not invented inline in 
   rework — no frontend UI consumes `/v1/governance-plans/*` yet); (c) Phase 5 (seed sector data
   beyond `core`/`technology`/`cloud_provider`). Reopen with a new revision entry, not a silent
   edit, if a later phase's work surfaces a genuine defect in what is closed here.
+- 2026-08-03 (**Phase 4 — Product Flow Simplification, closed**): a UX audit ("does the user know
+  where they start and end?") found that (b) above was more than a missing page: **no code
+  anywhere in `apps/web` had ever created or run the `generate_governance_plan` Mission** —
+  `/plan`'s empty state was the only thing a real user could ever reach, and the interview's
+  conclusion screen was a Phase-2 stopgap (`DiscoveryResultPreview`) showing 4 of the report's ten
+  designed sections. Fixed by wiring the actual bridge and collapsing Discovery/Report/Plan into
+  one journey rather than three pages:
+  - New `apps/web/lib/planGeneration/` proxies the generic `/v1/missions` contract exactly as
+    `lib/discovery/service.ts` already proxies `/v1/discovery/*`: `startPlanGeneration` creates and
+    runs the Mission in one call (the three non-consequential steps run synchronously; the Mission
+    pauses at `finalize_plan`, the one consequential step), `getPendingPlanGeneration` resumes a
+    session left `awaiting_approval`, `approvePlanGeneration` crosses the ADR 0044 gate. The
+    `draft_plan` step's output is read via `findings[i].summary` (`MissionDetailView`), guarded by
+    matching the step's own `description` before trusting its index, so a future change to this
+    Mission's shape fails loudly instead of silently parsing the wrong step.
+  - `POST /v1/missions/{id}/approvals/{step_id}/approve` requires the grc-api role literal
+    `"approver"`, which `apps/web` has no such role for — `owner`/`admin`/`compliance_manager` are
+    mapped to grant it only when minting the service-assertion token (`serviceToken.ts`'s `roles`
+    param), enforced both client-side (button disabled) and server-side (403 in the Next.js route)
+    ahead of grc-api's own independent check — three layers, not decorative redundancy.
+  - `components/discovery/DiscoveryFlow.tsx`'s phase machine gained `report` (replacing `result`)
+    and `activating`; `components/governance/GovernanceReport.tsx` (+ `JourneyStepper.tsx` and five
+    section sub-components) renders the full ten-section report from §4 for the first time, ending
+    in the "Approve & Activate Plan" action — the ADR 0044 gate, visible in the product for the
+    first time. `DiscoveryResultPreview.tsx` and its dead `GET .../result` route are deleted.
+  - `app/[locale]/(app)/discovery/page.tsx` is now the single entry point: it redirects
+    server-side to `/plan` when `getActivePlan` finds one, so "I already finished this" always
+    lands the user in the right place; `?restart=1` is the one deliberate escape hatch, linked from
+    `/plan`'s low-emphasis "Run a new assessment." The sidebar's separate `plan` nav entry is
+    removed — one nav item ("Governance Program") for the whole journey.
+  - **A real deployment gap, not a frontend bug, blocked end-to-end verification and is now
+    fixed**: `mission_read_model` (the table `GET /v1/missions` reads —
+    `mission-read-model/mission_read_model/schema.py`) had DDL but, unlike `mission-store`'s
+    `missions`/`outbox` tables, no committed `.sql` migration — the package's own docstring named
+    this a "(later)" migration that was never actually written. Any real (non-test) deployment's
+    `GET /v1/missions` 500s from the first `SELECT` on a fresh database; nothing in the production
+    test suite caught it because `tests/production/conftest.py` creates the table itself, in
+    Python, at test setup, masking the absent migration. Fixed with
+    `mission-read-model/migrations/0001_mission_read_model.sql` (identical DDL to `schema.py`'s
+    `create_table_sql()`, the same idempotent `CREATE TABLE IF NOT EXISTS` style as every other
+    migration in this ADR). Verified end-to-end against a real Postgres database with this
+    migration applied, and separately against a real `RegistryExecutor` + deterministic fake
+    `GenerationProvider` (the same injection this ADR's own `test_governance_plan_e2e.py` uses)
+    standing in for the still-`EchoExecutor` production default — confirming the whole chain
+    (interview → real Mission → ten-section Report → approve → `/plan` → re-visiting `/discovery`
+    redirects straight back → Arabic/RTL) works, in both directions (fresh session and
+    resume-mid-report), for an approver and a non-approver role alike.
+  - Explicitly unchanged: the Wave 1 `EchoExecutor` → `RegistryExecutor` production-default
+    migration remains separate, already-tracked work, per (a) above — this closure only fixes the
+    unrelated `mission_read_model` migration gap that any Mission type's list endpoint would hit
+    regardless of which executor is wired.

@@ -70,6 +70,16 @@ docker compose -f docker/compose/docker-compose.deps.yml up -d   # Postgres + pg
 pnpm --filter @grc/web db:migrate                                # apply lib/db/migrations
 ```
 
+### v2/apps/grc-api dependency (Governance Discovery/Planning, Missions)
+
+`/discovery`, `/plan`, and the `Missions` nav item proxy to the separate `v2/apps/grc-api`
+FastAPI host (ADR 0066 "Frontend integration") — a different Python service, database, and
+migration set from the `apps/web`-owned Postgres above. Follow
+[`v2/apps/grc-api/README.md`](../../v2/apps/grc-api/README.md) (Install → Migrate → Run) to
+stand it up locally, then set `GRC_API_BASE_URL` and `GRC_API_SERVICE_SECRET` in
+`.env.local` (see `.env.example`) to the same values grc-api's own process uses. Every other
+page works without this; these three routes 401/502 until it's running and configured.
+
 ## Running locally
 
 ```bash

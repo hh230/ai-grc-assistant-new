@@ -6,6 +6,16 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.9] — 2026-08-03
+
+### Added
+- **App-wide error boundary** — every authenticated workspace page now has an `error.tsx`
+  (none existed before this, anywhere). The other half of the `/discovery` crash fix
+  (v2.1.8): an *unreachable* backend degrades gracefully, but a *reachable* backend
+  returning an error is a real incident and still throws by design — that now renders as a
+  graceful, on-brand "Something went wrong" card with a retry action instead of a raw
+  crash screen, while still reporting to Sentry.
+
 ## [2.1.8] — 2026-08-03
 
 ### Fixed
@@ -174,6 +184,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.9]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.9
 [2.1.8]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.8
 [2.1.7]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.7
 [2.1.6]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.6

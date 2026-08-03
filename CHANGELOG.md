@@ -6,6 +6,18 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.8] — 2026-08-03
+
+### Fixed
+- **`/discovery` crashing on a transient backend hiccup** — its routing check
+  (`getActivePlan()`) had no error handling, and no `error.tsx` exists anywhere in the app, so
+  any brief `grc-api` unavailability (restart, deploy, network blip) white-screened the page
+  with Next.js's generic "Application error" for every visitor, plan or no plan. Now degrades
+  to "no active plan" (a state the function already returns normally) and logs a warning
+  instead of crashing — the same graceful-degradation pattern already used elsewhere in the
+  codebase for this exact class of problem. A genuinely misbehaving (but reachable) backend
+  still throws, since that's worth alerting on.
+
 ## [2.1.7] — 2026-08-03
 
 ### Changed
@@ -162,6 +174,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.8]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.8
 [2.1.7]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.7
 [2.1.6]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.6
 [2.1.5]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.5

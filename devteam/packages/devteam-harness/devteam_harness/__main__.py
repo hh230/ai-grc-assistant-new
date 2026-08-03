@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+from pathlib import Path
 
 from devteam_harness.campaign import check_scenario, run_campaign
 from devteam_harness.results import ResultStore
@@ -59,6 +60,14 @@ def main(argv: list[str] | None = None) -> int:
             "seconds. Requires: uv sync --extra browser && uv run playwright install chromium"
         ),
     )
+    parser.add_argument(
+        "--html",
+        metavar="PATH",
+        help=(
+            "write a self-contained HTML dashboard for this run. A file rather than a server, so "
+            "the evidence outlives the process: attachable to a CI run, openable from a PR"
+        ),
+    )
     args = parser.parse_args(argv)
 
     if args.seed is not None:
@@ -69,6 +78,11 @@ def main(argv: list[str] | None = None) -> int:
 
         outcome = run_team(count=args.count, start_seed=args.start_seed, browser=args.browser)
         print(outcome.report.render())
+        if args.html:
+            from devteam_harness.dashboard import summarise, write_html
+
+            written = write_html(outcome.report, Path(args.html))
+            print(f"\ndashboard : {written}  ({summarise(outcome.report).verdict})")
         return 1 if (args.fail_on_violation and not outcome.ok) else 0
 
     store = ResultStore(args.db)

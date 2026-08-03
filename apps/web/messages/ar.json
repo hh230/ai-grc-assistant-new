@@ -2000,5 +2000,34 @@
     "successMessage": "تمت إعادة تعيين كلمة المرور الخاصة بك. يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة.",
     "goToLogin": "الذهاب لتسجيل الدخول",
     "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "profilePage": {
+    "eyebrow": "الحساب",
+    "title": "الملف الشخصي",
+    "description": "هويتك وبيانات حسابك في رشيد.",
+    "detailsTitle": "بياناتك",
+    "nameLabel": "الاسم الكامل",
+    "emailLabel": "البريد الإلكتروني للعمل",
+    "emailHint": "تواصل مع مسؤول النظام لتغيير بريدك الإلكتروني.",
+    "organizationLabel": "المؤسسة",
+    "save": "حفظ التغييرات",
+    "saving": "جارٍ الحفظ…",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "securityAccessPage": {
+    "eyebrow": "الحساب",
+    "title": "الأمان والوصول",
+    "description": "إدارة كلمة المرور ومراجعة صلاحيات وصولك إلى مساحة العمل.",
+    "accessTitle": "صلاحيات وصولك",
+    "accessDescription": "دورك وصلاحياتك ضمن {organization}.",
+    "passwordTitle": "تغيير كلمة المرور",
+    "currentPasswordLabel": "كلمة المرور الحالية",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "confirmPasswordLabel": "تأكيد كلمة المرور الجديدة",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+    "passwordChanged": "تم تغيير كلمة المرور الخاصة بك.",
+    "save": "تغيير كلمة المرور",
+    "saving": "جارٍ الحفظ…",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   }
 }

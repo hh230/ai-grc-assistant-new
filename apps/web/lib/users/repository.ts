@@ -11,6 +11,8 @@ export interface UsersRepository {
   findByEmail(email: string): Promise<User | null>;
   findById(userId: string): Promise<User | null>;
   create(user: User): Promise<User>;
+  updateName(userId: string, name: string): Promise<void>;
+  updatePasswordHash(userId: string, passwordHash: string): Promise<void>;
 }
 
 interface UserRow {
@@ -54,6 +56,17 @@ class PostgresUsersRepository implements UsersRepository {
       [user.id, user.email, user.name, user.passwordHash, user.createdAt],
     );
     return user;
+  }
+
+  async updateName(userId: string, name: string): Promise<void> {
+    await getPool().query(`UPDATE users SET name = $2 WHERE id = $1`, [userId, name]);
+  }
+
+  async updatePasswordHash(userId: string, passwordHash: string): Promise<void> {
+    await getPool().query(`UPDATE users SET password_hash = $2 WHERE id = $1`, [
+      userId,
+      passwordHash,
+    ]);
   }
 }
 

@@ -39,6 +39,7 @@ async function callPlanApi<T>(
   method: "GET" | "POST",
   path: string,
   body?: unknown,
+  options: { onUnreachable?: "error" | "warn" } = {},
 ): Promise<T> {
   const url = new URL(`/v1/governance-plans${path}`, grcApiBaseUrl());
   const token = mintGrcApiServiceToken({ tenantId: actor.tenantId, principalId: actor.userId });
@@ -55,7 +56,18 @@ async function callPlanApi<T>(
       cache: "no-store",
     });
   } catch (error) {
-    logger.error("plan_execution_upstream_unreachable", error, { url: url.toString() });
+    // "warn" is for read-only call sites that degrade gracefully when the backend is briefly
+    // unreachable (see getActivePlan) — logged, but not reported to Sentry (logger.error is the
+    // only level that reports; see logger.ts). Consequential/mutating calls keep the default
+    // "error" so a live backend actually going unreachable still alerts.
+    if (options.onUnreachable === "warn") {
+      logger.warn("plan_execution_upstream_unreachable", {
+        url: url.toString(),
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    } else {
+      logger.error("plan_execution_upstream_unreachable", error, { url: url.toString() });
+    }
     throw new UpstreamError("Could not reach the Governance Plan backend.", true);
   }
 
@@ -213,7 +225,20 @@ function toEvent(dto: PlanEventDto): PlanEvent {
 // --- public API ---------------------------------------------------------------------------
 
 export async function getActivePlan(actor: ActorContext): Promise<PlanDetail | null> {
-  const dto = await callPlanApi<PlanDetailDto | null>(actor, "GET", "/active");
+  let dto: PlanDetailDto | null;
+  try {
+    dto = await callPlanApi<PlanDetailDto | null>(actor, "GET", "/active", undefined, {
+      onUnreachable: "warn",
+    });
+  } catch (error) {
+    // The backend being briefly unreachable (restart, deploy, network blip) is a known,
+    // expected condition for this read — degrade to "no active plan" (a state this function
+    // already returns normally) instead of crashing every page that checks for one (e.g.
+    // /discovery's routing check). A genuinely misbehaving (but reachable) backend still
+    // throws below, since that's worth alerting on.
+    if (error instanceof UpstreamError && error.unreachable) return null;
+    throw error;
+  }
   if (!dto) return null;
   return { plan: toPlan(dto.plan), items: dto.items.map(toItem) };
 }

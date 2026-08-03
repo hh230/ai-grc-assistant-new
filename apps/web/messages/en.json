@@ -2000,5 +2000,34 @@
     "successMessage": "Your password has been reset. You can now sign in with your new password.",
     "goToLogin": "Go to sign in",
     "genericError": "Something went wrong. Please try again."
+  },
+  "profilePage": {
+    "eyebrow": "Account",
+    "title": "Profile",
+    "description": "Your identity and account details on Rasheed.",
+    "detailsTitle": "Your details",
+    "nameLabel": "Full name",
+    "emailLabel": "Work email",
+    "emailHint": "Contact your administrator to change your email address.",
+    "organizationLabel": "Organization",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "securityAccessPage": {
+    "eyebrow": "Account",
+    "title": "Security & access",
+    "description": "Manage your password and review your access to this workspace.",
+    "accessTitle": "Your access",
+    "accessDescription": "Your role and permissions within {organization}.",
+    "passwordTitle": "Change password",
+    "currentPasswordLabel": "Current password",
+    "newPasswordLabel": "New password",
+    "confirmPasswordLabel": "Confirm new password",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordChanged": "Your password has been changed.",
+    "save": "Change password",
+    "saving": "Saving…",
+    "genericError": "Something went wrong. Please try again."
   }
 }

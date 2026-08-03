@@ -1,15 +1,18 @@
 "use client";
 
-import { ChevronDown, Loader2, LogOut, Settings, Shield, User } from "lucide-react";
+import { ChevronDown, Loader2, LogOut, Shield, User } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Popover } from "@/components/ui/Popover";
 import { useSession } from "@/components/auth/SessionProvider";
 import { primaryRole, ROLE_META } from "@/lib/auth/roles";
 
+// "Preferences" is intentionally omitted — there is no preferences backend yet (no
+// per-user settings to store), so it stays hidden rather than linking to an empty page
+// (post-v2.0.1 audit; CLAUDE.md — no placeholder UI left clickable-but-dead).
 const MENU = [
-  { key: "profile", icon: User },
-  { key: "preferences", icon: Settings },
-  { key: "security", icon: Shield },
+  { key: "profile", icon: User, href: "/profile" },
+  { key: "security", icon: Shield, href: "/security-access" },
 ] as const;
 
 export function UserMenu() {
@@ -49,14 +52,14 @@ export function UserMenu() {
         {MENU.map((item) => {
           const Icon = item.icon;
           return (
-            <button
+            <Link
               key={item.key}
-              type="button"
+              href={item.href}
               className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-foreground-secondary transition-colors duration-150 hover:bg-white/[0.03] hover:text-foreground"
             >
               <Icon className="h-4 w-4 text-foreground-muted" strokeWidth={1.75} />
               {t(item.key)}
-            </button>
+            </Link>
           );
         })}
       </div>

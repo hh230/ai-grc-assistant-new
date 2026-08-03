@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import {
   ShieldCheck,
@@ -14,10 +15,11 @@ import { Hero } from "@/components/marketing/Hero";
 import { FeatureGrid } from "@/components/marketing/FeatureGrid";
 import { CTASection } from "@/components/marketing/CTASection";
 
-export const metadata: Metadata = {
-  title: "Features · Rasheed",
-  description: "Every feature of the Rasheed governance, risk, and compliance workspace.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("featuresPage.hero.title", {
+    description: "Every feature of the Rasheed governance, risk, and compliance workspace.",
+  });
+}
 
 const FEATURE_ITEMS = [
   { icon: ShieldCheck, key: "controls" },

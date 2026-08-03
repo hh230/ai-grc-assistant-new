@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -6,10 +7,11 @@ import { AcceptInviteForm } from "@/components/auth/AcceptInviteForm";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 import { Logo } from "@/components/ui/Logo";
 
-export const metadata: Metadata = {
-  title: "Accept Invitation · Rasheed",
-  description: "Set your password and join your organization on Rasheed.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("acceptInvitePage.title", {
+    description: "Set your password and join your organization on Rasheed.",
+  });
+}
 
 export default async function AcceptInvitePage() {
   const t = await getTranslations("login");

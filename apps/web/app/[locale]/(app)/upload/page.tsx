@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { can } from "@/lib/auth/permissions";
 import { requireSession } from "@/lib/auth/server";
 import { UploadCenter } from "@/components/upload/UploadCenter";
 
-export const metadata: Metadata = {
-  title: "Upload Center · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("uploadPage.title");
+}
 
 export default async function UploadCenterPage() {
   const session = await requireSession();

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -7,9 +8,9 @@ import { requireSession } from "@/lib/auth/server";
 import { AnalysisDetail } from "@/components/analysis/AnalysisDetail";
 import { AnalysisHistory } from "@/components/analysis/AnalysisHistory";
 
-export const metadata: Metadata = {
-  title: "Analysis · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("analysisPage.title");
+}
 
 export default async function AnalysisPage({
   searchParams,

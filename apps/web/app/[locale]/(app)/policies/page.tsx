@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { can } from "@/lib/auth/permissions";
 import { requireSession } from "@/lib/auth/server";
 import { PoliciesWorkspace } from "@/components/policies/PoliciesWorkspace";
 
-export const metadata: Metadata = {
-  title: "Policies · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("policiesPage.title");
+}
 
 export default async function PoliciesPage() {
   const session = await requireSession();

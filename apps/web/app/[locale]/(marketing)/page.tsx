@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getLocale, getTranslations } from "next-intl/server";
 import {
   ShieldCheck,
@@ -22,11 +23,12 @@ import { FAQAccordion } from "@/components/marketing/FAQAccordion";
 import { CTASection } from "@/components/marketing/CTASection";
 import { Card } from "@/components/ui/Card";
 
-export const metadata: Metadata = {
-  title: "Rasheed — Governance, Risk & Compliance, grounded and audit-ready",
-  description:
-    "An AI-assisted platform for Governance, Risk, Compliance, Privacy, and Legal teams — every answer grounded in your evidence, cited, and reviewed by a human before it counts.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("home.hero.title", {
+    description:
+      "An AI-assisted platform for Governance, Risk, Compliance, Privacy, and Legal teams — every answer grounded in your evidence, cited, and reviewed by a human before it counts.",
+  });
+}
 
 const FEATURE_ITEMS = [
   { icon: ShieldCheck, key: "controlMapping" },

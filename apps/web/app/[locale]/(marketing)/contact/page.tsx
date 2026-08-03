@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { Mail } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { CTASection } from "@/components/marketing/CTASection";
 import { Card } from "@/components/ui/Card";
 
-export const metadata: Metadata = {
-  title: "Contact Us · Rasheed",
-  description: "Get in touch with the Rasheed team about your governance, risk, and compliance needs.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("contactPage.hero.title", {
+    description: "Get in touch with the Rasheed team about your governance, risk, and compliance needs.",
+  });
+}
 
 const CONTACT_EMAIL = "m.alsayyar@outlook.sa";
 

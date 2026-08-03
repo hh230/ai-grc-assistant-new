@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { Upload, Search, ShieldCheck, FileBarChart } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { CTASection } from "@/components/marketing/CTASection";
 import { Card } from "@/components/ui/Card";
 
-export const metadata: Metadata = {
-  title: "How It Works · Rasheed",
-  description:
-    "How Rasheed turns your policies and evidence into grounded coverage, risk, and reporting.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("howItWorksPage.hero.title", {
+    description:
+      "How Rasheed turns your policies and evidence into grounded coverage, risk, and reporting.",
+  });
+}
 
 const STEP_ITEMS = [
   { icon: Upload, key: "step1" },

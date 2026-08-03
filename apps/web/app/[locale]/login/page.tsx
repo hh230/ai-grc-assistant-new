@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -6,10 +7,11 @@ import { LoginForm } from "@/components/auth/LoginForm";
 import { LanguageSwitcher } from "@/components/navigation/LanguageSwitcher";
 import { Logo } from "@/components/ui/Logo";
 
-export const metadata: Metadata = {
-  title: "Sign in · Rasheed",
-  description: "Sign in to the Rasheed governance, risk, compliance and AI platform.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("login.title", {
+    description: "Sign in to the Rasheed governance, risk, compliance and AI platform.",
+  });
+}
 
 export default async function LoginPage() {
   const t = await getTranslations("login");

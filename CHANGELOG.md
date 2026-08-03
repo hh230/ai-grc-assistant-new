@@ -6,6 +6,16 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.2] — 2026-08-03
+
+### Added
+- **Profile + security & access settings** — self-service account management:
+  `/profile` (edit display name; session cookie re-issued so the new name/initials
+  show immediately) and `/security-access` (change password, requires the current
+  password, rate-limited per account). `UserMenu` now links "Profile"/"Security &
+  access" to real pages; the dead "Preferences" entry (no backend behind it) is
+  removed.
+
 ## [2.1.1] — 2026-08-03
 
 ### Added
@@ -99,6 +109,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.2]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.2
 [2.1.1]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.1
 [2.1.0]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.0
 [2.0.0]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.0.0

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Loader2, X } from "lucide-react";
+import { Check, Loader2, TriangleAlert, X } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -51,7 +51,7 @@ export function RegulationVersionDetailPanel({
   onDecided,
 }: RegulationVersionDetailPanelProps) {
   const t = useTranslations("regulationReviewWorkspace.detail");
-  const { data: detail, isLoading } = useRegulationVersionDetail(versionId);
+  const { data: detail, isLoading, isError, isFetching } = useRegulationVersionDetail(versionId);
   const approveMutation = useApproveRegulationVersion();
   const rejectMutation = useRejectRegulationVersion();
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -60,6 +60,17 @@ export function RegulationVersionDetailPanel({
     return (
       <Card>
         <p className="text-sm text-foreground-secondary">{t("empty")}</p>
+      </Card>
+    );
+  }
+
+  if (isError || (!detail && !isFetching)) {
+    return (
+      <Card>
+        <div className="flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
       </Card>
     );
   }

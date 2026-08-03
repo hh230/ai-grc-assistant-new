@@ -72,7 +72,7 @@ function SeverityBadge({ severity, score }: { severity: Severity; score: number 
 
 export function RiskRegister(permissions: RiskPermissions) {
   const t = useTranslations("riskRegister");
-  const { data: risks, isLoading } = useRisks();
+  const { data: risks, isLoading, isError } = useRisks();
   const searchParams = useSearchParams();
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [severityFilter, setSeverityFilter] = useState<string>("all");
@@ -205,7 +205,14 @@ export function RiskRegister(permissions: RiskPermissions) {
         )}
       </div>
 
-      {isLoading ? (
+      {isError ? (
+        <Card>
+          <div className="flex items-start gap-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{t("loadError")}</span>
+          </div>
+        </Card>
+      ) : isLoading ? (
         <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
           {t("loadingRisks")}
@@ -496,7 +503,7 @@ function RiskDetailModal({
   const t = useTranslations("riskRegister");
   const likelihoodLabels = t.raw("likelihoodLabels") as string[];
   const impactLabels = t.raw("impactLabels") as string[];
-  const { data: risk, isLoading } = useRisk(id);
+  const { data: risk, isLoading, isError, isFetching } = useRisk(id);
   const update = useUpdateRisk();
   const transition = useTransitionRisk();
   const remove = useDeleteRisk();
@@ -513,6 +520,17 @@ function RiskDetailModal({
       href: `/risk-register?open=${risk.id}`,
     });
   }, [risk]);
+
+  if (isError || (!risk && !isFetching)) {
+    return (
+      <Modal open onClose={onClose} title={t("modal.riskTitle")}>
+        <div className="flex items-start gap-2 py-10 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      </Modal>
+    );
+  }
 
   if (isLoading || !risk) {
     return (

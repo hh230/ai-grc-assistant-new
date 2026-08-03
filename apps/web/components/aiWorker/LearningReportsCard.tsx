@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -18,7 +19,19 @@ const STAT_KEYS: (keyof LearningReports)[] = [
 
 export function LearningReportsCard() {
   const t = useTranslations("aiWorkerWorkspace.reports");
-  const { data: reports, isLoading } = useLearningReports();
+  const { data: reports, isLoading, isError, isFetching } = useLearningReports();
+
+  if (isError || (!reports && !isFetching)) {
+    return (
+      <Card>
+        <SectionHeader title={t("title")} description={t("description")} />
+        <div className="mt-5 flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card>

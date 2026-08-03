@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { History } from "lucide-react";
+import { History, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -15,13 +15,19 @@ import { EVENT_META } from "./eventMeta";
 export function ActivityTimeline() {
   const t = useTranslations("aiWorkerWorkspace.timeline");
   const locale = useLocale() as AppLocale;
-  const { data: events, isLoading } = useWorkerEvents(50);
+  const { data: events, isLoading, isError, isFetching } = useWorkerEvents(50);
+  const hasFailed = isError || (!events && !isFetching);
 
   return (
     <Card>
       <SectionHeader title={t("title")} description={t("description")} />
 
-      {isLoading ? (
+      {hasFailed ? (
+        <div className="mt-5 flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      ) : isLoading ? (
         <div className="mt-5 space-y-3">
           {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} className="h-10 w-full" />

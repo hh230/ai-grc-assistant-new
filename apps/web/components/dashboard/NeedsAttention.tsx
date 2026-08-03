@@ -4,18 +4,24 @@ import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/Badge";
 import { Link } from "@/i18n/navigation";
+import { getActor } from "@/lib/auth/actor";
 import { getNeedsAttentionItems } from "@/lib/dashboard/needsAttention";
 import { toneIconClasses } from "@/lib/design/tone";
 
 /**
  * Band 2 of the dashboard (V2-P3 design proposal §11) — the section an executive scans
- * right after the topline scores: "what needs a decision today?" Built entirely from
- * existing tone/badge primitives, no new visual language.
+ * right after the topline scores: "what needs a decision today?" Sourced strictly from the
+ * tenant's real framework coverage, risk register, and in-flight analyses (post-v2.0.1 audit
+ * — previously a static illustrative dataset); renders nothing when there's genuinely
+ * nothing to flag.
  */
 export async function NeedsAttention() {
+  const actor = await getActor();
+  if (!actor) return null;
+
   const t = await getTranslations("dashboard.needsAttention");
-  const tCategory = await getTranslations("dashboard.riskDistribution.categories");
-  const items = getNeedsAttentionItems();
+  const tSeverity = await getTranslations("riskRegister.severity");
+  const items = await getNeedsAttentionItems(actor);
 
   if (items.length === 0) return null;
 
@@ -46,7 +52,7 @@ export async function NeedsAttention() {
                   <span className="block truncate text-sm font-medium text-foreground">
                     {t(item.titleKey, {
                       ...item.titleValues,
-                      ...(item.categoryKey ? { category: tCategory(item.categoryKey) } : {}),
+                      ...(item.severityKey ? { severity: tSeverity(item.severityKey) } : {}),
                     })}
                   </span>
                   <span className="block truncate text-2xs text-foreground-muted">

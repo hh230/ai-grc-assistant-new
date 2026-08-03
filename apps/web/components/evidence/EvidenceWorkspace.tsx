@@ -45,7 +45,7 @@ export function EvidenceWorkspace(permissions: Permissions) {
   const t = useTranslations("evidenceWorkspace");
   const [search, setSearch] = useState("");
   const [debounced, setDebounced] = useState("");
-  const { data: evidence, isLoading } = useEvidence({ search: debounced });
+  const { data: evidence, isLoading, isError } = useEvidence({ search: debounced });
   const searchParams = useSearchParams();
   const [adding, setAdding] = useState(false);
   const [detailId, setDetailId] = useState<string | null>(null);
@@ -92,7 +92,14 @@ export function EvidenceWorkspace(permissions: Permissions) {
         )}
       </div>
 
-      {isLoading ? (
+      {isError ? (
+        <Card>
+          <div className="flex items-start gap-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{t("loadError")}</span>
+          </div>
+        </Card>
+      ) : isLoading ? (
         <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
           {t("loading")}
@@ -427,7 +434,7 @@ function EvidenceDetailModal({
   onClose: () => void;
 }) {
   const t = useTranslations("evidenceWorkspace");
-  const { data: evidence, isLoading } = useEvidenceItem(id);
+  const { data: evidence, isLoading, isError, isFetching } = useEvidenceItem(id);
   const addVersion = useAddEvidenceVersion();
   const updateEvidence = useUpdateEvidence();
   const [editingControls, setEditingControls] = useState(false);
@@ -452,7 +459,12 @@ function EvidenceDetailModal({
 
   return (
     <Modal open onClose={onClose} title={evidence?.title ?? t("evidenceFallbackTitle")} size="lg">
-      {isLoading || !evidence ? (
+      {isError || (!evidence && !isFetching) ? (
+        <div className="flex items-start gap-2 py-10 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      ) : isLoading || !evidence ? (
         <div className="flex items-center justify-center gap-2 py-10 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
           {t("loadingEllipsis")}

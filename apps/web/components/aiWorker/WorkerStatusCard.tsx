@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Activity, Loader2 } from "lucide-react";
+import { Activity, Loader2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -12,7 +12,22 @@ import type { AppLocale } from "@/i18n/routing";
 export function WorkerStatusCard() {
   const t = useTranslations("aiWorkerWorkspace.status");
   const locale = useLocale() as AppLocale;
-  const { data: status, isLoading } = useWorkerStatus();
+  const { data: status, isLoading, isError, isFetching } = useWorkerStatus();
+
+  // Distinct from the loading skeleton below: a failed or stalled fetch (e.g. apps/api
+  // unreachable, or the browser's fetch paused for lack of connectivity) must not render as
+  // an indefinite skeleton — that reads as a hung page, not a real error. `isLoading` alone
+  // misses the "not fetching, never got data" case, so key on data absence directly too.
+  if (isError || (!status && !isFetching)) {
+    return (
+      <Card>
+        <div className="flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      </Card>
+    );
+  }
 
   if (isLoading || !status) {
     return (

@@ -6,6 +6,13 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.3] — 2026-08-03
+
+### Added
+- **Missions list** — `/missions` now shows a real, DB-backed, tenant-scoped list of governance
+  missions (status, awaiting-approval overlay, plan reference) instead of the placeholder page.
+  Read-only, backed by the existing `policy_missions`/`policy_mission_steps` tables.
+
 ## [2.1.2] — 2026-08-03
 
 ### Added
@@ -109,6 +116,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.3]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.3
 [2.1.2]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.2
 [2.1.1]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.1
 [2.1.0]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.0

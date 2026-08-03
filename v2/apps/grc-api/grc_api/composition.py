@@ -54,12 +54,21 @@ from grc_api.launch import (
 )
 
 DSN_ENV_VAR = "MISSION_STORE_DSN"
+GOVERNANCE_DSN_ENV_VAR = "GOVERNANCE_STORE_DSN"
 
 
 def database_dsn() -> str:
     """The V2 database. One setting configures the missions, the outbox and the read models, so they
     cannot drift into different databases."""
     return os.environ.get(DSN_ENV_VAR) or default_dsn()
+
+
+def governance_database_dsn() -> str:
+    """The Governance Discovery tables' database (ADR 0066) — same isolated V2 database by
+    default (`governance_store.config.dsn()`), overridable independently via its own env var."""
+    from governance_store.config import dsn as default_governance_dsn
+
+    return os.environ.get(GOVERNANCE_DSN_ENV_VAR) or default_governance_dsn()
 
 
 class Storage(str, enum.Enum):

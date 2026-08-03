@@ -14,12 +14,16 @@ development ones, each replaced at its own seam.
 
 from __future__ import annotations
 
+import os
 from typing import Any
 
 from assistant_runtime.builtin import default_mission_catalog
 from document_read_model import DocumentReadModel
 from fastapi import FastAPI
 from framework_library import FrameworkLibrary
+from governance_discovery.engine import DiscoveryEngine
+from governance_discovery.pack import load_bundled_packs
+from governance_store import PostgresGovernanceStore
 from knowledge_runtime import TenantKnowledgeBase
 from mission_application import DeliverableBuilderRegistry, ExportService
 from mission_engine import EchoExecutor, InMemoryMissionStore, MissionEngine
@@ -34,6 +38,7 @@ from grc_api.composition import (
     build_document_read_model,
     build_mission_read_model,
     durable_command_scope_factory,
+    governance_database_dsn,
     memory_command_scope_factory,
     open_autocommit_connection,
 )
@@ -49,10 +54,25 @@ from grc_api.result_adapters import (
 )
 from grc_api.routers.approvals import router as approvals_router
 from grc_api.routers.dashboard import router as dashboard_router
+from grc_api.routers.discovery import router as discovery_router
 from grc_api.routers.documents import router as documents_router
+from grc_api.routers.governance_plans import router as governance_plans_router
 from grc_api.routers.health import router as health_router
 from grc_api.routers.missions import router as missions_router
 from grc_api.security import IdentityProvider, development_identity_provider
+from grc_api.service_identity import CompositeIdentityProvider, ServiceAssertionIdentityProvider
+
+# apps/web -> grc-api service-to-service identity assertion (ADR 0066 addendum). Unset in a plain
+# local dev/test run — the dev fixed-credential provider alone still works exactly as before.
+GOVERNANCE_SERVICE_SECRET_ENV_VAR = "GRC_API_SERVICE_SECRET"
+
+
+def _default_identity_provider() -> IdentityProvider:
+    dev_provider = development_identity_provider()
+    secret = os.environ.get(GOVERNANCE_SERVICE_SECRET_ENV_VAR)
+    if not secret:
+        return dev_provider
+    return CompositeIdentityProvider((dev_provider, ServiceAssertionIdentityProvider(secret)))
 
 API_TITLE = "Rasheed GRC API"
 API_VERSION = "0.1.0"
@@ -69,6 +89,8 @@ def create_app(
     mission_engine: Any | None = None,
     document_read_model: DocumentReadModel | None = None,
     knowledge_base: TenantKnowledgeBase | None = None,
+    discovery_engine: DiscoveryEngine | None = None,
+    discovery_store_factory: Any | None = None,
 ) -> FastAPI:
     app = FastAPI(title=API_TITLE, version=API_VERSION)
 
@@ -77,7 +99,7 @@ def create_app(
     # MEMORY, which a test asks for explicitly. An injected adapter still wins over both.
     where = tables or Tables()
     app.state.mission_read_model = read_model or build_mission_read_model(storage, where)
-    app.state.identity_provider = identity_provider or development_identity_provider()
+    app.state.identity_provider = identity_provider or _default_identity_provider()
     # Storage, per ADR 0055. **No durable store lives here.** Reads go through a reader service that
     # creates a store per read and discards it; writes go through a factory that creates one
     # transaction's worth of collaborators per command. What is long-lived is configuration, never a
@@ -130,6 +152,14 @@ def create_app(
     # The Mission Catalog (Slice S7): a Mission type IS a plan factory. The create command reads it
     # to turn a chosen type + scope into the Core's (goal, plan). The bundled catalog holds the 6.
     app.state.mission_catalog = default_mission_catalog()
+    # Governance Discovery (ADR 0066): the engine is pure and stateless — safe to build once and
+    # share across every request. Only the store is per-request (see `deps.get_discovery_store`);
+    # `discovery_store_factory` is the injection seam a test uses to avoid a real database, exactly
+    # like `mission_store`/`read_model` above do for the mission subsystem.
+    app.state.discovery_engine = discovery_engine or DiscoveryEngine(load_bundled_packs())
+    app.state.discovery_store_factory = discovery_store_factory or (
+        lambda: PostgresGovernanceStore(dsn=governance_database_dsn())
+    )
 
     register_exception_handlers(app)
     app.include_router(health_router)
@@ -137,6 +167,8 @@ def create_app(
     app.include_router(documents_router, prefix="/v1")
     app.include_router(dashboard_router, prefix="/v1")
     app.include_router(approvals_router, prefix="/v1")
+    app.include_router(discovery_router, prefix="/v1")
+    app.include_router(governance_plans_router, prefix="/v1")
 
     return app
 

@@ -1,0 +1,26 @@
+[project]
+name = "governance-session"
+version = "0.1.0"
+description = "Rasheed V2 Governance Session service (ADR 0066) — the orchestration layer composing the governance-discovery engine (Tier A/B) with governance-store persistence into session operations: start, answer, go-back, resume. The thin composition root a FastAPI router calls; owns no business logic of its own beyond sequencing calls and translating input/errors at the boundary."
+requires-python = ">=3.12"
+dependencies = [
+    "governance-discovery",
+    "governance-store",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[tool.uv.sources]
+governance-discovery = { path = "../governance-discovery", editable = true }
+governance-store = { path = "../governance-store", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["governance_session"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

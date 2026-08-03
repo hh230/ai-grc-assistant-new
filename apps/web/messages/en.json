@@ -29,7 +29,8 @@
       "help": "Help & Support",
       "aiWorker": "AI Worker",
       "regulationReview": "Regulation Review",
-      "accessRequests": "Access Requests"
+      "accessRequests": "Access Requests",
+      "discovery": "Governance Program"
     }
   },
   "topbar": {
@@ -1585,5 +1586,390 @@
     "submit": "Create account",
     "submitting": "Creating account…",
     "genericError": "Something went wrong. Please try again."
+  },
+  "discovery": {
+    "question": {
+      "primary_activity": "What best describes your organization's main line of work?",
+      "employee_count": "Roughly how many people work at your organization?",
+      "provides_saas": "Do you provide software, SaaS, or cloud infrastructure services to other organizations?",
+      "has_compliance_officer": "Does anyone hold formal responsibility for compliance?",
+      "org_structure_state": "Is your organizational structure documented?",
+      "policy_state": "Are your internal policies written down?",
+      "risk_register_state": "Do you keep a record of the risks facing your organization?",
+      "internal_audit_state": "Do you carry out any internal reviews or audits?",
+      "has_legal_team": "Do you have in-house legal support?",
+      "has_it_team": "Do you have a dedicated IT or technology team?",
+      "execution_capacity": "How much time or budget can you currently dedicate to compliance work?",
+      "handles_personal_data": "Does your organization handle personal data belonging to customers, employees, or others?",
+      "has_gov_clients": "Do you work with government entities as clients or partners?",
+      "last_policy_review_date": "When were your policies last reviewed?",
+      "held_licenses": "Which of the following, if any, does your organization hold?",
+      "additional_context_note": "Anything else you'd like to add about your current situation?",
+      "tech_team_maturity": "How would you describe your technology team's security practices?",
+      "cloud_data_residency_controlled": "Do you control where your customers' data is physically stored?",
+      "has_board": "Does your organization have a board or a formal governance oversight body?"
+    }
+  },
+  "plan": {
+    "seed": {
+      "formalize_org_structure": {
+        "title": "Formalize your organizational structure",
+        "rationale": "Your organizational structure isn't documented yet — a basic structure is the foundation everything else in governance builds on."
+      },
+      "draft_foundational_policies": {
+        "title": "Draft foundational policies",
+        "rationale": "Your policies are informal or unwritten — putting the basics in writing is usually the fastest way to reduce risk."
+      },
+      "establish_risk_register": {
+        "title": "Establish a risk register",
+        "rationale": "You don't yet have a record of the risks facing your organization — even a simple one changes how decisions get made."
+      },
+      "plan_internal_audit_cadence": {
+        "title": "Plan a review cadence",
+        "rationale": "You're not currently reviewing your own practices — a light, regular check-in catches problems early."
+      },
+      "designate_compliance_owner": {
+        "title": "Designate a compliance owner",
+        "rationale": "No one is formally responsible for compliance yet — even part-time ownership makes a big difference."
+      },
+      "review_personal_data_handling": {
+        "title": "Review how you handle personal data",
+        "rationale": "You handle personal data — it's worth a focused look at how it's collected, stored, and protected."
+      },
+      "adopt_technical_security_baseline": {
+        "title": "Adopt a baseline of technical security practices",
+        "rationale": "Your technology team doesn't have documented security practices yet — a baseline is a practical starting point."
+      },
+      "implement_data_residency_controls": {
+        "title": "Implement data residency controls",
+        "rationale": "You don't yet control where customer data is physically stored — this matters for several regulatory frameworks."
+      },
+      "confirm_basics_with_advisor": {
+        "title": "Confirm the basics with a GRC advisor",
+        "rationale": "We don't have quite enough information yet for a confident recommendation — a short conversation with an advisor will fill the gaps."
+      }
+    },
+    "gap": {
+      "personal_data_without_policy": {
+        "rationale": "You handle personal data without a written policy governing how it's used — a common starting point for regulatory exposure."
+      },
+      "gov_client_without_compliance_officer": {
+        "rationale": "You work with government clients but no one is formally responsible for compliance — this combination often draws early scrutiny."
+      }
+    },
+    "framework": {
+      "iso_27001": {
+        "technology_baseline": "A widely recognized information-security baseline, appropriate for a growing technology organization."
+      },
+      "cis": {
+        "technical_controls": "A practical, technically-focused set of controls that fits a team already thinking about security."
+      },
+      "nist_csf": {
+        "cloud_provider": "A common reference point for organizations providing cloud or SaaS services to others."
+      }
+    }
+  },
+  "planExecution": {
+    "eyebrow": "GOVERNANCE PROGRAM",
+    "title": "Governance Plan",
+    "description": "Your organization's transformation plan — tracked, evidenced, and always reflecting where you actually stand.",
+    "loading": "Loading your plan…",
+    "loadError": "Could not load your Governance Plan.",
+    "empty": {
+      "title": "No governance plan yet",
+      "description": "Complete the Governance Discovery interview to get your organization's transformation plan.",
+      "cta": "Start Governance Discovery"
+    },
+    "planVersion": "Plan v{version}",
+    "maturityJourney": {
+      "title": "Maturity Journey",
+      "description": "How your governance maturity has moved since this plan started."
+    },
+    "stats": {
+      "completion": "Completed",
+      "itemsDone": "{done} of {total} items",
+      "overdue": "Overdue",
+      "overdueHint": "Needs attention",
+      "onTrack": "On track",
+      "nextUp": "Next priority",
+      "allDone": "All caught up"
+    },
+    "quickWins": {
+      "title": "Quick Wins",
+      "description": "Small effort, high impact — start here."
+    },
+    "groupBy": {
+      "label": "Group by",
+      "timeline": "Timeline",
+      "priority": "Priority",
+      "pillar": "Pillar"
+    },
+    "statusFilter": {
+      "all": "All",
+      "not_started": "Not started",
+      "in_progress": "In progress",
+      "done": "Completed"
+    },
+    "noItemsForFilter": "No items match this filter.",
+    "timeframe": {
+      "week_1": "Week 1",
+      "week_2": "Week 2",
+      "month_1": "Month 1",
+      "month_3": "Month 3",
+      "month_6": "Month 6",
+      "year_1": "Year 1"
+    },
+    "priority": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "pillar": {
+      "organization": "Organization",
+      "risk": "Risk",
+      "compliance": "Compliance",
+      "policies": "Policies",
+      "governance": "Governance",
+      "legal": "Legal",
+      "cyber_security": "Cybersecurity"
+    },
+    "dimensions": {
+      "governance": "Governance",
+      "risk": "Risk Management",
+      "compliance": "Compliance",
+      "cyber": "Cyber Security",
+      "leadership": "Leadership & Accountability"
+    },
+    "maturityLabels": {
+      "none": "Not started",
+      "limited": "Limited",
+      "initial": "Initial",
+      "developing": "Developing",
+      "established": "Established",
+      "optimized": "Optimized"
+    },
+    "status": {
+      "not_started": "Not started",
+      "in_progress": "In progress",
+      "done": "Completed"
+    },
+    "item": {
+      "start": "Start",
+      "markComplete": "Mark complete",
+      "reopen": "Reopen",
+      "showDetails": "Show details",
+      "hideDetails": "Hide details",
+      "why": "Why this matters",
+      "expectedOutcome": "Expected outcome",
+      "ifIgnored": "If ignored",
+      "confidence": "{value}% confidence",
+      "dueIn": "Due in {days, plural, one {# day} other {# days}}",
+      "dueToday": "Due today",
+      "overdueBy": "Overdue by {days, plural, one {# day} other {# days}}",
+      "evidenceBacked": "Evidence-backed",
+      "reportedBy": "Reported by you",
+      "attachEvidence": "Attach evidence",
+      "viewHistory": "View history",
+      "conflict": "This item was updated elsewhere — refreshing…"
+    },
+    "evidenceModal": {
+      "title": "Attach evidence",
+      "description": "Optional — link a document, reference, or note that supports this being done.",
+      "placeholder": "e.g. access-review-2026-08.pdf",
+      "add": "Add",
+      "save": "Save",
+      "cancel": "Cancel",
+      "empty": "No evidence attached yet."
+    },
+    "history": {
+      "loading": "Loading history…",
+      "empty": "No activity yet.",
+      "eventType": {
+        "started": "Started",
+        "completed": "Completed",
+        "reopened": "Reopened",
+        "evidence_attached": "Evidence attached"
+      }
+    },
+    "versions": {
+      "title": "Plan history",
+      "current": "Current",
+      "supersededOn": "Superseded"
+    },
+    "runNewAssessment": "Run a new assessment"
+  },
+  "discoveryInterview": {
+    "eyebrow": "AI Governance Planning",
+    "title": "Let's get to know your organization",
+    "description": "A short, adaptive conversation — no compliance jargon, just questions about how your organization actually runs today.",
+    "start": "Start",
+    "startDescription": "This takes a few minutes and adapts as you go — there's no fixed list of questions.",
+    "loading": "Loading…",
+    "next": "Next",
+    "skip": "Skip",
+    "back": "Back",
+    "submitting": "Saving…",
+    "genericError": "Something went wrong. Please try again.",
+    "resumeNotice": "Picking up where you left off.",
+    "stage": {
+      "general": "Getting to know your business",
+      "structural": "Structure & governance",
+      "sector_specific": "Details specific to your sector",
+      "risk_deepdive": "A closer look"
+    },
+    "analyzing": {
+      "title": "Analyzing your organization…",
+      "description": "We're putting together what applies to you based on everything you've shared."
+    },
+    "answer": {
+      "yes": "Yes",
+      "no": "No",
+      "selectPlaceholder": "Choose one…",
+      "numberPlaceholder": "Enter a number",
+      "textPlaceholder": "Type your answer…"
+    },
+    "options": {
+      "primaryActivity": {
+        "technology": "Technology",
+        "legal_services": "Legal services",
+        "real_estate": "Real estate",
+        "marketing_advertising": "Marketing & advertising",
+        "consulting": "Consulting",
+        "retail": "Retail",
+        "construction": "Construction",
+        "healthcare": "Healthcare",
+        "education": "Education",
+        "manufacturing": "Manufacturing",
+        "government": "Government",
+        "financial_services": "Financial services",
+        "other": "Other"
+      },
+      "maturityScale": {
+        "absent": "Not in place",
+        "verbal": "Informal / spoken only",
+        "documented_unapproved": "Written, not yet approved",
+        "approved": "Approved",
+        "reviewed_periodically": "Approved & reviewed regularly"
+      },
+      "executionCapacity": {
+        "none": "No dedicated time or budget",
+        "ad_hoc": "Handled ad hoc, when needed",
+        "allocated_time": "Some dedicated time",
+        "dedicated_budget": "A dedicated budget",
+        "dedicated_team_and_budget": "A dedicated team and budget"
+      },
+      "triState": {
+        "no": "No",
+        "partially": "Partially",
+        "yes": "Yes"
+      },
+      "licenses": {
+        "iso_certified": "ISO certified",
+        "government_license": "Government license",
+        "industry_specific_license": "Industry-specific license",
+        "none": "None of these"
+      }
+    },
+    "activating": {
+      "title": "Activating your governance plan…"
+    }
+  },
+  "governanceReport": {
+    "stepper": {
+      "label": "Your governance journey",
+      "stages": {
+        "discovery": "Discovery",
+        "report": "Report",
+        "plan": "Plan"
+      }
+    },
+    "executiveBrief": {
+      "title": "AI Executive Brief"
+    },
+    "currentMaturity": {
+      "title": "Current Maturity"
+    },
+    "criticalGaps": {
+      "title": "Critical Gaps"
+    },
+    "businessImpact": {
+      "title": "Business Impact"
+    },
+    "quickWins": {
+      "title": "Quick Wins"
+    },
+    "priorityRoadmap": {
+      "title": "Priority Roadmap"
+    },
+    "timeline": {
+      "title": "Timeline"
+    },
+    "actionTasks": {
+      "title": "Action Tasks",
+      "confidence": "{value}% confidence",
+      "outcome": "Outcome",
+      "due": "Due {date}"
+    },
+    "methodology": {
+      "title": "Methodology & Standards",
+      "description": "Based on the nature of your business, we analyzed your organization against the best practices that apply to it.",
+      "none": "Nothing conclusive yet — this usually means your answers pointed more to gaps than to specific standards.",
+      "toggle": "See the standards we used"
+    },
+    "governanceVision": {
+      "title": "Governance Vision",
+      "description": "Where this plan takes your maturity if fully executed."
+    },
+    "approve": {
+      "title": "Ready to activate your plan",
+      "description": "Approving turns this report into a tracked, living plan — you'll be taken straight to it.",
+      "noPermission": "Ask an owner, admin, or compliance manager to review and approve this plan.",
+      "cta": "Approve & Activate Plan"
+    },
+    "severity": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "priority": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "timeframe": {
+      "week_1": "Week 1",
+      "week_2": "Week 2",
+      "month_1": "Month 1",
+      "month_3": "Month 3",
+      "month_6": "Month 6",
+      "year_1": "Year 1"
+    },
+    "pillar": {
+      "organization": "Organization",
+      "risk": "Risk",
+      "compliance": "Compliance",
+      "policies": "Policies",
+      "governance": "Governance",
+      "legal": "Legal",
+      "cyber_security": "Cybersecurity"
+    },
+    "dimensions": {
+      "governance": "Governance",
+      "risk": "Risk Management",
+      "compliance": "Compliance",
+      "cyber": "Cyber Security",
+      "leadership": "Leadership & Accountability"
+    },
+    "maturityLabels": {
+      "none": "Not started",
+      "limited": "Limited",
+      "initial": "Initial",
+      "developing": "Developing",
+      "established": "Established",
+      "optimized": "Optimized"
+    }
   }
 }

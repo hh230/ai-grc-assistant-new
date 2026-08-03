@@ -7,11 +7,16 @@ the Postgres one is a composition change here, invisible to the routes.
 
 from __future__ import annotations
 
-from collections.abc import Callable
+import time
+from collections.abc import Callable, Iterator
 from typing import Annotated, Any
+from uuid import uuid4
 
 from document_read_model import DocumentReadModel
 from fastapi import Depends, Request
+from governance_discovery.engine import DiscoveryEngine
+from governance_plan_execution import PlanExecutionService
+from governance_session import DiscoverySessionService
 from mission_application import (
     ApprovalQueueProjection,
     ApproveMissionStepCommand,
@@ -176,3 +181,57 @@ def get_create_command(request: Request) -> Any:
 def get_start_command(request: Request) -> Any:
     """The start command (Slice S7): reuses the S2 MissionCommand template (load → start → proj)."""
     return _scoped(request, lambda scope: _mission_command(scope, StartMissionCommand))
+
+
+# --- Governance Discovery (ADR 0066) --------------------------------------------------------
+
+
+def get_discovery_store(request: Request) -> Iterator[Any]:
+    """A fresh store per request, closed on return — the same per-call-connection discipline
+    `DurableMissionReader` follows (ADR 0055: no durable store lives on `app.state`). Built through
+    `app.state.discovery_store_factory` (defaults to `PostgresGovernanceStore`; a test injects an
+    in-memory fake via `create_app(discovery_store_factory=...)`, exactly like `mission_store`/
+    `read_model` do for the mission subsystem)."""
+    store = request.app.state.discovery_store_factory()
+    try:
+        yield store
+    finally:
+        close = getattr(store, "close", None)
+        if close is not None:
+            close()
+
+
+def get_discovery_service(
+    request: Request,
+    store: Annotated[Any, Depends(get_discovery_store)],
+) -> DiscoverySessionService:
+    """The engine (pure, stateless, safe to share across requests) is built once in `create_app`
+    and lives on `app.state.discovery_engine`; only the store is per-request."""
+    engine: DiscoveryEngine = request.app.state.discovery_engine
+    return DiscoverySessionService(engine, store, new_id=lambda: str(uuid4()), now=time.time)
+
+
+# --- Governance Plan Execution (ADR 0066 §5) -------------------------------------------------
+
+
+def get_governance_store(request: Request) -> Iterator[Any]:
+    """Plan Execution reads/writes through the same store class and the same per-request-connection
+    discipline as Discovery (`get_discovery_store`) — `PostgresGovernanceStore` carries both
+    subsystems' tables (ADR 0066 §5.7 kept them in one store, one database)."""
+    store = request.app.state.discovery_store_factory()
+    try:
+        yield store
+    finally:
+        close = getattr(store, "close", None)
+        if close is not None:
+            close()
+
+
+def get_plan_execution_service(
+    request: Request,
+    store: Annotated[Any, Depends(get_governance_store)],
+) -> PlanExecutionService:
+    """`mark_done`/`reopen`/`attach_evidence`/`current_maturity()` (ADR 0066 §5) — the engine is the
+    same shared, stateless one Discovery uses; only the store is per-request."""
+    engine: DiscoveryEngine = request.app.state.discovery_engine
+    return PlanExecutionService(engine, store, new_id=lambda: str(uuid4()), now=time.time)

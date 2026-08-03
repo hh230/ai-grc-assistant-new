@@ -20,18 +20,29 @@ dependencies = [
     "assistant-runtime",
     "mission-store>=0.1.0",
     "event-bus>=0.1.0",
+    "governance-discovery",
+    "governance-store[postgres]",
+    "governance-session",
+    "governance-plan-execution",
 ]
 
 [dependency-groups]
 # DEV ONLY. The `dependencies` above are the production path and are deliberately untouched by the
 # Wave 1 test commit — `psycopg` and `mission-store` exist here solely so `tests/production` can
 # stand the durable adapters up and inspect raw rows out of band. They become production
-# dependencies only when the wiring commits land.
+# dependencies only when the wiring commits land. `governance-plan-tools`/`pipeline-tool`/
+# `tool-registry` join them for the same reason (ADR 0066 §3): they let a test inject a real
+# ToolRegistry-backed executor via `create_app(executor=...)` to prove the Governance Plan Mission
+# runs for real end-to-end — the production default executor stays `EchoExecutor` until the Wave 1
+# executor commit lands, at which point this Mission runs for real with zero additional code.
 dev = [
     "pytest>=8.3.0",
     "httpx>=0.27.0",
     "psycopg[binary]>=3.2.0",
     "mission-store",
+    "governance-plan-tools",
+    "pipeline-tool",
+    "tool-registry",
 ]
 
 [tool.uv.sources]
@@ -46,6 +57,14 @@ knowledge-runtime = { path = "../../packages/knowledge-runtime", editable = true
 assistant-runtime = { path = "../../packages/assistant-runtime", editable = true }
 # dev-only (tests/production) — not a production dependency yet
 mission-store = { path = "../../packages/mission-store", editable = true }
+governance-discovery = { path = "../../packages/governance-discovery", editable = true }
+governance-store = { path = "../../packages/governance-store", editable = true }
+governance-session = { path = "../../packages/governance-session", editable = true }
+governance-plan-execution = { path = "../../packages/governance-plan-execution", editable = true }
+# dev-only (tests/production) — not a production dependency yet
+governance-plan-tools = { path = "../../packages/governance-plan-tools", editable = true }
+pipeline-tool = { path = "../../packages/pipeline-tool", editable = true }
+tool-registry = { path = "../../packages/tool-registry", editable = true }
 
 # These ship no py.typed; consume them as untyped imports (our own code stays strict).
 [[tool.mypy.overrides]]

@@ -29,7 +29,8 @@
       "help": "المساعدة والدعم",
       "aiWorker": "العامل الذكي",
       "regulationReview": "مراجعة الأنظمة",
-      "accessRequests": "طلبات الوصول"
+      "accessRequests": "طلبات الوصول",
+      "discovery": "برنامج الحوكمة"
     }
   },
   "topbar": {
@@ -1585,5 +1586,390 @@
     "submit": "إنشاء الحساب",
     "submitting": "جارٍ إنشاء الحساب…",
     "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "discovery": {
+    "question": {
+      "primary_activity": "ما الذي يصف نشاط منشأتكم الأساسي بشكل أدق؟",
+      "employee_count": "كم عدد الموظفين تقريبًا في منشأتكم؟",
+      "provides_saas": "هل تقدّمون برمجيات أو خدمات سحابية (SaaS) أو بنية تحتية سحابية لمنشآت أخرى؟",
+      "has_compliance_officer": "هل يوجد لديكم شخص مسؤول رسميًا عن الامتثال؟",
+      "org_structure_state": "هل الهيكل التنظيمي لديكم موثّق؟",
+      "policy_state": "هل سياساتكم الداخلية مكتوبة؟",
+      "risk_register_state": "هل لديكم سجل يوثّق المخاطر التي تواجه منشأتكم؟",
+      "internal_audit_state": "هل تقومون بأي مراجعات أو تدقيق داخلي؟",
+      "has_legal_team": "هل لديكم دعم قانوني داخلي؟",
+      "has_it_team": "هل لديكم فريق تقنية معلومات مخصص؟",
+      "execution_capacity": "كم من الوقت أو الميزانية يمكنكم تخصيصه حاليًا لأعمال الامتثال؟",
+      "handles_personal_data": "هل تتعامل منشأتكم مع بيانات شخصية تخص العملاء أو الموظفين أو غيرهم؟",
+      "has_gov_clients": "هل تتعاملون مع جهات حكومية كعملاء أو شركاء؟",
+      "last_policy_review_date": "متى كانت آخر مراجعة لسياساتكم؟",
+      "held_licenses": "أي مما يلي تملكه منشأتكم، إن وجد؟",
+      "additional_context_note": "هل هناك أي تفاصيل إضافية تودّون إضافتها حول وضعكم الحالي؟",
+      "tech_team_maturity": "كيف تصفون ممارسات فريق التقنية لديكم فيما يخص الأمن؟",
+      "cloud_data_residency_controlled": "هل تتحكمون في مكان تخزين بيانات عملائكم فعليًا؟",
+      "has_board": "هل تمتلك منشأتك مجلس إدارة أو هيئة رقابة حوكمة رسمية؟"
+    }
+  },
+  "plan": {
+    "seed": {
+      "formalize_org_structure": {
+        "title": "توثيق الهيكل التنظيمي",
+        "rationale": "هيكلكم التنظيمي غير موثّق بعد — وهو الأساس الذي يُبنى عليه كل شيء آخر في الحوكمة."
+      },
+      "draft_foundational_policies": {
+        "title": "صياغة السياسات الأساسية",
+        "rationale": "سياساتكم غير رسمية أو غير مكتوبة — وتوثيق الأساسيات عادة أسرع طريقة لتقليل المخاطر."
+      },
+      "establish_risk_register": {
+        "title": "إنشاء سجل للمخاطر",
+        "rationale": "لا يوجد لديكم بعد سجل يوثّق المخاطر التي تواجه منشأتكم — حتى سجل بسيط يغيّر طريقة اتخاذ القرارات."
+      },
+      "plan_internal_audit_cadence": {
+        "title": "وضع جدول دوري للمراجعة",
+        "rationale": "لا تقومون حاليًا بمراجعة ممارساتكم الخاصة — مراجعة دورية بسيطة تكتشف المشكلات مبكرًا."
+      },
+      "designate_compliance_owner": {
+        "title": "تعيين مسؤول عن الامتثال",
+        "rationale": "لا يوجد حاليًا من يتحمل مسؤولية رسمية عن الامتثال — حتى بدوام جزئي يُحدث فرقًا كبيرًا."
+      },
+      "review_personal_data_handling": {
+        "title": "مراجعة كيفية التعامل مع البيانات الشخصية",
+        "rationale": "تتعاملون مع بيانات شخصية — يستحق الأمر نظرة مركّزة على كيفية جمعها وتخزينها وحمايتها."
+      },
+      "adopt_technical_security_baseline": {
+        "title": "تبني حد أدنى من الممارسات الأمنية التقنية",
+        "rationale": "فريق التقنية لديكم لا يمتلك بعد ممارسات أمنية موثّقة — والحد الأدنى نقطة انطلاق عملية."
+      },
+      "implement_data_residency_controls": {
+        "title": "تطبيق ضوابط لمكان تخزين البيانات",
+        "rationale": "لا تتحكمون بعد في مكان تخزين بيانات عملائكم فعليًا — وهذا أمر مهم في عدد من الأنظمة التنظيمية."
+      },
+      "confirm_basics_with_advisor": {
+        "title": "تأكيد الأساسيات مع مستشار حوكمة",
+        "rationale": "لا تتوفر لدينا بعد معلومات كافية لتوصية واثقة — محادثة قصيرة مع مستشار ستسد هذه الفجوة."
+      }
+    },
+    "gap": {
+      "personal_data_without_policy": {
+        "rationale": "تتعاملون مع بيانات شخصية دون سياسة مكتوبة تنظّم استخدامها — وهذه نقطة بداية شائعة للتعرض التنظيمي."
+      },
+      "gov_client_without_compliance_officer": {
+        "rationale": "تتعاملون مع جهات حكومية دون وجود مسؤول رسمي عن الامتثال — وهذا المزيج غالبًا ما يستدعي اهتمامًا مبكرًا."
+      }
+    },
+    "framework": {
+      "iso_27001": {
+        "technology_baseline": "معيار معترف به على نطاق واسع لأمن المعلومات، مناسب لمنشأة تقنية في طور النمو."
+      },
+      "cis": {
+        "technical_controls": "مجموعة ضوابط عملية وتقنية التوجه، تناسب فريقًا يفكر بالفعل في الأمن."
+      },
+      "nist_csf": {
+        "cloud_provider": "مرجع شائع للمنشآت التي تقدّم خدمات سحابية أو SaaS لجهات أخرى."
+      }
+    }
+  },
+  "planExecution": {
+    "eyebrow": "برنامج الحوكمة",
+    "title": "خطة الحوكمة",
+    "description": "خطة تحوّل منشأتك — متابَعة، موثّقة بالأدلة، وتعكس دائمًا وضعك الفعلي.",
+    "loading": "جارٍ تحميل خطتك…",
+    "loadError": "تعذّر تحميل خطة الحوكمة.",
+    "empty": {
+      "title": "لا توجد خطة حوكمة بعد",
+      "description": "أكمل مقابلة اكتشاف الحوكمة للحصول على خطة تحوّل منشأتك.",
+      "cta": "ابدأ اكتشاف الحوكمة"
+    },
+    "planVersion": "الخطة إصدار {version}",
+    "maturityJourney": {
+      "title": "مسار النضج",
+      "description": "كيف تطوّر مستوى نضج الحوكمة لديك منذ بدء هذه الخطة."
+    },
+    "stats": {
+      "completion": "المُنجَز",
+      "itemsDone": "{done} من {total} بنود",
+      "overdue": "متأخرة",
+      "overdueHint": "تحتاج اهتمامًا",
+      "onTrack": "ضمن الجدول",
+      "nextUp": "الأولوية التالية",
+      "allDone": "لا شيء متبقٍ حاليًا"
+    },
+    "quickWins": {
+      "title": "مكاسب سريعة",
+      "description": "جهد بسيط وأثر كبير — ابدأ من هنا."
+    },
+    "groupBy": {
+      "label": "تجميع حسب",
+      "timeline": "الجدول الزمني",
+      "priority": "الأولوية",
+      "pillar": "المحور"
+    },
+    "statusFilter": {
+      "all": "الكل",
+      "not_started": "لم تبدأ",
+      "in_progress": "قيد التنفيذ",
+      "done": "مكتملة"
+    },
+    "noItemsForFilter": "لا توجد بنود مطابقة لهذا الفلتر.",
+    "timeframe": {
+      "week_1": "الأسبوع 1",
+      "week_2": "الأسبوع 2",
+      "month_1": "الشهر 1",
+      "month_3": "الشهر 3",
+      "month_6": "الشهر 6",
+      "year_1": "السنة 1"
+    },
+    "priority": {
+      "critical": "حرجة",
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    },
+    "pillar": {
+      "organization": "التنظيم",
+      "risk": "المخاطر",
+      "compliance": "الامتثال",
+      "policies": "السياسات",
+      "governance": "الحوكمة",
+      "legal": "القانوني",
+      "cyber_security": "الأمن السيبراني"
+    },
+    "dimensions": {
+      "governance": "الحوكمة",
+      "risk": "إدارة المخاطر",
+      "compliance": "الامتثال",
+      "cyber": "الأمن السيبراني",
+      "leadership": "القيادة والمساءلة"
+    },
+    "maturityLabels": {
+      "none": "لم تبدأ",
+      "limited": "محدودة",
+      "initial": "أولية",
+      "developing": "قيد التطور",
+      "established": "راسخة",
+      "optimized": "محسَّنة"
+    },
+    "status": {
+      "not_started": "لم تبدأ",
+      "in_progress": "قيد التنفيذ",
+      "done": "مكتملة"
+    },
+    "item": {
+      "start": "ابدأ",
+      "markComplete": "وضع كمكتملة",
+      "reopen": "إعادة الفتح",
+      "showDetails": "عرض التفاصيل",
+      "hideDetails": "إخفاء التفاصيل",
+      "why": "لماذا هذا مهم",
+      "expectedOutcome": "النتيجة المتوقعة",
+      "ifIgnored": "عند التجاهل",
+      "confidence": "ثقة {value}%",
+      "dueIn": "{days, plural, one {# يوم} other {# أيام}} متبقية",
+      "dueToday": "الموعد اليوم",
+      "overdueBy": "متأخرة بـ {days, plural, one {# يوم} other {# أيام}}",
+      "evidenceBacked": "مدعومة بدليل",
+      "reportedBy": "أُبلِغ بها منك",
+      "attachEvidence": "إرفاق دليل",
+      "viewHistory": "عرض السجل",
+      "conflict": "تم تحديث هذا البند في مكان آخر — جارٍ التحديث…"
+    },
+    "evidenceModal": {
+      "title": "إرفاق دليل",
+      "description": "اختياري — أضف رابط مستند أو مرجع أو ملاحظة تدعم إنجاز هذا البند.",
+      "placeholder": "مثال: مراجعة-الوصول-2026-08.pdf",
+      "add": "إضافة",
+      "save": "حفظ",
+      "cancel": "إلغاء",
+      "empty": "لا يوجد دليل مرفق بعد."
+    },
+    "history": {
+      "loading": "جارٍ تحميل السجل…",
+      "empty": "لا يوجد نشاط بعد.",
+      "eventType": {
+        "started": "بدأت",
+        "completed": "اكتملت",
+        "reopened": "أُعيد فتحها",
+        "evidence_attached": "أُرفق دليل"
+      }
+    },
+    "versions": {
+      "title": "سجل الخطة",
+      "current": "الحالية",
+      "supersededOn": "استُبدلت"
+    },
+    "runNewAssessment": "إجراء تقييم جديد"
+  },
+  "discoveryInterview": {
+    "eyebrow": "التخطيط للحوكمة بالذكاء الاصطناعي",
+    "title": "لنتعرف على منشأتكم",
+    "description": "حوار قصير وتكيّفي — دون مصطلحات امتثال معقدة، فقط أسئلة حول كيفية عمل منشأتكم اليوم فعليًا.",
+    "start": "ابدأ",
+    "startDescription": "يستغرق هذا بضع دقائق ويتكيّف مع إجاباتكم — لا توجد قائمة أسئلة ثابتة.",
+    "loading": "جارٍ التحميل…",
+    "next": "التالي",
+    "skip": "تخطّي",
+    "back": "رجوع",
+    "submitting": "جارٍ الحفظ…",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "resumeNotice": "نكمل من حيث توقفتم.",
+    "stage": {
+      "general": "التعرف على نشاطكم",
+      "structural": "الهيكل والحوكمة",
+      "sector_specific": "تفاصيل خاصة بقطاعكم",
+      "risk_deepdive": "نظرة أعمق"
+    },
+    "analyzing": {
+      "title": "جارٍ تحليل وضع منشأتكم…",
+      "description": "نجمع ما ينطبق عليكم بناءً على كل ما شاركتموه معنا."
+    },
+    "answer": {
+      "yes": "نعم",
+      "no": "لا",
+      "selectPlaceholder": "اختر…",
+      "numberPlaceholder": "أدخل رقمًا",
+      "textPlaceholder": "اكتب إجابتكم…"
+    },
+    "options": {
+      "primaryActivity": {
+        "technology": "تقنية",
+        "legal_services": "خدمات قانونية",
+        "real_estate": "عقارات",
+        "marketing_advertising": "تسويق وإعلان",
+        "consulting": "استشارات",
+        "retail": "تجزئة",
+        "construction": "مقاولات وإنشاءات",
+        "healthcare": "رعاية صحية",
+        "education": "تعليم",
+        "manufacturing": "تصنيع",
+        "government": "حكومي",
+        "financial_services": "خدمات مالية",
+        "other": "أخرى"
+      },
+      "maturityScale": {
+        "absent": "غير موجود",
+        "verbal": "شفهي فقط",
+        "documented_unapproved": "موجود لكنه غير معتمد",
+        "approved": "معتمد",
+        "reviewed_periodically": "معتمد ويُراجَع دوريًا"
+      },
+      "executionCapacity": {
+        "none": "لا يوجد وقت أو ميزانية مخصصة",
+        "ad_hoc": "يُدار عند الحاجة فقط",
+        "allocated_time": "بعض الوقت المخصص",
+        "dedicated_budget": "ميزانية مخصصة",
+        "dedicated_team_and_budget": "فريق وميزانية مخصصان"
+      },
+      "triState": {
+        "no": "لا",
+        "partially": "جزئيًا",
+        "yes": "نعم"
+      },
+      "licenses": {
+        "iso_certified": "حاصلون على شهادة ISO",
+        "government_license": "ترخيص حكومي",
+        "industry_specific_license": "ترخيص خاص بالقطاع",
+        "none": "لا شيء مما سبق"
+      }
+    },
+    "activating": {
+      "title": "جارٍ تفعيل خطة الحوكمة…"
+    }
+  },
+  "governanceReport": {
+    "stepper": {
+      "label": "رحلة الحوكمة الخاصة بك",
+      "stages": {
+        "discovery": "الاكتشاف",
+        "report": "التقرير",
+        "plan": "الخطة"
+      }
+    },
+    "executiveBrief": {
+      "title": "الملخص التنفيذي بالذكاء الاصطناعي"
+    },
+    "currentMaturity": {
+      "title": "مستوى النضج الحالي"
+    },
+    "criticalGaps": {
+      "title": "الفجوات الحرجة"
+    },
+    "businessImpact": {
+      "title": "الأثر على العمل"
+    },
+    "quickWins": {
+      "title": "مكاسب سريعة"
+    },
+    "priorityRoadmap": {
+      "title": "خريطة الأولويات"
+    },
+    "timeline": {
+      "title": "الجدول الزمني"
+    },
+    "actionTasks": {
+      "title": "مهام التنفيذ",
+      "confidence": "ثقة {value}%",
+      "outcome": "النتيجة",
+      "due": "الموعد {date}"
+    },
+    "methodology": {
+      "title": "المنهجية والمعايير",
+      "description": "بناءً على طبيعة عملك، قمنا بتحليل منشأتك مقابل أفضل الممارسات المنطبقة عليها.",
+      "none": "لا توجد نتيجة قاطعة بعد — هذا يعني غالبًا أن إجاباتك أشارت إلى فجوات أكثر من معايير محددة.",
+      "toggle": "عرض المعايير التي استخدمناها"
+    },
+    "governanceVision": {
+      "title": "رؤية الحوكمة",
+      "description": "إلى أين تأخذ هذه الخطة مستوى نضجك عند تنفيذها بالكامل."
+    },
+    "approve": {
+      "title": "جاهز لتفعيل خطتك",
+      "description": "الموافقة تحوّل هذا التقرير إلى خطة حية قابلة للمتابعة — سيتم نقلك إليها مباشرة.",
+      "noPermission": "اطلب من مالك أو مسؤول أو مدير امتثال مراجعة هذه الخطة والموافقة عليها.",
+      "cta": "الموافقة على الخطة وتفعيلها"
+    },
+    "severity": {
+      "critical": "حرجة",
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    },
+    "priority": {
+      "critical": "حرجة",
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    },
+    "timeframe": {
+      "week_1": "الأسبوع 1",
+      "week_2": "الأسبوع 2",
+      "month_1": "الشهر 1",
+      "month_3": "الشهر 3",
+      "month_6": "الشهر 6",
+      "year_1": "السنة 1"
+    },
+    "pillar": {
+      "organization": "التنظيم",
+      "risk": "المخاطر",
+      "compliance": "الامتثال",
+      "policies": "السياسات",
+      "governance": "الحوكمة",
+      "legal": "القانوني",
+      "cyber_security": "الأمن السيبراني"
+    },
+    "dimensions": {
+      "governance": "الحوكمة",
+      "risk": "إدارة المخاطر",
+      "compliance": "الامتثال",
+      "cyber": "الأمن السيبراني",
+      "leadership": "القيادة والمساءلة"
+    },
+    "maturityLabels": {
+      "none": "لم تبدأ",
+      "limited": "محدودة",
+      "initial": "أولية",
+      "developing": "قيد التطور",
+      "established": "راسخة",
+      "optimized": "محسَّنة"
+    }
   }
 }

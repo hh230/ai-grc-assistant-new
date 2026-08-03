@@ -23,3 +23,7 @@ HYBRID_SEARCH_TOOL = "hybrid_search"
 READ_PDF_TOOL = "read_pdf"
 READ_DOCX_TOOL = "read_docx"
 READ_EXCEL_TOOL = "read_excel"
+# Governance Plan generation (ADR 0066 §3).    == governance_plan_tools.{ORG_APPLICABILITY,PLAN_DRAFT,PLAN_FINALIZE}_TOOL
+ORG_APPLICABILITY_TOOL = "org_applicability"
+PLAN_DRAFT_TOOL = "governance_plan_draft"
+PLAN_FINALIZE_TOOL = "governance_plan_finalize"

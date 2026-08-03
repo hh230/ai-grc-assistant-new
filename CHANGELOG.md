@@ -4,6 +4,36 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project aims to follow
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **AI Governance Planning Engine** (ADR 0066) — a Discovery → Report → Plan journey that
+  determines what compliance frameworks apply to an organization and what to do about it, without
+  ever asking the user to name a standard:
+  - **Governance Discovery** (`governance-discovery`, `governance-session`, `governance-store`) —
+    a two-tier adaptive interview: composable Knowledge Packs (`core`, `technology`,
+    `cloud_provider`, …) activate live from typed Signals (boolean/enum/numeric/date/percentage),
+    culminating in a one-shot applicability analysis (frameworks, maturity, capacity, gaps, plan
+    seeds).
+  - **Governance Planning** — a real, human-approval-gated `generate_governance_plan` Mission
+    (`resolve_applicability → gather_control_library → draft_plan → finalize_plan`,
+    `governance-plan-tools`) produces a ten-section, consulting-style report (Executive Brief,
+    Maturity, Critical Gaps, Business Impact, Quick Wins, Priority Roadmap, Timeline, Action
+    Tasks, Methodology, Governance Vision) and, on approval, an immutable, versioned governance
+    plan (`governance-plan-execution`).
+  - **Plan Execution** — a living plan workspace: mark items done/reopened (fully reversible,
+    recalculates maturity live), attach optional evidence, full audit trail
+    (`governance_plan_events`).
+  - **Frontend**: `apps/web` wired to `v2/apps/grc-api` for the first time (ADR 0066 "Frontend
+    integration") via an HMAC service-assertion identity bridge; `/discovery` → `/plan` collapsed
+    into one product journey with a visible stepper, instead of three disconnected pages.
+- `v2/apps/grc-api/README.md` — Install → Migrate → Run instructions (previously undocumented).
+
+### Fixed
+- `mission_read_model` (the table `GET /v1/missions` reads) had DDL but no committed `.sql`
+  migration — any fresh, non-test deployment's Mission list/read routes 500'd. Added
+  `mission-read-model/migrations/0001_mission_read_model.sql`.
+
 ## [2.0.0] — 2026-07-31
 
 **V2 COMPLETE — PRODUCTION READY.** The second generation of the Rasheed GRC platform: a frozen,

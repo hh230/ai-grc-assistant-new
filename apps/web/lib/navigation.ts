@@ -14,6 +14,7 @@ import {
   Bot,
   Gavel,
   UserCheck,
+  Compass,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/auth/roles";
@@ -73,6 +74,17 @@ export const PRIMARY_NAV: NavGroup[] = [
         icon: Sparkles,
         badge: "New",
       },
+      {
+        // One entry for the whole Discovery -> Report -> Plan journey (Product Flow
+        // Simplification): `/discovery` itself redirects straight to `/plan` server-side once a
+        // plan already exists, so this single link always lands the user in the right place —
+        // no separate, competing "Governance Plan" nav item to disambiguate from.
+        label: "Governance Program",
+        labelKey: "discovery",
+        href: "/discovery",
+        icon: Compass,
+        badge: "New",
+      },
       { label: "Missions", labelKey: "missions", href: "/missions", icon: Workflow },
     ],
   },
@@ -101,7 +113,6 @@ export const PRIMARY_NAV: NavGroup[] = [
         labelKey: "riskRegister",
         href: "/risk-register",
         icon: TriangleAlert,
-        badge: "7",
       },
       {
         label: "Assessments",

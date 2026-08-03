@@ -1,0 +1,19 @@
+[project]
+name = "governance-discovery"
+version = "0.1.0"
+description = "Rasheed V2 Governance Discovery engine (ADR 0066) — the adaptive-interview decision engine behind the AI Governance Planning Engine. Deterministic, data-driven: composable Knowledge Packs, typed Signals, Tier A live question routing, Tier B one-shot applicability analysis, and a capacity-aware plan Scheduler. No LLM, no database — everything is explainable and unit-testable in isolation."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["governance_discovery"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

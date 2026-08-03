@@ -20,6 +20,13 @@ from assistant_runtime.builtin.gap_assessment import (
     GAP_ASSESSMENT_MISSION_TYPE,
     build_gap_assessment_plan,
 )
+from assistant_runtime.builtin.generate_governance_plan import (
+    GENERATE_GOVERNANCE_PLAN_CAPABILITY,
+    GENERATE_GOVERNANCE_PLAN_CAPABILITY_ID,
+    GENERATE_GOVERNANCE_PLAN_MISSION_ID,
+    GENERATE_GOVERNANCE_PLAN_MISSION_TYPE,
+    build_generate_governance_plan_plan,
+)
 from assistant_runtime.builtin.iso_controls import (
     ISO_CONTROLS_CAPABILITY,
     ISO_CONTROLS_CAPABILITY_ID,
@@ -76,6 +83,7 @@ def default_capability_catalog() -> CapabilityCatalog:
             POLICY_GENERATOR_CAPABILITY,
             VENDOR_REVIEW_CAPABILITY,
             GAP_ASSESSMENT_CAPABILITY,
+            GENERATE_GOVERNANCE_PLAN_CAPABILITY,
         ]
     )
 
@@ -91,6 +99,7 @@ def default_mission_catalog() -> MissionCatalog:
             POLICY_GENERATOR_MISSION_TYPE,
             VENDOR_REVIEW_MISSION_TYPE,
             GAP_ASSESSMENT_MISSION_TYPE,
+            GENERATE_GOVERNANCE_PLAN_MISSION_TYPE,
         ]
     )
 
@@ -157,6 +166,11 @@ __all__ = [
     "GAP_ASSESSMENT_MISSION_TYPE",
     "GAP_ASSESSMENT_MISSION_ID",
     "build_gap_assessment_plan",
+    "GENERATE_GOVERNANCE_PLAN_CAPABILITY",
+    "GENERATE_GOVERNANCE_PLAN_CAPABILITY_ID",
+    "GENERATE_GOVERNANCE_PLAN_MISSION_TYPE",
+    "GENERATE_GOVERNANCE_PLAN_MISSION_ID",
+    "build_generate_governance_plan_plan",
     "FALLBACK_CAPABILITY_ID",
     "default_capability_catalog",
     "default_mission_catalog",

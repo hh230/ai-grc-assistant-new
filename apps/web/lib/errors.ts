@@ -32,6 +32,15 @@ export class NotFoundError extends AppError {
   }
 }
 
+/** Someone else changed the record between this caller's read and its write (an optimistic-lock
+ * rejection, e.g. Governance Plan item transitions — ADR 0066 Phase 3 hardening). The caller
+ * should re-fetch and let the user retry, never blindly resubmit the same stale write. */
+export class ConflictError extends AppError {
+  constructor(message = "This was changed by someone else. Please refresh and try again.") {
+    super(409, message, "conflict");
+  }
+}
+
 /**
  * A downstream service (e.g. the `apps/api` FastAPI backend) failed or returned an
  * unexpected shape. Distinct from the errors above, which describe *this* app rejecting the

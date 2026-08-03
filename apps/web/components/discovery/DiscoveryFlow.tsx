@@ -1,0 +1,389 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+import { ArrowLeft, Compass, Loader2, Sparkles, TriangleAlert } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import { AnswerInput } from "./AnswerInput";
+import { StageProgress } from "./StageProgress";
+import { JourneyStepper } from "@/components/governance/JourneyStepper";
+import { GovernanceReport } from "@/components/governance/GovernanceReport";
+import { useSession } from "@/components/auth/SessionProvider";
+import { useRouter } from "@/i18n/navigation";
+import { APPROVER_ROLES } from "@/lib/planGeneration/permissions";
+import type { DiscoveryProgress, DiscoveryQuestion } from "@/lib/discovery/types";
+import type { GovernanceReportDraft } from "@/lib/planGeneration/types";
+
+type Phase =
+  | "loading"
+  | "idle"
+  | "interviewing"
+  | "analyzing"
+  | "report"
+  | "activating"
+  | "error";
+
+interface TurnPayload {
+  sessionId: string;
+  status: string;
+  question: DiscoveryQuestion | null;
+  progress: DiscoveryProgress | null;
+}
+
+interface PlanGenerationPayload {
+  missionId: string;
+  decisionId: string | null;
+  report: GovernanceReportDraft;
+}
+
+async function readJson<T>(response: Response): Promise<T> {
+  return (await response.json()) as T;
+}
+
+/**
+ * The whole Discovery -> Report -> Plan journey (Product Flow Simplification), one continuous
+ * phase-driven flow instead of a Discovery page handing off to a disconnected "preview" and a
+ * separately-discovered Plan page. `analyzing` now genuinely creates and runs the
+ * `generate_governance_plan` Mission (previously nothing did); `report` is the full ADR 0066 §4
+ * consulting-style report, ending in the actual ADR 0044 approval action; approving redirects
+ * straight into the living Plan Phase 4 built to receive it.
+ */
+export function DiscoveryFlow() {
+  const t = useTranslations("discoveryInterview");
+  // `promptKey` is a full, root-relative path ("discovery.question.primary_activity") — the
+  // engine's contract with the UI (ADR 0066), not scoped under the "discoveryInterview"
+  // namespace the rest of this component's chrome copy lives in.
+  const tRoot = useTranslations();
+  const router = useRouter();
+  const { hasRole } = useSession();
+  const canApprove = hasRole(...APPROVER_ROLES);
+
+  const [phase, setPhase] = useState<Phase>("loading");
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [question, setQuestion] = useState<DiscoveryQuestion | null>(null);
+  const [progress, setProgress] = useState<DiscoveryProgress | null>(null);
+  const [previousAnswer, setPreviousAnswer] = useState<unknown>(undefined);
+  const [resumed, setResumed] = useState(false);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const [missionId, setMissionId] = useState<string | null>(null);
+  const [decisionId, setDecisionId] = useState<string | null>(null);
+  const [report, setReport] = useState<GovernanceReportDraft | null>(null);
+  const [approving, setApproving] = useState(false);
+  const [approveError, setApproveError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      // A Mission left awaiting approval (the user reviewed the report, then navigated away)
+      // resumes straight into it — Discovery never re-runs for something already decided.
+      try {
+        const pendingResponse = await fetch("/api/plan-generation/pending");
+        if (pendingResponse.ok) {
+          const pending = await readJson<PlanGenerationPayload | null>(pendingResponse);
+          if (pending?.decisionId) {
+            if (cancelled) return;
+            setMissionId(pending.missionId);
+            setDecisionId(pending.decisionId);
+            setReport(pending.report);
+            setPhase("report");
+            return;
+          }
+        }
+      } catch {
+        // fall through — a failed pending-check must never block the flow, only skip the resume
+      }
+      try {
+        const response = await fetch("/api/discovery/sessions/active");
+        if (!response.ok) throw new Error("failed to load active session");
+        const turn = await readJson<TurnPayload | null>(response);
+        if (cancelled) return;
+        if (turn && turn.status === "in_progress") {
+          setSessionId(turn.sessionId);
+          setQuestion(turn.question);
+          setProgress(turn.progress);
+          setCanGoBack(true);
+          setResumed(true);
+          setPhase("interviewing");
+        } else {
+          setPhase("idle");
+        }
+      } catch {
+        if (!cancelled) setPhase("idle"); // fail open into "start" rather than a hard error
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const start = useCallback(async () => {
+    setPhase("loading");
+    setErrorMessage(null);
+    try {
+      const response = await fetch("/api/discovery/sessions", { method: "POST" });
+      if (!response.ok) throw new Error("failed to start session");
+      const turn = await readJson<TurnPayload>(response);
+      setSessionId(turn.sessionId);
+      setQuestion(turn.question);
+      setProgress(turn.progress);
+      setPreviousAnswer(undefined);
+      setCanGoBack(false);
+      setPhase("interviewing");
+    } catch {
+      setPhase("error");
+    }
+  }, []);
+
+  const generateReport = useCallback(async (forSessionId: string) => {
+    setPhase("analyzing");
+    try {
+      const response = await fetch("/api/plan-generation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: forSessionId }),
+      });
+      if (!response.ok) throw new Error("failed to generate the governance plan");
+      const data = await readJson<PlanGenerationPayload>(response);
+      if (!data.decisionId) throw new Error("mission never reached the approval gate");
+      setMissionId(data.missionId);
+      setDecisionId(data.decisionId);
+      setReport(data.report);
+      setPhase("report");
+    } catch {
+      setPhase("error");
+    }
+  }, []);
+
+  const submitAnswer = useCallback(
+    async (value: unknown) => {
+      if (!sessionId || !question) return;
+      setSubmitting(true);
+      setErrorMessage(null);
+      try {
+        const response = await fetch(`/api/discovery/sessions/${sessionId}/answers`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ questionId: question.id, value }),
+        });
+        if (!response.ok) {
+          const body = await response.json().catch(() => ({}) as { error?: string });
+          setErrorMessage(body.error ?? t("genericError"));
+          setSubmitting(false);
+          return;
+        }
+        const turn = await readJson<TurnPayload>(response);
+        setSubmitting(false);
+        setResumed(false);
+        if (turn.status === "concluded") {
+          void generateReport(sessionId);
+          return;
+        }
+        setQuestion(turn.question);
+        setProgress(turn.progress);
+        setPreviousAnswer(undefined);
+        setCanGoBack(true);
+      } catch {
+        setSubmitting(false);
+        setErrorMessage(t("genericError"));
+      }
+    },
+    [sessionId, question, t, generateReport],
+  );
+
+  const skip = useCallback(async () => {
+    if (!sessionId || !question) return;
+    setSubmitting(true);
+    setErrorMessage(null);
+    try {
+      const response = await fetch(`/api/discovery/sessions/${sessionId}/skip`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ questionId: question.id }),
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}) as { error?: string });
+        setErrorMessage(body.error ?? t("genericError"));
+        setSubmitting(false);
+        return;
+      }
+      const turn = await readJson<TurnPayload>(response);
+      setSubmitting(false);
+      setResumed(false);
+      if (turn.status === "concluded") {
+        void generateReport(sessionId);
+        return;
+      }
+      setQuestion(turn.question);
+      setProgress(turn.progress);
+      setPreviousAnswer(undefined);
+      setCanGoBack(true);
+    } catch {
+      setSubmitting(false);
+      setErrorMessage(t("genericError"));
+    }
+  }, [sessionId, question, t, generateReport]);
+
+  const goBack = useCallback(async () => {
+    if (!sessionId) return;
+    setSubmitting(true);
+    setErrorMessage(null);
+    try {
+      const response = await fetch(`/api/discovery/sessions/${sessionId}/back`, { method: "POST" });
+      if (!response.ok) {
+        setSubmitting(false);
+        return;
+      }
+      const target = await readJson<{ question: DiscoveryQuestion; previousAnswer: unknown }>(response);
+      setQuestion(target.question);
+      setPreviousAnswer(target.previousAnswer);
+      setSubmitting(false);
+    } catch {
+      setSubmitting(false);
+    }
+  }, [sessionId]);
+
+  const approve = useCallback(async () => {
+    if (!missionId || !decisionId) return;
+    setApproving(true);
+    setApproveError(null);
+    try {
+      const response = await fetch(`/api/plan-generation/${missionId}/approve`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ decisionId }),
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}) as { error?: string });
+        setApproveError(body.error ?? t("genericError"));
+        setApproving(false);
+        return;
+      }
+      setPhase("activating");
+      router.push("/plan");
+    } catch {
+      setApproveError(t("genericError"));
+      setApproving(false);
+    }
+  }, [missionId, decisionId, t, router]);
+
+  if (phase === "loading") {
+    return (
+      <Card className="flex items-center justify-center gap-2 py-16 text-sm text-foreground-muted">
+        <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
+        {t("loading")}
+      </Card>
+    );
+  }
+
+  if (phase === "idle") {
+    return (
+      <Card grain className="flex flex-col items-center gap-4 py-16 text-center">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-hairline-strong bg-surface-elevated shadow-soft">
+          <Compass className="h-5 w-5 text-accent-foreground" strokeWidth={1.75} />
+        </div>
+        <div className="max-w-md space-y-1.5">
+          <p className="text-sm font-medium text-foreground">{t("title")}</p>
+          <p className="text-xs text-foreground-muted">{t("startDescription")}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => void start()}
+          className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow transition-opacity duration-150 hover:opacity-90 active:scale-[0.98]"
+        >
+          {t("start")}
+        </button>
+      </Card>
+    );
+  }
+
+  if (phase === "error") {
+    return (
+      <Card>
+        <div className="flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("genericError")}</span>
+        </div>
+      </Card>
+    );
+  }
+
+  if (phase === "analyzing") {
+    return (
+      <div className="space-y-5">
+        <JourneyStepper current="report" transitioning />
+        <Card grain className="flex flex-col items-center gap-3 py-16 text-center">
+          <Sparkles className="h-6 w-6 animate-pulse text-accent-foreground" strokeWidth={1.75} />
+          <p className="text-sm font-medium text-foreground">{t("analyzing.title")}</p>
+          <p className="max-w-sm text-xs text-foreground-muted">{t("analyzing.description")}</p>
+        </Card>
+      </div>
+    );
+  }
+
+  if (phase === "report" && report) {
+    return (
+      <div className="space-y-5">
+        <JourneyStepper current="report" />
+        <GovernanceReport
+          report={report}
+          canApprove={canApprove}
+          approving={approving}
+          approveError={approveError}
+          onApprove={() => void approve()}
+        />
+      </div>
+    );
+  }
+
+  if (phase === "activating") {
+    return (
+      <div className="space-y-5">
+        <JourneyStepper current="plan" transitioning />
+        <Card grain className="flex flex-col items-center gap-3 py-16 text-center">
+          <Loader2 className="h-6 w-6 animate-spin text-accent-foreground" strokeWidth={1.75} />
+          <p className="text-sm font-medium text-foreground">{t("activating.title")}</p>
+        </Card>
+      </div>
+    );
+  }
+
+  // interviewing
+  if (!question || !progress) return null;
+  return (
+    <div className="space-y-5">
+      <JourneyStepper current="discovery" />
+      <StageProgress progress={progress} />
+
+      {resumed && <p className="text-xs text-foreground-muted">{t("resumeNotice")}</p>}
+
+      <Card grain className="space-y-4 py-8">
+        <p className="text-base font-medium leading-relaxed text-foreground">
+          {tRoot(question.promptKey as never)}
+        </p>
+        <AnswerInput
+          question={question}
+          initialValue={previousAnswer}
+          disabled={submitting}
+          onSubmit={(value) => void submitAnswer(value)}
+          onSkip={question.required ? undefined : () => void skip()}
+        />
+        {errorMessage && <p className="text-sm text-danger">{errorMessage}</p>}
+      </Card>
+
+      {canGoBack && (
+        <button
+          type="button"
+          disabled={submitting}
+          onClick={() => void goBack()}
+          className="inline-flex items-center gap-1.5 text-sm text-foreground-muted transition-colors duration-150 hover:text-foreground disabled:opacity-50"
+        >
+          <ArrowLeft className="h-4 w-4 rtl:rotate-180" strokeWidth={1.75} />
+          {t("back")}
+        </button>
+      )}
+    </div>
+  );
+}

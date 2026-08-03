@@ -1,0 +1,77 @@
+{
+  "pack_id": "pack:technology",
+  "version": "1.0",
+  "labels": { "en": "Technology", "ar": "التقنية" },
+  "aliases": ["software company", "tech company", "شركة تقنية"],
+  "activation_predicate": {
+    "any": [
+      { "signal": "primary_activity", "op": "eq", "value": "technology" },
+      { "signal": "provides_saas", "op": "eq", "value": true }
+    ]
+  },
+  "questions": [
+    {
+      "id": "q:tech_team_maturity",
+      "version": "1.0",
+      "prompt_key": "discovery.question.tech_team_maturity",
+      "value_type": "enum",
+      "writes_signal": "tech_team_maturity",
+      "priority": 6,
+      "stage": "sector_specific",
+      "ui_hint": "buttons",
+      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r:tech_company_recommends_iso27001_baseline",
+      "version": "1.0",
+      "predicate": { "signal": "employee_count", "op": "gte", "value": 11 },
+      "effect": {
+        "recommends_framework": {
+          "framework_id": "framework:iso_27001",
+          "confidence": 0.6,
+          "rationale_key": "plan.framework.iso_27001.technology_baseline"
+        }
+      }
+    },
+    {
+      "id": "r:mature_tech_team_recommends_cis",
+      "version": "1.0",
+      "predicate": {
+        "all": [
+          { "signal": "tech_team_maturity", "op": "gte", "value": "documented_unapproved" },
+          { "signal": "employee_count", "op": "gte", "value": 11 }
+        ]
+      },
+      "effect": {
+        "recommends_framework": {
+          "framework_id": "framework:cis",
+          "confidence": 0.75,
+          "rationale_key": "plan.framework.cis.technical_controls"
+        }
+      }
+    },
+    {
+      "id": "r:absent_tech_maturity_seeds_baseline",
+      "version": "1.0",
+      "predicate": { "signal": "tech_team_maturity", "op": "eq", "value": "absent" },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:adopt_technical_security_baseline",
+          "pillar": "cyber_security",
+          "title_key": "plan.seed.adopt_technical_security_baseline.title",
+          "rationale_key": "plan.seed.adopt_technical_security_baseline.rationale",
+          "urgency": "high",
+          "effort_size": "large"
+        }
+      }
+    },
+    {
+      "id": "r:mature_tech_team_scores_operational",
+      "version": "1.0",
+      "predicate": { "signal": "tech_team_maturity", "op": "gte", "value": "approved" },
+      "effect": { "maturity_dimension_score": { "dimension": "cyber", "delta": 3 } }
+    }
+  ]
+}

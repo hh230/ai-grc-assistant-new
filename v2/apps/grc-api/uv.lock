@@ -3,6 +3,40 @@ revision = 3
 requires-python = ">=3.12"
 
 [[package]]
+name = "ai-orchestrator"
+version = "0.1.0"
+source = { editable = "../../packages/ai-orchestrator" }
+dependencies = [
+    { name = "answer-validation" },
+    { name = "context-builder" },
+    { name = "decision-engine" },
+    { name = "event-bus" },
+    { name = "generation-engine" },
+    { name = "pipeline-contracts" },
+    { name = "pipeline-tracing" },
+    { name = "prompt-orchestrator" },
+    { name = "retrieval-engine" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "answer-validation", editable = "../../packages/answer-validation" },
+    { name = "context-builder", editable = "../../packages/context-builder" },
+    { name = "decision-engine", editable = "../../packages/decision-engine" },
+    { name = "event-bus", editable = "../../packages/event-bus" },
+    { name = "generation-engine", editable = "../../packages/generation-engine" },
+    { name = "generation-engine", extras = ["openai"], marker = "extra == 'openai'", editable = "../../packages/generation-engine" },
+    { name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" },
+    { name = "pipeline-tracing", editable = "../../packages/pipeline-tracing" },
+    { name = "prompt-orchestrator", editable = "../../packages/prompt-orchestrator" },
+    { name = "retrieval-engine", editable = "../../packages/retrieval-engine" },
+]
+provides-extras = ["openai"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
 name = "annotated-doc"
 version = "0.0.4"
 source = { registry = "https://pypi.org/simple" }
@@ -19,6 +53,20 @@ sdist = { url = "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5
 wheels = [
     { url = "https://files.pythonhosted.org/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl", hash = "sha256:1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53", size = 13643, upload-time = "2024-05-20T21:33:24.1Z" },
 ]
+
+[[package]]
+name = "answer-validation"
+version = "0.1.0"
+source = { editable = "../../packages/answer-validation" }
+dependencies = [
+    { name = "pipeline-contracts" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" }]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
 
 [[package]]
 name = "anyio"
@@ -234,6 +282,23 @@ wheels = [
 ]
 
 [[package]]
+name = "context-builder"
+version = "0.1.0"
+source = { editable = "../../packages/context-builder" }
+dependencies = [
+    { name = "pipeline-contracts" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "pytest", specifier = ">=8.3.0" },
+    { name = "retrieval-engine", editable = "../../packages/retrieval-engine" },
+]
+
+[[package]]
 name = "cryptography"
 version = "49.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -282,6 +347,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/93/77/8df9eb486495979bccecd1062e2eaf435250e84437040295b57d09048b0b/cryptography-49.0.0-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:42b0684e0e40cf26122427802486f6d93aea593612603a94fbf260c7eb1e9c1b", size = 4967968, upload-time = "2026-06-12T20:02:12.524Z" },
     { url = "https://files.pythonhosted.org/packages/c2/e6/f60198ea8d9dfa15fff9ed4ca02ce362f6eadd9ba757dcc50634c4257b63/cryptography-49.0.0-cp39-abi3-win_amd64.whl", hash = "sha256:026ac7423e6fa66872d3bf889be5974507da3944f866f704fa200eadacd00001", size = 3785547, upload-time = "2026-06-12T20:02:26.847Z" },
 ]
+
+[[package]]
+name = "decision-engine"
+version = "0.1.0"
+source = { editable = "../../packages/decision-engine" }
+dependencies = [
+    { name = "pipeline-contracts" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" }]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
 
 [[package]]
 name = "deliverables"
@@ -388,6 +467,121 @@ dev = [
 ]
 
 [[package]]
+name = "generation-engine"
+version = "0.1.0"
+source = { editable = "../../packages/generation-engine" }
+dependencies = [
+    { name = "pipeline-contracts" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "anthropic", marker = "extra == 'claude'", specifier = ">=0.40.0" },
+    { name = "google-genai", marker = "extra == 'gemini'", specifier = ">=1.0.0" },
+    { name = "ollama", marker = "extra == 'ollama'", specifier = ">=0.4.0" },
+    { name = "openai", marker = "extra == 'openai'", specifier = ">=1.50.0" },
+    { name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" },
+]
+provides-extras = ["openai", "claude", "gemini", "ollama"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "governance-discovery"
+version = "0.1.0"
+source = { editable = "../../packages/governance-discovery" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "governance-plan-execution"
+version = "0.1.0"
+source = { editable = "../../packages/governance-plan-execution" }
+dependencies = [
+    { name = "governance-discovery" },
+    { name = "governance-store" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "governance-discovery", editable = "../../packages/governance-discovery" },
+    { name = "governance-store", editable = "../../packages/governance-store" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "governance-plan-tools"
+version = "0.1.0"
+source = { editable = "../../packages/governance-plan-tools" }
+dependencies = [
+    { name = "governance-discovery" },
+    { name = "governance-store", extra = ["postgres"] },
+    { name = "pipeline-contracts" },
+    { name = "tool-registry" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "governance-discovery", editable = "../../packages/governance-discovery" },
+    { name = "governance-store", extras = ["postgres"], editable = "../../packages/governance-store" },
+    { name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" },
+    { name = "tool-registry", editable = "../../packages/tool-registry" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "governance-session"
+version = "0.1.0"
+source = { editable = "../../packages/governance-session" }
+dependencies = [
+    { name = "governance-discovery" },
+    { name = "governance-store" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "governance-discovery", editable = "../../packages/governance-discovery" },
+    { name = "governance-store", editable = "../../packages/governance-store" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "governance-store"
+version = "0.1.0"
+source = { editable = "../../packages/governance-store" }
+dependencies = [
+    { name = "governance-discovery" },
+]
+
+[package.optional-dependencies]
+postgres = [
+    { name = "psycopg", extra = ["binary"] },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "governance-discovery", editable = "../../packages/governance-discovery" },
+    { name = "psycopg", extras = ["binary"], marker = "extra == 'postgres'", specifier = ">=3.2" },
+]
+provides-extras = ["postgres"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "psycopg", extras = ["binary"], specifier = ">=3.2" },
+    { name = "pytest", specifier = ">=8.3.0" },
+]
+
+[[package]]
 name = "grc-api"
 version = "0.1.0"
 source = { editable = "." }
@@ -398,6 +592,10 @@ dependencies = [
     { name = "event-bus" },
     { name = "fastapi" },
     { name = "framework-library" },
+    { name = "governance-discovery" },
+    { name = "governance-plan-execution" },
+    { name = "governance-session" },
+    { name = "governance-store", extra = ["postgres"] },
     { name = "knowledge-runtime" },
     { name = "mission-application" },
     { name = "mission-engine" },
@@ -412,10 +610,13 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "governance-plan-tools" },
     { name = "httpx" },
     { name = "mission-store" },
+    { name = "pipeline-tool" },
     { name = "psycopg", extra = ["binary"] },
     { name = "pytest" },
+    { name = "tool-registry" },
 ]
 
 [package.metadata]
@@ -426,6 +627,10 @@ requires-dist = [
     { name = "event-bus", specifier = ">=0.1.0" },
     { name = "fastapi", specifier = ">=0.115.0" },
     { name = "framework-library", editable = "../../packages/framework-library" },
+    { name = "governance-discovery", editable = "../../packages/governance-discovery" },
+    { name = "governance-plan-execution", editable = "../../packages/governance-plan-execution" },
+    { name = "governance-session", editable = "../../packages/governance-session" },
+    { name = "governance-store", extras = ["postgres"], editable = "../../packages/governance-store" },
     { name = "knowledge-runtime", editable = "../../packages/knowledge-runtime" },
     { name = "mission-application", editable = "../../packages/mission-application" },
     { name = "mission-engine", editable = "../../packages/mission-engine" },
@@ -440,10 +645,13 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "governance-plan-tools", editable = "../../packages/governance-plan-tools" },
     { name = "httpx", specifier = ">=0.27.0" },
     { name = "mission-store", editable = "../../packages/mission-store" },
+    { name = "pipeline-tool", editable = "../../packages/pipeline-tool" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2.0" },
     { name = "pytest", specifier = ">=8.3.0" },
+    { name = "tool-registry", editable = "../../packages/tool-registry" },
 ]
 
 [[package]]
@@ -851,12 +1059,66 @@ source = { editable = "../../packages/pipeline-contracts" }
 dev = [{ name = "pytest", specifier = ">=8.3.0" }]
 
 [[package]]
+name = "pipeline-tool"
+version = "0.1.0"
+source = { editable = "../../packages/pipeline-tool" }
+dependencies = [
+    { name = "ai-orchestrator" },
+    { name = "mission-engine" },
+    { name = "pipeline-contracts" },
+    { name = "tool-registry" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "ai-orchestrator", editable = "../../packages/ai-orchestrator" },
+    { name = "mission-engine", editable = "../../packages/mission-engine" },
+    { name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" },
+    { name = "tool-registry", editable = "../../packages/tool-registry" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
+name = "pipeline-tracing"
+version = "0.1.0"
+source = { editable = "../../packages/pipeline-tracing" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.0" }]
+
+[[package]]
 name = "pluggy"
 version = "1.6.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3", size = 69412, upload-time = "2025-05-15T12:30:07.975Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746", size = 20538, upload-time = "2025-05-15T12:30:06.134Z" },
+]
+
+[[package]]
+name = "prompt-orchestrator"
+version = "0.1.0"
+source = { editable = "../../packages/prompt-orchestrator" }
+dependencies = [
+    { name = "context-builder" },
+    { name = "pipeline-contracts" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "context-builder", editable = "../../packages/context-builder" },
+    { name = "pipeline-contracts", editable = "../../packages/pipeline-contracts" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "decision-engine", editable = "../../packages/decision-engine" },
+    { name = "pytest", specifier = ">=8.3.0" },
+    { name = "retrieval-engine", editable = "../../packages/retrieval-engine" },
 ]
 
 [[package]]

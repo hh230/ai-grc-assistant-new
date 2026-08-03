@@ -6,6 +6,22 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.10] — 2026-08-03
+
+### Fixed
+- **A missing `GRC_API_SERVICE_SECRET` crashed `/discovery`, `/plan`, and Mission approvals**
+  instead of degrading. `apps/web/README.md` documents these routes as returning 401/502 until
+  the grc-api bridge is configured, but the code threw a bare `Error` — not an `AppError` — so
+  it bypassed the status mapper (unmapped 500 instead of 502) and every `UpstreamError` handler,
+  escaping the Server Component render as a hard crash. The requirement itself arrived with
+  ADR 0066 (v2.1.0) while the value lives only in the gitignored `.env.local`, so any
+  environment without it (fresh clone, CI, a deployment missing the var) hit this.
+  Now throws a typed `UpstreamError` — the documented 502 — plus an error-level log carrying
+  the exact remediation, so a misconfiguration is never silent. The secret remains **mandatory
+  with no default and no dev fallback**: a shared default would let anyone mint an identity
+  assertion for any tenant, breaking tenant isolation. `unreachable` is deliberately `false` so
+  a config error is never silently degraded into "no active plan" for a tenant that has one.
+
 ## [2.1.9] — 2026-08-03
 
 ### Added
@@ -184,6 +200,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.10]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.10
 [2.1.9]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.9
 [2.1.8]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.8
 [2.1.7]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.7

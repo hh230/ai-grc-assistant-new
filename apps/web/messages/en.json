@@ -1273,6 +1273,11 @@
     "description": "Your role does not grant access to this area. If you believe this is a mistake, contact your workspace administrator.",
     "backToDashboard": "Back to dashboard"
   },
+  "appError": {
+    "title": "Something went wrong",
+    "description": "This page ran into an unexpected problem. Try again, or come back in a moment.",
+    "retry": "Try again"
+  },
   "uploadPage": {
     "eyebrow": "Knowledge",
     "title": "Upload Center",

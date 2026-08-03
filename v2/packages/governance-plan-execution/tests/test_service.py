@@ -3,9 +3,9 @@ from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
 from governance_discovery.plan import PlanItem
 from governance_discovery.signal import Signal, SignalSet, ValueType
-
 from governance_plan_execution.errors import PlanItemConflict, PlanItemNotFound
 from governance_plan_execution.service import PlanExecutionService
+
 from tests.fake_store import FakePlanExecutionStore
 
 

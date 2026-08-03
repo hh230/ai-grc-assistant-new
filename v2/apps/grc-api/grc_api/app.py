@@ -14,9 +14,8 @@ development ones, each replaced at its own seam.
 
 from __future__ import annotations
 
-from typing import Any
-
 import os
+from typing import Any
 
 from assistant_runtime.builtin import default_mission_catalog
 from document_read_model import DocumentReadModel

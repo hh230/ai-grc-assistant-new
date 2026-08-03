@@ -3,7 +3,11 @@ Governance Plan: mark tasks done/reopened, attach optional evidence, recompute c
 """
 
 from governance_plan_execution.errors import PlanExecutionError, PlanItemConflict, PlanItemNotFound
-from governance_plan_execution.service import CurrentMaturity, PlanExecutionService, PlanExecutionStorePort
+from governance_plan_execution.service import (
+    CurrentMaturity,
+    PlanExecutionService,
+    PlanExecutionStorePort,
+)
 
 __all__ = [
     "PlanExecutionService",

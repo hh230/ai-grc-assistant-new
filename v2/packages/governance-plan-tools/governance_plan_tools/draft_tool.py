@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 import re
 import time
-from typing import Callable
+from collections.abc import Callable
 
 from governance_discovery.scheduler import compute_due_at
 from governance_store import PostgresGovernanceStore
@@ -140,7 +140,10 @@ class PlanDraftTool:
                     source=prompts.SYSTEM_PROMPT_ID,
                 ),
                 PromptSegment(
-                    role=SegmentRole.USER, kind=SegmentKind.USER_REQUEST, title="Request", content=prompt
+                    role=SegmentRole.USER,
+                    kind=SegmentKind.USER_REQUEST,
+                    title="Request",
+                    content=prompt,
                 ),
             ],
             response_contract=_NO_CITATIONS_CONTRACT,
@@ -153,7 +156,11 @@ class PlanDraftTool:
 
     def _draft_executive_brief(self, applicability, warnings: list[str]) -> str:
         context = json.dumps(
-            {"maturity": applicability.maturity, "gaps": list(applicability.gaps), "capacity": applicability.capacity}
+            {
+                "maturity": applicability.maturity,
+                "gaps": list(applicability.gaps),
+                "capacity": applicability.capacity,
+            }
         )
         text = self._generate(prompts.executive_brief_prompt(context))
         if not text:
@@ -163,7 +170,11 @@ class PlanDraftTool:
 
     def _draft_gap(self, gap: dict, warnings: list[str]) -> dict:
         description_seed = _humanize(gap.get("rationale_key", gap.get("gap_id", "")))
-        context = f"Gap id: {gap.get('gap_id')}\nSeverity: {gap.get('severity')}\nContext: {description_seed}"
+        context = (
+            f"Gap id: {gap.get('gap_id')}\n"
+            f"Severity: {gap.get('severity')}\n"
+            f"Context: {description_seed}"
+        )
         text = self._generate(prompts.gap_prompt(context))
         description, impact = _FALLBACK_GAP_DESCRIPTION, _FALLBACK_GAP_IMPACT
         if text:
@@ -186,7 +197,8 @@ class PlanDraftTool:
             f"Recommendation: {title}\n"
             f"Pillar: {item.get('pillar')}\n"
             f"Urgency: {item.get('priority')}\n"
-            f"Triggered by facts about: {', '.join(item.get('source_signal_keys', [])) or 'the organization'}\n"
+            f"Triggered by facts about: "
+            f"{', '.join(item.get('source_signal_keys', [])) or 'the organization'}\n"
             f"Context: {rationale_seed}"
         )
         text = self._generate(prompts.plan_item_prompt(context))
@@ -225,7 +237,8 @@ def _parse_labeled_lines(text: str, labels: tuple[str, ...]) -> dict[str, str]:
     and the caller falls back to its own default text — never a crash, never a guess."""
     result: dict[str, str] = {}
     pattern = "|".join(re.escape(label) for label in labels)
-    matches = list(re.finditer(rf"(?:^|\n)({pattern}):\s*(.*?)(?=\n(?:{pattern}):|\Z)", text, re.DOTALL))
+    regex = rf"(?:^|\n)({pattern}):\s*(.*?)(?=\n(?:{pattern}):|\Z)"
+    matches = list(re.finditer(regex, text, re.DOTALL))
     for match in matches:
         label, content = match.group(1), match.group(2).strip()
         if content:

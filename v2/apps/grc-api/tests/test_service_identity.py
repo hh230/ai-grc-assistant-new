@@ -3,8 +3,6 @@ addendum). Pure unit tests, no HTTP/database involved."""
 
 from __future__ import annotations
 
-import time
-
 from grc_api.service_identity import (
     CompositeIdentityProvider,
     ServiceAssertionIdentityProvider,
@@ -34,7 +32,7 @@ def test_a_tampered_payload_is_rejected() -> None:
     provider = ServiceAssertionIdentityProvider(secret="shared-secret")
     token = mint_service_assertion(secret="shared-secret", tenant_id="org_123")
     payload_b64, _, signature = token.partition(".")
-    tampered = f"{payload_b64}x.{signature}"  # corrupt the payload, keep the (now-mismatched) signature
+    tampered = f"{payload_b64}x.{signature}"  # corrupt the payload, signature now mismatched
     assert provider.resolve(tampered) is None
 
 

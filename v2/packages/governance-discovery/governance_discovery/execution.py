@@ -37,7 +37,9 @@ def effective_signals(
     result = baseline
     for key, value, _completed_at in sorted(resolutions, key=lambda r: r[2]):
         value_type = _infer_value_type(baseline.get(key), value)
-        result = result.with_signal(Signal(key=key, value_type=value_type, value=value, confidence=1.0))
+        result = result.with_signal(
+            Signal(key=key, value_type=value_type, value=value, confidence=1.0)
+        )
     return result
 
 

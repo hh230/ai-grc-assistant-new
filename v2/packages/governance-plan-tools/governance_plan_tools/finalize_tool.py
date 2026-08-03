@@ -12,7 +12,7 @@ import json
 import re
 import time
 import uuid
-from typing import Callable
+from collections.abc import Callable
 
 from governance_discovery.analysis import rate_maturity_scores, score_maturity
 from governance_discovery.engine import DiscoveryEngine
@@ -54,7 +54,10 @@ class PlanFinalizeTool:
         self._spec = ToolSpec(
             name=PLAN_FINALIZE_TOOL,
             version=version,
-            description="Persist an approved Governance Plan draft as a new immutable plan version, superseding the previous one.",
+            description=(
+                "Persist an approved Governance Plan draft as a new immutable plan "
+                "version, superseding the previous one."
+            ),
             side_effect=SideEffectProfile.CONSEQUENTIAL,
         )
 
@@ -111,7 +114,9 @@ class PlanFinalizeTool:
 
         for item in draft.get("items", ()):
             item_id = f"{new_plan_id}:{item['id']}"
-            depends_on = tuple(f"{new_plan_id}:{dep}" for dep in item.get("depends_on_item_ids", ()))
+            depends_on = tuple(
+                f"{new_plan_id}:{dep}" for dep in item.get("depends_on_item_ids", ())
+            )
             plan_item = PlanItem(
                 id=item_id,
                 plan_id=new_plan_id,
@@ -150,7 +155,9 @@ class PlanFinalizeTool:
         resolutions = self._store.list_completed_resolutions(tenant_id)
         current_signals = effective_signals(baseline_signals, resolutions)
         active_packs = [
-            pack for pack in (self._engine.pack_by_id(pid) for pid in active_pack_ids) if pack is not None
+            pack
+            for pack in (self._engine.pack_by_id(pid) for pid in active_pack_ids)
+            if pack is not None
         ]
         return rate_maturity_scores(score_maturity(current_signals, active_packs))
 

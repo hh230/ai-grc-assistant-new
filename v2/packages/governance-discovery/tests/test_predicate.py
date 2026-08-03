@@ -1,6 +1,6 @@
 import pytest
-
 from governance_discovery.predicate import evaluate, references_signal
+
 from tests.helpers import make_signals
 
 
@@ -9,14 +9,16 @@ def test_none_predicate_always_true() -> None:
 
 
 def test_missing_signal_is_false() -> None:
-    assert evaluate({"signal": "handles_personal_data", "op": "eq", "value": True}, make_signals()) is False
+    expr = {"signal": "handles_personal_data", "op": "eq", "value": True}
+    assert evaluate(expr, make_signals()) is False
 
 
 def test_eq_neq_in() -> None:
     signals = make_signals(primary_activity="technology")
     assert evaluate({"signal": "primary_activity", "op": "eq", "value": "technology"}, signals)
     assert not evaluate({"signal": "primary_activity", "op": "neq", "value": "technology"}, signals)
-    assert evaluate({"signal": "primary_activity", "op": "in", "value": ["technology", "legal_services"]}, signals)
+    expr = {"signal": "primary_activity", "op": "in", "value": ["technology", "legal_services"]}
+    assert evaluate(expr, signals)
 
 
 def test_numeric_gte_lte_between() -> None:
@@ -30,9 +32,15 @@ def test_numeric_gte_lte_between() -> None:
 
 def test_enum_ordinal_gte_lte_on_default_maturity_scale() -> None:
     signals = make_signals(policy_state="approved")
-    assert evaluate({"signal": "policy_state", "op": "gte", "value": "documented_unapproved"}, signals)
-    assert not evaluate({"signal": "policy_state", "op": "gte", "value": "reviewed_periodically"}, signals)
-    assert evaluate({"signal": "policy_state", "op": "lte", "value": "reviewed_periodically"}, signals)
+    assert evaluate(
+        {"signal": "policy_state", "op": "gte", "value": "documented_unapproved"}, signals
+    )
+    assert not evaluate(
+        {"signal": "policy_state", "op": "gte", "value": "reviewed_periodically"}, signals
+    )
+    assert evaluate(
+        {"signal": "policy_state", "op": "lte", "value": "reviewed_periodically"}, signals
+    )
     assert not evaluate({"signal": "policy_state", "op": "lte", "value": "verbal"}, signals)
 
 
@@ -61,7 +69,9 @@ def test_unknown_op_raises() -> None:
 
 
 def test_references_signal_walks_the_tree() -> None:
-    expr = {"any": [{"signal": "a", "op": "eq", "value": 1}, {"signal": "b", "op": "eq", "value": 2}]}
+    expr = {
+        "any": [{"signal": "a", "op": "eq", "value": 1}, {"signal": "b", "op": "eq", "value": 2}]
+    }
     assert references_signal(expr, "a")
     assert references_signal(expr, "b")
     assert not references_signal(expr, "c")

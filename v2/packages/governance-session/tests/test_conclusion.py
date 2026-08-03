@@ -5,8 +5,8 @@ the whole path end to end."""
 
 from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
-
 from governance_session.service import DiscoverySessionService
+
 from tests.fake_store import FakeGovernanceStore
 
 _ANSWERS = {

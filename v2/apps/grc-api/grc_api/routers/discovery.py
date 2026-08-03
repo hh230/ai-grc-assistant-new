@@ -39,7 +39,9 @@ from grc_api.security import require_tenant
 router = APIRouter()
 
 
-def _turn_response(session_id: str, status: str, question: Question | None) -> DiscoveryTurnResponse:
+def _turn_response(
+    session_id: str, status: str, question: Question | None
+) -> DiscoveryTurnResponse:
     return DiscoveryTurnResponse(
         session_id=session_id,
         status=status,

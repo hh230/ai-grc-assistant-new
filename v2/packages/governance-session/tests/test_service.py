@@ -2,13 +2,13 @@ import pytest
 from governance_discovery.analysis import Applicability
 from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
-
 from governance_session.errors import (
     InvalidAnswer,
     SessionAlreadyConcluded,
     SessionNotFound,
 )
 from governance_session.service import DiscoverySessionService
+
 from tests.fake_store import FakeGovernanceStore
 
 

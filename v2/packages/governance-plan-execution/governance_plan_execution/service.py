@@ -9,8 +9,9 @@ computed by pure functions this service merely calls with fresh data.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Protocol
+from typing import Protocol
 
 from governance_discovery.analysis import rate_maturity_scores, score_maturity
 from governance_discovery.engine import DiscoveryEngine
@@ -72,7 +73,9 @@ class PlanExecutionService:
             raise PlanItemNotFound(item_id)
         return item
 
-    def _transition(self, item: PlanItem, updated: PlanItem, event_type: str, actor_id: str) -> PlanItem:
+    def _transition(
+        self, item: PlanItem, updated: PlanItem, event_type: str, actor_id: str
+    ) -> PlanItem:
         """Applies one state change through the atomic, optimistically-locked store call (Phase 3
         hardening, ADR 0066 §5.3): `item.updated_at` (the version this call read) is the lock's
         expected value, so a concurrent writer who changed the item first makes this call lose,
@@ -120,7 +123,9 @@ class PlanExecutionService:
             return item
         return self._transition(item, item.reopened(self._now()), "reopened", actor_id)
 
-    def attach_evidence(self, item_id: str, tenant_id: str, evidence_ids: tuple[str, ...], actor_id: str) -> PlanItem:
+    def attach_evidence(
+        self, item_id: str, tenant_id: str, evidence_ids: tuple[str, ...], actor_id: str
+    ) -> PlanItem:
         """Always additive and optional (ADR 0066 §5.4) — never required for `mark_done`, and
         callable before OR after completion."""
         item = self._require_item(item_id, tenant_id)
@@ -143,10 +148,14 @@ class PlanExecutionService:
         current_signals = effective_signals(baseline_signals, resolutions)
 
         active_packs = [
-            pack for pack in (self._engine.pack_by_id(pid) for pid in active_pack_ids) if pack is not None
+            pack
+            for pack in (self._engine.pack_by_id(pid) for pid in active_pack_ids)
+            if pack is not None
         ]
         scores = score_maturity(current_signals, active_packs)
-        return CurrentMaturity(maturity=rate_maturity_scores(scores), active_pack_ids=active_pack_ids)
+        return CurrentMaturity(
+            maturity=rate_maturity_scores(scores), active_pack_ids=active_pack_ids
+        )
 
 
 __all__ = ["PlanExecutionService", "PlanExecutionStorePort", "CurrentMaturity"]

@@ -61,15 +61,19 @@ def rate_maturity_scores(scores: dict[str, int]) -> dict[str, dict]:
     """`{dimension: raw_score}` -> `{dimension: {"score", "stars", "label"}}` — public so Plan
     Execution (ADR 0066 §5.3) can rate a *recalculated* maturity snapshot the same way `analyze()`
     rates the original one, without needing a full `Applicability`."""
-    return {dim: dict(zip(("score", "stars", "label"), (score, *stars_and_label(score))))
-            for dim, score in scores.items()}
+    return {
+        dim: dict(
+            zip(("score", "stars", "label"), (score, *stars_and_label(score)), strict=True)
+        )
+        for dim, score in scores.items()
+    }
 
 
 @dataclass(frozen=True)
 class Applicability:
     frameworks: tuple[dict, ...]  # [{framework_id, confidence, rationale_key}]
     maturity: dict[str, dict]  # dimension -> {"score", "stars", "label"}
-    maturity_vision: dict[str, dict]  # dimension -> {"score", "stars", "label"}, plan fully executed
+    maturity_vision: dict[str, dict]  # dimension -> {score/stars/label}, plan fully executed
     capacity: dict  # {score, tier, per_period_budget}
     gaps: tuple[dict, ...]  # [{gap_id, severity, rationale_key}]
     plan_items: tuple[dict, ...]  # scheduled items, output of the Scheduler
@@ -82,7 +86,7 @@ def score_maturity(signals: SignalSet, active_packs: list[KnowledgePack]) -> dic
     analysis, the hypothetical "vision" projection, and Plan Execution's recalculation after a
     task completes (ADR 0066 §5.3), so all three use one definition of how a dimension's score is
     computed. Public: Plan Execution calls this directly, outside any `analyze()` pass."""
-    scores: dict[str, int] = {dim: 0 for dim in MATURITY_DIMENSIONS}
+    scores: dict[str, int] = dict.fromkeys(MATURITY_DIMENSIONS, 0)
     for pack in active_packs:
         for rule in pack.rules:
             effect = rule.effect
@@ -99,7 +103,7 @@ def score_maturity(signals: SignalSet, active_packs: list[KnowledgePack]) -> dic
 
 def _best_case_signals(signals: SignalSet) -> SignalSet:
     upgraded = signals
-    for key in signals.keys():
+    for key in signals.keys():  # noqa: SIM118 (SignalSet has no __iter__)
         signal = signals.get(key)
         if signal.value_type == ValueType.ENUM and signal.value in DEFAULT_MATURITY_SCALE:
             upgraded = upgraded.with_signal(replace(signal, value=DEFAULT_MATURITY_SCALE[-1]))
@@ -146,7 +150,11 @@ def analyze(signals: SignalSet, engine: DiscoveryEngine) -> Applicability:
             if effect.flags_gap:
                 gap = effect.flags_gap
                 gaps.append(
-                    {"gap_id": gap.gap_id, "severity": gap.severity, "rationale_key": gap.rationale_key}
+                    {
+                        "gap_id": gap.gap_id,
+                        "severity": gap.severity,
+                        "rationale_key": gap.rationale_key,
+                    }
                 )
             if effect.plan_seed:
                 seed = effect.plan_seed

@@ -1,10 +1,13 @@
 from governance_discovery.capacity import compute_capacity
 from governance_discovery.pack import PlanSeed
 from governance_discovery.scheduler import BUCKET_ORDER, schedule
+
 from tests.helpers import make_signals
 
 
-def _seed(id_: str, urgency: str = "high", effort: str = "medium", depends_on: tuple = ()) -> PlanSeed:
+def _seed(
+    id_: str, urgency: str = "high", effort: str = "medium", depends_on: tuple = ()
+) -> PlanSeed:
     return PlanSeed(
         id=id_,
         pillar="organization",
@@ -18,7 +21,8 @@ def _seed(id_: str, urgency: str = "high", effort: str = "medium", depends_on: t
 
 def test_dependency_is_never_scheduled_before_what_it_depends_on() -> None:
     seeds = [_seed("a"), _seed("b", depends_on=("a",))]
-    capacity = compute_capacity(make_signals(employee_count=3000))  # ample capacity, not the constraint here
+    # ample capacity, not the constraint here
+    capacity = compute_capacity(make_signals(employee_count=3000))
     items = schedule(seeds, capacity)
     by_id = {item["id"]: item for item in items}
     a_index = BUCKET_ORDER.index(by_id["a"]["timeframe_bucket"])
@@ -70,7 +74,8 @@ def test_urgency_fills_buckets_before_lower_urgency_items() -> None:
         _seed("critical_b", urgency="critical"),
         _seed("low_item", urgency="low"),
     ]
-    capacity = compute_capacity(make_signals(employee_count=3))  # micro: week_1 budget = 2, exactly full
+    # micro: week_1 budget = 2, exactly full
+    capacity = compute_capacity(make_signals(employee_count=3))
     items = schedule(seeds, capacity)
     by_id = {item["id"]: item for item in items}
     assert by_id["critical_a"]["timeframe_bucket"] == "week_1"

@@ -6,8 +6,9 @@ go back, resume (ADR 0066). Owns sequencing and boundary validation only; every 
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Protocol
+from typing import Protocol
 
 from governance_discovery.analysis import Applicability, analyze
 from governance_discovery.engine import DiscoveryEngine
@@ -105,12 +106,12 @@ class DiscoverySessionService:
         question = self._engine.question_by_id(question_id)
         if question is None:
             raise UnknownQuestion(question_id)
-        if question not in self._engine.eligible_questions(session.state):
-            # Not a hard product error — the user may be re-answering a question that a LATER
-            # answer already made eligible again after a 'go back' edit, which is fine. What we
-            # refuse is a question that was never, and still isn't, in scope at all.
-            if question_id not in session.answered_question_ids:
-                raise QuestionNotCurrentlyEligible(question_id)
+        # Not a hard product error — the user may be re-answering a question that a LATER answer
+        # already made eligible again after a 'go back' edit, which is fine. What we refuse is a
+        # question that was never, and still isn't, in scope at all.
+        not_eligible = question not in self._engine.eligible_questions(session.state)
+        if not_eligible and question_id not in session.answered_question_ids:
+            raise QuestionNotCurrentlyEligible(question_id)
         return question
 
     def _advance(self, session: DiscoverySession) -> AnswerOutcome:

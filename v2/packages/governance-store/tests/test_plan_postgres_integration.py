@@ -16,7 +16,6 @@ psycopg = pytest.importorskip("psycopg")
 
 from governance_discovery.plan import GovernancePlan, PlanItem  # noqa: E402
 from governance_discovery.signal import Signal, SignalSet, ValueType  # noqa: E402
-
 from governance_store import PostgresGovernanceStore  # noqa: E402
 from governance_store.config import dsn  # noqa: E402
 
@@ -39,7 +38,9 @@ def _plan(tenant_id: str, **overrides) -> GovernancePlan:
         source_mission_id="mission_1",
         status="active",
         version=1,
-        inferred_frameworks=({"framework_id": "framework:iso_27001", "confidence": 0.6, "rationale_key": "x"},),
+        inferred_frameworks=(
+            {"framework_id": "framework:iso_27001", "confidence": 0.6, "rationale_key": "x"},
+        ),
         maturity_baseline={"governance": {"score": 2, "stars": 1, "label": "limited"}},
         created_at=1000.0,
         updated_at=1000.0,
@@ -108,11 +109,15 @@ def test_plan_round_trip_and_version_lineage(store: PostgresGovernanceStore) -> 
         # A new version supersedes the old one — both rows persist, never edited in place.
         superseded_ok = store.supersede_plan(
             plan_v1.id, tenant_id,
-            maturity_at_supersession={"governance": {"score": 6, "stars": 3, "label": "developing"}},
+            maturity_at_supersession={
+                "governance": {"score": 6, "stars": 3, "label": "developing"}
+            },
             now=2000.0,
         )
         assert superseded_ok is True
-        plan_v2 = _plan(tenant_id, id=f"plan_{uuid.uuid4().hex[:8]}", version=2, previous_plan_id=plan_v1.id)
+        plan_v2 = _plan(
+            tenant_id, id=f"plan_{uuid.uuid4().hex[:8]}", version=2, previous_plan_id=plan_v1.id
+        )
         store.create_plan(plan_v2)
 
         versions = store.list_plan_versions(tenant_id)
@@ -140,31 +145,46 @@ def test_supersede_plan_only_ever_applies_once(store: PostgresGovernanceStore) -
         store.create_plan(plan)
 
         first = store.supersede_plan(
-            plan.id, tenant_id, maturity_at_supersession={"governance": {"score": 4, "stars": 2, "label": "initial"}}, now=2000.0
+            plan.id,
+            tenant_id,
+            maturity_at_supersession={"governance": {"score": 4, "stars": 2, "label": "initial"}},
+            now=2000.0,
         )
         assert first is True
 
         second = store.supersede_plan(
-            plan.id, tenant_id, maturity_at_supersession={"governance": {"score": 8, "stars": 4, "label": "established"}}, now=3000.0
+            plan.id,
+            tenant_id,
+            maturity_at_supersession={
+                "governance": {"score": 8, "stars": 4, "label": "established"}
+            },
+            now=3000.0,
         )
         assert second is False  # already superseded — refused, not silently reapplied
 
         fetched = store.get_plan(plan.id, tenant_id)
         # the FIRST supersession's snapshot survives untouched — the second never landed.
-        assert fetched.maturity_at_supersession == {"governance": {"score": 4, "stars": 2, "label": "initial"}}
+        assert fetched.maturity_at_supersession == {
+            "governance": {"score": 4, "stars": 2, "label": "initial"}
+        }
         assert fetched.updated_at == 2000.0
     finally:
         _cleanup(store._conn, tenant_id)  # noqa: SLF001
 
 
-def test_supersede_plan_never_touches_the_other_tenants_plan(store: PostgresGovernanceStore) -> None:
+def test_supersede_plan_never_touches_the_other_tenants_plan(
+    store: PostgresGovernanceStore,
+) -> None:
     tenant_a, tenant_b = _tenant(), _tenant()
     try:
         plan = _plan(tenant_a)
         store.create_plan(plan)
 
         applied = store.supersede_plan(
-            plan.id, tenant_b, maturity_at_supersession={"governance": {"score": 1, "stars": 0, "label": "none"}}, now=2000.0
+            plan.id,
+            tenant_b,
+            maturity_at_supersession={"governance": {"score": 1, "stars": 0, "label": "none"}},
+            now=2000.0,
         )
         assert applied is False
 
@@ -186,7 +206,9 @@ def _transition(store, prior_item, updated_item, event_type, *, event_id=None):
     )
 
 
-def test_plan_item_completion_is_reversible_via_effective_signals(store: PostgresGovernanceStore) -> None:
+def test_plan_item_completion_is_reversible_via_effective_signals(
+    store: PostgresGovernanceStore,
+) -> None:
     from governance_discovery.execution import effective_signals
 
     tenant_id = _tenant()
@@ -300,7 +322,9 @@ def test_record_item_transition_rolls_back_the_item_update_if_the_event_insert_f
         _cleanup(store._conn, tenant_id)  # noqa: SLF001
 
 
-def test_evidence_is_never_required_and_is_reflected_when_present(store: PostgresGovernanceStore) -> None:
+def test_evidence_is_never_required_and_is_reflected_when_present(
+    store: PostgresGovernanceStore,
+) -> None:
     tenant_id = _tenant()
     try:
         plan = _plan(tenant_id)
@@ -325,10 +349,13 @@ def test_evidence_is_never_required_and_is_reflected_when_present(store: Postgre
         _cleanup(store._conn, tenant_id)  # noqa: SLF001
 
 
-def test_plan_events_are_append_only_and_ordered_by_sequence(store: PostgresGovernanceStore) -> None:
+def test_plan_events_are_append_only_and_ordered_by_sequence(
+    store: PostgresGovernanceStore,
+) -> None:
     """`list_plan_events` orders by `sequence`, not `created_at` (Phase 3 hardening) — this test
     deliberately gives the two events the SAME timestamp, which `created_at` alone could not order
-    deterministically, and asserts the database-assigned `sequence` still reflects insertion order."""
+    deterministically, and asserts the database-assigned `sequence` still reflects insertion
+    order."""
     tenant_id = _tenant()
     try:
         plan = _plan(tenant_id)
@@ -350,7 +377,9 @@ def test_plan_events_are_append_only_and_ordered_by_sequence(store: PostgresGove
         _cleanup(store._conn, tenant_id)  # noqa: SLF001
 
 
-def test_append_plan_event_rejects_an_item_from_a_different_tenant(store: PostgresGovernanceStore) -> None:
+def test_append_plan_event_rejects_an_item_from_a_different_tenant(
+    store: PostgresGovernanceStore,
+) -> None:
     """Defensive tenant check (Phase 3 hardening): `append_plan_event` verifies `plan_item_id`
     actually belongs to `tenant_id` before inserting, rather than trusting the caller blindly."""
     tenant_a, tenant_b = _tenant(), _tenant()
@@ -381,7 +410,9 @@ def test_organization_baseline_upsert_and_read(store: PostgresGovernanceStore) -
         signals = SignalSet().with_signal(
             Signal(key="employee_count", value_type=ValueType.NUMERIC, value=15)
         )
-        store.upsert_organization_baseline(tenant_id, ("pack:core", "pack:technology"), signals, now=1000.0)
+        store.upsert_organization_baseline(
+            tenant_id, ("pack:core", "pack:technology"), signals, now=1000.0
+        )
 
         result = store.get_organization_baseline(tenant_id)
         assert result is not None

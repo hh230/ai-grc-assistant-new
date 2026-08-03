@@ -17,14 +17,13 @@ from governance_discovery.analysis import analyze  # noqa: E402
 from governance_discovery.engine import DiscoveryEngine  # noqa: E402
 from governance_discovery.pack import load_bundled_packs  # noqa: E402
 from governance_discovery.session import DiscoverySession  # noqa: E402
-from pipeline_contracts import TenantContext  # noqa: E402
-from tool_registry import PAYLOAD_INSTRUCTION, PAYLOAD_PRIOR_CONTEXT  # noqa: E402
-
 from governance_plan_tools.applicability_tool import OrgApplicabilityTool  # noqa: E402
 from governance_plan_tools.draft_tool import PlanDraftTool  # noqa: E402
 from governance_plan_tools.finalize_tool import PlanFinalizeTool  # noqa: E402
 from governance_store import PostgresGovernanceStore  # noqa: E402
 from governance_store.config import dsn  # noqa: E402
+from pipeline_contracts import TenantContext  # noqa: E402
+from tool_registry import PAYLOAD_INSTRUCTION, PAYLOAD_PRIOR_CONTEXT  # noqa: E402
 
 from tests.fake_provider import FakeGenerationProvider  # noqa: E402
 
@@ -99,13 +98,21 @@ def _cleanup(conn, tenant_id: str) -> None:
     conn.execute("DELETE FROM discovery_sessions WHERE tenant_id = %(t)s", {"t": tenant_id})
 
 
-def _concluded_session(store: PostgresGovernanceStore, tenant_id: str, engine: DiscoveryEngine) -> DiscoverySession:
+def _concluded_session(
+    store: PostgresGovernanceStore, tenant_id: str, engine: DiscoveryEngine
+) -> DiscoverySession:
     signals = _make_signals()
     applicability = analyze(signals, engine)
     session = DiscoverySession.start(f"sess_{uuid.uuid4().hex[:8]}", tenant_id, now=1000.0)
     session = session.concluded(applicability, now=1001.0)
     active_packs = engine.active_packs(signals)
-    session = session.__class__(**{**session.__dict__, "signals": signals, "active_pack_ids": tuple(p.pack_id for p in active_packs)})
+    session = session.__class__(
+        **{
+            **session.__dict__,
+            "signals": signals,
+            "active_pack_ids": tuple(p.pack_id for p in active_packs),
+        }
+    )
     store.save_session(session)
     store.upsert_organization_baseline(tenant_id, session.active_pack_ids, signals, now=1001.0)
     return session
@@ -139,7 +146,9 @@ def test_full_resolve_draft_finalize_flow(conn) -> None:
         # Step 4: finalize_plan (consequential) — prior_context mirrors the executor's exact
         # rendering (ADR 0051): "[Step N]\n<output>" blocks, joined by a blank line.
         prior_context = f"[Step 1]\n{step1_result['output']}\n\n[Step 3]\n{step3_result['output']}"
-        finalize_tool = PlanFinalizeTool(store, engine, new_id=lambda: f"plan_{uuid.uuid4().hex[:8]}", now=lambda: 3000.0)
+        finalize_tool = PlanFinalizeTool(
+            store, engine, new_id=lambda: f"plan_{uuid.uuid4().hex[:8]}", now=lambda: 3000.0
+        )
         step4_result = finalize_tool.invoke(
             {PAYLOAD_PRIOR_CONTEXT: prior_context, "mission_id": "mission_1"}, tenant
         )
@@ -180,7 +189,9 @@ def test_finalizing_a_second_plan_supersedes_the_first(conn) -> None:
             step3 = draft_tool.invoke({PAYLOAD_INSTRUCTION: session.id}, tenant)
             prior_context = f"[Step 3]\n{step3['output']}"
             finalize_tool = PlanFinalizeTool(store, engine, new_id=lambda: plan_id, now=lambda: now)
-            return finalize_tool.invoke({PAYLOAD_PRIOR_CONTEXT: prior_context, "mission_id": "m1"}, tenant)
+            return finalize_tool.invoke(
+                {PAYLOAD_PRIOR_CONTEXT: prior_context, "mission_id": "m1"}, tenant
+            )
 
         run_to_finalize("plan_v1", 2000.0)
         run_to_finalize("plan_v2", 3000.0)

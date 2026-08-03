@@ -1,14 +1,15 @@
 """`/v1/governance-plans/*` — the living Governance Plan (ADR 0066 §3.1, §5).
 
 Creating and running the plan itself is **not** a new endpoint: `generate_governance_plan` is just
-another Mission Catalog entry, so it goes through the existing generic `/v1/missions` create → run →
-approve flow (`routers/missions.py`) like every other mission type — including its one consequential
-step (`finalize_plan`) pausing at the same ADR 0044 human-approval gate. What is genuinely new here is
-what happens *after* a plan exists: reading the active version and its items, listing the tenant's
-full version lineage (§3.1 — plans are immutable snapshots, never edited in place), and the day-to-day
-execution actions (§5) — mark an item done, reopen it, attach optional evidence, and read the live,
-reversible maturity recalculation. None of this is Mission-governed (§5.1: execution can run for a
-year; a Mission cannot), so it is plain tenant-scoped CRUD over `PlanExecutionService` and the store.
+another Mission Catalog entry, so it goes through the existing generic `/v1/missions` create → run
+→ approve flow (`routers/missions.py`) like every other mission type — including its one
+consequential step (`finalize_plan`) pausing at the same ADR 0044 human-approval gate. What is
+genuinely new here is what happens *after* a plan exists: reading the active version and its
+items, listing the tenant's full version lineage (§3.1 — plans are immutable snapshots, never
+edited in place), and the day-to-day execution actions (§5) — mark an item done, reopen it,
+attach optional evidence, and read the live, reversible maturity recalculation. None of this is
+Mission-governed (§5.1: execution can run for a year; a Mission cannot), so it is plain
+tenant-scoped CRUD over `PlanExecutionService` and the store.
 """
 
 from __future__ import annotations
@@ -150,7 +151,8 @@ def attach_evidence(
     tenant: Annotated[TenantContext, Depends(require_tenant)],
     service: Annotated[PlanExecutionService, Depends(get_plan_execution_service)],
 ) -> PlanItemView:
-    """Always additive and optional (§5.4) — never a gate on `complete`; callable before or after."""
+    """Always additive and optional (§5.4) — never a gate on `complete`; callable before or
+    after."""
     try:
         item = service.attach_evidence(
             item_id, tenant.tenant_id, tuple(body.evidence_ids), tenant.principal_id

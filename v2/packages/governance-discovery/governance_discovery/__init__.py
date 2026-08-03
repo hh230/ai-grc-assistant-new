@@ -20,7 +20,12 @@ size the resulting plan to what the organization can actually execute, never a f
         applicability = analyze(state.signals, engine)  # Tier B: one-shot, at conclusion
 """
 
-from governance_discovery.analysis import Applicability, analyze, rate_maturity_scores, score_maturity
+from governance_discovery.analysis import (
+    Applicability,
+    analyze,
+    rate_maturity_scores,
+    score_maturity,
+)
 from governance_discovery.capacity import compute_capacity
 from governance_discovery.engine import STAGE_ORDER, DiscoveryEngine, DiscoverySessionState
 from governance_discovery.execution import effective_signals

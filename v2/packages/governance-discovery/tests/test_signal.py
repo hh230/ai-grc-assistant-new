@@ -2,7 +2,9 @@ from governance_discovery.signal import Signal, SignalSet, ValueType
 
 
 def test_signal_set_get_and_has() -> None:
-    s = SignalSet().with_signal(Signal(key="employee_count", value_type=ValueType.NUMERIC, value=15))
+    s = SignalSet().with_signal(
+        Signal(key="employee_count", value_type=ValueType.NUMERIC, value=15)
+    )
     assert s.has("employee_count")
     assert s.value("employee_count") == 15
     assert s.get("missing") is None

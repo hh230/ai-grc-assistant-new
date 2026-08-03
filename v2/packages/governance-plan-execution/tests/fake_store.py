@@ -15,7 +15,9 @@ class FakePlanExecutionStore:
     def seed_item(self, item: PlanItem) -> None:
         self._items[item.id] = item
 
-    def seed_baseline(self, tenant_id: str, signals: SignalSet, active_pack_ids: tuple[str, ...]) -> None:
+    def seed_baseline(
+        self, tenant_id: str, signals: SignalSet, active_pack_ids: tuple[str, ...]
+    ) -> None:
         self._baselines[tenant_id] = (signals, active_pack_ids)
 
     def get_plan_item(self, item_id: str, tenant_id: str) -> PlanItem | None:

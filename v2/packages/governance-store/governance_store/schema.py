@@ -210,7 +210,8 @@ def index_sql(table: str) -> list[str]:
         ]
     if table == TABLE_GOVERNANCE_PLAN_EVENTS:
         return [
-            f"CREATE INDEX IF NOT EXISTS {table}_tenant_item_idx ON {table} (tenant_id, plan_item_id)",
+            f"CREATE INDEX IF NOT EXISTS {table}_tenant_item_idx "
+            f"ON {table} (tenant_id, plan_item_id)",
         ]
     raise ValueError(f"unknown table: {table}")
 

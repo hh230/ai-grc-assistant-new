@@ -113,6 +113,7 @@ export const PRIMARY_NAV: NavGroup[] = [
         labelKey: "riskRegister",
         href: "/risk-register",
         icon: TriangleAlert,
+        badge: "7",
       },
       {
         label: "Assessments",

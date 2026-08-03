@@ -6,7 +6,6 @@ from __future__ import annotations
 from governance_discovery.analysis import Applicability
 from governance_discovery.session import DiscoverySession
 from governance_discovery.signal import Signal, SignalSet, ValueType
-
 from governance_store.codec import answer_to_row, session_from_row, session_to_row
 
 
@@ -35,7 +34,9 @@ def test_round_trip_preserves_typed_signals() -> None:
 
 def test_round_trip_preserves_applicability_when_concluded() -> None:
     applicability = Applicability(
-        frameworks=({"framework_id": "framework:iso_27001", "confidence": 0.6, "rationale_key": "x"},),
+        frameworks=(
+            {"framework_id": "framework:iso_27001", "confidence": 0.6, "rationale_key": "x"},
+        ),
         maturity={"governance": {"score": 2, "stars": 1, "label": "limited"}},
         maturity_vision={"governance": {"score": 8, "stars": 4, "label": "established"}},
         capacity={"score": 24.0, "tier": "mid", "per_period_budget": {"week_1": 5}},

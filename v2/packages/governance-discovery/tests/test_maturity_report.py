@@ -10,6 +10,7 @@ from governance_discovery.analysis import (
 )
 from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
+
 from tests.helpers import make_signals
 
 
@@ -39,7 +40,9 @@ def test_every_maturity_entry_carries_score_stars_and_label() -> None:
 
 def test_leadership_dimension_scores_from_board_and_compliance_officer() -> None:
     weak = analyze(
-        make_signals(primary_activity="legal_services", has_board=False, has_compliance_officer=False),
+        make_signals(
+            primary_activity="legal_services", has_board=False, has_compliance_officer=False
+        ),
         _engine(),
     )
     strong = analyze(

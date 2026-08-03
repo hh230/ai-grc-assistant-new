@@ -1,6 +1,7 @@
 from governance_discovery.engine import DiscoveryEngine, DiscoverySessionState
 from governance_discovery.pack import load_bundled_packs
 from governance_discovery.signal import SignalSet
+
 from tests.helpers import make_signals
 
 
@@ -41,9 +42,12 @@ def test_answering_provides_saas_activates_cloud_provider_too() -> None:
 
 def test_tech_team_maturity_question_only_eligible_once_technology_pack_active() -> None:
     engine = _engine()
-    state_before = DiscoverySessionState(signals=SignalSet(), answered_question_ids=frozenset({"q:primary_activity"}))
+    state_before = DiscoverySessionState(
+        signals=SignalSet(), answered_question_ids=frozenset({"q:primary_activity"})
+    )
     eligible_before = {q.id for q in engine.eligible_questions(state_before)}
-    assert "q:tech_team_maturity" not in eligible_before  # no primary_activity signal yet -> pack inactive
+    # no primary_activity signal yet -> pack inactive
+    assert "q:tech_team_maturity" not in eligible_before
 
     state_after = DiscoverySessionState(
         signals=make_signals(primary_activity="technology"),

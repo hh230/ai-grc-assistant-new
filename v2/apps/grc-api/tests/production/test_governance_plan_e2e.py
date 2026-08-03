@@ -10,9 +10,9 @@
 
 The production default executor is still `EchoExecutor` (the Wave 1 executor commit is separate,
 tracked, unrelated work — see `tests/production/test_production_defaults.py`); this test injects a
-real `ToolRegistry`-backed `RegistryExecutor` via the same `executor=` seam every other test in this
-suite already uses to observe real behaviour, with a deterministic fake `GenerationProvider` (never a
-live LLM call — CLAUDE.md's testing standards: "mock LLM/vector calls in unit tests").
+real `ToolRegistry`-backed `RegistryExecutor` via the same `executor=` seam every other test in
+this suite already uses to observe real behaviour, with a deterministic fake `GenerationProvider`
+(never a live LLM call — CLAUDE.md's testing standards: "mock LLM/vector calls in unit tests").
 """
 
 from __future__ import annotations
@@ -38,7 +38,7 @@ from governance_store.config import dsn as governance_dsn  # noqa: E402
 from governance_store.schema import apply_schema as apply_governance_schema  # noqa: E402
 from grc_api.app import create_app  # noqa: E402
 from grc_api.composition import Storage  # noqa: E402
-from pipeline_contracts import Answer, TenantContext  # noqa: E402
+from pipeline_contracts import Answer  # noqa: E402
 from pipeline_tool import RegistryExecutor  # noqa: E402
 from tool_registry import ToolRegistry  # noqa: E402
 
@@ -87,7 +87,10 @@ class _FakeGenerationProvider:
                 "RISK_IF_SKIPPED: The underlying exposure continues unmanaged."
             )
         elif "DESCRIPTION:" in prompt:
-            text = "DESCRIPTION: A specific control is not yet in place.\nIMPACT: Could delay detection."
+            text = (
+                "DESCRIPTION: A specific control is not yet in place.\n"
+                "IMPACT: Could delay detection."
+            )
         else:
             text = "Early-stage governance structure. Focus first on ownership and accountability."
         return Answer(text=text, provider=self.name, model="fake-model")
@@ -155,7 +158,11 @@ def _seed_concluded_session(dsn: str, tenant_id: str) -> str:
     session = session.concluded(applicability, now=1001.0)
     active_packs = engine.active_packs(signals)
     session = session.__class__(
-        **{**session.__dict__, "signals": signals, "active_pack_ids": tuple(p.pack_id for p in active_packs)}
+        **{
+            **session.__dict__,
+            "signals": signals,
+            "active_pack_ids": tuple(p.pack_id for p in active_packs),
+        }
     )
     store.save_session(session)
     store.upsert_organization_baseline(tenant_id, session.active_pack_ids, signals, now=1001.0)
@@ -175,7 +182,9 @@ def _build_client(dsn: str) -> TestClient:
     registry.register(ControlLibraryTool(FrameworkLibrary.from_bundled()))
     registry.register(PlanDraftTool(store_for_tools, _FakeGenerationProvider(), now=lambda: 2000.0))
     registry.register(
-        PlanFinalizeTool(store_for_tools, engine, new_id=lambda: uuid.uuid4().hex, now=lambda: 3000.0)
+        PlanFinalizeTool(
+            store_for_tools, engine, new_id=lambda: uuid.uuid4().hex, now=lambda: 3000.0
+        )
     )
     executor = RegistryExecutor(registry)
     return TestClient(
@@ -251,7 +260,11 @@ def test_completing_an_item_recalculates_maturity_and_reopening_reverts_it(
     items = client.get("/v1/governance-plans/active", headers=AUTH_A).json()["items"]
     # an item whose completion resolves a signal a maturity rule reads (ADR 0066 §5.3) — the seeded
     # organization has no compliance officer, so this seed's plan item is always present.
-    target = next(i for i in items if "compliance owner" in i["title"].lower() or "compliance" in i["objective"].lower())
+    target = next(
+        i
+        for i in items
+        if "compliance owner" in i["title"].lower() or "compliance" in i["objective"].lower()
+    )
 
     completed = client.post(f"/v1/governance-plans/items/{target['id']}/complete", headers=AUTH_A)
     assert completed.status_code == 200
@@ -279,12 +292,15 @@ def test_item_events_are_readable_and_ordered(dsn: str, tenant_id: str) -> None:
     items = client.get("/v1/governance-plans/active", headers=AUTH_A).json()["items"]
     item_id = items[0]["id"]
 
-    assert client.get(f"/v1/governance-plans/items/{item_id}/events", headers=AUTH_A).json()["items"] == []
+    events_url = f"/v1/governance-plans/items/{item_id}/events"
+    assert client.get(events_url, headers=AUTH_A).json()["items"] == []
 
     client.post(f"/v1/governance-plans/items/{item_id}/complete", headers=AUTH_A)
     client.post(f"/v1/governance-plans/items/{item_id}/reopen", headers=AUTH_A)
 
-    events = client.get(f"/v1/governance-plans/items/{item_id}/events", headers=AUTH_A).json()["items"]
+    events = client.get(
+        f"/v1/governance-plans/items/{item_id}/events", headers=AUTH_A
+    ).json()["items"]
     assert [e["event_type"] for e in events] == ["completed", "reopened"]
     assert events[0]["sequence"] < events[1]["sequence"]
 
@@ -312,7 +328,9 @@ def test_start_transitions_to_in_progress_and_is_idempotent(dsn: str, tenant_id:
     assert completed.status_code == 200
     assert completed.json()["status"] == "done"
 
-    events = client.get(f"/v1/governance-plans/items/{item_id}/events", headers=AUTH_A).json()["items"]
+    events = client.get(
+        f"/v1/governance-plans/items/{item_id}/events", headers=AUTH_A
+    ).json()["items"]
     assert [e["event_type"] for e in events] == ["started", "completed"]
 
     missing = client.get("/v1/governance-plans/items/does-not-exist/events", headers=AUTH_A)

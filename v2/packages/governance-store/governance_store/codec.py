@@ -30,7 +30,9 @@ SESSION_COLUMNS: tuple[str, ...] = (
     "updated_at",
     "concluded_at",
 )
-SESSION_JSONB_COLUMNS: frozenset[str] = frozenset({"active_pack_ids", "pack_versions", "signals", "applicability"})
+SESSION_JSONB_COLUMNS: frozenset[str] = frozenset(
+    {"active_pack_ids", "pack_versions", "signals", "applicability"}
+)
 
 ANSWER_COLUMNS: tuple[str, ...] = (
     "id",
@@ -142,7 +144,8 @@ def _signal_from_dict(key: str, data: dict[str, Any]) -> Signal:
 
 
 def signal_set_to_dict(signals: SignalSet) -> dict[str, Any]:
-    return {key: _signal_to_dict(signals.get(key)) for key in signals.keys()}
+    # SignalSet has no __iter__ (only .keys()/.get()), so `for key in signals` is not an option.
+    return {key: _signal_to_dict(signals.get(key)) for key in signals.keys()}  # noqa: SIM118
 
 
 def signal_set_from_dict(data: dict[str, Any] | None) -> SignalSet:
@@ -207,7 +210,9 @@ def session_to_row(session: DiscoverySession) -> dict[str, Any]:
 # --- read side: row -> DiscoverySession -----------------------------------------------------
 
 
-def session_from_row(row: dict[str, Any], answered_question_ids: frozenset[str]) -> DiscoverySession:
+def session_from_row(
+    row: dict[str, Any], answered_question_ids: frozenset[str]
+) -> DiscoverySession:
     """`answered_question_ids` is NOT derivable from this row alone — signal keys and question ids
     are different namespaces (many questions can write the same signal key over a session's
     lifetime, e.g. after a 'go back' edit), and the session row does not duplicate the answers
@@ -378,7 +383,13 @@ def plan_item_from_row(row: dict[str, Any]) -> PlanItem:
 
 
 def plan_event_to_row(
-    *, event_id: str, plan_item_id: str, tenant_id: str, event_type: str, actor_id: str, created_at: float
+    *,
+    event_id: str,
+    plan_item_id: str,
+    tenant_id: str,
+    event_type: str,
+    actor_id: str,
+    created_at: float,
 ) -> dict[str, Any]:
     return {
         "id": event_id,

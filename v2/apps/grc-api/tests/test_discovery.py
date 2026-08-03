@@ -43,7 +43,9 @@ class InMemoryDiscoveryStore:
 
     def find_in_progress_session(self, tenant_id: str) -> DiscoverySession | None:
         candidates = [
-            s for s in self._sessions.values() if s.tenant_id == tenant_id and s.status == "in_progress"
+            s
+            for s in self._sessions.values()
+            if s.tenant_id == tenant_id and s.status == "in_progress"
         ]
         return max(candidates, key=lambda s: s.updated_at, default=None)
 

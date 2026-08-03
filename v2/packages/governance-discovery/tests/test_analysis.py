@@ -7,6 +7,7 @@ from governance_discovery.analysis import analyze
 from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
 from governance_discovery.scheduler import BUCKET_ORDER
+
 from tests.helpers import make_signals
 
 
@@ -122,4 +123,6 @@ def test_capacity_score_and_tier_reflect_organization_size_and_functions() -> No
     )
     assert micro.capacity["tier"] == "micro"
     assert enterprise.capacity["tier"] == "enterprise"
-    assert enterprise.capacity["per_period_budget"]["week_1"] > micro.capacity["per_period_budget"]["week_1"]
+    ent_budget = enterprise.capacity["per_period_budget"]["week_1"]
+    micro_budget = micro.capacity["per_period_budget"]["week_1"]
+    assert ent_budget > micro_budget

@@ -9,6 +9,7 @@ from governance_discovery.pack import load_bundled_packs
 from governance_discovery.predicate import referenced_signals
 from governance_discovery.scheduler import compute_due_at
 from governance_discovery.signal import Signal, SignalSet, ValueType
+
 from tests.helpers import make_signals
 
 
@@ -20,7 +21,12 @@ def test_referenced_signals_walks_all_any_and_leaves() -> None:
     expr = {
         "all": [
             {"signal": "a", "op": "eq", "value": 1},
-            {"any": [{"signal": "b", "op": "eq", "value": 2}, {"signal": "c", "op": "eq", "value": 3}]},
+            {
+                "any": [
+                    {"signal": "b", "op": "eq", "value": 2},
+                    {"signal": "c", "op": "eq", "value": 3},
+                ]
+            },
         ]
     }
     assert referenced_signals(expr) == frozenset({"a", "b", "c"})
@@ -73,7 +79,9 @@ def test_confidence_reflects_direct_answers_fully_when_session_is_complete() -> 
         last_policy_review_date="2026-01-15",  # policy_state=approved makes this required too
     )
     result = analyze(signals, _engine())
-    designate_owner = next(i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner")
+    designate_owner = next(
+        i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner"
+    )
     assert designate_owner["confidence"] == 1.0
     assert designate_owner["source_signal_keys"] == ["has_compliance_officer"]
 
@@ -93,7 +101,9 @@ def test_lower_signal_confidence_lowers_the_items_it_touches() -> None:
         policy_state="verbal",
     ).with_signal(low_conf_signal)
     result = analyze(signals, engine)
-    designate_owner = next(i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner")
+    designate_owner = next(
+        i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner"
+    )
     formalize = next(i for i in result.plan_items if i["id"] == "seed:formalize_org_structure")
     assert designate_owner["confidence"] < formalize["confidence"]
 
@@ -140,7 +150,9 @@ def test_effective_signals_last_completed_wins_on_a_shared_key() -> None:
 def test_resolves_signal_flows_from_pack_data_through_analyze_to_the_scheduled_item() -> None:
     signals = make_signals(primary_activity="legal_services", has_compliance_officer=False)
     result = analyze(signals, _engine())
-    designate_owner = next(i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner")
+    designate_owner = next(
+        i for i in result.plan_items if i["id"] == "seed:designate_compliance_owner"
+    )
     assert designate_owner["resolves_signal"] == {"signal": "has_compliance_officer", "value": True}
 
 

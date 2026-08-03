@@ -81,7 +81,13 @@ class AnswerRecord:
 
     __slots__ = ("question_id", "sequence", "raw_answer", "resolved_signal_key")
 
-    def __init__(self, question_id: str, sequence: int, raw_answer: Any, resolved_signal_key: str | None):
+    def __init__(
+        self,
+        question_id: str,
+        sequence: int,
+        raw_answer: Any,
+        resolved_signal_key: str | None,
+    ):
         self.question_id = question_id
         self.sequence = sequence
         self.raw_answer = raw_answer
@@ -111,7 +117,11 @@ class PostgresGovernanceStore:
         psycopg, jsonb, _ = _load_pg()
         row = session_to_row(session)
         params = {
-            col: (jsonb(row[col]) if col in SESSION_JSONB_COLUMNS and row[col] is not None else row[col])
+            col: (
+                jsonb(row[col])
+                if col in SESSION_JSONB_COLUMNS and row[col] is not None
+                else row[col]
+            )
             for col in SESSION_COLUMNS
         }
         assignments = ", ".join(f"{col} = EXCLUDED.{col}" for col in SESSION_COLUMNS if col != "id")
@@ -125,7 +135,8 @@ class PostgresGovernanceStore:
         cur = self._conn.execute(sql, params)
         if cur.rowcount == 0:
             raise ValueError(
-                f"refused to overwrite discovery session {session.id}: belongs to a different tenant"
+                f"refused to overwrite discovery session {session.id}: "
+                "belongs to a different tenant"
             )
 
     def get_session(self, session_id: str, tenant_id: str) -> DiscoverySession | None:
@@ -176,11 +187,18 @@ class PostgresGovernanceStore:
         psycopg, jsonb, _ = _load_pg()
         row = answer_to_row(**fields)
         params = {
-            col: (jsonb(row[col]) if col in ANSWER_JSONB_COLUMNS and row[col] is not None else row[col])
+            col: (
+                jsonb(row[col])
+                if col in ANSWER_JSONB_COLUMNS and row[col] is not None
+                else row[col]
+            )
             for col in ANSWER_COLUMNS
         }
         placeholders = ", ".join(f"%({col})s" for col in ANSWER_COLUMNS)
-        sql = f"INSERT INTO {TABLE_DISCOVERY_ANSWERS} ({', '.join(ANSWER_COLUMNS)}) VALUES ({placeholders})"
+        sql = (
+            f"INSERT INTO {TABLE_DISCOVERY_ANSWERS} ({', '.join(ANSWER_COLUMNS)}) "
+            f"VALUES ({placeholders})"
+        )
         self._conn.execute(sql, params)
 
     def answer_history(self, session_id: str, tenant_id: str) -> list[AnswerRecord]:
@@ -203,7 +221,9 @@ class PostgresGovernanceStore:
         ]
 
     def answered_question_ids(self, session_id: str, tenant_id: str) -> frozenset[str]:
-        return frozenset(record.question_id for record in self.answer_history(session_id, tenant_id))
+        return frozenset(
+            record.question_id for record in self.answer_history(session_id, tenant_id)
+        )
 
     # --- governance plans (ADR 0066 §3.1: immutable snapshots) -----------------------------
 
@@ -217,11 +237,18 @@ class PostgresGovernanceStore:
         psycopg, jsonb, _ = _load_pg()
         row = plan_to_row(plan)
         params = {
-            col: (jsonb(row[col]) if col in PLAN_JSONB_COLUMNS and row[col] is not None else row[col])
+            col: (
+                jsonb(row[col])
+                if col in PLAN_JSONB_COLUMNS and row[col] is not None
+                else row[col]
+            )
             for col in PLAN_COLUMNS
         }
         placeholders = ", ".join(f"%({col})s" for col in PLAN_COLUMNS)
-        sql = f"INSERT INTO {TABLE_GOVERNANCE_PLANS} ({', '.join(PLAN_COLUMNS)}) VALUES ({placeholders})"
+        sql = (
+            f"INSERT INTO {TABLE_GOVERNANCE_PLANS} ({', '.join(PLAN_COLUMNS)}) "
+            f"VALUES ({placeholders})"
+        )
         self._conn.execute(sql, params)
 
     def supersede_plan(
@@ -306,7 +333,9 @@ class PostgresGovernanceStore:
         row = plan_item_to_row(item)
         params = {
             col: (
-                jsonb(row[col]) if col in PLAN_ITEM_JSONB_COLUMNS and row[col] is not None else row[col]
+                jsonb(row[col])
+                if col in PLAN_ITEM_JSONB_COLUMNS and row[col] is not None
+                else row[col]
             )
             for col in PLAN_ITEM_COLUMNS
         }
@@ -343,13 +372,22 @@ class PostgresGovernanceStore:
         """
         psycopg, jsonb, _ = _load_pg()
         row = plan_item_to_row(item)
-        item_params: dict[str, Any] = {"id": item.id, "tenant_id": item.tenant_id, "expected_updated_at": expected_updated_at}
+        item_params: dict[str, Any] = {
+            "id": item.id,
+            "tenant_id": item.tenant_id,
+            "expected_updated_at": expected_updated_at,
+        }
         for col in self._TRANSITION_COLUMNS:
-            item_params[col] = jsonb(row[col]) if col in PLAN_ITEM_JSONB_COLUMNS and row[col] is not None else row[col]
+            item_params[col] = (
+                jsonb(row[col])
+                if col in PLAN_ITEM_JSONB_COLUMNS and row[col] is not None
+                else row[col]
+            )
         assignments = ", ".join(f"{col} = %({col})s" for col in self._TRANSITION_COLUMNS)
         item_sql = (
             f"UPDATE {TABLE_GOVERNANCE_PLAN_ITEMS} SET {assignments} "
-            "WHERE id = %(id)s AND tenant_id = %(tenant_id)s AND updated_at = %(expected_updated_at)s"
+            "WHERE id = %(id)s AND tenant_id = %(tenant_id)s "
+            "AND updated_at = %(expected_updated_at)s"
         )
         event_row = plan_event_to_row(
             event_id=event_id, plan_item_id=item.id, tenant_id=item.tenant_id,
@@ -406,7 +444,11 @@ class PostgresGovernanceStore:
             cur.execute(sql, {"tenant_id": tenant_id})
             rows = cur.fetchall()
         return [
-            (row["resolves_signal"]["signal"], row["resolves_signal"]["value"], float(row["completed_at"]))
+            (
+                row["resolves_signal"]["signal"],
+                row["resolves_signal"]["value"],
+                float(row["completed_at"]),
+            )
             for row in rows
             if row["completed_at"] is not None
         ]

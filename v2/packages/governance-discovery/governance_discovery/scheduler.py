@@ -41,8 +41,8 @@ def _seed_key(seed: PlanSeed) -> tuple[int, str]:
 def schedule(plan_seeds: list[PlanSeed], capacity: dict) -> list[dict]:
     """Returns one dict per seed: `{**seed fields, "timeframe_bucket": bucket}`. `capacity` is the
     dict `compute_capacity()` returns (`{"tier", "score", "per_period_budget"}`)."""
-    budget: dict[str, int] = dict(capacity["per_period_budget"])  # no key => unlimited (final bucket)
-    bucket_fill: dict[str, int] = {bucket: 0 for bucket in BUCKET_ORDER}
+    budget: dict[str, int] = dict(capacity["per_period_budget"])  # no key => unlimited (final)
+    bucket_fill: dict[str, int] = dict.fromkeys(BUCKET_ORDER, 0)
     scheduled_bucket: dict[str, str] = {}
     known_ids = {seed.id for seed in plan_seeds}
 
@@ -61,7 +61,7 @@ def schedule(plan_seeds: list[PlanSeed], capacity: dict) -> list[dict]:
             if cap is None or bucket_fill[bucket] < cap:
                 bucket_fill[bucket] += 1
                 return bucket
-        return BUCKET_ORDER[-1]  # the final bucket is uncapped, this branch is unreachable in practice
+        return BUCKET_ORDER[-1]  # the final bucket is uncapped; unreachable in practice
 
     pending = sorted(plan_seeds, key=_seed_key)
     placed: dict[str, PlanSeed] = {}

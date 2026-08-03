@@ -34,5 +34,8 @@ class FakeGenerationProvider:
                 "IMPACT: This could delay detection of a real issue."
             )
         else:
-            text = "Your organization shows an early-stage governance structure. Focus first on ownership and accountability."
+            text = (
+                "Your organization shows an early-stage governance structure. "
+                "Focus first on ownership and accountability."
+            )
         return Answer(text=text, provider=self.name, model="fake-model")

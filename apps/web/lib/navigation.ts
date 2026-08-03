@@ -1,7 +1,6 @@
 import {
   LayoutDashboard,
   ShieldCheck,
-  ClipboardList,
   TriangleAlert,
   Library,
   FileText,
@@ -113,13 +112,6 @@ export const PRIMARY_NAV: NavGroup[] = [
         labelKey: "riskRegister",
         href: "/risk-register",
         icon: TriangleAlert,
-        badge: "7",
-      },
-      {
-        label: "Assessments",
-        labelKey: "assessments",
-        href: "/assessments",
-        icon: ClipboardList,
       },
       { label: "Evidence", labelKey: "evidence", href: "/evidence", icon: FolderArchive },
       { label: "Reports", labelKey: "reports", href: "/reports", icon: FileText },

@@ -22,7 +22,6 @@
       "policyIntelligence": "Policy Intelligence",
       "frameworks": "Frameworks",
       "riskRegister": "Risk Register",
-      "assessments": "Assessments",
       "evidence": "Evidence",
       "reports": "Reports",
       "settings": "Settings",
@@ -945,21 +944,6 @@
     "download": "Download"
   },
   "placeholders": {
-    "missions": {
-      "eyebrow": "Overview",
-      "title": "Missions",
-      "description": "Track goal-directed GRC missions through their lifecycle, with plans, approval gates, and a full audit trail."
-    },
-    "assessments": {
-      "eyebrow": "Risk & Compliance",
-      "title": "Assessments",
-      "description": "Run gap analyses and coverage assessments against one or more frameworks, with confidence and provenance."
-    },
-    "help": {
-      "eyebrow": "Account",
-      "title": "Help & Support",
-      "description": "Find documentation, contact support, and learn how to get the most out of the platform."
-    },
     "settings": {
       "eyebrow": "Account",
       "title": "Settings",
@@ -1012,11 +996,6 @@
     "copied": "Copied",
     "emailSent": "Invitation email sent to {email}.",
     "emailNotSent": "Couldn't send the invitation email — share the link above instead."
-  },
-  "placeholderPage": {
-    "comingSoon": "Coming soon",
-    "moduleNotice": "{title} is on its way — we're putting the finishing touches on this experience.",
-    "badge": "Coming soon"
   },
   "policiesWorkspace": {
     "policyCount": "{count} policies",

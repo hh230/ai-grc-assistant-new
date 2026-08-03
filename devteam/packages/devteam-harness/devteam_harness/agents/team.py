@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from devteam_harness.agents import breaker, explorer, regression, verifier
+from devteam_harness.agents import breaker, explorer, regression, sentry, verifier
 from devteam_harness.agents.base import AgentReport
 from devteam_harness.agents.reporter import Report, compile_report
 from devteam_harness.results import ResultStore
@@ -53,6 +53,10 @@ def run_team(
     reports.append(breaker_aggregate)
 
     reports.append(verifier.run(count=count, start_seed=start_seed))
+
+    # Sentry needs a running app. It reports its own absence as a finding rather than skipping,
+    # so a gate can refuse to treat "the app was down" as a pass.
+    reports.append(sentry.run())
 
     if store is not None and previous_run_id is not None:
         regression_report, _outcome = regression.from_store(store, previous_run_id)

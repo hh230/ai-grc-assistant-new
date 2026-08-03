@@ -6,6 +6,12 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.4] — 2026-08-03
+
+### Added
+- **Help & Support page** — `/help` now shows a real Help Center (contact support, a link to
+  the FAQ, and getting-started shortcuts) instead of the placeholder page.
+
 ## [2.1.3] — 2026-08-03
 
 ### Added
@@ -116,6 +122,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.4]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.4
 [2.1.3]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.3
 [2.1.2]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.2
 [2.1.1]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.1

@@ -7,7 +7,15 @@ The genuinely new capability lives in Explorer (coverage-driven search) and Brea
 input and protocol abuse).
 """
 
-from devteam_harness.agents import breaker, explorer, regression, reporter, sentry, verifier
+from devteam_harness.agents import (
+    breaker,
+    explorer,
+    pilot,
+    regression,
+    reporter,
+    sentry,
+    verifier,
+)
 from devteam_harness.agents.base import AgentReport, Finding, Severity
 from devteam_harness.agents.reporter import Report, compile_report
 from devteam_harness.agents.team import TeamOutcome, run_team
@@ -21,6 +29,7 @@ __all__ = [
     "breaker",
     "compile_report",
     "explorer",
+    "pilot",
     "regression",
     "reporter",
     "run_team",

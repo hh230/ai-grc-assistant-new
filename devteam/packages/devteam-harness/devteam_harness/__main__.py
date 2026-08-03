@@ -48,7 +48,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--team",
         action="store_true",
-        help="run the full QA agent team (explorer, breaker, verifier, regression, reporter)",
+        help="run the full QA agent team (explorer, breaker, verifier, sentry, regression, reporter)",
+    )
+    parser.add_argument(
+        "--browser",
+        action="store_true",
+        help=(
+            "also run Pilot: a real Chromium over every page in both locales and both viewports, "
+            "capturing screenshot/console/network/stack-trace artifacts on failure. Minutes, not "
+            "seconds. Requires: uv sync --extra browser && uv run playwright install chromium"
+        ),
     )
     args = parser.parse_args(argv)
 
@@ -58,7 +67,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.team:
         from devteam_harness.agents import run_team
 
-        outcome = run_team(count=args.count, start_seed=args.start_seed)
+        outcome = run_team(count=args.count, start_seed=args.start_seed, browser=args.browser)
         print(outcome.report.render())
         return 1 if (args.fail_on_violation and not outcome.ok) else 0
 

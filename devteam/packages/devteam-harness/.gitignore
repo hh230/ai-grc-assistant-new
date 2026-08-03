@@ -1,0 +1,6 @@
+# Harness result databases are run artifacts, never source. Scoped to this package rather than
+# broadening the root ignore, so an unrelated *.db elsewhere is still surfaced by git.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm

@@ -93,6 +93,25 @@ def _judge(report: AgentReport, observation: PageObservation) -> None:
         + (f" — artifacts: {observation.screenshot_path}" if observation.screenshot_path else "")
     )
 
+    # An app that went away and came back is an environment event, not a page defect — but it is
+    # reported, because it explains a gap in the run and it is the mechanism behind the
+    # intermittent "something went wrong" users see: a `next dev` worker dies under a burst of
+    # first-compiles and its supervisor respawns it, failing whatever was in flight.
+    if observation.recovered_from_restart:
+        report.bump("restarts_survived")
+        report.findings.append(
+            Finding(
+                agent=AGENT,
+                severity=Severity.SUSPICIOUS,
+                kind="app_restarted_mid_sweep",
+                detail=(
+                    f"{label}: the app stopped answering and came back — the server under test "
+                    f"restarted during this run"
+                ),
+                reproduce=reproduce,
+            )
+        )
+
     if not observation.reached_app:
         report.findings.append(
             Finding(

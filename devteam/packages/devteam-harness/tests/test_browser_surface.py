@@ -183,6 +183,34 @@ def test_every_inventoried_page_exists_in_the_app() -> None:
         assert (app_dir / page.lstrip("/")).is_dir(), f"{page} is in PAGES but has no route"
 
 
+def test_a_server_restart_is_reported_but_does_not_condemn_the_page() -> None:
+    """A live sweep hit a `next dev` worker crash: its supervisor respawned it, and every
+    remaining page in the run failed with ERR_CONNECTION_REFUSED — a cascade that said nothing
+    about those pages. The surface now waits for recovery and retries; the restart is still
+    surfaced, because it explains the gap and is the mechanism behind the intermittent
+    "something went wrong" users report."""
+    observation = _observation(visible_text="Dashboard", recovered_from_restart=True)
+    assert observation.is_healthy, "a page that loaded after the retry is not broken"
+
+    report = pilot.AgentReport(agent=pilot.AGENT)
+    pilot._judge(report, observation)
+    kinds = {finding.kind for finding in report.findings}
+    assert kinds == {"app_restarted_mid_sweep"}, "the restart is reported, and only the restart"
+    assert report.stats["restarts_survived"] == 1
+
+
+def test_waiting_for_recovery_is_bounded() -> None:
+    """An app that is genuinely down must not be waited on forever: converting a hard failure
+    into a hang reads as 'still running', which is worse than a red result."""
+    import inspect
+
+    from devteam_harness.surfaces.browser import BrowserSurface as Surface
+
+    signature = inspect.signature(Surface._wait_for_recovery)
+    assert signature.parameters["attempts"].default > 0
+    assert signature.parameters["interval_ms"].default > 0
+
+
 def test_evidence_follows_the_finding_not_the_verdict() -> None:
     """A console error does not make a page unhealthy, but it DOES produce a finding — and a
     finding whose reproduce line points at artifacts that were never written is a dead end.

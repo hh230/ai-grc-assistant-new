@@ -2058,5 +2058,25 @@
       "description": "Missions track goal-directed GRC work end to end — start one by uploading a document for the AI to analyze.",
       "cta": "Create your first mission"
     }
+  },
+  "helpPage": {
+    "eyebrow": "Account",
+    "title": "Help & Support",
+    "description": "Find documentation, contact support, and learn how to get the most out of the platform.",
+    "contact": {
+      "title": "Contact support",
+      "description": "Reach the team directly for account or platform questions."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "description": "Answers on data handling, human oversight, frameworks, and getting started.",
+      "cta": "Browse the FAQ"
+    },
+    "gettingStarted": {
+      "title": "Getting started",
+      "upload": "Upload a document to start your first AI analysis",
+      "invite": "Invite your team from Settings",
+      "frameworks": "Browse the frameworks and controls Rasheed tracks"
+    }
   }
 }

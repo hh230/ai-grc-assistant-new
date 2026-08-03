@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
-import { LifeBuoy } from "lucide-react";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { requireSession } from "@/lib/auth/server";
+import { HelpCenter } from "@/components/help/HelpCenter";
 
-export const metadata: Metadata = {
-  title: "Help & Support · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("helpPage.title");
+}
 
 export default async function HelpPage() {
-  const t = await getTranslations("placeholders.help");
+  await requireSession();
+  const t = await getTranslations("helpPage");
+
   return (
-    <PlaceholderPage
-      eyebrow={t("eyebrow")}
-      title={t("title")}
-      description={t("description")}
-      icon={LifeBuoy}
-    />
+    <div>
+      <header className="pb-7">
+        <p className="text-2xs font-medium uppercase tracking-wider text-foreground-muted">
+          {t("eyebrow")}
+        </p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
+          {t("title")}
+        </h1>
+        <p className="mt-1 max-w-2xl text-sm text-foreground-secondary">{t("description")}</p>
+      </header>
+
+      <HelpCenter />
+    </div>
   );
 }

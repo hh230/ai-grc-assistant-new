@@ -323,9 +323,13 @@ class BrowserSurface:
                         recovered_from_restart=True,
                     )
                     page.close()
-                    # A restart drops the session cookie's server-side state; sign in again
-                    # before retrying, or the retry measures the login page.
-                    self._authenticated = self._login()
+                    # Try to re-establish the session, but do NOT downgrade `authenticated` when
+                    # that attempt fails: a failed re-login is not proof the existing session
+                    # died, and the cookie often survives a worker restart. Claiming
+                    # "unauthenticated" here would silently disable the `session_lost` guard on
+                    # the retry — observed live, where a recovered page rendered the full signed-in
+                    # shell while the flag said otherwise. `landed_on_login` is the evidence.
+                    self._authenticated = self._login() or self._authenticated
                     recovered.authenticated = self._authenticated
                     page = self._context.new_page()
                     page.on("pageerror", lambda error: recovered.page_errors.append(str(error)))

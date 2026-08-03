@@ -199,6 +199,19 @@ def test_a_server_restart_is_reported_but_does_not_condemn_the_page() -> None:
     assert report.stats["restarts_survived"] == 1
 
 
+def test_a_failed_relogin_does_not_claim_the_session_died() -> None:
+    """Observed live: after a worker restart the re-login attempt failed, yet the retried page
+    rendered the full signed-in shell — the cookie had survived. Recording `authenticated=False`
+    there would silently disable the `session_lost` guard, so a failed attempt must not downgrade
+    a session it did not disprove. `landed_on_login` is the evidence, not the attempt's result."""
+    import inspect
+
+    from devteam_harness.surfaces import browser
+
+    source = inspect.getsource(browser.BrowserSurface.visit)
+    assert "self._login() or self._authenticated" in source
+
+
 def test_waiting_for_recovery_is_bounded() -> None:
     """An app that is genuinely down must not be waited on forever: converting a hard failure
     into a hang reads as 'still running', which is worse than a red result."""

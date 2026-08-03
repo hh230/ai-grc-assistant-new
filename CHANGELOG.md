@@ -6,6 +6,22 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.7] — 2026-08-03
+
+### Changed
+- **Removed fabricated demo data** — the dashboard and several workspace surfaces
+  (Dashboard KPIs/compliance progress/risk distribution/needs attention, Notifications,
+  Org Switcher, Evidence, Policies, Regulation Review, Risk Register, AI Worker, Access
+  Requests) rendered a static, hardcoded illustrative dataset (`lib/data.ts` — a fictional
+  "Acme Financial Group" tenant, a permanently-fixed "1,248 controls", a permanent "2
+  unread" notification badge) instead of the current tenant's own data. Every one of these
+  now computes from real data and shows an honest empty/loading/error state; `lib/data.ts`
+  is deleted.
+- Fixed message templates whose placeholders never matched the real values passed to
+  them (three `dashboard.needsAttention.*` strings, and all four `dashboard.kpis.*.sub`
+  captions, which were plain hardcoded text that silently ignored the real numbers now
+  computed for them).
+
 ## [2.1.6] — 2026-08-03
 
 ### Fixed
@@ -143,6 +159,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.7]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.7
 [2.1.6]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.6
 [2.1.5]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.5
 [2.1.4]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.4

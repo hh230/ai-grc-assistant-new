@@ -21,6 +21,9 @@ All notable changes to this project are documented here. The format is based on
   them (three `dashboard.needsAttention.*` strings, and all four `dashboard.kpis.*.sub`
   captions, which were plain hardcoded text that silently ignored the real numbers now
   computed for them).
+- Removed the dead `/assessments` placeholder route (duplicated `/analysis`, which
+  already covers gap analyses and coverage assessments) and the stale, hardcoded "7"
+  sidebar badge on Risk Register.
 
 ## [2.1.6] — 2026-08-03
 

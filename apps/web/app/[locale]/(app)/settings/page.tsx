@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { requireRoles } from "@/lib/auth/server";
 import { TeamManagement } from "@/components/settings/TeamManagement";
 
-export const metadata: Metadata = {
-  title: "Settings · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("placeholders.settings.title");
+}
 
 // Workspace administration is restricted to owners and admins (server-enforced RBAC).
 export default async function SettingsPage() {

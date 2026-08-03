@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { requireRoles } from "@/lib/auth/server";
 import { AccessRequestsWorkspace } from "@/components/accessRequests/AccessRequestsWorkspace";
 
-export const metadata: Metadata = {
-  title: "Access Requests · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("accessRequestsPage.title");
+}
 
 // Admin-only (CLAUDE.md §20, server-enforced RBAC — matches the Regulation Review page's own
 // guard; app/api/access-requests's own `_adminGuard.ts` re-checks this independently).

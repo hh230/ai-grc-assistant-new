@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { ArrowLeft, ShieldX } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 
-export const metadata: Metadata = {
-  title: "Access denied",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("accessDeniedPage.title");
+}
 
 export default async function AccessDeniedPage() {
   const t = await getTranslations("accessDeniedPage");

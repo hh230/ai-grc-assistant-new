@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { requireRoles } from "@/lib/auth/server";
 import { AiWorkerWorkspace } from "@/components/aiWorker/AiWorkerWorkspace";
 
-export const metadata: Metadata = {
-  title: "AI Worker Control Center · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("aiWorkerPage.title");
+}
 
 // Admin-only (CLAUDE.md §20, server-enforced RBAC — matches the settings page's guard, and
 // the apps/api /knowledge-worker router's own RBAC gate re-checks this independently).

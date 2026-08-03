@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { requireSession } from "@/lib/auth/server";
 import { ChatWorkspace } from "@/components/chat/ChatWorkspace";
+import { pageTitle } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
-  title: "AI Assistant · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("nav.items.aiAssistant");
+}
 
 export default async function WorkspacePage() {
   // The AI assistant is available to any authenticated member (read access to knowledge).

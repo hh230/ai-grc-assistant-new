@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { requireSession } from "@/lib/auth/server";
 import { PolicyIntelligenceWorkspace } from "@/components/policyIntelligence/PolicyIntelligenceWorkspace";
 
-export const metadata: Metadata = {
-  title: "Policy Intelligence · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("policyIntelligencePage.title");
+}
 
 export default async function PolicyIntelligencePage() {
   await requireSession();

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { can } from "@/lib/auth/permissions";
 import { requireSession } from "@/lib/auth/server";
 import { RiskRegister } from "@/components/risk/RiskRegister";
 
-export const metadata: Metadata = {
-  title: "Risk Register · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("riskRegisterPage.title");
+}
 
 export default async function RiskRegisterPage() {
   const session = await requireSession();

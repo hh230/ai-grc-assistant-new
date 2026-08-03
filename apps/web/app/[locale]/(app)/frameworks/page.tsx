@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ChevronRight, Library } from "lucide-react";
 import { Link, redirect } from "@/i18n/navigation";
@@ -8,9 +9,9 @@ import { LOGIN_PATH } from "@/lib/auth/config";
 import { getActor } from "@/lib/auth/actor";
 import { computeCoverage } from "@/lib/governance/coverage";
 
-export const metadata: Metadata = {
-  title: "Frameworks · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("frameworksPage.title");
+}
 
 export default async function FrameworksPage() {
   const actor = await getActor();

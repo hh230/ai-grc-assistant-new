@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { Library } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
@@ -7,11 +8,12 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SUPPORTED_FRAMEWORKS } from "@/components/marketing/FrameworkLogoStrip";
 
-export const metadata: Metadata = {
-  title: "Frameworks Supported · Rasheed",
-  description:
-    "Regional and international compliance frameworks Rasheed maps controls and evidence against, including NCA ECC, SAMA, PDPL, ISO 27001, and NIST CSF.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("frameworksSupportedPage.hero.title", {
+    description:
+      "Regional and international compliance frameworks Rasheed maps controls and evidence against, including NCA ECC, SAMA, PDPL, ISO 27001, and NIST CSF.",
+  });
+}
 
 export default async function FrameworksSupportedPage() {
   const t = await getTranslations("frameworksSupportedPage");

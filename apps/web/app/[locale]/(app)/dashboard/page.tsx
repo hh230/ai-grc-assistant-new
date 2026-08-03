@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { parseDashboardRange } from "@/lib/dashboard/metrics";
+import { pageTitle } from "@/lib/pageMetadata";
 import { PageHeader } from "@/components/dashboard/PageHeader";
 import { ScoreCards } from "@/components/dashboard/ScoreCards";
 import { StatCards } from "@/components/dashboard/StatCards";
@@ -16,9 +17,9 @@ import { ReportsSection } from "@/components/dashboard/ReportsSection";
 import { WorkspaceHub } from "@/components/dashboard/WorkspaceHub";
 import { FavoritesPanel } from "@/components/dashboard/FavoritesPanel";
 
-export const metadata: Metadata = {
-  title: "Governance, Risk & Compliance Summary · Rasheed",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("dashboard.pageHeader.title");
+}
 
 export default async function ExecutiveDashboardPage({
   searchParams,

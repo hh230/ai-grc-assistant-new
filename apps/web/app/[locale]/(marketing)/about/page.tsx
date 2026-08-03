@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { Workflow, FileSearch, UserCheck } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { FeatureGrid } from "@/components/marketing/FeatureGrid";
 import { CTASection } from "@/components/marketing/CTASection";
 
-export const metadata: Metadata = {
-  title: "About Rasheed",
-  description:
-    "Rasheed brings policies, controls, risks, and evidence together into one unified workspace for governance, risk, and compliance.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("aboutPage.hero.title", {
+    description:
+      "Rasheed brings policies, controls, risks, and evidence together into one unified workspace for governance, risk, and compliance.",
+  });
+}
 
 const CARD_ITEMS = [
   { icon: Workflow, key: "organizing" },

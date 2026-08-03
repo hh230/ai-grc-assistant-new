@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/pageMetadata";
 import { getTranslations } from "next-intl/server";
 import { Hero } from "@/components/marketing/Hero";
 import { Card } from "@/components/ui/Card";
 import { RequestAccessForm } from "@/components/accessRequests/RequestAccessForm";
 
-export const metadata: Metadata = {
-  title: "Request Access · Rasheed",
-  description: "Request access to the Rasheed governance, risk, compliance and AI platform.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageTitle("requestAccessPage.hero.title", {
+    description: "Request access to the Rasheed governance, risk, compliance and AI platform.",
+  });
+}
 
 export default async function RequestAccessPage() {
   const t = await getTranslations("requestAccessPage");

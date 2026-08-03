@@ -62,19 +62,36 @@ ANONYMOUS_SAFE: dict[str, AnonymousSafeRoute] = {
     ),
 }
 
-# Localised pages, checked in both locales and both viewports by the browser surface later.
+# Every page under `app/[locale]/(app)/`, checked in both locales and both viewports.
+#
+# This list is verified against the real app, not assumed. The first draft carried a `/documents`
+# page that has never existed — `/api/documents` is an endpoint with no page behind it — and the
+# sweep happily reported it "healthy" because a 404 was not being graded. Both the entry and the
+# blind spot are fixed; a page listed here that 404s is now a reported defect.
+#
+# `/access-denied` is deliberately excluded: it is an error destination, and a 200 there proves
+# nothing about the app working.
 PAGES: tuple[str, ...] = (
     "/dashboard",
-    "/risk-register",
-    "/documents",
-    "/evidence",
-    "/policies",
-    "/frameworks",
-    "/reports",
-    "/settings",
-    "/missions",
+    "/workspace",
     "/discovery",
     "/plan",
+    "/missions",
+    "/controls",
+    "/policies",
+    "/policy-intelligence",
+    "/frameworks",
+    "/risk-register",
+    "/evidence",
+    "/reports",
+    "/analysis",
+    "/upload",
+    "/ai-worker",
+    "/regulation-review",
+    "/access-requests",
+    "/security-access",
+    "/profile",
+    "/settings",
     "/help",
 )
 

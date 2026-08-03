@@ -8,8 +8,15 @@ dependencies = [
     "governance-session",
 ]
 
+# The browser surface is OPTIONAL on purpose. The core harness stays dependency-free so it runs
+# anywhere (CI, a laptop, a container) with nothing installed; Playwright is a ~100MB browser
+# download that most runs do not need. When it is absent the browser agent REPORTS its absence as
+# a finding rather than skipping silently — see `surfaces/browser.py`.
+[project.optional-dependencies]
+browser = ["playwright>=1.47.0"]
+
 [dependency-groups]
-dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0", "playwright>=1.47.0"]
 
 [tool.uv.sources]
 governance-discovery = { path = "../../../v2/packages/governance-discovery", editable = true }

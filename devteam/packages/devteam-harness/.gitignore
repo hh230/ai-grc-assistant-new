@@ -4,3 +4,8 @@
 *.db-journal
 *.db-wal
 *.db-shm
+
+# Failure artifacts (screenshot + console + network + stack trace) from a browser sweep. Evidence
+# for one run, not source — and a red run can drop dozens of PNGs.
+artifacts/
+artifacts-*/

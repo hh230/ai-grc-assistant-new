@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from devteam_harness.agents import breaker, explorer, regression, sentry, verifier
+from devteam_harness.agents import breaker, explorer, pilot, regression, sentry, verifier
 from devteam_harness.agents.base import AgentReport
 from devteam_harness.agents.reporter import Report, compile_report
 from devteam_harness.results import ResultStore
@@ -32,8 +32,14 @@ def run_team(
     breaker_samples: int = 25,
     store: ResultStore | None = None,
     previous_run_id: int | None = None,
+    browser: bool = False,
 ) -> TeamOutcome:
     """Run the whole team once.
+
+    `browser` is opt-in because Pilot drives a real Chromium over every page in both locales and
+    both viewports — minutes, not seconds, against a dev server. A release gate should turn it on;
+    an inner-loop run generally should not. When it is off, no Pilot report is produced at all,
+    so the summary cannot imply browser coverage that never happened.
 
     `store`/`previous_run_id` are how Regression gets its work: the seeds that failed in an
     earlier recorded run. Without them the team still runs — it simply has no history to replay
@@ -57,6 +63,9 @@ def run_team(
     # Sentry needs a running app. It reports its own absence as a finding rather than skipping,
     # so a gate can refuse to treat "the app was down" as a pass.
     reports.append(sentry.run())
+
+    if browser:
+        reports.append(pilot.run())
 
     if store is not None and previous_run_id is not None:
         regression_report, _outcome = regression.from_store(store, previous_run_id)

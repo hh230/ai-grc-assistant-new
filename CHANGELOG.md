@@ -6,6 +6,19 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.1] — 2026-08-03
+
+### Added
+- **Forgot/reset password** — self-service password reset: request a one-time link by email,
+  preview which account it belongs to, set a new password. One-time, expiring (1h) tokens
+  (256-bit random, only the sha256 hash is ever persisted — `password_reset_tokens`, migration
+  `0029`); no user enumeration on the request endpoint; a new link invalidates every prior
+  outstanding one; consuming a token is row-locked to prevent concurrent double-use;
+  IP+email rate-limited; bilingual (Arabic RTL + English) UI and email. `LoginForm` now links
+  to `/forgot-password`.
+
+## [2.1.0] — 2026-08-03
+
 ### Added
 - **AI Governance Planning Engine** (ADR 0066) — a Discovery → Report → Plan journey that
   determines what compliance frameworks apply to an organization and what to do about it, without
@@ -86,4 +99,6 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.1]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.1
+[2.1.0]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.0
 [2.0.0]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.0.0

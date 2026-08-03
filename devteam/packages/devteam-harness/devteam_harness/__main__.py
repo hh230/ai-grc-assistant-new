@@ -45,10 +45,22 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="exit non-zero when any invariant is violated (use for a release gate)",
     )
+    parser.add_argument(
+        "--team",
+        action="store_true",
+        help="run the full QA agent team (explorer, breaker, verifier, regression, reporter)",
+    )
     args = parser.parse_args(argv)
 
     if args.seed is not None:
         return _reproduce(args.seed)
+
+    if args.team:
+        from devteam_harness.agents import run_team
+
+        outcome = run_team(count=args.count, start_seed=args.start_seed)
+        print(outcome.report.render())
+        return 1 if (args.fail_on_violation and not outcome.ok) else 0
 
     store = ResultStore(args.db)
     summary, _ = run_campaign(count=args.count, start_seed=args.start_seed, store=store)

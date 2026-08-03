@@ -92,8 +92,14 @@ export function LoginForm() {
         </label>
 
         <label className="block">
-          <span className="mb-1.5 block text-xs font-medium text-foreground-secondary">
+          <span className="mb-1.5 flex items-center justify-between text-xs font-medium text-foreground-secondary">
             {t("passwordLabel")}
+            <Link
+              href="/forgot-password"
+              className="font-medium text-accent-foreground hover:underline"
+            >
+              {t("forgotPassword")}
+            </Link>
           </span>
           <span className="relative block">
             <Lock

@@ -704,7 +704,8 @@
     "signingIn": "Signing in…",
     "footer": "© {year} Rasheed · Enterprise Edition",
     "noAccount": "Don't have access yet?",
-    "requestAccess": "Request access"
+    "requestAccess": "Request access",
+    "forgotPassword": "Forgot password?"
   },
   "search": {
     "title": "Search",
@@ -1971,5 +1972,33 @@
       "established": "Established",
       "optimized": "Optimized"
     }
+  },
+  "forgotPasswordPage": {
+    "title": "Reset your password",
+    "subtitle": "Governance · Risk · Compliance · AI",
+    "emailLabel": "Work email",
+    "emailPlaceholder": "you@company.com",
+    "submit": "Send reset link",
+    "submitting": "Sending…",
+    "sentMessage": "If {email} has an account, we've sent a password reset link to it. The link expires in 1 hour.",
+    "backToLogin": "Back to sign in",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "resetPasswordPage": {
+    "title": "Choose a new password",
+    "subtitle": "Governance · Risk · Compliance · AI",
+    "loading": "Checking your reset link…",
+    "missingToken": "This reset link is missing its token.",
+    "invalidToken": "This reset link is invalid.",
+    "requestNewLink": "Request a new reset link",
+    "resettingFor": "Resetting the password for {email}",
+    "passwordLabel": "New password",
+    "confirmPasswordLabel": "Confirm new password",
+    "passwordMismatch": "Passwords do not match.",
+    "submit": "Reset password",
+    "submitting": "Resetting…",
+    "successMessage": "Your password has been reset. You can now sign in with your new password.",
+    "goToLogin": "Go to sign in",
+    "genericError": "Something went wrong. Please try again."
   }
 }

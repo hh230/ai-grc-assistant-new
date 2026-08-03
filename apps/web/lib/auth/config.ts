@@ -30,6 +30,8 @@ export const PUBLIC_MARKETING_PATHS = [
   "/contact",
   "/request-access",
   "/accept-invite",
+  "/forgot-password",
+  "/reset-password",
 ] as const;
 export const JWT_ISSUER = "grc-web";
 

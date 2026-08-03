@@ -6,6 +6,21 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [2.1.6] — 2026-08-03
+
+### Fixed
+- `pdf-lib` moved from `devDependencies` to `dependencies` — it's imported by production code
+  (report export), so a production-only install would have been missing it.
+- `sanitizeFileName`'s control-character regex now uses `\x00-\x1f` escapes instead of raw
+  control bytes (including a literal NUL) embedded in the character class — same matched
+  range, but the raw bytes corrupted the file for line-based tools. No behavior change.
+- The invite-member endpoint is now rate-limited per account, matching every other
+  account-mutating or email-sending route (it was the one gap, and it sends a real email).
+
+### Changed
+- The remaining 29 pages using a static, hardcoded `metadata.title` now use the shared
+  `pageTitle()` i18n helper, matching the pattern already used by newer pages.
+
 ## [2.1.5] — 2026-08-03
 
 ### Fixed
@@ -128,6 +143,7 @@ Organization**. Full detail in [docs/releases/v2.0.0.md](docs/releases/v2.0.0.md
 ## [v2-phase15-foundation] — prior checkpoint
 The accepted V2 baseline (Phase 15 product layer + tenant activation), before the AI Organization phase.
 
+[2.1.6]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.6
 [2.1.5]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.5
 [2.1.4]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.4
 [2.1.3]: https://github.com/hh230/ai-grc-assistant-new/releases/tag/v2.1.3

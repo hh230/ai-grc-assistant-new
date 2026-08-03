@@ -11,6 +11,10 @@
 import { sendEmail, type SendEmailResult } from "./service";
 import { renderInvitationEmail, type InvitationEmailParams } from "./templates/invitation";
 import {
+  renderPasswordResetEmail,
+  type PasswordResetEmailParams,
+} from "./templates/password-reset";
+import {
   renderTeamInvitationEmail,
   type TeamInvitationEmailParams,
 } from "./templates/team-invitation";
@@ -22,6 +26,14 @@ export async function sendInvitationEmail(
   params: InvitationEmailParams,
 ): Promise<SendEmailResult> {
   const { subject, html, text } = renderInvitationEmail(params);
+  return sendEmail({ to, subject, html, text });
+}
+
+export async function sendPasswordResetEmail(
+  to: string,
+  params: PasswordResetEmailParams,
+): Promise<SendEmailResult> {
+  const { subject, html, text } = renderPasswordResetEmail(params);
   return sendEmail({ to, subject, html, text });
 }
 

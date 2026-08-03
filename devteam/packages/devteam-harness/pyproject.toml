@@ -1,0 +1,39 @@
+[project]
+name = "devteam-harness"
+version = "0.1.0"
+description = "AI Test Harness — generates synthetic organizations and drives the full Governance Discovery -> Plan journey at scale, asserting invariants on every run. Built on the grc-api DI seams (in-process, no database/LLM/browser), so thousands of scenarios run deterministically from a seed and any failure is reproducible by that seed alone."
+requires-python = ">=3.12"
+dependencies = [
+    "governance-discovery",
+    "governance-session",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "ruff>=0.6.0", "mypy>=1.11.0"]
+
+[tool.uv.sources]
+governance-discovery = { path = "../../../v2/packages/governance-discovery", editable = true }
+governance-session = { path = "../../../v2/packages/governance-session", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["devteam_harness"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+strict = true
+
+# The frozen v2 governance packages ship no `py.typed` marker, so mypy cannot see their types.
+# Declared here rather than adding markers to frozen packages (v2 core is frozen — ADR 0045) or
+# loosening this package: the harness's own code stays fully strict.
+[[tool.mypy.overrides]]
+module = ["governance_discovery.*", "governance_session.*"]
+ignore_missing_imports = true

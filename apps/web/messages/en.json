@@ -2029,5 +2029,34 @@
     "save": "Change password",
     "saving": "Saving…",
     "genericError": "Something went wrong. Please try again."
+  },
+  "missionsPage": {
+    "eyebrow": "Overview",
+    "title": "Missions",
+    "description": "Track goal-directed GRC missions through their lifecycle, with plans, approval gates, and a full audit trail.",
+    "loading": "Loading missions…",
+    "loadError": "Couldn't load missions right now.",
+    "table": {
+      "mission": "Mission",
+      "status": "Status",
+      "progress": "Progress",
+      "owner": "Owner",
+      "updated": "Last updated"
+    },
+    "status": {
+      "planned": "Planned",
+      "executing": "Executing",
+      "completed": "Completed",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "awaitingApproval": "Awaiting approval"
+    },
+    "stepsProgress": "{count, plural, one {# step} other {# steps}} · {lastStep}",
+    "noSteps": "No steps recorded yet",
+    "emptyState": {
+      "title": "No missions yet",
+      "description": "Missions track goal-directed GRC work end to end — start one by uploading a document for the AI to analyze.",
+      "cta": "Create your first mission"
+    }
   }
 }

@@ -1,79 +1,97 @@
 import { Library, TriangleAlert, ClipboardList, type LucideIcon } from "lucide-react";
-import { ACTIVE_FRAMEWORKS, RECENT_ASSESSMENTS, RISK_DISTRIBUTION } from "@/lib/data";
+import { getLocale } from "next-intl/server";
+import type { ActorContext } from "@/lib/auth/actor";
+import { analysisRepository } from "@/lib/analysis/repository";
+import { computeCoverage } from "@/lib/governance/coverage";
 import { FRAMEWORKS } from "@/lib/frameworks/catalog";
+import { listRisks } from "@/lib/risk/service";
+import { scoreOf, severityOf } from "@/lib/risk/types";
 import type { Tone } from "@/lib/design/tone";
+import type { AppLocale } from "@/i18n/routing";
+import { formatRelativeTime } from "@/lib/dashboard/relativeTime";
 
 export interface NeedsAttentionItem {
   id: string;
   icon: LucideIcon;
   tone: Tone;
   titleKey: string;
-  /** Values for the title interpolation; `categoryKey` (if present) must be resolved via
-   * the `dashboard.riskDistribution.categories` namespace before use as `category`. */
   titleValues: Record<string, string | number>;
-  categoryKey?: string;
+  /** Resolved via the `riskRegister.severity` namespace before use as `{severity}` — never
+   * interpolate the raw English enum directly into a localized sentence. */
+  severityKey?: "low" | "medium" | "high" | "critical";
   detailKey: string;
   detailValues: Record<string, string | number>;
   href: string;
 }
 
-/**
- * Band 2 of the dashboard (V2-P3 design proposal §11) — "what needs my attention?".
- * Deliberately derived from the same typed demo arrays the rest of the dashboard already
- * renders (ACTIVE_FRAMEWORKS, RISK_DISTRIBUTION, RECENT_ASSESSMENTS) rather than a new,
- * parallel dataset: frameworks not yet compliant, risk categories in the danger/warning
- * band, and assessments still awaiting completion. Ranked danger-first, then warning.
- */
-export function getNeedsAttentionItems(): NeedsAttentionItem[] {
-  const items: NeedsAttentionItem[] = [];
+const FRAMEWORK_GAP_THRESHOLD = 80;
 
-  // ACTIVE_FRAMEWORKS is illustrative dashboard data and includes frameworks (e.g. PDPL)
-  // that aren't yet in the real control catalog — only link to /frameworks/[id] when that
-  // detail page will actually resolve, otherwise fall back to the frameworks index.
+/**
+ * Band 2 of the dashboard (V2-P3 design proposal §11) — "what needs my attention?". Was
+ * built from static illustrative demo arrays (see git history); rewired post-v2.0.1 audit to
+ * derive strictly from the tenant's own real data: framework coverage (`computeCoverage`,
+ * same source `ActiveFrameworks`/`Controls` use), the real risk register, and in-flight
+ * analyses — never a fabricated dataset. Ranked danger-first, then warning.
+ */
+export async function getNeedsAttentionItems(actor: ActorContext): Promise<NeedsAttentionItem[]> {
+  const items: NeedsAttentionItem[] = [];
   const knownFrameworkIds = new Set(FRAMEWORKS.map((f) => f.id));
-  for (const framework of ACTIVE_FRAMEWORKS) {
-    if (framework.status === "compliant") continue;
+
+  const [coverage, risks, analyses, locale] = await Promise.all([
+    computeCoverage(actor),
+    listRisks(actor),
+    analysisRepository.listLatestPerDocument(actor.tenantId),
+    getLocale() as Promise<AppLocale>,
+  ]);
+
+  for (const framework of coverage.frameworks) {
+    if (framework.coveragePct >= FRAMEWORK_GAP_THRESHOLD) continue;
     items.push({
       id: `framework-${framework.id}`,
       icon: Library,
-      tone: framework.status === "at_risk" ? "danger" : "warning",
+      tone: framework.coveragePct < 40 ? "danger" : "warning",
       titleKey: "frameworkGap",
-      titleValues: { code: framework.code },
+      titleValues: { code: framework.shortName },
       detailKey: "frameworkGapDetail",
       detailValues: {
-        coverage: framework.coverage,
-        remaining: framework.controls - framework.controlsMet,
+        coverage: framework.coveragePct,
+        remaining: framework.total - framework.covered,
       },
       href: knownFrameworkIds.has(framework.id) ? `/frameworks/${framework.id}` : "/frameworks",
     });
   }
 
-  for (const slice of RISK_DISTRIBUTION) {
-    if (slice.tone !== "danger" && slice.tone !== "warning") continue;
+  for (const risk of risks) {
+    if (risk.status !== "open" && risk.status !== "mitigating") continue;
+    const severity = severityOf(scoreOf(risk.likelihood, risk.impact));
+    if (severity !== "high" && severity !== "critical") continue;
     items.push({
-      id: `risk-${slice.label}`,
+      id: `risk-${risk.id}`,
       icon: TriangleAlert,
-      tone: slice.tone,
+      tone: severity === "critical" ? "danger" : "warning",
       titleKey: "riskExposure",
-      titleValues: {},
-      categoryKey: slice.labelKey,
+      titleValues: { title: risk.title },
+      severityKey: severity,
       detailKey: "riskExposureDetail",
-      detailValues: { value: slice.value },
-      href: "/risk-register",
+      detailValues: { owner: risk.ownerName },
+      href: `/risk-register?open=${risk.id}`,
     });
   }
 
-  for (const assessment of RECENT_ASSESSMENTS) {
-    if (assessment.status !== "in_progress") continue;
+  for (const analysis of analyses) {
+    if (analysis.status !== "processing" && analysis.status !== "queued") continue;
     items.push({
-      id: `assessment-${assessment.id}`,
+      id: `analysis-${analysis.id}`,
       icon: ClipboardList,
       tone: "warning",
       titleKey: "assessmentIncomplete",
-      titleValues: { name: assessment.name },
+      titleValues: { name: analysis.title },
       detailKey: "assessmentIncompleteDetail",
-      detailValues: { owner: assessment.owner, updated: assessment.updated },
-      href: "/assessments",
+      detailValues: {
+        owner: analysis.requestedByName,
+        updated: formatRelativeTime(analysis.updatedAt, locale),
+      },
+      href: `/analysis?doc=${analysis.documentId}`,
     });
   }
 

@@ -1,11 +1,10 @@
 import { Sparkles, FileSearch, GitCompareArrows, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Badge } from "@/components/ui/Badge";
 
 const ACTIONS = [
   { key: "analyzeContract", icon: FileSearch, href: "/upload" },
-  { key: "gapAnalysis", icon: GitCompareArrows, href: undefined },
+  { key: "gapAnalysis", icon: GitCompareArrows, href: "/controls" },
 ] as const;
 
 const rowClass =
@@ -21,14 +20,9 @@ export async function AiWorkspaceCard() {
       <div className="pointer-events-none absolute inset-0 bg-accent-fade" />
 
       <div className="relative">
-        <div className="flex items-center justify-between">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-accent/30 bg-accent-soft backdrop-blur-sm">
-            <Sparkles className="h-[18px] w-[18px] text-accent-foreground" strokeWidth={1.75} />
-          </span>
-          <Badge tone="accent" dot>
-            {t("agentsOnline", { count: 6 })}
-          </Badge>
-        </div>
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-accent/30 bg-accent-soft backdrop-blur-sm">
+          <Sparkles className="h-[18px] w-[18px] text-accent-foreground" strokeWidth={1.75} />
+        </span>
 
         <h2 className="mt-4 text-base font-semibold tracking-tight text-foreground">
           {t("title")}
@@ -50,14 +44,10 @@ export async function AiWorkspaceCard() {
                 />
               </>
             );
-            return action.href ? (
+            return (
               <Link key={action.key} href={action.href} className={rowClass}>
                 {inner}
               </Link>
-            ) : (
-              <button key={action.key} type="button" className={rowClass}>
-                {inner}
-              </button>
             );
           })}
         </div>

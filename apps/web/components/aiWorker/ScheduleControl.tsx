@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Loader2 } from "lucide-react";
+import { Loader2, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useUpdateWorkerSchedule, useWorkerStatus } from "@/hooks/useKnowledgeWorker";
@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function ScheduleControl() {
   const t = useTranslations("aiWorkerWorkspace.schedule");
-  const { data: status } = useWorkerStatus();
+  const { data: status, isError, isFetching } = useWorkerStatus();
   const mutation = useUpdateWorkerSchedule();
   const [intervalHours, setIntervalHours] = useState("12");
 
@@ -21,6 +21,20 @@ export function ScheduleControl() {
     // would blow away whatever the admin is mid-typing in the interval input below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status?.intervalHours]);
+
+  // A failed or stalled status fetch must surface here, not vanish this whole card — an
+  // admin silently losing the ability to see/change the schedule looks broken, not empty.
+  if (isError || (!status && !isFetching)) {
+    return (
+      <Card>
+        <SectionHeader title={t("title")} description={t("description")} />
+        <div className="mt-5 flex items-start gap-2 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      </Card>
+    );
+  }
 
   if (!status) return null;
 

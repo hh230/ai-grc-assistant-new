@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Inbox } from "lucide-react";
+import { Inbox, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -18,7 +18,7 @@ interface AccessRequestListProps {
 export function AccessRequestList({ selectedId, onSelect }: AccessRequestListProps) {
   const t = useTranslations("accessRequestsWorkspace.list");
   const locale = useLocale() as AppLocale;
-  const { data: requests, isLoading } = usePendingAccessRequests();
+  const { data: requests, isLoading, isError } = usePendingAccessRequests();
 
   return (
     <Card flush>
@@ -29,7 +29,12 @@ export function AccessRequestList({ selectedId, onSelect }: AccessRequestListPro
         <h2 className="mt-1 text-sm font-semibold text-foreground">{t("title")}</h2>
       </div>
 
-      {isLoading ? (
+      {isError ? (
+        <div className="flex items-start gap-2 p-5 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      ) : isLoading ? (
         <div className="space-y-3 p-5">
           <Skeleton className="h-16 w-full" />
           <Skeleton className="h-16 w-full" />

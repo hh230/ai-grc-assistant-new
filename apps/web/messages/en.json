@@ -41,15 +41,14 @@
   },
   "notifications": {
     "title": "Notifications",
-    "unread": "{count} unread",
-    "viewAll": "View all activity",
-    "menuLabel": "Notifications",
-    "menuLabelUnread": "Notifications, {count} unread"
+    "empty": "No notifications yet.",
+    "menuLabel": "Notifications"
   },
   "orgSwitcher": {
     "switcherTrigger": "Switch organization",
     "yourOrganizations": "Your organizations",
     "loading": "Loading organizations…",
+    "loadError": "Something went wrong loading your organizations. Please try again.",
     "noOrganizations": "You don't belong to any organization yet.",
     "addOrganization": "Add organization",
     "menuLabel": "Switch organization, current: {organization}",
@@ -85,8 +84,8 @@
       "count": "{count} items",
       "frameworkGap": "{code} coverage below target",
       "frameworkGapDetail": "{coverage}% covered · {remaining} controls remaining",
-      "riskExposure": "{category} risk exposure elevated",
-      "riskExposureDetail": "{value}% of residual risk",
+      "riskExposure": "{title} — {severity} risk exposure",
+      "riskExposureDetail": "Owner: {owner}",
       "assessmentIncomplete": "{name} awaiting completion",
       "assessmentIncompleteDetail": "Owner: {owner} · updated {updated}"
     },
@@ -144,19 +143,19 @@
     "kpis": {
       "frameworksActive": {
         "label": "Frameworks active",
-        "sub": "3 regional · 3 international"
+        "sub": "{count} controls tracked"
       },
       "controlsMonitored": {
         "label": "Controls monitored",
-        "sub": "94% with linked evidence"
+        "sub": "{pct}% coverage"
       },
       "openFindings": {
         "label": "Open findings",
-        "sub": "7 high · 11 medium · 5 low"
+        "sub": "{count} open risks"
       },
       "aiReviews": {
         "label": "AI reviews this month",
-        "sub": "Contracts, policies & evidence"
+        "sub": "{count} analyses total"
       }
     },
     "executiveSummary": {
@@ -207,14 +206,9 @@
     },
     "riskDistribution": {
       "title": "Risk Distribution",
-      "description": "Residual exposure by category",
-      "categories": {
-        "cybersecurity": "Cybersecurity",
-        "dataPrivacy": "Data Privacy",
-        "thirdParty": "Third-Party",
-        "operational": "Operational",
-        "regulatory": "Regulatory"
-      }
+      "description": "Residual exposure by severity",
+      "emptyTitle": "No risks in the register yet",
+      "totalRisks": "Total risks"
     },
     "recentAssessments": {
       "title": "Recent Assessments",
@@ -914,6 +908,7 @@
     "searchPlaceholder": "Search evidence by title or tag…",
     "addEvidence": "Add evidence",
     "loading": "Loading evidence…",
+    "loadError": "Something went wrong loading evidence. Please try again.",
     "emptyTitle": "No evidence yet",
     "emptyMatchingTitle": "No matching evidence",
     "emptyHint": "Add an artifact and link it to the controls it supports.",
@@ -1028,6 +1023,7 @@
     "newPolicy": "New policy",
     "loadingPolicies": "Loading policies…",
     "loading": "Loading…",
+    "loadError": "Something went wrong loading policies. Please try again.",
     "emptyTitle": "No policies yet",
     "emptyDescription": "Author a policy and map it to the controls it governs.",
     "status": {
@@ -1170,6 +1166,7 @@
     "newRisk": "New risk",
     "loadingRisks": "Loading risks…",
     "loading": "Loading…",
+    "loadError": "Something went wrong loading risks. Please try again.",
     "score": "Score",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -1459,7 +1456,8 @@
       "reason": {
         "due": "Scheduled",
         "manual": "Manual"
-      }
+      },
+      "loadError": "Something went wrong loading the worker status. Please try again."
     },
     "schedule": {
       "title": "Learning schedule",
@@ -1468,7 +1466,8 @@
       "disabled": "Disabled",
       "intervalLabel": "Run every",
       "hours": "hours",
-      "save": "Save"
+      "save": "Save",
+      "loadError": "Something went wrong loading the schedule. Please try again."
     },
     "trigger": {
       "label": "Run Learning Now",
@@ -1477,7 +1476,8 @@
     "timeline": {
       "title": "Activity timeline",
       "description": "What the worker is doing — operational events only, no internal model reasoning.",
-      "emptyTitle": "No activity yet"
+      "emptyTitle": "No activity yet",
+      "loadError": "Something went wrong loading the activity timeline. Please try again."
     },
     "reports": {
       "title": "Learning reports",
@@ -1489,7 +1489,8 @@
         "needsReview": "Needs review",
         "verified": "Verified",
         "outdated": "Outdated"
-      }
+      },
+      "loadError": "Something went wrong loading learning reports. Please try again."
     }
   },
   "regulationReviewPage": {
@@ -1502,7 +1503,8 @@
       "eyebrow": "Awaiting approval",
       "title": "Pending regulations",
       "statusPending": "Pending review",
-      "empty": "Nothing is waiting for review right now."
+      "empty": "Nothing is waiting for review right now.",
+      "loadError": "Something went wrong loading pending regulations. Please try again."
     },
     "detail": {
       "empty": "Select a pending regulation to review its extracted content.",
@@ -1511,7 +1513,8 @@
       "officialCitation": "Official citation",
       "approve": "Approve",
       "reject": "Reject",
-      "approvedFeedback": "Approved — {embedded} section(s) embedded, {failed} failed."
+      "approvedFeedback": "Approved — {embedded} section(s) embedded, {failed} failed.",
+      "loadError": "Something went wrong loading this regulation. Please try again."
     }
   },
   "accessRequestsPage": {
@@ -1524,7 +1527,8 @@
       "eyebrow": "Awaiting approval",
       "title": "Pending requests",
       "statusPending": "Pending review",
-      "empty": "Nothing is waiting for review right now."
+      "empty": "Nothing is waiting for review right now.",
+      "loadError": "Something went wrong loading pending requests. Please try again."
     },
     "detail": {
       "empty": "Select a pending request to review it.",

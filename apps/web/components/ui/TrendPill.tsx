@@ -1,6 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Trend } from "@/lib/data";
+
+export type Trend = "up" | "down" | "flat";
 
 interface TrendPillProps {
   trend: Trend;

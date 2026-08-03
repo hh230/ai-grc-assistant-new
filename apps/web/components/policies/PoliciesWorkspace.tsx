@@ -52,7 +52,7 @@ export function PolicyStatusBadge({ status }: { status: PolicyStatus }) {
 
 export function PoliciesWorkspace(permissions: PolicyPermissions) {
   const t = useTranslations("policiesWorkspace");
-  const { data: policies, isLoading } = usePolicies();
+  const { data: policies, isLoading, isError } = usePolicies();
   const searchParams = useSearchParams();
   const [creating, setCreating] = useState(false);
   const [detailId, setDetailId] = useState<string | null>(null);
@@ -81,7 +81,14 @@ export function PoliciesWorkspace(permissions: PolicyPermissions) {
         )}
       </div>
 
-      {isLoading ? (
+      {isError ? (
+        <Card>
+          <div className="flex items-start gap-2 text-sm text-danger">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+            <span>{t("loadError")}</span>
+          </div>
+        </Card>
+      ) : isLoading ? (
         <Card className="flex items-center justify-center gap-2 py-12 text-sm text-foreground-muted">
           <Loader2 className="h-4 w-4 animate-spin" strokeWidth={1.75} />
           {t("loadingPolicies")}
@@ -265,7 +272,7 @@ function PolicyDetailModal({
   onClose: () => void;
 }) {
   const t = useTranslations("policiesWorkspace");
-  const { data: policy, isLoading } = usePolicy(id);
+  const { data: policy, isLoading, isError, isFetching } = usePolicy(id);
   const update = useUpdatePolicy();
   const transition = useTransitionPolicy();
   const remove = useDeletePolicy();
@@ -284,6 +291,17 @@ function PolicyDetailModal({
       href: `/policies?open=${policy.id}`,
     });
   }, [policy]);
+
+  if (isError || (!policy && !isFetching)) {
+    return (
+      <Modal open onClose={onClose} title={t("policyModalTitle")}>
+        <div className="flex items-start gap-2 py-10 text-sm text-danger">
+          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <span>{t("loadError")}</span>
+        </div>
+      </Modal>
+    );
+  }
 
   if (isLoading || !policy) {
     return (

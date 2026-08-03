@@ -19,7 +19,7 @@ function monogram(name: string): string {
 export function OrgSwitcher() {
   const { user } = useSession();
   const t = useTranslations("orgSwitcher");
-  const { data, isLoading } = useOrganizations();
+  const { data, isLoading, isError } = useOrganizations();
   const [switchingId, setSwitchingId] = useState<string | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
@@ -72,7 +72,10 @@ export function OrgSwitcher() {
                 {t("loading")}
               </div>
             )}
-            {!isLoading && organizations.length === 0 && (
+            {isError && (
+              <p className="px-2 py-2 text-xs text-danger">{t("loadError")}</p>
+            )}
+            {!isLoading && !isError && organizations.length === 0 && (
               <p className="px-2 py-2 text-xs text-foreground-muted">{t("noOrganizations")}</p>
             )}
             {organizations.map((org) => {

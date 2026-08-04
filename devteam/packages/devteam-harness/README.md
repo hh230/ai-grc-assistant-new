@@ -71,18 +71,22 @@ Reproduce exactly one reported failure (every finding prints this line):
 uv run python -m devteam_harness --seed 412
 ```
 
-The full team, including the HTTP sweep:
+The agent team, in-process — needs nothing running, so this is what CI executes:
 
 ```bash
 uv run python -m devteam_harness --team --count 500
 ```
 
-Add browser coverage — minutes rather than seconds, so it is opt-in:
+Against a running app. `--http` and `--browser` are opt-in because both need one, and a run that
+always reports "the app was not running" is a run nobody reads:
 
 ```bash
 uv sync --extra browser && uv run playwright install chromium
-uv run python -m devteam_harness --team --browser
+uv run python -m devteam_harness --team --http --browser --html run.html
 ```
+
+Asking for a surface and not getting it is still reported — the flag declares intent, it does not
+lower the bar.
 
 ## Determinism
 

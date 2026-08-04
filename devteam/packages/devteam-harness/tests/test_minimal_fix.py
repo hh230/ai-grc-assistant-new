@@ -277,3 +277,37 @@ def test_a_diff_is_used_to_measure_blast_radius() -> None:
     """Blast radius must count plans whose ADVICE changed, not plans that were re-serialised."""
     assert isinstance(diff_plans([_item("a")], [_item("a")]), DecisionDiff)
     assert diff_plans([_item("a")], [_item("a")]).magnitude == 0
+
+
+# --- intent is part of the ranking (Rule Intent Verifier) ---------------------------------------
+
+
+def test_a_semantically_destructive_candidate_sinks_below_a_faithful_one() -> None:
+    """The finder's own top candidate fixed 3 defects with zero regression by making the rule fire
+    for everyone. Statistically excellent, semantically vandalism — it must not lead."""
+    from devteam_harness.intent import IntentVerdict, SemanticDistance
+
+    vandal = _outcome(3, 0)
+    vandal.intent = IntentVerdict(distance=SemanticDistance.HIGH, reasons=["fires for everyone"])
+    faithful = _outcome(1, 0)
+
+    assert vandal.score < faithful.score
+    assert not vandal.clean, "a rule-destroying edit is never 'clean'"
+
+
+def test_clean_requires_intent_preserved_not_just_zero_regression() -> None:
+    from devteam_harness.intent import IntentVerdict, SemanticDistance
+
+    outcome = _outcome(5, 0)
+    outcome.intent = IntentVerdict(distance=SemanticDistance.MEDIUM, reasons=["drifted"])
+    assert outcome.regression == 0
+    assert not outcome.clean
+
+
+def test_only_threshold_edits_are_judged_for_intent() -> None:
+    """A priority change or a dropped dependency alters what a rule DOES, never the population it
+    applies to — judging them by selectivity would invent findings."""
+    from devteam_harness.minimal_fix import _verify_intent
+
+    priority = priority_candidates(PACK)[0]
+    assert _verify_intent(priority, PACK, {}, {}).distance.value == "none"

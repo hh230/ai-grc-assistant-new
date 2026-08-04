@@ -1,6 +1,7 @@
 {
   "known_failing": {
-    "decision:an_immature_organization_gets_a_plan": 6
+    "decision:an_immature_organization_gets_a_plan": 6,
+    "decision:gaps_are_traceable_to_tasks": 78
   },
   "scenarios": 300,
   "version": 1

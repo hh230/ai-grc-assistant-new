@@ -256,7 +256,7 @@ def test_every_rule_is_wired_into_the_suite() -> None:
     """A rule that exists but is never run is worse than no rule: it reads as coverage."""
     from devteam_harness.decisions import RULES
 
-    assert len(RULES) == 6
+    assert len(RULES) == 8
     assert all(callable(rule) for rule in RULES)
 
 
@@ -266,3 +266,44 @@ def test_findings_are_typed_not_strings() -> None:
     )
     findings = verify_decision(context)
     assert findings and all(isinstance(f, DecisionFinding) for f in findings)
+
+
+# --- gaps ---------------------------------------------------------------------------------------
+
+
+def test_a_critical_gap_with_no_matching_task_is_reported() -> None:
+    context = _context(
+        gaps=[{"gap_id": "gap:x", "severity": "critical", "source_signal_keys": ["has_dpo"]}],
+        plan_items=[_item("draft_policies", sources=("policy_state",))],
+    )
+    from devteam_harness.decisions import every_critical_gap_has_a_task
+
+    findings = every_critical_gap_has_a_task(context)
+    assert findings and "no plan item addresses" in findings[0].detail
+
+
+def test_a_critical_gap_that_IS_addressed_is_not_reported() -> None:
+    """The false positive that nearly shipped: seed 7 flags
+    gap:gov_client_without_compliance_officer AND contains seed:designate_compliance_owner, which
+    addresses it exactly. Reporting that would be crying wolf about correct behaviour."""
+    context = _context(
+        gaps=[{"gap_id": "gap:x", "severity": "critical", "source_signal_keys": ["has_officer"]}],
+        plan_items=[_item("designate_compliance_owner", sources=("has_officer",))],
+    )
+    from devteam_harness.decisions import every_critical_gap_has_a_task
+
+    assert every_critical_gap_has_a_task(context) == []
+
+
+def test_an_untraceable_gap_is_a_TRACEABILITY_finding_not_an_unaddressed_one() -> None:
+    """The two are deliberately different claims: one says the advice is wrong, the other says the
+    advice cannot be checked. Conflating them produced 78 false positives on 300 organizations."""
+    from devteam_harness.decisions import every_critical_gap_has_a_task, gaps_are_traceable_to_tasks
+
+    context = _context(
+        gaps=[{"gap_id": "gap:x", "severity": "critical"}],  # no source_signal_keys at all
+        plan_items=[_item("designate_compliance_owner", sources=("has_officer",))],
+    )
+    assert every_critical_gap_has_a_task(context) == [], "must not claim it is unaddressed"
+    findings = gaps_are_traceable_to_tasks(context)
+    assert findings and "no source signals" in findings[0].detail

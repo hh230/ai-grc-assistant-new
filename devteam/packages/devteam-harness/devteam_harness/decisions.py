@@ -272,6 +272,66 @@ def a_plan_fits_what_the_organization_can_execute(context: PlanContext) -> list[
     return []
 
 
+def every_critical_gap_has_a_task(context: PlanContext) -> list[DecisionFinding]:
+    """A gap the system itself calls critical must produce something to DO about it.
+
+    Telling someone they have a critical gap and handing them a plan that does not mention it is
+    worse than not detecting it: the gap appears in the report, so it looks handled.
+
+    ONLY EVALUATED WHEN THE GAP CARRIES SIGNALS. The first version of this rule also fired when a
+    gap carried none — and produced 78 false positives on 300 organizations. Seed 7 is the proof:
+    `gap:gov_client_without_compliance_officer` is flagged, and the plan DOES contain
+    `seed:designate_compliance_owner`, which addresses it exactly. The rule simply could not see
+    the link, because gaps have no signal linkage in the data model.
+
+    Reporting "nothing addresses this" about a gap that is plainly addressed is the crying-wolf
+    failure this harness treats as its own defect. The untraceable case is reported separately and
+    honestly by `gaps_are_traceable_to_tasks` — as a traceability problem, which is what it is.
+    """
+    if not context.plan_items:
+        return []  # an empty plan is `an_immature_organization_gets_a_plan`'s finding, not this one
+
+    addressed = {
+        signal
+        for item in context.plan_items
+        for signal in (item.get("source_signal_keys") or ())
+    }
+    return [
+        DecisionFinding(
+            "every_critical_gap_has_a_task",
+            f"{gap.get('gap_id') or gap.get('id') or '?'} is {gap.get('severity')} but no plan "
+            f"item addresses {sorted(set(gap.get('source_signal_keys') or ()))}",
+        )
+        for gap in context.gaps
+        if str(gap.get("severity", "")).lower() in HIGH_SEVERITIES
+        and set(gap.get("source_signal_keys") or ())
+        and not (set(gap.get("source_signal_keys") or ()) & addressed)
+    ]
+
+
+def gaps_are_traceable_to_tasks(context: PlanContext) -> list[DecisionFinding]:
+    """A gap must be linkable to the work that closes it.
+
+    Today no gap carries `source_signal_keys`, so nothing — not this harness, not the UI, not an
+    auditor — can mechanically answer "which task closes this gap?". The answer may well exist in
+    someone's head; it does not exist in the data.
+
+    That is a traceability defect, not an "unaddressed gap" defect, and the two are deliberately
+    kept apart: one says the advice is wrong, this one says the advice cannot be checked. In a
+    product whose value is auditability (CLAUDE.md §19), the second still matters.
+    """
+    return [
+        DecisionFinding(
+            "gaps_are_traceable_to_tasks",
+            f"{gap.get('gap_id') or gap.get('id') or '?'} ({gap.get('severity')}) carries no "
+            f"source signals, so no task can be mechanically linked to it",
+        )
+        for gap in context.gaps
+        if str(gap.get("severity", "")).lower() in HIGH_SEVERITIES
+        and not set(gap.get("source_signal_keys") or ())
+    ]
+
+
 RULES = (
     no_action_on_something_that_does_not_exist,
     no_step_before_its_prerequisite,
@@ -279,6 +339,8 @@ RULES = (
     no_duplicate_tasks,
     an_immature_organization_gets_a_plan,
     a_plan_fits_what_the_organization_can_execute,
+    every_critical_gap_has_a_task,
+    gaps_are_traceable_to_tasks,
 )
 
 

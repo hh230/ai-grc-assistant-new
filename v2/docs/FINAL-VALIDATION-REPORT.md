@@ -1,7 +1,12 @@
 # Final Validation Report
 
-**Verdict: the decision engine is CORRECT, DETERMINISTIC and SAFE — and NOT yet trustworthy as
-governance advice.** Those are different claims, and the difference is the whole report.
+**Verdict: the project is ENGINEERED, not yet KNOWLEDGE-COMPLETE.**
+
+Architecture, security, deployment readiness, reliability, testing and the decision engine's
+mechanics are sound. The **knowledge base** is not. Those are different claims, and the difference
+is the whole report.
+
+> The next phase is not software engineering. It is **Governance Knowledge Engineering**.
 
 Everything below was rebuilt from zero. No previous baseline was reused. Three of my own earlier
 claims were **wrong and are corrected here**.
@@ -268,9 +273,35 @@ fire — a reporting bug in my own tooling, not a finding.
 | **Software correctness** | **9.5 / 10** | 300k organizations, deterministic, 0 explosions, 56/57 suites |
 | **Security** | **9 / 10** | every probe repelled; not yet exercised in production |
 | **Mechanical auditability** | **8 / 10** | reproducible; gap traceability missing |
-| **Governance advice quality** | **4 / 10** | S1–S5 |
+| **Governance advice quality** | **WITHDRAWN — not derivable** | see correction below |
 | **Production readiness** | **5 / 10** | code ready; not deployed; advice quality blocks launch |
-| **Overall trustworthiness** | **5.5 / 10** | |
+| **Overall trustworthiness** | **not scorable yet** | depends on the withdrawn dimension |
+
+### Correction — the advice-quality score is withdrawn
+
+The original report scored "governance advice quality **4/10**" and an overall **5.5/10**. **Both
+are withdrawn.** They were not derivable from the evidence.
+
+Everything measured here is the engine's consistency **with itself**: determinism, reachability,
+collisions, monotonicity, traceability. None of that can produce a number for whether the advice is
+*professionally good*. That requires an external reference — expert review, comparison against
+consultant-produced plans, or a benchmark — and none was run.
+
+What the internal analysis **does** support, without a score:
+- specific, reproducible defects (S1–S11), each with population-scale evidence;
+- the claim that those defects live in the knowledge model, not the machinery.
+
+What it does **not** support:
+- any numeric rating of advice quality;
+- therefore any composite "trustworthiness" score built on it.
+
+Stating an engineering opinion in the grammar of a measured result is exactly the failure this
+harness exists to prevent, and I made it in my own report.
+
+**An external reference has since been run** — see `EXTERNAL-BENCHMARK.md`. It measures **51%
+agreement** with an independent professional reviewer and a **4:1 under-advice ratio**, and it
+independently confirms S1, S3, S5 and S8. It still does not license a quality score: one LLM
+reviewer over 86 synthetic organizations is evidence, not a rating.
 
 ---
 

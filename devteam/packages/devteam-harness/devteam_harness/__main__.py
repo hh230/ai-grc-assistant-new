@@ -49,7 +49,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--team",
         action="store_true",
-        help="run the full QA agent team (explorer, breaker, verifier, sentry, regression, reporter)",
+        help="run the QA agent team (explorer, breaker, verifier, regression, reporter)",
+    )
+    parser.add_argument(
+        "--http",
+        action="store_true",
+        help=(
+            "also run Sentry against a RUNNING app: sweeps every protected route as an anonymous "
+            "caller. Opt-in because CI has no app — see --browser"
+        ),
     )
     parser.add_argument(
         "--browser",
@@ -68,6 +76,20 @@ def main(argv: list[str] | None = None) -> int:
             "the evidence outlives the process: attachable to a CI run, openable from a PR"
         ),
     )
+    parser.add_argument(
+        "--baseline",
+        metavar="PATH",
+        help=(
+            "compare against a committed baseline of known failures and exit non-zero only when "
+            "something got WORSE. This is the release gate: a gate that fails on any finding "
+            "would be red forever (one real defect is known and unfixed) and would be ignored"
+        ),
+    )
+    parser.add_argument(
+        "--update-baseline",
+        action="store_true",
+        help="rewrite the --baseline file from this run. Deliberate: it produces a reviewable diff",
+    )
     args = parser.parse_args(argv)
 
     if args.seed is not None:
@@ -76,13 +98,32 @@ def main(argv: list[str] | None = None) -> int:
     if args.team:
         from devteam_harness.agents import run_team
 
-        outcome = run_team(count=args.count, start_seed=args.start_seed, browser=args.browser)
+        outcome = run_team(
+            count=args.count,
+            start_seed=args.start_seed,
+            browser=args.browser,
+            http=args.http,
+        )
         print(outcome.report.render())
         if args.html:
             from devteam_harness.dashboard import summarise, write_html
 
             written = write_html(outcome.report, Path(args.html))
             print(f"\ndashboard : {written}  ({summarise(outcome.report).verdict})")
+
+        if args.baseline:
+            from devteam_harness.baseline import compare, write_baseline
+
+            path = Path(args.baseline)
+            if args.update_baseline:
+                write_baseline(outcome.report, path, scenarios=args.count)
+                print(f"\nbaseline  : rewritten at {path} — review the diff before committing")
+                return 0
+            result = compare(outcome.report, path, scenarios=args.count)
+            print()
+            print(result.render())
+            return 0 if result.ok else 1
+
         return 1 if (args.fail_on_violation and not outcome.ok) else 0
 
     store = ResultStore(args.db)

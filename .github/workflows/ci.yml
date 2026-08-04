@@ -47,3 +47,32 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
       - run: python3 devteam/packages/devteam-ci/devteam_ci/test_runner.py
+
+  # The regression gate. Runs 300 synthetic organizations through the real Discovery -> Plan
+  # code and fails only when something is WORSE than the committed baseline.
+  #
+  # BLOCKING, unlike the job above, because it can be: it needs no app, no database, no LLM and
+  # no browser, so it is deterministic and cannot flake on infrastructure. A failure here means
+  # the product's own logic changed for the worse, and the report names the exact seed to
+  # reproduce it locally.
+  #
+  # It deliberately does NOT pass --http/--browser: those need a running app, which CI has none
+  # of, and a gate that always reports "the app was not running" is a gate nobody reads. Those
+  # surfaces belong to the pre-release run against a deployed environment.
+  harness-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: devteam/packages/devteam-harness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync
+      - name: Regression gate vs committed baseline
+        run: uv run python -m devteam_harness --team --count 300 --baseline gate-baseline.json --html harness-report.html
+      - name: Upload run dashboard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harness-report
+          path: devteam/packages/devteam-harness/harness-report.html

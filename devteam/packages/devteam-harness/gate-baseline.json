@@ -1,0 +1,7 @@
+{
+  "known_failing": {
+    "plan_dependencies_exist": 44
+  },
+  "scenarios": 300,
+  "version": 1
+}

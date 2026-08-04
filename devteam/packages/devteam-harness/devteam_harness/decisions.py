@@ -173,10 +173,18 @@ def no_step_before_its_prerequisite(context: PlanContext) -> list[DecisionFindin
 
 
 def high_risk_never_gets_low_priority(context: PlanContext) -> list[DecisionFinding]:
-    """A critical or high-severity gap must not be answered with a low-priority task.
+    """A critical or high-severity gap must be answered by at least one urgent task.
 
     Mis-prioritising is worse than omitting: an organization that trusts the ordering will do the
     low-priority item last, and believe it is being systematic while the worst exposure stays open.
+
+    The test is "does ANY task addressing this gap carry high or critical priority", NOT "is EVERY
+    related task urgent". The stricter reading produced 3,250 false positives the moment gaps
+    gained provenance: `gap:gov_client_without_compliance_officer` is critical AND is properly
+    answered by `designate_compliance_owner` at critical priority — but it shares a signal with
+    `establish_governance_oversight_body` at medium, and the strict rule condemned the pair.
+    Flagging a gap that IS urgently addressed is exactly the crying-wolf failure this harness
+    treats as its own defect.
     """
     findings = []
     for gap in context.gaps:
@@ -186,18 +194,27 @@ def high_risk_never_gets_low_priority(context: PlanContext) -> list[DecisionFind
         gap_signals = set(gap.get("source_signal_keys") or ())
         if not gap_signals:
             continue
-        for item in context.plan_items:
-            if not gap_signals & set(item.get("source_signal_keys") or ()):
-                continue
-            priority = str(item.get("priority", "")).lower()
-            if PRIORITY_RANK.get(priority, 99) > PRIORITY_RANK["high"]:
-                findings.append(
-                    DecisionFinding(
-                        "high_risk_never_gets_low_priority",
-                        f"gap {gap.get('id', '?')} is {severity} but {item['id']} that addresses "
-                        f"it is priority {priority}",
-                    )
+
+        addressing = [
+            item
+            for item in context.plan_items
+            if gap_signals & set(item.get("source_signal_keys") or ())
+        ]
+        if not addressing:
+            continue  # unaddressed is `every_critical_gap_has_a_task`'s finding, not this one
+
+        best = min(
+            PRIORITY_RANK.get(str(item.get("priority", "")).lower(), 99) for item in addressing
+        )
+        if best > PRIORITY_RANK["high"]:
+            findings.append(
+                DecisionFinding(
+                    "high_risk_never_gets_low_priority",
+                    f"{gap.get('gap_id') or gap.get('id') or '?'} is {severity} but the most "
+                    f"urgent task addressing it is only "
+                    f"{min(addressing, key=lambda i: PRIORITY_RANK.get(str(i.get('priority','')).lower(), 99)).get('priority')}",
                 )
+            )
     return findings
 
 

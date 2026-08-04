@@ -151,7 +151,21 @@ def test_a_high_severity_gap_answered_with_a_low_priority_task_is_reported() -> 
         plan_items=[_item("establish_risk_register", priority="low", sources=("risk_state",))],
     )
     findings = high_risk_never_gets_low_priority(context)
-    assert findings and "priority low" in findings[0].detail
+    assert findings and "only low" in findings[0].detail
+
+
+def test_a_gap_urgently_addressed_is_fine_even_if_a_RELATED_task_is_medium() -> None:
+    """The strict reading ("every related task must be urgent") produced 3,250 false positives the
+    moment gaps gained provenance: a critical gap properly answered by a critical task was
+    condemned because a secondary task sharing one signal was medium."""
+    context = _context(
+        gaps=[{"gap_id": "gap:1", "severity": "critical", "source_signal_keys": ["has_officer"]}],
+        plan_items=[
+            _item("designate_compliance_owner", priority="critical", sources=("has_officer",)),
+            _item("establish_oversight_body", priority="medium", sources=("has_officer",)),
+        ],
+    )
+    assert high_risk_never_gets_low_priority(context) == []
 
 
 def test_a_high_severity_gap_answered_with_a_high_priority_task_is_fine() -> None:
@@ -307,3 +321,37 @@ def test_an_untraceable_gap_is_a_TRACEABILITY_finding_not_an_unaddressed_one() -
     assert every_critical_gap_has_a_task(context) == [], "must not claim it is unaddressed"
     findings = gaps_are_traceable_to_tasks(context)
     assert findings and "no source signals" in findings[0].detail
+
+
+# --- every task the engine can emit must be presentable ----------------------------------------
+
+
+def test_every_seed_the_packs_can_emit_has_a_label_in_BOTH_languages() -> None:
+    """A task with no title renders as a raw key. This caught a PRE-EXISTING defect:
+    `establish_governance_oversight_body` fired in real plans and had no label in either language,
+    so a customer saw an untitled item. Bilingual is not optional — Arabic is a first-class
+    surface for the KSA frameworks this product targets."""
+    import json
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[4]
+    packs = root / "v2/packages/governance-discovery/governance_discovery/packs"
+    messages = root / "apps/web/messages"
+    if not packs.is_dir() or not messages.is_dir():  # pragma: no cover - outside the monorepo
+        return
+
+    seeds = {"confirm_basics_with_advisor"}  # the code-level fallback in analysis.py
+    for pack in packs.glob("*.json"):
+        for rule in json.loads(pack.read_text(encoding="utf-8")).get("rules", []):
+            seed = (rule.get("effect") or {}).get("plan_seed")
+            if seed:
+                seeds.add(str(seed["id"]).removeprefix("seed:"))
+
+    for language in ("en", "ar"):
+        labels = json.loads((messages / f"{language}.json").read_text(encoding="utf-8"))
+        present = labels["plan"]["seed"]
+        missing = sorted(seeds - set(present))
+        assert not missing, f"{language}: plan tasks with no label: {missing}"
+        for key in seeds:
+            assert present[key].get("title"), f"{language}: {key} has an empty title"
+            assert present[key].get("rationale"), f"{language}: {key} has no rationale"

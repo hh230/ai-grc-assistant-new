@@ -59,9 +59,41 @@ def test_leadership_dimension_scores_from_board_and_compliance_officer() -> None
 
 
 def test_missing_board_seeds_a_governance_oversight_body_item() -> None:
-    result = analyze(make_signals(primary_activity="legal_services", has_board=False), _engine())
+    result = analyze(
+        make_signals(primary_activity="legal_services", has_board=False, employee_count=120),
+        _engine(),
+    )
     seed_ids = {item["id"] for item in result.plan_items}
     assert "seed:establish_governance_oversight_body" in seed_ids
+
+
+def test_a_very_small_organization_is_not_told_to_build_a_governance_body() -> None:
+    """Proportionality. A formal oversight body and a standing audit programme presuppose people
+    to staff them; recommending them to a sole trader is the advice that makes a small customer
+    stop reading. Confirmed twice: a size sweep (a 1-person firm received both) and an external
+    GRC reviewer, which dropped exactly these two across 46 organizations."""
+    result = analyze(
+        make_signals(primary_activity="legal_services", has_board=False, employee_count=3),
+        _engine(),
+    )
+    seed_ids = {item["id"] for item in result.plan_items}
+    assert "seed:establish_governance_oversight_body" not in seed_ids
+    assert "seed:plan_internal_audit_cadence" not in seed_ids
+
+
+def test_an_unanswered_headcount_does_not_silently_drop_the_item() -> None:
+    """A predicate on a missing signal evaluates to False, so gating on headcount fails CLOSED —
+    it would drop advice rather than be conservative with it. `q:employee_count` is asked
+    unconditionally (`asked_when: null`), so this cannot happen in a real interview; this test
+    pins that dependency so a future change to the question's gating is caught here rather than
+    by a customer receiving a quietly shorter plan."""
+    from governance_discovery.pack import load_bundled_packs
+
+    core = load_bundled_packs()["pack:core"]
+    headcount = next(q for q in core.questions if q.id == "q:employee_count")
+    assert getattr(headcount, "asked_when", None) is None, (
+        "employee_count must stay unconditional; the proportionality guard depends on it"
+    )
 
 
 def test_governance_vision_is_never_lower_than_current_maturity() -> None:

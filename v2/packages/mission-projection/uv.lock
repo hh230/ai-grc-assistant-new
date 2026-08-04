@@ -80,7 +80,11 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pipeline-contracts", editable = "../pipeline-contracts" }]
+requires-dist = [
+    { name = "pipeline-contracts", editable = "../pipeline-contracts" },
+    { name = "psycopg", extras = ["binary"], marker = "extra == 'postgres'", specifier = ">=3.2.0" },
+]
+provides-extras = ["postgres"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=8.3.0" }]

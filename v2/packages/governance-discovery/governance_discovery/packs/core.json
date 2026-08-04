@@ -1,7 +1,10 @@
 {
   "pack_id": "pack:core",
   "version": "1.0",
-  "labels": { "en": "Core", "ar": "أساسي" },
+  "labels": {
+    "en": "Core",
+    "ar": "أساسي"
+  },
   "aliases": [],
   "questions": [
     {
@@ -14,9 +17,19 @@
       "stage": "general",
       "ui_hint": "dropdown",
       "options": [
-        "technology", "legal_services", "real_estate", "marketing_advertising",
-        "consulting", "retail", "construction", "healthcare", "education",
-        "manufacturing", "government", "financial_services", "other"
+        "technology",
+        "legal_services",
+        "real_estate",
+        "marketing_advertising",
+        "consulting",
+        "retail",
+        "construction",
+        "healthcare",
+        "education",
+        "manufacturing",
+        "government",
+        "financial_services",
+        "other"
       ]
     },
     {
@@ -58,7 +71,13 @@
       "priority": 7,
       "stage": "structural",
       "ui_hint": "buttons",
-      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+      "options": [
+        "absent",
+        "verbal",
+        "documented_unapproved",
+        "approved",
+        "reviewed_periodically"
+      ]
     },
     {
       "id": "q:policy_state",
@@ -69,7 +88,13 @@
       "priority": 7,
       "stage": "structural",
       "ui_hint": "buttons",
-      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+      "options": [
+        "absent",
+        "verbal",
+        "documented_unapproved",
+        "approved",
+        "reviewed_periodically"
+      ]
     },
     {
       "id": "q:risk_register_state",
@@ -80,7 +105,13 @@
       "priority": 6,
       "stage": "structural",
       "ui_hint": "buttons",
-      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+      "options": [
+        "absent",
+        "verbal",
+        "documented_unapproved",
+        "approved",
+        "reviewed_periodically"
+      ]
     },
     {
       "id": "q:internal_audit_state",
@@ -91,7 +122,13 @@
       "priority": 4,
       "stage": "structural",
       "ui_hint": "buttons",
-      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+      "options": [
+        "absent",
+        "verbal",
+        "documented_unapproved",
+        "approved",
+        "reviewed_periodically"
+      ]
     },
     {
       "id": "q:has_legal_team",
@@ -122,7 +159,13 @@
       "priority": 6,
       "stage": "structural",
       "ui_hint": "buttons",
-      "options": ["none", "ad_hoc", "allocated_time", "dedicated_budget", "dedicated_team_and_budget"]
+      "options": [
+        "none",
+        "ad_hoc",
+        "allocated_time",
+        "dedicated_budget",
+        "dedicated_team_and_budget"
+      ]
     },
     {
       "id": "q:handles_personal_data",
@@ -163,7 +206,11 @@
       "priority": 5,
       "stage": "structural",
       "ui_hint": "date",
-      "applicability_predicate": { "signal": "policy_state", "op": "gte", "value": "approved" }
+      "applicability_predicate": {
+        "signal": "policy_state",
+        "op": "gte",
+        "value": "approved"
+      }
     },
     {
       "id": "q:held_licenses",
@@ -176,7 +223,12 @@
       "ui_hint": "chips",
       "allow_multiple": true,
       "required": false,
-      "options": ["iso_certified", "government_license", "industry_specific_license", "none"]
+      "options": [
+        "iso_certified",
+        "government_license",
+        "industry_specific_license",
+        "none"
+      ]
     },
     {
       "id": "q:additional_context_note",
@@ -194,13 +246,26 @@
     {
       "id": "r:org_structure_documented_scores_governance",
       "version": "1.0",
-      "predicate": { "signal": "org_structure_state", "op": "gte", "value": "documented_unapproved" },
-      "effect": { "maturity_dimension_score": { "dimension": "governance", "delta": 3 } }
+      "predicate": {
+        "signal": "org_structure_state",
+        "op": "gte",
+        "value": "documented_unapproved"
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "governance",
+          "delta": 3
+        }
+      }
     },
     {
-      "id": "r:org_structure_absent_seeds_formalization",
+      "id": "r:org_structure_weak_seeds_formalization",
       "version": "1.0",
-      "predicate": { "signal": "org_structure_state", "op": "eq", "value": "absent" },
+      "predicate": {
+        "signal": "org_structure_state",
+        "op": "lte",
+        "value": "verbal"
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:formalize_org_structure",
@@ -209,20 +274,36 @@
           "rationale_key": "plan.seed.formalize_org_structure.rationale",
           "urgency": "high",
           "effort_size": "medium",
-          "resolves_signal": { "signal": "org_structure_state", "value": "approved" }
+          "resolves_signal": {
+            "signal": "org_structure_state",
+            "value": "approved"
+          }
         }
       }
     },
     {
       "id": "r:policy_approved_scores_policy",
       "version": "1.0",
-      "predicate": { "signal": "policy_state", "op": "gte", "value": "approved" },
-      "effect": { "maturity_dimension_score": { "dimension": "governance", "delta": 4 } }
+      "predicate": {
+        "signal": "policy_state",
+        "op": "gte",
+        "value": "approved"
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "governance",
+          "delta": 4
+        }
+      }
     },
     {
       "id": "r:policy_weak_seeds_drafting",
       "version": "1.0",
-      "predicate": { "signal": "policy_state", "op": "lte", "value": "verbal" },
+      "predicate": {
+        "signal": "policy_state",
+        "op": "lte",
+        "value": "verbal"
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:draft_foundational_policies",
@@ -231,15 +312,24 @@
           "rationale_key": "plan.seed.draft_foundational_policies.rationale",
           "urgency": "high",
           "effort_size": "medium",
-          "depends_on": ["seed:formalize_org_structure"],
-          "resolves_signal": { "signal": "policy_state", "value": "approved" }
+          "depends_on": [
+            "seed:formalize_org_structure"
+          ],
+          "resolves_signal": {
+            "signal": "policy_state",
+            "value": "approved"
+          }
         }
       }
     },
     {
-      "id": "r:risk_register_absent_seeds_establishment",
+      "id": "r:risk_register_weak_seeds_establishment",
       "version": "1.0",
-      "predicate": { "signal": "risk_register_state", "op": "eq", "value": "absent" },
+      "predicate": {
+        "signal": "risk_register_state",
+        "op": "lte",
+        "value": "verbal"
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:establish_risk_register",
@@ -248,20 +338,45 @@
           "rationale_key": "plan.seed.establish_risk_register.rationale",
           "urgency": "high",
           "effort_size": "small",
-          "resolves_signal": { "signal": "risk_register_state", "value": "approved" }
+          "resolves_signal": {
+            "signal": "risk_register_state",
+            "value": "approved"
+          }
         }
       }
     },
     {
       "id": "r:risk_register_approved_scores_risk",
       "version": "1.0",
-      "predicate": { "signal": "risk_register_state", "op": "gte", "value": "approved" },
-      "effect": { "maturity_dimension_score": { "dimension": "risk", "delta": 4 } }
+      "predicate": {
+        "signal": "risk_register_state",
+        "op": "gte",
+        "value": "approved"
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "risk",
+          "delta": 4
+        }
+      }
     },
     {
-      "id": "r:internal_audit_absent_seeds_cadence",
+      "id": "r:internal_audit_weak_seeds_cadence_at_scale",
       "version": "1.0",
-      "predicate": { "signal": "internal_audit_state", "op": "eq", "value": "absent" },
+      "predicate": {
+        "all": [
+          {
+            "signal": "internal_audit_state",
+            "op": "lte",
+            "value": "verbal"
+          },
+          {
+            "signal": "employee_count",
+            "op": "gte",
+            "value": 10
+          }
+        ]
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:plan_internal_audit_cadence",
@@ -270,14 +385,21 @@
           "rationale_key": "plan.seed.plan_internal_audit_cadence.rationale",
           "urgency": "low",
           "effort_size": "medium",
-          "resolves_signal": { "signal": "internal_audit_state", "value": "approved" }
+          "resolves_signal": {
+            "signal": "internal_audit_state",
+            "value": "approved"
+          }
         }
       }
     },
     {
       "id": "r:no_compliance_officer_seeds_designation",
       "version": "1.0",
-      "predicate": { "signal": "has_compliance_officer", "op": "eq", "value": false },
+      "predicate": {
+        "signal": "has_compliance_officer",
+        "op": "eq",
+        "value": false
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:designate_compliance_owner",
@@ -286,7 +408,10 @@
           "rationale_key": "plan.seed.designate_compliance_owner.rationale",
           "urgency": "critical",
           "effort_size": "small",
-          "resolves_signal": { "signal": "has_compliance_officer", "value": true }
+          "resolves_signal": {
+            "signal": "has_compliance_officer",
+            "value": true
+          }
         }
       }
     },
@@ -295,8 +420,16 @@
       "version": "1.0",
       "predicate": {
         "all": [
-          { "signal": "handles_personal_data", "op": "eq", "value": true },
-          { "signal": "policy_state", "op": "lte", "value": "verbal" }
+          {
+            "signal": "handles_personal_data",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "policy_state",
+            "op": "lte",
+            "value": "verbal"
+          }
         ]
       },
       "effect": {
@@ -310,7 +443,11 @@
     {
       "id": "r:personal_data_seeds_review",
       "version": "1.0",
-      "predicate": { "signal": "handles_personal_data", "op": "eq", "value": true },
+      "predicate": {
+        "signal": "handles_personal_data",
+        "op": "eq",
+        "value": true
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:review_personal_data_handling",
@@ -325,26 +462,62 @@
     {
       "id": "r:internal_audit_approved_scores_compliance",
       "version": "1.0",
-      "predicate": { "signal": "internal_audit_state", "op": "gte", "value": "approved" },
-      "effect": { "maturity_dimension_score": { "dimension": "compliance", "delta": 4 } }
+      "predicate": {
+        "signal": "internal_audit_state",
+        "op": "gte",
+        "value": "approved"
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "compliance",
+          "delta": 4
+        }
+      }
     },
     {
       "id": "r:compliance_officer_scores_compliance",
       "version": "1.0",
-      "predicate": { "signal": "has_compliance_officer", "op": "eq", "value": true },
-      "effect": { "maturity_dimension_score": { "dimension": "compliance", "delta": 3 } }
+      "predicate": {
+        "signal": "has_compliance_officer",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "compliance",
+          "delta": 3
+        }
+      }
     },
     {
       "id": "r:has_board_scores_leadership",
       "version": "1.0",
-      "predicate": { "signal": "has_board", "op": "eq", "value": true },
-      "effect": { "maturity_dimension_score": { "dimension": "leadership", "delta": 4 } }
+      "predicate": {
+        "signal": "has_board",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "leadership",
+          "delta": 4
+        }
+      }
     },
     {
       "id": "r:compliance_officer_scores_leadership",
       "version": "1.0",
-      "predicate": { "signal": "has_compliance_officer", "op": "eq", "value": true },
-      "effect": { "maturity_dimension_score": { "dimension": "leadership", "delta": 3 } }
+      "predicate": {
+        "signal": "has_compliance_officer",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "leadership",
+          "delta": 3
+        }
+      }
     },
     {
       "id": "r:dedicated_execution_capacity_scores_leadership",
@@ -352,14 +525,35 @@
       "predicate": {
         "signal": "execution_capacity",
         "op": "in",
-        "value": ["dedicated_budget", "dedicated_team_and_budget"]
+        "value": [
+          "dedicated_budget",
+          "dedicated_team_and_budget"
+        ]
       },
-      "effect": { "maturity_dimension_score": { "dimension": "leadership", "delta": 3 } }
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "leadership",
+          "delta": 3
+        }
+      }
     },
     {
-      "id": "r:no_board_seeds_governance_body",
+      "id": "r:no_board_seeds_governance_body_at_scale",
       "version": "1.0",
-      "predicate": { "signal": "has_board", "op": "eq", "value": false },
+      "predicate": {
+        "all": [
+          {
+            "signal": "has_board",
+            "op": "eq",
+            "value": false
+          },
+          {
+            "signal": "employee_count",
+            "op": "gte",
+            "value": 10
+          }
+        ]
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:establish_governance_oversight_body",
@@ -368,7 +562,10 @@
           "rationale_key": "plan.seed.establish_governance_oversight_body.rationale",
           "urgency": "medium",
           "effort_size": "medium",
-          "resolves_signal": { "signal": "has_board", "value": true }
+          "resolves_signal": {
+            "signal": "has_board",
+            "value": true
+          }
         }
       }
     },
@@ -377,8 +574,16 @@
       "version": "1.0",
       "predicate": {
         "all": [
-          { "signal": "has_gov_clients", "op": "eq", "value": true },
-          { "signal": "has_compliance_officer", "op": "eq", "value": false }
+          {
+            "signal": "has_gov_clients",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "has_compliance_officer",
+            "op": "eq",
+            "value": false
+          }
         ]
       },
       "effect": {
@@ -386,6 +591,209 @@
           "gap_id": "gap:gov_client_without_compliance_officer",
           "severity": "critical",
           "rationale_key": "plan.gap.gov_client_without_compliance_officer.rationale"
+        }
+      }
+    },
+    {
+      "id": "r:policy_documented_unapproved_seeds_approval",
+      "version": "1.0",
+      "predicate": {
+        "signal": "policy_state",
+        "op": "eq",
+        "value": "documented_unapproved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:approve_foundational_policies",
+          "pillar": "policies",
+          "title_key": "plan.seed.approve_foundational_policies.title",
+          "rationale_key": "plan.seed.approve_foundational_policies.rationale",
+          "urgency": "high",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "policy_state",
+            "value": "approved"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:org_structure_documented_unapproved_seeds_approval",
+      "version": "1.0",
+      "predicate": {
+        "signal": "org_structure_state",
+        "op": "eq",
+        "value": "documented_unapproved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:approve_org_structure",
+          "pillar": "organization",
+          "title_key": "plan.seed.approve_org_structure.title",
+          "rationale_key": "plan.seed.approve_org_structure.rationale",
+          "urgency": "high",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "org_structure_state",
+            "value": "approved"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:risk_register_documented_unapproved_seeds_approval",
+      "version": "1.0",
+      "predicate": {
+        "signal": "risk_register_state",
+        "op": "eq",
+        "value": "documented_unapproved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:approve_risk_register",
+          "pillar": "organization",
+          "title_key": "plan.seed.approve_risk_register.title",
+          "rationale_key": "plan.seed.approve_risk_register.rationale",
+          "urgency": "high",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "risk_register_state",
+            "value": "approved"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:internal_audit_documented_unapproved_seeds_approval",
+      "version": "1.0",
+      "predicate": {
+        "signal": "internal_audit_state",
+        "op": "eq",
+        "value": "documented_unapproved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:approve_internal_audit_plan",
+          "pillar": "organization",
+          "title_key": "plan.seed.approve_internal_audit_plan.title",
+          "rationale_key": "plan.seed.approve_internal_audit_plan.rationale",
+          "urgency": "high",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "internal_audit_state",
+            "value": "approved"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:gov_client_seeds_regulatory_scoping",
+      "version": "1.0",
+      "predicate": {
+        "signal": "has_gov_clients",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:confirm_regulatory_applicability",
+          "pillar": "compliance",
+          "title_key": "plan.seed.confirm_regulatory_applicability.title",
+          "rationale_key": "plan.seed.confirm_regulatory_applicability.rationale",
+          "urgency": "critical",
+          "effort_size": "small"
+        }
+      }
+    },
+    {
+      "id": "r:policy_approved_seeds_periodic_review",
+      "version": "1.0",
+      "predicate": {
+        "signal": "policy_state",
+        "op": "eq",
+        "value": "approved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:schedule_policy_review",
+          "pillar": "policies",
+          "title_key": "plan.seed.schedule_policy_review.title",
+          "rationale_key": "plan.seed.schedule_policy_review.rationale",
+          "urgency": "medium",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "policy_state",
+            "value": "reviewed_periodically"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:org_structure_approved_seeds_periodic_review",
+      "version": "1.0",
+      "predicate": {
+        "signal": "org_structure_state",
+        "op": "eq",
+        "value": "approved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:schedule_org_structure_review",
+          "pillar": "organization",
+          "title_key": "plan.seed.schedule_org_structure_review.title",
+          "rationale_key": "plan.seed.schedule_org_structure_review.rationale",
+          "urgency": "medium",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "org_structure_state",
+            "value": "reviewed_periodically"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:risk_register_approved_seeds_periodic_review",
+      "version": "1.0",
+      "predicate": {
+        "signal": "risk_register_state",
+        "op": "eq",
+        "value": "approved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:schedule_risk_register_review",
+          "pillar": "organization",
+          "title_key": "plan.seed.schedule_risk_register_review.title",
+          "rationale_key": "plan.seed.schedule_risk_register_review.rationale",
+          "urgency": "medium",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "risk_register_state",
+            "value": "reviewed_periodically"
+          }
+        }
+      }
+    },
+    {
+      "id": "r:internal_audit_approved_seeds_periodic_review",
+      "version": "1.0",
+      "predicate": {
+        "signal": "internal_audit_state",
+        "op": "eq",
+        "value": "approved"
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:schedule_internal_audit_review",
+          "pillar": "organization",
+          "title_key": "plan.seed.schedule_internal_audit_review.title",
+          "rationale_key": "plan.seed.schedule_internal_audit_review.rationale",
+          "urgency": "medium",
+          "effort_size": "small",
+          "resolves_signal": {
+            "signal": "internal_audit_state",
+            "value": "reviewed_periodically"
+          }
         }
       }
     }

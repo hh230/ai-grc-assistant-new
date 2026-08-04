@@ -79,20 +79,46 @@ def test_a_reported_seed_reproduces_the_identical_verdict() -> None:
     ]
 
 
-# --- the known real defect this harness found -------------------------------------------------
+# --- the real defect this harness found, and its fix ------------------------------------------
 
 
-def test_dangling_plan_dependencies_are_detected_and_reproducible() -> None:
-    """Documents a REAL product defect (not a harness artifact): a plan seed may declare
-    `depends_on` a seed whose own rule never fired, leaving a task blocked on a prerequisite that
-    will never exist. Asserting it is detectable keeps the finding from silently disappearing —
-    when the pack is fixed, this test is what proves the fix.
+def test_no_plan_references_an_item_it_does_not_contain() -> None:
+    """The defect this harness was built to catch, now asserted as FIXED.
+
+    A plan item declared `depends_on` a seed whose own rule never fired, leaving a reference that
+    resolves to nothing. It failed on ~15% of generated organizations.
+
+    This test previously asserted the OPPOSITE — that the defect was still detectable — with a
+    docstring saying "when the pack is fixed, this test is what proves the fix". It duly went red
+    the moment the scheduler was fixed, which is exactly what a tripwire is for. Turned around
+    rather than deleted, so the population sweep keeps guarding the fix: a rule that reintroduces
+    an unconditional dependency, or a scheduler that stops filtering, fails here immediately.
+
+    Root cause and fix: `governance_discovery/scheduler.py::_as_item`.
     """
     summary, store = run_campaign(count=200)
     seeds = store.failing_seeds(summary.run_id, name="plan_dependencies_exist")
     store.close()
-    assert seeds, "expected the known dangling-dependency defect to be detected"
+    assert not seeds, f"a plan referenced a missing item; reproduce with --seed {seeds[:3]}"
 
-    checked = check_scenario(seeds[0])
-    details = [v.detail for v in checked.violations if v.name == "plan_dependencies_exist"]
-    assert details and "depends on missing" in details[0]
+
+def test_the_dangling_dependency_invariant_is_still_wired_up() -> None:
+    """Guards the guard.
+
+    A population that passes proves nothing if the check was quietly removed — "no violations"
+    and "no checking" look identical from the outside. This asserts the invariant still exists and
+    still fires, by handing it a plan that genuinely is inconsistent.
+    """
+    from types import SimpleNamespace
+
+    from devteam_harness.invariants import _plan_dependencies_exist
+
+    inconsistent = SimpleNamespace(
+        plan_items=[
+            {"id": "seed:a", "depends_on_item_ids": ["seed:ghost"]},
+        ]
+    )
+    violations = _plan_dependencies_exist(inconsistent)
+    assert violations, "the invariant no longer fires on a genuinely inconsistent plan"
+    assert violations[0].name == "plan_dependencies_exist"
+    assert "depends on missing" in violations[0].detail

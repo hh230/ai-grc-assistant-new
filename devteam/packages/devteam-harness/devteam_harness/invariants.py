@@ -88,14 +88,17 @@ def _plan_item_ids_unique(applicability: Any) -> list[Violation]:
 def _plan_dependencies_exist(applicability: Any) -> list[Violation]:
     """Every `depends_on_item_ids` entry must name an item that is actually in the plan.
 
-    KNOWN FAILING — a real defect, not a harness artifact. Plan seeds are emitted by independent
-    rules in `packs/core.json`, and a seed may declare a dependency on a seed whose own rule did
-    not fire. Concretely: `r:policy_weak_seeds_drafting` (predicate `policy_state <= verbal`)
-    emits `seed:draft_foundational_policies`, which declares
+    FOUND AND FIXED — this is the first real product defect the harness caught. Plan seeds are
+    emitted by independent rules in `packs/core.json`, and a seed may declare a dependency on a
+    seed whose own rule did not fire: `r:policy_weak_seeds_drafting` (predicate
+    `policy_state <= verbal`) emits `seed:draft_foundational_policies`, which declares
     `depends_on: ["seed:formalize_org_structure"]` — but that item is only emitted by
     `r:org_structure_absent_seeds_formalization` (predicate `org_structure_state == absent`).
-    An organization with weak policies but a merely-verbal org structure gets the dependent task
-    blocked on a prerequisite that will never exist.
+    It failed on ~15% of generated organizations.
+
+    The root cause was in `governance_discovery/scheduler.py::_as_item`, which copied
+    `depends_on` verbatim into the persisted item even though the ordering pass had already
+    established those ids were not in the plan. Fixed there; this invariant now guards the fix.
     """
     known = {item["id"] for item in applicability.plan_items}
     out = []

@@ -31,6 +31,7 @@ import hashlib
 import hmac
 import json
 import time
+from collections.abc import Sequence
 from typing import Any
 
 from pipeline_contracts import TenantContext
@@ -41,14 +42,37 @@ DEFAULT_TTL_SECONDS = 60
 
 
 class ServiceAssertionIdentityProvider:
-    """Verifies a signed identity assertion minted by a trusted backend caller. `secret` must be
+    """Verifies a signed identity assertion minted by a trusted backend caller. The secret must be
     the same value the caller signs with (`GRC_API_SERVICE_SECRET` on both sides) — never logged,
-    never sent to a browser."""
+    never sent to a browser.
 
-    def __init__(self, secret: str) -> None:
-        if not secret:
-            raise ValueError("ServiceAssertionIdentityProvider requires a non-empty secret")
-        self._secret = secret.encode("utf-8")
+    **Accepts MORE THAN ONE secret, so the key can be rotated without downtime.** With a single
+    accepted value, rotation requires `apps/web` and `grc-api` to change at the same instant, and
+    any skew rejects every request in between — which means the first time you attempt a rotation
+    is during a security incident, and you discover then that you cannot.
+
+    Verification tries each accepted secret in order and succeeds if any matches. Rotation is
+    therefore:
+
+        1. add the new secret to grc-api's accepted list  → deploy
+        2. switch apps/web to MINT with the new secret    → deploy
+        3. remove the old secret from the accepted list   → deploy
+
+    Tokens live `DEFAULT_TTL_SECONDS` (60s) and are minted fresh per request, so the overlap
+    window need only exceed 60 seconds. At no point is a valid request rejected.
+
+    Every candidate is compared with `hmac.compare_digest` and the loop does not stop early on a
+    mismatch, so the number of secrets configured is not observable from response timing.
+    """
+
+    def __init__(self, secret: str | Sequence[str]) -> None:
+        candidates = [secret] if isinstance(secret, str) else list(secret)
+        # Stripped, not merely truthy: "   " is a truthy string but not a secret, and accepting it
+        # would turn a whitespace-only configuration value into a guessable signing key.
+        accepted = [value.strip().encode("utf-8") for value in candidates if value.strip()]
+        if not accepted:
+            raise ValueError("ServiceAssertionIdentityProvider requires at least one secret")
+        self._secrets = tuple(accepted)
 
     def resolve(self, credential: str) -> TenantContext | None:
         payload_b64, sep, signature_hex = credential.partition(".")
@@ -59,8 +83,13 @@ class ServiceAssertionIdentityProvider:
             payload_bytes = base64.urlsafe_b64decode(padded)
         except (ValueError, TypeError):
             return None
-        expected = hmac.new(self._secret, payload_bytes, hashlib.sha256).hexdigest()
-        if not hmac.compare_digest(expected, signature_hex):
+        # Constant work regardless of which secret matches, or whether any does: every candidate
+        # is compared, so response timing never reveals how many keys are in rotation.
+        matched = False
+        for secret in self._secrets:
+            expected = hmac.new(secret, payload_bytes, hashlib.sha256).hexdigest()
+            matched |= hmac.compare_digest(expected, signature_hex)
+        if not matched:
             return None
         try:
             payload: dict[str, Any] = json.loads(payload_bytes)

@@ -68,3 +68,72 @@ def test_secret_must_be_non_empty() -> None:
 
     with pytest.raises(ValueError):
         ServiceAssertionIdentityProvider(secret="")
+
+
+# --- rotation (B4) -----------------------------------------------------------------------------
+
+
+def test_a_token_signed_with_either_accepted_secret_is_valid() -> None:
+    """The property the whole rotation rests on. With one accepted value, rotation needs both
+    sides to change at the same instant and any skew rejects every request — so the first attempt
+    at rotating would happen during a security incident, and fail."""
+    provider = ServiceAssertionIdentityProvider(["new-secret", "old-secret"])
+
+    for secret in ("new-secret", "old-secret"):
+        token = mint_service_assertion(secret=secret, tenant_id="t-1", principal_id="p-1")
+        resolved = provider.resolve(token)
+        assert resolved is not None, f"a token signed with {secret!r} must be accepted"
+        assert resolved.tenant_id == "t-1"
+
+
+def test_a_retired_secret_stops_working_once_removed() -> None:
+    """Step 3 of the rotation must actually revoke. A rotation that never retires the old key is
+    not a rotation."""
+    token = mint_service_assertion(secret="old-secret", tenant_id="t-1")
+    assert ServiceAssertionIdentityProvider(["new-secret"]).resolve(token) is None
+
+
+def test_a_single_secret_string_is_still_accepted() -> None:
+    """Backwards compatible: existing callers pass one string."""
+    token = mint_service_assertion(secret="only", tenant_id="t-1")
+    assert ServiceAssertionIdentityProvider("only").resolve(token) is not None
+
+
+def test_blank_entries_never_become_accepted_keys() -> None:
+    """A trailing comma in a secret-manager value must not create an empty accepted secret."""
+    provider = ServiceAssertionIdentityProvider(["real", "", "  "])
+    assert provider.resolve(mint_service_assertion(secret="", tenant_id="t-1")) is None
+    assert provider.resolve(mint_service_assertion(secret="real", tenant_id="t-1")) is not None
+
+
+def test_no_secrets_at_all_is_refused_loudly() -> None:
+    """Failing closed at construction beats accepting everything at runtime."""
+    import pytest
+
+    with pytest.raises(ValueError):
+        ServiceAssertionIdentityProvider(["", "   "])
+
+
+def test_verification_does_not_short_circuit_on_the_first_match() -> None:
+    """Every candidate is compared, so response timing never reveals how many keys are in
+    rotation."""
+    import inspect
+
+    source = inspect.getsource(ServiceAssertionIdentityProvider.resolve)
+    assert "matched |=" in source, "the loop must not break early on a match"
+    assert "compare_digest" in source
+
+
+def test_the_env_var_expresses_a_rotation_as_a_comma_separated_list(monkeypatch: object) -> None:
+    """Rotation must be a configuration change, not a code change."""
+    from grc_api.app import GOVERNANCE_SERVICE_SECRET_ENV_VAR, service_secrets
+
+    monkeypatch.setenv(GOVERNANCE_SERVICE_SECRET_ENV_VAR, " new , old ,")  # type: ignore[attr-defined]
+    assert service_secrets() == ("new", "old")
+
+
+def test_an_unset_env_var_yields_no_secrets(monkeypatch: object) -> None:
+    from grc_api.app import GOVERNANCE_SERVICE_SECRET_ENV_VAR, service_secrets
+
+    monkeypatch.delenv(GOVERNANCE_SERVICE_SECRET_ENV_VAR, raising=False)  # type: ignore[attr-defined]
+    assert service_secrets() == ()

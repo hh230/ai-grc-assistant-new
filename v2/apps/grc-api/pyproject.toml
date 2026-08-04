@@ -24,6 +24,9 @@ dependencies = [
     "governance-store[postgres]",
     "governance-session",
     "governance-plan-execution",
+    # B3: connection pooling. Managed Postgres caps connections aggressively, so the ceiling is
+    # connections rather than CPU; a connection per operation is what falls over first under load.
+    "psycopg-pool>=3.2.0",
 ]
 
 [dependency-groups]

@@ -1,13 +1,135 @@
-# grc-api — Production Architecture
+# grc-api — Production Readiness
 
-**Status: PROPOSED — awaiting the owner's decisions. Nothing here is built or deployed.**
+**Status: B1–B4 CLOSED and merged. Remaining gaps are listed below, each with an owner.**
 
-This answers the twelve questions that must have answers *before* a deploy, so the deploy is an
-execution step rather than an experiment.
+The deploy is an execution step, not an experiment: every question has an answer, and every
+capability has a status that is either verified or explicitly not.
 
-Every answer below is grounded in what this repository actually contains today, not in general
-advice. Where the honest answer is "the code cannot do this yet", it says so, and the work needed
-is listed as a blocker rather than described as if it existed.
+---
+
+## Production Readiness Matrix
+
+Legend — ✅ built and verified · ⏳ decided, not yet built · ❌ not started · ⚠️ conditional · 👤 owner decision
+
+### Correctness
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| Outbox capture (atomic with state) | ✅ | `OutboxSink`, ADR 0043 |
+| **Outbox relay (delivery)** | ✅ | `python -m grc_api.relay` — live drain proved **38 → 0** undelivered |
+| Delivery-side consumer | ✅ | `StructuredLogPublisher` — one audit line per event: tenant, mission, trace |
+| Blocked-outbox handling | ✅ | stops, logs CRITICAL with row id + event name, exits non-zero |
+| Plan integrity (no dangling deps) | ✅ | fixed in `scheduler.py`; **1500/1500** organizations clean |
+
+### Availability
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| Liveness probe | ✅ | `/health` — does no I/O, by design |
+| **Readiness probe (connectivity)** | ✅ | `/health/ready` — `SELECT 1` on every distinct DSN |
+| **Readiness probe (schema)** | ✅ | verified against an un-migrated DB: *"missing table(s): missions, outbox"* |
+| Startup probe | ✅ | `/health/startup` — connectivity only, so a cold start isn't judged as failing |
+| **Connection pool** | ✅ | 40 concurrent borrowers → **peak 8 connections**, 0 errors |
+| Pool liveness check | ✅ | `check_connection` — no dead connection handed out after a failover |
+| Bounded pool wait | ✅ | `DB_POOL_TIMEOUT`, default 10s |
+| Read-only DB → 503 + `Retry-After` | ❌ | §11 — today an unhandled bare 500 |
+| Graceful shutdown (API) | ⏳ | the relay handles SIGTERM; the API relies on uvicorn's default |
+
+### Security
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| **Secret rotation, no downtime** | ✅ | proved Node→Python: both keys valid during overlap, old **revoked** after |
+| Rotation is configuration-only | ✅ | comma-separated `GRC_API_SERVICE_SECRET` on both sides |
+| Blank/whitespace secrets refused | ✅ | a defect caught by its own test — `"   "` had been accepted as a key |
+| Constant-time verification | ✅ | no short-circuit; key count not observable from response timing |
+| Secrets never logged | ✅ | absence + remediation logged, never the value |
+| Secrets in a managed store, no developer copy | 👤 | decision 4 — platform secret manager, least privilege, audit log |
+| TLS to Postgres (`sslmode=require`) | ⏳ | part of the DSN set at deploy time |
+| Private networking (DB not public) | ⏳ | platform configuration |
+| Least-privilege runtime DB role | ⏳ | must differ from the migration role |
+
+### Operability
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| Structured JSON logs | ✅ | relay + health; request-level logging still to add |
+| Audit trail outside the database | ✅ | the relay's `stream: "audit"` lines |
+| Metrics (mission duration, outbox depth) | ❌ | §6 — outbox depth is the alert that keeps B1 from recurring silently |
+| Alerting | ❌ | §6 — readiness, 5xx rate, outbox depth, connection count, disk |
+| Error tracking | ⏳ | Sentry exists for `apps/web`; add grc-api under a `service` tag |
+| Dockerfile | ❌ | none exists for grc-api today |
+| One-command migrate | ❌ | seven manual `psql -f` today |
+| **Migration ledger** | 👤 | decision 5: **approved** — amends ADR 0045, see below |
+
+### Resilience
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| Frontend degrades when the API is down | ✅ | fail-open reads; `/discovery` and `/plan` show an empty state, not an error |
+| Missions resumable / idempotent | ✅ | CLAUDE.md §8; a re-launch is a no-op on a running mission |
+| Backups + PITR | ⏳ | platform feature; **retention deferred** by decision 3 |
+| **Restore rehearsed** | ❌ | a backup never restored is not a backup — the measured restore time *is* the RTO |
+| Rollback (service) | ✅ | stateless; redeploy the previous digest |
+| Rollback (schema) | ⚠️ | no `down` scripts — safe **only** under the backward-compatibility rule (§8) |
+| Disaster-recovery runbook | ❌ | not written |
+
+### Scale
+
+| Capability | Status | Evidence / what remains |
+|---|---|---|
+| Horizontal scaling | ⏳ | stateless; start at 2 instances × 2 workers and size from measurement |
+| **Mission execution mode** | ⚠️ | **inline — stated explicitly below** |
+
+---
+
+## Mission execution: the mode is declared, not discovered
+
+Per the owner's ruling, B5 is **not a blocker** — but it must be explicit rather than found out:
+
+> **Current mode:** `INLINE` — a mission executes inside the request that launches it.
+> **Supported:** small deployments. `W` workers ⇒ at most `W` concurrent missions.
+> **Future:** a queue/worker behind `MissionLaunchPort` — ADR 0055's deferred decision. The seam
+> already exists, so this needs no change to any command.
+> **Trigger to build it:** mission duration × concurrency approaching worker capacity. That is why
+> mission-duration metrics (§6) are required rather than optional: without them this threshold is
+> crossed silently.
+
+---
+
+## Owner decisions — recorded
+
+| # | Decision | Ruling |
+|---|---|---|
+| 1 | Hosting region | KSA/Gulf, chosen for **data residency**, not latency. Platform still to select. |
+| 2 | Outbox | **Fix it. No deploy without it.** → done |
+| 3 | Backup retention | **Deferred** until the formal compliance policy exists |
+| 4 | Production secrets | **No developer holds them.** Platform secret manager, least privilege, audit log |
+| 5 | Migration ledger | **Approved** — "بعد سنة لن تتذكر: هل هذه القاعدة على Migration 31 أو 34؟" |
+
+**Decision 5 amends ADR 0045**, which chose idempotent DDL with *no* apply-tracking ledger. I have
+not edited that ADR: amending an accepted architectural decision is not something I do on my own.
+The ledger stays ❌ above until the ADR is amended and it is built.
+
+---
+
+## Order of work
+
+| | Step | Status |
+|---|---|---|
+| 1 | Outbox relay (B1) | ✅ |
+| 2 | Real health checks (B2) | ✅ |
+| 3 | Connection pool (B3) | ✅ |
+| 4 | Secret rotation (B4) | ✅ |
+| 5 | This matrix | ✅ |
+| 6 | Hosting platform decision | 👤 |
+| 7 | Dockerfile · migrate command · read-only→503 · request logging | ⬜ |
+| 8 | Deploy to **staging** | ⬜ |
+| 9 | Run the AI Harness against staging (`--team --http --browser`) | ⬜ |
+| 10 | **Only after the harness passes on staging** → production | ⬜ |
+
+Step 9 is why the harness exists: the first thing a new environment faces is the sweep, and the
+sweep already refuses to call an unreachable environment a pass.
 
 ---
 

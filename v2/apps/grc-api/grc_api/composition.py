@@ -91,10 +91,89 @@ class Tables:
     documents_view: str = DOCUMENTS_TABLE
 
 
-def _connect(*, autocommit: bool) -> Any:
-    import psycopg
+# --- connection pooling (B3) --------------------------------------------------------------
+#
+# Every store operation used to open its own connection. Managed Postgres caps connections
+# aggressively (often 20-100 on small tiers), so with W workers x concurrent requests the ceiling
+# is CONNECTIONS, not CPU — and connection setup cost was paid on every single operation.
+#
+# TWO pools, because `UnitOfWork` REJECTS an autocommit connection outright: autocommit makes
+# commit/rollback no-ops and would silently destroy the atomicity it exists to provide. Mixing the
+# two modes in one pool would hand a command a connection that cannot be transactional.
+#
+# Sizes are per PROCESS. Total connections = instances x workers x (POOL_MAX x 2), which must stay
+# under the database's cap with headroom for migrations and human access — see the production
+# architecture doc.
+POOL_MIN_SIZE = int(os.environ.get("DB_POOL_MIN_SIZE", "1"))
+POOL_MAX_SIZE = int(os.environ.get("DB_POOL_MAX_SIZE", "5"))
+# A caller that waits longer than this gets an error instead of hanging: a request queued forever
+# on a pool is indistinguishable from a hung service, and it will trip a health probe.
+POOL_TIMEOUT_SECONDS = float(os.environ.get("DB_POOL_TIMEOUT", "10"))
 
-    return psycopg.connect(database_dsn(), autocommit=autocommit)
+_pools: dict[bool, Any] = {}
+
+
+def _pool(*, autocommit: bool) -> Any:
+    """The pool for one connection mode, created on first use.
+
+    Lazy so that importing this module never opens a socket — a test that uses `Storage.MEMORY`,
+    and `--help`, must not require a database.
+    """
+    existing = _pools.get(autocommit)
+    if existing is not None:
+        return existing
+
+    from psycopg_pool import ConnectionPool
+
+    pool = ConnectionPool(
+        conninfo=database_dsn(),
+        min_size=POOL_MIN_SIZE,
+        max_size=POOL_MAX_SIZE,
+        timeout=POOL_TIMEOUT_SECONDS,
+        kwargs={"autocommit": autocommit},
+        # Hand out a connection only after checking it is alive. Without this, the first request
+        # after a database failover or an idle-timeout reaper gets a dead connection and fails for
+        # a reason that has nothing to do with it.
+        check=ConnectionPool.check_connection,
+        open=True,
+        name=f"grc-api-{'autocommit' if autocommit else 'transactional'}",
+    )
+    _pools[autocommit] = pool
+    return pool
+
+
+class _PooledConnection:
+    """A borrowed connection that RETURNS to the pool when closed instead of being destroyed.
+
+    Every call site already follows `connection = _connect(...)` / `finally: connection.close()`.
+    Rather than rewrite each one — and risk changing transaction handling while doing it — `close`
+    is redefined to mean "give it back". Everything else delegates untouched.
+
+    Deliberately no `__enter__`/`__exit__`: psycopg's own context manager CLOSES the connection on
+    exit, which would defeat pooling. Dunder lookup skips `__getattr__`, so `with connection:`
+    raises loudly here rather than quietly leaking a connection out of the pool.
+    """
+
+    def __init__(self, pool: Any, connection: Any) -> None:
+        self._pool = pool
+        self._connection = connection
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._connection, name)
+
+    def close(self) -> None:
+        self._pool.putconn(self._connection)
+
+
+def _connect(*, autocommit: bool) -> Any:
+    return _PooledConnection(_pool(autocommit=autocommit), _pool(autocommit=autocommit).getconn())
+
+
+def close_pools() -> None:
+    """Close every pool. For shutdown and for tests that must not leak connections between cases."""
+    while _pools:
+        _, pool = _pools.popitem()
+        pool.close()
 
 
 def open_autocommit_connection() -> Any:

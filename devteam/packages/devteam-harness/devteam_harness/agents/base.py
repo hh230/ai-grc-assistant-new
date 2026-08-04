@@ -63,3 +63,42 @@ class AgentReport:
 
     def bump(self, key: str, by: int = 1) -> None:
         self.stats[key] = self.stats.get(key, 0) + by
+
+
+def findings_for_seed(seed: int, agent: str) -> tuple[list[Finding], bool]:
+    """Run one organization and express whatever is wrong with it as findings.
+
+    THE single place a seed becomes findings. Verifier and Regression both need it and differ only
+    in WHICH seeds they run — Verifier a range, Regression a recorded list — so the conversion
+    lived twice, and a change to how a violation is reported had to be made in both or they would
+    quietly disagree about the same scenario.
+    """
+    from devteam_harness.campaign import check_scenario
+
+    checked = check_scenario(seed)
+    reproduce = f"python -m devteam_harness --seed {seed}"
+    findings: list[Finding] = []
+
+    if checked.result.error is not None:
+        findings.append(
+            Finding(
+                agent=agent,
+                severity=Severity.CRASH,
+                kind=checked.result.error_type or "error",
+                detail=checked.result.error,
+                reproduce=reproduce,
+                seed=seed,
+            )
+        )
+    findings.extend(
+        Finding(
+            agent=agent,
+            severity=Severity.INVARIANT,
+            kind=violation.name,
+            detail=violation.detail,
+            reproduce=reproduce,
+            seed=seed,
+        )
+        for violation in checked.violations
+    )
+    return findings, checked.ok

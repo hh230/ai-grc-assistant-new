@@ -13,6 +13,7 @@ from devteam_harness.agents import (
     pilot,
     regression,
     reporter,
+    saboteur,
     sentry,
     verifier,
 )
@@ -33,6 +34,7 @@ __all__ = [
     "regression",
     "reporter",
     "run_team",
+    "saboteur",
     "sentry",
     "verifier",
 ]

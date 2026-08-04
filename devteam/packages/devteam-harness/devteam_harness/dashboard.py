@@ -60,10 +60,20 @@ class Totals:
 
     @property
     def verdict(self) -> str:
+        """Whether this run says the PRODUCT is shippable.
+
+        Severity already encodes "would you block a release on this", so the verdict uses it
+        instead of counting findings. A run where all 42 pages rendered correctly is not a
+        failure because the dev server restarted underneath it and the harness recovered — that
+        happened, and calling it FAIL is the kind of inaccuracy that gets a gate ignored.
+
+        Coverage gaps override everything, including severity: they are graded SUSPICIOUS but they
+        mean we did not look, and not looking is never a pass.
+        """
         if self.coverage_gaps:
             # Not "PASS with a note" — a run with unmeasured coverage has not passed.
             return "INCOMPLETE"
-        return "FAIL" if self.findings else "PASS"
+        return "FAIL" if (self.crashes or self.invariants) else "PASS"
 
 
 def summarise(report: Report) -> Totals:

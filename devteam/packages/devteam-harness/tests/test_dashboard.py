@@ -39,6 +39,32 @@ def test_a_run_with_findings_fails() -> None:
     assert totals.crashes == 1
 
 
+def test_a_suspicious_only_run_passes_but_still_reports() -> None:
+    """Severity already encodes "would you block a release on this". A live sweep rendered all 42
+    pages correctly while the dev server restarted underneath it eight times; the harness
+    recovered every time, and calling that FAIL is the kind of inaccuracy that gets a gate
+    ignored. The findings are still listed — they are just not a product failure."""
+    noise = Finding(
+        agent="pilot", severity=Severity.SUSPICIOUS, kind="app_restarted_mid_sweep",
+        detail="the server under test restarted", reproduce="open /en/dashboard",
+    )
+    report = compile_report([_report(noise)])
+    totals = summarise(report)
+    assert totals.verdict == "PASS"
+    assert totals.suspicious == 1
+    # Reported, not swallowed.
+    assert "app_restarted_mid_sweep" in render_html(report)
+
+
+def test_an_invariant_violation_still_blocks() -> None:
+    """Only CRASH and INVARIANT block. This is the line between the two."""
+    violation = Finding(
+        agent="verifier", severity=Severity.INVARIANT, kind="plan_dependencies_exist",
+        detail="dangling dependency", reproduce="python -m devteam_harness --seed 1",
+    )
+    assert summarise(compile_report([_report(violation)])).verdict == "FAIL"
+
+
 def test_a_run_that_did_not_fully_execute_is_INCOMPLETE_not_PASS() -> None:
     """The lie this whole package exists to prevent: '0 failures' while a surface never ran."""
     skipped = Finding(

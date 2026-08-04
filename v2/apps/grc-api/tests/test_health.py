@@ -135,3 +135,58 @@ def test_a_probe_is_time_bounded() -> None:
     """A probe that never answers is indistinguishable from a dead process, which would trip
     liveness and restart a service whose only problem is a slow database."""
     assert 0 < health.PROBE_TIMEOUT_SECONDS <= 10
+
+
+# --- pooling (B3) -------------------------------------------------------------------------------
+
+
+def test_closing_a_pooled_connection_returns_it_instead_of_destroying_it() -> None:
+    """Every call site says `finally: connection.close()`. Redefining close to mean "give it back"
+    is what makes pooling work without rewriting — and risking — transaction handling at each one."""
+    from grc_api.composition import _PooledConnection
+
+    class _Pool:
+        def __init__(self) -> None:
+            self.returned: list[object] = []
+
+        def putconn(self, connection: object) -> None:
+            self.returned.append(connection)
+
+    pool, real = _Pool(), object()
+    _PooledConnection(pool, real).close()
+    assert pool.returned == [real], "close must return the connection to the pool"
+
+
+def test_a_pooled_connection_delegates_everything_else() -> None:
+    from grc_api.composition import _PooledConnection
+
+    class _Real:
+        autocommit = True
+
+        def execute(self, sql: str) -> str:
+            return f"ran {sql}"
+
+    wrapped = _PooledConnection(object(), _Real())
+    assert wrapped.autocommit is True, "UnitOfWork rejects autocommit connections by reading this"
+    assert wrapped.execute("SELECT 1") == "ran SELECT 1"
+
+
+def test_a_pooled_connection_refuses_to_be_used_as_a_context_manager() -> None:
+    """psycopg's own __exit__ CLOSES the connection, which would defeat pooling. Dunder lookup
+    skips __getattr__, so this raises loudly rather than quietly leaking one out of the pool."""
+    import pytest
+
+    from grc_api.composition import _PooledConnection
+
+    with pytest.raises(TypeError):
+        with _PooledConnection(object(), object()):
+            pass
+
+
+def test_the_pool_is_bounded_and_waits_are_not_unbounded() -> None:
+    """A request queued forever on a pool is indistinguishable from a hung service, and it will
+    trip a health probe."""
+    from grc_api.composition import POOL_MAX_SIZE, POOL_TIMEOUT_SECONDS
+
+    assert POOL_MAX_SIZE >= 1
+    assert 0 < POOL_TIMEOUT_SECONDS <= 60

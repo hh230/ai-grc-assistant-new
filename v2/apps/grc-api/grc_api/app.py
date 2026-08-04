@@ -67,12 +67,26 @@ from grc_api.service_identity import CompositeIdentityProvider, ServiceAssertion
 GOVERNANCE_SERVICE_SECRET_ENV_VAR = "GRC_API_SERVICE_SECRET"
 
 
+def service_secrets() -> tuple[str, ...]:
+    """Every secret this host currently ACCEPTS, newest first.
+
+    Comma-separated so a rotation can be expressed in configuration alone, with no code change and
+    no downtime: during the overlap both the outgoing and incoming keys are listed, and requests
+    signed with either are accepted. Tokens live 60 seconds, so the overlap need only outlast that.
+
+    Minting always uses the first entry. Blank entries are dropped, because a trailing comma in a
+    secret-manager value must not become an empty accepted key.
+    """
+    raw = os.environ.get(GOVERNANCE_SERVICE_SECRET_ENV_VAR, "")
+    return tuple(value.strip() for value in raw.split(",") if value.strip())
+
+
 def _default_identity_provider() -> IdentityProvider:
     dev_provider = development_identity_provider()
-    secret = os.environ.get(GOVERNANCE_SERVICE_SECRET_ENV_VAR)
-    if not secret:
+    secrets = service_secrets()
+    if not secrets:
         return dev_provider
-    return CompositeIdentityProvider((dev_provider, ServiceAssertionIdentityProvider(secret)))
+    return CompositeIdentityProvider((dev_provider, ServiceAssertionIdentityProvider(secrets)))
 
 API_TITLE = "Rasheed GRC API"
 API_VERSION = "0.1.0"

@@ -44,16 +44,33 @@ export interface ServiceAssertionSubject {
  * really has a governance plan can never be shown "you have none" because of a config error.
  */
 function serviceSecret(): string {
-  const secret = process.env.GRC_API_SERVICE_SECRET;
-  if (!secret) {
+  // Comma-separated to support rotation without downtime: grc-api ACCEPTS every listed secret,
+  // while this side always MINTS with the first. A rotation is therefore three deploys with no
+  // window in which a valid request is rejected —
+  //   1. add the new secret to grc-api's list      (it now accepts both)
+  //   2. put the new secret first here             (it now mints with the new one)
+  //   3. drop the old secret from grc-api's list   (the old key is revoked)
+  // Tokens live 60s, so each overlap need only outlast that.
+  //
+  // Blank entries are dropped rather than trusted: a trailing comma, or a whitespace-only value
+  // from a secret manager, must never become a guessable signing key.
+  const configured = (process.env.GRC_API_SERVICE_SECRET ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  const signingSecret = configured[0];
+  if (signingSecret === undefined) {
     logger.error("grc_api_service_secret_missing", undefined, {
       remediation:
         "Set GRC_API_SERVICE_SECRET (see apps/web/.env.example) to the same value the grc-api " +
-        "process uses. Required by /discovery, /plan, and Mission approvals (ADR 0066).",
+        "process uses. Required by /discovery, /plan, and Mission approvals (ADR 0066). " +
+        "During a key rotation this may be a comma-separated list; the FIRST entry is the one " +
+        "used to sign.",
     });
     throw new UpstreamError("The governance backend is not configured.");
   }
-  return secret;
+  return signingSecret;
 }
 
 /** Mints a fresh, short-lived signed assertion for the given subject. Server-only (uses `node:crypto`). */

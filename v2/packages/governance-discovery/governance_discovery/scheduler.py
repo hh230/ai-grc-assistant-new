@@ -67,6 +67,9 @@ def schedule(plan_seeds: list[PlanSeed], capacity: dict) -> list[dict]:
     placed: dict[str, PlanSeed] = {}
     result: list[dict] = []
 
+    def emit(seed: PlanSeed, bucket: str) -> dict:
+        return _as_item(seed, bucket, known_ids)
+
     # Multiple passes so a seed whose dependency appears later in urgency order still resolves
     # once that dependency is placed. Bounded by len(pending) — no unbounded loop.
     for _ in range(len(pending) + 1):
@@ -82,7 +85,7 @@ def schedule(plan_seeds: list[PlanSeed], capacity: dict) -> list[dict]:
             bucket = place(seed)
             scheduled_bucket[seed.id] = bucket
             placed[seed.id] = seed
-            result.append(_as_item(seed, bucket))
+            result.append(emit(seed, bucket))
             progressed = True
         pending = still_pending
         if not progressed:
@@ -91,12 +94,25 @@ def schedule(plan_seeds: list[PlanSeed], capacity: dict) -> list[dict]:
     # Any seeds left (a dependency cycle, or a dependency that never resolves) fail safe into the
     # final, uncapped bucket rather than being silently dropped (CLAUDE.md §6 pillar 16).
     for seed in pending:
-        result.append(_as_item(seed, BUCKET_ORDER[-1]))
+        result.append(emit(seed, BUCKET_ORDER[-1]))
 
     return result
 
 
-def _as_item(seed: PlanSeed, bucket: str) -> dict:
+def _as_item(seed: PlanSeed, bucket: str, known_ids: set[str]) -> dict:
+    """Materialise one scheduled seed.
+
+    `depends_on_item_ids` is filtered to seeds that are actually IN this plan, using the same
+    `known_ids` test the ordering pass uses above. A rule declares its dependency
+    unconditionally, but the seed it points at is emitted conditionally — so a plan can legitimately
+    contain the dependent without the prerequisite, which simply means the prerequisite is already
+    satisfied and there is nothing to sequence against.
+
+    Emitting the unfiltered list made the plan claim a dependency on an item that does not exist in
+    it: the ordering pass ignored the id while the persisted record kept it. Downstream consumers
+    (the plan board's grouping, item transitions, any future dependency-aware UI) then hold a
+    reference that resolves to nothing. Found by the harness's `plan_dependencies_exist` invariant.
+    """
     return {
         "id": seed.id,
         "pillar": seed.pillar,
@@ -104,7 +120,7 @@ def _as_item(seed: PlanSeed, bucket: str) -> dict:
         "rationale_key": seed.rationale_key,
         "priority": seed.urgency,
         "effort_size": seed.effort_size,
-        "depends_on_item_ids": list(seed.depends_on),
+        "depends_on_item_ids": [dep for dep in seed.depends_on if dep in known_ids],
         "timeframe_bucket": bucket,
         "resolves_signal": seed.resolves_signal,
     }

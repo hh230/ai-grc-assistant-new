@@ -81,3 +81,45 @@ def test_urgency_fills_buckets_before_lower_urgency_items() -> None:
     assert by_id["critical_a"]["timeframe_bucket"] == "week_1"
     assert by_id["critical_b"]["timeframe_bucket"] == "week_1"
     assert by_id["low_item"]["timeframe_bucket"] != "week_1"  # bumped out by higher-urgency items
+
+
+def test_a_dependency_that_is_not_in_the_plan_is_not_emitted() -> None:
+    """A plan must never reference an item it does not contain.
+
+    Rules declare `depends_on` unconditionally, but the seed they point at fires conditionally —
+    so a plan legitimately contains the dependent without the prerequisite, which just means the
+    prerequisite is already satisfied. The ordering pass already ignored those ids; the emitted
+    record kept them, leaving a reference that resolves to nothing.
+
+    Found in production rules by the AI Test Harness (`plan_dependencies_exist`), which reproduced
+    it on ~15% of generated organizations: `seed:draft_foundational_policies` fires whenever
+    `policy_state <= verbal`, while `seed:formalize_org_structure` fires only when
+    `org_structure_state == absent`.
+    """
+    seeds = [_seed("b", depends_on=("never_scheduled",))]
+    items = schedule(seeds, compute_capacity(make_signals(employee_count=3000)))
+    assert items[0]["depends_on_item_ids"] == []
+
+
+def test_a_dependency_that_IS_in_the_plan_is_still_emitted() -> None:
+    """The filter must not throw away real edges — that would silently drop the sequencing
+    information the plan board and any dependency-aware UI rely on."""
+    seeds = [_seed("a"), _seed("b", depends_on=("a", "never_scheduled"))]
+    items = schedule(seeds, compute_capacity(make_signals(employee_count=3000)))
+    by_id = {item["id"]: item for item in items}
+    assert by_id["b"]["depends_on_item_ids"] == ["a"]
+
+
+def test_every_emitted_dependency_resolves_to_an_item_in_the_same_plan() -> None:
+    """The invariant itself, at the source. Whatever the rules declare, the plan must be
+    internally consistent."""
+    seeds = [
+        _seed("a"),
+        _seed("b", depends_on=("a", "ghost")),
+        _seed("c", depends_on=("ghost", "phantom")),
+    ]
+    items = schedule(seeds, compute_capacity(make_signals(employee_count=3000)))
+    ids = {item["id"] for item in items}
+    for item in items:
+        for dependency in item["depends_on_item_ids"]:
+            assert dependency in ids, f"{item['id']} depends on missing {dependency}"

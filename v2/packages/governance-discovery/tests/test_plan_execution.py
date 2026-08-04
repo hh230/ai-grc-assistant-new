@@ -77,6 +77,12 @@ def test_confidence_reflects_direct_answers_fully_when_session_is_complete() -> 
         handles_personal_data=False,
         has_gov_clients=False,
         last_policy_review_date="2026-01-15",  # policy_state=approved makes this required too
+        # has_it_team=True now activates the technology and cloud packs, so a COMPLETE session for
+        # this organization includes their questions. That is the point of the change: a firm with
+        # an IT team is asked about technical maturity and data residency, where before it was
+        # asked neither and received neither piece of advice.
+        tech_team_maturity="approved",
+        cloud_data_residency_controlled="yes",
     )
     result = analyze(signals, _engine())
     designate_owner = next(

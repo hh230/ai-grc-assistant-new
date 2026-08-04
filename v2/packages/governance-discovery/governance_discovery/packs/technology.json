@@ -1,12 +1,32 @@
 {
   "pack_id": "pack:technology",
   "version": "1.0",
-  "labels": { "en": "Technology", "ar": "التقنية" },
-  "aliases": ["software company", "tech company", "شركة تقنية"],
+  "labels": {
+    "en": "Technology",
+    "ar": "التقنية"
+  },
+  "aliases": [
+    "software company",
+    "tech company",
+    "شركة تقنية"
+  ],
   "activation_predicate": {
     "any": [
-      { "signal": "primary_activity", "op": "eq", "value": "technology" },
-      { "signal": "provides_saas", "op": "eq", "value": true }
+      {
+        "signal": "primary_activity",
+        "op": "eq",
+        "value": "technology"
+      },
+      {
+        "signal": "provides_saas",
+        "op": "eq",
+        "value": true
+      },
+      {
+        "signal": "has_it_team",
+        "op": "eq",
+        "value": true
+      }
     ]
   },
   "questions": [
@@ -19,14 +39,24 @@
       "priority": 6,
       "stage": "sector_specific",
       "ui_hint": "buttons",
-      "options": ["absent", "verbal", "documented_unapproved", "approved", "reviewed_periodically"]
+      "options": [
+        "absent",
+        "verbal",
+        "documented_unapproved",
+        "approved",
+        "reviewed_periodically"
+      ]
     }
   ],
   "rules": [
     {
       "id": "r:tech_company_recommends_iso27001_baseline",
       "version": "1.0",
-      "predicate": { "signal": "employee_count", "op": "gte", "value": 11 },
+      "predicate": {
+        "signal": "employee_count",
+        "op": "gte",
+        "value": 11
+      },
       "effect": {
         "recommends_framework": {
           "framework_id": "framework:iso_27001",
@@ -40,8 +70,16 @@
       "version": "1.0",
       "predicate": {
         "all": [
-          { "signal": "tech_team_maturity", "op": "gte", "value": "documented_unapproved" },
-          { "signal": "employee_count", "op": "gte", "value": 11 }
+          {
+            "signal": "tech_team_maturity",
+            "op": "gte",
+            "value": "documented_unapproved"
+          },
+          {
+            "signal": "employee_count",
+            "op": "gte",
+            "value": 11
+          }
         ]
       },
       "effect": {
@@ -55,7 +93,11 @@
     {
       "id": "r:absent_tech_maturity_seeds_baseline",
       "version": "1.0",
-      "predicate": { "signal": "tech_team_maturity", "op": "eq", "value": "absent" },
+      "predicate": {
+        "signal": "tech_team_maturity",
+        "op": "eq",
+        "value": "absent"
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:adopt_technical_security_baseline",
@@ -70,8 +112,17 @@
     {
       "id": "r:mature_tech_team_scores_operational",
       "version": "1.0",
-      "predicate": { "signal": "tech_team_maturity", "op": "gte", "value": "approved" },
-      "effect": { "maturity_dimension_score": { "dimension": "cyber", "delta": 3 } }
+      "predicate": {
+        "signal": "tech_team_maturity",
+        "op": "gte",
+        "value": "approved"
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "cyber",
+          "delta": 3
+        }
+      }
     }
   ]
 }

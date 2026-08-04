@@ -1,9 +1,29 @@
 {
   "pack_id": "pack:cloud_provider",
   "version": "1.0",
-  "labels": { "en": "Cloud Provider", "ar": "مزوّد خدمات سحابية" },
-  "aliases": ["SaaS provider", "cloud infrastructure", "مزود سحابي"],
-  "activation_predicate": { "signal": "provides_saas", "op": "eq", "value": true },
+  "labels": {
+    "en": "Cloud Provider",
+    "ar": "مزوّد خدمات سحابية"
+  },
+  "aliases": [
+    "SaaS provider",
+    "cloud infrastructure",
+    "مزود سحابي"
+  ],
+  "activation_predicate": {
+    "any": [
+      {
+        "signal": "provides_saas",
+        "op": "eq",
+        "value": true
+      },
+      {
+        "signal": "has_it_team",
+        "op": "eq",
+        "value": true
+      }
+    ]
+  },
   "questions": [
     {
       "id": "q:cloud_data_residency_controlled",
@@ -14,14 +34,22 @@
       "priority": 5,
       "stage": "sector_specific",
       "ui_hint": "buttons",
-      "options": ["no", "partially", "yes"]
+      "options": [
+        "no",
+        "partially",
+        "yes"
+      ]
     }
   ],
   "rules": [
     {
       "id": "r:cloud_provider_recommends_nist_csf",
       "version": "1.0",
-      "predicate": { "signal": "provides_saas", "op": "eq", "value": true },
+      "predicate": {
+        "signal": "provides_saas",
+        "op": "eq",
+        "value": true
+      },
       "effect": {
         "recommends_framework": {
           "framework_id": "framework:nist_csf",
@@ -33,7 +61,14 @@
     {
       "id": "r:no_data_residency_control_seeds_controls",
       "version": "1.0",
-      "predicate": { "signal": "cloud_data_residency_controlled", "op": "in", "value": ["no", "partially"] },
+      "predicate": {
+        "signal": "cloud_data_residency_controlled",
+        "op": "in",
+        "value": [
+          "no",
+          "partially"
+        ]
+      },
       "effect": {
         "plan_seed": {
           "id": "seed:implement_data_residency_controls",
@@ -50,11 +85,24 @@
       "version": "1.0",
       "predicate": {
         "all": [
-          { "signal": "provides_saas", "op": "eq", "value": true },
-          { "signal": "employee_count", "op": "gte", "value": 50 }
+          {
+            "signal": "provides_saas",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "employee_count",
+            "op": "gte",
+            "value": 50
+          }
         ]
       },
-      "effect": { "maturity_dimension_score": { "dimension": "cyber", "delta": 2 } }
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "cyber",
+          "delta": 2
+        }
+      }
     }
   ]
 }

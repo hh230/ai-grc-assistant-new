@@ -9,10 +9,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from devteam_harness.agents import breaker, explorer, pilot, regression, sentry, verifier
+from devteam_harness.agents import (
+    breaker,
+    explorer,
+    pilot,
+    regression,
+    saboteur,
+    sentry,
+    verifier,
+)
 from devteam_harness.agents.base import AgentReport
 from devteam_harness.agents.reporter import Report, compile_report
 from devteam_harness.results import ResultStore
+from devteam_harness.surfaces.browser import BrowserSurface
 
 
 @dataclass
@@ -74,9 +83,13 @@ def run_team(
     # so a gate can refuse to treat "the app was down" as a pass.
     if http:
         reports.append(sentry.run())
+        # The Breaker's live arm: concurrency, double submits, hostile payloads at the API edge.
+        reports.append(saboteur.run())
 
     if browser:
         reports.append(pilot.run())
+        # Rapid clicks and multiple tabs — races that only exist once there is a real browser.
+        reports.append(saboteur.run_browser(BrowserSurface()))
 
     if store is not None and previous_run_id is not None:
         regression_report, _outcome = regression.from_store(store, previous_run_id)

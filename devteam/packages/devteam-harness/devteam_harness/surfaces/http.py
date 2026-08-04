@@ -13,6 +13,7 @@ that a release gate can refuse to treat as success.
 from __future__ import annotations
 
 import json
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
@@ -20,7 +21,11 @@ from http.cookiejar import CookieJar
 from typing import Any
 
 DEFAULT_BASE_URL = "http://localhost:3000"
-DEFAULT_TIMEOUT = 10.0
+# Generous because the usual target is a Next.js DEV server, where the first request to a route
+# compiles it on demand. At 10s this reported "no app answering" against an app that was merely
+# busy compiling — turning a slow response into a false coverage gap, which is the opposite of
+# what this surface is for.
+DEFAULT_TIMEOUT = 60.0
 
 
 @dataclass(frozen=True)
@@ -73,9 +78,20 @@ class HttpSurface:
         except Exception as exc:  # noqa: BLE001 — connection refused, DNS, timeout, TLS…
             return Response(status=0, body="", transport_error=f"{type(exc).__name__}: {exc}")
 
-    def available(self) -> bool:
-        """Whether the app is actually up. Callers must report a False result, never hide it."""
-        return self.request("GET", "/en/login").reached_app
+    def available(self, *, attempts: int = 3) -> bool:
+        """Whether the app is actually up. Callers must report a False result, never hide it.
+
+        Retries, because "down" and "restarting" are different facts and only one of them means
+        the coverage cannot run. A `next dev` worker that dies is respawned within seconds; giving
+        up on the first refused connection would report a coverage gap for an app that is fine two
+        seconds later.
+        """
+        for attempt in range(attempts):
+            if self.request("GET", "/en/login").reached_app:
+                return True
+            if attempt < attempts - 1:
+                time.sleep(3.0)
+        return False
 
     def login(self, email: str, password: str) -> Response:
         """Authenticate; the cookie jar carries the session for subsequent calls."""

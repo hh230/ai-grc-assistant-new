@@ -252,6 +252,76 @@ class BrowserSurface:
         finally:
             page.close()
 
+    # --- attacks ------------------------------------------------------------------------------
+
+    def hammer(self, path: str, *, clicks: int = 8) -> PageObservation:
+        """Click every button on a page as fast as the browser allows.
+
+        The impatient user. In a GRC product a double-fired "Approve" is not cosmetic — it is a
+        consequential action applied twice (CLAUDE.md §9). Buttons are clicked with `no_wait_after`
+        so the next click does not politely wait for the last one's navigation: waiting is exactly
+        what a real double-click does not do.
+        """
+        observation = PageObservation(
+            url=f"{path} (hammered x{clicks})",
+            locale="en",
+            viewport=self._viewport,
+            authenticated=self._authenticated,
+        )
+        page = self._context.new_page()
+        page.on("pageerror", lambda error: observation.page_errors.append(str(error)))
+        page.on("response", lambda response: _record_response(observation, response))
+        try:
+            self._load(page, path, observation)
+            if not observation.reached_app:
+                return observation
+            buttons = page.locator("button:visible")
+            for index in range(min(buttons.count(), 4)):
+                for _ in range(clicks):
+                    try:
+                        buttons.nth(index).click(timeout=1_500, no_wait_after=True)
+                    except Exception:  # noqa: BLE001, S112 — a click that misses is not the test
+                        continue
+            page.wait_for_timeout(1_500)
+            observation.visible_text = _visible_text(page)
+        finally:
+            page.close()
+        return observation
+
+    def parallel_tabs(self, path: str, *, tabs: int = 4) -> list[PageObservation]:
+        """Open the same page in several tabs at once, sharing one session.
+
+        What every real user does and almost no test does. Tabs share the session cookie, so this
+        is where a server that keeps per-user state in the wrong place gives way.
+        """
+        observations = [
+            PageObservation(
+                url=f"{path} (tab {index + 1}/{tabs})",
+                locale="en",
+                viewport=self._viewport,
+                authenticated=self._authenticated,
+            )
+            for index in range(tabs)
+        ]
+        pages = []
+        try:
+            for observation in observations:
+                page = self._context.new_page()
+                page.on("pageerror", lambda error, o=observation: o.page_errors.append(str(error)))
+                page.on("response", lambda response, o=observation: _record_response(o, response))
+                pages.append(page)
+
+            # Started before any is awaited, so the loads genuinely overlap rather than queue.
+            for page, observation in zip(pages, observations, strict=True):
+                self._load(page, path, observation)
+            for page, observation in zip(pages, observations, strict=True):
+                if observation.reached_app:
+                    observation.visible_text = _visible_text(page)
+        finally:
+            for page in pages:
+                page.close()
+        return observations
+
     def _sleep(self, milliseconds: int) -> None:
         """Wait via the browser's clock, since the surface has no other timer available."""
         page = self._context.new_page()

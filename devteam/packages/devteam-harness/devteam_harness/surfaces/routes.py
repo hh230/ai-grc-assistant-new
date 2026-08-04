@@ -25,7 +25,11 @@ PROTECTED: dict[str, tuple[str, ...]] = {
     # behaviour, not a leak. /api/auth/session is deliberately anonymous-safe and lives in
     # ANONYMOUS_SAFE below, where its *body* is checked instead of its status.
     "user_management": ("/api/account/profile",),
-    "organizations": ("/api/organizations",),
+    "organizations": (
+        "/api/organizations",
+        "/api/organizations/members",
+        "/api/organizations/invitations",
+    ),
     "reports": ("/api/reports",),
     "access_requests": ("/api/access-requests",),
     "missions": ("/api/missions",),
@@ -36,12 +40,25 @@ PROTECTED: dict[str, tuple[str, ...]] = {
     ),
     "discovery": ("/api/discovery/sessions/active",),
     "conversations": ("/api/conversations",),
+    "policy_intelligence": ("/api/policy-intelligence",),
+    "regulation_review": ("/api/regulation-review",),
+    "chat": ("/api/chat",),
 }
 
 # Endpoints that must stay reachable without a session — breaking these locks everyone out.
+# Password reset lives here by necessity: someone who cannot sign in is exactly who needs it, so
+# an over-eager auth guard on these routes locks out the only people they exist for.
 PUBLIC: dict[str, tuple[str, ...]] = {
-    "auth": ("/api/auth/login", "/api/auth/forgot-password"),
+    "auth": ("/api/auth/login", "/api/auth/logout"),
+    "password_reset": ("/api/auth/forgot-password", "/api/auth/reset-password"),
 }
+
+# Pages reachable WITHOUT a session. Checked separately from PAGES, which are all behind auth.
+PUBLIC_PAGES: tuple[str, ...] = (
+    "/login",
+    "/forgot-password",
+    "/reset-password",
+)
 
 # Endpoints that legitimately ANSWER an anonymous caller, where the risk is not the status code
 # but the body. Checking the status alone would call these leaks (a false positive); checking the

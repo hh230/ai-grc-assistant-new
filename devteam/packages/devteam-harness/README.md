@@ -112,6 +112,34 @@ Artifacts follow the **finding**, not the verdict — a console error does not m
 but still files a finding, and a finding whose reproduce line points at artifacts that were never
 written is a dead end.
 
+## The release gate
+
+A gate that fails on *any* finding would be red forever — one real product defect is known and
+unfixed — and a permanently red gate is ignored within a week. So the gate compares against a
+**committed baseline** and answers the only question that matters before a release:
+
+> did this change make anything **worse** than it already was?
+
+Three ways to be worse, all blocking: a finding kind not in the baseline (something new broke),
+a known kind occurring more often (something got worse), or a coverage gap (we did not actually
+check). A known kind that *disappears* does **not** block — a fix must never block a release — but
+it is reported, because a stale baseline is a gate that has quietly stopped gating.
+
+```bash
+uv run python -m devteam_harness --team --count 300 --baseline gate-baseline.json
+```
+
+Runs on every PR (`harness-gate` in CI) and is **blocking**, because it needs no app, no database,
+no LLM and no browser — it cannot flake on infrastructure. Raising the baseline is a deliberate act
+with a diff and a reviewer:
+
+```bash
+uv run python -m devteam_harness --team --count 300 --baseline gate-baseline.json --update-baseline
+```
+
+A baseline never records a coverage gap. It lists known *product defects*; baking in "this check
+did not run" is the blind spot this package exists to prevent.
+
 ## Known failing
 
 `plan_dependencies_exist` fails on roughly 17% of generated organizations: a plan item can depend

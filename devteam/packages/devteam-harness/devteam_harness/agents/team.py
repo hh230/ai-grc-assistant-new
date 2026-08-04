@@ -33,8 +33,18 @@ def run_team(
     store: ResultStore | None = None,
     previous_run_id: int | None = None,
     browser: bool = False,
+    http: bool = False,
 ) -> TeamOutcome:
     """Run the whole team once.
+
+    `http` and `browser` are opt-in because both need a RUNNING app, and the two gates this
+    harness serves are different. Every PR runs the in-process gate: deterministic, needs nothing,
+    and detects a regression in the product's own logic. A pre-release run adds `--http --browser`
+    against a deployed environment. Making them default would put a permanent "the app was not
+    running" gap into every CI run, and a gate that is always incomplete is a gate nobody reads.
+
+    Asking for a surface and not getting it is still REPORTED — the flag declares intent, it does
+    not lower the bar.
 
     `browser` is opt-in because Pilot drives a real Chromium over every page in both locales and
     both viewports — minutes, not seconds, against a dev server. A release gate should turn it on;
@@ -62,7 +72,8 @@ def run_team(
 
     # Sentry needs a running app. It reports its own absence as a finding rather than skipping,
     # so a gate can refuse to treat "the app was down" as a pass.
-    reports.append(sentry.run())
+    if http:
+        reports.append(sentry.run())
 
     if browser:
         reports.append(pilot.run())

@@ -200,6 +200,15 @@ class BrowserSurface:
         self._viewport = viewport
         self._authenticated = self._login()
 
+        # A sign-in attempted while the app is restarting fails for a reason that has nothing to
+        # do with credentials — and it costs an entire pass, since every page after it measures
+        # the login screen. Observed live: one pass reported a login failure while four worker
+        # restarts were happening around it. Page visits already recover from a restart; the
+        # sign-in that gates them must too, or the recovery protects everything except the one
+        # step that makes the rest meaningful.
+        if not self._authenticated and self._wait_for_recovery():
+            self._authenticated = self._login()
+
     def _login(self) -> bool:
         """Sign in through the real form. Returns whether a session was actually established.
 
@@ -208,6 +217,24 @@ class BrowserSurface:
         dev mode the first compile of a route routinely outlives any sane timeout — which made
         three of four passes in the first live run report a false login failure.
         """
+        for attempt in range(2):
+            response = self._attempt_login()
+            if response is None:
+                return False
+            if response.ok:
+                return True
+            if response.status != 429:
+                return False
+
+            # The app rate-limits sign-in (8 attempts / 60s) as brute-force protection — a real
+            # security control, and the harness must not fight it or misreport it as a broken
+            # login. It is the harness that trips it: one sign-in per (viewport, locale) plus one
+            # per restart recovery adds up. Honour Retry-After once, then give up.
+            if attempt == 0:
+                self._sleep(_retry_after_ms(response))
+        return False
+
+    def _attempt_login(self) -> Any:
         page = self._context.new_page()
         try:
             page.goto(f"{self.base_url}/en/login", timeout=self.timeout_ms)
@@ -219,9 +246,17 @@ class BrowserSurface:
                 timeout=self.timeout_ms,
             ) as intercepted:
                 page.click("button[type=submit]")
-            return bool(intercepted.value.ok)
-        except Exception:  # noqa: BLE001 — bad credentials, timeout, changed markup
-            return False
+            return intercepted.value
+        except Exception:  # noqa: BLE001 — timeout, changed markup, page died
+            return None
+        finally:
+            page.close()
+
+    def _sleep(self, milliseconds: int) -> None:
+        """Wait via the browser's clock, since the surface has no other timer available."""
+        page = self._context.new_page()
+        try:
+            page.wait_for_timeout(milliseconds)
         finally:
             page.close()
 
@@ -346,6 +381,24 @@ class BrowserSurface:
             page.close()
 
         return observation
+
+
+# Cap the wait so a hostile or misconfigured Retry-After cannot park the sweep for an hour.
+MAX_RETRY_AFTER_MS = 90_000
+
+
+def _retry_after_ms(response: Any) -> int:
+    """How long the app asked us to wait, from its Retry-After header.
+
+    Falls back to the app's own rate-limit window when the header is missing or unparseable —
+    guessing shorter would just burn the retry against a limit that has not reset.
+    """
+    header = response.headers.get("retry-after") if hasattr(response, "headers") else None
+    try:
+        seconds = int(str(header))
+    except ValueError:
+        seconds = 60
+    return min(max(seconds, 1) * 1000 + 1_000, MAX_RETRY_AFTER_MS)
 
 
 def _record_console(observation: PageObservation, message: Any) -> None:

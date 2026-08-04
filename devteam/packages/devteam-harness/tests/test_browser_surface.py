@@ -212,6 +212,42 @@ def test_a_failed_relogin_does_not_claim_the_session_died() -> None:
     assert "self._login() or self._authenticated" in source
 
 
+def test_a_rate_limited_signin_is_honoured_not_fought() -> None:
+    """The app rate-limits sign-in (8 attempts / 60s) as brute-force protection and answers 429
+    with Retry-After. The harness must honour that rather than fight a real security control or
+    misreport it as a broken login.
+
+    Defensive: the app resets the counter on a SUCCESSFUL sign-in, so the harness's own logins do
+    not normally trip it. This covers the path that exists, not one observed in a run."""
+    from devteam_harness.surfaces.browser import MAX_RETRY_AFTER_MS, _retry_after_ms
+
+    class _Response:
+        def __init__(self, value: object) -> None:
+            self.headers = {"retry-after": value} if value is not None else {}
+
+    assert _retry_after_ms(_Response("30")) == 31_000
+    # Missing or junk header falls back to the app's own window; guessing shorter would burn the
+    # retry against a limit that has not reset.
+    assert _retry_after_ms(_Response(None)) == 61_000
+    assert _retry_after_ms(_Response("soon")) == 61_000
+    # Capped, so a hostile or misconfigured header cannot park the sweep for an hour.
+    assert _retry_after_ms(_Response("99999")) == MAX_RETRY_AFTER_MS
+
+
+def test_signin_itself_recovers_from_a_restart() -> None:
+    """A sign-in attempted while the app is restarting fails for a reason unrelated to
+    credentials, and it costs an ENTIRE pass — every page after it measures the login screen.
+    Observed live: one pass reported a login failure with four worker restarts around it. Page
+    visits already recover; the sign-in that gates them must too, or recovery protects everything
+    except the step that makes the rest meaningful."""
+    import inspect
+
+    from devteam_harness.surfaces import browser
+
+    source = inspect.getsource(browser.BrowserSurface.use_viewport)
+    assert "self._wait_for_recovery()" in source
+
+
 def test_waiting_for_recovery_is_bounded() -> None:
     """An app that is genuinely down must not be waited on forever: converting a hard failure
     into a hang reads as 'still running', which is worse than a red result."""

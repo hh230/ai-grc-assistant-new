@@ -40,12 +40,21 @@ HTTP sweep and failed the browser sweep.
 | Agent | Role |
 |---|---|
 | **Explorer** | generates untried scenarios and measures whether coverage is still growing |
-| **Breaker** | attacks with hostile inputs and protocol abuse |
+| **Breaker** | attacks the engine in-process with hostile inputs and protocol abuse |
+| **Saboteur** | attacks the *running* app: concurrent requests, double submits, rapid clicks, multiple tabs, hostile payloads |
 | **Sentry** | sweeps every protected route as an anonymous caller — the confidentiality check |
 | **Pilot** | flies a real browser over every page in `{en, ar} × {desktop, mobile}` |
 | **Verifier** | checks results against the invariants |
 | **Regression** | replays every seed that has ever failed |
 | **Reporter** | classifies findings and writes reproduction steps |
+
+Breaker and Saboteur are deliberately split. In-process attacks find logic defects; only a live
+system with a server, a session and a browser can produce **races** — a double-submitted approval,
+two tabs on one record, twenty requests at once. Neither can find the other's bugs.
+
+For an attack agent, **rejection is success**: a 400 or 403 means the boundary held, so it reports
+only when the app crashes, leaks, or *accepts* something it should have refused. An attack agent
+that flags every correct rejection buries the one attack that actually landed.
 
 Severity is graded, not uniform. Anonymous data exposure is `CRASH` — in a multi-tenant GRC product
 a cross-tenant read is the worst defect that can ship. Console noise is `SUSPICIOUS`. **A harness
@@ -87,6 +96,15 @@ uv run python -m devteam_harness --team --http --browser --html run.html
 
 Asking for a surface and not getting it is still reported — the flag declares intent, it does not
 lower the bar.
+
+## What is covered
+
+Every product area a release gate cares about — **18 areas, 25 protected routes, 21 pages** — each
+in **English and Arabic**, at **desktop and mobile** widths:
+
+Dashboard · Risk Register · Documents · Evidence · Policies · Frameworks · Notifications ·
+User Management · Organizations (members, invitations) · Password Reset · Access Requests ·
+Missions · Governance Plan · Discovery · Reports · Policy Intelligence · Regulation Review · Chat
 
 ## Determinism
 

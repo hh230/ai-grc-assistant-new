@@ -8,7 +8,7 @@ from __future__ import annotations
 import time
 from dataclasses import asdict, dataclass
 
-from devteam_harness import invariants
+from devteam_harness import decisions, invariants
 from devteam_harness.organizations import generate_organization
 from devteam_harness.results import ResultStore, RunSummary
 from devteam_harness.runner import DEFAULT_MAX_TURNS, ScenarioResult, run_discovery
@@ -55,6 +55,13 @@ def check_scenario(seed: int, *, max_turns: int = DEFAULT_MAX_TURNS) -> CheckedS
             )
         else:
             violations.extend(invariants.check_applicability(session.applicability))
+            # Product-quality judgement, kept in its own namespace so a release conversation can
+            # tell "the system is broken" apart from "the system works and its advice is wrong".
+            context = decisions.context_from(result.turns, session.applicability)
+            violations.extend(
+                invariants.Violation(f"decision:{finding.rule}", finding.detail)
+                for finding in decisions.verify_decision(context)
+            )
 
         if organization.tenant_id not in store.organization_baselines:
             violations.append(

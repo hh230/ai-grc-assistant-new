@@ -31,7 +31,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from devteam_harness.decisions import MATURITY_LADDER, PlanContext, verify_decision
-from devteam_harness.intent import (
+from devteam_harness.investigation.intent import (
     IntentVerdict,
     SemanticDistance,
     fire_rate,
@@ -325,7 +325,7 @@ def evaluate(
     analyse: Any,
 ) -> Outcome:
     """Apply one candidate to a COPY of the pack and replay the whole population against it."""
-    from devteam_harness.diff import diff_plans
+    from devteam_harness.investigation.diff import diff_plans
 
     mutated = copy.deepcopy(pack)
     candidate.mutate(mutated)

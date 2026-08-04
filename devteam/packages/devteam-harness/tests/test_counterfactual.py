@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from devteam_harness.counterfactual import (
+from devteam_harness.investigation.counterfactual import (
     IMPROVEMENT_CHURN_LIMIT,
     Perturbation,
     PlanShape,

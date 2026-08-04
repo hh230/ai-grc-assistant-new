@@ -35,6 +35,21 @@ while displaying "something went wrong" — so a status-code sweep reports a hea
 the user sees as broken. Every crash this project shipped a fix for recently would have passed the
 HTTP sweep and failed the browser sweep.
 
+## Two layers, and the line between them
+
+| | contract |
+|---|---|
+| `devteam_harness/*` | **the gate** — runs on every PR, blocks a release, must never flake |
+| `devteam_harness/investigation/*` | **instruments** — run by hand when something is wrong; may be slow, may need an LLM or a live app, and never gate anything |
+
+The line is enforced, not remembered: `tests/test_architecture.py` runs the gate in a clean
+subprocess and asserts that **every** non-investigation module is actually loaded, and that **no**
+instrument is. A module that is neither must be moved or deleted.
+
+That guard exists because an audit found the opposite: six modules (~1,700 lines, 29% of the
+package) were reachable only from their own tests — which reads as dead code to anyone auditing it
+and as tested system behaviour to anyone reading the suite. Neither was true.
+
 ## The agent team
 
 | Agent | Role |

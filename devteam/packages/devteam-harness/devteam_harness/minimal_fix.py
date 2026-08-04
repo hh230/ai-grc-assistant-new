@@ -31,6 +31,14 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from devteam_harness.decisions import MATURITY_LADDER, PlanContext, verify_decision
+from devteam_harness.intent import (
+    IntentVerdict,
+    SemanticDistance,
+    fire_rate,
+    parse_target,
+    site_of,
+    verify_intent,
+)
 
 # Comparison operators the pack's predicates use. A candidate may only ever move a predicate to
 # another operator the engine already understands.
@@ -38,6 +46,16 @@ COMPARISON_OPS: tuple[str, ...] = ("eq", "lte", "lt", "gte", "gt")
 
 # A flat penalty for having ANY regression, on top of the per-defect one — see `Outcome.score`.
 REGRESSION_CATEGORY_PENALTY = 5
+
+# What each level of semantic drift costs a candidate. HIGH is deliberately large enough to sink an
+# otherwise perfect candidate: an edit that destroys a rule's meaning is not a fix, however good
+# its numbers look.
+INTENT_PENALTY: dict[SemanticDistance, float] = {
+    SemanticDistance.NONE: 0.0,
+    SemanticDistance.LOW: 0.5,
+    SemanticDistance.MEDIUM: 4.0,
+    SemanticDistance.HIGH: 12.0,
+}
 
 # Priorities a plan seed may carry, worst-first.
 PRIORITIES: tuple[str, ...] = ("critical", "high", "medium", "low")
@@ -64,6 +82,7 @@ class Outcome:
     fixed: dict[str, int] = field(default_factory=dict)
     introduced: dict[str, int] = field(default_factory=dict)
     plans_changed: int = 0
+    intent: IntentVerdict = field(default_factory=IntentVerdict)
 
     @property
     def benefit(self) -> int:
@@ -90,12 +109,20 @@ class Outcome:
         Blast radius breaks ties: between two changes that fix the same defects with no regression,
         the one that disturbs fewer plans is the safer edit.
         """
-        penalty = (self.regression * 3) + (REGRESSION_CATEGORY_PENALTY if self.regression else 0)
+        penalty: float = (self.regression * 3) + (
+            REGRESSION_CATEGORY_PENALTY if self.regression else 0
+        )
+        # Semantic distance is weighted like a regression, because it IS one — just to the rule's
+        # meaning rather than to its output. The finder's own top candidate,
+        # `policy_state lte reviewed_periodically`, fixes three defects with zero regression by
+        # making the rule fire for everyone: statistically excellent, semantically vandalism.
+        penalty += INTENT_PENALTY[self.intent.distance]
         return self.benefit - penalty - (self.plans_changed * 0.01)
 
     @property
     def clean(self) -> bool:
-        return self.benefit > 0 and self.regression == 0
+        """Worth showing a human: it helps, breaks nothing, and is still the same rule."""
+        return self.benefit > 0 and self.regression == 0 and self.intent.preserved
 
     def render(self) -> str:
         lines = [
@@ -103,6 +130,7 @@ class Outcome:
             f"    benefit    : +{self.benefit}  {self.fixed or ''}",
             f"    regression : {self.regression}  {self.introduced or ''}",
             f"    blast      : {self.plans_changed} plan(s) changed",
+            f"    intent     : {self.intent.render()}",
             f"    score      : {round(self.score, 2)}",
         ]
         return "\n".join(lines)
@@ -305,6 +333,7 @@ def evaluate(
 
     fixed: list[str] = []
     introduced: list[str] = []
+    after_plans: dict[int, list[dict[str, Any]]] = {}
 
     for scenario in scenarios:
         try:
@@ -314,6 +343,7 @@ def evaluate(
             continue
 
         after = findings_for(applicability, scenario)
+        after_plans[scenario.seed] = list(applicability.plan_items)
         before = baseline.findings.get(scenario.seed, [])
 
         before_counts, after_counts = _tally(before), _tally(after)
@@ -331,7 +361,38 @@ def evaluate(
 
     outcome.fixed = _tally(fixed)
     outcome.introduced = _tally(introduced)
+    outcome.intent = _verify_intent(candidate, pack, baseline.plans, after_plans)
     return outcome
+
+
+def _verify_intent(
+    candidate: Candidate,
+    pack: dict[str, Any],
+    before_plans: dict[int, list[dict[str, Any]]],
+    after_plans: dict[int, list[dict[str, Any]]],
+) -> IntentVerdict:
+    """Ask whether the edit is still the rule it claims to be.
+
+    Only thresholds are judged: a priority change or a dropped dependency alters what the rule
+    DOES, never the population it applies to, so selectivity and naming are not the right lens for
+    them. Judging them by it would invent findings.
+    """
+    if candidate.space != "threshold":
+        return IntentVerdict()
+
+    site = site_of(pack, candidate.rule_id)
+    target = parse_target(candidate.description)
+    if site is None or target is None or not site.seed_id:
+        return IntentVerdict()
+
+    op, value = target
+    return verify_intent(
+        identifier=site.identifier,
+        op=op,
+        value=value,
+        rate_before=fire_rate(before_plans, site.seed_id),
+        rate_after=fire_rate(after_plans, site.seed_id),
+    )
 
 
 def search(

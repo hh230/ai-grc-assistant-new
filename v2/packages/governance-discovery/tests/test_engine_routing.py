@@ -90,6 +90,10 @@ def test_is_concluded_true_once_every_required_question_across_active_packs_is_a
         tech_team_maturity="approved",
         cloud_data_residency_controlled="yes",
         last_policy_review_date="2026-01-15",  # policy_state=approved makes this eligible+required
+        ownership_type="private",
+        outsources_critical_functions=False,
+        operates_critical_infrastructure=False,
+        data_geography="ksa_only",
     )
     answered = frozenset(
         {
@@ -108,6 +112,12 @@ def test_is_concluded_true_once_every_required_question_across_active_packs_is_a
             "q:tech_team_maturity",
             "q:cloud_data_residency_controlled",
             "q:last_policy_review_date",
+            "q:ownership_type",
+            "q:outsources_critical_functions",
+            # Both are in scope for this organization: technology is a plausible
+            # critical-infrastructure sector, and it has an IT team, so data location matters.
+            "q:operates_critical_infrastructure",
+            "q:data_geography",
         }
     )
     state = DiscoverySessionState(signals=signals, answered_question_ids=answered)

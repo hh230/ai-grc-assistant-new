@@ -123,6 +123,12 @@ def _signal_support(signals: SignalSet, keys: frozenset[str]) -> float:
 
 
 def analyze(signals: SignalSet, engine: DiscoveryEngine) -> Applicability:
+    # Everything the organization told us, plus every obligation that implies (`derivation.py`).
+    # Rules key on the DERIVED properties — `subject_to_nca`, not `primary_activity == government`
+    # — which is what stops the rule set from having to be rewritten per sector.
+    # Safe to shadow: no derived key is any question's `writes_signal`, so the coverage/confidence
+    # computation below cannot mistake an inference for an answer.
+    signals = engine.derivation_outcome(signals).signals
     active_packs: list[KnowledgePack] = engine.active_packs(signals)
 
     frameworks: dict[str, dict] = {}

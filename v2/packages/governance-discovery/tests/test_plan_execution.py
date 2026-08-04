@@ -83,6 +83,10 @@ def test_confidence_reflects_direct_answers_fully_when_session_is_complete() -> 
         # asked neither and received neither piece of advice.
         tech_team_maturity="approved",
         cloud_data_residency_controlled="yes",
+        ownership_type="private",
+        outsources_critical_functions=False,
+        operates_critical_infrastructure=False,
+        data_geography="ksa_only",
     )
     result = analyze(signals, _engine())
     designate_owner = next(

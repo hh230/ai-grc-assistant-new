@@ -1596,7 +1596,11 @@
       "additional_context_note": "Anything else you'd like to add about your current situation?",
       "tech_team_maturity": "How would you describe your technology team's security practices?",
       "cloud_data_residency_controlled": "Do you control where your customers' data is physically stored?",
-      "has_board": "Does your organization have a board or a formal governance oversight body?"
+      "has_board": "Does your organization have a board or a formal governance oversight body?",
+      "ownership_type": "How is your organization owned?",
+      "outsources_critical_functions": "Do you rely on external providers for functions your business depends on?",
+      "operates_critical_infrastructure": "Does your organization operate infrastructure the country depends on?",
+      "data_geography": "Where is your regulated data stored?"
     }
   },
   "plan": {
@@ -1676,6 +1680,22 @@
       "establish_governance_oversight_body": {
         "title": "Establish a governance oversight body",
         "rationale": "No board or steering group currently owns governance decisions. An oversight body is what gives policies, risk acceptance and audit findings somewhere to be decided (ISO 27001 §5.1, §9.3)."
+      },
+      "align_with_sama_csf": {
+        "title": "Align with the SAMA Cyber Security Framework",
+        "rationale": "You provide financial services, so SAMA's Cyber Security Framework applies to you. Map your current controls against it and close the differences."
+      },
+      "establish_cross_border_transfer_safeguards": {
+        "title": "Put safeguards around personal data leaving the Kingdom",
+        "rationale": "You handle personal data that moves outside Saudi Arabia. PDPL restricts that transfer — document the legal basis and the safeguards before it continues."
+      },
+      "harden_critical_infrastructure_controls": {
+        "title": "Raise your controls to critical-infrastructure level",
+        "rationale": "You operate critical infrastructure, which carries the heaviest obligations in the national regime. Your technical controls need to be assessed against that bar, not the general one."
+      },
+      "establish_third_party_risk_management": {
+        "title": "Manage the risk in what you outsource",
+        "rationale": "You rely on third parties for critical functions. The work moves out; the accountability doesn't — you need a way to assess and monitor those providers."
       }
     },
     "gap": {
@@ -1898,6 +1918,19 @@
         "government_license": "Government license",
         "industry_specific_license": "Industry-specific license",
         "none": "None of these"
+      },
+      "ownershipType": {
+        "private": "Privately owned",
+        "publicly_listed": "Publicly listed",
+        "government_owned": "Government owned",
+        "foreign_owned": "Foreign owned",
+        "joint_venture": "Joint venture"
+      },
+      "dataGeography": {
+        "ksa_only": "Inside Saudi Arabia only",
+        "gcc": "Within the GCC",
+        "international": "Outside the region",
+        "unknown": "We're not sure"
       }
     },
     "activating": {
@@ -2105,6 +2138,12 @@
       "upload": "Upload a document to start your first AI analysis",
       "invite": "Invite your team from Settings",
       "frameworks": "Browse the frameworks and controls Rasheed tracks"
+    }
+  },
+  "gap": {
+    "rationale": {
+      "unsafeguarded_cross_border_transfer": "Personal data leaves the Kingdom without documented transfer safeguards.",
+      "critical_infrastructure_unassured": "Critical infrastructure is operated without an approved internal audit to assure its controls."
     }
   }
 }

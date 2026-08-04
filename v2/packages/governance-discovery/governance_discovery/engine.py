@@ -11,6 +11,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from governance_discovery.derivation import (
+    DerivationOutcome,
+    apply_derivations,
+    derivations_from_packs,
+)
 from governance_discovery.pack import KnowledgePack, Question
 from governance_discovery.predicate import evaluate, references_signal
 from governance_discovery.signal import SignalSet
@@ -41,6 +46,20 @@ class DiscoverySessionState:
 class DiscoveryEngine:
     def __init__(self, packs: dict[str, KnowledgePack]):
         self._packs = packs
+        self._derivations = derivations_from_packs(packs)
+
+    def resolve(self, signals: SignalSet) -> SignalSet:
+        """What the organization told us, PLUS everything that implies (see `derivation.py`).
+
+        Tier A needs this as much as Tier B: a derived property like `subject_to_sama` decides
+        which packs open and therefore which questions get asked, so deriving only at conclusion
+        would mean the interview never asks the sector questions its own answers called for.
+        """
+        return apply_derivations(signals, self._derivations).signals
+
+    def derivation_outcome(self, signals: SignalSet) -> DerivationOutcome:
+        """The same inference, with its provenance — for explaining an applicability decision."""
+        return apply_derivations(signals, self._derivations)
 
     def pack_by_id(self, pack_id: str) -> KnowledgePack | None:
         """Looked up across every loaded pack — used to resolve a persisted
@@ -62,6 +81,7 @@ class DiscoveryEngine:
     def active_packs(self, signals: SignalSet) -> list[KnowledgePack]:
         """Recomputed from the live SignalSet on every call — this is what makes pack activation
         (and therefore the whole interview) adaptive without a separate 'reroute' algorithm."""
+        signals = self.resolve(signals)
         return [
             pack
             for pack in self._packs.values()
@@ -69,14 +89,15 @@ class DiscoveryEngine:
         ]
 
     def eligible_questions(self, state: DiscoverySessionState) -> list[Question]:
-        active = self.active_packs(state.signals)
+        signals = self.resolve(state.signals)
+        active = self.active_packs(signals)
         eligible: list[Question] = []
         seen_ids: set[str] = set()
         for pack in active:
             for question in pack.questions:
                 if question.id in state.answered_question_ids or question.id in seen_ids:
                     continue
-                if evaluate(question.applicability_predicate, state.signals):
+                if evaluate(question.applicability_predicate, signals):
                     eligible.append(question)
                     seen_ids.add(question.id)
         return eligible
@@ -126,12 +147,16 @@ class DiscoveryEngine:
         approved policy) must never permanently cap confidence below 1.0. This is the basis for
         both Tier A's implicit progress and Tier B's `confidence_score` (ADR 0066 §2.4), so both
         use one shared definition of 'required'."""
-        active = self.active_packs(signals)
+        resolved = self.resolve(signals)
+        active = self.active_packs(resolved)
         required = [
             q
             for pack in active
             for q in pack.questions
-            if self._counts_as_required(q) and evaluate(q.applicability_predicate, signals)
+            if self._counts_as_required(q) and evaluate(q.applicability_predicate, resolved)
         ]
+        # Scope is judged against the DERIVED set (an inferred obligation can bring a question
+        # into scope), but answeredness against the ORIGINAL set only. An inference is not an
+        # answer, and letting one count as one would inflate confidence with our own guesses.
         answered = [q for q in required if signals.has(q.writes_signal)]
         return len(answered), len(required)

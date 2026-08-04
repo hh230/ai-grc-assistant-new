@@ -11,6 +11,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from governance_discovery.derivation import Derivation, parse_derivation
 from governance_discovery.predicate import Expr
 from governance_discovery.signal import ValueType
 
@@ -101,6 +102,9 @@ class KnowledgePack:
     activation_predicate: Expr | None = None
     questions: tuple[Question, ...] = ()
     rules: tuple[Rule, ...] = ()
+    # What this pack's answers IMPLY (see `derivation.py`). Kept as pack data so a new sector is a
+    # data change — the whole point of not keying rules on sector directly.
+    derivations: tuple[Derivation, ...] = ()
 
     @property
     def is_always_active(self) -> bool:
@@ -173,6 +177,7 @@ def pack_from_dict(raw: dict) -> KnowledgePack:
         activation_predicate=raw.get("activation_predicate"),
         questions=tuple(_parse_question(q) for q in raw.get("questions", ())),
         rules=tuple(_parse_rule(r) for r in raw.get("rules", ())),
+        derivations=tuple(parse_derivation(d) for d in raw.get("derivations", ())),
     )
 
 

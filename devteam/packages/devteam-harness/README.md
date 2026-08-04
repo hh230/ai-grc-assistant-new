@@ -162,8 +162,19 @@ uv run python -m devteam_harness --team --count 300 --baseline gate-baseline.jso
 A baseline never records a coverage gap. It lists known *product defects*; baking in "this check
 did not run" is the blind spot this package exists to prevent.
 
-## Known failing
+## The first bug it found, and fixed
 
-`plan_dependencies_exist` fails on roughly 17% of generated organizations: a plan item can depend
-on another item that was not scheduled. This is a **real product defect the harness found**, left
-red on purpose. Weakening an invariant to make a suite green is how a harness becomes decoration.
+`plan_dependencies_exist` failed on ~15% of generated organizations: a plan item depended on an
+item that was never scheduled.
+
+Root cause was one inconsistency inside the scheduler — it filtered dependencies when *ordering*
+items but emitted the unfiltered list into the persisted plan, so the record referenced an item the
+plan did not contain. Fixed at the source (`governance_discovery/scheduler.py`), not by weakening
+the invariant. **1500/1500 organizations now pass.**
+
+The baseline is consequently empty: nothing is known to fail, so from here **any** invariant
+violation blocks a release.
+
+A harness that finds defects and never gets them fixed stops being believed. The invariant that
+caught this is now a regression test in `governance-discovery` too, so the fix is protected at the
+source as well as by the sweep.

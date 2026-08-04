@@ -6,13 +6,21 @@ Named for the role, not the error-tracking product. It answers one question a un
 Its findings are severity CRASH rather than INVARIANT when data leaks, because an anonymous read
 of tenant data is a confidentiality failure, not a rule violation — the worst class of defect a
 multi-tenant GRC product can ship (CLAUDE.md §20).
+
+ONE responsibility: does the app refuse an unauthenticated caller?
+
+It used to ALSO sweep pages for 5xx. That was removed as redundant, measured rather than assumed:
+anonymous page requests all return 307 (redirect to login) while protected routes return 401 — so
+the page sweep re-measured the property the route sweep already covers, 24 requests at a time.
+Whether a page RENDERS is Pilot's question, and Pilot asks it authenticated, which is the only way
+the answer means anything.
 """
 
 from __future__ import annotations
 
 from devteam_harness.agents.base import AgentReport, Finding, Severity
 from devteam_harness.surfaces.http import HttpSurface
-from devteam_harness.surfaces.routes import ANONYMOUS_SAFE, localised_pages, protected_paths
+from devteam_harness.surfaces.routes import ANONYMOUS_SAFE, protected_paths
 
 AGENT = "sentry"
 
@@ -112,23 +120,5 @@ def run(surface: HttpSurface | None = None) -> AgentReport:
                 )
             else:
                 report.bump("anonymous_identity_withheld")
-
-    for locale, path in localised_pages():
-        report.bump("pages_probed")
-        response = surface.request("GET", path)
-        if not response.reached_app:
-            continue
-        if response.status >= 500:
-            report.findings.append(
-                Finding(
-                    agent=AGENT,
-                    severity=Severity.CRASH,
-                    kind="page_5xx_anonymous",
-                    detail=f"[{locale}] {path} -> {response.status}",
-                    reproduce=f"curl -i {surface.base_url}{path}",
-                )
-            )
-        else:
-            report.bump("pages_ok")
 
     return report

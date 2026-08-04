@@ -1,55 +1,28 @@
-"""Verifier — decides whether results are sound.
+"""Verifier — decides whether results are sound across a population.
 
-Deliberately a thin adapter over the `invariants` module rather than a second rule engine. There
-must be exactly ONE definition of "correct" in this harness; a Verifier with its own private
-opinion would drift from the invariants and start disagreeing with the campaign runner about the
-same scenario.
+A thin adapter over the invariants, deliberately: there must be exactly ONE definition of
+"correct" in this harness. A Verifier with its own opinion would drift from the invariants and
+start disagreeing with the campaign runner about the same scenario.
+
+Its ONE responsibility: run a RANGE of seeds and report what is wrong.
+(Regression runs a recorded LIST of seeds — same conversion, shared in `base.findings_for_seed`.)
 """
 
 from __future__ import annotations
 
-from devteam_harness.agents.base import AgentReport, Finding, Severity
-from devteam_harness.campaign import check_scenario
+from devteam_harness.agents.base import AgentReport, Severity, findings_for_seed
 
 AGENT = "verifier"
 
 
 def run(*, count: int, start_seed: int = 0) -> AgentReport:
-    """Verify a population, turning invariant violations into findings with repro steps."""
     report = AgentReport(agent=AGENT)
-
     for offset in range(count):
-        seed = start_seed + offset
-        checked = check_scenario(seed)
+        findings, ok = findings_for_seed(start_seed + offset, AGENT)
         report.bump("scenarios")
-
-        if checked.result.error is not None:
-            report.bump("crashed")
-            report.findings.append(
-                Finding(
-                    agent=AGENT,
-                    severity=Severity.CRASH,
-                    kind=checked.result.error_type or "error",
-                    detail=checked.result.error,
-                    reproduce=f"python -m devteam_harness --seed {seed}",
-                    seed=seed,
-                )
-            )
-
-        for violation in checked.violations:
-            report.bump("violations")
-            report.findings.append(
-                Finding(
-                    agent=AGENT,
-                    severity=Severity.INVARIANT,
-                    kind=violation.name,
-                    detail=violation.detail,
-                    reproduce=f"python -m devteam_harness --seed {seed}",
-                    seed=seed,
-                )
-            )
-
-        if checked.ok:
+        report.findings.extend(findings)
+        report.bump("crashed", sum(1 for f in findings if f.severity is Severity.CRASH))
+        report.bump("violations", sum(1 for f in findings if f.severity is Severity.INVARIANT))
+        if ok:
             report.bump("passed")
-
     return report

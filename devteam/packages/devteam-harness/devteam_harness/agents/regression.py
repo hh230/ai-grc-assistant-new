@@ -15,8 +15,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from devteam_harness.agents.base import AgentReport, Finding, Severity
-from devteam_harness.campaign import check_scenario
+from devteam_harness.agents.base import AgentReport, Finding, Severity, findings_for_seed
 from devteam_harness.results import ResultStore
 
 AGENT = "regression"
@@ -36,27 +35,26 @@ def run(seeds: list[int]) -> tuple[AgentReport, RegressionOutcome]:
 
     for seed in seeds:
         report.bump("replayed")
-        checked = check_scenario(seed)
-        if checked.ok:
+        findings, ok = findings_for_seed(seed, AGENT)
+        if ok:
             now_passing.append(seed)
             report.bump("now_passing")
-        else:
-            still_failing.append(seed)
-            report.bump("still_failing")
-            worst = max(
-                (v.name for v in checked.violations),
-                default=checked.result.error_type or "unknown",
+            continue
+        still_failing.append(seed)
+        report.bump("still_failing")
+        # Re-labelled, not re-derived: the finding is the same one the Verifier would produce;
+        # what Regression adds is the knowledge that it ALSO failed last time.
+        worst = max((f.kind for f in findings), default="unknown")
+        report.findings.append(
+            Finding(
+                agent=AGENT,
+                severity=Severity.INVARIANT,
+                kind=f"still_failing:{worst}",
+                detail=f"seed {seed} failed before and still fails",
+                reproduce=f"python -m devteam_harness --seed {seed}",
+                seed=seed,
             )
-            report.findings.append(
-                Finding(
-                    agent=AGENT,
-                    severity=Severity.INVARIANT,
-                    kind=f"still_failing:{worst}",
-                    detail=f"seed {seed} failed before and still fails",
-                    reproduce=f"python -m devteam_harness --seed {seed}",
-                    seed=seed,
-                )
-            )
+        )
 
     return report, RegressionOutcome(still_failing=still_failing, now_passing=now_passing)
 

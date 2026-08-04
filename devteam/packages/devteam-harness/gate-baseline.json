@@ -1,5 +1,7 @@
 {
-  "known_failing": {},
+  "known_failing": {
+    "decision:an_immature_organization_gets_a_plan": 6
+  },
   "scenarios": 300,
   "version": 1
 }

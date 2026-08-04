@@ -10,8 +10,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from devteam_harness.intent import IntentVerdict, SemanticDistance, check_name_coherence
-from devteam_harness.synthesis import (
+from devteam_harness.investigation.intent import (
+    IntentVerdict,
+    SemanticDistance,
+    check_name_coherence,
+)
+from devteam_harness.investigation.synthesis import (
     REMEDIATION,
     SearchExhausted,
     exhaustion_of,

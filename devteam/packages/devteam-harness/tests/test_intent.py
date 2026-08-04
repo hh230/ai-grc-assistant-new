@@ -6,7 +6,7 @@ statistically excellent and semantically vandalism. Its own top-ranked candidate
 
 from __future__ import annotations
 
-from devteam_harness.intent import (
+from devteam_harness.investigation.intent import (
     ALWAYS_FIRES_RATE,
     SemanticDistance,
     check_name_coherence,

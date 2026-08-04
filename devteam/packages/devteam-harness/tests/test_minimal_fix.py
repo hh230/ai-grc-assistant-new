@@ -12,8 +12,8 @@ import json
 import pathlib
 from typing import Any
 
-from devteam_harness.diff import DecisionDiff, PopulationDiff, diff_plans
-from devteam_harness.minimal_fix import (
+from devteam_harness.investigation.diff import DecisionDiff, PopulationDiff, diff_plans
+from devteam_harness.investigation.minimal_fix import (
     Baseline,
     Candidate,
     Outcome,
@@ -164,7 +164,7 @@ def test_applying_a_candidate_never_mutates_the_input_pack() -> None:
 
 def test_the_real_pack_file_is_never_opened_for_writing() -> None:
     """A guard on the promise in the module docstring: core.json is never modified."""
-    source = pathlib.Path("devteam_harness/minimal_fix.py").read_text(encoding="utf-8")
+    source = pathlib.Path("devteam_harness/investigation/minimal_fix.py").read_text(encoding="utf-8")
     assert "write_text" not in source
     assert "open(" not in source
 
@@ -285,7 +285,7 @@ def test_a_diff_is_used_to_measure_blast_radius() -> None:
 def test_a_semantically_destructive_candidate_sinks_below_a_faithful_one() -> None:
     """The finder's own top candidate fixed 3 defects with zero regression by making the rule fire
     for everyone. Statistically excellent, semantically vandalism — it must not lead."""
-    from devteam_harness.intent import IntentVerdict, SemanticDistance
+    from devteam_harness.investigation.intent import IntentVerdict, SemanticDistance
 
     vandal = _outcome(3, 0)
     vandal.intent = IntentVerdict(distance=SemanticDistance.HIGH, reasons=["fires for everyone"])
@@ -296,7 +296,7 @@ def test_a_semantically_destructive_candidate_sinks_below_a_faithful_one() -> No
 
 
 def test_clean_requires_intent_preserved_not_just_zero_regression() -> None:
-    from devteam_harness.intent import IntentVerdict, SemanticDistance
+    from devteam_harness.investigation.intent import IntentVerdict, SemanticDistance
 
     outcome = _outcome(5, 0)
     outcome.intent = IntentVerdict(distance=SemanticDistance.MEDIUM, reasons=["drifted"])
@@ -307,7 +307,7 @@ def test_clean_requires_intent_preserved_not_just_zero_regression() -> None:
 def test_only_threshold_edits_are_judged_for_intent() -> None:
     """A priority change or a dropped dependency alters what a rule DOES, never the population it
     applies to — judging them by selectivity would invent findings."""
-    from devteam_harness.minimal_fix import _verify_intent
+    from devteam_harness.investigation.minimal_fix import _verify_intent
 
     priority = priority_candidates(PACK)[0]
     assert _verify_intent(priority, PACK, {}, {}).distance.value == "none"

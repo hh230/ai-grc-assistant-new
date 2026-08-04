@@ -154,12 +154,26 @@ def analyze(signals: SignalSet, engine: DiscoveryEngine) -> Applicability:
                         "gap_id": gap.gap_id,
                         "severity": gap.severity,
                         "rationale_key": gap.rationale_key,
+                        # Provenance, as plan seeds already carry (CLAUDE.md §19). Without it
+                        # nothing — not the UI, not an auditor, not the harness — can answer
+                        # "which task closes this gap?", because there is no key to join on.
+                        "source_signal_keys": sorted(referenced_signals(rule.predicate)),
                     }
                 )
             if effect.plan_seed:
                 seed = effect.plan_seed
-                plan_seeds.append(seed)
                 keys = referenced_signals(rule.predicate)
+                if seed.id in seed_signal_keys:
+                    # More than one rule now reaches the same task — e.g. an organization that
+                    # has no board AND serves government clients both need governance oversight.
+                    # The task is emitted ONCE and its provenance is the union, so the plan says
+                    # "this is here for two reasons" rather than listing it twice.
+                    seed_signal_keys[seed.id] = seed_signal_keys[seed.id] | keys
+                    seed_signal_support[seed.id] = max(
+                        seed_signal_support[seed.id], _signal_support(signals, keys)
+                    )
+                    continue
+                plan_seeds.append(seed)
                 seed_signal_keys[seed.id] = keys
                 seed_signal_support[seed.id] = _signal_support(signals, keys)
 
@@ -167,7 +181,11 @@ def analyze(signals: SignalSet, engine: DiscoveryEngine) -> Applicability:
     confidence_score = answered_required / total_required if total_required else 1.0
     confidence = "low" if confidence_score < 0.8 else "normal"
 
-    if confidence == "low" and not plan_seeds:
+    # The floor: no organization is ever told there is nothing to do. Previously guarded on
+    # `confidence == "low"`, which fires for "we did not ask enough" but NOT for "we asked
+    # enough, we are confident, and produced nothing" — the far more dangerous state, because
+    # silence reads as reassurance. Measured: 128/10,000 organizations received an empty plan.
+    if not plan_seeds:
         plan_seeds = [_LOW_CONFIDENCE_SEED]
         seed_signal_keys[_LOW_CONFIDENCE_SEED.id] = frozenset()
         seed_signal_support[_LOW_CONFIDENCE_SEED.id] = confidence_score

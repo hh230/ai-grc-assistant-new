@@ -1636,6 +1636,46 @@
       "confirm_basics_with_advisor": {
         "title": "Confirm the basics with a GRC advisor",
         "rationale": "We don't have quite enough information yet for a confident recommendation — a short conversation with an advisor will fill the gaps."
+      },
+      "approve_foundational_policies": {
+        "title": "Approve the foundational policies",
+        "rationale": "Your policies are written but not approved. An unapproved policy carries no authority — ISO 27001 §5.2 and NCA ECC 1-1 both require management approval before a policy is in force."
+      },
+      "approve_org_structure": {
+        "title": "Approve the governance structure",
+        "rationale": "The structure is documented but not approved, so roles and authorities are not yet formally assigned (ISO 27001 §5.3)."
+      },
+      "approve_risk_register": {
+        "title": "Approve the risk register",
+        "rationale": "The register exists but is not approved, so accepted risks have no accountable owner and no formal acceptance."
+      },
+      "approve_internal_audit_plan": {
+        "title": "Approve the internal audit plan",
+        "rationale": "The audit plan is drafted but not approved. An unapproved plan gives an auditor no assurance that the programme is mandated (ISO 27001 §9.2)."
+      },
+      "confirm_regulatory_applicability": {
+        "title": "Confirm which regulations apply to you",
+        "rationale": "You serve government clients, which usually brings you into scope of national cybersecurity requirements (in KSA, NCA ECC). Confirming applicability and scope early prevents building a programme against the wrong framework."
+      },
+      "schedule_policy_review": {
+        "title": "Schedule periodic policy review",
+        "rationale": "Your policies are approved but there is no review cycle. An approved policy that is never revisited goes stale (ISO 27001 §5.2, §9.3)."
+      },
+      "schedule_org_structure_review": {
+        "title": "Schedule periodic review of the governance structure",
+        "rationale": "Roles and authorities are approved but not reviewed on a cycle; they drift as the organization changes."
+      },
+      "schedule_risk_register_review": {
+        "title": "Schedule periodic risk review",
+        "rationale": "The register is approved but not reviewed on a cycle. A risk register that is not revisited stops reflecting the real risk picture."
+      },
+      "schedule_internal_audit_review": {
+        "title": "Put internal audit on a recurring cycle",
+        "rationale": "The audit plan is approved but not recurring. ISO 27001 §9.2 expects audits at planned intervals, not once."
+      },
+      "establish_governance_oversight_body": {
+        "title": "Establish a governance oversight body",
+        "rationale": "No board or steering group currently owns governance decisions. An oversight body is what gives policies, risk acceptance and audit findings somewhere to be decided (ISO 27001 §5.1, §9.3)."
       }
     },
     "gap": {

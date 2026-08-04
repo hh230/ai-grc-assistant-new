@@ -135,3 +135,55 @@ OPENAI_API_KEY=… python bench100.py
 Deterministic on the engine side (temperature 0 on the reviewer side reduces, but does not
 eliminate, variance — an LLM reviewer is not reproducible the way the engine is, which is precisely
 why it advises and never gates).
+
+---
+
+# Round 2 — after the knowledge-model fix
+
+The findings above were acted on. This section re-measures **like for like**: same cohort, same
+model, same prompt, same 100 organizations. The only variable is the engine.
+
+## A correction to Round 1 first
+
+Round 1's prompt **omitted three signals the engine can see** — `cloud_data_residency_controlled`,
+`tech_team_maturity` and `held_licenses`. The reviewer was therefore judged against an engine that
+knew more than it did, and every disagreement on the two tasks those signals drive was an artifact
+of my prompt rather than of the product. **Round 1's 51.0% is not comparable to anything below.**
+
+The baseline was re-measured against the **original, unmodified engine** using the corrected
+prompt, so the before/after difference is attributable to the fix alone.
+
+## Result
+
+| | before | after |
+|---|---|---|
+| Tasks agreed | 252 | **408** |
+| Engine only | 42 | 143 |
+| Expert only (missed advice) | **313** | **156** |
+| **Jaccard agreement** | **41.5%** | **57.7%** |
+| **Under-advice ratio** | **7.45×** | **1.09×** |
+
+The systematic under-advice is gone. The engine no longer misses seven pieces of advice for every
+one it adds — it is now **balanced**, which is the property that matters: neither silently short-
+changing a customer nor burying them in work.
+
+Agreement rose **16.2 points** (a 39% relative improvement). It is not 100%, and it should not be:
+some of the residual disagreement is legitimate professional difference, and some is the reviewer's
+own preference. Chasing it would be over-fitting to one model's opinion — which the owner warned
+against, correctly.
+
+## Where disagreement remains, and what it means
+
+| theme | cases | reading |
+|---|---|---|
+| **Over-gating** — `implement_data_residency_controls`, `adopt_technical_security_baseline` | ~84 | Both are locked behind narrow pack activation (`provides_saas`, `primary_activity == technology`). The reviewer wants them for organizations that use cloud or IT without *providing* SaaS. **The question is never asked of those organizations**, so this cannot be fixed by a rule — it needs an interview change. |
+| **Review cadence** — `schedule_*_review` | ~61 | The engine recommends putting approved-but-unreviewed controls on a cycle; the reviewer often does not. ISO 27001 §5.2/§9.3 support the engine here. Recorded as a legitimate difference, **not** chased. |
+| **`confirm_basics_with_advisor`** | 21 | The reviewer recommends an advisor far more readily than the engine, which only emits it as a floor. |
+
+The first theme is the highest-value remaining work and is **not** a rules problem.
+
+## Still not a score
+
+This remains one reviewer over 100 synthetic organizations. It measures **agreement**, not
+correctness. A quality rating still requires multiple providers and plans produced by named human
+consultants — neither of which is available in this repository.

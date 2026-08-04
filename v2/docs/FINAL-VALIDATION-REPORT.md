@@ -1,6 +1,12 @@
 # Final Validation Report
 
-**Verdict: the project is ENGINEERED, not yet KNOWLEDGE-COMPLETE.**
+> **UPDATE — the knowledge-model fix has since been implemented and merged.** Findings S1, S3, S4,
+> S5, S6, S7 and S8 are CLOSED and re-verified at 300,000 organizations. External agreement rose
+> from **41.5% → 57.7%** and the under-advice ratio from **7.45× → 1.09×** (like-for-like; see
+> `EXTERNAL-BENCHMARK.md` Round 2). The findings below are preserved as the record of what was
+> wrong and how it was proved.
+
+**Verdict at the time of writing: the project was ENGINEERED, not yet KNOWLEDGE-COMPLETE.**
 
 Architecture, security, deployment readiness, reliability, testing and the decision engine's
 mechanics are sound. The **knowledge base** is not. Those are different claims, and the difference

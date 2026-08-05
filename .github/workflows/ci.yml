@@ -37,12 +37,16 @@ jobs:
 
   # ADR 0061, Phase 0.2 — close CI gap #1. The v2/ and v3/ packages are standalone uv projects
   # (each its own lock/venv), invisible to the `python` job's root workspace — their ~1,000 tests
-  # never ran in CI. This job discovers and runs every standalone suite. Informational-first:
-  # `continue-on-error` surfaces results without blocking merges yet; flip it off once the sweep is
-  # proven stable (a tracked follow-up, along with per-package caching / a matrix for speed).
+  # never ran in CI. This job discovers and runs every standalone suite.
+  #
+  # BLOCKING as of 2026-08-05. It was informational (`continue-on-error: true`) so results could be
+  # surfaced before they gated merges — and that grace period ended by proving its own point: PR #54
+  # landed a real regression (governance-session, 2 tests) straight onto main, because a red report
+  # nobody is forced to read is a report nobody reads. The regression then resurfaced days later
+  # inside unrelated work, which is exactly the "every fix uncovers something new" failure mode this
+  # job exists to prevent. A test suite that cannot block a merge is documentation, not a gate.
   v2-v3-tests:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3

@@ -24,6 +24,11 @@ CREATE TABLE IF NOT EXISTS knowledge_vectors (
     language           text,
     code               text,
     content_type       text,
+    -- Tenancy classification (ADR 0040 §2). `scope_kind` defaults to 'global', so existing
+    -- corpus rows (the shared framework/law/standard library) are GLOBAL automatically;
+    -- organization data is written with scope_kind='organization' + an organization_id.
+    scope_kind         text        NOT NULL DEFAULT 'global',
+    organization_id    text,
     updated_at         timestamptz NOT NULL DEFAULT now()
 );
 
@@ -34,6 +39,8 @@ CREATE INDEX IF NOT EXISTS kv_language_idx          ON knowledge_vectors (langua
 CREATE INDEX IF NOT EXISTS kv_structure_profile_idx ON knowledge_vectors (structure_profile);
 CREATE INDEX IF NOT EXISTS kv_document_id_idx       ON knowledge_vectors (document_id);
 CREATE INDEX IF NOT EXISTS kv_code_idx              ON knowledge_vectors (code text_pattern_ops);
+-- The tenant-scope predicate is applied on every query — index it (ADR 0040 §4).
+CREATE INDEX IF NOT EXISTS kv_scope_idx             ON knowledge_vectors (scope_kind, organization_id);
 
 -- ── Vector ANN index ──────────────────────────────────────────────────────────
 -- HNSW (not IVFFlat) — see the operational docs for the rationale. Cosine ops, since the

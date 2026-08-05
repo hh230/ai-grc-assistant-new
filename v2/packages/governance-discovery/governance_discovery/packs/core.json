@@ -240,6 +240,93 @@
       "stage": "structural",
       "ui_hint": "short_text",
       "required": false
+    },
+    {
+      "id": "q:ownership_type",
+      "version": "1.0",
+      "prompt_key": "discovery.question.ownership_type",
+      "value_type": "enum",
+      "writes_signal": "ownership_type",
+      "priority": 8,
+      "stage": "general",
+      "ui_hint": "dropdown",
+      "options": [
+        "private",
+        "publicly_listed",
+        "government_owned",
+        "foreign_owned",
+        "joint_venture"
+      ]
+    },
+    {
+      "id": "q:outsources_critical_functions",
+      "version": "1.0",
+      "prompt_key": "discovery.question.outsources_critical_functions",
+      "value_type": "boolean",
+      "writes_signal": "outsources_critical_functions",
+      "priority": 6,
+      "stage": "structural",
+      "ui_hint": "buttons"
+    },
+    {
+      "id": "q:operates_critical_infrastructure",
+      "version": "1.0",
+      "prompt_key": "discovery.question.operates_critical_infrastructure",
+      "value_type": "boolean",
+      "writes_signal": "operates_critical_infrastructure",
+      "priority": 7,
+      "stage": "sector_specific",
+      "ui_hint": "buttons",
+      "applicability_predicate": {
+        "any": [
+          {
+            "signal": "primary_activity",
+            "op": "in",
+            "value": [
+              "healthcare",
+              "financial_services",
+              "government",
+              "manufacturing",
+              "technology"
+            ]
+          },
+          {
+            "signal": "is_government_linked",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "q:data_geography",
+      "version": "1.0",
+      "prompt_key": "discovery.question.data_geography",
+      "value_type": "enum",
+      "writes_signal": "data_geography",
+      "priority": 7,
+      "stage": "sector_specific",
+      "ui_hint": "dropdown",
+      "options": [
+        "ksa_only",
+        "gcc",
+        "international",
+        "unknown"
+      ],
+      "applicability_predicate": {
+        "any": [
+          {
+            "signal": "handles_personal_data",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "has_it_team",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
     }
   ],
   "rules": [
@@ -687,25 +774,6 @@
       }
     },
     {
-      "id": "r:gov_client_seeds_regulatory_scoping",
-      "version": "1.0",
-      "predicate": {
-        "signal": "has_gov_clients",
-        "op": "eq",
-        "value": true
-      },
-      "effect": {
-        "plan_seed": {
-          "id": "seed:confirm_regulatory_applicability",
-          "pillar": "compliance",
-          "title_key": "plan.seed.confirm_regulatory_applicability.title",
-          "rationale_key": "plan.seed.confirm_regulatory_applicability.rationale",
-          "urgency": "critical",
-          "effort_size": "small"
-        }
-      }
-    },
-    {
       "id": "r:policy_approved_seeds_periodic_review",
       "version": "1.0",
       "predicate": {
@@ -796,6 +864,312 @@
           }
         }
       }
+    },
+    {
+      "id": "r:sama_applicability_seeds_alignment",
+      "version": "1.0",
+      "predicate": {
+        "signal": "subject_to_sama",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:align_with_sama_csf",
+          "pillar": "compliance",
+          "title_key": "plan.seed.align_with_sama_csf.title",
+          "rationale_key": "plan.seed.align_with_sama_csf.rationale",
+          "urgency": "high",
+          "effort_size": "large",
+          "depends_on": [
+            "seed:draft_foundational_policies"
+          ]
+        }
+      }
+    },
+    {
+      "id": "r:cross_border_seeds_transfer_safeguards",
+      "version": "1.0",
+      "predicate": {
+        "all": [
+          {
+            "signal": "cross_border_data_exposure",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "subject_to_pdpl",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:establish_cross_border_transfer_safeguards",
+          "pillar": "compliance",
+          "title_key": "plan.seed.establish_cross_border_transfer_safeguards.title",
+          "rationale_key": "plan.seed.establish_cross_border_transfer_safeguards.rationale",
+          "urgency": "critical",
+          "effort_size": "medium"
+        }
+      }
+    },
+    {
+      "id": "r:cross_border_flags_gap",
+      "version": "1.0",
+      "predicate": {
+        "all": [
+          {
+            "signal": "cross_border_data_exposure",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "subject_to_pdpl",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "effect": {
+        "flags_gap": {
+          "gap_id": "gap:unsafeguarded_cross_border_transfer",
+          "severity": "critical",
+          "rationale_key": "gap.rationale.unsafeguarded_cross_border_transfer"
+        }
+      }
+    },
+    {
+      "id": "r:critical_infrastructure_seeds_hardening",
+      "version": "1.0",
+      "predicate": {
+        "signal": "operates_critical_infrastructure",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:harden_critical_infrastructure_controls",
+          "pillar": "cyber",
+          "title_key": "plan.seed.harden_critical_infrastructure_controls.title",
+          "rationale_key": "plan.seed.harden_critical_infrastructure_controls.rationale",
+          "urgency": "critical",
+          "effort_size": "large"
+        }
+      }
+    },
+    {
+      "id": "r:critical_infrastructure_flags_gap",
+      "version": "1.0",
+      "predicate": {
+        "all": [
+          {
+            "signal": "operates_critical_infrastructure",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "internal_audit_state",
+            "op": "lte",
+            "value": "documented_unapproved"
+          }
+        ]
+      },
+      "effect": {
+        "flags_gap": {
+          "gap_id": "gap:critical_infrastructure_unassured",
+          "severity": "critical",
+          "rationale_key": "gap.rationale.critical_infrastructure_unassured"
+        }
+      }
+    },
+    {
+      "id": "r:outsourcing_seeds_third_party_risk",
+      "version": "1.0",
+      "predicate": {
+        "signal": "outsources_critical_functions",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:establish_third_party_risk_management",
+          "pillar": "risk",
+          "title_key": "plan.seed.establish_third_party_risk_management.title",
+          "rationale_key": "plan.seed.establish_third_party_risk_management.rationale",
+          "urgency": "high",
+          "effort_size": "medium",
+          "depends_on": [
+            "seed:establish_risk_register"
+          ]
+        }
+      }
+    },
+    {
+      "id": "r:outsourcing_scores_risk_maturity",
+      "version": "1.0",
+      "predicate": {
+        "all": [
+          {
+            "signal": "outsources_critical_functions",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "signal": "risk_register_state",
+            "op": "lte",
+            "value": "verbal"
+          }
+        ]
+      },
+      "effect": {
+        "maturity_dimension_score": {
+          "dimension": "risk",
+          "delta": -1
+        }
+      }
+    },
+    {
+      "id": "r:nca_applicability_seeds_scoping",
+      "version": "1.0",
+      "predicate": {
+        "signal": "subject_to_nca",
+        "op": "eq",
+        "value": true
+      },
+      "effect": {
+        "plan_seed": {
+          "id": "seed:confirm_regulatory_applicability",
+          "pillar": "compliance",
+          "title_key": "plan.seed.confirm_regulatory_applicability.title",
+          "rationale_key": "plan.seed.confirm_regulatory_applicability.rationale",
+          "urgency": "high",
+          "effort_size": "small"
+        }
+      }
+    }
+  ],
+  "derivations": [
+    {
+      "id": "d:government_sector_is_government_linked",
+      "when": {
+        "signal": "primary_activity",
+        "op": "eq",
+        "value": "government"
+      },
+      "derives_signal": "is_government_linked",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "NCA ECC applies to government entities."
+    },
+    {
+      "id": "d:gov_clients_is_government_linked",
+      "when": {
+        "signal": "has_gov_clients",
+        "op": "eq",
+        "value": true
+      },
+      "derives_signal": "is_government_linked",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "NCA ECC extends to organizations serving government entities."
+    },
+    {
+      "id": "d:government_owned_is_government_linked",
+      "when": {
+        "signal": "ownership_type",
+        "op": "eq",
+        "value": "government_owned"
+      },
+      "derives_signal": "is_government_linked",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "A government-owned entity is in scope of the national regime regardless of sector."
+    },
+    {
+      "id": "d:financial_sector_provides_financial_services",
+      "when": {
+        "signal": "primary_activity",
+        "op": "eq",
+        "value": "financial_services"
+      },
+      "derives_signal": "provides_financial_services",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "Financial services is the activity SAMA supervises."
+    },
+    {
+      "id": "d:government_linked_subject_to_nca",
+      "when": {
+        "signal": "is_government_linked",
+        "op": "eq",
+        "value": true
+      },
+      "derives_signal": "subject_to_nca",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "NCA ECC — applicability to government entities and their service providers."
+    },
+    {
+      "id": "d:critical_infrastructure_subject_to_nca",
+      "when": {
+        "signal": "operates_critical_infrastructure",
+        "op": "eq",
+        "value": true
+      },
+      "derives_signal": "subject_to_nca",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "NCA ECC — critical national infrastructure operators are in scope."
+    },
+    {
+      "id": "d:financial_services_subject_to_sama",
+      "when": {
+        "signal": "provides_financial_services",
+        "op": "eq",
+        "value": true
+      },
+      "derives_signal": "subject_to_sama",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "SAMA Cyber Security Framework applies to SAMA-supervised entities."
+    },
+    {
+      "id": "d:personal_data_subject_to_pdpl",
+      "when": {
+        "signal": "handles_personal_data",
+        "op": "eq",
+        "value": true
+      },
+      "derives_signal": "subject_to_pdpl",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "PDPL applies to any processing of personal data of individuals in KSA."
+    },
+    {
+      "id": "d:international_data_is_cross_border",
+      "when": {
+        "signal": "data_geography",
+        "op": "eq",
+        "value": "international"
+      },
+      "derives_signal": "cross_border_data_exposure",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "PDPL restricts transfer of personal data outside the Kingdom."
+    },
+    {
+      "id": "d:foreign_ownership_is_cross_border",
+      "when": {
+        "signal": "ownership_type",
+        "op": "eq",
+        "value": "foreign_owned"
+      },
+      "derives_signal": "cross_border_data_exposure",
+      "derives_value": true,
+      "value_type": "boolean",
+      "basis": "Foreign ownership typically implies group reporting across borders (PDPL transfer)."
     }
   ]
 }

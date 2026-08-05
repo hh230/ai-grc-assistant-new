@@ -36,6 +36,10 @@ def test_multi_pack_composition_a_growing_saas_company() -> None:
         has_gov_clients=False,
         tech_team_maturity="documented_unapproved",
         cloud_data_residency_controlled="no",
+        ownership_type="private",
+        outsources_critical_functions=False,
+        operates_critical_infrastructure=False,
+        data_geography="ksa_only",
     )
     result = analyze(signals, _engine())
 

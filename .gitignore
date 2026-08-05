@@ -52,6 +52,12 @@ v2/knowledge/chunks/
 v2/knowledge/embeddings/
 .vercel
 .env*
+# ...but the *.example files are the reference for what a deployment must set — names and shapes
+# only, never values. The earlier `!.env.example` (line ~27) is undone by the `.env*` above, since
+# the last matching pattern wins; apps/web/.env.example survives only because it was committed
+# before that line existed. This negation is what actually keeps them addable.
+!.env.example
+!**/.env.example
 
 # Standalone uv projects under v3/ generate their own lockfiles on first run. Unlike v2/, none
 # of them are committed, so leaving these untracked means a permanently dirty working tree.

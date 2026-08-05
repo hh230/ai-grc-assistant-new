@@ -52,3 +52,7 @@ v2/knowledge/chunks/
 v2/knowledge/embeddings/
 .vercel
 .env*
+
+# Standalone uv projects under v3/ generate their own lockfiles on first run. Unlike v2/, none
+# of them are committed, so leaving these untracked means a permanently dirty working tree.
+v3/packages/*/uv.lock

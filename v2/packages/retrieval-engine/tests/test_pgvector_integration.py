@@ -42,7 +42,14 @@ def conn():
 
 @pytest.fixture(scope="module")
 def populated(conn):
-    row = conn.execute(f"SELECT count(*) FROM {TABLE}").fetchone()
+    # "Reachable" is not the same as "provisioned". A Postgres that answers but has no pgvector
+    # extension, or no table, used to raise UndefinedTable here and surface as five ERRORs — noise
+    # that reads like a code failure and trains people to ignore this package's result. The
+    # module docstring promises a clean skip; this is what keeps that promise.
+    try:
+        row = conn.execute(f"SELECT count(*) FROM {TABLE}").fetchone()
+    except psycopg.Error as exc:
+        pytest.skip(f"{TABLE} is not provisioned on this server — apply migrations/ first ({exc})")
     if not row or row[0] == 0:
         pytest.skip("knowledge_vectors is empty — run the import first")
     return row[0]
@@ -122,11 +129,19 @@ def test_upsert_is_idempotent_and_incremental(conn):
     try:
         c.autocommit = False
         cur = c.cursor()
-        cur.execute("CREATE EXTENSION IF NOT EXISTS vector")
-        cur.execute(
-            "CREATE TEMP TABLE kv_it (LIKE knowledge_vectors INCLUDING DEFAULTS, "
-            "PRIMARY KEY (chunk_id)) ON COMMIT DROP"
-        )
+        try:
+            # This test builds its own TEMP tables, so it needs no corpus — but it still needs
+            # the extension and the real table to copy the shape from. Without them it is
+            # unrunnable, not failing; reporting it as a failure blames the code for the
+            # environment.
+            cur.execute("CREATE EXTENSION IF NOT EXISTS vector")
+            cur.execute(
+                "CREATE TEMP TABLE kv_it (LIKE knowledge_vectors INCLUDING DEFAULTS, "
+                "PRIMARY KEY (chunk_id)) ON COMMIT DROP"
+            )
+        except psycopg.Error as exc:
+            c.rollback()
+            pytest.skip(f"pgvector/{TABLE} not provisioned on this server ({exc})")
 
         def stage(rows):
             cur.execute("DROP TABLE IF EXISTS kv_stage")

@@ -1,0 +1,74 @@
+# Local verification of the deployment shape — Postgres, the release step, then the API.
+#
+# This is NOT the production topology. It exists so the deploy order can be proven on a laptop
+# before it is trusted on a platform: `migrate` runs to completion BEFORE `api` starts, exactly as
+# a release command must, and `api` waits on a real Postgres health check rather than a sleep.
+#
+#   docker compose up --build          # build, migrate, serve
+#   docker compose run --rm migrate    # re-run the release step alone (proves idempotency)
+#   docker compose down -v             # stop and DELETE the volume, for a true from-zero rerun
+#
+# Credentials: the Postgres password here is a local throwaway, not a secret — this file never
+# holds a real one. `OPENAI_API_KEY` is passed THROUGH from your shell if set, so no key is ever
+# written to disk. Without it the API still serves; it just logs `execution_degraded` and every
+# governance plan is an echo (see docs/DEPLOY-GRC-API.md).
+
+name: rasheed-v2
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rasheed_v2
+    ports:
+      # Host port 55432 deliberately: 5432/5433 are commonly already taken by a local Postgres,
+      # and a port clash here looks exactly like a broken image.
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      # `pg_isready` returns success while the server is still starting, so also require the
+      # database itself to answer — otherwise migrate races the first-boot initdb.
+      test: ["CMD-SHELL", "pg_isready -U postgres -d rasheed_v2 && psql -U postgres -d rasheed_v2 -c 'select 1'"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/grc-api/Dockerfile
+    command: ["python", "-m", "grc_api.migrate"]
+    environment:
+      MISSION_STORE_DSN: postgresql://postgres:postgres@postgres:5432/rasheed_v2
+      GOVERNANCE_STORE_DSN: postgresql://postgres:postgres@postgres:5432/rasheed_v2
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/grc-api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      MISSION_STORE_DSN: postgresql://postgres:postgres@postgres:5432/rasheed_v2
+      GOVERNANCE_STORE_DSN: postgresql://postgres:postgres@postgres:5432/rasheed_v2
+      # Passed through from the shell; absent is fine and is NOT an error.
+      GRC_LLM_PROVIDER: ${GRC_LLM_PROVIDER:-openai}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      GRC_API_SERVICE_SECRET: ${GRC_API_SERVICE_SECRET:-}
+    depends_on:
+      # The whole point of this file: the API never starts against an unmigrated database.
+      migrate:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

@@ -25,6 +25,19 @@ _ANSWERS = {
     "q:handles_personal_data": False,
     "q:has_gov_clients": False,
     "q:last_policy_review_date": "2026-01-15",
+    "q:ownership_type": "private",
+    "q:outsources_critical_functions": False,
+    # `has_it_team` is True above, so data location is in scope for this organization.
+    "q:data_geography": "ksa_only",
+    # Optional, and previously never reached: the interview used to conclude before them because
+    # no required question remained. Now that required questions exist in a LATER stage, these
+    # earlier optional ones get their turn first.
+    "q:held_licenses": ["none"],
+    "q:additional_context_note": "no further context",
+    # `has_it_team` also activates the technology and cloud packs.
+    "q:tech_team_maturity": "approved",
+    "q:cloud_data_residency_controlled": "yes",
+    "q:operates_critical_infrastructure": False,
 }
 
 

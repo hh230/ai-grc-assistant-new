@@ -24,28 +24,35 @@ dependencies = [
     "governance-store[postgres]",
     "governance-session",
     "governance-plan-execution",
+    # The Wave 1 executor wiring (ADR 0066 §3). These three were dev-only while the production
+    # executor was still `EchoExecutor`; `grc_api.execution` now composes them for real, so they
+    # are on the production path. `generation-engine` joins them because the draft step needs an
+    # actual LLM behind the `GenerationProvider` port.
+    "governance-plan-tools",
+    "pipeline-tool",
+    "tool-registry",
+    # The `[openai]` extra pulls the SDK for the currently selected provider. Switching
+    # GRC_LLM_PROVIDER to claude/gemini means adding that provider's extra here too — the adapters
+    # keep their SDKs optional so a deployment installs only the vendor it actually uses.
+    "generation-engine[openai]",
     # B3: connection pooling. Managed Postgres caps connections aggressively, so the ceiling is
     # connections rather than CPU; a connection per operation is what falls over first under load.
     "psycopg-pool>=3.2.0",
 ]
 
 [dependency-groups]
-# DEV ONLY. The `dependencies` above are the production path and are deliberately untouched by the
-# Wave 1 test commit — `psycopg` and `mission-store` exist here solely so `tests/production` can
-# stand the durable adapters up and inspect raw rows out of band. They become production
-# dependencies only when the wiring commits land. `governance-plan-tools`/`pipeline-tool`/
-# `tool-registry` join them for the same reason (ADR 0066 §3): they let a test inject a real
-# ToolRegistry-backed executor via `create_app(executor=...)` to prove the Governance Plan Mission
-# runs for real end-to-end — the production default executor stays `EchoExecutor` until the Wave 1
-# executor commit lands, at which point this Mission runs for real with zero additional code.
+# DEV ONLY. `psycopg` and `mission-store` exist here solely so `tests/production` can stand the
+# durable adapters up and inspect raw rows out of band.
+#
+# `governance-plan-tools`/`pipeline-tool`/`tool-registry` USED to live here, while the production
+# executor was still `EchoExecutor` and only a test could inject a real one. The Wave 1 executor
+# commit has landed (`grc_api.execution`), so they moved to `dependencies` above — the Governance
+# Plan Mission now runs for real in the product, not only under test.
 dev = [
     "pytest>=8.3.0",
     "httpx>=0.27.0",
     "psycopg[binary]>=3.2.0",
     "mission-store",
-    "governance-plan-tools",
-    "pipeline-tool",
-    "tool-registry",
 ]
 
 [tool.uv.sources]
@@ -68,6 +75,7 @@ governance-plan-execution = { path = "../../packages/governance-plan-execution",
 governance-plan-tools = { path = "../../packages/governance-plan-tools", editable = true }
 pipeline-tool = { path = "../../packages/pipeline-tool", editable = true }
 tool-registry = { path = "../../packages/tool-registry", editable = true }
+generation-engine = { path = "../../packages/generation-engine", editable = true }
 
 # These ship no py.typed; consume them as untyped imports (our own code stays strict).
 [[tool.mypy.overrides]]

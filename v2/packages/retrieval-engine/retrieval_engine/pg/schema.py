@@ -52,8 +52,22 @@ _HNSW_DDL = (
 )
 
 
+# `CREATE TABLE IF NOT EXISTS` is a no-op against a table that already exists, so a database
+# provisioned before the ADR 0040 tenancy columns keeps a table the current code CANNOT QUERY —
+# `scope_kind` is in the WHERE clause of every search, so the failure is total. Found on a real
+# corpus of 31,793 vectors that predated the columns. Bringing an existing table forward has to be
+# explicit; "create if absent" never was an upgrade path. Mirrors migrations/0002_tenancy_columns.
+_UPGRADES = [
+    f"ALTER TABLE {TABLE} ADD COLUMN IF NOT EXISTS scope_kind      text NOT NULL DEFAULT 'global'",
+    f"ALTER TABLE {TABLE} ADD COLUMN IF NOT EXISTS organization_id text",
+]
+
+
 def ensure_table_and_filters(conn: psycopg.Connection) -> None:
     conn.execute(_TABLE_DDL)
+    # Before the indexes: `kv_scope_idx` is built on columns the upgrade may have just added.
+    for ddl in _UPGRADES:
+        conn.execute(ddl)
     for ddl in _FILTER_INDEXES:
         conn.execute(ddl)
     conn.commit()

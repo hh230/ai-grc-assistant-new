@@ -68,7 +68,15 @@ function serviceSecret(): string {
         "During a key rotation this may be a comma-separated list; the FIRST entry is the one " +
         "used to sign.",
     });
-    throw new UpstreamError("The governance backend is not configured.");
+    // `unreachable` is what every governance read keys off to degrade instead of crash, and it
+    // means "this request never reached the backend, so no conclusion can be drawn" — which is
+    // exactly as true of an unconfigured secret as of a refused connection. Without it, a
+    // deployment missing this variable answered "Something went wrong" on the whole Governance
+    // Program page: `/discovery` only calls `getActivePlan` to decide whether to REDIRECT, and an
+    // optional redirect check must never take down the page it was meant to shortcut. The
+    // operator still gets the precise remediation from the `logger.error` above; the visitor now
+    // gets the interview, and a real message if they act on a backend that cannot answer.
+    throw new UpstreamError("The governance backend is not configured.", true);
   }
   return signingSecret;
 }

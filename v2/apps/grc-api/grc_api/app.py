@@ -14,7 +14,9 @@ development ones, each replaced at its own seam.
 
 from __future__ import annotations
 
+import logging
 import os
+from collections.abc import Callable
 from typing import Any
 
 from assistant_runtime.builtin import default_mission_catalog
@@ -43,6 +45,8 @@ from grc_api.composition import (
     open_autocommit_connection,
 )
 from grc_api.errors import register_exception_handlers
+from grc_api.execution import GovernancePlanExecutor
+from grc_api.llm_provider import PROVIDER_ENV_VAR, build_generation_provider
 from grc_api.launch import DurableMissionLaunch, MemoryMissionLaunch, MissionLaunchPort
 from grc_api.result_adapters import (
     BundledDeliverableProvider,
@@ -88,8 +92,36 @@ def _default_identity_provider() -> IdentityProvider:
         return dev_provider
     return CompositeIdentityProvider((dev_provider, ServiceAssertionIdentityProvider(secrets)))
 
+LOGGER = logging.getLogger(__name__)
+
 API_TITLE = "Rasheed GRC API"
 API_VERSION = "0.1.0"
+
+
+def _default_executor(
+    engine: DiscoveryEngine, store_factory: Callable[[], Any]
+) -> ExecutionPort:
+    """The production executor: real tools when an LLM is configured, echo when it is not.
+
+    An unconfigured deployment must still boot — local `pytest`, CI and `next build` all construct
+    the app without a provider — but it must never *silently* answer `"echo: <input>"` where a
+    governance plan belongs. `build_generation_provider` logs precisely which variable is missing,
+    and this logs the consequence.
+    """
+    provider = build_generation_provider()
+    if provider is None:
+        LOGGER.warning(
+            "execution_degraded: no LLM provider configured — mission steps will ECHO, and the "
+            "Governance Plan draft step will not produce a plan. Set %s (and its credential) to "
+            "run for real.",
+            PROVIDER_ENV_VAR,
+        )
+        return EchoExecutor()
+    return GovernancePlanExecutor(
+        store_factory=store_factory,
+        discovery_engine=engine,
+        generation_provider=provider,
+    )
 
 
 def create_app(
@@ -118,7 +150,15 @@ def create_app(
     # creates a store per read and discards it; writes go through a factory that creates one
     # transaction's worth of collaborators per command. What is long-lived is configuration, never a
     # store — so there is nothing for a later change to accidentally share process-wide.
-    run_step: ExecutionPort = executor or EchoExecutor()
+    # Governance Discovery (ADR 0066): the engine is pure and stateless — safe to build once and
+    # share across every request. Only the store is per-request; `discovery_store_factory` is the
+    # injection seam a test uses to avoid a real database. Both are resolved HERE, ahead of the
+    # executor, because the production executor is composed from them (see `execution.py`).
+    resolved_engine = discovery_engine or DiscoveryEngine(load_bundled_packs())
+    resolved_store_factory = discovery_store_factory or (
+        lambda: PostgresGovernanceStore(dsn=governance_database_dsn())
+    )
+    run_step: ExecutionPort = executor or _default_executor(resolved_engine, resolved_store_factory)
     launch: MissionLaunchPort
     if storage is Storage.MEMORY:
         # In-memory state has to live somewhere: the dictionary IS the storage, and no connection or
@@ -169,11 +209,10 @@ def create_app(
     # Governance Discovery (ADR 0066): the engine is pure and stateless — safe to build once and
     # share across every request. Only the store is per-request (see `deps.get_discovery_store`);
     # `discovery_store_factory` is the injection seam a test uses to avoid a real database, exactly
-    # like `mission_store`/`read_model` above do for the mission subsystem.
-    app.state.discovery_engine = discovery_engine or DiscoveryEngine(load_bundled_packs())
-    app.state.discovery_store_factory = discovery_store_factory or (
-        lambda: PostgresGovernanceStore(dsn=governance_database_dsn())
-    )
+    # like `mission_store`/`read_model` above do for the mission subsystem. Both were resolved
+    # above, where the executor needed them.
+    app.state.discovery_engine = resolved_engine
+    app.state.discovery_store_factory = resolved_store_factory
 
     register_exception_handlers(app)
     app.include_router(health_router)

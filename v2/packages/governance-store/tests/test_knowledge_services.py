@@ -18,6 +18,7 @@ psycopg = pytest.importorskip("psycopg")
 
 from governance_store.knowledge_services import (  # noqa: E402
     ActivateKnowledgeRelease,
+    Actor,
     ApproveKnowledgeTemplate,
     CompleteAssessment,
     GenerateKnowledgeTemplate,
@@ -25,6 +26,7 @@ from governance_store.knowledge_services import (  # noqa: E402
     RecordSectorAnswers,
     RejectKnowledgeTemplate,
     RetireIndustry,
+    NotAuthorized,
     StartAssessment,
     SubmitKnowledgeTemplate,
 )
@@ -39,6 +41,10 @@ DEFAULT_DSN = "postgresql://postgres:postgres@localhost:5432/rasheed_ksvc_tests"
 
 def _now():
     return dt.datetime.now(dt.timezone.utc)
+
+
+APPROVER = Actor("reviewer@rasheed.sa", ("knowledge_approver",))
+NOT_APPROVER = Actor("analyst@a", ("practitioner", "approver"))
 
 
 class _Generator:
@@ -108,13 +114,13 @@ def _generate(store, generator, industry="real_estate"):
         prompt_version="knowledge_prompt_v3",
         generator_commit="9af4c1e",
     )
-    return service(industry_slug=industry, requested_by="approver@example.com")
+    return service(industry_slug=industry, actor=APPROVER)
 
 
 def _to_released(store, release_id):
-    SubmitKnowledgeTemplate(store)(release_id=release_id)
-    ApproveKnowledgeTemplate(store, now=_now)(release_id=release_id, approver="r@example.com")
-    PublishKnowledgeTemplate(store, now=_now)(release_id=release_id)
+    SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
+    ApproveKnowledgeTemplate(store, now=_now)(release_id=release_id, actor=APPROVER)
+    PublishKnowledgeTemplate(store, now=_now)(release_id=release_id, actor=APPROVER)
 
 
 # --- generation ------------------------------------------------------------------------------
@@ -154,18 +160,18 @@ def test_regenerating_reuses_the_container_and_mints_a_new_version(store):
 def test_the_full_lifecycle_runs_generate_to_active(store):
     release_id = _generate(store, _Generator()).data["release_id"]
 
-    assert SubmitKnowledgeTemplate(store)(release_id=release_id).event.name == (
+    assert SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER).event.name == (
         "KnowledgeTemplateSubmitted"
     )
     assert ApproveKnowledgeTemplate(store, now=_now)(
-        release_id=release_id, approver="r@example.com"
+        release_id=release_id, actor=APPROVER
     ).event.name == "KnowledgeTemplateApproved"
     assert PublishKnowledgeTemplate(store, now=_now)(
-        release_id=release_id
+        release_id=release_id, actor=APPROVER
     ).event.name == "KnowledgeTemplatePublished"
 
     activated = ActivateKnowledgeRelease(store)(
-        industry_slug="real_estate", release_id=release_id, actor="approver", reason="first"
+        industry_slug="real_estate", release_id=release_id, actor=APPROVER, reason="first"
     )
     assert activated.event.name == "ActiveReleaseChanged"
     assert store.get_active_release("real_estate")["id"] == release_id
@@ -174,17 +180,17 @@ def test_the_full_lifecycle_runs_generate_to_active(store):
 def test_a_no_op_is_reported_as_unchanged_with_NO_event(store):
     """`changed=False` is not an error — and an event that did not happen must not be emitted."""
     release_id = _generate(store, _Generator()).data["release_id"]
-    SubmitKnowledgeTemplate(store)(release_id=release_id)
+    SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
 
-    repeated = SubmitKnowledgeTemplate(store)(release_id=release_id)
+    repeated = SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
     assert repeated.changed is False
     assert repeated.event is None
 
 
 def test_rejection_returns_a_release_to_draft(store):
     release_id = _generate(store, _Generator()).data["release_id"]
-    SubmitKnowledgeTemplate(store)(release_id=release_id)
-    outcome = RejectKnowledgeTemplate(store)(release_id=release_id, rejected_by="r@example.com")
+    SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
+    outcome = RejectKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
     assert outcome.event.name == "KnowledgeTemplateRejected"
     assert store.list_releases(release_id=release_id)[0]["status"] == "draft"
 
@@ -195,7 +201,7 @@ def test_activation_does_not_re_check_what_the_database_already_refuses(store):
     release_id = _generate(store, _Generator()).data["release_id"]
     with pytest.raises(psycopg.errors.ForeignKeyViolation):
         ActivateKnowledgeRelease(store)(
-            industry_slug="real_estate", release_id=release_id, actor="approver"
+            industry_slug="real_estate", release_id=release_id, actor=APPROVER
         )
 
 
@@ -207,9 +213,9 @@ def test_rollback_is_the_same_service_call(store):
     _to_released(store, v2)
     activate = ActivateKnowledgeRelease(store)
 
-    activate(industry_slug="real_estate", release_id=v1, actor="a", reason="first")
-    activate(industry_slug="real_estate", release_id=v2, actor="a", reason="upgrade")
-    activate(industry_slug="real_estate", release_id=v1, actor="a", reason="rollback")
+    activate(industry_slug="real_estate", release_id=v1, actor=APPROVER, reason="first")
+    activate(industry_slug="real_estate", release_id=v2, actor=APPROVER, reason="upgrade")
+    activate(industry_slug="real_estate", release_id=v1, actor=APPROVER, reason="rollback")
 
     assert store.get_active_release("real_estate")["id"] == v1
     assert [h["reason"] for h in store.list_activation_history("real_estate")][0] == "rollback"
@@ -225,11 +231,11 @@ def test_retiring_an_industry_also_takes_its_active_release_out_of_service(store
     release_id = _generate(store, _Generator()).data["release_id"]
     _to_released(store, release_id)
     ActivateKnowledgeRelease(store)(
-        industry_slug="real_estate", release_id=release_id, actor="approver"
+        industry_slug="real_estate", release_id=release_id, actor=APPROVER
     )
 
     outcome = RetireIndustry(store, connection=store._conn)(
-        industry_slug="real_estate", actor="approver"
+        industry_slug="real_estate", actor=APPROVER
     )
 
     assert outcome.event.name == "IndustryRetired"
@@ -242,7 +248,7 @@ def test_retiring_an_industry_also_takes_its_active_release_out_of_service(store
 def test_retiring_an_industry_with_no_active_release_is_still_valid(store):
     store.register_industry("unused", "غير مستخدم")
     outcome = RetireIndustry(store, connection=store._conn)(
-        industry_slug="unused", actor="approver"
+        industry_slug="unused", actor=APPROVER
     )
     assert outcome.changed is True
     assert outcome.event.payload["retired_release_id"] is None
@@ -333,7 +339,7 @@ def test_the_retirement_ORDER_is_the_only_one_the_database_permits(store):
     release_id = _generate(store, _Generator()).data["release_id"]
     _to_released(store, release_id)
     ActivateKnowledgeRelease(store)(
-        industry_slug="real_estate", release_id=release_id, actor="approver"
+        industry_slug="real_estate", release_id=release_id, actor=APPROVER
     )
     with pytest.raises(psycopg.errors.CheckViolation, match="must_be_released"):
         store.retire_release(release_id, target_status="deprecated")
@@ -348,7 +354,74 @@ def test_activation_reports_what_it_replaced(store):
     _to_released(store, v2)
     activate = ActivateKnowledgeRelease(store)
 
-    first = activate(industry_slug="real_estate", release_id=v1, actor="a", reason="first")
-    upgrade = activate(industry_slug="real_estate", release_id=v2, actor="a", reason="upgrade")
+    first = activate(industry_slug="real_estate", release_id=v1, actor=APPROVER, reason="first")
+    upgrade = activate(industry_slug="real_estate", release_id=v2, actor=APPROVER, reason="upgrade")
     assert first.event.payload["previous_release_id"] is None
     assert upgrade.event.payload["previous_release_id"] == v1
+
+
+# --- authorization ----------------------------------------------------------------------------
+
+
+def test_governing_knowledge_requires_the_KNOWLEDGE_APPROVER_role(store):
+    """A tenant-side approver is deliberately not enough. One release serves every customer in a
+    sector, so the blast radius of a bad one is all of them — a per-tenant role cannot carry that."""
+    store.register_industry("real_estate", "عقارات")
+    with pytest.raises(NotAuthorized, match="knowledge_approver"):
+        GenerateKnowledgeTemplate(
+            store,
+            _Generator(),
+            new_id=lambda: uuid.uuid4().hex[:12],
+            model="claude-sonnet-5",
+            prompt_version="knowledge_prompt_v3",
+            generator_commit="9af4c1e",
+        )(industry_slug="real_estate", actor=NOT_APPROVER)
+
+
+def test_an_unauthorized_generation_never_reaches_the_model(store):
+    """The guard runs before the LLM: refusing after the call would still have spent the money and
+    still have sent the request."""
+    store.register_industry("real_estate", "عقارات")
+    generator = _Generator()
+    with pytest.raises(NotAuthorized):
+        GenerateKnowledgeTemplate(
+            store, generator, new_id=lambda: uuid.uuid4().hex[:12],
+            model="m", prompt_version="p", generator_commit="c",
+        )(industry_slug="real_estate", actor=NOT_APPROVER)
+    assert generator.calls == []
+    assert store.list_releases() == []
+
+
+def test_every_consequential_knowledge_operation_is_guarded(store):
+    """Enumerated rather than sampled: a new service added without a guard fails here."""
+    release_id = _generate(store, _Generator()).data["release_id"]
+    guarded = [
+        lambda: SubmitKnowledgeTemplate(store)(release_id=release_id, actor=NOT_APPROVER),
+        lambda: ApproveKnowledgeTemplate(store, now=_now)(
+            release_id=release_id, actor=NOT_APPROVER
+        ),
+        lambda: RejectKnowledgeTemplate(store)(release_id=release_id, actor=NOT_APPROVER),
+        lambda: PublishKnowledgeTemplate(store, now=_now)(
+            release_id=release_id, actor=NOT_APPROVER
+        ),
+        lambda: ActivateKnowledgeRelease(store)(
+            industry_slug="real_estate", release_id=release_id, actor=NOT_APPROVER
+        ),
+        lambda: RetireIndustry(store, connection=store._conn)(
+            industry_slug="real_estate", actor=NOT_APPROVER
+        ),
+    ]
+    for call in guarded:
+        with pytest.raises(NotAuthorized):
+            call()
+
+
+def test_the_actor_recorded_is_the_authenticated_principal(store):
+    """`approved_by` is what an auditor reads a year from now. It comes from authentication, not
+    from a name in the request body."""
+    release_id = _generate(store, _Generator()).data["release_id"]
+    SubmitKnowledgeTemplate(store)(release_id=release_id, actor=APPROVER)
+    ApproveKnowledgeTemplate(store, now=_now)(release_id=release_id, actor=APPROVER)
+    release = store.list_releases(release_id=release_id)[0]
+    assert release["created_by"] == APPROVER.principal_id
+    assert release["approved_by"] == APPROVER.principal_id

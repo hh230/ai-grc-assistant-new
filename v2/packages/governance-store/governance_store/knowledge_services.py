@@ -51,6 +51,43 @@ class QuestionGenerator(Protocol):
     def generate(self, *, industry_slug: str) -> list[dict[str, Any]]: ...
 
 
+# ── who may govern knowledge ─────────────────────────────────────────────────────────────────
+
+KNOWLEDGE_APPROVER_ROLE = "knowledge_approver"
+
+
+class NotAuthorized(Exception):
+    """The caller does not hold the role this operation requires."""
+
+
+@dataclass(frozen=True)
+class Actor:
+    """Who is asking, as established by authentication — never a name the caller typed.
+
+    Every knowledge operation records its actor (`created_by`, `approved_by`, `activated_by`), and
+    those columns are what an auditor reads a year from now. Taking the actor as a free string
+    would let a caller write any name into them.
+    """
+
+    principal_id: str
+    roles: tuple[str, ...] = ()
+
+
+def require_knowledge_approver(actor: Actor, operation: str) -> None:
+    """The one authorization rule in this layer, enforced where ADR 0054 puts it — the Application
+    layer, not the route. The *policy* (which role governs knowledge) is the constant above; this
+    only enforces it, which is why the services still decide nothing.
+
+    Public, because the same rule guards the review console's *reads*: a draft is unreviewed
+    knowledge, and reading one is as much a knowledge-governance act as approving it.
+
+    Knowledge is platform-wide: one release serves every customer in a sector. A tenant role can
+    therefore never be sufficient here — the blast radius of a bad release is all of them.
+    """
+    if KNOWLEDGE_APPROVER_ROLE not in actor.roles:
+        raise NotAuthorized(f"{operation} requires the {KNOWLEDGE_APPROVER_ROLE} role")
+
+
 # ── knowledge ────────────────────────────────────────────────────────────────────────────────
 
 
@@ -80,7 +117,8 @@ class GenerateKnowledgeTemplate:
         self._prompt_version = prompt_version
         self._generator_commit = generator_commit
 
-    def __call__(self, *, industry_slug: str, requested_by: str) -> Outcome:
+    def __call__(self, *, industry_slug: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "generating a knowledge template")
         template = self._store.ensure_template(self._new_id(), industry_slug)
         questions = self._generator.generate(industry_slug=industry_slug)
         release_id = self._new_id()
@@ -91,7 +129,7 @@ class GenerateKnowledgeTemplate:
             generated_by_model=self._model,
             prompt_version=self._prompt_version,
             generator_commit=self._generator_commit,
-            created_by=requested_by,
+            created_by=actor.principal_id,
         )
         return Outcome(
             changed=True,
@@ -123,11 +161,15 @@ class SubmitKnowledgeTemplate:
     def __init__(self, store: Any) -> None:
         self._store = store
 
-    def __call__(self, *, release_id: str) -> Outcome:
+    def __call__(self, *, release_id: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "submitting a knowledge template for review")
         changed = self._store.submit_for_review(release_id)
         return Outcome(
             changed=changed,
-            event=Event("KnowledgeTemplateSubmitted", {"release_id": release_id})
+            event=Event(
+                "KnowledgeTemplateSubmitted",
+                {"release_id": release_id, "submitted_by": actor.principal_id},
+            )
             if changed
             else None,
         )
@@ -140,12 +182,16 @@ class ApproveKnowledgeTemplate:
         self._store = store
         self._now = now
 
-    def __call__(self, *, release_id: str, approver: str) -> Outcome:
-        changed = self._store.approve_release(release_id, approver=approver, at=self._now())
+    def __call__(self, *, release_id: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "approving a knowledge template")
+        changed = self._store.approve_release(
+            release_id, approver=actor.principal_id, at=self._now()
+        )
         return Outcome(
             changed=changed,
             event=Event(
-                "KnowledgeTemplateApproved", {"release_id": release_id, "approved_by": approver}
+                "KnowledgeTemplateApproved",
+                {"release_id": release_id, "approved_by": actor.principal_id},
             )
             if changed
             else None,
@@ -158,13 +204,14 @@ class RejectKnowledgeTemplate:
     def __init__(self, store: Any) -> None:
         self._store = store
 
-    def __call__(self, *, release_id: str, rejected_by: str) -> Outcome:
+    def __call__(self, *, release_id: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "rejecting a knowledge template")
         changed = self._store.reject_release(release_id)
         return Outcome(
             changed=changed,
             event=Event(
                 "KnowledgeTemplateRejected",
-                {"release_id": release_id, "rejected_by": rejected_by},
+                {"release_id": release_id, "rejected_by": actor.principal_id},
             )
             if changed
             else None,
@@ -182,11 +229,15 @@ class PublishKnowledgeTemplate:
         self._store = store
         self._now = now
 
-    def __call__(self, *, release_id: str) -> Outcome:
+    def __call__(self, *, release_id: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "publishing a knowledge template")
         changed = self._store.mark_released(release_id, at=self._now())
         return Outcome(
             changed=changed,
-            event=Event("KnowledgeTemplatePublished", {"release_id": release_id})
+            event=Event(
+                "KnowledgeTemplatePublished",
+                {"release_id": release_id, "published_by": actor.principal_id},
+            )
             if changed
             else None,
         )
@@ -204,10 +255,14 @@ class ActivateKnowledgeRelease:
         self._store = store
 
     def __call__(
-        self, *, industry_slug: str, release_id: str, actor: str, reason: str = ""
+        self, *, industry_slug: str, release_id: str, actor: Actor, reason: str = ""
     ) -> Outcome:
+        require_knowledge_approver(actor, "activating a knowledge release")
         previous = self._store.set_active_release(
-            industry_slug=industry_slug, release_id=release_id, actor=actor, reason=reason
+            industry_slug=industry_slug,
+            release_id=release_id,
+            actor=actor.principal_id,
+            reason=reason,
         )
         return Outcome(
             changed=True,
@@ -219,7 +274,7 @@ class ActivateKnowledgeRelease:
                     # What it replaced. A first activation and a rollback are the same call and
                     # read identically without it.
                     "previous_release_id": previous,
-                    "activated_by": actor,
+                    "activated_by": actor.principal_id,
                     "reason": reason,
                 },
             ),
@@ -247,10 +302,14 @@ class RetireIndustry:
         self._store = store
         self._conn = connection
 
-    def __call__(self, *, industry_slug: str, actor: str) -> Outcome:
+    def __call__(self, *, industry_slug: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "retiring an industry")
         with self._conn.transaction():
             was_active = self._store.set_active_release(
-                industry_slug=industry_slug, release_id=None, actor=actor, reason="industry retired"
+                industry_slug=industry_slug,
+                release_id=None,
+                actor=actor.principal_id,
+                reason="industry retired",
             )
             changed = self._store.set_industry_status(industry_slug, "retired")
             if was_active is not None:
@@ -262,7 +321,7 @@ class RetireIndustry:
                 {
                     "industry_slug": industry_slug,
                     "retired_release_id": was_active,
-                    "retired_by": actor,
+                    "retired_by": actor.principal_id,
                 },
             )
             if changed

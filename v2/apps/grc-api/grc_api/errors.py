@@ -57,6 +57,57 @@ def _envelope(code: str, message: str, details: dict[str, Any] | None = None) ->
     return {"error": error}
 
 
+def register_knowledge_error_handlers(app: FastAPI) -> None:
+    """The knowledge layer (ADR 0067) raises its own typed failures, and so does the schema beneath
+    it. They map here, in the one place transport meets a layer's failure vocabulary — the routes
+    stay free of HTTP-shaped guards.
+
+    **A constraint the database refuses is a `409`, not a `500`.** ADR 0067 deliberately states
+    rules declaratively — activating a release that was never published is unrepresentable, a
+    concluded assessment accepts no further writes — so those refusals arrive as psycopg errors
+    rather than Python guards. Left unmapped, the strongest guarantees in the design would surface
+    to a client as "internal error", which reads as *our* bug rather than a rule working.
+    """
+    import psycopg
+    from governance_store.knowledge_services import NotAuthorized as KnowledgeNotAuthorized
+
+    from grc_api.knowledge_generation import GeneratedKnowledgeRejected
+
+    @app.exception_handler(KnowledgeNotAuthorized)
+    async def _handle_knowledge_not_authorized(
+        _: Request, exc: KnowledgeNotAuthorized
+    ) -> JSONResponse:
+        return JSONResponse(status_code=403, content=_envelope("forbidden", str(exc)))
+
+    @app.exception_handler(psycopg.errors.RaiseException)
+    async def _handle_trigger_refusal(_: Request, exc: Any) -> JSONResponse:
+        # A trigger's RAISE message is written to be read by whoever hit it; the surrounding
+        # CONTEXT and PL/pgSQL frame are not. Only the primary message is returned.
+        message = getattr(exc.diag, "message_primary", "") or "the database refused this change"
+        return JSONResponse(status_code=409, content=_envelope("conflict", message))
+
+    @app.exception_handler(psycopg.errors.IntegrityError)
+    async def _handle_integrity(_: Request, exc: Any) -> JSONResponse:
+        # The constraint NAME is returned and the row values are not: the name says which rule was
+        # broken, while Postgres' DETAIL would echo back data the caller may not be entitled to.
+        constraint = getattr(exc.diag, "constraint_name", "") or "a database constraint"
+        return JSONResponse(
+            status_code=409,
+            content=_envelope("conflict", f"the change violates {constraint}"),
+        )
+
+    @app.exception_handler(GeneratedKnowledgeRejected)
+    async def _handle_generated_rejected(
+        _: Request, exc: GeneratedKnowledgeRejected
+    ) -> JSONResponse:
+        # `502`, not `500`: the model answered and its answer was refused. The distinction matters
+        # to whoever is paged — nothing in this deployment is broken.
+        return JSONResponse(
+            status_code=502,
+            content=_envelope("upstream_rejected", f"the generated knowledge was rejected: {exc}"),
+        )
+
+
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(ApiError)
     async def _handle_api_error(_: Request, exc: ApiError) -> JSONResponse:

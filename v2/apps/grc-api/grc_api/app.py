@@ -25,7 +25,7 @@ from fastapi import FastAPI
 from framework_library import FrameworkLibrary
 from governance_discovery.engine import DiscoveryEngine
 from governance_discovery.pack import load_bundled_packs
-from governance_store import PostgresGovernanceStore
+from governance_store import PostgresGovernanceStore, PostgresKnowledgeStore
 from knowledge_runtime import TenantKnowledgeBase
 from mission_application import DeliverableBuilderRegistry, ExportService
 from mission_engine import EchoExecutor, InMemoryMissionStore, MissionEngine
@@ -44,10 +44,16 @@ from grc_api.composition import (
     memory_command_scope_factory,
     open_autocommit_connection,
 )
-from grc_api.errors import register_exception_handlers
+from grc_api.errors import register_exception_handlers, register_knowledge_error_handlers
 from grc_api.execution import GovernancePlanExecutor
-from grc_api.llm_provider import LLMRole, build_generation_provider
+from grc_api.knowledge_generation import (
+    KNOWLEDGE_PROMPT_VERSION,
+    build_knowledge_question_generator,
+    generator_commit,
+    knowledge_generator_model,
+)
 from grc_api.launch import DurableMissionLaunch, MemoryMissionLaunch, MissionLaunchPort
+from grc_api.llm_provider import LLMRole, build_generation_provider
 from grc_api.result_adapters import (
     BundledDeliverableProvider,
     DocxExporter,
@@ -62,6 +68,7 @@ from grc_api.routers.discovery import router as discovery_router
 from grc_api.routers.documents import router as documents_router
 from grc_api.routers.governance_plans import router as governance_plans_router
 from grc_api.routers.health import router as health_router
+from grc_api.routers.knowledge import router as knowledge_router
 from grc_api.routers.missions import router as missions_router
 from grc_api.security import IdentityProvider, development_identity_provider
 from grc_api.service_identity import CompositeIdentityProvider, ServiceAssertionIdentityProvider
@@ -138,6 +145,8 @@ def create_app(
     knowledge_base: TenantKnowledgeBase | None = None,
     discovery_engine: DiscoveryEngine | None = None,
     discovery_store_factory: Any | None = None,
+    knowledge_store_factory: Any | None = None,
+    knowledge_question_generator: Any | None = None,
 ) -> FastAPI:
     app = FastAPI(title=API_TITLE, version=API_VERSION)
 
@@ -214,8 +223,25 @@ def create_app(
     # above, where the executor needed them.
     app.state.discovery_engine = resolved_engine
     app.state.discovery_store_factory = resolved_store_factory
+    # Sector Knowledge Packs (ADR 0067). A separate store class over the SAME database: knowledge
+    # is platform-wide (industries, templates, releases carry no tenant) while assessments are
+    # tenant-scoped, and keeping the two in one connection discipline is what lets an assessment
+    # cite a release in one transaction.
+    app.state.knowledge_store_factory = knowledge_store_factory or (
+        lambda: PostgresKnowledgeStore(dsn=governance_database_dsn())
+    )
+    # The generator is the ONE piece that may legitimately be absent: a deployment with no
+    # governance model configured cannot author knowledge, and `None` is how it says so. The route
+    # answers `503` naming what is missing rather than inventing questions nobody wrote.
+    app.state.knowledge_question_generator = (
+        knowledge_question_generator or build_knowledge_question_generator()
+    )
+    app.state.knowledge_generator_model = knowledge_generator_model()
+    app.state.knowledge_prompt_version = KNOWLEDGE_PROMPT_VERSION
+    app.state.knowledge_generator_commit = generator_commit()
 
     register_exception_handlers(app)
+    register_knowledge_error_handlers(app)
     app.include_router(health_router)
     app.include_router(missions_router, prefix="/v1")
     app.include_router(documents_router, prefix="/v1")
@@ -223,6 +249,7 @@ def create_app(
     app.include_router(approvals_router, prefix="/v1")
     app.include_router(discovery_router, prefix="/v1")
     app.include_router(governance_plans_router, prefix="/v1")
+    app.include_router(knowledge_router, prefix="/v1")
 
     return app
 

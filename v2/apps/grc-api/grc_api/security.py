@@ -41,7 +41,8 @@ class DevelopmentIdentityProvider:
 
 def development_identity_provider() -> DevelopmentIdentityProvider:
     """Seeded dev tenants — enough to exercise tenant isolation and the Approver gate locally/in
-    tests. `dev-approver-a` is a tenant-a principal who also holds the Approver role."""
+    tests. `dev-approver-a` is a tenant-a principal who also holds the Approver role;
+    `dev-knowledge-approver` holds the platform-wide Knowledge Approver role (ADR 0067)."""
     return DevelopmentIdentityProvider(
         {
             "dev-tenant-a": TenantContext(
@@ -54,6 +55,16 @@ def development_identity_provider() -> DevelopmentIdentityProvider:
                 tenant_id="tenant-a",
                 principal_id="approver@a",
                 roles=("practitioner", "approver"),
+                region="ksa",
+            ),
+            # Knowledge is platform-wide, not a tenant's: this principal governs the sector packs
+            # every customer's interview is drawn from. Deliberately a DIFFERENT role from the
+            # mission Approver — approving a customer's mission step and authoring the questions
+            # every customer in a sector answers are not the same authority.
+            "dev-knowledge-approver": TenantContext(
+                tenant_id="tenant-a",
+                principal_id="knowledge@rasheed.sa",
+                roles=("practitioner", "knowledge_approver"),
                 region="ksa",
             ),
             "dev-tenant-b": TenantContext(

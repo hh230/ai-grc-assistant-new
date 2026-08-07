@@ -235,3 +235,63 @@ def get_plan_execution_service(
     same shared, stateless one Discovery uses; only the store is per-request."""
     engine: DiscoveryEngine = request.app.state.discovery_engine
     return PlanExecutionService(engine, store, new_id=lambda: str(uuid4()), now=time.time)
+
+
+# --- Sector Knowledge Packs (ADR 0067) --------------------------------------------------------
+
+
+def utc_now() -> Any:
+    """The clock the knowledge services stamp their decisions with. A seam, not a convenience:
+    tests pass their own and never depend on wall-clock time."""
+    import datetime as _dt
+
+    return _dt.datetime.now(_dt.timezone.utc)
+
+
+def get_knowledge_store(request: Request) -> Iterator[Any]:
+    """One connection per request, closed on the way out — the same discipline as Discovery."""
+    store = request.app.state.knowledge_store_factory()
+    try:
+        yield store
+    finally:
+        close = getattr(store, "close", None)
+        if close is not None:
+            close()
+
+
+def knowledge_actor(
+    tenant: Annotated[TenantContext, Depends(require_tenant)],
+) -> Any:
+    """The authenticated principal and its roles, as the knowledge layer's `Actor`.
+
+    The route never reads `roles` itself. It carries the identity to the Application Service, which
+    is where authorization is enforced (ADR 0054) — so a new route cannot forget the check by
+    forgetting to write it.
+    """
+    from governance_store.knowledge_services import Actor
+
+    return Actor(principal_id=tenant.principal_id, roles=tuple(tenant.roles))
+
+
+def get_knowledge_generation_service(
+    request: Request,
+    store: Annotated[Any, Depends(get_knowledge_store)],
+) -> Any:
+    """`GenerateKnowledgeTemplate`, or `None` when this deployment configured no governance model.
+
+    `None` is not a failure of this function; it is the honest answer, and the route turns it into
+    a `503` naming what is missing. What must never happen is a stub that answers plausibly.
+    """
+    generator = getattr(request.app.state, "knowledge_question_generator", None)
+    if generator is None:
+        return None
+    from governance_store.knowledge_services import GenerateKnowledgeTemplate
+
+    return GenerateKnowledgeTemplate(
+        store,
+        generator,
+        new_id=lambda: str(uuid4()),
+        model=request.app.state.knowledge_generator_model,
+        prompt_version=request.app.state.knowledge_prompt_version,
+        generator_commit=request.app.state.knowledge_generator_commit,
+    )

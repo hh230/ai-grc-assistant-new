@@ -50,8 +50,8 @@ disagree. The real defect was that answers could still arrive at all — see the
 | `open_assessment` | `assessments` W | 1 | single stmt | READ COMMITTED | none | no — a duplicate id is a caller bug, surfaced | no — a new assessment is a new fact |
 | `record_selection` | `template_selections` W | 1 | single stmt | READ COMMITTED | none — upsert on PK | no | **yes** |
 | `save_sector_answers` | `sector_answers` W | 5–50 | **explicit** | READ COMMITTED | **none** — see §4 | no | **yes** — batch upsert on the composite PK |
-| `load_plan_context` | `assessments` R · `template_selections` R · `sector_answers` R · `release_questions` R | 1 + 1 + 5–50 + 5–50 | none | READ COMMITTED | none — **the data is frozen**, see §3 | no | yes (read) |
-| `complete_assessment` | `assessments` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE completed_at IS NULL` | no | **yes** |
+| `load_plan_context` | `assessments` R · `template_selections` R · `sector_answers` R · `release_questions` R — **every one filtered by `tenant_id`**, see §4 | 1 + 1 + 5–50 + 5–50 | none | READ COMMITTED | none — **the data is frozen**, see §3 | no | yes (read) |
+| `complete_assessment` | `assessments` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE tenant_id = … AND completed_at IS NULL` | no | **yes** |
 
 ## The four boundaries that exist for a reason
 
@@ -168,3 +168,23 @@ never edited but superseded.
   that infers a tenant is one bug away from crossing the boundary.
 - **No write to a concluded assessment.** Enforced in the schema, not only in these methods, so a
   future caller that bypasses the repository cannot bypass the rule either.
+
+### §4 the tenant is in the `WHERE`, not in a check afterwards
+
+Both assessment operations above once took an assessment id and nothing else. Every other operation
+on that table carries `tenant_id`; those two took the id on trust, which over an API is a
+cross-tenant hole in both directions — `load_plan_context` returns another customer's organisation
+and every answer they gave, and `complete_assessment` is irreversible, so one call with a foreign id
+freezes another tenant's interview for good.
+
+The filter is in the `WHERE` clause rather than a comparison after the read. For the write, because
+the row must never move at all. For the read, because a caller must find **nothing**: a missing
+assessment and another tenant's assessment are deliberately indistinguishable, since replying "that
+exists, but not for you" confirms the id, and an assessment id is a fact about another customer.
+
+`load_plan_context` carries the tenant into all three of its reads rather than trusting the first.
+The column is denormalised onto each table and nothing in the schema binds a child row's tenant to
+its parent's, so "the assessment is mine" does not by itself prove "these answers are". Closing that
+declaratively — a composite foreign key `(assessment_id, tenant_id) → assessments(id, tenant_id)`,
+the same technique `(release_id, release_status)` already uses — alters existing tables and is
+therefore proposed, not done.

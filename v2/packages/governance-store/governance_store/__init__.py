@@ -25,10 +25,12 @@ from governance_store.config import (
     TABLE_ORGANIZATION_PROFILES,
     dsn,
 )
+from governance_store.knowledge_store import PostgresKnowledgeStore
 from governance_store.schema import apply_schema, create_table_sql, index_sql
 from governance_store.store import AnswerRecord, PostgresGovernanceStore
 
 __all__ = [
+    "PostgresKnowledgeStore",
     "apply_schema",
     "create_table_sql",
     "index_sql",

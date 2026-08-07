@@ -193,7 +193,9 @@ def test_the_question_types_are_exactly_the_ones_the_SCHEMA_allows():
     real call. There is ONE type vocabulary and the migration owns it."""
     from grc_api.knowledge_generation import _QUESTION_TYPES
 
-    assert _QUESTION_TYPES == {"boolean", "enum", "numeric", "date", "text"}
+    # Grown once, by migration 0016, because five authored questions genuinely had several answers
+    # at once. The set is pinned here so the next growth is also a decision and not a drift.
+    assert _QUESTION_TYPES == {"boolean", "enum", "multi_select", "numeric", "date", "text"}
     prompt_path = (
         pathlib.Path(__file__).resolve().parents[1]
         / "grc_api" / "prompts" / "sector_questions.v1.ar.md"
@@ -201,7 +203,7 @@ def test_the_question_types_are_exactly_the_ones_the_SCHEMA_allows():
     prompt = prompt_path.read_text(encoding="utf-8")
     for kind in _QUESTION_TYPES:
         assert kind in prompt, f"the prompt must offer {kind}"
-    for invented in ("single_choice", "multi_choice", "number"):
+    for invented in ("single_choice", "multi_choice", "number", "slider"):
         assert invented not in prompt, f"the prompt still offers {invented}, which no column accepts"
 
 

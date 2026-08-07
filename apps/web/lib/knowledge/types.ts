@@ -16,7 +16,13 @@ export interface KnowledgeReference {
 
 /** The schema's vocabulary (`release_questions_type_renderable`, migration 0007) — not a second
  * one invented here. Two vocabularies for one concept is a translation layer waiting to be written. */
-export type QuestionType = "boolean" | "enum" | "numeric" | "date" | "text";
+export type QuestionType =
+  | "boolean"
+  | "enum"
+  | "multi_select"
+  | "numeric"
+  | "date"
+  | "text";
 export type QuestionImportance = "critical" | "high" | "medium" | "low";
 
 export interface ReviewQuestion {

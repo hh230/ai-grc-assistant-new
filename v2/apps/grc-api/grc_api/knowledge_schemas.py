@@ -35,6 +35,8 @@ class InterviewQuestionView(BaseModel):
 
     question_id: str
     canonical_text_ar: str
+    # The schema's closed vocabulary (migration 0016). `multi_select` renders as checkboxes and
+    # answers as an array; everything else answers as a scalar.
     type: str
     options: list[Any] = Field(default_factory=list)
     required: bool = True

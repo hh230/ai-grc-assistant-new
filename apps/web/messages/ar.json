@@ -2195,7 +2195,8 @@
       "enum": "اختيار من قائمة",
       "numeric": "رقم",
       "date": "تاريخ",
-      "text": "نص"
+      "text": "نص",
+      "multi_select": "اختيار متعدد"
     },
     "question": {
       "whyWeAsk": "لماذا نسأل:",

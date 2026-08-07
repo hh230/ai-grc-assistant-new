@@ -2195,7 +2195,8 @@
       "enum": "One of",
       "numeric": "Number",
       "date": "Date",
-      "text": "Text"
+      "text": "Text",
+      "multi_select": "Several of"
     },
     "question": {
       "whyWeAsk": "Why we ask:",

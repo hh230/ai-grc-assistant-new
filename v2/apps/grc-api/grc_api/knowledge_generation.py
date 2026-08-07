@@ -46,8 +46,9 @@ _PROMPT_FILE = pathlib.Path(__file__).with_name("prompts") / f"{KNOWLEDGE_PROMPT
 # `single_choice`/`multi_choice`/`number`, which the model dutifully produced and the CHECK
 # constraint refused on the first real call. Two vocabularies for one concept is a translation layer
 # waiting to be written; there is one, and it lives in the migration.
-_QUESTION_TYPES = frozenset({"boolean", "enum", "numeric", "date", "text"})
-_CHOICE_TYPE = "enum"
+_QUESTION_TYPES = frozenset({"boolean", "enum", "multi_select", "numeric", "date", "text"})
+# Both kinds of choice need at least two options — the rule was never about `enum` (migration 0016).
+_CHOICE_TYPES = frozenset({"enum", "multi_select"})
 _IMPORTANCE = frozenset({"critical", "high", "medium", "low"})
 _QUESTION_ID = re.compile(r"^[a-z][a-z0-9_]{1,63}$")
 _ARABIC = re.compile(r"[؀-ۿ]")
@@ -248,8 +249,8 @@ def _question(item: Any, index: int, seen: set[str]) -> dict[str, Any]:
     if kind not in _QUESTION_TYPES:
         raise GeneratedKnowledgeRejected(f"{where} has type {kind!r}, not one of {_QUESTION_TYPES}")
     options = list(item.get("options") or [])
-    if kind == _CHOICE_TYPE and len(options) < 2:
-        raise GeneratedKnowledgeRejected(f"{where} is an {kind} with fewer than two options")
+    if kind in _CHOICE_TYPES and len(options) < 2:
+        raise GeneratedKnowledgeRejected(f"{where} is a {kind} with fewer than two options")
 
     importance = str(item.get("importance", "")).strip()
     if importance not in _IMPORTANCE:

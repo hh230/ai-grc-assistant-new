@@ -627,3 +627,124 @@ def test_another_tenants_unfinished_interview_is_not_offered(client, dsn):
         client.get("/v1/knowledge/sector-interview/open", headers=TENANT_B).json()["status"]
         == "no_sector_pack"
     )
+
+
+# --- the authored pack, end to end (ADR 0067 + migration 0016) ---------------------------------
+
+
+def test_the_AUTHORED_real_estate_pack_reaches_a_customer_with_its_multi_selects_intact(
+    client, dsn
+):
+    """The full chain for a pack a human wrote: seed -> review -> publish -> activate -> interview,
+    with the five multi-select questions surviving as multi-select rather than being flattened into
+    a dropdown with an option meaning "more than one"."""
+    client.post(
+        "/v1/knowledge/industries",
+        json={"slug": "real_estate", "canonical_name_ar": "العقارات"},
+        headers=APPROVER,
+    )
+    seeded = client.post(
+        "/v1/knowledge/releases/authored",
+        json={"industry_slug": "real_estate"},
+        headers=APPROVER,
+    )
+    assert seeded.status_code == 201, seeded.text
+    release_id = seeded.json()["data"]["release_id"]
+
+    # Provenance is honest: no model name that never ran.
+    review = client.get(f"/v1/knowledge/releases/{release_id}", headers=APPROVER).json()
+    assert review["generated_by_model"] == "authored"
+    assert review["prompt_version"] == "authored:real_estate"
+    assert len(review["questions"]) == 22
+    assert review["status"] == "draft", "authored is not approved — the human gate still applies"
+
+    for action in ("submit", "approve", "publish"):
+        assert (
+            client.post(
+                f"/v1/knowledge/releases/{release_id}/{action}", headers=APPROVER
+            ).status_code
+            == 200
+        )
+    client.put(
+        "/v1/knowledge/industries/real_estate/active-release",
+        json={"release_id": release_id, "reason": "authored pack v1"},
+        headers=APPROVER,
+    )
+
+    session_id = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+    questions = {q["question_id"]: q for q in opened["release"]["questions"]}
+    assert len(questions) == 22
+
+    multi = {qid for qid, q in questions.items() if q["type"] == "multi_select"}
+    assert multi == {
+        "re_activities_practiced",
+        "re_government_platforms",
+        "re_governance_documents",
+        "re_data_categories",
+        "re_pdpl_requirements",
+    }
+    # The reviewer-only text still does not travel to the customer.
+    assert all("why_we_ask" not in q for q in opened["release"]["questions"])
+
+    # An ARRAY answer is accepted and survives into the plan context — which is the entire point:
+    # a broker that is also a developer is recorded as both, not as "more than one".
+    both = ["الوساطة العقارية (بيع/شراء)", "التطوير العقاري"]
+    assert (
+        client.post(
+            f"/v1/knowledge/assessments/{opened['assessment_id']}/answers",
+            json={
+                "answers": [
+                    {
+                        "release_id": release_id,
+                        "question_id": "re_activities_practiced",
+                        "answer": both,
+                    },
+                    {
+                        "release_id": release_id,
+                        "question_id": "re_government_platforms",
+                        "answer": ["شبكة إيجار", "منصة فال (الهيئة العامة للعقار)"],
+                    },
+                ]
+            },
+            headers=TENANT_A,
+        ).status_code
+        == 200
+    )
+    client.post(
+        f"/v1/knowledge/assessments/{opened['assessment_id']}/complete", headers=TENANT_A
+    )
+    context = client.get(
+        f"/v1/knowledge/assessments/{opened['assessment_id']}/plan-context", headers=TENANT_A
+    ).json()
+    answers = {a["question_id"]: a["answer"] for a in context["sector_answers"]}
+    assert answers["re_activities_practiced"] == both, "which activities, not merely how many"
+    assert len(answers["re_government_platforms"]) == 2
+
+
+def test_a_sector_with_no_authored_pack_is_refused_by_name(client):
+    client.post(
+        "/v1/knowledge/industries",
+        json={"slug": "aerospace", "canonical_name_ar": "الطيران"},
+        headers=APPROVER,
+    )
+    response = client.post(
+        "/v1/knowledge/releases/authored", json={"industry_slug": "aerospace"}, headers=APPROVER
+    )
+    assert response.status_code == 422
+    assert "no authored pack" in response.json()["error"]["message"]
+
+
+def test_seeding_an_authored_pack_needs_the_knowledge_approver_role(client):
+    assert (
+        client.post(
+            "/v1/knowledge/releases/authored",
+            json={"industry_slug": "real_estate"},
+            headers=TENANT_A,
+        ).status_code
+        == 403
+    )

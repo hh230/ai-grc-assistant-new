@@ -44,6 +44,7 @@ from grc_api.deps import (
     utc_now,
 )
 from grc_api.errors import ApiError
+from grc_api.knowledge_generation import generator_commit
 from grc_api.knowledge_schemas import (
     ActivateReleaseBody,
     ActivationHistoryResponse,
@@ -63,6 +64,7 @@ from grc_api.knowledge_schemas import (
     SectorInterviewView,
     StartAssessmentBody,
 )
+from grc_api.knowledge_seed import AUTHORED_BY_MODEL
 from grc_api.security import require_tenant
 
 router = APIRouter()
@@ -138,6 +140,39 @@ def generate_release(
             ),
         )
     return OutcomeResponse.from_outcome(service(industry_slug=body.industry_slug, actor=actor))
+
+
+@router.post("/knowledge/releases/authored", response_model=OutcomeResponse, status_code=201)
+def seed_authored_release(
+    body: GenerateReleaseBody,
+    actor: Annotated[Actor, Depends(knowledge_actor)],
+    store: Annotated[Any, Depends(get_knowledge_store)],
+) -> OutcomeResponse:
+    """Creates a release from an AUTHORED pack on disk instead of calling a model.
+
+    Same lifecycle, same gate: the release lands as a draft and a human still publishes and
+    activates it. Authored is not approved — the gate was never about distrusting the model, it was
+    that somebody must be accountable for what thousands of customers are asked.
+
+    Provenance says `authored` rather than a model name that never ran.
+    """
+    from grc_api.knowledge_seed import AuthoredPackGenerator, AuthoredPackRejected
+
+    try:
+        service = GenerateKnowledgeTemplate(
+            store,
+            AuthoredPackGenerator(),
+            new_id=lambda: str(uuid4()),
+            model=AUTHORED_BY_MODEL,
+            prompt_version=f"authored:{body.industry_slug}",
+            generator_commit=generator_commit(),
+        )
+        return OutcomeResponse.from_outcome(
+            service(industry_slug=body.industry_slug, actor=actor)
+        )
+    except AuthoredPackRejected as exc:
+        # The pack file is wrong, not the request — say which question, not which constraint.
+        raise ApiError(status_code=422, code="validation_error", message=str(exc)) from exc
 
 
 @router.get("/knowledge/releases", response_model=ReleaseListResponse)

@@ -230,8 +230,10 @@ def test_a_question_must_rest_on_at_least_one_reference(clean):
 
 
 def test_an_enum_question_needs_at_least_two_options(clean):
+    """Renamed by 0016 to `choice_has_options` — the rule was never about `enum`, it was about
+    choosing, and it now covers `multi_select` too. The guarantee itself is unchanged."""
     release_id = _release(clean, _template(clean))
-    with pytest.raises(psycopg.errors.CheckViolation, match="enum_has_options"):
+    with pytest.raises(psycopg.errors.CheckViolation, match="choice_has_options"):
         clean.execute(
             'INSERT INTO release_questions (release_id, question_id, canonical_text_ar, type, '
             'options, category, importance, "references", why_we_ask) '
@@ -625,3 +627,77 @@ def test_an_assessments_tenant_can_no_longer_be_moved_out_from_under_its_childre
     )
     with pytest.raises(psycopg.errors.ForeignKeyViolation):
         clean.execute("UPDATE assessments SET tenant_id = 'tenant_b' WHERE id = 'as_d'")
+
+
+# --- 0016: a question may have several answers at once -----------------------------------------
+
+
+def test_a_MULTI_SELECT_question_can_exist(clean):
+    """The pack's author had to write an option meaning "more than one activity" because the schema
+    could only express "choose one" — recording THAT several apply while losing WHICH."""
+    release_id = _release(clean, _template(clean))
+    clean.execute(
+        "INSERT INTO release_questions (release_id, question_id, canonical_text_ar, type, options, "
+        " category, importance, \"references\", why_we_ask) "
+        "VALUES (%s, 'activities', 'اختر جميع الأنشطة', 'multi_select', "
+        " '[\"وساطة\",\"تطوير\",\"إدارة أملاك\"]'::jsonb, 'licensing', 'critical', "
+        " '[{\"framework\":\"REGA\"}]'::jsonb, 'why')",
+        (release_id,),
+    )
+    row = clean.execute(
+        "SELECT type, jsonb_array_length(options) FROM release_questions WHERE question_id = %s",
+        ("activities",),
+    ).fetchone()
+    assert row == ("multi_select", 3)
+
+
+def test_a_multi_select_with_fewer_than_two_options_is_refused(clean):
+    """The rule was never about `enum`, it was about CHOOSING — so it covers both."""
+    release_id = _release(clean, _template(clean))
+    with pytest.raises(psycopg.errors.CheckViolation, match="choice_has_options"):
+        clean.execute(
+            "INSERT INTO release_questions (release_id, question_id, canonical_text_ar, type, "
+            " options, category, importance, \"references\", why_we_ask) "
+            "VALUES (%s, 'only_one', 'س', 'multi_select', '[\"واحد\"]'::jsonb, 'c', 'high', "
+            " '[{\"framework\":\"f\"}]'::jsonb, 'why')",
+            (release_id,),
+        )
+
+
+def test_the_type_vocabulary_stays_CLOSED(clean):
+    """A free-text `type` would let any caller — or any model — invent a rendering the interface has
+    never seen. Adding a member stays a reviewed schema change."""
+    release_id = _release(clean, _template(clean))
+    with pytest.raises(psycopg.errors.CheckViolation, match="type_renderable"):
+        clean.execute(
+            "INSERT INTO release_questions (release_id, question_id, canonical_text_ar, type, "
+            " options, category, importance, \"references\", why_we_ask) "
+            "VALUES (%s, 'invented', 'س', 'slider', '[]'::jsonb, 'c', 'high', "
+            " '[{\"framework\":\"f\"}]'::jsonb, 'why')",
+            (release_id,),
+        )
+
+
+def test_an_ARRAY_answer_is_storable_for_a_multi_select(clean):
+    """The answer column never constrained an answer's SHAPE, only that it belongs to a real
+    question — the shape is the question's business, and its `type` now says so."""
+    release_id = _release(clean, _template(clean))
+    clean.execute(
+        "INSERT INTO release_questions (release_id, question_id, canonical_text_ar, type, options, "
+        " category, importance, \"references\", why_we_ask) "
+        "VALUES (%s, 'activities', 'اختر', 'multi_select', '[\"وساطة\",\"تطوير\"]'::jsonb, 'c', "
+        " 'critical', '[{\"framework\":\"REGA\"}]'::jsonb, 'why')",
+        (release_id,),
+    )
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_ms', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_ms', %s, 'activities', 't', '[\"وساطة\",\"تطوير\"]'::jsonb)",
+        (release_id,),
+    )
+    stored = clean.execute(
+        "SELECT answer FROM sector_answers WHERE assessment_id = 'as_ms'"
+    ).fetchone()[0]
+    assert stored == ["وساطة", "تطوير"], "both choices survive, not just the fact that several do"

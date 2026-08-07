@@ -39,9 +39,13 @@ export function SectorQuestions({
   const release = interview.release;
   if (!release || !interview.assessmentId) return null;
 
-  const missing = release.questions.filter(
-    (q) => q.required && (values[q.questionId] === undefined || values[q.questionId] === ""),
-  );
+  const missing = release.questions.filter((q) => {
+    if (!q.required) return false;
+    const answer = values[q.questionId];
+    // A multi-select is answered once ANY box is ticked; an empty array is still unanswered.
+    if (Array.isArray(answer)) return answer.length === 0;
+    return answer === undefined || answer === "";
+  });
 
   async function submit() {
     if (!release || !interview.assessmentId) return;
@@ -164,6 +168,36 @@ function SectorAnswerInput({
           </button>
         ))}
       </div>
+    );
+  }
+
+  if (question.type === "multi_select") {
+    // An array, always — including the empty one. "Nothing applies" and "not answered" are
+    // different facts, and collapsing them would lose the first.
+    const chosen = Array.isArray(value) ? (value as string[]) : [];
+    return (
+      <ul className="space-y-1.5" dir="rtl">
+        {question.options.map((option) => {
+          const checked = chosen.includes(option);
+          return (
+            <li key={option}>
+              <label className="flex cursor-pointer items-start gap-2 text-sm text-foreground-secondary">
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() =>
+                    onChange(
+                      checked ? chosen.filter((o) => o !== option) : [...chosen, option],
+                    )
+                  }
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-accent"
+                />
+                <span>{option}</span>
+              </label>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 

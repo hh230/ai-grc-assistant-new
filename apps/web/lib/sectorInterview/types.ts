@@ -12,7 +12,7 @@
 export interface SectorQuestion {
   questionId: string;
   canonicalTextAr: string;
-  type: "boolean" | "enum" | "numeric" | "date" | "text";
+  type: "boolean" | "enum" | "multi_select" | "numeric" | "date" | "text";
   options: string[];
   required: boolean;
   category: string;

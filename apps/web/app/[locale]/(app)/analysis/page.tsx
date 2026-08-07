@@ -7,8 +7,6 @@ import { can } from "@/lib/auth/permissions";
 import { requireSession } from "@/lib/auth/server";
 import { AnalysisDetail } from "@/components/analysis/AnalysisDetail";
 import { AnalysisHistory } from "@/components/analysis/AnalysisHistory";
-import { RecentAssessments } from "@/components/documents/RecentAssessments";
-import { IntelligentInsights } from "@/components/documents/IntelligentInsights";
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageTitle("analysisPage.title");
@@ -47,17 +45,7 @@ export default async function AnalysisPage({
         </p>
       </header>
 
-      {doc ? (
-        <AnalysisDetail documentId={doc} canRun={canRun} />
-      ) : (
-        <div className="space-y-5">
-          <AnalysisHistory />
-          {/* Both moved here from the home page (CLAUDE.md §3 pillar 10). They read documents, and
-              this is where documents live. */}
-          <RecentAssessments />
-          <IntelligentInsights />
-        </div>
-      )}
+      {doc ? <AnalysisDetail documentId={doc} canRun={canRun} /> : <AnalysisHistory />}
     </div>
   );
 }

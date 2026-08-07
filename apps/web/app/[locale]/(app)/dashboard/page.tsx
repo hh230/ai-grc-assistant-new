@@ -1,54 +1,94 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
-import { getActor } from "@/lib/auth/actor";
-import { requireSession } from "@/lib/auth/server";
+import { parseDashboardRange } from "@/lib/dashboard/metrics";
 import { pageTitle } from "@/lib/pageMetadata";
-import { getProgramStatus } from "@/lib/dashboard/programStatus";
-import { getGovernanceActivity } from "@/lib/dashboard/governanceActivity";
-import { ProgramStatus } from "@/components/dashboard/ProgramStatus";
-import { GovernanceMaturity } from "@/components/dashboard/GovernanceMaturity";
-import { WhatToDoNext } from "@/components/dashboard/WhatToDoNext";
-import { GovernanceActivity } from "@/components/dashboard/GovernanceActivity";
-import { EvidenceCoverage } from "@/components/dashboard/EvidenceCoverage";
+import { PageHeader } from "@/components/dashboard/PageHeader";
+import { ScoreCards } from "@/components/dashboard/ScoreCards";
+import { StatCards } from "@/components/dashboard/StatCards";
+import { ExecutiveSummary } from "@/components/dashboard/ExecutiveSummary";
+import { ActiveFrameworks } from "@/components/dashboard/ActiveFrameworks";
+import { NeedsAttention } from "@/components/dashboard/NeedsAttention";
+import { IntelligentInsights } from "@/components/dashboard/IntelligentInsights";
+import { ComplianceProgress } from "@/components/dashboard/ComplianceProgress";
+import { RiskDistribution } from "@/components/dashboard/RiskDistribution";
+import { RecentAssessments } from "@/components/dashboard/RecentAssessments";
+import { AiWorkspaceCard } from "@/components/dashboard/AiWorkspaceCard";
+import { RecentActivities } from "@/components/dashboard/RecentActivities";
+import { ReportsSection } from "@/components/dashboard/ReportsSection";
+import { WorkspaceHub } from "@/components/dashboard/WorkspaceHub";
+import { FavoritesPanel } from "@/components/dashboard/FavoritesPanel";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return pageTitle("programStatus.title");
+  return pageTitle("dashboard.pageHeader.title");
 }
 
-/**
- * The home page — the governance program's dashboard (CLAUDE.md §3 pillar 10).
- *
- * Five sections, in the order a customer reasons: where am I → where do I stand → what do I do
- * next → what has happened → what can I prove. A score is never the first thing, because a score
- * is not a thing you can act on.
- *
- * What this page is NOT any more: a document-analysis dashboard. The compliance and risk averages
- * derived from reading uploads, and the narrative built on top of them, measured the documents a
- * customer had uploaded rather than the organization — and led the page. They now live where
- * documents live, per document, never aggregated into a verdict about the organization.
- */
-export default async function GovernanceHomePage() {
-  await requireSession();
-  const actor = await getActor();
-  if (!actor) redirect("/login");
-
-  const status = await getProgramStatus(actor);
-
-  // With no program the status card IS the page. A dashboard of zeroes is not an empty dashboard;
-  // it is a customer who has not started, and the only useful thing to show them is the way in.
-  if (status.state === "none" || status.plan === null) {
-    return <ProgramStatus status={status} />;
-  }
-
-  const activity = await getGovernanceActivity(actor, status);
+export default async function ExecutiveDashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ range?: string }>;
+}) {
+  const { range } = await searchParams;
+  const rangeDays = parseDashboardRange(range);
 
   return (
-    <div className="space-y-5">
-      <ProgramStatus status={status} />
-      <GovernanceMaturity actor={actor} plan={status.plan} />
-      <WhatToDoNext plan={status.plan} />
-      <GovernanceActivity events={activity} />
-      <EvidenceCoverage actor={actor} />
-    </div>
+    <>
+      <PageHeader rangeDays={rangeDays} />
+
+      <div className="space-y-7">
+        {/* Overall Compliance & Risk scores */}
+        <ScoreCards rangeDays={rangeDays} />
+
+        {/* Headline KPIs */}
+        <StatCards />
+
+        {/* AI-generated narrative */}
+        <ExecutiveSummary rangeDays={rangeDays} />
+
+        {/* Active frameworks: NCA ECC · PDPL · ISO 27001 */}
+        <ActiveFrameworks />
+
+        {/* Band 2 — what needs a decision today, ranked danger-first */}
+        <NeedsAttention />
+
+        {/* Real-workspace signals — risks, documents, and analyses actually in this tenant's
+            data, distinct from the illustrative bands above. Renders nothing when empty. */}
+        <IntelligentInsights />
+
+        {/* Band 3 — analytics & operational detail */}
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-12 lg:col-span-7">
+            <ComplianceProgress />
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <RiskDistribution />
+          </div>
+
+          <div className="col-span-12 lg:col-span-7">
+            <RecentAssessments />
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <AiWorkspaceCard />
+          </div>
+
+          <div className="col-span-12 lg:col-span-7">
+            <RecentActivities />
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <ReportsSection />
+          </div>
+        </div>
+
+        {/* Intelligent Workspace — Continue working / Quick Actions / Favorites
+            (design proposal §9). Purely additive: extends the page, doesn't touch
+            Bands 1-3 above. */}
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-12 lg:col-span-7">
+            <WorkspaceHub />
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <FavoritesPanel />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

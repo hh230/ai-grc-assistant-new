@@ -1,10 +1,3 @@
-/**
- * The most recently analyzed documents, each with its own score.
- *
- * Moved off the home page (CLAUDE.md §3 pillar 10). A per-document score is a real fact about that
- * document; the AVERAGE of several was a verdict about the organization that no document could
- * support, and that average is gone.
- */
 import { ClipboardList } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Card } from "@/components/ui/Card";

@@ -78,5 +78,7 @@ for new records.
 | [0063](./0063-mission-intake-and-capability-planning.md) | Mission Intake & capability-based planning — normalize triggers into missions; plan in capabilities, resolve separately (intake input refined by 0064) | Accepted | §5, §9, §11, §17 |
 | [0064](./0064-mission-correlation.md) | Mission Correlation — relate a trigger to an existing mission; Intake receives CreateMission \| UpdateMission | Accepted | §8, §16 |
 | [0065](./0065-organization-mission-lifecycle.md) | The Organization Mission Lifecycle — drive a mission from evidence to closure, verified by the connector, escalated on exhaustion | Accepted — implemented & live-validated; Core frozen | §7, §8, §9, §11, §16, §19 |
+| [0066](./0066-governance-discovery-and-planning.md) | Governance Discovery & Planning — a two-tier adaptive interview over Knowledge Packs, feeding a deterministic rule engine and an approval-gated Mission | Accepted — Phases 1–4 closed | §2, §6, §8, §9, §13, §19 |
+| [0067](./0067-sector-knowledge-packs.md) | Sector Knowledge Packs — Claude authors sector questions ONCE per sector; human-approved, released as versioned assets, and pinned to every interview | **Proposed** | §1, §6, §9, §13, §15, §19 |
 
 There is no ADR 0033 — the number was skipped, not lost.

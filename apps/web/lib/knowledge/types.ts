@@ -85,5 +85,19 @@ export interface KnowledgeOutcome {
   data: Record<string, unknown>;
 }
 
+/**
+ * An authored pack shipped with the deployment, before anyone imports it.
+ *
+ * `problem` is non-null when the file itself is unusable. Listed rather than hidden, so a broken
+ * pack is fixed before somebody tries to deploy that sector.
+ */
+export interface AuthoredPack {
+  industrySlug: string;
+  canonicalNameAr: string;
+  questionCount: number;
+  authoredBy: string;
+  problem: string | null;
+}
+
 /** The lifecycle actions a reviewer can take on a release. */
 export type ReleaseAction = "submit" | "approve" | "reject" | "publish";

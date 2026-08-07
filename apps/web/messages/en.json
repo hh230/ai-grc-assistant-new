@@ -2232,6 +2232,13 @@
       "history": "What was live, and when",
       "historyHint": "Append-only, so a report issued months ago can still name the questions behind it.",
       "noReason": "No reason recorded"
+    },
+    "packs": {
+      "title": "Available sector packs",
+      "description": "Ready-written question packs shipped with this deployment. Importing one creates a draft to review below.",
+      "questions": "{count, plural, =1 {1 question} other {# questions}}",
+      "import": "Import",
+      "importAgain": "Import again"
     }
   },
   "sectorInterview": {

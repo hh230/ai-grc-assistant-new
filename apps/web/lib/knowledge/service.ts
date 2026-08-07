@@ -15,6 +15,7 @@ import { logger } from "@/lib/observability/logger";
 import { mintGrcApiServiceToken } from "@/lib/discovery/serviceToken";
 import type {
   ActivationRecord,
+  AuthoredPack,
   Industry,
   KnowledgeOutcome,
   KnowledgeRelease,
@@ -292,6 +293,39 @@ export async function setActiveRelease(
     "PUT",
     `/industries/${encodeURIComponent(industrySlug)}/active-release`,
     { release_id: releaseId, reason },
+  );
+}
+
+/** The authored packs this deployment ships — the starting point for deploying a new sector. */
+export async function listAuthoredPacks(actor: ActorContext): Promise<AuthoredPack[]> {
+  const payload = await callKnowledgeApi<{
+    packs: {
+      industry_slug: string;
+      canonical_name_ar: string;
+      question_count: number;
+      authored_by: string;
+      problem: string | null;
+    }[];
+  }>(actor, "GET", "/packs");
+  return payload.packs.map((pack) => ({
+    industrySlug: pack.industry_slug,
+    canonicalNameAr: pack.canonical_name_ar,
+    questionCount: pack.question_count,
+    authoredBy: pack.authored_by,
+    problem: pack.problem,
+  }));
+}
+
+/** Imports a pack as a draft release, registering the industry if it is new. One call, because the
+ * industry's existence is not a decision a human should have to make separately. */
+export async function importAuthoredPack(
+  actor: ActorContext,
+  industrySlug: string,
+): Promise<KnowledgeOutcome> {
+  return callKnowledgeApi<OutcomeDto>(
+    actor,
+    "POST",
+    `/packs/${encodeURIComponent(industrySlug)}/import`,
   );
 }
 

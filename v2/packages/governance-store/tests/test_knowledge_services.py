@@ -22,6 +22,7 @@ from governance_store.knowledge_services import (  # noqa: E402
     ApproveKnowledgeTemplate,
     CompleteAssessment,
     GenerateKnowledgeTemplate,
+    ImportAuthoredPack,
     PublishKnowledgeTemplate,
     RecordSectorAnswers,
     RejectKnowledgeTemplate,
@@ -527,3 +528,44 @@ def test_an_UNCONCLUDED_session_cannot_open_a_sector_interview(store):
 def test_a_customer_who_named_no_sector_gets_no_sector_interview(store):
     _live_release(store)
     assert _open(store, _Session(activity=None)).data["status"] == "no_sector_pack"
+
+
+# --- importing an authored pack ----------------------------------------------------------------
+
+
+def test_importing_a_pack_REGISTERS_THE_INDUSTRY_ITSELF(store):
+    """The step this removes: importing used to fail unless somebody had already registered the
+    industry — a requirement that exists only because a foreign key needs a row, and which the pack
+    file already answers."""
+    assert store.list_industries() == []
+
+    outcome = ImportAuthoredPack(
+        store,
+        _Generator(),
+        new_id=lambda: uuid.uuid4().hex[:12],
+        model="authored",
+        prompt_version="authored:real_estate",
+        generator_commit="c",
+    )(industry_slug="real_estate", canonical_name_ar="العقارات", actor=APPROVER)
+
+    assert outcome.changed is True
+    assert [i["slug"] for i in store.list_industries()] == ["real_estate"]
+    assert store.list_releases(industry_slug="real_estate")[0]["status"] == "draft"
+
+
+def test_importing_twice_does_not_RENAME_an_existing_industry(store):
+    """The name belongs to whoever created the industry; a later pack does not overrule it."""
+    store.register_industry("real_estate", "عقارات (الاسم الأصلي)")
+    ImportAuthoredPack(
+        store, _Generator(), new_id=lambda: uuid.uuid4().hex[:12],
+        model="authored", prompt_version="p", generator_commit="c",
+    )(industry_slug="real_estate", canonical_name_ar="اسم مختلف", actor=APPROVER)
+    assert store.list_industries()[0]["canonical_name_ar"] == "عقارات (الاسم الأصلي)"
+
+
+def test_importing_a_pack_needs_the_knowledge_approver_role(store):
+    with pytest.raises(NotAuthorized):
+        ImportAuthoredPack(
+            store, _Generator(), new_id=lambda: uuid.uuid4().hex[:12],
+            model="authored", prompt_version="p", generator_commit="c",
+        )(industry_slug="real_estate", canonical_name_ar="العقارات", actor=NOT_APPROVER)

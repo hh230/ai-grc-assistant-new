@@ -6,10 +6,12 @@ import { pageTitle } from "@/lib/pageMetadata";
 import {
   getActiveReleaseId,
   isKnowledgeApprover,
+  listAuthoredPacks,
   listIndustries,
   listReleases,
 } from "@/lib/knowledge/service";
 import { KnowledgeConsole, type IndustryOverview } from "@/components/knowledge/KnowledgeConsole";
+import { AvailablePacks } from "@/components/knowledge/AvailablePacks";
 import { NotKnowledgeApprover } from "@/components/knowledge/NotKnowledgeApprover";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +32,11 @@ export default async function KnowledgePage() {
 
   if (!actor || !isKnowledgeApprover(actor)) return <NotKnowledgeApprover />;
 
-  const [industries, releases] = await Promise.all([listIndustries(actor), listReleases(actor)]);
+  const [industries, releases, packs] = await Promise.all([
+    listIndustries(actor),
+    listReleases(actor),
+    listAuthoredPacks(actor),
+  ]);
   const overviews: IndustryOverview[] = await Promise.all(
     industries.map(async (industry) => ({
       industry,
@@ -51,7 +57,14 @@ export default async function KnowledgePage() {
         <p className="mt-1 text-sm text-foreground-secondary">{t("description")}</p>
       </header>
 
-      <KnowledgeConsole overviews={overviews} />
+      <div className="space-y-4">
+        {/* Deploying a sector starts here: import a pack, then review it below. */}
+        <AvailablePacks
+          packs={packs}
+          importedSlugs={industries.map((industry) => industry.slug)}
+        />
+        <KnowledgeConsole overviews={overviews} />
+      </div>
     </div>
   );
 }

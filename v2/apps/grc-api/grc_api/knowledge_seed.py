@@ -112,6 +112,38 @@ def _validate(question: Any, index: int, seen: set[str], filename: str) -> None:
         )
 
 
+def describe_packs() -> list[dict[str, Any]]:
+    """Every authored pack on disk, described well enough for a reviewer to choose one.
+
+    Validates each as it goes: a pack that would fail on import is better surfaced in the list,
+    where it can be fixed, than at the moment somebody tries to deploy a sector.
+    """
+    described: list[dict[str, Any]] = []
+    for slug in available_packs():
+        try:
+            pack = load_pack(slug)
+            described.append(
+                {
+                    "industry_slug": slug,
+                    "canonical_name_ar": pack.get("canonical_name_ar", slug),
+                    "question_count": len(pack["questions"]),
+                    "authored_by": pack.get("authored_by", "human"),
+                    "problem": None,
+                }
+            )
+        except AuthoredPackRejected as exc:
+            described.append(
+                {
+                    "industry_slug": slug,
+                    "canonical_name_ar": slug,
+                    "question_count": 0,
+                    "authored_by": "",
+                    "problem": str(exc),
+                }
+            )
+    return described
+
+
 class AuthoredPackGenerator:
     """A `QuestionGenerator` that reads the authored pack instead of calling a model.
 

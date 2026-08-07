@@ -41,6 +41,10 @@ export function setActiveRelease(
   );
 }
 
+export function importAuthoredPack(industrySlug: string): Promise<KnowledgeOutcome> {
+  return send<KnowledgeOutcome>(`/api/knowledge/packs/${industrySlug}/import`, "POST");
+}
+
 export function registerIndustry(slug: string, canonicalNameAr: string): Promise<{ ok: true }> {
   return send<{ ok: true }>("/api/knowledge/industries", "POST", { slug, canonicalNameAr });
 }

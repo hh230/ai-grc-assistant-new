@@ -546,3 +546,38 @@ class OpenSectorInterview:
                 "completed_at": None,
             },
         )
+
+
+class ImportAuthoredPack:
+    """`register_industry` → `GenerateKnowledgeTemplate`. Emits `KnowledgeTemplateGenerated`.
+
+    Deploying a new sector should be one act, not a checklist. Before this, importing a pack failed
+    unless somebody had already registered the industry — a step that exists only because the
+    foreign key needs a row, and which the pack file itself already answers: it declares its slug
+    and its Arabic name.
+
+    So the service registers the industry from what the pack says, then imports. `register_industry`
+    is idempotent, so re-importing a sector that already exists is not an error and does not rename
+    it: the name belongs to whoever created the industry, and a later pack does not get to overrule
+    it silently.
+
+    Still a DRAFT at the end. Authored is not approved, and making import skip the gate would mean a
+    file landing on disk could change what thousands of customers are asked.
+    """
+
+    def __init__(self, store: Any, generator: QuestionGenerator, *, new_id: Callable[[], str],
+                 model: str, prompt_version: str, generator_commit: str) -> None:
+        self._store = store
+        self._generate = GenerateKnowledgeTemplate(
+            store,
+            generator,
+            new_id=new_id,
+            model=model,
+            prompt_version=prompt_version,
+            generator_commit=generator_commit,
+        )
+
+    def __call__(self, *, industry_slug: str, canonical_name_ar: str, actor: Actor) -> Outcome:
+        require_knowledge_approver(actor, "importing an authored knowledge pack")
+        self._store.register_industry(industry_slug, canonical_name_ar)
+        return self._generate(industry_slug=industry_slug, actor=actor)

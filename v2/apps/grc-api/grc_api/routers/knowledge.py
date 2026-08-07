@@ -25,6 +25,7 @@ from governance_store.knowledge_services import (
     ApproveKnowledgeTemplate,
     CompleteAssessment,
     GenerateKnowledgeTemplate,
+    ImportAuthoredPack,
     OpenSectorInterview,
     PublishKnowledgeTemplate,
     RecordSectorAnswers,
@@ -50,6 +51,8 @@ from grc_api.knowledge_schemas import (
     ActivationHistoryResponse,
     ActivationRecordView,
     ActiveReleaseView,
+    AuthoredPackListResponse,
+    AuthoredPackView,
     GenerateReleaseBody,
     IndustryListResponse,
     IndustryView,
@@ -142,37 +145,63 @@ def generate_release(
     return OutcomeResponse.from_outcome(service(industry_slug=body.industry_slug, actor=actor))
 
 
-@router.post("/knowledge/releases/authored", response_model=OutcomeResponse, status_code=201)
-def seed_authored_release(
-    body: GenerateReleaseBody,
+@router.get("/knowledge/packs", response_model=AuthoredPackListResponse)
+def list_authored_packs(
+    actor: Annotated[Actor, Depends(knowledge_actor)],
+) -> AuthoredPackListResponse:
+    """The authored packs this deployment ships, whether or not they have been imported.
+
+    Deploying a new sector should start by looking at what is available, not by remembering a slug.
+    A pack that would fail on import is listed with its problem rather than hidden, so it can be
+    fixed before somebody tries to deploy it.
+    """
+    from grc_api.knowledge_seed import describe_packs
+
+    require_knowledge_approver(actor, "reading the authored knowledge packs")
+    return AuthoredPackListResponse(
+        packs=[AuthoredPackView(**pack) for pack in describe_packs()]
+    )
+
+
+@router.post(
+    "/knowledge/packs/{industry_slug}/import",
+    response_model=OutcomeResponse,
+    status_code=201,
+)
+def import_authored_pack(
+    industry_slug: str,
     actor: Annotated[Actor, Depends(knowledge_actor)],
     store: Annotated[Any, Depends(get_knowledge_store)],
 ) -> OutcomeResponse:
-    """Creates a release from an AUTHORED pack on disk instead of calling a model.
+    """Imports an authored pack as a draft release, registering the industry if it is new.
 
-    Same lifecycle, same gate: the release lands as a draft and a human still publishes and
-    activates it. Authored is not approved — the gate was never about distrusting the model, it was
-    that somebody must be accountable for what thousands of customers are asked.
-
-    Provenance says `authored` rather than a model name that never ran.
+    One call, because the industry's existence is not a decision a human should have to make
+    separately — the pack file already declares its slug and its Arabic name. What a human still
+    decides is everything that matters: whether these questions are fit to be asked.
     """
-    from grc_api.knowledge_seed import AuthoredPackGenerator, AuthoredPackRejected
+    from grc_api.knowledge_seed import AuthoredPackGenerator, AuthoredPackRejected, load_pack
 
     try:
-        service = GenerateKnowledgeTemplate(
-            store,
-            AuthoredPackGenerator(),
-            new_id=lambda: str(uuid4()),
-            model=AUTHORED_BY_MODEL,
-            prompt_version=f"authored:{body.industry_slug}",
-            generator_commit=generator_commit(),
-        )
-        return OutcomeResponse.from_outcome(
-            service(industry_slug=body.industry_slug, actor=actor)
-        )
+        pack = load_pack(industry_slug)
     except AuthoredPackRejected as exc:
         # The pack file is wrong, not the request — say which question, not which constraint.
         raise ApiError(status_code=422, code="validation_error", message=str(exc)) from exc
+
+    service = ImportAuthoredPack(
+        store,
+        AuthoredPackGenerator(),
+        new_id=lambda: str(uuid4()),
+        model=AUTHORED_BY_MODEL,
+        prompt_version=f"authored:{industry_slug}",
+        generator_commit=generator_commit(),
+    )
+    return OutcomeResponse.from_outcome(
+        service(
+            industry_slug=industry_slug,
+            canonical_name_ar=str(pack.get("canonical_name_ar", industry_slug)),
+            actor=actor,
+        )
+    )
 
 
 @router.get("/knowledge/releases", response_model=ReleaseListResponse)

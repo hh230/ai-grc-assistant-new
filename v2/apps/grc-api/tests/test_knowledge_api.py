@@ -638,14 +638,8 @@ def test_the_AUTHORED_real_estate_pack_reaches_a_customer_with_its_multi_selects
     """The full chain for a pack a human wrote: seed -> review -> publish -> activate -> interview,
     with the five multi-select questions surviving as multi-select rather than being flattened into
     a dropdown with an option meaning "more than one"."""
-    client.post(
-        "/v1/knowledge/industries",
-        json={"slug": "real_estate", "canonical_name_ar": "العقارات"},
-        headers=APPROVER,
-    )
     seeded = client.post(
-        "/v1/knowledge/releases/authored",
-        json={"industry_slug": "real_estate"},
+        "/v1/knowledge/packs/real_estate/import",
         headers=APPROVER,
     )
     assert seeded.status_code == 201, seeded.text
@@ -727,24 +721,111 @@ def test_the_AUTHORED_real_estate_pack_reaches_a_customer_with_its_multi_selects
 
 
 def test_a_sector_with_no_authored_pack_is_refused_by_name(client):
-    client.post(
-        "/v1/knowledge/industries",
-        json={"slug": "aerospace", "canonical_name_ar": "الطيران"},
-        headers=APPROVER,
-    )
-    response = client.post(
-        "/v1/knowledge/releases/authored", json={"industry_slug": "aerospace"}, headers=APPROVER
-    )
+    response = client.post("/v1/knowledge/packs/aerospace/import", headers=APPROVER)
     assert response.status_code == 422
     assert "no authored pack" in response.json()["error"]["message"]
 
 
 def test_seeding_an_authored_pack_needs_the_knowledge_approver_role(client):
     assert (
-        client.post(
-            "/v1/knowledge/releases/authored",
-            json={"industry_slug": "real_estate"},
-            headers=TENANT_A,
-        ).status_code
+        client.post("/v1/knowledge/packs/real_estate/import", headers=TENANT_A).status_code
         == 403
     )
+
+
+def test_importing_a_pack_needs_NO_prior_registration(client):
+    """The manual step this removes. Before, importing failed unless somebody had already created
+    the industry — a requirement that existed only because a foreign key needs a row, and which the
+    pack file itself answers."""
+    assert client.get("/v1/knowledge/industries", headers=APPROVER).json()["industries"] == []
+
+    assert client.post("/v1/knowledge/packs/real_estate/import", headers=APPROVER).status_code == 201
+
+    industries = client.get("/v1/knowledge/industries", headers=APPROVER).json()["industries"]
+    assert [i["slug"] for i in industries] == ["real_estate"]
+    assert industries[0]["canonical_name_ar"] == "العقارات", "the name came from the pack file"
+
+
+def test_the_packs_this_deployment_ships_are_listable(client):
+    """Deploying a sector starts by seeing what is available, not by remembering a slug."""
+    packs = client.get("/v1/knowledge/packs", headers=APPROVER).json()["packs"]
+    real_estate = next(p for p in packs if p["industry_slug"] == "real_estate")
+    assert real_estate["canonical_name_ar"] == "العقارات"
+    assert real_estate["question_count"] == 22
+    assert real_estate["problem"] is None
+
+
+def test_reading_the_pack_list_needs_the_knowledge_approver_role(client):
+    assert client.get("/v1/knowledge/packs", headers=TENANT_A).status_code == 403
+
+
+def test_DEPLOYING_A_SECTOR_from_an_empty_database_takes_no_manual_steps(client, dsn):
+    """The deployment flow, start to finish, on a database that has never seen this sector:
+
+        migrations (already run) -> import -> approve -> publish -> activate -> the customer is asked
+
+    No industry to register first, no slug to remember, no curl. Everything a human does here is a
+    DECISION; nothing is ceremony the machine could have done itself.
+    """
+    # 1. What does this deployment ship? A reviewer starts by looking, not by remembering.
+    packs = client.get("/v1/knowledge/packs", headers=APPROVER).json()["packs"]
+    assert any(p["industry_slug"] == "real_estate" and p["problem"] is None for p in packs)
+    assert client.get("/v1/knowledge/industries", headers=APPROVER).json()["industries"] == []
+
+    # 2. Import — one call, and the industry comes into existence from the pack's own declaration.
+    imported = client.post("/v1/knowledge/packs/real_estate/import", headers=APPROVER)
+    assert imported.status_code == 201
+    release_id = imported.json()["data"]["release_id"]
+    assert imported.json()["data"]["version"] == 1, "a fresh deployment starts at v1"
+
+    # 3. The human gate, unchanged: a draft nobody approved reaches nobody.
+    assert client.get(f"/v1/knowledge/releases/{release_id}", headers=APPROVER).json()["status"] == (
+        "draft"
+    )
+    session_id = _concluded_session(dsn)
+    assert (
+        client.post(
+            f"/v1/knowledge/sessions/{session_id}/sector-interview",
+            json={"organization_id": "org1"},
+            headers=TENANT_A,
+        ).json()["status"]
+        == "no_sector_pack"
+    ), "imported is not published — a customer sees nothing yet"
+
+    # 4. Approve, publish, activate.
+    for action in ("submit", "approve", "publish"):
+        assert (
+            client.post(
+                f"/v1/knowledge/releases/{release_id}/{action}", headers=APPROVER
+            ).status_code
+            == 200
+        )
+    assert (
+        client.put(
+            "/v1/knowledge/industries/real_estate/active-release",
+            json={"release_id": release_id, "reason": "first activation"},
+            headers=APPROVER,
+        ).status_code
+        == 200
+    )
+
+    # 5. The questions reach the customer.
+    later_session = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{later_session}/sector-interview",
+        json={"organization_id": "org2"},
+        headers=TENANT_A,
+    ).json()
+    assert opened["status"] == "opened"
+    assert len(opened["release"]["questions"]) == 22
+    assert sum(1 for q in opened["release"]["questions"] if q["type"] == "multi_select") == 5
+
+
+def test_re_importing_an_edited_pack_mints_a_NEW_version(client):
+    """How a corrected pack reaches customers: import again, review again, activate. The live
+    release is never edited in place — that is the whole point of versioning it."""
+    first = client.post("/v1/knowledge/packs/real_estate/import", headers=APPROVER).json()
+    second = client.post("/v1/knowledge/packs/real_estate/import", headers=APPROVER).json()
+    assert first["data"]["version"] == 1
+    assert second["data"]["version"] == 2
+    assert second["data"]["release_id"] != first["data"]["release_id"]

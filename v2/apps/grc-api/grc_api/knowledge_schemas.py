@@ -127,6 +127,22 @@ class IndustryListResponse(BaseModel):
     industries: list[IndustryView]
 
 
+class AuthoredPackView(BaseModel):
+    """An authored pack as it sits on disk, before anyone imports it."""
+
+    industry_slug: str
+    canonical_name_ar: str
+    question_count: int
+    authored_by: str
+    # Non-null when the file itself is unusable. Listed rather than hidden, so it is fixed before
+    # somebody tries to deploy that sector.
+    problem: str | None = None
+
+
+class AuthoredPackListResponse(BaseModel):
+    packs: list[AuthoredPackView]
+
+
 class ActiveReleaseView(BaseModel):
     """What an interview loads. Deliberately a different shape from `ReleaseView`: the customer
     side has no business seeing draft lifecycle metadata or reviewer notes."""

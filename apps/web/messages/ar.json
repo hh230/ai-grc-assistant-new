@@ -2250,7 +2250,11 @@
     "remaining": "{count, plural, zero {} one {بقي سؤال واحد} two {بقي سؤالان} few {بقيت # أسئلة} many {بقي # سؤالًا} other {بقي # سؤال}}",
     "yes": "نعم",
     "no": "لا",
-    "choose": "اختر…"
+    "choose": "اختر…",
+    "progress": "السؤال {current} من {total}",
+    "next": "التالي",
+    "back": "السابق",
+    "required": "نحتاج إجابة للمتابعة."
   },
   "programStatus": {
     "title": "برنامج الحوكمة",

@@ -2250,7 +2250,11 @@
     "remaining": "{count, plural, =1 {1 question still to answer} other {# questions still to answer}}",
     "yes": "Yes",
     "no": "No",
-    "choose": "Choose…"
+    "choose": "Choose…",
+    "progress": "Question {current} of {total}",
+    "next": "Next",
+    "back": "Back",
+    "required": "An answer is needed to continue."
   },
   "programStatus": {
     "title": "Governance program",

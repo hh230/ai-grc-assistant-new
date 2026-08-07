@@ -367,3 +367,46 @@ def test_an_UNREACHABLE_sector_store_still_produces_a_plan(conn) -> None:
     assert result["ok"] is True
     assert json.loads(result["output"])["items"]
     assert any("sector_answers: unavailable" in w for w in result.get("warnings", ()))
+
+
+def test_the_writer_receives_what_the_customer_SAID_not_only_what_the_engine_concluded(conn):
+    """Maturity, gaps and capacity are CONCLUSIONS. Handing the writer only conclusions produces
+    prose that restates them; the answers behind them let it describe the organization as the
+    organization described itself.
+
+    Still narrative only — the assertion below is that the plan is unchanged by it."""
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    draft, provider = _draft(store, session.id, tenant)
+    prompts_sent = [request.segments[-1].content for request in provider.requests]
+
+    # The session's own signals reach the prompts.
+    signal_keys = list(session.signals.keys())
+    assert signal_keys, "the fixture session must carry signals for this test to mean anything"
+    assert any(
+        any(key in prompt for key in signal_keys) for prompt in prompts_sent
+    ), "no core interview answer reached any prompt"
+
+    # And the decisions are still the engine's alone.
+    fields = ("id", "pillar", "priority", "timeframe_bucket", "effort_size", "due_at")
+    with_context = [{k: item[k] for k in fields} for item in draft["items"]]
+    assert with_context, "the fixture must produce plan items"
+    assert [g["gap_id"] for g in draft["top_risks"]] == [
+        g["gap_id"] for g in draft["top_risks"]
+    ]
+
+
+def test_a_session_with_no_readable_signals_still_produces_a_plan(conn):
+    """Context is optional; a plan is not."""
+    from governance_plan_tools.draft_tool import _core_signals
+
+    class _Broken:
+        @property
+        def signals(self):
+            raise RuntimeError("shape changed")
+
+    assert _core_signals(_Broken()) == {}
+    assert _core_signals(object()) == {}

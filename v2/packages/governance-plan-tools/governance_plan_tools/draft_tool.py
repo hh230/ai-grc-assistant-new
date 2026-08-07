@@ -58,6 +58,24 @@ _FALLBACK_EXECUTIVE_BRIEF = (
 )
 
 
+def _core_signals(session: Any) -> dict:
+    """The core interview's answers as plain values, for the WRITER only.
+
+    Read defensively: a session shape that changes must degrade the prose, never fail the plan.
+    """
+    try:
+        # The getattr is INSIDE the try on purpose: a default does not swallow an exception raised
+        # by a property, which is exactly how a changed session shape would fail here.
+        signals = getattr(session, "signals", None)
+        if signals is None:
+            return {}
+        # `signals` is a SignalSet, not a dict: it defines `keys()` and `value()` and neither
+        # `__iter__` nor `__getitem__`, so ruff's dict-shaped suggestion would not run.
+        return {key: signals.value(key) for key in signals.keys()}  # noqa: SIM118
+    except Exception:  # noqa: BLE001 — context is optional; a plan is not
+        return {}
+
+
 def _humanize(key: str) -> str:
     """A deterministic title fallback/seed from an i18n key like
     `plan.seed.establish_risk_register.title` -> `Establish Risk Register`. No LLM call — titles
@@ -126,10 +144,16 @@ class PlanDraftTool:
         # items exist, their priority, their order — comes from the rule engine and from nowhere
         # else. These answers only reach the prompts that write PROSE.
         sector = self._read_sector_answers(session_id, tenant, warnings)
+        # What the customer SAID, alongside what the engine concluded. Both are context for the
+        # writing; neither is a decision — the plan's items came from the rule engine above.
+        core = _core_signals(session)
 
-        executive_summary = self._draft_executive_brief(applicability, sector, warnings)
+        executive_summary = self._draft_executive_brief(applicability, core, sector, warnings)
         top_risks = [self._draft_gap(gap, warnings) for gap in applicability.gaps]
-        items = [self._draft_item(item, sector, now, warnings) for item in applicability.plan_items]
+        items = [
+            self._draft_item(item, core, sector, now, warnings)
+            for item in applicability.plan_items
+        ]
 
         draft = {
             "source_session_id": session.id,
@@ -206,14 +230,20 @@ class PlanDraftTool:
         except GenerationError:
             return None
 
-    def _draft_executive_brief(self, applicability, sector: list[dict], warnings: list[str]) -> str:
-        context = json.dumps(
-            {
-                "maturity": applicability.maturity,
-                "gaps": list(applicability.gaps),
-                "capacity": applicability.capacity,
-            }
-        ) + prompts.sector_context_block(sector)
+    def _draft_executive_brief(
+        self, applicability, core: dict, sector: list[dict], warnings: list[str]
+    ) -> str:
+        context = (
+            json.dumps(
+                {
+                    "maturity": applicability.maturity,
+                    "gaps": list(applicability.gaps),
+                    "capacity": applicability.capacity,
+                }
+            )
+            + prompts.core_context_block(core)
+            + prompts.sector_context_block(sector)
+        )
         text = self._generate(prompts.executive_brief_prompt(context))
         if not text:
             warnings.append("executive_brief: generation unavailable, used fallback text")
@@ -242,7 +272,9 @@ class PlanDraftTool:
             "impact": impact,
         }
 
-    def _draft_item(self, item: dict, sector: list[dict], now: float, warnings: list[str]) -> dict:
+    def _draft_item(
+        self, item: dict, core: dict, sector: list[dict], now: float, warnings: list[str]
+    ) -> dict:
         title = _humanize(item.get("title_key", item.get("id", "")))
         rationale_seed = _humanize(item.get("rationale_key", ""))
         # The recommendation, its pillar and its urgency are stated to the model as GIVEN. The
@@ -255,7 +287,7 @@ class PlanDraftTool:
             f"Triggered by facts about: "
             f"{', '.join(item.get('source_signal_keys', [])) or 'the organization'}\n"
             f"Context: {rationale_seed}"
-        ) + prompts.sector_context_block(sector)
+        ) + prompts.core_context_block(core) + prompts.sector_context_block(sector)
         text = self._generate(prompts.plan_item_prompt(context))
         rationale, objective, outcome, risk = (
             _FALLBACK_RATIONALE,

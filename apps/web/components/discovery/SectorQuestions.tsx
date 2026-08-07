@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { submitSectorAnswers } from "@/lib/sectorInterview/client";
 import type { SectorInterview, SectorQuestion } from "@/lib/sectorInterview/types";
@@ -19,9 +19,10 @@ import type { SectorInterview, SectorQuestion } from "@/lib/sectorInterview/type
  * machine rendering of an approved question would mean the customer answered something no reviewer
  * ever saw.
  *
- * All questions are shown at once rather than one at a time: unlike the core interview, this set is
- * fixed the moment it opens — no answer changes which question comes next — so paging through them
- * would add ceremony without adding adaptivity.
+ * Asked ONE AT A TIME. The set is fixed the moment it opens — no answer changes which question
+ * comes next — so this is not adaptivity, it is attention: twenty-two questions on one page is a
+ * form somebody skims, and each of these deserves to be read. The count comes from the release, so
+ * a pack with fifteen questions asks fifteen; nothing here knows how many there are.
  */
 export function SectorQuestions({
   interview,
@@ -34,18 +35,24 @@ export function SectorQuestions({
 }) {
   const t = useTranslations("sectorInterview");
   const [values, setValues] = useState<Record<string, unknown>>({});
+  const [index, setIndex] = useState(0);
   const [submitting, setSubmitting] = useState(false);
 
   const release = interview.release;
   if (!release || !interview.assessmentId) return null;
 
-  const missing = release.questions.filter((q) => {
-    if (!q.required) return false;
+  const questions = release.questions;
+  const question = questions[index];
+  if (!question) return null;
+  const isLast = index === questions.length - 1;
+
+  /** A multi-select is answered once ANY box is ticked; an empty array is still unanswered. */
+  const unanswered = (q: SectorQuestion): boolean => {
     const answer = values[q.questionId];
-    // A multi-select is answered once ANY box is ticked; an empty array is still unanswered.
     if (Array.isArray(answer)) return answer.length === 0;
     return answer === undefined || answer === "";
-  });
+  };
+  const blocked = question.required && unanswered(question);
 
   async function submit() {
     if (!release || !interview.assessmentId) return;
@@ -77,61 +84,81 @@ export function SectorQuestions({
         <h2 className="mt-1.5 text-lg font-semibold tracking-tight text-foreground">
           {t("title")}
         </h2>
+        {/* Both numbers come from the release, never from a constant: a fifteen-question pack
+            says fifteen. */}
         <p className="mt-1 text-sm text-foreground-secondary">
-          {t("description", { count: release.questions.length })}
+          {t("progress", { current: index + 1, total: questions.length })}
         </p>
       </header>
 
-      <ul className="mt-4 space-y-3">
-        {release.questions.map((question) => (
-          <li
-            key={question.questionId}
-            className="rounded-lg border border-hairline bg-surface px-3.5 py-3"
-          >
-            {/* Canonical Arabic, always — this is the text a reviewer approved. */}
-            <p className="text-sm text-foreground" dir="rtl" lang="ar">
-              {question.canonicalTextAr}
-            </p>
-            {question.references.length > 0 && (
-              <p className="mt-1 text-2xs text-foreground-muted">
-                {question.references
-                  .map((r) => (r.clause ? `${r.framework} · ${r.clause}` : r.framework))
-                  .join(" · ")}
-              </p>
-            )}
-            <div className="mt-2.5">
-              <SectorAnswerInput
-                question={question}
-                value={values[question.questionId]}
-                onChange={(value) =>
-                  setValues((current) => ({ ...current, [question.questionId]: value }))
-                }
-              />
-            </div>
-            {question.evidenceRequired.length > 0 && (
-              <p className="mt-2 text-2xs text-foreground-muted">
-                {t("evidence")} {question.evidenceRequired.join(" · ")}
-              </p>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div
+        className="mt-3 h-1 overflow-hidden rounded-full bg-surface"
+        role="progressbar"
+        aria-valuenow={index + 1}
+        aria-valuemin={1}
+        aria-valuemax={questions.length}
+      >
+        <div
+          className="h-full rounded-full bg-accent transition-[width] duration-300"
+          style={{ width: `${((index + 1) / questions.length) * 100}%` }}
+        />
+      </div>
+
+      <div className="mt-5 rounded-xl border border-hairline bg-surface px-4 py-4">
+        {/* Canonical Arabic, always — this is the text a reviewer approved. */}
+        <p className="text-base text-foreground" dir="rtl" lang="ar">
+          {question.canonicalTextAr}
+        </p>
+        {question.references.length > 0 && (
+          <p className="mt-1.5 text-2xs text-foreground-muted">
+            {question.references
+              .map((r) => (r.clause ? `${r.framework} · ${r.clause}` : r.framework))
+              .join(" · ")}
+          </p>
+        )}
+        <div className="mt-4">
+          <SectorAnswerInput
+            question={question}
+            value={values[question.questionId]}
+            onChange={(value) =>
+              setValues((current) => ({ ...current, [question.questionId]: value }))
+            }
+          />
+        </div>
+        {question.evidenceRequired.length > 0 && (
+          <p className="mt-3 text-2xs text-foreground-muted">
+            {t("evidence")} {question.evidenceRequired.join(" · ")}
+          </p>
+        )}
+      </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <button
           type="button"
-          disabled={submitting || missing.length > 0}
-          onClick={() => void submit()}
+          disabled={submitting || blocked}
+          onClick={() => (isLast ? void submit() : setIndex(index + 1))}
           className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow hover:opacity-90 disabled:opacity-60"
         >
           {submitting && <Loader2 className="h-3.5 w-3.5 animate-spin" strokeWidth={2} />}
-          {t("submit")}
+          {isLast ? t("submit") : t("next")}
+          {!isLast && <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={2} aria-hidden />}
         </button>
-        {missing.length > 0 && (
-          <span className="text-2xs text-foreground-muted">
-            {t("remaining", { count: missing.length })}
-          </span>
+
+        {/* Going back keeps the answer already given — the whole point of holding them in one map
+            rather than posting each as it is answered. */}
+        {index > 0 && (
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={() => setIndex(index - 1)}
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg px-2 text-sm text-foreground-muted transition-colors duration-150 hover:text-foreground disabled:opacity-60"
+          >
+            <ArrowLeft className="h-4 w-4 flip-rtl" strokeWidth={2} aria-hidden />
+            {t("back")}
+          </button>
         )}
+
+        {blocked && <span className="text-2xs text-foreground-muted">{t("required")}</span>}
       </div>
     </Card>
   );

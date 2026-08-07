@@ -36,6 +36,29 @@ SYSTEM_PROMPT = (
 EXECUTIVE_BRIEF_PROMPT_ID = "governance_plan.executive_brief.v1"
 
 
+CORE_CONTEXT_HEADING = (
+    "What the organization told us about itself in the main interview. Use it to make the "
+    "assessment concrete — its size, how it operates, what it handles. It does NOT add, remove or "
+    "change any recommended action; the actions are already decided.\n"
+)
+
+
+def core_context_block(signals: dict) -> str:
+    """What the customer actually said, not only what the engine concluded from it.
+
+    The engine's applicability — maturity, gaps, capacity — is a CONCLUSION. Handing the writer only
+    conclusions produces prose that restates them; handing it the answers behind them lets the
+    explanation refer to the organization as it described itself. Still narrative only: every action
+    was decided before this text is written.
+    """
+    if not signals:
+        return ""
+    lines = [f"- {key}: {value}" for key, value in sorted(signals.items()) if value is not None]
+    if not lines:
+        return ""
+    return "\n\n" + CORE_CONTEXT_HEADING + "\n".join(lines)
+
+
 SECTOR_CONTEXT_HEADING = (
     "The organization also answered these questions about its sector. Use them to make the "
     "assessment concrete and specific to how this organization actually operates. They do NOT "
@@ -108,6 +131,8 @@ __all__ = [
     "gap_prompt",
     "PLAN_ITEM_PROMPT_ID",
     "plan_item_prompt",
+    "CORE_CONTEXT_HEADING",
+    "core_context_block",
     "SECTOR_CONTEXT_HEADING",
     "sector_context_block",
 ]

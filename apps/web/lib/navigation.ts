@@ -14,6 +14,7 @@ import {
   Gavel,
   UserCheck,
   Compass,
+  BookMarked,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/auth/roles";
@@ -46,6 +47,13 @@ export interface NavLink {
   requiredRoles?: UserRole[];
   /** Fine-grained gate — item is hidden unless the user can perform this on the resource. */
   requiredPermission?: { action: Action; resource: ResourceType };
+  /**
+   * Gate on a capability that is NOT a tenant role. `governsKnowledge` is the only one: sector
+   * knowledge is authored once for every organization in a sector, so the authority to change it
+   * cannot be something a customer's workspace grants. Resolved server-side and carried on the
+   * session; the sidebar only reads the answer.
+   */
+  requiredCapability?: "governsKnowledge";
 }
 
 export interface NavGroup {
@@ -85,6 +93,15 @@ export const PRIMARY_NAV: NavGroup[] = [
         badge: "New",
       },
       { label: "Missions", labelKey: "missions", href: "/missions", icon: Workflow },
+      {
+        // Internal, and hidden from everyone who does not govern knowledge. Hiding it is a
+        // courtesy, not the control: the page refuses server-side and so does grc-api.
+        label: "Sector Knowledge",
+        labelKey: "knowledge",
+        href: "/knowledge",
+        icon: BookMarked,
+        requiredCapability: "governsKnowledge",
+      },
     ],
   },
   {
@@ -162,8 +179,20 @@ export function isNavItemActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/** Whether the given roles satisfy an item's role + permission gates (default allow). */
-export function canSeeNavItem(item: NavLink, roles: readonly UserRole[]): boolean {
+export interface NavCapabilities {
+  governsKnowledge?: boolean;
+}
+
+/** Whether the given roles satisfy an item's role + permission + capability gates (default
+ * allow). A capability the caller did not supply is treated as absent, never as granted. */
+export function canSeeNavItem(
+  item: NavLink,
+  roles: readonly UserRole[],
+  capabilities: NavCapabilities = {},
+): boolean {
+  if (item.requiredCapability && !capabilities[item.requiredCapability]) {
+    return false;
+  }
   if (item.requiredRoles && !item.requiredRoles.some((role) => roles.includes(role))) {
     return false;
   }

@@ -60,6 +60,7 @@ async function main(): Promise<void> {
   const adminActor: ActorContext = {
     userId: `e2e-admin-${runId}`,
     userName: "E2E Admin",
+    userEmail: "eval@test.local",
     tenantId: "e2e-admin-org",
     roles: ["owner"],
     apiToken: "unused",

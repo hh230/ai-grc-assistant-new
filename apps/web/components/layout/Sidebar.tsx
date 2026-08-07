@@ -71,15 +71,16 @@ export function Sidebar({ onNavigate }: SidebarProps) {
   const pathname = usePathname();
   const { user } = useSession();
   const roles = user.roles;
+  const capabilities = { governsKnowledge: user.governsKnowledge === true };
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
 
   // Hide nav items (and any group left empty) the current role may not access.
   const groups = PRIMARY_NAV.map((group) => ({
     ...group,
-    items: group.items.filter((item) => canSeeNavItem(item, roles)),
+    items: group.items.filter((item) => canSeeNavItem(item, roles, capabilities)),
   })).filter((group) => group.items.length > 0);
-  const footerItems = FOOTER_NAV.filter((item) => canSeeNavItem(item, roles));
+  const footerItems = FOOTER_NAV.filter((item) => canSeeNavItem(item, roles, capabilities));
 
   return (
     <aside className="flex h-full w-[248px] shrink-0 flex-col border-e border-hairline bg-canvas">

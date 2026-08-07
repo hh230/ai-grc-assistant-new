@@ -30,6 +30,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8
 const DEV_ACTOR: ActorContext = {
   userId: "dev-user",
   userName: "Dev Owner",
+    userEmail: "eval@test.local",
   tenantId: "dev-org",
   roles: ["owner"],
   apiToken: "dev-token",

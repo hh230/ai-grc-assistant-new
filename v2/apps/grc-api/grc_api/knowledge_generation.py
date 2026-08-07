@@ -41,7 +41,13 @@ LOGGER = logging.getLogger(__name__)
 KNOWLEDGE_PROMPT_VERSION = "sector_questions.v1.ar"
 _PROMPT_FILE = pathlib.Path(__file__).with_name("prompts") / f"{KNOWLEDGE_PROMPT_VERSION}.md"
 
-_QUESTION_TYPES = frozenset({"boolean", "single_choice", "multi_choice", "text", "number"})
+# The vocabulary is the SCHEMA's, not this module's — `release_questions_type_renderable` in
+# migration 0007 fixed it long before this generator existed. An earlier draft of this file invented
+# `single_choice`/`multi_choice`/`number`, which the model dutifully produced and the CHECK
+# constraint refused on the first real call. Two vocabularies for one concept is a translation layer
+# waiting to be written; there is one, and it lives in the migration.
+_QUESTION_TYPES = frozenset({"boolean", "enum", "numeric", "date", "text"})
+_CHOICE_TYPE = "enum"
 _IMPORTANCE = frozenset({"critical", "high", "medium", "low"})
 _QUESTION_ID = re.compile(r"^[a-z][a-z0-9_]{1,63}$")
 _ARABIC = re.compile(r"[؀-ۿ]")
@@ -64,7 +70,20 @@ _FORBIDDEN_FIELDS = frozenset(
 )
 
 _MIN_QUESTIONS = 8
-_MAX_QUESTIONS = 25
+_MAX_QUESTIONS = 15
+
+# Both numbers come from a real run, not from a guess.
+#
+# 25 questions of Arabic text — each with references, `why_we_ask` and evidence — overran 8000
+# output tokens and arrived as JSON cut off mid-object. Arabic costs several tokens per word.
+# Raising the budget to 24000 then hit the SDK's own refusal: a non-streaming request that large
+# may take over ten minutes, and this adapter does not stream.
+#
+# So the ceiling on questions comes DOWN to what one call can carry, rather than the budget going
+# up to whatever the ceiling implies. That is the right way round anyway: a sector interview of
+# fifteen questions that a human reviews properly is worth more than twenty-five nobody reads, and
+# a question that does not change which obligations apply has no business being asked.
+_MAX_OUTPUT_TOKENS = 16000
 
 
 class GeneratedKnowledgeRejected(ValueError):
@@ -140,9 +159,17 @@ class ClaudeQuestionGenerator:
                 required_confidence=False,
                 forbidden_outputs=tuple(sorted(_FORBIDDEN_FIELDS)),
             ),
-            params={"temperature": 0.2, "max_output_tokens": 8000},
+            params={"temperature": 0.2, "max_output_tokens": _MAX_OUTPUT_TOKENS},
         )
         answer = self._provider.generate(request)
+        # Checked BEFORE parsing. A truncated response is invalid JSON, so parsing it first would
+        # report "the response is not JSON" — technically true and completely misleading about
+        # what to do next, which is raise the budget rather than debug the model.
+        if getattr(answer, "finish_reason", "") in ("max_tokens", "length"):
+            raise GeneratedKnowledgeRejected(
+                f"the model ran out of output budget ({_MAX_OUTPUT_TOKENS} tokens) and its answer "
+                f"was cut off mid-JSON; nothing was stored"
+            )
         questions = _parse(answer.text)
         LOGGER.info(
             "knowledge_generated: industry=%s questions=%d model=%s prompt=%s",
@@ -221,8 +248,8 @@ def _question(item: Any, index: int, seen: set[str]) -> dict[str, Any]:
     if kind not in _QUESTION_TYPES:
         raise GeneratedKnowledgeRejected(f"{where} has type {kind!r}, not one of {_QUESTION_TYPES}")
     options = list(item.get("options") or [])
-    if kind in ("single_choice", "multi_choice") and len(options) < 2:
-        raise GeneratedKnowledgeRejected(f"{where} is a {kind} with fewer than two options")
+    if kind == _CHOICE_TYPE and len(options) < 2:
+        raise GeneratedKnowledgeRejected(f"{where} is an {kind} with fewer than two options")
 
     importance = str(item.get("importance", "")).strip()
     if importance not in _IMPORTANCE:
@@ -232,6 +259,15 @@ def _question(item: Any, index: int, seen: set[str]) -> dict[str, Any]:
     if not category:
         raise GeneratedKnowledgeRejected(f"{where} has no category")
 
+    references = _references(item.get("references"), where)
+    if not references:
+        # The schema requires at least one (`release_questions_has_a_reference`). Refused here so a
+        # reviewer is told which question is ungrounded, rather than being handed a constraint name.
+        raise GeneratedKnowledgeRejected(
+            f"{where} cites no framework: a question nothing requires is a question nobody has to "
+            f"answer"
+        )
+
     return {
         "question_id": question_id,
         "canonical_text_ar": text_ar,
@@ -240,7 +276,7 @@ def _question(item: Any, index: int, seen: set[str]) -> dict[str, Any]:
         "required": bool(item.get("required", True)),
         "category": category,
         "importance": importance,
-        "references": _references(item.get("references"), where),
+        "references": references,
         "why_we_ask": str(item.get("why_we_ask", "")).strip(),
         "evidence_required": [str(e) for e in (item.get("evidence_required") or [])],
     }

@@ -60,6 +60,7 @@ async function main(): Promise<void> {
     return {
       userId: ownerUserId,
       userName: "E2E Team Owner",
+    userEmail: "eval@test.local",
       tenantId,
       roles: ["owner"],
       apiToken: "unused",
@@ -70,6 +71,7 @@ async function main(): Promise<void> {
     return {
       userId: `e2e-team-member-${runId}`,
       userName: "E2E Team Member",
+    userEmail: "eval@test.local",
       tenantId,
       roles: ["analyst"],
       apiToken: "unused",

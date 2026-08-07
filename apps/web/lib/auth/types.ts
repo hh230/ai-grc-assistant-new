@@ -12,6 +12,13 @@ export interface SessionUser {
   organizationId: string;
   organizationName: string;
   roles: UserRole[];
+  /**
+   * Whether this person governs sector knowledge (ADR 0067). Deliberately NOT a `UserRole`: the
+   * questions a sector's organizations answer are authored once for all of them, so the authority
+   * is Rasheed's to grant, not a customer workspace's. Resolved server-side per request from
+   * configuration and carried here purely so the sidebar can hide a link it would refuse anyway.
+   */
+  governsKnowledge?: boolean;
 }
 
 /**

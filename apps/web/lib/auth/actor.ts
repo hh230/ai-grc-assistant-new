@@ -10,6 +10,9 @@ import type { UserRole } from "./roles";
 export interface ActorContext {
   userId: string;
   userName: string;
+  /** The person's email. Carried because some authority is configured by naming people, and a
+   * list of UUIDs is a list an operator cannot check (ADR 0067's knowledge approvers). */
+  userEmail: string;
   tenantId: string;
   roles: UserRole[];
   /** Backend bearer token for this actor (used when proxying to the FastAPI API). */
@@ -22,6 +25,7 @@ export async function getActor(): Promise<ActorContext | null> {
   return {
     userId: session.userId,
     userName: session.name,
+    userEmail: session.email,
     tenantId: session.organizationId,
     roles: session.roles,
     apiToken: session.apiToken,

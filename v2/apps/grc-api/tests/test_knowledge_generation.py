@@ -10,6 +10,7 @@ No network and no SDK — the provider is a port, and a stub answers it.
 from __future__ import annotations
 
 import json
+import pathlib
 
 import pytest
 from pipeline_contracts import Answer
@@ -108,7 +109,7 @@ def test_an_english_question_is_the_wrong_artifact_not_a_translation_task():
 
 def test_a_choice_question_with_one_option_is_refused():
     questions = [_question(question_id=f"q_{i}") for i in range(8)]
-    questions[2].update(type="single_choice", options=["نعم"])
+    questions[2].update(type="enum", options=["نعم"])
     generator, _ = _generate(questions)
     with pytest.raises(GeneratedKnowledgeRejected, match="fewer than two options"):
         generator.generate(industry_slug="real_estate")
@@ -169,3 +170,46 @@ def test_the_shipped_prompt_states_the_boundary_it_relies_on():
     prompt = _prompt_text()
     assert "اللغة، لا عن الحقيقة" in prompt, "the boundary must be stated to the model, in Arabic"
     assert "JSON" in prompt
+
+
+def test_a_TRUNCATED_response_says_so_rather_than_blaming_the_json():
+    """Found on the first real call: 25 Arabic questions overran the output budget and arrived as
+    JSON cut off mid-object. Parsing first reports "the response is not JSON" — true, and
+    completely misleading about what to do next."""
+    from pipeline_contracts import Answer
+
+    class _Truncated:
+        def generate(self, request):
+            return Answer(text='{"questions": [{"question_id": "q', finish_reason="max_tokens")
+
+    generator = ClaudeQuestionGenerator(_Truncated(), prompt="PROMPT")
+    with pytest.raises(GeneratedKnowledgeRejected, match="ran out of output budget"):
+        generator.generate(industry_slug="real_estate")
+
+
+def test_the_question_types_are_exactly_the_ones_the_SCHEMA_allows():
+    """The bug this pins: an earlier draft of the generator invented `single_choice`/`number`, the
+    model produced them, and `release_questions_type_renderable` refused the insert on the first
+    real call. There is ONE type vocabulary and the migration owns it."""
+    from grc_api.knowledge_generation import _QUESTION_TYPES
+
+    assert _QUESTION_TYPES == {"boolean", "enum", "numeric", "date", "text"}
+    prompt_path = (
+        pathlib.Path(__file__).resolve().parents[1]
+        / "grc_api" / "prompts" / "sector_questions.v1.ar.md"
+    )
+    prompt = prompt_path.read_text(encoding="utf-8")
+    for kind in _QUESTION_TYPES:
+        assert kind in prompt, f"the prompt must offer {kind}"
+    for invented in ("single_choice", "multi_choice", "number"):
+        assert invented not in prompt, f"the prompt still offers {invented}, which no column accepts"
+
+
+def test_a_question_citing_nothing_is_refused_with_a_reason_not_a_constraint_name():
+    """The schema requires at least one reference. Refusing here means the reviewer is told which
+    question is ungrounded instead of being handed `release_questions_has_a_reference`."""
+    questions = [_question(question_id=f"q_{i}") for i in range(8)]
+    questions[4]["references"] = []
+    generator, _ = _generate(questions)
+    with pytest.raises(GeneratedKnowledgeRejected, match="cites no framework"):
+        generator.generate(industry_slug="real_estate")

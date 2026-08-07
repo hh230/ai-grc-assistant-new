@@ -118,7 +118,8 @@ def test_a_retired_industry_is_hidden_from_the_default_listing_but_still_exists(
     retiring its active release, which is coordination and belongs to an Application Service.
     """
     store.register_industry("legacy", "قديم")
-    store._conn.execute("UPDATE industries SET status = 'retired' WHERE slug = 'legacy'")
+    assert store.set_industry_status("legacy", "retired") is True
+    assert store.set_industry_status("legacy", "retired") is False, "idempotent"
     assert store.list_industries() == []
     assert [i["slug"] for i in store.list_industries(include_retired=True)] == ["legacy"]
 

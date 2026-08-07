@@ -1,6 +1,6 @@
 """Sector Knowledge Packs — the repository (ADR 0067; `docs/adr/0067-repository-contract.md`).
 
-Nineteen atomic SQL operations, plus one Get/List read primitive. Nothing else lives here.
+Twenty-one atomic SQL operations, plus one Get/List read primitive. Nothing else lives here.
 
 Four methods an earlier draft added were removed rather than promoted into the contract, because
 each was a signal about a *different* layer:
@@ -105,6 +105,23 @@ class PostgresKnowledgeStore:
             "WHERE %s OR status = 'active' ORDER BY slug",
             (include_retired,),
         )
+
+    def set_industry_status(self, slug: str, status: str) -> bool:
+        """READ COMMITTED · no lock · idempotent. A single atomic write — data access.
+
+        Deliberately NOT `retire_industry`. Retiring an industry also means retiring its active
+        release, and that coordination belongs to the `RetireIndustry` service. The distinction is
+        exact: the repository can set a status; only a service can retire an industry.
+        """
+        if status not in ("active", "retired"):
+            raise ValueError(f"{status!r} is not an industry status")
+        cur = self._conn.execute(
+            "UPDATE industries SET status = %s WHERE slug = %s AND status <> %s",
+            (status, slug, status),
+        )
+        return cur.rowcount == 1
+
+    # ── templates ────────────────────────────────────────────────────────────────────────────
 
     def ensure_template(self, template_id: str, industry_slug: str) -> dict[str, Any] | None:
         """READ COMMITTED · no lock · idempotent.
@@ -342,6 +359,24 @@ class PostgresKnowledgeStore:
                 " reason) VALUES (%s, %s, %s, %s)",
                 (industry_slug, release_id, actor, reason),
             )
+
+    def deactivate_industry(self, industry_slug: str) -> str | None:
+        """READ COMMITTED · no lock · idempotent. Returns the release that was live, if any.
+
+        Removing the pointer is NOT deleting knowledge: every activation, including this one, is
+        already recorded in `active_template_history`, and the release row is untouched. What
+        disappears is only "which release is live right now" — and the answer becomes "none".
+
+        This exists because the schema refuses to demote a release while it is active (the
+        composite FK plus its CHECK), which is correct: a release must not be withdrawn underneath
+        customers being interviewed on it. Retiring therefore has an order — stop serving it, then
+        retire it — and this is the first half.
+        """
+        row = self._conn.execute(
+            "DELETE FROM active_templates WHERE industry_slug = %s RETURNING release_id",
+            (industry_slug,),
+        ).fetchone()
+        return row[0] if row else None
 
     def get_active_release(self, industry_slug: str) -> dict[str, Any] | None:
         """READ COMMITTED · **no lock** · read. What an interview draws from.

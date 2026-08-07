@@ -1,0 +1,83 @@
+# ADR 0067 — Application Service Contract
+
+> **An Application Service orchestrates; it never decides.**
+
+It opens a transaction when one is needed, calls repository methods, calls domain methods, calls
+the LLM, and emits events. It computes nothing and chooses no state transition of its own. An `if`
+that turns on **business meaning** belongs in the domain; an `if` that turns on *whether a call
+succeeded* is orchestration and belongs here.
+
+Services are named for the **business operation they execute**, never for the objects they know
+about. There is no `KnowledgeService`: a name like that answers "what does this know?", and a
+class that knows about everything eventually does everything.
+
+## The services
+
+| Service | Calls | Transaction | Emits |
+|---|---|---|---|
+| `GenerateKnowledgeTemplate` | `ensure_template` → **LLM** → `create_release` | one, inside `create_release` | `KnowledgeTemplateGenerated` |
+| `SubmitKnowledgeTemplate` | `submit_for_review` | none — single statement | `KnowledgeTemplateSubmitted` |
+| `ApproveKnowledgeTemplate` | `approve_release` | none | `KnowledgeTemplateApproved` |
+| `RejectKnowledgeTemplate` | `reject_release` | none | `KnowledgeTemplateRejected` |
+| `PublishKnowledgeTemplate` | `mark_released` | none | `KnowledgeTemplatePublished` |
+| `ActivateKnowledgeRelease` | `activate_release` | one, inside the repository | `ActiveReleaseChanged` |
+| `RetireIndustry` | `set_industry_status` → `retire_release` | one, opened here | `IndustryRetired` |
+| `StartAssessment` | `open_assessment` → `record_selection` | one, opened here | `AssessmentStarted` |
+| `RecordSectorAnswers` | `save_sector_answers` | one, inside the repository | `SectorAnswersRecorded` |
+| `CompleteAssessment` | `complete_assessment` | none | `AssessmentCompleted` |
+
+Ten services. The largest makes **three** calls. A service reaching eight or ten would mean the
+use case is really several, and the answer would be to split it — not to let one service grow into
+the `KnowledgeService` this design exists to avoid.
+
+## Why some rows say "none"
+
+Five services make a single guarded write. That write is already atomic, and wrapping it in an
+explicit transaction would add a boundary that guarantees nothing while implying that something
+here is composite. A service exists at those points not for the transaction but because it is
+where the **use case** and its **event** live.
+
+`ActivateKnowledgeRelease` and `RecordSectorAnswers` say "inside the repository" for the opposite
+reason: those operations are *already* multi-statement and own their transaction (the pointer with
+its history; the answer set as a whole). The service must not open a second one around them.
+
+## Where each decision actually lives
+
+Two services look like they decide, and neither does.
+
+**`ActivateKnowledgeRelease`** does not check that the release is releasable. The composite foreign
+key does — activating something never released is unrepresentable. The service passes the request
+through and lets the database refuse it. Re-checking in Python would be a second, weaker copy of a
+rule that is already exact.
+
+**`StartAssessment`** does not choose the template. `primary_activity` *suggests* the active
+release, and a human may override it with several; both arrive as arguments. If this service
+contained "if no selection was given, use the active one", that default would be a business rule
+hidden in the orchestration layer — so the caller resolves it, and this records what was decided
+along with what was suggested.
+
+## The repository primitive this needs back
+
+`RetireIndustry` is exactly the case that proved this layer exists: retire the industry's active
+release, then mark the industry inactive. Two repository calls, coordinated.
+
+Removing `retire_industry` from the repository was right; removing the ability to write the column
+was over-correction on my part. `set_industry_status(slug, status)` returns as a **primitive** —
+one atomic write, no coordination, which is data access by definition. The distinction is exact:
+the repository can *set a status*; only a service can *retire an industry*.
+
+## Events
+
+Named here, published later. Each service returns its event rather than dispatching it, so wiring
+a bus later changes the composition root and no service. Until then the name is still doing work:
+it is what the operation means, stated once, where the operation happens.
+
+## The layers are now complete
+
+    Domain              the rules
+    Repository          data access
+    Application Service coordination
+    LLM                 language only
+
+There is no fifth layer, and adding one would need an ADR that argues why these four cannot hold
+the responsibility.

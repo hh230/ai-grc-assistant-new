@@ -225,3 +225,145 @@ def test_draft_falls_back_gracefully_when_generation_fails(conn) -> None:
         assert result["warnings"]  # but the fallback is flagged, not silent
     finally:
         _cleanup(conn, tenant_id)
+
+
+# --- sector answers reach the WORDING and nothing else (ADR 0067) ------------------------------
+
+
+class _SectorAnswers:
+    """A `SectorAnswerReader` double holding one concluded assessment's answers."""
+
+    def __init__(self, answers, completed=True):
+        self._answers = answers
+        self._completed = completed
+
+    def find_assessment_for_session(self, source_session_id, *, tenant_id):
+        return {"id": "as_1", "completed_at": 1.0 if self._completed else None}
+
+    def load_plan_context(self, assessment_id, *, tenant_id):
+        return {"sector_answers": self._answers}
+
+
+_REAL_ESTATE_ANSWERS = [
+    {
+        "canonical_text_ar": "هل تمتلك المنشأة ترخيصًا ساريًا من الهيئة العامة للعقار؟",
+        "answer": False,
+    },
+    {"canonical_text_ar": "هل تحتفظ المنشأة بحساب ضمان منفصل لأموال العملاء؟", "answer": False},
+]
+
+
+def _draft(store, session_id, tenant, sector=None):
+    provider = FakeGenerationProvider()
+    tool = PlanDraftTool(store, provider, sector_answers=sector, now=lambda: 2000.0)
+    result = tool.invoke({PAYLOAD_INSTRUCTION: session_id}, tenant)
+    assert result["ok"] is True
+    return json.loads(result["output"]), provider
+
+
+def test_sector_answers_change_NOTHING_the_rule_engine_decided(conn) -> None:
+    """The one property this whole layer stands on.
+
+    The plan's structure has ONE source — the Core rules. Sector answers explain it, prioritize it,
+    and give it examples; they must not add, remove, merge or reorder a single action. Two drafts
+    of the same session, one with a sector interview behind it and one without, must be identical
+    in every field the engine decided.
+    """
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    without, _ = _draft(store, session.id, tenant)
+    with_sector, _ = _draft(store, session.id, tenant, _SectorAnswers(_REAL_ESTATE_ANSWERS))
+
+    fields = ("id", "pillar", "priority", "timeframe_bucket", "effort_size", "due_at")
+
+    def decided(draft):
+        return [{k: item[k] for k in fields} for item in draft["items"]]
+
+    assert decided(with_sector) == decided(without), "the rule engine's decisions must be untouched"
+    assert [g["gap_id"] for g in with_sector["top_risks"]] == [
+        g["gap_id"] for g in without["top_risks"]
+    ]
+    assert with_sector["inferred_frameworks"] == without["inferred_frameworks"]
+    assert with_sector["maturity_baseline"] == without["maturity_baseline"]
+    assert with_sector["maturity_vision"] == without["maturity_vision"]
+    # And the difference IS recorded, so a reader can tell the two apart.
+    assert with_sector["sector_answer_count"] == 2
+    assert without["sector_answer_count"] == 0
+
+
+def test_the_sector_answers_actually_reach_the_prose_prompts(conn) -> None:
+    """The other half: a boundary that lets nothing through is not a feature."""
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    _, provider = _draft(store, session.id, tenant, _SectorAnswers(_REAL_ESTATE_ANSWERS))
+    prompts_sent = [request.segments[-1].content for request in provider.requests]
+    assert any("الهيئة العامة للعقار" in prompt for prompt in prompts_sent)
+    # The brief and every item prompt carry it; the per-GAP prompt deliberately does not — a gap is
+    # a finding of the rule engine, and sector colour there would read as a second finding.
+    assert all("DESCRIPTION:" not in p for p in prompts_sent if "الهيئة العامة" in p)
+
+
+def test_the_system_prompt_forbids_touching_the_actions(conn) -> None:
+    """The constraint lives in the SYSTEM PROMPT, not only in the documentation — so that even a
+    model that misreads its context is confined to narrative."""
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    _, provider = _draft(store, session.id, tenant, _SectorAnswers(_REAL_ESTATE_ANSWERS))
+    systems = {
+        segment.content
+        for request in provider.requests
+        for segment in request.segments
+        if segment.kind.value == "identity"
+    }
+    assert systems, "every drafting call must carry the system prompt"
+    for system in systems:
+        assert (
+            "You may explain, prioritize, or contextualize existing governance actions, but you "
+            "must never invent, remove, merge, or reorder governance actions." in system
+        )
+
+
+def test_an_OPEN_assessment_contributes_nothing(conn) -> None:
+    """A plan is never drafted from answers that can still change — the same rule that lets every
+    read stay at READ COMMITTED."""
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    draft, _ = _draft(
+        store, session.id, tenant, _SectorAnswers(_REAL_ESTATE_ANSWERS, completed=False)
+    )
+    assert draft["sector_answer_count"] == 0
+
+
+def test_an_UNREACHABLE_sector_store_still_produces_a_plan(conn) -> None:
+    """A plan that explains itself less well beats no plan at all."""
+
+    class _Broken:
+        def find_assessment_for_session(self, *_args, **_kwargs):
+            raise RuntimeError("connection lost")
+
+        def load_plan_context(self, *_args, **_kwargs):  # pragma: no cover - never reached
+            raise AssertionError
+
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    session = _concluded_session(store, tenant_id, DiscoveryEngine(load_bundled_packs()))
+
+    provider = FakeGenerationProvider()
+    tool = PlanDraftTool(store, provider, sector_answers=_Broken(), now=lambda: 2000.0)
+    result = tool.invoke({PAYLOAD_INSTRUCTION: session.id}, tenant)
+    assert result["ok"] is True
+    assert json.loads(result["output"])["items"]
+    assert any("sector_answers: unavailable" in w for w in result.get("warnings", ()))

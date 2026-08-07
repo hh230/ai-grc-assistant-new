@@ -14,6 +14,7 @@ import json
 import re
 import time
 from collections.abc import Callable
+from typing import Any, Protocol
 
 from governance_discovery.scheduler import compute_due_at
 from governance_store import PostgresGovernanceStore
@@ -66,18 +67,33 @@ def _humanize(key: str) -> str:
     return middle.replace("_", " ").replace(":", " ").strip().title()
 
 
+class SectorAnswerReader(Protocol):
+    """The customer's sector answers, behind a port (ADR 0067). Optional by construction: a
+    deployment without Knowledge Packs passes `None` and this tool behaves exactly as it did."""
+
+    def find_assessment_for_session(
+        self, source_session_id: str, *, tenant_id: str
+    ) -> dict[str, Any] | None: ...
+
+    def load_plan_context(
+        self, assessment_id: str, *, tenant_id: str
+    ) -> dict[str, Any] | None: ...
+
+
 class PlanDraftTool:
     def __init__(
         self,
         store: PostgresGovernanceStore,
         provider: GenerationProvider,
         *,
+        sector_answers: SectorAnswerReader | None = None,
         version: int = 1,
         language: Language = Language.ENGLISH,
         now: Callable[[], float] = time.time,
     ) -> None:
         self._store = store
         self._provider = provider
+        self._sector_answers = sector_answers
         self._language = language
         self._now = now
         self._spec = ToolSpec(
@@ -106,9 +122,14 @@ class PlanDraftTool:
         now = self._now()
         warnings: list[str] = []
 
-        executive_summary = self._draft_executive_brief(applicability, warnings)
+        # Read AFTER the applicability, and never mixed into it. The plan's structure — which
+        # items exist, their priority, their order — comes from the rule engine and from nowhere
+        # else. These answers only reach the prompts that write PROSE.
+        sector = self._read_sector_answers(session_id, tenant, warnings)
+
+        executive_summary = self._draft_executive_brief(applicability, sector, warnings)
         top_risks = [self._draft_gap(gap, warnings) for gap in applicability.gaps]
-        items = [self._draft_item(item, now, warnings) for item in applicability.plan_items]
+        items = [self._draft_item(item, sector, now, warnings) for item in applicability.plan_items]
 
         draft = {
             "source_session_id": session.id,
@@ -118,11 +139,42 @@ class PlanDraftTool:
             "executive_summary": executive_summary,
             "top_risks": top_risks,
             "items": items,
+            # Recorded so a reader can tell an explanation grounded in the customer's own sector
+            # from one written without it — the same reason the release id is stored beside the
+            # assessment.
+            "sector_answer_count": len(sector),
             "drafted_at": now,
         }
         return ToolStepResult(
             ok=True, output=json.dumps(draft), warnings=tuple(warnings)
         ).as_payload()
+
+    def _read_sector_answers(
+        self, session_id: str, tenant: TenantContext, warnings: list[str]
+    ) -> list[dict]:
+        """The sector answers for this session, or an empty list.
+
+        Empty is the normal case and never an error: no Knowledge Pack reader configured, no
+        assessment, an assessment still open (a plan is not built from answers that can change), or
+        a sector with nothing published. Each returns `[]` and the draft reads exactly as it did
+        before this feature existed.
+        """
+        if self._sector_answers is None:
+            return []
+        try:
+            assessment = self._sector_answers.find_assessment_for_session(
+                session_id, tenant_id=tenant.tenant_id
+            )
+            if assessment is None or assessment.get("completed_at") is None:
+                return []
+            context = self._sector_answers.load_plan_context(
+                assessment["id"], tenant_id=tenant.tenant_id
+            )
+            return list((context or {}).get("sector_answers") or [])
+        except Exception as exc:  # noqa: BLE001
+            # A plan that explains itself less well is a far better outcome than no plan at all.
+            warnings.append(f"sector_answers: unavailable ({type(exc).__name__}), drafted without")
+            return []
 
     # --- LLM-drafted prose, each call bounded to wording over already-fixed facts -------------
 
@@ -154,14 +206,14 @@ class PlanDraftTool:
         except GenerationError:
             return None
 
-    def _draft_executive_brief(self, applicability, warnings: list[str]) -> str:
+    def _draft_executive_brief(self, applicability, sector: list[dict], warnings: list[str]) -> str:
         context = json.dumps(
             {
                 "maturity": applicability.maturity,
                 "gaps": list(applicability.gaps),
                 "capacity": applicability.capacity,
             }
-        )
+        ) + prompts.sector_context_block(sector)
         text = self._generate(prompts.executive_brief_prompt(context))
         if not text:
             warnings.append("executive_brief: generation unavailable, used fallback text")
@@ -190,9 +242,12 @@ class PlanDraftTool:
             "impact": impact,
         }
 
-    def _draft_item(self, item: dict, now: float, warnings: list[str]) -> dict:
+    def _draft_item(self, item: dict, sector: list[dict], now: float, warnings: list[str]) -> dict:
         title = _humanize(item.get("title_key", item.get("id", "")))
         rationale_seed = _humanize(item.get("rationale_key", ""))
+        # The recommendation, its pillar and its urgency are stated to the model as GIVEN. The
+        # sector answers arrive underneath them as context for the wording, never as a reason to
+        # produce a different action.
         context = (
             f"Recommendation: {title}\n"
             f"Pillar: {item.get('pillar')}\n"
@@ -200,7 +255,7 @@ class PlanDraftTool:
             f"Triggered by facts about: "
             f"{', '.join(item.get('source_signal_keys', [])) or 'the organization'}\n"
             f"Context: {rationale_seed}"
-        )
+        ) + prompts.sector_context_block(sector)
         text = self._generate(prompts.plan_item_prompt(context))
         rationale, objective, outcome, risk = (
             _FALLBACK_RATIONALE,

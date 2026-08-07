@@ -106,7 +106,9 @@ API_VERSION = "0.1.0"
 
 
 def _default_executor(
-    engine: DiscoveryEngine, store_factory: Callable[[], Any]
+    engine: DiscoveryEngine,
+    store_factory: Callable[[], Any],
+    knowledge_store_factory: Callable[[], Any] | None = None,
 ) -> ExecutionPort:
     """The production executor: real tools when an LLM is configured, echo when it is not.
 
@@ -129,6 +131,7 @@ def _default_executor(
         store_factory=store_factory,
         discovery_engine=engine,
         generation_provider=provider,
+        knowledge_store_factory=knowledge_store_factory,
     )
 
 
@@ -168,7 +171,14 @@ def create_app(
     resolved_store_factory = discovery_store_factory or (
         lambda: PostgresGovernanceStore(dsn=governance_database_dsn())
     )
-    run_step: ExecutionPort = executor or _default_executor(resolved_engine, resolved_store_factory)
+    # Resolved here because the executor is composed from it: the plan DRAFT reads the customer's
+    # sector answers (ADR 0067), so the knowledge store has to exist before the executor does.
+    resolved_knowledge_factory = knowledge_store_factory or (
+        lambda: PostgresKnowledgeStore(dsn=governance_database_dsn())
+    )
+    run_step: ExecutionPort = executor or _default_executor(
+        resolved_engine, resolved_store_factory, resolved_knowledge_factory
+    )
     launch: MissionLaunchPort
     if storage is Storage.MEMORY:
         # In-memory state has to live somewhere: the dictionary IS the storage, and no connection or
@@ -227,9 +237,7 @@ def create_app(
     # is platform-wide (industries, templates, releases carry no tenant) while assessments are
     # tenant-scoped, and keeping the two in one connection discipline is what lets an assessment
     # cite a release in one transaction.
-    app.state.knowledge_store_factory = knowledge_store_factory or (
-        lambda: PostgresKnowledgeStore(dsn=governance_database_dsn())
-    )
+    app.state.knowledge_store_factory = resolved_knowledge_factory
     # The generator is the ONE piece that may legitimately be absent: a deployment with no
     # governance model configured cannot author knowledge, and `None` is how it says so. The route
     # answers `503` naming what is missing rather than inventing questions nobody wrote.

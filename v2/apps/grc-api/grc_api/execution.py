@@ -51,30 +51,45 @@ class GovernancePlanExecutor:
         store_factory: Callable[[], Any],
         discovery_engine: DiscoveryEngine,
         generation_provider: Any,
+        knowledge_store_factory: Callable[[], Any] | None = None,
         frameworks: FrameworkLibrary | None = None,
     ) -> None:
         self._store_factory = store_factory
+        # Optional on purpose: a deployment with no Knowledge Packs passes nothing and the draft
+        # reads exactly as it did before they existed.
+        self._knowledge_store_factory = knowledge_store_factory
         self._discovery_engine = discovery_engine
         self._generation_provider = generation_provider
         # Pure data, loaded once — the library is immutable and shared safely (the same reason
         # `create_app` builds one DiscoveryEngine for every request).
         self._frameworks = frameworks if frameworks is not None else FrameworkLibrary.from_bundled()
 
-    def _registry(self, store: Any) -> ToolRegistry:
+    def _registry(self, store: Any, knowledge: Any = None) -> ToolRegistry:
         registry = ToolRegistry()
         registry.register(OrgApplicabilityTool(store))
         registry.register(ControlLibraryTool(self._frameworks))
         # `now` / `new_id` are left at their real defaults (time.time / uuid4). The E2E suite pins
         # them to fixed values through its own construction; production must not.
-        registry.register(PlanDraftTool(store, self._generation_provider))
+        #
+        # The knowledge store reaches the DRAFT tool and no other: sector answers shape how the
+        # plan is explained, never what it contains. `PlanFinalizeTool` — the one that persists —
+        # is deliberately not given it.
+        registry.register(PlanDraftTool(store, self._generation_provider, sector_answers=knowledge))
         registry.register(PlanFinalizeTool(store, self._discovery_engine))
         return registry
 
     def execute(self, request: StepRequest) -> StepResult:
         store: Any = self._store_factory()
+        knowledge: Any = (
+            self._knowledge_store_factory() if self._knowledge_store_factory else None
+        )
         try:
-            return RegistryExecutor(self._registry(store)).execute(request)
+            return RegistryExecutor(self._registry(store, knowledge)).execute(request)
         finally:
+            if knowledge is not None:
+                close_knowledge = getattr(knowledge, "close", None)
+                if close_knowledge is not None:
+                    close_knowledge()
             # The store owns a connection; leaking one per step exhausts a managed Postgres long
             # before CPU becomes the ceiling (the same reasoning behind the B3 pool).
             close = getattr(store, "close", None)

@@ -270,8 +270,8 @@ def test_starting_an_assessment_records_the_selection_in_the_same_transaction(st
 
     assert outcome.event.name == "AssessmentStarted"
     assessment_id = outcome.data["assessment_id"]
-    CompleteAssessment(store, now=_now)(assessment_id=assessment_id)
-    context = store.load_plan_context(assessment_id)
+    CompleteAssessment(store, now=_now)(assessment_id=assessment_id, tenant_id="t1")
+    context = store.load_plan_context(assessment_id, tenant_id="t1")
     assert context["selection"]["selected_release_ids"] == [release_id]
 
 
@@ -305,7 +305,7 @@ def test_recording_answers_then_completing_freezes_the_assessment(store):
     assert recorded.event.name == "SectorAnswersRecorded"
     assert recorded.event.payload["answer_count"] == 1
 
-    completed = CompleteAssessment(store, now=_now)(assessment_id=assessment_id)
+    completed = CompleteAssessment(store, now=_now)(assessment_id=assessment_id, tenant_id="t1")
     assert completed.event.name == "AssessmentCompleted"
 
     with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
@@ -322,8 +322,8 @@ def test_completing_twice_reports_unchanged_and_emits_nothing(store):
     assessment_id = _start(store, [release_id]).data["assessment_id"]
     complete = CompleteAssessment(store, now=_now)
 
-    assert complete(assessment_id=assessment_id).changed is True
-    repeated = complete(assessment_id=assessment_id)
+    assert complete(assessment_id=assessment_id, tenant_id="t1").changed is True
+    repeated = complete(assessment_id=assessment_id, tenant_id="t1")
     assert (repeated.changed, repeated.event) == (False, None)
 
 

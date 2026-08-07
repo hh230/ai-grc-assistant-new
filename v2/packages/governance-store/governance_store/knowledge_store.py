@@ -522,17 +522,26 @@ class PostgresKnowledgeStore:
                     ),
                 )
 
-    def complete_assessment(self, assessment_id: str, *, at: Any) -> bool:
-        """READ COMMITTED · no lock · idempotent. One-way: the schema refuses re-opening."""
+    def complete_assessment(self, assessment_id: str, *, tenant_id: str, at: Any) -> bool:
+        """READ COMMITTED · no lock · idempotent. One-way: the schema refuses re-opening.
+
+        `tenant_id` is in the `WHERE`, not checked afterwards. Concluding is irreversible — after
+        it, the schema refuses every further write — so a caller holding another tenant's id must
+        find nothing rather than be told "not yours" once the row has already moved.
+        """
         cur = self._conn.execute(
             "UPDATE assessments SET completed_at = %s "
-            "WHERE id = %s AND completed_at IS NULL",
-            (at, assessment_id),
+            "WHERE id = %s AND tenant_id = %s AND completed_at IS NULL",
+            (at, assessment_id, tenant_id),
         )
         return cur.rowcount == 1
 
-    def load_plan_context(self, assessment_id: str) -> dict[str, Any] | None:
+    def load_plan_context(self, assessment_id: str, *, tenant_id: str) -> dict[str, Any] | None:
         """READ COMMITTED · no lock · read. **Concluded assessments only.**
+
+        Every one of the reads carries `tenant_id` rather than trusting the first: the column is
+        denormalised onto each table, and nothing in the schema yet binds a child row's tenant to
+        its parent's, so "the assessment is mine" does not by itself prove "these answers are".
 
         Four reads with no snapshot, because a concluded assessment accepts no further writes:
         there is nothing left to tear. Refusing an open assessment is what makes that true — take
@@ -541,10 +550,12 @@ class PostgresKnowledgeStore:
         """
         assessment = self._row(
             "SELECT id, tenant_id, organization_id, source_session_id, started_at, completed_at "
-            "FROM assessments WHERE id = %s",
-            (assessment_id,),
+            "FROM assessments WHERE id = %s AND tenant_id = %s",
+            (assessment_id, tenant_id),
         )
         if assessment is None:
+            # Indistinguishable from "no such assessment", deliberately: another tenant's id must
+            # not be confirmable as existing.
             return None
         if assessment["completed_at"] is None:
             raise ValueError(
@@ -554,8 +565,8 @@ class PostgresKnowledgeStore:
 
         selection = self._row(
             "SELECT suggested_industry_slug, selected_release_ids, selected_by, selected_at "
-            "FROM template_selections WHERE assessment_id = %s",
-            (assessment_id,),
+            "FROM template_selections WHERE assessment_id = %s AND tenant_id = %s",
+            (assessment_id, tenant_id),
         )
         answers = self._rows(
             "SELECT a.release_id, a.question_id, a.answer, q.canonical_text_ar, q.category, "
@@ -563,7 +574,8 @@ class PostgresKnowledgeStore:
             "FROM sector_answers a "
             "JOIN release_questions q ON q.release_id = a.release_id "
             " AND q.question_id = a.question_id "
-            "WHERE a.assessment_id = %s ORDER BY a.release_id, q.position, a.question_id",
-            (assessment_id,),
+            "WHERE a.assessment_id = %s AND a.tenant_id = %s "
+            "ORDER BY a.release_id, q.position, a.question_id",
+            (assessment_id, tenant_id),
         )
         return {"assessment": assessment, "selection": selection, "sector_answers": answers}

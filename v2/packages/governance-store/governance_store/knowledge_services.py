@@ -370,11 +370,15 @@ class CompleteAssessment:
         self._store = store
         self._now = now
 
-    def __call__(self, *, assessment_id: str) -> Outcome:
-        changed = self._store.complete_assessment(assessment_id, at=self._now())
+    def __call__(self, *, assessment_id: str, tenant_id: str) -> Outcome:
+        changed = self._store.complete_assessment(
+            assessment_id, tenant_id=tenant_id, at=self._now()
+        )
         return Outcome(
             changed=changed,
-            event=Event("AssessmentCompleted", {"assessment_id": assessment_id})
+            event=Event(
+                "AssessmentCompleted", {"assessment_id": assessment_id, "tenant_id": tenant_id}
+            )
             if changed
             else None,
         )

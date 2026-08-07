@@ -372,15 +372,15 @@ def test_a_plan_context_cannot_be_built_from_an_OPEN_assessment(store):
     release_id = _released(store, _template(store))
     _assessment(store, release_id)
     with pytest.raises(ValueError, match="still open"):
-        store.load_plan_context("as_1")
+        store.load_plan_context("as_1", tenant_id="t1")
 
 
 def test_a_concluded_assessment_yields_answers_joined_to_their_questions(store):
     release_id = _released(store, _template(store))
     _assessment(store, release_id)
-    assert store.complete_assessment("as_1", at=_later()) is True
+    assert store.complete_assessment("as_1", tenant_id="t1", at=_later()) is True
 
-    context = store.load_plan_context("as_1")
+    context = store.load_plan_context("as_1", tenant_id="t1")
     assert context["assessment"]["organization_id"] == "org1"
     assert context["selection"]["selected_release_ids"] == [release_id]
     assert context["selection"]["suggested_industry_slug"] == "real_estate"
@@ -393,14 +393,14 @@ def test_a_concluded_assessment_yields_answers_joined_to_their_questions(store):
 def test_concluding_twice_is_idempotent(store):
     release_id = _released(store, _template(store))
     _assessment(store, release_id)
-    assert store.complete_assessment("as_1", at=_later()) is True
-    assert store.complete_assessment("as_1", at=_later()) is False
+    assert store.complete_assessment("as_1", tenant_id="t1", at=_later()) is True
+    assert store.complete_assessment("as_1", tenant_id="t1", at=_later()) is False
 
 
 def test_answers_cannot_be_saved_after_conclusion(store):
     release_id = _released(store, _template(store))
     _assessment(store, release_id)
-    store.complete_assessment("as_1", at=_later())
+    store.complete_assessment("as_1", tenant_id="t1", at=_later())
     with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
         store.save_sector_answers(
             assessment_id="as_1", tenant_id="t1",
@@ -426,14 +426,34 @@ def test_a_selection_may_cite_several_releases(store):
         assessment_id="as_3", tenant_id="t1", suggested_industry_slug="real_estate",
         selected_release_ids=[real_estate, construction], selected_by="reviewer",
     )
-    store.complete_assessment("as_3", at=_later())
-    assert store.load_plan_context("as_3")["selection"]["selected_release_ids"] == [
+    store.complete_assessment("as_3", tenant_id="t1", at=_later())
+    assert store.load_plan_context("as_3", tenant_id="t1")["selection"]["selected_release_ids"] == [
         real_estate, construction,
     ]
 
 
 def test_load_plan_context_returns_None_for_an_assessment_that_does_not_exist(store):
-    assert store.load_plan_context("as_missing") is None
+    assert store.load_plan_context("as_missing", tenant_id="t1") is None
+
+
+def test_ANOTHER_TENANTS_assessment_is_indistinguishable_from_one_that_does_not_exist(store):
+    """Not `403`, and not an empty context — `None`. Telling a caller "that exists, but not for
+    you" confirms the id, and an assessment id is a fact about another customer."""
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    assert store.complete_assessment("as_1", tenant_id="t1", at=_later()) is True
+    assert store.load_plan_context("as_1", tenant_id="t2") is None
+    assert store.load_plan_context("as_1", tenant_id="t1") is not None
+
+
+def test_another_tenant_cannot_CONCLUDE_an_assessment(store):
+    """The most consequential write in the customer flow: after it the schema refuses every
+    further write, so a cross-tenant conclusion would freeze someone else's interview."""
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    assert store.complete_assessment("as_1", tenant_id="t2", at=_later()) is False
+    # Still open, therefore still answerable — the cross-tenant call changed nothing.
+    assert store.complete_assessment("as_1", tenant_id="t1", at=_later()) is True
 
 
 def test_a_reviewer_can_send_a_release_back_to_draft(store):

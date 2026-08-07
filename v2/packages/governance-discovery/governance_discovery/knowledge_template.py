@@ -17,8 +17,26 @@ A generated question may carry *editorial* metadata — what it asks, why it is 
 regulator it relates to. It may **not** carry anything the decision engine would act on: no
 signal to write, no rule, no severity, no maturity contribution, no priority. Those are decisions,
 and decisions live in auditable rules, never inside a prompt whose reasoning nobody can replay.
-`SectorQuestion.parse` rejects them outright rather than ignoring them, because a field that is
+`TemplateQuestion.parse` rejects them outright rather than ignoring them, because a field that is
 silently dropped today is a field someone relies on tomorrow.
+
+**Three concepts, deliberately kept apart**, because conflating them is how a "sector" field
+becomes the axis of a system it was only ever meant to index:
+
+  * `Industry`          — a name and a slug. NO logic. It exists to be chosen from, nothing else.
+  * `KnowledgeTemplate` — a versioned, reviewed body of questions FOR an industry.
+  * `TemplateSelection` — which template version(s) a given organization was actually interviewed
+                          under, and whether a human overrode the suggestion.
+
+An interview binds to a **template version**, never to an industry name. Real estate will have v1,
+v2 and v3; a report written in 2026 must remain explicable in 2029, which means knowing the
+organization answered v1's questions — not today's. In a compliance product that is a requirement,
+not a nicety.
+
+None of this reaches the decision engine or the signal space. `primary_activity` remains a signal
+because the engine derives obligations from it (a government-linked organization falls under a
+different regime); what is new here — the Industry entity, the templates, the selection — is
+knowledge and provenance, and stays out of the rules entirely.
 
 Nothing here talks to a database or an LLM. It is the shape of the asset and the rules of its
 lifecycle; `governance-store` persists it, and the generation tool produces it.
@@ -67,6 +85,41 @@ FORBIDDEN_DECISION_FIELDS: frozenset[str] = frozenset(
 )
 
 
+class IndustryStatus(str, enum.Enum):
+    ACTIVE = "active"
+    RETIRED = "retired"
+
+
+@dataclass(frozen=True)
+class Industry:
+    """A name and a slug. Nothing else, on purpose.
+
+    The pull towards `parent_industry`, `aliases`, `icon`, `regulatory_family` is real and should
+    be resisted: every one of those turns a lookup value into the axis of the system, and the
+    system's axis is the rule engine. An industry exists to be chosen from so a template can be
+    found. Anything an industry "implies" belongs in derivations (`derivation.py`), where it is
+    auditable, or on the template, where it is reviewed.
+
+    Retiring one never invalidates history: an interview cites `(industry_slug, version)`, so a
+    retired industry keeps explaining the reports produced under it.
+    """
+
+    slug: str
+    canonical_name_ar: str
+    status: IndustryStatus = IndustryStatus.ACTIVE
+
+    @property
+    def is_selectable(self) -> bool:
+        return self.status is IndustryStatus.ACTIVE
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "slug": self.slug,
+            "canonical_name_ar": self.canonical_name_ar,
+            "status": self.status.value,
+        }
+
+
 class TemplateStatus(str, enum.Enum):
     """The lifecycle of a knowledge asset.
 
@@ -100,11 +153,11 @@ _ALLOWED_TRANSITIONS: dict[TemplateStatus, frozenset[TemplateStatus]] = {
 USABLE_STATUS = TemplateStatus.PUBLISHED
 
 
-class SectorTemplateError(ValueError):
+class KnowledgeTemplateError(ValueError):
     """Generated content that cannot be trusted as a knowledge asset."""
 
 
-class IllegalTransitionError(SectorTemplateError):
+class IllegalTransitionError(KnowledgeTemplateError):
     """A lifecycle move the review workflow does not permit."""
 
 
@@ -137,13 +190,13 @@ class Reference:
     @staticmethod
     def parse(raw: Any, *, where: str) -> Reference:
         if not isinstance(raw, dict):
-            raise SectorTemplateError(f"{where}: each reference must be an object")
+            raise KnowledgeTemplateError(f"{where}: each reference must be an object")
         framework = raw.get("framework")
         if not isinstance(framework, str) or not framework.strip():
-            raise SectorTemplateError(f"{where}: a reference needs a non-empty 'framework'")
+            raise KnowledgeTemplateError(f"{where}: a reference needs a non-empty 'framework'")
         clause = raw.get("clause") or ""
         if not isinstance(clause, str):
-            raise SectorTemplateError(f"{where}: 'clause' must be a string when present")
+            raise KnowledgeTemplateError(f"{where}: 'clause' must be a string when present")
         return Reference(framework=framework.strip(), clause=clause.strip())
 
     def as_dict(self) -> dict[str, str]:
@@ -151,8 +204,8 @@ class Reference:
 
 
 @dataclass(frozen=True)
-class SectorQuestion:
-    """One generated question. Editorial metadata only — see the module docstring."""
+class TemplateQuestion:
+    """One question inside a template. Editorial metadata only — see the module docstring."""
 
     id: str
     # The Arabic text, and the ONLY authored text. Every other language is a derived
@@ -176,14 +229,14 @@ class SectorQuestion:
     options: tuple[str, ...] = ()
 
     @staticmethod
-    def parse(raw: Any, *, index: int) -> SectorQuestion:
+    def parse(raw: Any, *, index: int) -> TemplateQuestion:
         where = f"question[{index}]"
         if not isinstance(raw, dict):
-            raise SectorTemplateError(f"{where}: expected an object, got {type(raw).__name__}")
+            raise KnowledgeTemplateError(f"{where}: expected an object, got {type(raw).__name__}")
 
         intruding = sorted(FORBIDDEN_DECISION_FIELDS & set(raw))
         if intruding:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: generated questions may not carry decision fields {intruding}. "
                 f"Claude authors language, not truth — anything the engine acts on (signals, "
                 f"rules, severity, maturity, priority) must be reviewable data, not prompt output."
@@ -192,38 +245,38 @@ class SectorQuestion:
         def text(name: str) -> str:
             value = raw.get(name)
             if not isinstance(value, str) or not value.strip():
-                raise SectorTemplateError(f"{where}: '{name}' must be a non-empty string")
+                raise KnowledgeTemplateError(f"{where}: '{name}' must be a non-empty string")
             return value.strip()
 
         question_type = text("type").lower()
         if question_type not in ALLOWED_QUESTION_TYPES:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: type {question_type!r} is not renderable; "
                 f"expected one of {sorted(ALLOWED_QUESTION_TYPES)}"
             )
 
         importance = text("importance").lower()
         if importance not in ALLOWED_IMPORTANCE:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: importance {importance!r} is not one of {sorted(ALLOWED_IMPORTANCE)}"
             )
 
         options = raw.get("options") or ()
         if not isinstance(options, (list, tuple)) or not all(isinstance(o, str) for o in options):
-            raise SectorTemplateError(f"{where}: 'options' must be a list of strings")
+            raise KnowledgeTemplateError(f"{where}: 'options' must be a list of strings")
         options = tuple(o.strip() for o in options if o and o.strip())
         if question_type == "enum" and len(options) < 2:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: an enum question needs at least two options to be answerable"
             )
 
         required = raw.get("required", True)
         if not isinstance(required, bool):
-            raise SectorTemplateError(f"{where}: 'required' must be true or false")
+            raise KnowledgeTemplateError(f"{where}: 'required' must be true or false")
 
         raw_references = raw.get("references")
         if not isinstance(raw_references, list) or not raw_references:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: 'references' must be a non-empty list of "
                 f"{{framework, clause}} — a sector question a reviewer cannot trace to anything "
                 f"is a question nobody can approve"
@@ -237,12 +290,12 @@ class SectorQuestion:
         # Absent is a mistake; EMPTY is a real answer meaning "self-attested". The difference
         # matters, so an omitted field is refused rather than defaulted to empty.
         if not isinstance(evidence, list) or not all(isinstance(e, str) for e in evidence):
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{where}: 'evidence_required' must be a list of strings — use [] to state "
                 f"explicitly that nothing can prove this answer"
             )
 
-        return SectorQuestion(
+        return TemplateQuestion(
             id=text("id"),
             canonical_text=text("question"),
             type=question_type,
@@ -287,21 +340,33 @@ class SectorQuestion:
 
 
 @dataclass(frozen=True)
-class SectorTemplate:
-    """A versioned, reviewed body of sector knowledge."""
+class KnowledgeTemplate:
+    """A versioned, reviewed body of knowledge for one industry.
 
-    sector: str
+    `(industry_slug, version)` is its identity. An interview cites that pair forever; the industry
+    row it points at may be renamed or retired without making an old report unreadable.
+    """
+
+    industry_slug: str
     version: int
     prompt_version: str
     generated_by: str
-    questions: tuple[SectorQuestion, ...]
+    questions: tuple[TemplateQuestion, ...]
     # What a plan for this sector is expected to contain — declared with the knowledge, so a
     # reviewer approves the shape of the deliverable, not only the questions.
     expected_outputs: tuple[str, ...] = ()
     review_status: TemplateStatus = TemplateStatus.GENERATED
+    created_by: str = ""
     approved_by: str | None = None
     approved_at: float | None = None
+    published_at: float | None = None
     notes: str = ""
+
+    @property
+    def version_id(self) -> str:
+        """What an interview records. Stable, readable, and enough on its own to explain a report
+        years later — `real_estate@v3`, not a surrogate key nobody can interpret."""
+        return f"{self.industry_slug}@v{self.version}"
 
     @property
     def is_usable(self) -> bool:
@@ -314,39 +379,47 @@ class SectorTemplate:
         *,
         actor: str | None = None,
         at: float | None = None,
-    ) -> SectorTemplate:
+    ) -> KnowledgeTemplate:
         assert_transition(self.review_status, target)
         if target is TemplateStatus.APPROVED and not (actor or "").strip():
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 "approving sector knowledge requires the approver's identity — it is the record "
                 "of who accepted content every organization in this sector will be asked"
             )
         approved_by = actor if target is TemplateStatus.APPROVED else self.approved_by
         approved_at = at if target is TemplateStatus.APPROVED else self.approved_at
-        return SectorTemplate(
-            sector=self.sector,
+        # Stamped once, when it first becomes usable — the moment an asset started affecting real
+        # organizations is the moment an auditor asks about.
+        published_at = at if target is TemplateStatus.PUBLISHED else self.published_at
+        return KnowledgeTemplate(
+            industry_slug=self.industry_slug,
             version=self.version,
             prompt_version=self.prompt_version,
             generated_by=self.generated_by,
             questions=self.questions,
             expected_outputs=self.expected_outputs,
             review_status=target,
+            created_by=self.created_by,
             approved_by=approved_by,
             approved_at=approved_at,
+            published_at=published_at,
             notes=self.notes,
         )
 
     def as_dict(self) -> dict[str, Any]:
         return {
-            "sector": self.sector,
+            "industry_slug": self.industry_slug,
             "version": self.version,
+            "version_id": self.version_id,
             "prompt_version": self.prompt_version,
             "generated_by": self.generated_by,
             "questions": [q.as_dict() for q in self.questions],
             "expected_outputs": list(self.expected_outputs),
             "review_status": self.review_status.value,
+            "created_by": self.created_by,
             "approved_by": self.approved_by,
             "approved_at": self.approved_at,
+            "published_at": self.published_at,
             "notes": self.notes,
         }
 
@@ -354,31 +427,32 @@ class SectorTemplate:
 def parse_generated_template(
     payload: Any,
     *,
-    sector: str,
+    industry_slug: str,
     version: int,
     prompt_version: str,
     generated_by: str,
-) -> SectorTemplate:
+    created_by: str = "",
+) -> KnowledgeTemplate:
     """Turn one Claude response into a knowledge asset, or refuse it.
 
     Refusal is the point. An LLM response that is *almost* right is the dangerous case: it reads
     convincingly and would be asked of every organization in the sector.
     """
     if not isinstance(payload, dict):
-        raise SectorTemplateError(f"expected a JSON object, got {type(payload).__name__}")
+        raise KnowledgeTemplateError(f"expected a JSON object, got {type(payload).__name__}")
 
     raw_questions = payload.get("questions")
     if not isinstance(raw_questions, list) or not raw_questions:
-        raise SectorTemplateError("'questions' must be a non-empty list")
+        raise KnowledgeTemplateError("'questions' must be a non-empty list")
 
     questions = tuple(
-        SectorQuestion.parse(raw, index=i) for i, raw in enumerate(raw_questions)
+        TemplateQuestion.parse(raw, index=i) for i, raw in enumerate(raw_questions)
     )
 
     seen: set[str] = set()
     for question in questions:
         if question.id in seen:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"duplicate question id {question.id!r} — answers are keyed by id, so a duplicate "
                 f"silently overwrites an answer"
             )
@@ -386,16 +460,17 @@ def parse_generated_template(
 
     expected = payload.get("expected_outputs") or ()
     if not isinstance(expected, (list, tuple)) or not all(isinstance(o, str) for o in expected):
-        raise SectorTemplateError("'expected_outputs' must be a list of strings")
+        raise KnowledgeTemplateError("'expected_outputs' must be a list of strings")
 
-    return SectorTemplate(
-        sector=sector,
+    return KnowledgeTemplate(
+        industry_slug=industry_slug,
         version=version,
         prompt_version=prompt_version,
         generated_by=generated_by,
         questions=questions,
         expected_outputs=tuple(o.strip() for o in expected if o and o.strip()),
         review_status=TemplateStatus.GENERATED,
+        created_by=created_by,
     )
 
 
@@ -431,22 +506,21 @@ class SectorAnswer:
 class SectorAnswerSet:
     """The sector half of one organization's interview."""
 
-    sector: str
-    template_version: int
+    # The exact asset these answers came from — `real_estate@v3`. Not a sector name: when v4
+    # publishes, this set must still identify the questions that were actually asked.
+    template_version_id: str
     answers: tuple[SectorAnswer, ...] = field(default_factory=tuple)
 
     def with_answer(self, answer: SectorAnswer) -> SectorAnswerSet:
         kept = tuple(a for a in self.answers if a.question_id != answer.question_id)
         return SectorAnswerSet(
-            sector=self.sector,
-            template_version=self.template_version,
+            template_version_id=self.template_version_id,
             answers=(*kept, answer),
         )
 
     def as_dict(self) -> dict[str, Any]:
         return {
-            "sector": self.sector,
-            "template_version": self.template_version,
+            "template_version_id": self.template_version_id,
             "answers": [a.as_dict() for a in self.answers],
         }
 
@@ -493,12 +567,12 @@ class QuestionTranslation:
 
     def __post_init__(self) -> None:
         if self.language == CANONICAL_LANGUAGE:
-            raise SectorTemplateError(
+            raise KnowledgeTemplateError(
                 f"{CANONICAL_LANGUAGE!r} is the canonical language — it lives on the question "
                 f"itself, and storing it again as a translation creates a second source of truth"
             )
         if not self.text.strip():
-            raise SectorTemplateError("a translation needs text")
+            raise KnowledgeTemplateError("a translation needs text")
 
     @property
     def is_usable(self) -> bool:
@@ -528,7 +602,7 @@ class QuestionTranslation:
 
 
 def translation_coverage(
-    template: SectorTemplate, translations: tuple[QuestionTranslation, ...], language: str
+    template: KnowledgeTemplate, translations: tuple[QuestionTranslation, ...], language: str
 ) -> tuple[int, int]:
     """`(published, total)` for one language — which languages are behind, answered with a number.
 
@@ -544,3 +618,69 @@ def translation_coverage(
         if t.language == language and t.is_usable and t.question_id in ids
     }
     return len(published), len(ids)
+
+
+@dataclass(frozen=True)
+class TemplateSelection:
+    """Which template version(s) an organization was actually interviewed under.
+
+    Two things this records that a plain `industry` column cannot.
+
+    **The suggestion is not the decision.** `primary_activity` proposes a template; a human may
+    disagree, and often should — reality is not one sector. A brokerage that also builds is
+    "Construction + Real Estate"; a holding company is neither of its subsidiaries' sectors. So
+    the selection holds a LIST, and remembers what was suggested so the two can be compared later.
+    A suggestion the reviewer kept and a suggestion nobody looked at are different facts.
+
+    **The version is the record.** `selected_version_ids` cites `real_estate@v3`, never
+    `real_estate`. When v4 publishes, this organization's report stays readable because the exact
+    questions it answered are still identifiable.
+    """
+
+    suggested_industry_slug: str
+    selected_version_ids: tuple[str, ...]
+    selected_by: str = ""
+    selected_at: float | None = None
+
+    def __post_init__(self) -> None:
+        if not self.selected_version_ids:
+            raise KnowledgeTemplateError(
+                "an interview must cite at least one template version — an interview whose "
+                "questions cannot be identified later cannot be explained later"
+            )
+        if len(set(self.selected_version_ids)) != len(self.selected_version_ids):
+            raise KnowledgeTemplateError(
+                f"duplicate template version in {list(self.selected_version_ids)}"
+            )
+
+    @property
+    def was_overridden(self) -> bool:
+        """True when the reviewer chose anything other than one template from the suggested
+        industry — a second sector, or a different one entirely."""
+        if len(self.selected_version_ids) != 1:
+            return True
+        return not self.selected_version_ids[0].startswith(f"{self.suggested_industry_slug}@v")
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "suggested_industry_slug": self.suggested_industry_slug,
+            "selected_version_ids": list(self.selected_version_ids),
+            "was_overridden": self.was_overridden,
+            "selected_by": self.selected_by,
+            "selected_at": self.selected_at,
+        }
+
+
+def suggest_template(
+    primary_activity: str, published: tuple[KnowledgeTemplate, ...]
+) -> KnowledgeTemplate | None:
+    """The newest published template for the answered activity — a SUGGESTION, nothing more.
+
+    Returns `None` rather than guessing when no published template matches. A near-miss template
+    is worse than none: the reviewer would be shown sector questions written for someone else and
+    invited to accept them.
+    """
+    candidates = [
+        t for t in published if t.industry_slug == primary_activity and t.is_usable
+    ]
+    return max(candidates, key=lambda t: t.version) if candidates else None

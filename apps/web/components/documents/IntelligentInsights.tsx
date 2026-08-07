@@ -1,28 +1,40 @@
+/**
+ * Insight over this tenant's document-analysis history — trends across analyses and what stands out.
+ *
+ * Moved off the home page (CLAUDE.md §3 pillar 10). It reads documents, not the organization, so it
+ * belongs where documents live. "What have my documents been telling me" is a real question — just
+ * not the first one a governance program asks.
+ */
 import { getTranslations } from "next-intl/server";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, TriangleAlert, FileText, Sparkles, TrendingUp, ListChecks } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/Badge";
 import { Link } from "@/i18n/navigation";
 import { getActor } from "@/lib/auth/actor";
-import { getNeedsAttentionItems } from "@/lib/dashboard/needsAttention";
+import { getLiveInsights, type LiveInsight } from "@/lib/dashboard/liveInsights";
 import { toneIconClasses } from "@/lib/design/tone";
 
+const ICON: Record<LiveInsight["icon"], typeof TriangleAlert> = {
+  risk: TriangleAlert,
+  document: FileText,
+  analysis: Sparkles,
+  trend: TrendingUp,
+  action: ListChecks,
+};
+
 /**
- * Band 2 of the dashboard (V2-P3 design proposal §11) — the section an executive scans
- * right after the topline scores: "what needs a decision today?" Sourced strictly from the
- * tenant's real framework coverage, risk register, and in-flight analyses (post-v2.0.1 audit
- * — previously a static illustrative dataset); renders nothing when there's genuinely
- * nothing to flag.
+ * Real-workspace counterpart to `NeedsAttention` (which renders the static illustrative
+ * dataset for the investor-demo narrative — CLAUDE.md "don't redesign the UI"). This reads
+ * the signed-in tenant's actual risks, documents, and analyses and only renders when that
+ * data exists, so it stays silent for a fresh tenant rather than showing an empty card.
  */
-export async function NeedsAttention() {
+export async function IntelligentInsights() {
   const actor = await getActor();
   if (!actor) return null;
 
-  const t = await getTranslations("dashboard.needsAttention");
-  const tSeverity = await getTranslations("riskRegister.severity");
-  const items = await getNeedsAttentionItems(actor);
-
+  const t = await getTranslations("dashboard.intelligentInsights");
+  const items = await getLiveInsights(actor);
   if (items.length === 0) return null;
 
   return (
@@ -31,12 +43,12 @@ export async function NeedsAttention() {
         <SectionHeader
           title={t("title")}
           description={t("description")}
-          action={<Badge tone="danger">{t("count", { count: items.length })}</Badge>}
+          action={<Badge tone="accent" dot>{t("badge")}</Badge>}
         />
       </div>
       <ul className="mt-4 divide-y divide-hairline">
         {items.map((item) => {
-          const Icon = item.icon;
+          const Icon = ICON[item.icon];
           return (
             <li key={item.id}>
               <Link
@@ -50,10 +62,7 @@ export async function NeedsAttention() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-foreground">
-                    {t(item.titleKey, {
-                      ...item.titleValues,
-                      ...(item.severityKey ? { severity: tSeverity(item.severityKey) } : {}),
-                    })}
+                    {t(item.titleKey, item.titleValues)}
                   </span>
                   <span className="block truncate text-2xs text-foreground-muted">
                     {t(item.detailKey, item.detailValues)}

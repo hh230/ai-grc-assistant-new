@@ -163,6 +163,22 @@ convenience, speed, and personal preference. Every PR is implicitly checked agai
    first question is not "how do I get past this constraint?" but "which invariant did we state in
    prose and never model?"
 
+10. **The home page optimizes for the next governance action, never for the highest score.**
+
+    > **A score is never the first thing, because a score is not a thing you can act on.**
+
+    The product exists to run a governance program, not to grade one. So the first thing a customer
+    sees is where their program stands and what to do about it — never a number, however impressive
+    the number or however sophisticated the model behind it.
+
+    This pillar was written after a redesign, not before one. The home page had become a mixture of
+    document analytics and governance indicators because each addition was judged on its own merits
+    and never against the product's purpose. Four of the cards removed were AI-powered; being
+    AI-powered is not an exemption, it is how the drift happened.
+
+    The test, asked BEFORE building and not after: **does this help the customer manage their
+    governance program?** If the answer is no, it does not belong on the home page.
+
 If a change violates any pillar above, it is wrong by definition — redesign it.
 
 ---

@@ -31,6 +31,9 @@ export interface SectorInterview {
   status: "opened" | "already_open" | "no_sector_pack";
   assessmentId: string | null;
   completed: boolean;
+  /** Present when RESUMING. A returning customer holds no session id, and the plan is generated
+   * from the session — so the answer carries it back. */
+  sourceSessionId: string | null;
   release: {
     releaseId: string;
     industrySlug: string;

@@ -243,6 +243,9 @@ class SectorInterviewView(BaseModel):
     status: str
     assessment_id: str | None = None
     completed: bool = False
+    # Present when RESUMING: a returning customer holds no session id, and the plan is generated
+    # from the session, so the answer has to carry it back.
+    source_session_id: str | None = None
     release: InterviewReleaseView | None = None
 
 

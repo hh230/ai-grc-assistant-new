@@ -509,6 +509,23 @@ class PostgresKnowledgeStore:
             (source_session_id, tenant_id),
         )
 
+    def find_open_assessment(self, *, tenant_id: str) -> dict[str, Any] | None:
+        """READ COMMITTED · no lock · read. The tenant's unfinished assessment, if one exists.
+
+        By TENANT, not by session — which is the whole point. A customer who closes the tab during
+        the sector stage comes back with no session id in hand; without this read their answers are
+        unreachable and the only way forward is to start the interview again.
+
+        Newest first, and one: `started_at DESC LIMIT 1`. Two open assessments would mean two
+        unfinished interviews, and resuming the older one would silently discard the newer.
+        """
+        return self._row(
+            "SELECT id, tenant_id, organization_id, source_session_id, started_at, completed_at "
+            "FROM assessments WHERE tenant_id = %s AND completed_at IS NULL "
+            "ORDER BY started_at DESC LIMIT 1",
+            (tenant_id,),
+        )
+
     def get_selection(self, assessment_id: str, *, tenant_id: str) -> dict[str, Any] | None:
         """READ COMMITTED · no lock · read. Which releases this assessment cites.
 

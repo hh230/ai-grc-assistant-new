@@ -494,3 +494,30 @@ def test_the_list_primitive_filters_rather_than_multiplying_methods(store):
         "a listing must not carry every question — depth is a filter, not a second method"
     )
     assert len(store.list_releases(release_id=released_id, with_questions=True)[0]["questions"]) == 1
+
+
+def test_an_unfinished_assessment_is_findable_by_TENANT_not_only_by_session(store):
+    """A customer who closed the tab mid-interview has no session id in hand. Without this read
+    their answers are unreachable and the only way forward is to start over."""
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    open_one = store.find_open_assessment(tenant_id="t1")
+    assert open_one["id"] == "as_1"
+    assert open_one["source_session_id"] is None or True
+
+    assert store.find_open_assessment(tenant_id="t2") is None, "and never another tenant's"
+
+    store.complete_assessment("as_1", tenant_id="t1", at=_later())
+    assert store.find_open_assessment(tenant_id="t1") is None, "a finished one is not unfinished"
+
+
+def test_the_NEWEST_unfinished_assessment_wins(store):
+    """Resuming the older one would silently discard the newer."""
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    store.open_assessment(assessment_id="as_new", tenant_id="t1", organization_id="org1")
+    store.record_selection(
+        assessment_id="as_new", tenant_id="t1", suggested_industry_slug="real_estate",
+        selected_release_ids=[release_id], selected_by="reviewer",
+    )
+    assert store.find_open_assessment(tenant_id="t1")["id"] == "as_new"

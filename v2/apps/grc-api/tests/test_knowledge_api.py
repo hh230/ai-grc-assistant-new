@@ -551,3 +551,79 @@ def test_a_pointer_that_MOVES_MID_INTERVIEW_does_not_change_the_questions(client
         headers=TENANT_A,
     ).json()
     assert later["release"]["release_id"] == v2
+
+
+def test_a_customer_who_CLOSED_THE_TAB_gets_their_interview_back(client, dsn):
+    """The defect this closes: after the core interview concluded, the sector stage was reachable
+    only from the live page. Close the tab and the app offered to start over, while a concluded
+    session and an open assessment sat orphaned — losing the customer's work at exactly the step
+    where they had done the most."""
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+
+    # A new visit, holding nothing: no session id, no assessment id.
+    resumed = client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()
+    assert resumed["status"] == "already_open"
+    assert resumed["assessment_id"] == opened["assessment_id"]
+    assert resumed["release"]["release_id"] == release_id
+    assert len(resumed["release"]["questions"]) == 3
+    # The session travels back, because the plan is generated from it and the customer has no copy.
+    assert resumed["source_session_id"] == session_id
+    # Still the customer's view.
+    assert all("why_we_ask" not in q for q in resumed["release"]["questions"])
+
+
+def test_a_FINISHED_interview_is_not_offered_for_resuming(client, dsn):
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+    client.post(
+        f"/v1/knowledge/assessments/{opened['assessment_id']}/answers",
+        json={"answers": [{"release_id": release_id, "question_id": "q0", "answer": True}]},
+        headers=TENANT_A,
+    )
+    client.post(
+        f"/v1/knowledge/assessments/{opened['assessment_id']}/complete", headers=TENANT_A
+    )
+    assert (
+        client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()["status"]
+        == "no_sector_pack"
+    )
+
+
+def test_nothing_to_resume_is_a_STATUS_not_an_error(client):
+    response = client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A)
+    assert response.status_code == 200
+    assert response.json() == {
+        "status": "no_sector_pack",
+        "assessment_id": None,
+        "completed": False,
+        "source_session_id": None,
+        "release": None,
+    }
+
+
+def test_another_tenants_unfinished_interview_is_not_offered(client, dsn):
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    )
+    assert (
+        client.get("/v1/knowledge/sector-interview/open", headers=TENANT_B).json()["status"]
+        == "no_sector_pack"
+    )

@@ -76,6 +76,7 @@ interface InterviewDto {
   status: string;
   assessment_id: string | null;
   completed: boolean;
+  source_session_id: string | null;
   release: {
     release_id: string;
     industry_slug: string;
@@ -116,10 +117,16 @@ export async function openSectorInterview(
     `/sessions/${encodeURIComponent(sessionId)}/sector-interview`,
     { organization_id: organizationId },
   );
+  return toInterview(dto);
+}
+
+
+function toInterview(dto: InterviewDto): SectorInterview {
   return {
     status: dto.status as SectorInterview["status"],
     assessmentId: dto.assessment_id,
     completed: dto.completed,
+    sourceSessionId: dto.source_session_id ?? null,
     release: dto.release
       ? {
           releaseId: dto.release.release_id,
@@ -129,6 +136,19 @@ export async function openSectorInterview(
         }
       : null,
   };
+}
+
+
+/**
+ * The tenant's unfinished sector interview, if there is one — looked up by TENANT, because that is
+ * all a returning customer has.
+ *
+ * They closed the tab after the core interview concluded, so they hold no session id. Without this
+ * the app can only offer to start over, and their concluded session and open assessment sit
+ * orphaned — which is exactly the work they would lose.
+ */
+export async function findOpenSectorInterview(actor: ActorContext): Promise<SectorInterview> {
+  return toInterview(await call<InterviewDto>(actor, "GET", "/sector-interview/open"));
 }
 
 /** All or nothing: half an interview persisted is one that cannot be interpreted. */

@@ -13,6 +13,12 @@ export async function openSectorInterview(sessionId: string): Promise<SectorInte
   return (await response.json()) as SectorInterview;
 }
 
+export async function findOpenSectorInterview(): Promise<SectorInterview> {
+  const response = await fetch("/api/sector-interview/open", { cache: "no-store" });
+  if (!response.ok) throw new Error(await parseError(response));
+  return (await response.json()) as SectorInterview;
+}
+
 export async function submitSectorAnswers(
   assessmentId: string,
   answers: SectorAnswer[],

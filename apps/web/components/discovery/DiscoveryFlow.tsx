@@ -9,7 +9,7 @@ import { StageProgress } from "./StageProgress";
 import { JourneyStepper } from "@/components/governance/JourneyStepper";
 import { GovernanceReport } from "@/components/governance/GovernanceReport";
 import { SectorQuestions } from "./SectorQuestions";
-import { openSectorInterview } from "@/lib/sectorInterview/client";
+import { findOpenSectorInterview, openSectorInterview } from "@/lib/sectorInterview/client";
 import type { SectorInterview } from "@/lib/sectorInterview/types";
 import { useSession } from "@/components/auth/SessionProvider";
 import { useRouter } from "@/i18n/navigation";
@@ -101,6 +101,23 @@ export function DiscoveryFlow() {
         }
       } catch {
         // fall through — a failed pending-check must never block the flow, only skip the resume
+      }
+      // An unfinished SECTOR stage. Checked before the active session because by this point the
+      // core interview has concluded — the customer is not mid-conversation, they are mid-form,
+      // and offering them "Start" would silently discard a concluded session and an open
+      // assessment. Looked up by tenant: a returning customer holds no session id.
+      try {
+        const unfinished = await findOpenSectorInterview();
+        // `sourceSessionId` is required, not optional: the plan is generated FROM the session, so
+        // resuming into questions that lead nowhere would be a worse trap than starting over.
+        if (unfinished.release && unfinished.sourceSessionId && !cancelled) {
+          setSessionId(unfinished.sourceSessionId);
+          setSectorInterview(unfinished);
+          setPhase("sectorQuestions");
+          return;
+        }
+      } catch {
+        // Never blocks the flow — a failed resume check only skips the resume.
       }
       try {
         const response = await fetch("/api/discovery/sessions/active");

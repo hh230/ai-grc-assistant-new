@@ -327,6 +327,41 @@ def open_sector_interview(
     )
 
 
+@router.get("/knowledge/sector-interview/open", response_model=SectorInterviewView)
+def resume_sector_interview(
+    tenant: Annotated[TenantContext, Depends(require_tenant)],
+    store: Annotated[Any, Depends(get_knowledge_store)],
+) -> SectorInterviewView:
+    """The tenant's unfinished sector interview, if there is one.
+
+    Looked up by TENANT, because that is all a returning customer has. They closed the tab after
+    the core interview concluded; they hold no session id, and without this their answers are
+    unreachable and the only way forward is to start the whole interview again.
+
+    `no_sector_pack` when there is nothing to resume — a status, not a `404`, because "you have no
+    unfinished interview" is a normal answer to this question and the client continues rather than
+    treating it as an error.
+    """
+    assessment = store.find_open_assessment(tenant_id=tenant.tenant_id)
+    if assessment is None:
+        return SectorInterviewView(status="no_sector_pack")
+
+    selection = store.get_selection(assessment["id"], tenant_id=tenant.tenant_id)
+    cited = (selection or {}).get("selected_release_ids") or []
+    rows = store.list_releases(release_id=cited[0], with_questions=True) if cited else []
+    if not rows:
+        # An assessment with no readable selection cannot be resumed into questions. Reported as
+        # nothing to resume rather than as an error: the customer must still be able to proceed.
+        return SectorInterviewView(status="no_sector_pack")
+    return SectorInterviewView(
+        status="already_open",
+        assessment_id=assessment["id"],
+        completed=False,
+        source_session_id=assessment["source_session_id"],
+        release=InterviewReleaseView.from_row(rows[0]),
+    )
+
+
 @router.post("/knowledge/assessments", response_model=OutcomeResponse, status_code=201)
 def start_assessment(
     body: StartAssessmentBody,

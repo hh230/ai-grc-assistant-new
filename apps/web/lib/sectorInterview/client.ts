@@ -19,6 +19,22 @@ export async function findOpenSectorInterview(): Promise<SectorInterview> {
   return (await response.json()) as SectorInterview;
 }
 
+/**
+ * Saves ONE answer, the moment it is given. Separate from `submitSectorAnswers` because it means
+ * something different: this records an answer, that concludes an interview.
+ */
+export async function saveSectorAnswer(
+  assessmentId: string,
+  answer: SectorAnswer,
+): Promise<void> {
+  const response = await fetch(`/api/sector-interview/assessments/${assessmentId}/answers`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answers: [answer] }),
+  });
+  if (!response.ok) throw new Error(await parseError(response));
+}
+
 export async function submitSectorAnswers(
   assessmentId: string,
   answers: SectorAnswer[],

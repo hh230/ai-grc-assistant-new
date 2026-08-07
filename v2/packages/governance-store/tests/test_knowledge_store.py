@@ -521,3 +521,29 @@ def test_the_NEWEST_unfinished_assessment_wins(store):
         selected_release_ids=[release_id], selected_by="reviewer",
     )
     assert store.find_open_assessment(tenant_id="t1")["id"] == "as_new"
+
+
+def test_answers_are_readable_while_the_assessment_is_still_OPEN(store):
+    """How a returning customer sees what they already said. `load_plan_context` refuses an open
+    assessment on purpose; the interview needs the opposite — it runs while answers can still
+    change."""
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    answers = store.list_sector_answers("as_1", tenant_id="t1")
+    assert [(a["question_id"], a["answer"]) for a in answers] == [("fal_license", False)]
+
+    # Re-answering the same question REPLACES it rather than adding a second row — which is what
+    # makes saving on every change safe.
+    store.save_sector_answers(
+        assessment_id="as_1", tenant_id="t1",
+        answers=[{"release_id": release_id, "question_id": "fal_license", "answer": True}],
+    )
+    answers = store.list_sector_answers("as_1", tenant_id="t1")
+    assert len(answers) == 1
+    assert answers[0]["answer"] is True
+
+
+def test_another_tenant_cannot_read_answers_in_progress(store):
+    release_id = _released(store, _template(store))
+    _assessment(store, release_id)
+    assert store.list_sector_answers("as_1", tenant_id="t2") == []

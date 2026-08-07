@@ -265,6 +265,10 @@ class SectorInterviewView(BaseModel):
     # from the session, so the answer has to carry it back.
     source_session_id: str | None = None
     release: InterviewReleaseView | None = None
+    # What this assessment already holds, keyed by question id. The client renders from THIS, not
+    # from what it remembers typing: a browser that was closed remembers nothing, and an answer
+    # that survived only in React state was never really saved.
+    answers: dict[str, Any] = Field(default_factory=dict)
 
 
 class SectorAnswerBody(BaseModel):

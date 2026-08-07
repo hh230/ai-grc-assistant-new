@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
-import { submitSectorAnswers } from "@/lib/sectorInterview/client";
+import { saveSectorAnswer, submitSectorAnswers } from "@/lib/sectorInterview/client";
 import type { SectorInterview, SectorQuestion } from "@/lib/sectorInterview/types";
 
 /**
@@ -23,6 +23,11 @@ import type { SectorInterview, SectorQuestion } from "@/lib/sectorInterview/type
  * comes next — so this is not adaptivity, it is attention: twenty-two questions on one page is a
  * form somebody skims, and each of these deserves to be read. The count comes from the release, so
  * a pack with fifteen questions asks fifteen; nothing here knows how many there are.
+ *
+ * Every answer is saved as it is given, and the initial values are the ones the DATABASE holds —
+ * `interview.answers`, not anything this component remembers. Asking one question at a time makes
+ * an interview long, and a long interview crosses a closed laptop, a dead battery, an interruption.
+ * The rule that follows: an answer that exists only in React state is an answer not yet given.
  */
 export function SectorQuestions({
   interview,
@@ -34,9 +39,17 @@ export function SectorQuestions({
   onError: (message: string) => void;
 }) {
   const t = useTranslations("sectorInterview");
-  const [values, setValues] = useState<Record<string, unknown>>({});
+  // Seeded from the database. A customer resuming at question nine sees the eight they answered,
+  // because this component was never the thing holding them.
+  const [values, setValues] = useState<Record<string, unknown>>(interview.answers);
   const [index, setIndex] = useState(0);
   const [submitting, setSubmitting] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  // Saves run one after another rather than concurrently. Two answers given quickly are two
+  // requests, and out of order the earlier value would land last and win — the customer would see
+  // one thing and the database would hold another.
+  const queue = useRef<Promise<unknown>>(Promise.resolve());
 
   const release = interview.release;
   if (!release || !interview.assessmentId) return null;
@@ -54,10 +67,43 @@ export function SectorQuestions({
   };
   const blocked = question.required && unanswered(question);
 
-  async function submit() {
+  const save = (questionId: string, answer: unknown) => {
+    if (!release || !interview.assessmentId || answer === undefined) return;
+    const assessmentId = interview.assessmentId;
+    const releaseId = release.releaseId;
+    setSaving(true);
+    setSaved(false);
+    queue.current = queue.current
+      .then(() => saveSectorAnswer(assessmentId, { releaseId, questionId, answer }))
+      .then(
+        () => {
+          setSaving(false);
+          setSaved(true);
+        },
+        // A failed save is reported, not thrown: the interview must not stop because one request
+        // did. The final submit re-sends every answer, so this is recoverable rather than lost.
+        (error: unknown) => {
+          setSaving(false);
+          onError(error instanceof Error ? error.message : String(error));
+        },
+      );
+  };
+
+  /** Typed answers are saved on Next rather than per keystroke — one answer, one write. */
+  const advance = () => {
+    save(question.questionId, values[question.questionId]);
+    setSaved(false);
+    setIndex(index + 1);
+  };
+
+  const submit = async () => {
     if (!release || !interview.assessmentId) return;
     setSubmitting(true);
+    save(question.questionId, values[question.questionId]);
     try {
+      // Every answer again, after the queue drains. Each was already saved; re-sending is
+      // idempotent and closes the gap left by any save that failed along the way.
+      await queue.current;
       await submitSectorAnswers(
         interview.assessmentId,
         release.questions
@@ -73,7 +119,7 @@ export function SectorQuestions({
       setSubmitting(false);
       onError(error instanceof Error ? error.message : String(error));
     }
-  }
+  };
 
   return (
     <Card grain>
@@ -120,9 +166,13 @@ export function SectorQuestions({
           <SectorAnswerInput
             question={question}
             value={values[question.questionId]}
-            onChange={(value) =>
-              setValues((current) => ({ ...current, [question.questionId]: value }))
-            }
+            onChange={(value, deliberate) => {
+              setValues((current) => ({ ...current, [question.questionId]: value }));
+              // A click on a choice is a complete answer the instant it happens. A half-typed
+              // number is not — that one waits for Next, so the database is never asked to hold
+              // "4" on the way to "40".
+              if (deliberate) save(question.questionId, value);
+            }}
           />
         </div>
         {question.evidenceRequired.length > 0 && (
@@ -136,7 +186,7 @@ export function SectorQuestions({
         <button
           type="button"
           disabled={submitting || blocked}
-          onClick={() => (isLast ? void submit() : setIndex(index + 1))}
+          onClick={() => (isLast ? void submit() : advance())}
           className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-4 text-sm font-medium text-white shadow-glow hover:opacity-90 disabled:opacity-60"
         >
           {submitting && <Loader2 className="h-3.5 w-3.5 animate-spin" strokeWidth={2} />}
@@ -144,13 +194,17 @@ export function SectorQuestions({
           {!isLast && <ArrowRight className="h-4 w-4 flip-rtl" strokeWidth={2} aria-hidden />}
         </button>
 
-        {/* Going back keeps the answer already given — the whole point of holding them in one map
-            rather than posting each as it is answered. */}
+        {/* Going back shows the answer as it was SAVED. Nothing is re-fetched to do it: every
+            answer was written as it was given, so what is on screen and what is in the database are
+            the same value. */}
         {index > 0 && (
           <button
             type="button"
             disabled={submitting}
-            onClick={() => setIndex(index - 1)}
+            onClick={() => {
+              setSaved(false);
+              setIndex(index - 1);
+            }}
             className="inline-flex h-9 items-center gap-1.5 rounded-lg px-2 text-sm text-foreground-muted transition-colors duration-150 hover:text-foreground disabled:opacity-60"
           >
             <ArrowLeft className="h-4 w-4 flip-rtl" strokeWidth={2} aria-hidden />
@@ -159,6 +213,18 @@ export function SectorQuestions({
         )}
 
         {blocked && <span className="text-2xs text-foreground-muted">{t("required")}</span>}
+
+        {/* Quiet on purpose. It answers "can I close this?" without asking to be watched. */}
+        {!blocked && (saving || saved) && (
+          <span className="inline-flex items-center gap-1 text-2xs text-foreground-muted">
+            {saving ? (
+              <Loader2 className="h-3 w-3 animate-spin" strokeWidth={2} aria-hidden />
+            ) : (
+              <Check className="h-3 w-3" strokeWidth={2} aria-hidden />
+            )}
+            {saving ? t("saving") : t("saved")}
+          </span>
+        )}
       </div>
     </Card>
   );
@@ -171,7 +237,9 @@ function SectorAnswerInput({
 }: {
   question: SectorQuestion;
   value: unknown;
-  onChange: (value: unknown) => void;
+  /** `deliberate` marks an answer that is COMPLETE the moment it changes — a click, not a keystroke.
+   *  It is the input's own knowledge; the caller cannot infer it from the value. */
+  onChange: (value: unknown, deliberate: boolean) => void;
 }) {
   const t = useTranslations("sectorInterview");
   const field =
@@ -184,7 +252,7 @@ function SectorAnswerInput({
           <button
             key={String(option)}
             type="button"
-            onClick={() => onChange(option)}
+            onClick={() => onChange(option, true)}
             className={
               value === option
                 ? "h-8 rounded-lg bg-accent px-3.5 text-2xs font-medium text-white"
@@ -215,6 +283,7 @@ function SectorAnswerInput({
                   onChange={() =>
                     onChange(
                       checked ? chosen.filter((o) => o !== option) : [...chosen, option],
+                      true,
                     )
                   }
                   className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-accent"
@@ -234,7 +303,7 @@ function SectorAnswerInput({
         dir="rtl"
         className={field}
         value={typeof value === "string" ? value : ""}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(event) => onChange(event.target.value, true)}
       >
         <option value="">{t("choose")}</option>
         {question.options.map((option) => (
@@ -253,7 +322,7 @@ function SectorAnswerInput({
         className={field}
         value={typeof value === "number" ? value : ""}
         onChange={(event) =>
-          onChange(event.target.value === "" ? undefined : Number(event.target.value))
+          onChange(event.target.value === "" ? undefined : Number(event.target.value), false)
         }
       />
     );
@@ -265,7 +334,7 @@ function SectorAnswerInput({
         type="date"
         className={field}
         value={typeof value === "string" ? value : ""}
-        onChange={(event) => onChange(event.target.value || undefined)}
+        onChange={(event) => onChange(event.target.value || undefined, true)}
       />
     );
   }
@@ -276,7 +345,7 @@ function SectorAnswerInput({
       dir="rtl"
       className={field}
       value={typeof value === "string" ? value : ""}
-      onChange={(event) => onChange(event.target.value || undefined)}
+      onChange={(event) => onChange(event.target.value || undefined, false)}
     />
   );
 }

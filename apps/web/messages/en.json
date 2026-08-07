@@ -2254,7 +2254,9 @@
     "progress": "Question {current} of {total}",
     "next": "Next",
     "back": "Back",
-    "required": "An answer is needed to continue."
+    "required": "An answer is needed to continue.",
+    "saving": "Saving…",
+    "saved": "Saved"
   },
   "programStatus": {
     "title": "Governance program",

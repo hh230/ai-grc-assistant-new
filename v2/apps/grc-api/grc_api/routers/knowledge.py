@@ -345,6 +345,12 @@ def get_active_release(
     return ActiveReleaseView.from_row(industry_slug, row)
 
 
+def _saved_answers(store: Any, assessment_id: str, tenant_id: str) -> dict[str, Any]:
+    """What has been answered so far, keyed by question. The client resumes from this."""
+    rows = store.list_sector_answers(assessment_id, tenant_id=tenant_id)
+    return {str(row["question_id"]): row["answer"] for row in rows}
+
+
 @router.post(
     "/knowledge/sessions/{session_id}/sector-interview", response_model=SectorInterviewView
 )
@@ -383,11 +389,13 @@ def open_sector_interview(
     )
     if not rows:
         raise _not_found("release cited by this assessment", str(release_id))
+    assessment_id = str(outcome.data["assessment_id"])
     return SectorInterviewView(
         status=status,
-        assessment_id=str(outcome.data["assessment_id"]),
+        assessment_id=assessment_id,
         completed=outcome.data.get("completed_at") is not None,
         release=InterviewReleaseView.from_row(rows[0]),
+        answers=_saved_answers(store, assessment_id, tenant.tenant_id),
     )
 
 
@@ -423,6 +431,7 @@ def resume_sector_interview(
         completed=False,
         source_session_id=assessment["source_session_id"],
         release=InterviewReleaseView.from_row(rows[0]),
+        answers=_saved_answers(store, assessment["id"], tenant.tenant_id),
     )
 
 
@@ -454,7 +463,17 @@ def record_answers(
     tenant: Annotated[TenantContext, Depends(require_tenant)],
     store: Annotated[Any, Depends(get_knowledge_store)],
 ) -> OutcomeResponse:
-    """All or nothing: half an interview persisted is one that cannot be interpreted."""
+    """Idempotent per question, which is what lets the client call it on every answer.
+
+    An earlier version of this docstring said "all or nothing", written when the whole interview
+    was submitted at the end. That was never a property of the endpoint — it was a description of
+    its only caller. Re-answering a question REPLACES it, so saving one answer and saving twenty
+    are the same operation, and a customer who closes the tab at question nine keeps nine answers
+    instead of none.
+
+    An assessment still becomes a plan only when it is COMPLETED. Saving an answer moves nothing
+    forward; it only means the answer is no longer held in a browser.
+    """
     return OutcomeResponse.from_outcome(
         RecordSectorAnswers(store)(
             assessment_id=assessment_id,

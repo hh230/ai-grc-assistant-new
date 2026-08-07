@@ -526,6 +526,20 @@ class PostgresKnowledgeStore:
             (tenant_id,),
         )
 
+    def list_sector_answers(self, assessment_id: str, *, tenant_id: str) -> list[dict[str, Any]]:
+        """READ COMMITTED · no lock · read. What has been answered so far.
+
+        Separate from `load_plan_context`, which refuses an OPEN assessment because a plan must not
+        be built from answers that can still change. This read is for the interview itself, which by
+        definition runs while they still can — it is how a customer who comes back sees what they
+        already said, without the browser having to remember it.
+        """
+        return self._rows(
+            "SELECT release_id, question_id, answer FROM sector_answers "
+            "WHERE assessment_id = %s AND tenant_id = %s ORDER BY question_id",
+            (assessment_id, tenant_id),
+        )
+
     def get_selection(self, assessment_id: str, *, tenant_id: str) -> dict[str, Any] | None:
         """READ COMMITTED · no lock · read. Which releases this assessment cites.
 

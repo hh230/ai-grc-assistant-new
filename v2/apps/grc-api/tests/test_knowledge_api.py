@@ -611,6 +611,7 @@ def test_nothing_to_resume_is_a_STATUS_not_an_error(client):
         "completed": False,
         "source_session_id": None,
         "release": None,
+        "answers": {},
     }
 
 
@@ -829,3 +830,57 @@ def test_re_importing_an_edited_pack_mints_a_NEW_version(client):
     assert first["data"]["version"] == 1
     assert second["data"]["version"] == 2
     assert second["data"]["release_id"] != first["data"]["release_id"]
+
+
+def test_an_answer_saved_mid_interview_comes_back_on_resume(client, dsn):
+    """The property the customer feels: close the tab at question two, reopen, question two is
+    still answered. The browser is not what remembers it."""
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+    assert opened["answers"] == {}
+    assessment_id = opened["assessment_id"]
+
+    client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/answers",
+        json={"answers": [{"release_id": release_id, "question_id": "q1", "answer": True}]},
+        headers=TENANT_A,
+    )
+    resumed = client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()
+    assert resumed["answers"] == {"q1": True}
+
+    # Saving the same question again REPLACES it — one answer, not two. This is what makes it safe
+    # for the client to save on every change.
+    client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/answers",
+        json={"answers": [{"release_id": release_id, "question_id": "q1", "answer": False}]},
+        headers=TENANT_A,
+    )
+    resumed = client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()
+    assert resumed["answers"] == {"q1": False}
+
+
+def test_saving_an_answer_does_not_advance_the_assessment(client, dsn):
+    """Saving is not submitting. The plan is still generated only from a COMPLETED assessment, so
+    an interview that is merely in progress must stay open."""
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    assessment_id = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()["assessment_id"]
+    client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/answers",
+        json={"answers": [{"release_id": release_id, "question_id": "q1", "answer": True}]},
+        headers=TENANT_A,
+    )
+    assert client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()[
+        "status"
+    ] == "already_open"

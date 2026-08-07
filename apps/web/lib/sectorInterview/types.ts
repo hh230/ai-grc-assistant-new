@@ -40,6 +40,13 @@ export interface SectorInterview {
     version: number;
     questions: SectorQuestion[];
   } | null;
+  /**
+   * What this assessment already holds, keyed by question id — the answers as the DATABASE has
+   * them, not as any browser remembers them. A customer resumes from this, which is why it travels
+   * with the interview rather than being fetched separately: an interview and what has been
+   * answered in it are one fact.
+   */
+  answers: Record<string, unknown>;
 }
 
 export interface SectorAnswer {

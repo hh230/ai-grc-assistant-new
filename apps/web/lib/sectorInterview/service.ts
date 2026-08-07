@@ -83,6 +83,7 @@ interface InterviewDto {
     version: number;
     questions: QuestionDto[];
   } | null;
+  answers: Record<string, unknown>;
 }
 
 function toQuestion(dto: QuestionDto): SectorQuestion {
@@ -135,6 +136,7 @@ function toInterview(dto: InterviewDto): SectorInterview {
           questions: dto.release.questions.map(toQuestion),
         }
       : null,
+    answers: dto.answers ?? {},
   };
 }
 
@@ -151,7 +153,13 @@ export async function findOpenSectorInterview(actor: ActorContext): Promise<Sect
   return toInterview(await call<InterviewDto>(actor, "GET", "/sector-interview/open"));
 }
 
-/** All or nothing: half an interview persisted is one that cannot be interpreted. */
+/**
+ * Persists answers. Idempotent per question — re-answering replaces — which is what makes it safe
+ * to call on a single answer as it is given, and again on all of them at the end.
+ *
+ * Saving is not submitting. The assessment stays OPEN, so nothing downstream moves; the only thing
+ * that changes is that the answer is no longer held in a browser.
+ */
 export async function recordSectorAnswers(
   actor: ActorContext,
   assessmentId: string,

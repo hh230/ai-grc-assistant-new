@@ -2254,7 +2254,9 @@
     "progress": "السؤال {current} من {total}",
     "next": "التالي",
     "back": "السابق",
-    "required": "نحتاج إجابة للمتابعة."
+    "required": "نحتاج إجابة للمتابعة.",
+    "saving": "جارٍ الحفظ…",
+    "saved": "تم الحفظ"
   },
   "programStatus": {
     "title": "برنامج الحوكمة",

@@ -31,7 +31,9 @@ disagree. The real defect was that answers could still arrive at all — see the
 | `list_industries` | `industries` R | ≤ 100s | none | READ COMMITTED | none | no | yes (read) |
 | `ensure_template` | `knowledge_templates` W | 1 | single stmt | READ COMMITTED | none | no | **yes** — `ON CONFLICT DO NOTHING` + read back |
 | `create_release` | `template_releases` W 1 · `release_questions` W 5–50 | 1 + N | **explicit** | READ COMMITTED | **`FOR UPDATE` on the parent `knowledge_templates` row** | **no** — see §1 | no — each call mints a version |
+| `list_releases` | `template_releases` R · `knowledge_templates` R · `release_questions` R | 1–50 | none | READ COMMITTED | none | no | yes (read) |
 | `submit_for_review` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status='draft'` | no | **yes** — second call matches 0 rows |
+| `reject_release` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status IN ('in_review','approved')` | no | **yes** |
 | `approve_release` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status='in_review'` | no | **yes** |
 | `mark_released` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status='approved'` | no | **yes** |
 | `activate_release` | `active_templates` W 1 · `active_template_history` W 1 | 2 | **explicit** | READ COMMITTED | **upsert row lock** (`ON CONFLICT … DO UPDATE`) — see §2 | no | no — every activation is a distinct event |
@@ -111,6 +113,25 @@ batch is one transaction.
 No lock: every row is keyed by `(assessment_id, release_id, question_id)` and one assessment is
 answered by one interview, so there is no second writer to race. The upsert makes a repeated
 submission harmless.
+
+## What implementation asked for, and what that meant
+
+Implementation requested five methods beyond the original eighteen. Only one was a gap in the
+contract; the other four were the Application Service layer announcing itself, which is exactly
+what this exercise was meant to detect.
+
+| requested | verdict | because |
+|---|---|---|
+| `reject_release` | **added** | a state transition. The machine had approve, release and retire; without reject, a reviewer who disagrees has no move that is not a workaround |
+| `get_release` | folded into `list_releases` | not a new operation — the same query with a filter. Two methods here meant the repository was being shaped by the screens reading it, not by the data |
+| `list_releases` | **added as a read primitive**, not a new concept | every repository has Get/List; the original table simply omitted it |
+| `translation_coverage` | **rejected** | a derived projection. It belongs to a read model or a SQL view — a repository that computes has acquired a second job |
+| `retire_industry` | **rejected** | coordination: retire the industry, retire its active release, mark it inactive. Needing several repository calls IS the definition of a Service |
+
+The contract is 19 operations plus the Get/List primitive. The rule this establishes:
+
+> **If something needs more than one repository call, it is not a new repository method.
+> It is a Service.**
 
 ## The domain rule this contract rests on
 

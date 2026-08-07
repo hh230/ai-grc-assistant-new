@@ -1,6 +1,19 @@
 """Sector Knowledge Packs — the repository (ADR 0067; `docs/adr/0067-repository-contract.md`).
 
-Eighteen atomic SQL operations. Nothing else lives here.
+Nineteen atomic SQL operations, plus one Get/List read primitive. Nothing else lives here.
+
+Four methods an earlier draft added were removed rather than promoted into the contract, because
+each was a signal about a *different* layer:
+
+- `get_release` / `list_releases` — one concept, not two. Two methods here meant the repository
+  was being shaped by the screens that read it.
+- `translation_coverage` — a derived projection. It belongs in a read model or a SQL view; a
+  repository that computes gains a second job.
+- `retire_industry` — coordination: retire the industry, retire its active release, mark it
+  inactive. Needing several repository calls means a Service, not a new repository method.
+
+Only `reject_release` was a genuine gap, because it is a state transition and the machine already
+had approve, release and retire.
 
 **Repository methods never call other repository methods.** If a caller needs "create, then
 release, then activate", that is an Application Service composing three calls — not a shortcut
@@ -92,17 +105,6 @@ class PostgresKnowledgeStore:
             "WHERE %s OR status = 'active' ORDER BY slug",
             (include_retired,),
         )
-
-    def retire_industry(self, slug: str) -> bool:
-        """READ COMMITTED · no lock · idempotent. Never deletes: retiring keeps every report
-        produced under this industry explicable."""
-        cur = self._conn.execute(
-            "UPDATE industries SET status = 'retired' WHERE slug = %s AND status = 'active'",
-            (slug,),
-        )
-        return cur.rowcount == 1
-
-    # ── templates ────────────────────────────────────────────────────────────────────────────
 
     def ensure_template(self, template_id: str, industry_slug: str) -> dict[str, Any] | None:
         """READ COMMITTED · no lock · idempotent.
@@ -204,31 +206,52 @@ class PostgresKnowledgeStore:
                 )
         return version
 
-    def get_release(self, release_id: str) -> dict[str, Any] | None:
-        """READ COMMITTED · no lock · read. The review console's view — includes `why_we_ask`."""
-        release = self._row(
-            "SELECT id, template_id, version, status, expected_outputs, generated_by_model, "
-            " prompt_version, generator_commit, created_by, approved_by, approved_at, "
-            " released_at FROM template_releases WHERE id = %s",
-            (release_id,),
-        )
-        if release is None:
-            return None
-        release["questions"] = self._rows(
-            f"SELECT {', '.join(_QUESTION_COLUMNS)} FROM release_questions "
-            "WHERE release_id = %s ORDER BY position, question_id",
-            (release_id,),
-        )
-        return release
+    def list_releases(
+        self,
+        *,
+        industry_slug: str | None = None,
+        release_id: str | None = None,
+        status: str | None = None,
+        with_questions: bool = False,
+    ) -> list[dict[str, Any]]:
+        """READ COMMITTED · no lock · read. The Get/List primitive — not one method per screen.
 
-    def list_releases(self, industry_slug: str) -> list[dict[str, Any]]:
-        """READ COMMITTED · no lock · read."""
-        return self._rows(
-            "SELECT r.id, r.version, r.status, r.created_by, r.approved_by, r.released_at "
+        An earlier draft had a separate `get_release` because the review console wanted a single
+        draft while the listing wanted many. That was designing the repository from the screen's
+        point of view rather than the data's: both are the same query with different filters, and
+        one method per view is how a repository grows without limit.
+
+        `with_questions` is a filter on depth, not a different operation — a listing does not need
+        fifty rows of question text per release, and a review does.
+        """
+        clauses, params = [], {}
+        if industry_slug is not None:
+            clauses.append("t.industry_slug = %(industry)s")
+            params["industry"] = industry_slug
+        if release_id is not None:
+            clauses.append("r.id = %(release_id)s")
+            params["release_id"] = release_id
+        if status is not None:
+            clauses.append("r.status = %(status)s")
+            params["status"] = status
+        where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+
+        releases = self._rows(
+            "SELECT r.id, r.template_id, t.industry_slug, r.version, r.status, "
+            " r.expected_outputs, r.generated_by_model, r.prompt_version, r.generator_commit, "
+            " r.created_by, r.approved_by, r.approved_at, r.released_at "
             "FROM template_releases r JOIN knowledge_templates t ON t.id = r.template_id "
-            "WHERE t.industry_slug = %s ORDER BY r.version DESC",
-            (industry_slug,),
+            f"{where} ORDER BY t.industry_slug, r.version DESC",
+            params or None,
         )
+        if with_questions:
+            for release in releases:
+                release["questions"] = self._rows(
+                    f"SELECT {', '.join(_QUESTION_COLUMNS)} FROM release_questions "
+                    "WHERE release_id = %s ORDER BY position, question_id",
+                    (release["id"],),
+                )
+        return releases
 
     def submit_for_review(self, release_id: str) -> bool:
         """READ COMMITTED · no lock · idempotent. The `WHERE` clause IS the compare-and-swap."""
@@ -375,19 +398,6 @@ class PostgresKnowledgeStore:
             (release_id, question_id, language),
         )
         return cur.rowcount == 1
-
-    def translation_coverage(self, release_id: str, language: str) -> dict[str, int]:
-        """READ COMMITTED · no lock · read. Counts **published only**: a generated-but-unreviewed
-        string is not coverage."""
-        row = self._row(
-            "SELECT (SELECT count(*) FROM release_questions WHERE release_id = %(r)s) AS total, "
-            " (SELECT count(*) FROM question_translations WHERE release_id = %(r)s "
-            "  AND language = %(l)s AND status = 'published') AS published",
-            {"r": release_id, "l": language},
-        )
-        return {"published": int(row["published"]), "total": int(row["total"])} if row else {}
-
-    # ── assessments ──────────────────────────────────────────────────────────────────────────
 
     def open_assessment(
         self,

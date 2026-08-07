@@ -111,10 +111,14 @@ def test_registering_an_industry_twice_is_harmless(store):
     assert [i["slug"] for i in store.list_industries()] == ["real_estate"]
 
 
-def test_a_retired_industry_disappears_from_the_default_listing_but_still_exists(store):
-    """Retiring must not erase history — reports produced under it stay explicable."""
+def test_a_retired_industry_is_hidden_from_the_default_listing_but_still_exists(store):
+    """Retiring must not erase history — reports produced under it stay explicable.
+
+    Setting the status is deliberately NOT a repository method: retiring an industry also means
+    retiring its active release, which is coordination and belongs to an Application Service.
+    """
     store.register_industry("legacy", "قديم")
-    assert store.retire_industry("legacy") is True
+    store._conn.execute("UPDATE industries SET status = 'retired' WHERE slug = 'legacy'")
     assert store.list_industries() == []
     assert [i["slug"] for i in store.list_industries(include_retired=True)] == ["legacy"]
 
@@ -168,7 +172,7 @@ def test_a_release_with_no_questions_is_refused_before_any_write(store):
             release_id="rel_empty", template_id=template_id, questions=[],
             generated_by_model="m", prompt_version="p", generator_commit="c", created_by="g",
         )
-    assert store.list_releases("real_estate") == []
+    assert store.list_releases(industry_slug="real_estate") == []
 
 
 def test_the_questions_land_in_the_same_transaction_as_the_release(store):
@@ -178,7 +182,7 @@ def test_the_questions_land_in_the_same_transaction_as_the_release(store):
         questions=[_question("a"), _question("b")],
         generated_by_model="m", prompt_version="p", generator_commit="c", created_by="g",
     )
-    assert len(store.get_release("rel_1")["questions"]) == 2
+    assert len(store.list_releases(release_id="rel_1", with_questions=True)[0]["questions"]) == 2
 
 
 # --- guarded writes ---------------------------------------------------------------------------
@@ -244,7 +248,7 @@ def test_rollback_moves_the_pointer_and_touches_no_release(store):
     assert [h["reason"] for h in store.list_activation_history("real_estate")] == [
         "rollback", "upgrade", "first",
     ]
-    assert {r["status"] for r in store.list_releases("real_estate")} == {"released"}, (
+    assert {r["status"] for r in store.list_releases(industry_slug="real_estate")} == {"released"}, (
         "rollback must not demote any release"
     )
 
@@ -281,12 +285,10 @@ def test_the_active_release_carries_its_questions_and_provenance(store):
 # --- translations -----------------------------------------------------------------------------
 
 
-def test_coverage_counts_published_only(store):
+def test_only_a_REVIEWED_translation_can_be_published(store):
     template_id = _template(store)
     release_id = _released(store, template_id, questions=[_question("a"), _question("b")])
     store.save_translation(release_id=release_id, question_id="a", language="en", text="A?")
-    assert store.translation_coverage(release_id, "en") == {"published": 0, "total": 2}
-
     assert store.publish_translation(
         release_id=release_id, question_id="a", language="en"
     ) is False, "generated cannot be published — it has not been reviewed"
@@ -296,7 +298,11 @@ def test_coverage_counts_published_only(store):
         (release_id,),
     )
     assert store.publish_translation(release_id=release_id, question_id="a", language="en") is True
-    assert store.translation_coverage(release_id, "en") == {"published": 1, "total": 2}
+
+    # Coverage itself is a projection, not a repository operation — asserted against the rows.
+    assert store._conn.execute(
+        "SELECT count(*) FROM question_translations WHERE status = 'published'"
+    ).fetchone()[0] == 1
 
 
 def test_re_saving_a_translation_returns_it_to_generated(store):
@@ -310,7 +316,9 @@ def test_re_saving_a_translation_returns_it_to_generated(store):
     store.save_translation(
         release_id=release_id, question_id="fal_license", language="en", text="second"
     )
-    assert store.translation_coverage(release_id, "en") == {"published": 0, "total": 1}
+    assert store._conn.execute(
+        "SELECT status FROM question_translations WHERE question_id = 'fal_license'"
+    ).fetchone()[0] == "generated"
 
 
 # --- assessments and the plan context ---------------------------------------------------------
@@ -399,3 +407,43 @@ def test_a_selection_may_cite_several_releases(store):
 
 def test_load_plan_context_returns_None_for_an_assessment_that_does_not_exist(store):
     assert store.load_plan_context("as_missing") is None
+
+
+def test_a_reviewer_can_send_a_release_back_to_draft(store):
+    """The one genuine contract gap: the state machine had approve, release and retire, so it must
+    have reject. Without it a reviewer who disagrees has no move that is not a workaround."""
+    template_id = _template(store)
+    store.create_release(
+        release_id="rel_1", template_id=template_id, questions=[_question()],
+        generated_by_model="m", prompt_version="p", generator_commit="c", created_by="g",
+    )
+    store.submit_for_review("rel_1")
+    assert store.reject_release("rel_1") is True
+    assert store.list_releases(release_id="rel_1")[0]["status"] == "draft"
+    assert store.reject_release("rel_1") is False, "already a draft — idempotent, not an error"
+
+
+def test_a_RELEASED_asset_cannot_be_rejected_back_into_draft(store):
+    """Rejection is a review move, not an undo. Once released, the only exit is retirement —
+    otherwise a published asset could be edited underneath the organizations interviewed on it."""
+    release_id = _released(store, _template(store))
+    assert store.reject_release(release_id) is False
+
+
+def test_the_list_primitive_filters_rather_than_multiplying_methods(store):
+    """One concept, not one method per screen."""
+    template_id = _template(store)
+    draft_id = f"rel_{uuid.uuid4().hex[:8]}"
+    store.create_release(
+        release_id=draft_id, template_id=template_id, questions=[_question()],
+        generated_by_model="m", prompt_version="p", generator_commit="c", created_by="g",
+    )
+    released_id = _released(store, template_id)
+
+    assert len(store.list_releases(industry_slug="real_estate")) == 2
+    assert [r["id"] for r in store.list_releases(status="draft")] == [draft_id]
+    assert [r["id"] for r in store.list_releases(release_id=released_id)] == [released_id]
+    assert "questions" not in store.list_releases(release_id=released_id)[0], (
+        "a listing must not carry every question — depth is a filter, not a second method"
+    )
+    assert len(store.list_releases(release_id=released_id, with_questions=True)[0]["questions"]) == 1

@@ -56,6 +56,8 @@ def conn():
 @pytest.fixture
 def clean(conn):
     """Truncate between tests. Order matters: children before parents."""
+    # TRUNCATE does not fire row triggers, which is what makes the frozen-assessment rows
+    # clearable between tests without disabling the very trigger under test.
     conn.execute(
         "TRUNCATE sector_answers, template_selections, assessments, active_template_history, "
         "question_translations, release_questions RESTART IDENTITY"
@@ -456,3 +458,97 @@ def test_knowledge_tables_carry_no_tenant_id_and_customer_tables_all_do(clean):
 
     for scoped in ("assessments", "template_selections", "sector_answers"):
         assert "tenant_id" in columns(scoped), f"{scoped} must be tenant-scoped (CLAUDE.md §20)"
+
+
+# --- 0014: Assessment Freeze -------------------------------------------------------------------
+#
+# The rule that let `load_plan_context` stay at READ COMMITTED: freeze the source instead of
+# snapshotting the read. Stronger, because a snapshot would have made a late write INVISIBLE to
+# the read while still letting it land.
+
+
+def _concluded_assessment(conn, assessment_id: str = "as_frozen") -> str:
+    conn.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES (%s, 't', 'o')",
+        (assessment_id,),
+    )
+    conn.execute(
+        "UPDATE assessments SET completed_at = now() WHERE id = %s", (assessment_id,)
+    )
+    return assessment_id
+
+
+def test_a_concluded_assessment_accepts_no_new_sector_answers(clean):
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    assessment_id = _concluded_assessment(clean)
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute(
+            "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, "
+            " answer) VALUES (%s, %s, 'fal_license', 't', 'true'::jsonb)",
+            (assessment_id, release_id),
+        )
+
+
+def test_an_answer_already_recorded_cannot_be_CHANGED_after_conclusion(clean):
+    """The dangerous case: the interview is over, and someone edits what was answered."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_edit', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_edit', %s, 'fal_license', 't', 'false'::jsonb)",
+        (release_id,),
+    )
+    clean.execute("UPDATE assessments SET completed_at = now() WHERE id = 'as_edit'")
+
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute(
+            "UPDATE sector_answers SET answer = 'true'::jsonb WHERE assessment_id = 'as_edit'"
+        )
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute("DELETE FROM sector_answers WHERE assessment_id = 'as_edit'")
+
+
+def test_the_template_selection_freezes_too(clean):
+    """Which knowledge produced the report must not change after the report exists."""
+    assessment_id = _concluded_assessment(clean, "as_sel")
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute(
+            "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+            " selected_by) VALUES (%s, 't', ARRAY['rel_x'], 'reviewer')",
+            (assessment_id,),
+        )
+
+
+def test_an_OPEN_assessment_still_accepts_writes(clean):
+    """The freeze must not break the interview it exists to protect."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_open', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_open', %s, 'fal_license', 't', 'false'::jsonb)",
+        (release_id,),
+    )
+    assert clean.execute(
+        "SELECT count(*) FROM sector_answers WHERE assessment_id = 'as_open'"
+    ).fetchone()[0] == 1
+
+
+def test_conclusion_is_one_way(clean):
+    """Re-opening would defeat every guarantee above."""
+    assessment_id = _concluded_assessment(clean, "as_reopen")
+    with pytest.raises(psycopg.errors.RaiseException, match="one-way"):
+        clean.execute(
+            "UPDATE assessments SET completed_at = NULL WHERE id = %s", (assessment_id,)
+        )
+    with pytest.raises(psycopg.errors.RaiseException, match="one-way"):
+        clean.execute(
+            "UPDATE assessments SET completed_at = now() + interval '1 day' WHERE id = %s",
+            (assessment_id,),
+        )

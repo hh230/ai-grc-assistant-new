@@ -12,10 +12,16 @@ starts, the design was not ready.
 be an implicit consequence of how someone happened to write the SQL. *Idempotent* means calling
 twice with identical arguments leaves the same state and raises nothing the caller must handle.
 
-Everything is `READ COMMITTED` — PostgreSQL's default — except one read. Where a stronger
-guarantee is needed it comes from a **lock or a guarded write**, not from raising the isolation
-level, because isolation escalation buys serialization failures that every caller then has to
-handle.
+**Everything is `READ COMMITTED`** — PostgreSQL's default, with no exceptions. Where a stronger
+guarantee is needed it comes from a **lock, a guarded write, or immutable data** — never from
+raising the isolation level, which only buys serialization failures every caller must then handle.
+
+> **Needing a higher isolation level is a signal that the domain still permits writes it should
+> not.** Fix the lifecycle, not the transaction.
+
+That rule already changed this contract once: `load_plan_context` was specified as
+`REPEATABLE READ` to stop a concurrent answer from producing a context whose questions and answers
+disagree. The real defect was that answers could still arrive at all — see the domain rule below.
 
 ## Knowledge side — `knowledge_approver` operations
 
@@ -42,7 +48,7 @@ handle.
 | `open_assessment` | `assessments` W | 1 | single stmt | READ COMMITTED | none | no — a duplicate id is a caller bug, surfaced | no — a new assessment is a new fact |
 | `record_selection` | `template_selections` W | 1 | single stmt | READ COMMITTED | none — upsert on PK | no | **yes** |
 | `save_sector_answers` | `sector_answers` W | 5–50 | **explicit** | READ COMMITTED | **none** — see §4 | no | **yes** — batch upsert on the composite PK |
-| `load_plan_context` | `assessments` R · `template_selections` R · `sector_answers` R · `release_questions` R | 1 + 1 + 5–50 + 5–50 | **explicit, read-only** | **REPEATABLE READ** — see §3 | none | no | yes (read) |
+| `load_plan_context` | `assessments` R · `template_selections` R · `sector_answers` R · `release_questions` R | 1 + 1 + 5–50 + 5–50 | none | READ COMMITTED | none — **the data is frozen**, see §3 | no | yes (read) |
 | `complete_assessment` | `assessments` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE completed_at IS NULL` | no | **yes** |
 
 ## The four boundaries that exist for a reason
@@ -84,12 +90,17 @@ effect.
 in a sector behind one row; MVCC already gives a consistent read without it. Stated explicitly
 because it is precisely the "safety" a later reader adds by reflex.
 
-`load_plan_context` is the one place `READ COMMITTED` is not enough. It composes **four** reads
-into a single artifact that feeds the LLM and is then frozen into a plan; under `READ COMMITTED`
-each statement sees its own snapshot, so a concurrent `save_sector_answers` could produce a
-context whose answers and questions disagree. `REPEATABLE READ` gives all four reads one snapshot.
-It costs nothing here and needs no retry, because a **read-only** transaction cannot raise a
-serialization failure — the reason this is a snapshot rather than `SERIALIZABLE`.
+`load_plan_context` composes **four** reads into a single artifact that feeds the LLM and is then
+frozen into a plan, so a torn read would be a plan built half on one state and half on another.
+
+An earlier draft solved this with `REPEATABLE READ`. That was treating the symptom. It reads only
+a **concluded** assessment, and a concluded assessment accepts no further writes (the domain rule
+below), so there is nothing to tear: four `READ COMMITTED` statements over immutable rows return
+exactly what one snapshot would.
+
+This is stronger than a snapshot, not weaker. A snapshot would have made a concurrent write
+*invisible* to this read while still letting it land — leaving a stored plan that disagrees with
+the assessment it came from, and no error anywhere.
 
 ### §4 `save_sector_answers` — all or nothing, and why no lock
 
@@ -101,6 +112,25 @@ No lock: every row is keyed by `(assessment_id, release_id, question_id)` and on
 answered by one interview, so there is no second writer to race. The upsert makes a repeated
 submission harmless.
 
+## The domain rule this contract rests on
+
+> **No writes are permitted after an Assessment reaches `Concluded`.**
+
+Not a convention: `save_sector_answers`, `record_selection` and any future write keyed to an
+assessment are refused once `completed_at` is set. The interview is over; what it produced is
+evidence, and evidence that can still change is not evidence.
+
+Three things follow, and they are the reason this rule is worth more than an isolation level:
+
+- `load_plan_context` needs no snapshot, because there is nothing to tear.
+- A plan can always be rebuilt from its assessment and produce the identical result — which is
+  what CLAUDE.md §19 requires and what an auditor will ask for.
+- The conclusion becomes a real event with a before and an after, rather than a flag.
+
+If a future requirement genuinely needs to change a concluded assessment, the answer is a **new
+assessment** — the same shape ADR 0067 already uses for knowledge, where a released asset is
+never edited but superseded.
+
 ## What the contract deliberately does not give the repository
 
 - **No delete of anything.** Knowledge Freeze (§7) and §8 are enforced in the schema; the
@@ -111,3 +141,5 @@ submission harmless.
   legal is the domain's decision, not the repository's.
 - **No tenant defaulting.** Every customer-side method takes the tenant explicitly. A repository
   that infers a tenant is one bug away from crossing the boundary.
+- **No write to a concluded assessment.** Enforced in the schema, not only in these methods, so a
+  future caller that bypasses the repository cannot bypass the rule either.

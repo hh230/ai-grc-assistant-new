@@ -57,6 +57,7 @@ CORE_MIGRATIONS: tuple[str, ...] = (
     "governance-store/migrations/0011_assessments.sql",
     "governance-store/migrations/0012_template_selections.sql",
     "governance-store/migrations/0013_sector_answers.sql",
+    "governance-store/migrations/0014_assessment_freeze.sql",
 )
 
 RETRIEVAL_MIGRATIONS: tuple[str, ...] = (

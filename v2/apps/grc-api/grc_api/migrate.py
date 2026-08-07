@@ -44,6 +44,19 @@ CORE_MIGRATIONS: tuple[str, ...] = (
     "governance-store/migrations/0001_organization_profiles.sql",
     "governance-store/migrations/0002_discovery.sql",
     "governance-store/migrations/0003_governance_plans.sql",
+    # Sector Knowledge Packs (ADR 0067). Ordered by dependency: industries before templates,
+    # templates before releases, releases before the questions/translations/pointer that
+    # reference them, and assessments before the selections and answers that belong to one.
+    "governance-store/migrations/0004_industries.sql",
+    "governance-store/migrations/0005_knowledge_templates.sql",
+    "governance-store/migrations/0006_template_releases.sql",
+    "governance-store/migrations/0007_release_questions.sql",
+    "governance-store/migrations/0008_question_translations.sql",
+    "governance-store/migrations/0009_active_templates.sql",
+    "governance-store/migrations/0010_active_template_history.sql",
+    "governance-store/migrations/0011_assessments.sql",
+    "governance-store/migrations/0012_template_selections.sql",
+    "governance-store/migrations/0013_sector_answers.sql",
 )
 
 RETRIEVAL_MIGRATIONS: tuple[str, ...] = (

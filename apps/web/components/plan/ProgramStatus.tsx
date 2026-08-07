@@ -1,5 +1,5 @@
 import { getFormatter, getTranslations } from "next-intl/server";
-import { ArrowRight, CalendarClock } from "lucide-react";
+import { ArrowRight, CalendarClock, Download } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Link } from "@/i18n/navigation";
@@ -79,6 +79,21 @@ export async function ProgramStatus({ status }: { status: Status }) {
         </p>
       </div>
 
+      <div className="flex flex-col items-start gap-3 sm:items-end">
+        {/* The program's own export. Placed on the status card because that is what it reports —
+            where the program stands, not what a document said. */}
+        {/* A real navigation, not a client-side push: this is a file download from an API route,
+            and `Link` would try to render it as a page. `download` says so to the browser — and to
+            the lint rule, which stops objecting once the intent is explicit. */}
+        <a
+          href="/api/governance-plans/export"
+          download
+          className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-hairline px-3 text-2xs text-foreground-secondary transition-colors duration-150 hover:border-hairline-strong hover:text-foreground"
+        >
+          <Download className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+          {t("export")}
+        </a>
+
       {reviewDueAt && (
         <div className="flex items-start gap-2 text-2xs text-foreground-muted">
           <CalendarClock className="mt-px h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden />
@@ -93,6 +108,7 @@ export async function ProgramStatus({ status }: { status: Status }) {
           </span>
         </div>
       )}
+      </div>
     </Card>
   );
 }

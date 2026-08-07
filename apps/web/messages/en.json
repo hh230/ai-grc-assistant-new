@@ -2264,7 +2264,8 @@
         "plan": "3 · Plan"
       },
       "cta": "Start"
-    }
+    },
+    "export": "Status report"
   },
   "whatToDoNext": {
     "title": "What to do next",

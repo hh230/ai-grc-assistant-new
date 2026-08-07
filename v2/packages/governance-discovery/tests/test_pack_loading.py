@@ -40,3 +40,23 @@ def test_every_rule_predicate_is_evaluable_data() -> None:
 def test_pack_ids_are_namespaced() -> None:
     packs = load_bundled_packs()
     assert all(pack_id.startswith("pack:") for pack_id in packs)
+
+
+def test_every_plan_seed_names_a_pillar_the_UI_can_LABEL():
+    """A stray `"cyber"` where every other rule said `"cyber_security"` reached a real customer's
+    plan and rendered as a missing-translation error. One pillar, one name — the same class of bug
+    as two names for one question type, and the same fix.
+
+    The list is duplicated here on purpose: this test's job is to fail when the packs and the
+    interface drift apart, which it cannot do if it reads the same source they do.
+    """
+    labelled = {
+        "organization", "risk", "compliance", "policies", "governance", "legal", "cyber_security",
+    }
+    used = {
+        rule.effect.plan_seed.pillar
+        for pack in load_bundled_packs().values()
+        for rule in pack.rules
+        if rule.effect.plan_seed is not None
+    }
+    assert used <= labelled, f"plan seeds name pillars the interface cannot label: {used - labelled}"

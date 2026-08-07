@@ -951,7 +951,7 @@
       "effect": {
         "plan_seed": {
           "id": "seed:harden_critical_infrastructure_controls",
-          "pillar": "cyber",
+          "pillar": "cyber_security",
           "title_key": "plan.seed.harden_critical_infrastructure_controls.title",
           "rationale_key": "plan.seed.harden_critical_infrastructure_controls.rationale",
           "urgency": "critical",

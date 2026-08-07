@@ -21,6 +21,7 @@ import {
   useReopenPlanItem,
   useStartPlanItem,
 } from "@/hooks/usePlanExecution";
+import { labelOrIdentifier } from "@/lib/planExecution/labels";
 import type { PlanItem, PlanItemStatus, Priority } from "@/lib/planExecution/types";
 import { cn } from "@/lib/utils";
 
@@ -63,7 +64,7 @@ export function PlanItemCard({ item }: PlanItemCardProps) {
   return (
     <Card className={cn("transition-opacity", pending && "opacity-70")}>
       <div className="flex flex-wrap items-center gap-2">
-        <Badge tone="neutral">{t(`pillar.${item.pillar}` as never)}</Badge>
+        <Badge tone="neutral">{labelOrIdentifier(t as (key: string) => string, "pillar", item.pillar)}</Badge>
         <Badge tone={PRIORITY_TONE[item.priority]}>{t(`priority.${item.priority}` as never)}</Badge>
         <Badge tone="neutral">{t(`timeframe.${item.timeframeBucket}` as never)}</Badge>
         {item.confidence != null && (

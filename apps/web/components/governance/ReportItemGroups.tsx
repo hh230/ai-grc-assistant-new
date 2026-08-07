@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { CalendarClock, ListChecks, Target, Zap } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge, type Tone } from "@/components/ui/Badge";
+import { labelOrIdentifier } from "@/lib/planExecution/labels";
 import { groupItems, isQuickWin } from "@/lib/planExecution/grouping";
 import type { Priority } from "@/lib/planExecution/types";
 import type { GovernanceReportItem } from "@/lib/planGeneration/types";
@@ -42,7 +43,7 @@ export function QuickWinsSection({ items }: { items: GovernanceReportItem[] }) {
             className="flex items-center justify-between gap-3 rounded-lg border border-hairline px-3.5 py-2 text-sm"
           >
             <span className="text-foreground-secondary">{item.title}</span>
-            <Badge tone="neutral">{t(`pillar.${item.pillar}` as never)}</Badge>
+            <Badge tone="neutral">{labelOrIdentifier(t as (key: string) => string, "pillar", item.pillar)}</Badge>
           </li>
         ))}
       </ul>
@@ -137,7 +138,7 @@ export function ActionTasksSection({ items }: { items: GovernanceReportItem[] })
           return (
             <div key={item.id} className="rounded-lg border border-hairline p-3.5">
               <div className="flex flex-wrap items-center gap-1.5">
-                <Badge tone="neutral">{t(`pillar.${item.pillar}` as never)}</Badge>
+                <Badge tone="neutral">{labelOrIdentifier(t as (key: string) => string, "pillar", item.pillar)}</Badge>
                 <Badge tone={PRIORITY_TONE[item.priority]}>{t(`priority.${item.priority}` as never)}</Badge>
                 <Badge tone="neutral">{t(`timeframe.${item.timeframeBucket}` as never)}</Badge>
                 {item.confidence != null && (

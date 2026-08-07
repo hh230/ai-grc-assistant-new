@@ -12,6 +12,7 @@ import { PlanStats } from "./PlanStats";
 import { QuickWins } from "./QuickWins";
 import { PlanItemCard } from "./PlanItemCard";
 import { VersionHistory } from "./VersionHistory";
+import { labelOrIdentifier } from "@/lib/planExecution/labels";
 import { groupItems, type GroupBy } from "@/lib/planExecution/grouping";
 import type { PlanItemStatus } from "@/lib/planExecution/types";
 
@@ -129,8 +130,12 @@ export function PlanBoard() {
           {grouped.map(([key, groupItemsList]) => (
             <div key={key}>
               <h2 className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-foreground-muted">
-                {t(
-                  `${groupBy === "timeline" ? "timeframe" : groupBy === "priority" ? "priority" : "pillar"}.${key}` as never,
+                {/* The group key comes from persisted plan data, so it degrades rather than
+                    throws — the same reason `PlanItemCard` does. */}
+                {labelOrIdentifier(
+                  t as (key: string) => string,
+                  groupBy === "timeline" ? "timeframe" : groupBy === "priority" ? "priority" : "pillar",
+                  key,
                 )}
                 <span className="ms-1.5 font-normal normal-case text-foreground-muted">
                   ({groupItemsList.length})

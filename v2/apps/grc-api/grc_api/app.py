@@ -46,7 +46,7 @@ from grc_api.composition import (
 )
 from grc_api.errors import register_exception_handlers
 from grc_api.execution import GovernancePlanExecutor
-from grc_api.llm_provider import PROVIDER_ENV_VAR, build_generation_provider
+from grc_api.llm_provider import LLMRole, build_generation_provider
 from grc_api.launch import DurableMissionLaunch, MemoryMissionLaunch, MissionLaunchPort
 from grc_api.result_adapters import (
     BundledDeliverableProvider,
@@ -108,13 +108,14 @@ def _default_executor(
     governance plan belongs. `build_generation_provider` logs precisely which variable is missing,
     and this logs the consequence.
     """
-    provider = build_generation_provider()
+    # The GOVERNANCE role — Claude, enforced. The governance plan is the one output whose vendor
+    # must not move by configuration, so the executor asks for the role, never for "an LLM".
+    provider = build_generation_provider(LLMRole.GOVERNANCE)
     if provider is None:
         LOGGER.warning(
-            "execution_degraded: no LLM provider configured — mission steps will ECHO, and the "
-            "Governance Plan draft step will not produce a plan. Set %s (and its credential) to "
-            "run for real.",
-            PROVIDER_ENV_VAR,
+            "execution_degraded: no governance LLM configured — mission steps will ECHO, and the "
+            "Governance Plan draft step will not produce a plan. Set ANTHROPIC_API_KEY (role "
+            "'governance' is restricted to Claude) to run for real.",
         )
         return EchoExecutor()
     return GovernancePlanExecutor(

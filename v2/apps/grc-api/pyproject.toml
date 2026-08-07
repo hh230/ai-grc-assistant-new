@@ -31,10 +31,11 @@ dependencies = [
     "governance-plan-tools",
     "pipeline-tool",
     "tool-registry",
-    # The `[openai]` extra pulls the SDK for the currently selected provider. Switching
-    # GRC_LLM_PROVIDER to claude/gemini means adding that provider's extra here too — the adapters
-    # keep their SDKs optional so a deployment installs only the vendor it actually uses.
-    "generation-engine[openai]",
+    # BOTH vendor SDKs, because the two LLM roles are deliberately served by different vendors
+    # (see grc_api/llm_provider.py): `claude` for the governance role — sector knowledge and plan
+    # drafting — and `openai` for the technical tier. The adapters keep their SDKs optional, so a
+    # deployment installs only the vendors its roles actually resolve to.
+    "generation-engine[openai,claude]",
     # B3: connection pooling. Managed Postgres caps connections aggressively, so the ceiling is
     # connections rather than CPU; a connection per operation is what falls over first under load.
     "psycopg-pool>=3.2.0",

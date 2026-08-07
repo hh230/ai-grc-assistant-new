@@ -25,6 +25,7 @@ app_module = sys.modules["grc_api.app"]
 from grc_api.execution import GovernancePlanExecutor
 from grc_api.llm_provider import (
     PROVIDER_ENV_VAR,
+    LLMRole,
     UnknownProviderError,
     build_generation_provider,
 )
@@ -49,7 +50,7 @@ def _engine():
 
 def test_no_credential_yields_no_provider_and_names_the_missing_variable(caplog):
     with caplog.at_level(logging.WARNING):
-        assert build_generation_provider({PROVIDER_ENV_VAR: "openai"}) is None
+        assert build_generation_provider(LLMRole.TECHNICAL, {PROVIDER_ENV_VAR: "openai"}) is None
     assert "OPENAI_API_KEY" in caplog.text, "the operator must be told WHICH variable is missing"
 
 
@@ -57,7 +58,7 @@ def test_an_unknown_provider_is_a_misconfiguration_not_a_quiet_fallback():
     """A name nobody can satisfy should stop the boot, not degrade to echo — otherwise a typo in
     deployment config silently costs every customer their governance plan."""
     with pytest.raises(UnknownProviderError, match="names no adapter"):
-        build_generation_provider({PROVIDER_ENV_VAR: "gpt5-turbo-max"})
+        build_generation_provider(LLMRole.TECHNICAL, {PROVIDER_ENV_VAR: "gpt5-turbo-max"})
 
 
 def test_ollama_needs_no_credential(monkeypatch):
@@ -65,7 +66,7 @@ def test_ollama_needs_no_credential(monkeypatch):
     import grc_api.llm_provider as module
 
     monkeypatch.setattr(module, "_construct", lambda provider, model: _Provider())
-    assert build_generation_provider({PROVIDER_ENV_VAR: "ollama"}) is not None
+    assert build_generation_provider(LLMRole.TECHNICAL, {PROVIDER_ENV_VAR: "ollama"}) is not None
 
 
 # --- the default executor ---------------------------------------------------------------
@@ -73,7 +74,7 @@ def test_ollama_needs_no_credential(monkeypatch):
 
 def test_with_a_provider_the_default_is_the_real_executor(monkeypatch):
     """The whole point of the Wave 1 wiring: production runs tools, not echo."""
-    monkeypatch.setattr(app_module, "build_generation_provider", lambda: _Provider())
+    monkeypatch.setattr(app_module, "build_generation_provider", lambda role: _Provider())
     executor = _default_executor(_engine(), lambda: None)
 
     assert isinstance(executor, GovernancePlanExecutor)
@@ -81,7 +82,7 @@ def test_with_a_provider_the_default_is_the_real_executor(monkeypatch):
 
 
 def test_without_a_provider_it_degrades_to_echo_and_says_so(monkeypatch, caplog):
-    monkeypatch.setattr(app_module, "build_generation_provider", lambda: None)
+    monkeypatch.setattr(app_module, "build_generation_provider", lambda role: None)
     with caplog.at_level(logging.WARNING):
         executor = _default_executor(_engine(), lambda: None)
 
@@ -132,3 +133,61 @@ def test_the_executor_opens_and_closes_a_store_per_step():
 
     assert len(opened) == 1
     assert closed == opened, "a store opened for a failing step must still be closed"
+
+
+# --- role separation (Sector Knowledge Packs) --------------------------------------------
+#
+# Architecture rule from the owner: "OpenAI is never used in the Governance Planner." A rule that
+# only lives in a document is a rule that erodes, so it is enforced and tested here.
+
+
+def test_governance_defaults_to_claude_and_technical_to_openai():
+    from grc_api.llm_provider import LLMRole, resolve
+
+    assert resolve(LLMRole.GOVERNANCE, {})[0] == "claude"
+    assert resolve(LLMRole.TECHNICAL, {})[0] == "openai"
+
+
+def test_the_governance_role_REFUSES_openai_even_when_configured_for_it():
+    """The whole point of the split. Compliance advice must not change vendor by configuration."""
+    from grc_api.llm_provider import LLMRole, ProviderNotAllowedForRoleError, resolve
+
+    with pytest.raises(ProviderNotAllowedForRoleError, match="may not use"):
+        resolve(LLMRole.GOVERNANCE, {"GRC_GOVERNANCE_LLM_PROVIDER": "openai"})
+
+
+def test_flipping_the_GENERAL_provider_cannot_move_governance_off_claude():
+    """`GRC_LLM_PROVIDER` configures the technical tier only. Someone switching the general
+    provider must not silently relocate every customer's governance advice."""
+    from grc_api.llm_provider import LLMRole, resolve
+
+    env = {"GRC_LLM_PROVIDER": "openai", "GRC_LLM_MODEL": "gpt-5"}
+    assert resolve(LLMRole.GOVERNANCE, env)[0] == "claude"
+    assert resolve(LLMRole.GOVERNANCE, env)[1] != "gpt-5"
+    assert resolve(LLMRole.TECHNICAL, env) == ("openai", "gpt-5")
+
+
+def test_each_role_takes_its_model_from_that_vendors_variable():
+    """The Claude adapter's own default is an Opus model, so the configured Sonnet must be passed
+    explicitly or the wrong model runs — silently, and at full cost."""
+    from grc_api.llm_provider import LLMRole, resolve
+
+    env = {"ANTHROPIC_MODEL": "claude-sonnet-5", "OPENAI_MODEL": "gpt-5"}
+    assert resolve(LLMRole.GOVERNANCE, env) == ("claude", "claude-sonnet-5")
+    assert resolve(LLMRole.TECHNICAL, env) == ("openai", "gpt-5")
+
+
+def test_an_explicit_role_override_wins_over_the_vendor_default():
+    from grc_api.llm_provider import LLMRole, resolve
+
+    env = {"ANTHROPIC_MODEL": "claude-sonnet-5", "GRC_GOVERNANCE_LLM_MODEL": "claude-opus-4-8"}
+    assert resolve(LLMRole.GOVERNANCE, env) == ("claude", "claude-opus-4-8")
+
+
+def test_governance_reports_the_ANTHROPIC_key_when_it_is_missing(caplog):
+    from grc_api.llm_provider import LLMRole, build_generation_provider
+
+    with caplog.at_level(logging.WARNING):
+        assert build_generation_provider(LLMRole.GOVERNANCE, {}) is None
+    assert "ANTHROPIC_API_KEY" in caplog.text
+    assert "governance" in caplog.text

@@ -5,6 +5,7 @@ import { getActor } from "@/lib/auth/actor";
 import { redirect } from "@/i18n/navigation";
 import { DiscoveryFlow } from "@/components/discovery/DiscoveryFlow";
 import { getActivePlan } from "@/lib/planExecution/service";
+import { findOpenSectorInterview } from "@/lib/sectorInterview/service";
 import { pageTitle } from "@/lib/pageMetadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,10 +30,18 @@ export default async function DiscoveryPage({
   const { restart } = await searchParams;
   const actor = await getActor();
   if (actor && !restart) {
-    const activePlan = await getActivePlan(actor);
-    if (activePlan) {
-      const locale = await getLocale();
-      redirect({ href: "/plan", locale });
+    // An UNFINISHED sector interview outranks the redirect. Otherwise someone who re-ran their
+    // assessment and stopped at the sector questions is bounced to their old plan every time, and
+    // the new assessment — holding answers they already gave — becomes unreachable. The redirect
+    // exists to stop a finished journey from restarting, not to hide an unfinished one.
+    const unfinished = await findOpenSectorInterview(actor);
+    const hasUnfinishedSectorStage = unfinished.release !== null && unfinished.sourceSessionId;
+    if (!hasUnfinishedSectorStage) {
+      const activePlan = await getActivePlan(actor);
+      if (activePlan) {
+        const locale = await getLocale();
+        redirect({ href: "/plan", locale });
+      }
     }
   }
   const t = await getTranslations("discoveryInterview");

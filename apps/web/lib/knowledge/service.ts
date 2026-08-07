@@ -25,14 +25,17 @@ import type {
 const KNOWLEDGE_APPROVER_ROLE = "knowledge_approver";
 
 /**
- * Who governs sector knowledge, by principal id — an explicit allow-list from the environment,
- * **deny by default**.
+ * TEMPORARY BOOTSTRAP UNTIL INTERNAL IDENTITY EXISTS.
  *
- * A list rather than a role because the authority is not a tenant's to grant. Rasheed staff author
- * the questions every customer in a sector answers; a customer administering their own workspace
- * has no business editing them, and mapping `owner` here would hand that power to every customer
- * account in the product. When an internal-staff identity exists in `apps/web`, this becomes that
- * check and nothing else changes — grc-api already only ever sees the asserted role.
+ * `KNOWLEDGE_APPROVERS` is not domain and it is not infrastructure — it is bootstrap, and bootstrap
+ * that survives more than one development phase becomes technical debt. **Build nothing on top of
+ * it.** No feature may read this list, branch on it, or store what it returns; the only caller is
+ * the decision "assert the role, or don't". When an internal-staff identity exists, this function's
+ * body is replaced and nothing else changes — grc-api only ever sees the asserted role.
+ *
+ * Why an allow-list at all: the authority is not a tenant's to grant. Rasheed staff author the
+ * questions every customer in a sector answers, so mapping it to `owner` would hand that power to
+ * every customer account in the product.
  *
  * Unset means nobody: an unconfigured deployment has no knowledge reviewers, which is the correct
  * failure. It never means everybody.
@@ -67,11 +70,11 @@ async function callKnowledgeApi<T>(
   // it again in its Application layer — this is not the check, it is the identity.
   const token = mintGrcApiServiceToken({
     tenantId: actor.tenantId,
-    // The EMAIL, not the user id — unlike every other proxy in this app. `created_by`,
-    // `approved_by` and `activated_by` are read by a human auditor a year from now, and a column
-    // full of UUIDs answers "who approved this?" with a lookup nobody will do. It also matches how
-    // the authority itself is granted (an email allow-list), so the two never disagree.
-    principalId: actor.userEmail,
+    // The stable id, never the email or the name. `created_by` / `approved_by` / `activated_by`
+    // record WHO decided, and a person's name, address and job title all change while their
+    // identity does not. Storing the readable form would copy identity data into the knowledge
+    // database and let the copy rot; resolving it for display is the identity service's job.
+    principalId: actor.userId,
     roles: isKnowledgeApprover(actor) ? [KNOWLEDGE_APPROVER_ROLE] : [],
   });
 

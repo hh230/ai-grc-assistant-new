@@ -90,7 +90,13 @@ export default async function ReleaseReviewPage({
         <Card grain>
           {/* The three facts behind "how was this question written?", a year from now. Kept on the
               review screen rather than a debug panel: a reviewer approving generated text should
-              see which model and which prompt produced it. */}
+              see which model and which prompt produced it.
+
+              `createdBy` / `approvedBy` are shown exactly as stored — a stable identity, not a
+              name. Names, emails and job titles change; identities do not, so the knowledge
+              database keeps the identity and resolving it to a person is an identity service's
+              job. Until one exists the raw identity is shown, which is honest. Copying the
+              readable form in here would be a second, rotting record of who someone was. */}
           <SectionHeader
             title={t("review.provenance")}
             description={t("review.provenanceHint")}

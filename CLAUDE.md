@@ -143,6 +143,26 @@ convenience, speed, and personal preference. Every PR is implicitly checked agai
    reproducible — what was retrieved, which model, which prompt version, which tools ran,
    and why.
 
+9. **The LLM proposes; the schema decides; the database keeps the truth.**
+
+   > **Claude could not make the database lie.**
+
+   This is the relationship the whole architecture exists to produce, and it has been observed, not
+   hoped for: a generator asked the model for sector questions using a type vocabulary the code had
+   invented, the model dutifully produced it, and a `CHECK` constraint refused the insert. Nothing
+   was stored, nothing was half-stored, and no reviewer was shown something the schema would not
+   stand behind (ADR 0067).
+
+   The corollary is a design rule, not a slogan. **State an invariant declaratively wherever it can
+   be stated declaratively** — a constraint, a composite foreign key, a trigger — rather than as a
+   Python guard that a second code path can forget. A model, a bug and a careless caller are the
+   same threat to a compliance record, and only the database is in a position to refuse all three.
+
+   Its companion, from the same work: *database constraints do not invent business rules; they
+   reveal forgotten invariants.* When the database refuses something the code expected to work, the
+   first question is not "how do I get past this constraint?" but "which invariant did we state in
+   prose and never model?"
+
 If a change violates any pillar above, it is wrong by definition — redesign it.
 
 ---

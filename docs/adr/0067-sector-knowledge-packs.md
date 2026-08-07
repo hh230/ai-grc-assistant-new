@@ -305,6 +305,8 @@ This ADR does **not**:
 > **The schema exposed an invariant we had forgotten to model explicitly.**
 >
 > Database constraints do not invent business rules; they reveal forgotten invariants.
+>
+> **Claude could not make the database lie.**
 
 Recorded here verbatim because it is the reasoning this ADR's design rests on, and it will read as
 obvious to whoever finds it a year from now — which is exactly when it will be forgotten again.
@@ -318,9 +320,28 @@ refusal is what made the omission visible. The tenant binding in migration 0015 
 third time: `tenant_id` was denormalised onto child rows and the copies agreed by convention, which
 is a habit, not a guarantee.
 
+The third line is the one that matters most, and it was **observed rather than hoped for**. This
+generator asked the model for questions using a type vocabulary the code had invented; the model
+produced exactly that, and `release_questions_type_renderable` refused the insert. Nothing was
+stored, nothing was half-stored, and no reviewer was shown something the schema would not stand
+behind. The LLM proposes, the schema decides, the database keeps the truth — see CLAUDE.md §3.9.
+
 The practical consequence for reviewers: when the database refuses something the code expected to
 work, the first question is not "how do I get past this constraint?" but "which invariant did we
 state in prose and never model?"
+
+## Backlog — bootstrap that must not become architecture
+
+`KNOWLEDGE_APPROVERS` (an environment allow-list of emails) is how the knowledge-approver authority
+is granted today. It is **not domain and not infrastructure — it is bootstrap**, and bootstrap that
+outlives one development phase becomes debt. Nothing may be built on top of it: no feature reads the
+list, branches on it, or stores what it returns. When an internal-staff identity exists, one function
+body is replaced and nothing else changes.
+
+Identity is stored as the **stable id only**. Names, emails and job titles change; identities do not.
+`created_by` / `approved_by` / `activated_by` therefore hold the identity, the console displays it
+raw until an identity service can resolve it, and no readable copy of a person is duplicated into
+the knowledge database where it would quietly rot.
 
 ## Deferred by decision
 

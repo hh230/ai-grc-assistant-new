@@ -346,6 +346,23 @@ def test_another_tenant_cannot_read_or_conclude_an_assessment(client):
     )
 
 
+def test_a_cross_tenant_answer_is_refused_by_the_SCHEMA_not_only_by_the_query(client):
+    """`tenant_id` is denormalised onto the answer rows, and until the composite foreign key the
+    two copies agreed only by convention. Tenant B posting to A's assessment id wrote a row stamped
+    B under A's assessment; now the write cannot land at all."""
+    release_id = _release(client)
+    _activate(client, release_id)
+    assessment_id = _assessment(client, release_id, TENANT_A)
+
+    response = client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/answers",
+        json={"answers": [{"release_id": release_id, "question_id": "q0", "answer": True}]},
+        headers=TENANT_B,
+    )
+    assert response.status_code == 409
+    assert "assessment_tenant_fk" in response.json()["error"]["message"]
+
+
 def test_an_assessment_citing_no_release_is_refused_before_the_database(client):
     response = client.post(
         "/v1/knowledge/assessments",

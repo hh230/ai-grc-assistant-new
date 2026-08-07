@@ -300,6 +300,46 @@ This ADR does **not**:
 - Address the open launch blockers from the product readiness review: control-library linkage,
   expert review of the engine's recommendations, deployment, backup or monitoring.
 
+## What the schema is for
+
+> **The schema exposed an invariant we had forgotten to model explicitly.**
+>
+> Database constraints do not invent business rules; they reveal forgotten invariants.
+
+Recorded here verbatim because it is the reasoning this ADR's design rests on, and it will read as
+obvious to whoever finds it a year from now — which is exactly when it will be forgotten again.
+
+Every declarative rule here arrived that way. The composite foreign key on
+`(release_id, release_status)` did not decide that an unpublished release must not go live; that was
+always true, and the constraint is where it finally got written down. `RetireIndustry` did not
+discover a new ordering rule when the schema refused it — the rule was "a release must not be
+withdrawn underneath customers being interviewed on it", stated in prose and never modelled, and the
+refusal is what made the omission visible. The tenant binding in migration 0015 is the same story a
+third time: `tenant_id` was denormalised onto child rows and the copies agreed by convention, which
+is a habit, not a guarantee.
+
+The practical consequence for reviewers: when the database refuses something the code expected to
+work, the first question is not "how do I get past this constraint?" but "which invariant did we
+state in prose and never model?"
+
+## Deferred by decision
+
+Two follow-ups are correct and deliberately **not** in this ADR's implementation.
+
+**Clearing the active pointer is a different event, not a nullable column.** When an industry stops
+serving a release, `active_template_history` records nothing, because its `release_id` is `NOT NULL`.
+Making it nullable was rejected: `active_template_history` is a *history of activations*, not a
+history of state changes, and a row with `release_id = NULL` is not a value — it is a different kind
+of event wearing the same table. If the record is needed durably it belongs to its own event
+(`ActiveReleaseCleared` / `IndustryDeactivated`) in its own table. Today the only path that clears
+the pointer is `RetireIndustry`, which emits `IndustryRetired`.
+
+**Separation of duties is a policy, not a schema rule.** Nothing currently stops one
+`knowledge_approver` from generating a release and approving it alone. `created_by` and `approved_by`
+are stored, so the check is implementable — but it belongs in a policy layer, because the rule will
+not stay singular: `Creator != Approver` becomes `Reviewer != Publisher`, then
+`Publisher != Activator`. Buried in SQL, each of those is another schema rewrite.
+
 ## Consequences
 
 **Positive**

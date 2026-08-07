@@ -552,3 +552,76 @@ def test_conclusion_is_one_way(clean):
             "UPDATE assessments SET completed_at = now() + interval '1 day' WHERE id = %s",
             (assessment_id,),
         )
+
+
+# --- 0015: the tenant binding -----------------------------------------------------------------
+
+
+def test_an_answer_cannot_claim_a_DIFFERENT_TENANT_than_its_assessment(clean):
+    """The hole this closes: tenant B posting to tenant A's assessment id used to write a row
+    stamped `tenant_id = B` under A's assessment. `tenant_id` is denormalised for query speed, and
+    until now the copies agreed only by convention."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_a', 'tenant_a', 'o')"
+    )
+    with pytest.raises(psycopg.errors.ForeignKeyViolation, match="assessment_tenant_fk"):
+        clean.execute(
+            "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, "
+            " answer) VALUES ('as_a', %s, 'fal_license', 'tenant_b', 'true'::jsonb)",
+            (release_id,),
+        )
+
+
+def test_a_selection_cannot_claim_a_DIFFERENT_TENANT_than_its_assessment(clean):
+    """Worse than a stray row: `record_selection` upserts on `assessment_id`, so before this a
+    cross-tenant call would have REPLACED which releases tenant A's assessment cites."""
+    release_id = _release(clean, _template(clean))
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_b', 'tenant_a', 'o')"
+    )
+    with pytest.raises(psycopg.errors.ForeignKeyViolation, match="assessment_tenant_fk"):
+        clean.execute(
+            "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+            " selected_by) VALUES ('as_b', 'tenant_b', ARRAY[%s], 'attacker')",
+            (release_id,),
+        )
+
+
+def test_the_matching_tenant_is_still_accepted(clean):
+    """A guarantee that also blocks the legitimate write is not a guarantee, it is an outage."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_c', 'tenant_a', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+        " selected_by) VALUES ('as_c', 'tenant_a', ARRAY[%s], 'reviewer')",
+        (release_id,),
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_c', %s, 'fal_license', 'tenant_a', 'false'::jsonb)",
+        (release_id,),
+    )
+    assert clean.execute(
+        "SELECT tenant_id FROM sector_answers WHERE assessment_id = 'as_c'"
+    ).fetchone()[0] == "tenant_a"
+
+
+def test_an_assessments_tenant_can_no_longer_be_moved_out_from_under_its_children(clean):
+    """The other direction, and the one a `WHERE tenant_id = …` in the repository could never
+    catch: rewriting the parent's tenant while children still point at the old one."""
+    release_id = _release(clean, _template(clean))
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_d', 'tenant_a', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+        " selected_by) VALUES ('as_d', 'tenant_a', ARRAY[%s], 'reviewer')",
+        (release_id,),
+    )
+    with pytest.raises(psycopg.errors.ForeignKeyViolation):
+        clean.execute("UPDATE assessments SET tenant_id = 'tenant_b' WHERE id = 'as_d'")

@@ -2243,5 +2243,57 @@
     "yes": "Yes",
     "no": "No",
     "choose": "Choose…"
+  },
+  "programStatus": {
+    "title": "Governance program",
+    "version": "Plan v{version}",
+    "assessed": "assessed {date}",
+    "review": "Next review {date}",
+    "reviewIn": "in {days, plural, =1 {1 day} other {# days}}",
+    "reviewOverdue": "overdue by {days, plural, =1 {1 day} other {# days}}",
+    "state": {
+      "active": "Active",
+      "reviewDue": "Review due"
+    },
+    "none": {
+      "title": "You do not have a governance program yet",
+      "description": "A short conversation about how your organization actually runs. We work out what applies to you, then build the plan you will work from.",
+      "step": {
+        "discovery": "1 · Discovery",
+        "report": "2 · Report",
+        "plan": "3 · Plan"
+      },
+      "cta": "Start"
+    }
+  },
+  "whatToDoNext": {
+    "title": "What to do next",
+    "remaining": "{count, plural, =1 {1 action remaining} other {# actions remaining}}",
+    "quickWin": "Quick win",
+    "due": "due {date}",
+    "overdue": "overdue",
+    "cta": "Open your plan",
+    "allDone": {
+      "title": "Every action in this plan is done",
+      "description": "Reassess when your organization changes, or when the next review falls due."
+    }
+  },
+  "governanceActivity": {
+    "title": "Recent governance activity",
+    "description": "Decisions and progress on your program — nothing else.",
+    "kind": {
+      "assessmentCompleted": "Assessment completed",
+      "planApproved": "Plan approved",
+      "actionCompleted": "Action completed",
+      "evidenceAdded": "Evidence added",
+      "reviewDue": "Review due"
+    }
+  },
+  "evidenceCoverage": {
+    "title": "Evidence coverage",
+    "description": "What you can prove today, per framework.",
+    "summary": "{covered} of {total} controls have evidence linked.",
+    "gaps": "{count, plural, =1 {1 control has nothing linked} other {# controls have nothing linked}}",
+    "cta": "All controls"
   }
 }

@@ -6,10 +6,8 @@ import { Loader2, Sparkles, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Link } from "@/i18n/navigation";
-import { useActivePlan, useCurrentMaturity } from "@/hooks/usePlanExecution";
-import { MaturityJourney } from "./MaturityJourney";
+import { useActivePlan } from "@/hooks/usePlanExecution";
 import { PlanStats } from "./PlanStats";
-import { QuickWins } from "./QuickWins";
 import { PlanItemCard } from "./PlanItemCard";
 import { VersionHistory } from "./VersionHistory";
 import { labelOrIdentifier } from "@/lib/planExecution/labels";
@@ -21,7 +19,6 @@ type StatusFilter = "all" | PlanItemStatus;
 export function PlanBoard() {
   const t = useTranslations("planExecution");
   const { data: detail, isLoading, isError } = useActivePlan();
-  const { data: maturity } = useCurrentMaturity();
   const [groupBy, setGroupBy] = useState<GroupBy>("timeline");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
 
@@ -92,11 +89,11 @@ export function PlanBoard() {
         )}
       </Card>
 
-      <MaturityJourney baseline={plan.maturityBaseline} current={maturity?.maturity ?? null} />
-
+      {/* Maturity and the next actions moved ABOVE this board (page.tsx, sections 2 and 3): they
+          answer "where do I stand" and "what do I do next", which a customer needs before the
+          board's filters. Quick wins went with them — the badge is on the action itself now, and
+          starting one still happens on its own card below. */}
       <PlanStats items={items} />
-
-      <QuickWins items={items} />
 
       <div className="flex flex-wrap items-center gap-2">
         <label className="flex items-center gap-1.5 text-xs text-foreground-muted">

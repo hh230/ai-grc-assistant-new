@@ -2243,5 +2243,57 @@
     "yes": "نعم",
     "no": "لا",
     "choose": "اختر…"
+  },
+  "programStatus": {
+    "title": "برنامج الحوكمة",
+    "version": "الخطة v{version}",
+    "assessed": "آخر تقييم {date}",
+    "review": "المراجعة القادمة {date}",
+    "reviewIn": "خلال {days, plural, zero {} one {يوم واحد} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}",
+    "reviewOverdue": "متأخرة {days, plural, zero {} one {يومًا واحدًا} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}",
+    "state": {
+      "active": "نشط",
+      "reviewDue": "حان وقت المراجعة"
+    },
+    "none": {
+      "title": "لا يوجد لديك برنامج حوكمة بعد",
+      "description": "محادثة قصيرة عن طريقة عمل منشأتك فعليًا. نحدّد ما ينطبق عليك، ثم نبني الخطة التي ستعمل بها.",
+      "step": {
+        "discovery": "١ · الاستكشاف",
+        "report": "٢ · التقرير",
+        "plan": "٣ · الخطة"
+      },
+      "cta": "ابدأ"
+    }
+  },
+  "whatToDoNext": {
+    "title": "ماذا تفعل بعد ذلك",
+    "remaining": "{count, plural, zero {} one {بقيت خطوة واحدة} two {بقيت خطوتان} few {بقيت # خطوات} many {بقيت # خطوة} other {بقيت # خطوة}}",
+    "quickWin": "مكسب سريع",
+    "due": "تستحق {date}",
+    "overdue": "متأخرة",
+    "cta": "افتح خطتك",
+    "allDone": {
+      "title": "أُنجزت كل خطوات هذه الخطة",
+      "description": "أعد التقييم عندما تتغيّر منشأتك، أو عند حلول المراجعة القادمة."
+    }
+  },
+  "governanceActivity": {
+    "title": "نشاط الحوكمة الأخير",
+    "description": "قرارات برنامجك وتقدّمه — لا شيء غير ذلك.",
+    "kind": {
+      "assessmentCompleted": "اكتمل التقييم",
+      "planApproved": "اعتُمدت الخطة",
+      "actionCompleted": "أُنجزت خطوة",
+      "evidenceAdded": "أُضيف دليل",
+      "reviewDue": "حان وقت المراجعة"
+    }
+  },
+  "evidenceCoverage": {
+    "title": "تغطية الأدلة",
+    "description": "ما يمكنك إثباته اليوم، لكل إطار.",
+    "summary": "{covered} من {total} ضابطًا لديها أدلة مرتبطة.",
+    "gaps": "{count, plural, zero {} one {ضابط واحد بلا أي دليل} two {ضابطان بلا أي دليل} few {# ضوابط بلا أي دليل} many {# ضابطًا بلا أي دليل} other {# ضابط بلا أي دليل}}",
+    "cta": "كل الضوابط"
   }
 }

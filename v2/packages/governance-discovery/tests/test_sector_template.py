@@ -11,16 +11,20 @@ from dataclasses import replace
 
 import pytest
 from governance_discovery.sector_template import (
+    CANONICAL_LANGUAGE,
     FORBIDDEN_DECISION_FIELDS,
     IllegalTransitionError,
+    QuestionTranslation,
     SectorAnswer,
     SectorAnswerSet,
     SectorTemplate,
     SectorTemplateError,
     TemplateStatus,
+    TranslationStatus,
     assert_transition,
     can_transition,
     parse_generated_template,
+    translation_coverage,
 )
 
 
@@ -32,8 +36,9 @@ def _question(**overrides) -> dict:
         "required": True,
         "category": "licensing",
         "importance": "critical",
-        "framework": "General Saudi Real Estate",
-        "reason": "Brokerage activity without a valid FAL licence is not permitted.",
+        "references": [{"framework": "General Saudi Real Estate", "clause": "FAL"}],
+        "why_we_ask": "Determines whether the organization may broker at all.",
+        "evidence_required": ["License number", "Expiry date"],
     }
     base.update(overrides)
     return base
@@ -82,8 +87,8 @@ def test_editorial_metadata_IS_allowed_and_preserved():
     question = template.questions[0]
     assert question.category == "licensing"
     assert question.importance == "critical"
-    assert question.framework == "General Saudi Real Estate"
-    assert question.reason.startswith("Brokerage activity")
+    assert question.references[0].framework == "General Saudi Real Estate"
+    assert question.why_we_ask.startswith("Determines whether")
 
 
 # --- refusing content that is *almost* right --------------------------------------------------
@@ -111,12 +116,12 @@ def test_an_invented_importance_is_refused():
         _parse(_payload(questions=[_question(importance="extremely critical")]))
 
 
-def test_a_question_missing_its_reason_is_refused():
-    """`reason` is what a reviewer reads to decide whether to approve. Without it the review is a
-    rubber stamp."""
+def test_a_question_missing_why_we_ask_is_refused():
+    """`why_we_ask` is what a reviewer reads to decide whether to approve. Without it the review is
+    a rubber stamp, and in two years nobody can say why the question exists."""
     incomplete = _question()
-    del incomplete["reason"]
-    with pytest.raises(SectorTemplateError, match="'reason'"):
+    del incomplete["why_we_ask"]
+    with pytest.raises(SectorTemplateError, match="'why_we_ask'"):
         _parse(_payload(questions=[incomplete]))
 
 
@@ -224,3 +229,91 @@ def test_the_answer_set_records_which_template_version_produced_it():
     """Without it, an answer cannot be explained once the template is deprecated."""
     answers = SectorAnswerSet(sector="real_estate", template_version=3)
     assert answers.as_dict()["template_version"] == 3
+
+
+# --- references, evidence, and the reviewer/customer split ------------------------------------
+
+
+def test_a_question_may_rest_on_SEVERAL_clauses():
+    """A single `framework` string forced a false reduction of exactly what a reviewer needs."""
+    template = _parse(_payload(questions=[_question(references=[
+        {"framework": "ISO27001", "clause": "5.2"},
+        {"framework": "ISO27001", "clause": "6.1"},
+    ])]))
+    assert [(r.framework, r.clause) for r in template.questions[0].references] == [
+        ("ISO27001", "5.2"),
+        ("ISO27001", "6.1"),
+    ]
+
+
+def test_a_reference_without_a_clause_is_allowed():
+    """Demanding a clause for every reference would push the model to INVENT clause numbers — an
+    invented citation reads more convincing than a missing one."""
+    template = _parse(_payload(questions=[_question(references=[{"framework": "REGA"}])]))
+    assert template.questions[0].references[0].clause == ""
+
+
+def test_a_question_with_no_references_at_all_is_refused():
+    with pytest.raises(SectorTemplateError, match="references"):
+        _parse(_payload(questions=[_question(references=[])]))
+
+
+def test_empty_evidence_is_a_real_answer_but_a_MISSING_field_is_not():
+    """`[]` means "self-attested"; an omitted field means nobody decided. The difference is the
+    whole value of capturing it now instead of retrofitting it later."""
+    template = _parse(_payload(questions=[_question(evidence_required=[])]))
+    assert template.questions[0].evidence_required == ()
+
+    missing = _question()
+    del missing["evidence_required"]
+    with pytest.raises(SectorTemplateError, match="evidence_required"):
+        _parse(_payload(questions=[missing]))
+
+
+def test_why_we_ask_can_never_reach_the_customer():
+    """It is a reviewer's note. Omitted structurally, not by a convention someone forgets."""
+    question = _parse(_payload()).questions[0]
+    assert "why_we_ask" in question.as_dict()
+    assert "why_we_ask" not in question.as_customer_dict()
+    assert "references" not in question.as_customer_dict()
+
+
+# --- translations are a separate source of truth -----------------------------------------------
+
+
+def test_arabic_cannot_be_stored_as_a_translation():
+    """One source of truth. The canonical text lives on the question; storing it again as a
+    translation is the second copy that later drifts."""
+    with pytest.raises(SectorTemplateError, match="canonical language"):
+        QuestionTranslation("fal_license", "ar", "نص ثانٍ")
+
+
+def test_a_translation_is_unusable_until_published():
+    translation = QuestionTranslation("fal_license", "en", "Do you hold a valid FAL licence?")
+    assert translation.is_usable is False
+    reviewed = translation.with_status(TranslationStatus.REVIEWED)
+    assert reviewed.is_usable is False
+    assert reviewed.with_status(TranslationStatus.PUBLISHED).is_usable is True
+
+
+def test_a_translation_cannot_skip_review():
+    translation = QuestionTranslation("fal_license", "en", "…")
+    with pytest.raises(IllegalTransitionError, match="cannot move a translation"):
+        translation.with_status(TranslationStatus.PUBLISHED)
+
+
+def test_translation_coverage_counts_only_PUBLISHED():
+    """An unreviewed string is not coverage — counting it is how a language nobody on the team
+    reads reaches a customer unchecked."""
+    template = _parse(_payload(questions=[_question(), _question(id="rega_registration")]))
+    generated = QuestionTranslation("fal_license", "en", "FAL?")
+    published = generated.with_status(TranslationStatus.REVIEWED).with_status(
+        TranslationStatus.PUBLISHED
+    )
+    assert translation_coverage(template, (generated,), "en") == (0, 2)
+    assert translation_coverage(template, (published,), "en") == (1, 2)
+
+
+def test_the_canonical_language_is_always_fully_covered():
+    template = _parse(_payload())
+    assert translation_coverage(template, (), CANONICAL_LANGUAGE) == (1, 1)

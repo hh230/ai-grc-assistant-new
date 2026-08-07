@@ -30,6 +30,12 @@ import enum
 from dataclasses import dataclass, field
 from typing import Any
 
+# Knowledge has ONE source of truth. Claude generates Arabic and only Arabic; every other
+# language is a derived translation with its own review lifecycle. Generating both at once would
+# mean depending on two texts staying semantically identical — and the first reviewer who edits
+# only the Arabic, or regenerates only the English, silently forks the question.
+CANONICAL_LANGUAGE = "ar"
+
 # Answer shapes a generated question may use. Deliberately the same small vocabulary the
 # hand-authored packs use — a sector question is rendered by the SAME interview UI, so it cannot
 # invent an input type nothing can display.
@@ -116,20 +122,57 @@ def assert_transition(current: TemplateStatus, target: TemplateStatus) -> None:
 
 
 @dataclass(frozen=True)
+class Reference:
+    """What a question rests on. A LABEL for the reviewer — never a citation the product presents
+    to a customer as authority; only the Framework Library may assert what a framework requires.
+
+    `clause` is optional on purpose. Demanding one for every reference would push the model to
+    invent clause numbers, which is the exact failure this whole design exists to prevent: an
+    invented citation reads more convincing than a missing one.
+    """
+
+    framework: str
+    clause: str = ""
+
+    @staticmethod
+    def parse(raw: Any, *, where: str) -> Reference:
+        if not isinstance(raw, dict):
+            raise SectorTemplateError(f"{where}: each reference must be an object")
+        framework = raw.get("framework")
+        if not isinstance(framework, str) or not framework.strip():
+            raise SectorTemplateError(f"{where}: a reference needs a non-empty 'framework'")
+        clause = raw.get("clause") or ""
+        if not isinstance(clause, str):
+            raise SectorTemplateError(f"{where}: 'clause' must be a string when present")
+        return Reference(framework=framework.strip(), clause=clause.strip())
+
+    def as_dict(self) -> dict[str, str]:
+        return {"framework": self.framework, "clause": self.clause}
+
+
+@dataclass(frozen=True)
 class SectorQuestion:
     """One generated question. Editorial metadata only — see the module docstring."""
 
     id: str
-    question: str
+    # The Arabic text, and the ONLY authored text. Every other language is a derived
+    # `QuestionTranslation` with its own review lifecycle.
+    canonical_text: str
     type: str
     required: bool
     category: str
     importance: str
-    # Which regulator or regime the question relates to. A LABEL for the reviewer and the report,
-    # never a citation the product presents as authority: the Framework Library is the only thing
-    # that may assert what a framework requires.
-    framework: str
-    reason: str
+    # A question may rest on several clauses at once; a single `framework` string forced a false
+    # reduction of exactly the thing a reviewer needs to see in full.
+    references: tuple[Reference, ...]
+    # REVIEWER-ONLY. Never rendered to a customer. It exists so that in two years someone can open
+    # a question and learn why it is asked without reading the prompt that produced it or finding
+    # the person who ran it. `as_customer_dict` omits it structurally, not by convention.
+    why_we_ask: str
+    # What would prove the answer, if the product later asks for documents. Empty means the
+    # question is self-attested. Captured NOW because retrofitting it means re-reviewing every
+    # published question in every sector.
+    evidence_required: tuple[str, ...] = ()
     options: tuple[str, ...] = ()
 
     @staticmethod
@@ -178,28 +221,65 @@ class SectorQuestion:
         if not isinstance(required, bool):
             raise SectorTemplateError(f"{where}: 'required' must be true or false")
 
+        raw_references = raw.get("references")
+        if not isinstance(raw_references, list) or not raw_references:
+            raise SectorTemplateError(
+                f"{where}: 'references' must be a non-empty list of "
+                f"{{framework, clause}} — a sector question a reviewer cannot trace to anything "
+                f"is a question nobody can approve"
+            )
+        references = tuple(
+            Reference.parse(r, where=f"{where}.references[{i}]")
+            for i, r in enumerate(raw_references)
+        )
+
+        evidence = raw.get("evidence_required")
+        # Absent is a mistake; EMPTY is a real answer meaning "self-attested". The difference
+        # matters, so an omitted field is refused rather than defaulted to empty.
+        if not isinstance(evidence, list) or not all(isinstance(e, str) for e in evidence):
+            raise SectorTemplateError(
+                f"{where}: 'evidence_required' must be a list of strings — use [] to state "
+                f"explicitly that nothing can prove this answer"
+            )
+
         return SectorQuestion(
             id=text("id"),
-            question=text("question"),
+            canonical_text=text("question"),
             type=question_type,
             required=required,
             category=text("category"),
             importance=importance,
-            framework=text("framework"),
-            reason=text("reason"),
+            references=references,
+            why_we_ask=text("why_we_ask"),
+            evidence_required=tuple(e.strip() for e in evidence if e and e.strip()),
             options=options,
         )
 
-    def as_dict(self) -> dict[str, Any]:
+    def as_customer_dict(self) -> dict[str, Any]:
+        """What the interview may render. `why_we_ask` and the references are deliberately absent:
+        one is a reviewer's note, the other is a label that must not read as a citation."""
         payload: dict[str, Any] = {
             "id": self.id,
-            "question": self.question,
+            "question": self.canonical_text,
+            "type": self.type,
+            "required": self.required,
+        }
+        if self.options:
+            payload["options"] = list(self.options)
+        return payload
+
+    def as_dict(self) -> dict[str, Any]:
+        """The full asset, for storage and the review console."""
+        payload: dict[str, Any] = {
+            "id": self.id,
+            "canonical_text": self.canonical_text,
             "type": self.type,
             "required": self.required,
             "category": self.category,
             "importance": self.importance,
-            "framework": self.framework,
-            "reason": self.reason,
+            "references": [r.as_dict() for r in self.references],
+            "why_we_ask": self.why_we_ask,
+            "evidence_required": list(self.evidence_required),
         }
         if self.options:
             payload["options"] = list(self.options)
@@ -369,3 +449,98 @@ class SectorAnswerSet:
             "template_version": self.template_version,
             "answers": [a.as_dict() for a in self.answers],
         }
+
+
+class TranslationStatus(str, enum.Enum):
+    """A translation's own lifecycle, independent of the template's.
+
+    Independence is the point. The Arabic can be reviewed without touching the English, the
+    English without touching the Arabic, and a third language can be added without regenerating
+    any knowledge — because none of them is the source of truth except Arabic.
+    """
+
+    GENERATED = "generated"
+    REVIEWED = "reviewed"
+    PUBLISHED = "published"
+
+
+_ALLOWED_TRANSLATION_TRANSITIONS: dict[TranslationStatus, frozenset[TranslationStatus]] = {
+    TranslationStatus.GENERATED: frozenset(
+        {TranslationStatus.REVIEWED, TranslationStatus.GENERATED}
+    ),
+    TranslationStatus.REVIEWED: frozenset(
+        {TranslationStatus.PUBLISHED, TranslationStatus.GENERATED}
+    ),
+    # Re-translating a published string is a new pass, not an edit in place.
+    TranslationStatus.PUBLISHED: frozenset({TranslationStatus.GENERATED}),
+}
+
+
+@dataclass(frozen=True)
+class QuestionTranslation:
+    """One question rendered in one non-canonical language.
+
+    Never authored alongside the question. Generating Arabic and English in a single call would
+    make the product depend on two texts staying semantically identical, and the first reviewer to
+    edit one of them forks the question silently — the same string drifting into two meanings with
+    no record of which is authoritative.
+    """
+
+    question_id: str
+    language: str
+    text: str
+    status: TranslationStatus = TranslationStatus.GENERATED
+
+    def __post_init__(self) -> None:
+        if self.language == CANONICAL_LANGUAGE:
+            raise SectorTemplateError(
+                f"{CANONICAL_LANGUAGE!r} is the canonical language — it lives on the question "
+                f"itself, and storing it again as a translation creates a second source of truth"
+            )
+        if not self.text.strip():
+            raise SectorTemplateError("a translation needs text")
+
+    @property
+    def is_usable(self) -> bool:
+        return self.status is TranslationStatus.PUBLISHED
+
+    def with_status(self, target: TranslationStatus) -> QuestionTranslation:
+        if target not in _ALLOWED_TRANSLATION_TRANSITIONS[self.status]:
+            allowed = sorted(s.value for s in _ALLOWED_TRANSLATION_TRANSITIONS[self.status])
+            raise IllegalTransitionError(
+                f"cannot move a translation from {self.status.value} to {target.value}; "
+                f"allowed: {allowed}"
+            )
+        return QuestionTranslation(
+            question_id=self.question_id,
+            language=self.language,
+            text=self.text,
+            status=target,
+        )
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "question_id": self.question_id,
+            "language": self.language,
+            "text": self.text,
+            "status": self.status.value,
+        }
+
+
+def translation_coverage(
+    template: SectorTemplate, translations: tuple[QuestionTranslation, ...], language: str
+) -> tuple[int, int]:
+    """`(published, total)` for one language — which languages are behind, answered with a number.
+
+    Only PUBLISHED counts. A generated-but-unreviewed translation is not coverage; treating it as
+    such is how an unreviewed string reaches a customer in a language nobody on the team reads.
+    """
+    if language == CANONICAL_LANGUAGE:
+        return len(template.questions), len(template.questions)
+    ids = {q.id for q in template.questions}
+    published = {
+        t.question_id
+        for t in translations
+        if t.language == language and t.is_usable and t.question_id in ids
+    }
+    return len(published), len(ids)

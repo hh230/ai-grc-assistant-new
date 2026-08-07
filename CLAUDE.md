@@ -924,6 +924,15 @@ Consistency lets anyone read unfamiliar code quickly. These are mandatory.
 - New Tools, Agents, Frameworks, and Plugins are added through their registries/engines —
   reviewers reject changes that bypass them.
 
+**Performance:**
+
+- **Performance debt is created only by measured production queries, never by imagined future
+  scale.** No index, cache, denormalisation or partition enters the codebase without either a
+  query in the product that uses it, or an `EXPLAIN` proving it will be used. Every one of them is
+  permanent debt — write cost, storage, maintenance, and a new branch in every execution plan — so
+  the burden of proof is on adding, not on omitting. Before justifying one, check whether the
+  query is already served by a smaller table.
+
 **Security & compliance hygiene (we eat our own dog food):**
 
 - Dependency and secret scanning in CI. Least-privilege access to all environments.

@@ -441,3 +441,108 @@ class CompleteAssessment:
             if changed
             else None,
         )
+
+
+class SessionReader(Protocol):
+    """The concluded discovery session, behind a port. Only what resolving a sector interview needs
+    — deliberately not the whole discovery package, so this layer never imports it."""
+
+    def get_session(self, session_id: str, tenant_id: str) -> Any: ...
+
+
+PRIMARY_ACTIVITY_SIGNAL = "primary_activity"
+
+
+class OpenSectorInterview:
+    """`find_assessment_for_session` → `get_active_release` → `StartAssessment`. Emits
+    `AssessmentStarted` (via the service it composes) or nothing at all.
+
+    This is the caller `StartAssessment` deliberately refuses to be. `StartAssessment` does not
+    choose a template because "if no selection was given, use the active one" would be a business
+    rule hidden in orchestration — so the resolution lives here, in the open, where it can be read:
+    the customer's `primary_activity` SUGGESTS a sector, the sector's activation pointer decides
+    which release is live, and both are recorded so an accepted suggestion and an unexamined one
+    stay distinguishable.
+
+    Three outcomes, and only one of them is a failure:
+
+        already_open   this session already opened an assessment — returned, not duplicated
+        no_sector_pack the sector has nothing activated, or the customer named no sector at all
+        opened         a new assessment, citing exactly the release that was live at this moment
+
+    `no_sector_pack` is a NORMAL state with `changed=False`, not an error. Most sectors will have no
+    published pack for a long time, and a customer must still be able to finish their assessment —
+    the alternative is a product that refuses to work until every sector is authored.
+    """
+
+    def __init__(
+        self,
+        store: Any,
+        sessions: SessionReader,
+        *,
+        connection: Any,
+        new_id: Callable[[], str],
+    ) -> None:
+        self._store = store
+        self._sessions = sessions
+        self._start = StartAssessment(store, connection=connection, new_id=new_id)
+
+    def __call__(self, *, session_id: str, tenant_id: str, organization_id: str) -> Outcome:
+        existing = self._store.find_assessment_for_session(session_id, tenant_id=tenant_id)
+        if existing is not None:
+            # The release this assessment CITES, not whatever is live now. A reviewer may have
+            # rolled the pointer forward mid-interview, and answering half a questionnaire against
+            # one release and half against another is not an interview anyone can interpret.
+            selection = self._store.get_selection(existing["id"], tenant_id=tenant_id)
+            cited = (selection or {}).get("selected_release_ids") or []
+            return Outcome(
+                changed=False,
+                data={
+                    "status": "already_open",
+                    "assessment_id": existing["id"],
+                    "release_id": cited[0] if cited else None,
+                    "suggested_industry_slug": (selection or {}).get("suggested_industry_slug"),
+                    "completed_at": existing["completed_at"],
+                },
+            )
+
+        session = self._sessions.get_session(session_id, tenant_id)
+        # Two different failures, said differently. Collapsing them cost an hour once: a test read
+        # the right session id from the wrong database and was told it "has not concluded".
+        if session is None:
+            raise ValueError(f"no discovery session {session_id!r} for this tenant")
+        if getattr(session, "status", "") != "concluded":
+            raise ValueError(
+                f"discovery session {session_id!r} has not concluded; a sector interview is opened "
+                f"from what the core interview established, not before it"
+            )
+
+        industry_slug = session.signals.value(PRIMARY_ACTIVITY_SIGNAL)
+        release = (
+            self._store.get_active_release(industry_slug) if industry_slug else None
+        )
+        if release is None:
+            return Outcome(
+                changed=False,
+                data={"status": "no_sector_pack", "suggested_industry_slug": industry_slug},
+            )
+
+        outcome = self._start(
+            tenant_id=tenant_id,
+            organization_id=organization_id,
+            suggested_industry_slug=industry_slug,
+            selected_release_ids=[release["id"]],
+            selected_by=tenant_id,
+            source_session_id=session_id,
+        )
+        return Outcome(
+            changed=True,
+            event=outcome.event,
+            data={
+                "status": "opened",
+                "assessment_id": outcome.data["assessment_id"],
+                "release_id": release["id"],
+                "suggested_industry_slug": industry_slug,
+                "completed_at": None,
+            },
+        )

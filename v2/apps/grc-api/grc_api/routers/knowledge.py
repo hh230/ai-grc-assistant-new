@@ -25,6 +25,7 @@ from governance_store.knowledge_services import (
     ApproveKnowledgeTemplate,
     CompleteAssessment,
     GenerateKnowledgeTemplate,
+    OpenSectorInterview,
     PublishKnowledgeTemplate,
     RecordSectorAnswers,
     RejectKnowledgeTemplate,
@@ -36,6 +37,7 @@ from governance_store.knowledge_services import (
 from pipeline_contracts import TenantContext
 
 from grc_api.deps import (
+    get_discovery_session_reader,
     get_knowledge_generation_service,
     get_knowledge_store,
     knowledge_actor,
@@ -50,12 +52,15 @@ from grc_api.knowledge_schemas import (
     GenerateReleaseBody,
     IndustryListResponse,
     IndustryView,
+    InterviewReleaseView,
+    OpenSectorInterviewBody,
     OutcomeResponse,
     PlanContextResponse,
     RecordAnswersBody,
     RegisterIndustryBody,
     ReleaseListResponse,
     ReleaseView,
+    SectorInterviewView,
     StartAssessmentBody,
 )
 from grc_api.security import require_tenant
@@ -274,6 +279,52 @@ def get_active_release(
     if row is None:
         raise _not_found("active release for industry", industry_slug)
     return ActiveReleaseView.from_row(industry_slug, row)
+
+
+@router.post(
+    "/knowledge/sessions/{session_id}/sector-interview", response_model=SectorInterviewView
+)
+def open_sector_interview(
+    session_id: str,
+    body: OpenSectorInterviewBody,
+    tenant: Annotated[TenantContext, Depends(require_tenant)],
+    store: Annotated[Any, Depends(get_knowledge_store)],
+    sessions: Annotated[Any, Depends(get_discovery_session_reader)],
+) -> SectorInterviewView:
+    """Closes the loop: what a reviewer activated is exactly what this customer is asked.
+
+    Idempotent by design — a customer who reloads mid-interview must reach the same assessment, not
+    a second one holding half their answers. A sector with nothing activated is a NORMAL answer
+    (`no_sector_pack`), not an error: most sectors will have no published pack for a long time, and
+    an organization must still be able to finish.
+    """
+    try:
+        outcome = OpenSectorInterview(
+            store, sessions, connection=store._conn, new_id=lambda: str(uuid4())
+        )(
+            session_id=session_id,
+            tenant_id=tenant.tenant_id,
+            organization_id=body.organization_id,
+        )
+    except ValueError as exc:  # the core interview has not concluded
+        raise ApiError(status_code=409, code="conflict", message=str(exc)) from exc
+
+    status = str(outcome.data["status"])
+    if status == "no_sector_pack":
+        return SectorInterviewView(status=status)
+
+    release_id = outcome.data.get("release_id")
+    rows = (
+        store.list_releases(release_id=str(release_id), with_questions=True) if release_id else []
+    )
+    if not rows:
+        raise _not_found("release cited by this assessment", str(release_id))
+    return SectorInterviewView(
+        status=status,
+        assessment_id=str(outcome.data["assessment_id"]),
+        completed=outcome.data.get("completed_at") is not None,
+        release=InterviewReleaseView.from_row(rows[0]),
+    )
 
 
 @router.post("/knowledge/assessments", response_model=OutcomeResponse, status_code=201)

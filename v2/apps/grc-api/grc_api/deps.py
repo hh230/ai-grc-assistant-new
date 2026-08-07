@@ -295,3 +295,13 @@ def get_knowledge_generation_service(
         prompt_version=request.app.state.knowledge_prompt_version,
         generator_commit=request.app.state.knowledge_generator_commit,
     )
+
+
+def get_discovery_session_reader(
+    store: Annotated[Any, Depends(get_governance_store)],
+) -> Any:
+    """The `SessionReader` port `OpenSectorInterview` needs — the discovery store, narrowed to the
+    one method that resolving a sector interview reads. Two stores in one request, deliberately:
+    the sector interview is the seam where what a reviewer published meets what a customer answers,
+    and something has to look at both sides of it."""
+    return store

@@ -2224,5 +2224,16 @@
       "historyHint": "Append-only, so a report issued months ago can still name the questions behind it.",
       "noReason": "No reason recorded"
     }
+  },
+  "sectorInterview": {
+    "eyebrow": "Sector questions",
+    "title": "A few questions specific to your sector",
+    "description": "{count, plural, =1 {One question} other {# questions}} about the obligations that apply to organizations like yours. Shown in Arabic, as reviewed and approved.",
+    "evidence": "Evidence:",
+    "submit": "Continue to my plan",
+    "remaining": "{count, plural, =1 {1 question still to answer} other {# questions still to answer}}",
+    "yes": "Yes",
+    "no": "No",
+    "choose": "Choose…"
   }
 }

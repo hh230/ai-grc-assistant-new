@@ -27,6 +27,7 @@ from governance_store.knowledge_services import (  # noqa: E402
     RejectKnowledgeTemplate,
     RetireIndustry,
     NotAuthorized,
+    OpenSectorInterview,
     StartAssessment,
     SubmitKnowledgeTemplate,
 )
@@ -425,3 +426,104 @@ def test_the_actor_recorded_is_the_authenticated_principal(store):
     release = store.list_releases(release_id=release_id)[0]
     assert release["created_by"] == APPROVER.principal_id
     assert release["approved_by"] == APPROVER.principal_id
+
+
+# --- the loop: a concluded discovery session opens a sector interview ---------------------------
+
+
+class _Session:
+    def __init__(self, status="concluded", activity="real_estate"):
+        self.status = status
+        self.signals = _Signals(activity)
+
+
+class _Signals:
+    def __init__(self, activity):
+        self._activity = activity
+
+    def value(self, key, default=None):
+        return self._activity if key == "primary_activity" else default
+
+
+class _Sessions:
+    def __init__(self, session=None):
+        self._session = session
+
+    def get_session(self, session_id, tenant_id):
+        return self._session
+
+
+def _open(store, session, session_id="sess_1"):
+    return OpenSectorInterview(
+        store, _Sessions(session), connection=store._conn, new_id=lambda: f"as_{uuid.uuid4().hex[:8]}"
+    )(session_id=session_id, tenant_id="t1", organization_id="org1")
+
+
+def _live_release(store):
+    release_id = _generate(store, _Generator()).data["release_id"]
+    _to_released(store, release_id)
+    ActivateKnowledgeRelease(store)(
+        industry_slug="real_estate", release_id=release_id, actor=APPROVER
+    )
+    return release_id
+
+
+def test_a_concluded_session_opens_an_assessment_citing_what_is_LIVE(store):
+    """The loop, closed: what the reviewer activated is exactly what the customer is asked."""
+    release_id = _live_release(store)
+    outcome = _open(store, _Session())
+
+    assert outcome.changed is True
+    assert outcome.data["status"] == "opened"
+    assert outcome.data["release_id"] == release_id
+    assert outcome.event.name == "AssessmentStarted"
+
+
+def test_the_suggestion_and_the_selection_are_both_recorded(store):
+    """`primary_activity` SUGGESTS; the activation pointer decides. Storing only the outcome would
+    make an accepted suggestion and an unexamined one look identical."""
+    release_id = _live_release(store)
+    assessment_id = _open(store, _Session()).data["assessment_id"]
+    CompleteAssessment(store, now=_now)(assessment_id=assessment_id, tenant_id="t1")
+    selection = store.load_plan_context(assessment_id, tenant_id="t1")["selection"]
+    assert selection["suggested_industry_slug"] == "real_estate"
+    assert selection["selected_release_ids"] == [release_id]
+
+
+def test_opening_twice_returns_the_SAME_assessment(store):
+    """A customer who reloads mid-interview must not start a second assessment — the first one
+    holds their answers, and two would make "which one is the assessment?" unanswerable."""
+    _live_release(store)
+    first = _open(store, _Session())
+    second = _open(store, _Session())
+    assert second.changed is False
+    assert second.data["status"] == "already_open"
+    assert second.data["assessment_id"] == first.data["assessment_id"]
+
+
+def test_a_sector_with_NOTHING_ACTIVATED_is_a_normal_state_not_a_failure(store):
+    """Most sectors will have no published pack for a long time. A customer must still be able to
+    finish — the alternative is a product that refuses to work until every sector is authored."""
+    store.register_industry("real_estate", "عقارات")
+    outcome = _open(store, _Session())
+    assert outcome.changed is False
+    assert outcome.data["status"] == "no_sector_pack"
+    assert outcome.event is None
+
+
+def test_a_DRAFT_release_is_not_reachable_by_a_customer(store):
+    """The whole reason the review workflow exists: generated-but-unapproved knowledge must not be
+    what an organization is asked."""
+    _generate(store, _Generator())  # generated, never published, never activated
+    assert _open(store, _Session()).data["status"] == "no_sector_pack"
+
+
+def test_an_UNCONCLUDED_session_cannot_open_a_sector_interview(store):
+    _live_release(store)
+    with pytest.raises(ValueError, match="has not concluded"):
+        _open(store, _Session(status="in_progress"))
+
+
+def test_a_customer_who_named_no_sector_gets_no_sector_interview(store):
+    _live_release(store)
+    assert _open(store, _Session(activity=None)).data["status"] == "no_sector_pack"

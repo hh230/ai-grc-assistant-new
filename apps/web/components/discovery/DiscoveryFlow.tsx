@@ -8,6 +8,9 @@ import { AnswerInput } from "./AnswerInput";
 import { StageProgress } from "./StageProgress";
 import { JourneyStepper } from "@/components/governance/JourneyStepper";
 import { GovernanceReport } from "@/components/governance/GovernanceReport";
+import { SectorQuestions } from "./SectorQuestions";
+import { openSectorInterview } from "@/lib/sectorInterview/client";
+import type { SectorInterview } from "@/lib/sectorInterview/types";
 import { useSession } from "@/components/auth/SessionProvider";
 import { useRouter } from "@/i18n/navigation";
 import { APPROVER_ROLES } from "@/lib/planGeneration/permissions";
@@ -18,6 +21,9 @@ type Phase =
   | "loading"
   | "idle"
   | "interviewing"
+  // The sector stage: the questions a reviewer activated for this organization's sector. Between
+  // the core interview and the plan, because the plan is built from both (ADR 0067).
+  | "sectorQuestions"
   | "analyzing"
   | "report"
   | "activating"
@@ -67,6 +73,7 @@ export function DiscoveryFlow() {
   const [canGoBack, setCanGoBack] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [sectorInterview, setSectorInterview] = useState<SectorInterview | null>(null);
 
   const [missionId, setMissionId] = useState<string | null>(null);
   const [decisionId, setDecisionId] = useState<string | null>(null);
@@ -137,6 +144,34 @@ export function DiscoveryFlow() {
     }
   }, []);
 
+  /**
+   * What happens the moment the core interview concludes.
+   *
+   * The sector stage is asked for FIRST, and skipped when the sector has nothing activated —
+   * `no_sector_pack` is a normal answer, not a failure, because most sectors will have no published
+   * pack for a long time and an organization must still reach its plan. An outright error is also
+   * not allowed to strand the customer: the core interview already concluded, and losing the plan
+   * over an optional stage would be a worse failure than not asking the questions.
+   */
+  const afterCoreInterview = useCallback(
+    async (forSessionId: string) => {
+      setPhase("analyzing");
+      try {
+        const interview = await openSectorInterview(forSessionId);
+        if (interview.status !== "no_sector_pack" && !interview.completed && interview.release) {
+          setSectorInterview(interview);
+          setPhase("sectorQuestions");
+          return;
+        }
+      } catch {
+        // Fall through to the plan: an unreachable sector stage must not cost the assessment.
+      }
+      void generateReport(forSessionId);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- generateReport is defined below
+    [],
+  );
+
   const generateReport = useCallback(async (forSessionId: string) => {
     setPhase("analyzing");
     try {
@@ -178,7 +213,7 @@ export function DiscoveryFlow() {
         setSubmitting(false);
         setResumed(false);
         if (turn.status === "concluded") {
-          void generateReport(sessionId);
+          void afterCoreInterview(sessionId);
           return;
         }
         setQuestion(turn.question);
@@ -190,7 +225,7 @@ export function DiscoveryFlow() {
         setErrorMessage(t("genericError"));
       }
     },
-    [sessionId, question, t, generateReport],
+    [sessionId, question, t, afterCoreInterview],
   );
 
   const skip = useCallback(async () => {
@@ -213,7 +248,7 @@ export function DiscoveryFlow() {
       setSubmitting(false);
       setResumed(false);
       if (turn.status === "concluded") {
-        void generateReport(sessionId);
+        void afterCoreInterview(sessionId);
         return;
       }
       setQuestion(turn.question);
@@ -224,7 +259,7 @@ export function DiscoveryFlow() {
       setSubmitting(false);
       setErrorMessage(t("genericError"));
     }
-  }, [sessionId, question, t, generateReport]);
+  }, [sessionId, question, t, afterCoreInterview]);
 
   const goBack = useCallback(async () => {
     if (!sessionId) return;
@@ -307,6 +342,20 @@ export function DiscoveryFlow() {
           <span>{t("genericError")}</span>
         </div>
       </Card>
+    );
+  }
+
+  if (phase === "sectorQuestions" && sectorInterview && sessionId) {
+    return (
+      <div className="space-y-5">
+        <JourneyStepper current="discovery" />
+        <SectorQuestions
+          interview={sectorInterview}
+          onDone={() => void generateReport(sessionId)}
+          onError={(message) => setErrorMessage(message)}
+        />
+        {errorMessage && <p className="text-sm text-danger">{errorMessage}</p>}
+      </div>
     );
   }
 

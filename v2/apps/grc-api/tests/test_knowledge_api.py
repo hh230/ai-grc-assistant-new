@@ -86,9 +86,14 @@ def client(dsn):
         conn.execute("DELETE FROM knowledge_templates")
         conn.execute("DELETE FROM industries")
 
+    from governance_store import PostgresGovernanceStore
+
     app = create_app(
         storage=Storage.MEMORY,
         knowledge_store_factory=lambda: PostgresKnowledgeStore(dsn=dsn),
+        # The DISCOVERY store must point at the same database, or the sector interview reads
+        # sessions from somewhere else entirely — which is exactly what it did the first time.
+        discovery_store_factory=lambda: PostgresGovernanceStore(dsn=dsn),
         knowledge_question_generator=_Generator(),
     )
     with TestClient(app) as c:
@@ -392,3 +397,157 @@ def test_a_deployment_with_no_governance_model_says_so_instead_of_inventing_ques
         )
     assert response.status_code == 503
     assert "not configured" in response.json()["error"]["message"]
+
+
+# --- the loop: what a reviewer activated is what a customer is asked -----------------------------
+
+
+def _concluded_session(dsn, tenant_id="tenant-a", activity="real_estate"):
+    """A concluded discovery session in the same database, written through the discovery store the
+    API itself reads — so this exercises the real lookup, not a stub."""
+    import dataclasses
+    import time
+
+    from governance_discovery.analysis import Applicability
+    from governance_discovery.session import DiscoverySession
+    from governance_discovery.signal import Signal, SignalSet, ValueType
+    from governance_store import PostgresGovernanceStore, apply_schema
+
+    with psycopg.connect(dsn, autocommit=True) as conn:
+        apply_schema(conn)
+
+    now = time.time()
+    session = DiscoverySession.start(f"sess_{int(now * 1_000_000)}", tenant_id, now)
+    if activity is not None:
+        session = dataclasses.replace(
+            session,
+            signals=SignalSet().with_signal(
+                Signal(key="primary_activity", value_type=ValueType.ENUM, value=activity)
+            ),
+        )
+    session = session.concluded(
+        Applicability(
+            frameworks=(), maturity={}, maturity_vision={}, capacity={}, gaps=(), plan_items=(),
+            confidence_score=1.0, confidence="normal",
+        ),
+        now,
+    )
+    store = PostgresGovernanceStore(dsn=dsn)
+    store.save_session(session)
+    store.close()
+    return session.id
+
+
+def test_a_customer_is_asked_exactly_what_the_reviewer_ACTIVATED(client, dsn):
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+
+    response = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    )
+    assert response.status_code == 200, response.text
+    body = response.json()
+    assert body["status"] == "opened"
+    assert body["release"]["release_id"] == release_id
+    assert len(body["release"]["questions"]) == 3
+    # Still the customer's view: the reviewer's notes do not travel with it.
+    assert all("why_we_ask" not in q for q in body["release"]["questions"])
+    assert "REVIEWER ONLY" not in response.text
+
+
+def test_a_DRAFT_release_never_reaches_a_customer(client, dsn):
+    """The reason the review workflow exists. Generated is not published, and published is not
+    live — a customer sees only what someone deliberately activated."""
+    _release(client)  # generated, never submitted
+    session_id = _concluded_session(dsn)
+    body = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+    assert body["status"] == "no_sector_pack"
+    assert body["release"] is None
+
+
+def test_reopening_the_interview_returns_the_SAME_assessment(client, dsn):
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    path = f"/v1/knowledge/sessions/{session_id}/sector-interview"
+    first = client.post(path, json={"organization_id": "org1"}, headers=TENANT_A).json()
+    second = client.post(path, json={"organization_id": "org1"}, headers=TENANT_A).json()
+    assert second["status"] == "already_open"
+    assert second["assessment_id"] == first["assessment_id"]
+
+
+def test_the_full_loop_ends_in_a_plan_context_naming_the_activated_release(client, dsn):
+    """Claude -> review -> approve -> publish -> activate -> customer interview -> plan context.
+    The last link is what a governance plan is built from, and it names the exact release."""
+    release_id = _release(client)
+    _activate(client, release_id)
+    session_id = _concluded_session(dsn)
+    opened = client.post(
+        f"/v1/knowledge/sessions/{session_id}/sector-interview",
+        json={"organization_id": "org1"},
+        headers=TENANT_A,
+    ).json()
+    assessment_id = opened["assessment_id"]
+
+    answers = {
+        "answers": [
+            {"release_id": release_id, "question_id": q["question_id"], "answer": False}
+            for q in opened["release"]["questions"]
+        ]
+    }
+    assert client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/answers", json=answers, headers=TENANT_A
+    ).status_code == 200
+    assert client.post(
+        f"/v1/knowledge/assessments/{assessment_id}/complete", headers=TENANT_A
+    ).status_code == 200
+
+    context = client.get(
+        f"/v1/knowledge/assessments/{assessment_id}/plan-context", headers=TENANT_A
+    ).json()
+    assert context["assessment"]["source_session_id"] == session_id
+    assert context["selection"]["selected_release_ids"] == [release_id]
+    assert context["selection"]["suggested_industry_slug"] == "real_estate"
+    assert len(context["sector_answers"]) == 3
+    assert context["sector_answers"][0]["canonical_text_ar"] == "هل لديكم رخصة فال؟"
+
+
+def test_a_pointer_that_MOVES_MID_INTERVIEW_does_not_change_the_questions(client, dsn):
+    """A reviewer rolling the sector forward while someone is halfway through must not split their
+    answers across two releases — the assessment cites a release, and the citation is what it is
+    answered against."""
+    v1 = _release(client)
+    _activate(client, v1)
+    session_id = _concluded_session(dsn)
+    path = f"/v1/knowledge/sessions/{session_id}/sector-interview"
+    opened = client.post(path, json={"organization_id": "org1"}, headers=TENANT_A).json()
+
+    v2 = client.post(
+        "/v1/knowledge/releases", json={"industry_slug": "real_estate"}, headers=APPROVER
+    ).json()["data"]["release_id"]
+    for action in ("submit", "approve", "publish"):
+        client.post(f"/v1/knowledge/releases/{v2}/{action}", headers=APPROVER)
+    client.put(
+        "/v1/knowledge/industries/real_estate/active-release",
+        json={"release_id": v2, "reason": "mid-interview upgrade"},
+        headers=APPROVER,
+    )
+
+    resumed = client.post(path, json={"organization_id": "org1"}, headers=TENANT_A).json()
+    assert resumed["assessment_id"] == opened["assessment_id"]
+    assert resumed["release"]["release_id"] == v1, "still the release they started answering"
+    # And a NEW customer starting now is asked the new one — the pointer did move.
+    later_session = _concluded_session(dsn)
+    later = client.post(
+        f"/v1/knowledge/sessions/{later_session}/sector-interview",
+        json={"organization_id": "org2"},
+        headers=TENANT_A,
+    ).json()
+    assert later["release"]["release_id"] == v2

@@ -205,6 +205,47 @@ class StartAssessmentBody(BaseModel):
     source_session_id: str | None = None
 
 
+class OpenSectorInterviewBody(BaseModel):
+    organization_id: str = Field(min_length=1)
+
+
+class InterviewReleaseView(BaseModel):
+    """The release an assessment CITES, with its questions — a customer's view, so no `why_we_ask`.
+
+    Read from the citation rather than from the activation pointer: a reviewer may roll the pointer
+    forward while someone is halfway through, and answers split across two releases are not an
+    interview anyone can interpret.
+    """
+
+    release_id: str
+    industry_slug: str
+    version: int
+    questions: list[InterviewQuestionView]
+
+    @classmethod
+    def from_row(cls, row: dict[str, Any]) -> InterviewReleaseView:
+        return cls(
+            release_id=row["id"],
+            industry_slug=row["industry_slug"],
+            version=row["version"],
+            questions=[InterviewQuestionView.from_row(q) for q in row.get("questions") or []],
+        )
+
+
+class SectorInterviewView(BaseModel):
+    """What a customer is asked next, if anything.
+
+    `status = "no_sector_pack"` is a success. It means the sector has nothing activated — most
+    sectors will not for a long time — and the assessment simply has no sector stage. The client
+    continues rather than stopping, which is why this is a status and not a `404`.
+    """
+
+    status: str
+    assessment_id: str | None = None
+    completed: bool = False
+    release: InterviewReleaseView | None = None
+
+
 class SectorAnswerBody(BaseModel):
     release_id: str = Field(min_length=1)
     question_id: str = Field(min_length=1)

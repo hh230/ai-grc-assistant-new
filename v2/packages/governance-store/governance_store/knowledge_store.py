@@ -493,6 +493,35 @@ class PostgresKnowledgeStore:
             ),
         )
 
+    def find_assessment_for_session(
+        self, source_session_id: str, *, tenant_id: str
+    ) -> dict[str, Any] | None:
+        """READ COMMITTED · no lock · read. The assessment a discovery session opened, if any.
+
+        The back-reference is informational on `assessments` (nullable, no foreign key), so this is
+        a plain filtered read — and tenant-scoped like every other assessment operation, because a
+        session id is no more a permission than an assessment id is.
+        """
+        return self._row(
+            "SELECT id, tenant_id, organization_id, source_session_id, started_at, completed_at "
+            "FROM assessments WHERE source_session_id = %s AND tenant_id = %s "
+            "ORDER BY started_at DESC LIMIT 1",
+            (source_session_id, tenant_id),
+        )
+
+    def get_selection(self, assessment_id: str, *, tenant_id: str) -> dict[str, Any] | None:
+        """READ COMMITTED · no lock · read. Which releases this assessment cites.
+
+        Separate from `load_plan_context`, which refuses an OPEN assessment because a plan must not
+        be built from answers that can still change. This one is for the interview itself, which by
+        definition runs while the assessment is open.
+        """
+        return self._row(
+            "SELECT suggested_industry_slug, selected_release_ids, selected_by, selected_at "
+            "FROM template_selections WHERE assessment_id = %s AND tenant_id = %s",
+            (assessment_id, tenant_id),
+        )
+
     def save_sector_answers(
         self, *, assessment_id: str, tenant_id: str, answers: list[dict[str, Any]]
     ) -> None:

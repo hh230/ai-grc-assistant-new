@@ -2101,24 +2101,32 @@
     "table": {
       "mission": "Mission",
       "status": "Status",
-      "progress": "Progress",
-      "owner": "Owner",
       "updated": "Last updated"
     },
     "status": {
+      "created": "Created",
       "planned": "Planned",
-      "executing": "Executing",
+      "executing": "Running",
+      "awaiting_approval": "Awaiting your approval",
+      "resumed": "Resumed",
       "completed": "Completed",
       "failed": "Failed",
       "cancelled": "Cancelled",
-      "awaitingApproval": "Awaiting approval"
+      "archived": "Archived"
     },
-    "stepsProgress": "{count, plural, one {# step} other {# steps}} · {lastStep}",
-    "noSteps": "No steps recorded yet",
     "emptyState": {
       "title": "No missions yet",
-      "description": "Missions track goal-directed GRC work end to end — start one by uploading a document for the AI to analyze.",
-      "cta": "Create your first mission"
+      "description": "Missions track goal-directed GRC work end to end, with its approval gates and its full trail. Your first one starts when you build your governance program.",
+      "cta": "Start your governance program"
+    },
+    "missionType": {
+      "generate_governance_plan": "Governance Plan",
+      "gap_assessment": "Gap Assessment",
+      "risk_assessment": "Risk Assessment",
+      "policy_generator": "Policy Generator",
+      "iso_controls": "ISO Controls",
+      "vendor_review": "Vendor Review",
+      "simple_question": "AI GRC Assistant"
     }
   },
   "helpPage": {

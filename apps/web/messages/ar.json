@@ -2101,24 +2101,32 @@
     "table": {
       "mission": "المهمة",
       "status": "الحالة",
-      "progress": "التقدّم",
-      "owner": "المسؤول",
       "updated": "آخر تحديث"
     },
     "status": {
-      "planned": "مخطَّطة",
+      "created": "أُنشئت",
+      "planned": "مخطّطة",
       "executing": "قيد التنفيذ",
+      "awaiting_approval": "بانتظار موافقتك",
+      "resumed": "مستأنفة",
       "completed": "مكتملة",
-      "failed": "فشلت",
+      "failed": "أخفقت",
       "cancelled": "ملغاة",
-      "awaitingApproval": "بانتظار الموافقة"
+      "archived": "مؤرشفة"
     },
-    "stepsProgress": "{count, plural, one {# خطوة} other {# خطوات}} · {lastStep}",
-    "noSteps": "لا توجد خطوات مسجَّلة بعد",
     "emptyState": {
-      "title": "لا توجد مهام بعد",
-      "description": "تتبّع المهام أعمال الحوكمة والمخاطر والامتثال الموجهة نحو الأهداف من البداية للنهاية — ابدأ أول مهمة برفع مستند ليقوم الذكاء الاصطناعي بتحليله.",
-      "cta": "إنشاء أول مهمة"
+      "title": "لا توجد مهمات بعد",
+      "description": "المهمات تتابع عمل الحوكمة من بدايته إلى نهايته، ببواباته الموافقة وسجلّه الكامل. أول مهمة لك تبدأ عند بناء برنامج الحوكمة.",
+      "cta": "ابدأ برنامج الحوكمة"
+    },
+    "missionType": {
+      "generate_governance_plan": "خطة الحوكمة",
+      "gap_assessment": "تقييم الفجوات",
+      "risk_assessment": "تقييم المخاطر",
+      "policy_generator": "مولّد السياسات",
+      "iso_controls": "ضوابط ISO",
+      "vendor_review": "مراجعة المورّدين",
+      "simple_question": "مساعد الحوكمة الذكي"
     }
   },
   "helpPage": {

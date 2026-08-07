@@ -228,7 +228,9 @@ def test_retiring_an_industry_also_takes_its_active_release_out_of_service(store
         industry_slug="real_estate", release_id=release_id, actor="approver"
     )
 
-    outcome = RetireIndustry(store, connection=store._conn)(industry_slug="real_estate")
+    outcome = RetireIndustry(store, connection=store._conn)(
+        industry_slug="real_estate", actor="approver"
+    )
 
     assert outcome.event.name == "IndustryRetired"
     assert store.get_active_release("real_estate") is None, "it must stop serving interviews"
@@ -239,7 +241,9 @@ def test_retiring_an_industry_also_takes_its_active_release_out_of_service(store
 
 def test_retiring_an_industry_with_no_active_release_is_still_valid(store):
     store.register_industry("unused", "غير مستخدم")
-    outcome = RetireIndustry(store, connection=store._conn)(industry_slug="unused")
+    outcome = RetireIndustry(store, connection=store._conn)(
+        industry_slug="unused", actor="approver"
+    )
     assert outcome.changed is True
     assert outcome.event.payload["retired_release_id"] is None
 
@@ -335,16 +339,16 @@ def test_the_retirement_ORDER_is_the_only_one_the_database_permits(store):
         store.retire_release(release_id, target_status="deprecated")
 
 
-def test_deactivating_removes_the_pointer_but_keeps_the_history(store):
-    """Not a deletion of knowledge: the release row is untouched and every activation remains
-    recorded. What disappears is only "which release is live right now"."""
-    release_id = _generate(store, _Generator()).data["release_id"]
-    _to_released(store, release_id)
-    ActivateKnowledgeRelease(store)(
-        industry_slug="real_estate", release_id=release_id, actor="approver", reason="first"
-    )
-    assert store.deactivate_industry("real_estate") == release_id
-    assert store.get_active_release("real_estate") is None
-    assert store.deactivate_industry("real_estate") is None, "idempotent"
-    assert len(store.list_activation_history("real_estate")) == 1
-    assert store.list_releases(release_id=release_id)[0]["status"] == "released"
+def test_activation_reports_what_it_replaced(store):
+    """A first activation and a rollback are the same call, and read identically without this."""
+    generator = _Generator()
+    v1 = _generate(store, generator).data["release_id"]
+    v2 = _generate(store, generator).data["release_id"]
+    _to_released(store, v1)
+    _to_released(store, v2)
+    activate = ActivateKnowledgeRelease(store)
+
+    first = activate(industry_slug="real_estate", release_id=v1, actor="a", reason="first")
+    upgrade = activate(industry_slug="real_estate", release_id=v2, actor="a", reason="upgrade")
+    assert first.event.payload["previous_release_id"] is None
+    assert upgrade.event.payload["previous_release_id"] == v1

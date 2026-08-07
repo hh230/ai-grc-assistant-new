@@ -20,8 +20,8 @@ class that knows about everything eventually does everything.
 | `ApproveKnowledgeTemplate` | `approve_release` | none | `KnowledgeTemplateApproved` |
 | `RejectKnowledgeTemplate` | `reject_release` | none | `KnowledgeTemplateRejected` |
 | `PublishKnowledgeTemplate` | `mark_released` | none | `KnowledgeTemplatePublished` |
-| `ActivateKnowledgeRelease` | `activate_release` | one, inside the repository | `ActiveReleaseChanged` |
-| `RetireIndustry` | `set_industry_status` → `retire_release` | one, opened here | `IndustryRetired` |
+| `ActivateKnowledgeRelease` | `set_active_release` | one, inside the repository | `ActiveReleaseChanged` |
+| `RetireIndustry` | `set_active_release(None)` → `set_industry_status` → `retire_release` | one, opened here | `IndustryRetired` |
 | `StartAssessment` | `open_assessment` → `record_selection` | one, opened here | `AssessmentStarted` |
 | `RecordSectorAnswers` | `save_sector_answers` | one, inside the repository | `SectorAnswersRecorded` |
 | `CompleteAssessment` | `complete_assessment` | none | `AssessmentCompleted` |
@@ -56,15 +56,28 @@ contained "if no selection was given, use the active one", that default would be
 hidden in the orchestration layer — so the caller resolves it, and this records what was decided
 along with what was suggested.
 
-## The repository primitive this needs back
+## The primitives `RetireIndustry` composes
 
-`RetireIndustry` is exactly the case that proved this layer exists: retire the industry's active
-release, then mark the industry inactive. Two repository calls, coordinated.
+`RetireIndustry` is exactly the case that proved this layer exists, and the contract is the
+sequence of primitive names — not their count, which changes with time:
+
+    set_active_release(None)
+    set_industry_status(...)
+    retire_release(...)
+
+The order is not this service inventing a rule. The schema refuses to demote a release while it is
+the active one, which **exposed an invariant we had forgotten to model explicitly**: a release must
+not be withdrawn underneath customers being interviewed on it. A schema creates no business rules —
+it only refuses a state that was already outside the domain. Writing the sequence here is what
+modelling that invariant looks like.
 
 Removing `retire_industry` from the repository was right; removing the ability to write the column
 was over-correction on my part. `set_industry_status(slug, status)` returns as a **primitive** —
 one atomic write, no coordination, which is data access by definition. The distinction is exact:
 the repository can *set a status*; only a service can *retire an industry*.
+
+`set_active_release(None)` is **not** a new primitive. It is the other permitted answer to the
+question `set_active_release` already asks — see the Repository Contract §2.
 
 ## Events
 

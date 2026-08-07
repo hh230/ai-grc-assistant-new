@@ -193,7 +193,7 @@ class PublishKnowledgeTemplate:
 
 
 class ActivateKnowledgeRelease:
-    """`activate_release`. Emits `ActiveReleaseChanged`. This is also rollback.
+    """`set_active_release`. Emits `ActiveReleaseChanged`. This is also rollback.
 
     Deliberately does **not** check that the release is releasable. The composite foreign key does,
     exactly: activating something never released is unrepresentable. Re-checking here would be a
@@ -206,7 +206,7 @@ class ActivateKnowledgeRelease:
     def __call__(
         self, *, industry_slug: str, release_id: str, actor: str, reason: str = ""
     ) -> Outcome:
-        self._store.activate_release(
+        previous = self._store.set_active_release(
             industry_slug=industry_slug, release_id=release_id, actor=actor, reason=reason
         )
         return Outcome(
@@ -216,34 +216,42 @@ class ActivateKnowledgeRelease:
                 {
                     "industry_slug": industry_slug,
                     "release_id": release_id,
+                    # What it replaced. A first activation and a rollback are the same call and
+                    # read identically without it.
+                    "previous_release_id": previous,
                     "activated_by": actor,
                     "reason": reason,
                 },
             ),
+            data={"previous_release_id": previous},
         )
 
 
 class RetireIndustry:
-    """`deactivate_industry` → `set_industry_status` → `retire_release`. Emits `IndustryRetired`.
+    """`set_active_release(None)` → `set_industry_status` → `retire_release`. Emits
+    `IndustryRetired`.
 
     The case that proved this layer exists, and the order matters. The schema refuses to demote a
     release while it is the active one — deliberately, so a release cannot be withdrawn underneath
     customers being interviewed on it. Retiring an industry therefore has a sequence: stop serving
-    the release, mark the industry unavailable, then retire the release. Three repository calls in
-    one transaction, so a crash between them cannot leave an industry that is retired but still
-    serving interviews.
+    the release, mark the industry unavailable, then retire the release. One transaction, so a
+    crash between them cannot leave an industry that is retired but still serving interviews.
 
-    That ordering is not this service inventing a rule — it is the only order the database permits,
-    which is exactly the kind of coordination a service exists for.
+    That ordering is not this service inventing a rule. The schema exposed an invariant we had
+    forgotten to model explicitly — a schema creates no business rules, it only refuses a state
+    that was already outside the domain — and stating the sequence here is what modelling it looks
+    like. That is exactly the kind of coordination a service exists for.
     """
 
     def __init__(self, store: Any, *, connection: Any) -> None:
         self._store = store
         self._conn = connection
 
-    def __call__(self, *, industry_slug: str) -> Outcome:
+    def __call__(self, *, industry_slug: str, actor: str) -> Outcome:
         with self._conn.transaction():
-            was_active = self._store.deactivate_industry(industry_slug)
+            was_active = self._store.set_active_release(
+                industry_slug=industry_slug, release_id=None, actor=actor, reason="industry retired"
+            )
             changed = self._store.set_industry_status(industry_slug, "retired")
             if was_active is not None:
                 self._store.retire_release(was_active, target_status="deprecated")
@@ -254,6 +262,7 @@ class RetireIndustry:
                 {
                     "industry_slug": industry_slug,
                     "retired_release_id": was_active,
+                    "retired_by": actor,
                 },
             )
             if changed

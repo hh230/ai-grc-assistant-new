@@ -329,54 +329,63 @@ class PostgresKnowledgeStore:
 
     # ── activation ───────────────────────────────────────────────────────────────────────────
 
-    def activate_release(
-        self, *, industry_slug: str, release_id: str, actor: str, reason: str = ""
-    ) -> None:
-        """READ COMMITTED · upsert row lock · no retry · NOT idempotent (each call is an event).
+    def set_active_release(
+        self, *, industry_slug: str, release_id: str | None, actor: str, reason: str = ""
+    ) -> str | None:
+        """READ COMMITTED · `FOR UPDATE` on the industry · no retry. Returns what was live before.
 
-        `ON CONFLICT DO UPDATE` rather than `SELECT … FOR UPDATE`: the latter cannot lock a row
-        that does not exist, and the FIRST activation for an industry is exactly that case — two
-        concurrent first activations would both find nothing and both insert.
+        ONE primitive, because there is one question: **what is the active release for this
+        industry?** Only two answers are permitted — a release, or none. `release_id=None` is not a
+        second operation called "deactivate"; it is the other permitted answer to the same
+        question. Two methods for one fact is how the two drift apart.
+
+        This is also rollback: pointing back at an older release is the same call. No release row
+        is touched, and nothing is invented to undo a mistake.
+
+        The lock is on `industries`, not on `active_templates`. `FOR UPDATE` cannot lock a row that
+        does not exist, and the first activation for an industry is exactly that case; the industry
+        row is guaranteed to exist by the foreign key, so locking it serialises every change to
+        this pointer — including the read of the previous value, which is why the return value is
+        exact rather than best-effort. Activation is a reviewer action, so serialising per industry
+        costs nothing. `ON CONFLICT DO UPDATE` stays: it is what makes insert-or-replace one
+        statement.
 
         The pointer and its history are one transaction. Split apart, a crash between them leaves
         either a pointer nobody can explain or a history entry for something that never took
         effect.
 
-        This is also rollback: pointing back at an older release is the same call. No release row
-        is touched, and nothing is invented to undo a mistake.
+        Clearing it is NOT deleting knowledge: the release row is untouched and every activation
+        stays in `active_template_history`. What disappears is only "which release is live right
+        now" — and the answer becomes "none".
         """
         with self._conn.transaction():
             self._conn.execute(
-                "INSERT INTO active_templates (industry_slug, release_id, release_status, "
-                " activated_by) VALUES (%s, %s, 'released', %s) "
-                "ON CONFLICT (industry_slug) DO UPDATE SET "
-                " release_id = EXCLUDED.release_id, release_status = EXCLUDED.release_status, "
-                " activated_by = EXCLUDED.activated_by, activated_at = now()",
-                (industry_slug, release_id, actor),
+                "SELECT slug FROM industries WHERE slug = %s FOR UPDATE", (industry_slug,)
             )
-            self._conn.execute(
-                "INSERT INTO active_template_history (industry_slug, release_id, activated_by, "
-                " reason) VALUES (%s, %s, %s, %s)",
-                (industry_slug, release_id, actor, reason),
-            )
-
-    def deactivate_industry(self, industry_slug: str) -> str | None:
-        """READ COMMITTED · no lock · idempotent. Returns the release that was live, if any.
-
-        Removing the pointer is NOT deleting knowledge: every activation, including this one, is
-        already recorded in `active_template_history`, and the release row is untouched. What
-        disappears is only "which release is live right now" — and the answer becomes "none".
-
-        This exists because the schema refuses to demote a release while it is active (the
-        composite FK plus its CHECK), which is correct: a release must not be withdrawn underneath
-        customers being interviewed on it. Retiring therefore has an order — stop serving it, then
-        retire it — and this is the first half.
-        """
-        row = self._conn.execute(
-            "DELETE FROM active_templates WHERE industry_slug = %s RETURNING release_id",
-            (industry_slug,),
-        ).fetchone()
-        return row[0] if row else None
+            previous = self._conn.execute(
+                "SELECT release_id FROM active_templates WHERE industry_slug = %s",
+                (industry_slug,),
+            ).fetchone()
+            if release_id is None:
+                self._conn.execute(
+                    "DELETE FROM active_templates WHERE industry_slug = %s", (industry_slug,)
+                )
+            else:
+                self._conn.execute(
+                    "INSERT INTO active_templates (industry_slug, release_id, release_status, "
+                    " activated_by) VALUES (%s, %s, 'released', %s) "
+                    "ON CONFLICT (industry_slug) DO UPDATE SET "
+                    " release_id = EXCLUDED.release_id, "
+                    " release_status = EXCLUDED.release_status, "
+                    " activated_by = EXCLUDED.activated_by, activated_at = now()",
+                    (industry_slug, release_id, actor),
+                )
+                self._conn.execute(
+                    "INSERT INTO active_template_history (industry_slug, release_id, "
+                    " activated_by, reason) VALUES (%s, %s, %s, %s)",
+                    (industry_slug, release_id, actor, reason),
+                )
+        return previous[0] if previous else None
 
     def get_active_release(self, industry_slug: str) -> dict[str, Any] | None:
         """READ COMMITTED · **no lock** · read. What an interview draws from.

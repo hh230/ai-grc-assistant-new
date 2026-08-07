@@ -227,7 +227,7 @@ def test_a_release_cannot_be_released_without_passing_through_approval(store):
 def test_the_first_activation_creates_the_pointer_and_a_history_entry(store):
     template_id = _template(store)
     release_id = _released(store, template_id)
-    store.activate_release(
+    store.set_active_release(
         industry_slug="real_estate", release_id=release_id, actor="approver", reason="initial"
     )
     assert store.get_active_release("real_estate")["id"] == release_id
@@ -241,9 +241,12 @@ def test_rollback_moves_the_pointer_and_touches_no_release(store):
     v1 = _released(store, template_id)
     v2 = _released(store, template_id)
 
-    store.activate_release(industry_slug="real_estate", release_id=v1, actor="a", reason="first")
-    store.activate_release(industry_slug="real_estate", release_id=v2, actor="a", reason="upgrade")
-    store.activate_release(industry_slug="real_estate", release_id=v1, actor="a", reason="rollback")
+    activate = lambda rid, why: store.set_active_release(  # noqa: E731
+        industry_slug="real_estate", release_id=rid, actor="a", reason=why
+    )
+    activate(v1, "first")
+    activate(v2, "upgrade")
+    activate(v1, "rollback")
 
     assert store.get_active_release("real_estate")["id"] == v1
     assert [h["reason"] for h in store.list_activation_history("real_estate")] == [
@@ -261,9 +264,32 @@ def test_an_unreleased_release_cannot_be_activated(store):
         generated_by_model="m", prompt_version="p", generator_commit="c", created_by="g",
     )
     with pytest.raises(psycopg.errors.ForeignKeyViolation):
-        store.activate_release(
+        store.set_active_release(
             industry_slug="real_estate", release_id="rel_draft", actor="approver"
         )
+
+
+def test_setting_the_active_release_to_NONE_is_the_other_permitted_answer(store):
+    """One primitive, because there is one question: what is the active release for this industry?
+    Only two answers are permitted — a release, or none. `None` is not a second operation."""
+    template_id = _template(store)
+    v1 = _released(store, template_id)
+    v2 = _released(store, template_id)
+
+    assert store.set_active_release(
+        industry_slug="real_estate", release_id=v1, actor="a"
+    ) is None, "nothing was live before the first activation"
+    assert store.set_active_release(industry_slug="real_estate", release_id=v2, actor="a") == v1
+    assert (
+        store.set_active_release(industry_slug="real_estate", release_id=None, actor="a") == v2
+    )
+    assert store.get_active_release("real_estate") is None
+    assert store.set_active_release(
+        industry_slug="real_estate", release_id=None, actor="a"
+    ) is None, "clearing what is already clear changes nothing"
+    # Clearing removes a pointer, not knowledge.
+    assert {r["status"] for r in store.list_releases(industry_slug="real_estate")} == {"released"}
+    assert len(store.list_activation_history("real_estate")) == 2
 
 
 def test_an_industry_with_no_activation_has_no_active_release(store):
@@ -275,7 +301,7 @@ def test_an_industry_with_no_activation_has_no_active_release(store):
 def test_the_active_release_carries_its_questions_and_provenance(store):
     template_id = _template(store)
     release_id = _released(store, template_id, questions=[_question("a"), _question("b")])
-    store.activate_release(industry_slug="real_estate", release_id=release_id, actor="approver")
+    store.set_active_release(industry_slug="real_estate", release_id=release_id, actor="approver")
     active = store.get_active_release("real_estate")
     assert len(active["questions"]) == 2
     assert active["generated_by_model"] == "claude-sonnet-5"

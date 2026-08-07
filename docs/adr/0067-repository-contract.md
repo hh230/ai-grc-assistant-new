@@ -36,7 +36,7 @@ disagree. The real defect was that answers could still arrive at all — see the
 | `reject_release` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status IN ('in_review','approved')` | no | **yes** |
 | `approve_release` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status='in_review'` | no | **yes** |
 | `mark_released` | `template_releases` W | 1 | single stmt | READ COMMITTED | none — guarded `WHERE status='approved'` | no | **yes** |
-| `activate_release` | `active_templates` W 1 · `active_template_history` W 1 | 2 | **explicit** | READ COMMITTED | **upsert row lock** (`ON CONFLICT … DO UPDATE`) — see §2 | no | no — every activation is a distinct event |
+| `set_active_release` | `industries` R·lock 1 · `active_templates` W 1 · `active_template_history` W 0–1 | 2–3 | **explicit** | READ COMMITTED | **`FOR UPDATE` on the `industries` row** — see §2 | no | setting a release: no, each is a distinct event · clearing: **yes** |
 | `get_active_release` | `active_templates` R · `template_releases` R · `release_questions` R | 1 + 5–50 | none | READ COMMITTED | **none — never `FOR UPDATE`** | no | yes (read) |
 | `list_activation_history` | `active_template_history` R | ≤ 100s | none | READ COMMITTED | none | no | yes (read) |
 | `save_translation` | `question_translations` W | 1 | single stmt | READ COMMITTED | none — upsert on PK | no | **yes** |
@@ -71,16 +71,20 @@ If one occurs anyway it means the caller supplied an explicit duplicate version 
 surface, not to paper over by trying again. A retry here would be dead code that hides the one
 case it could ever fire on.
 
-### §2 `activate_release` — an upsert lock, not `FOR UPDATE`
+### §2 `set_active_release` — one primitive, and the lock is on the industry
 
-**Correction to the first draft of this contract**, found while filling in this column:
-`SELECT … FOR UPDATE` cannot lock a row that does not exist, and the *first* activation for an
-industry is exactly that case — two concurrent first activations would both see no row, both
-insert, and one would fail on the primary key.
+There is one question here — **what is the active release for this industry?** — and exactly two
+permitted answers: a release, or none. So there is one primitive. `release_id=None` is not a
+second operation called "deactivate"; it is the other permitted answer to the same question. Two
+methods for one fact is how the two drift apart.
 
-`INSERT … ON CONFLICT (industry_slug) DO UPDATE` takes the row lock itself and covers both the
-first activation and every later one. Concurrent activations serialise on it, and both write their
-own history row — which is correct: both genuinely happened, and the pointer ends at the later.
+The lock is on `industries`, not on `active_templates`. `SELECT … FOR UPDATE` cannot lock a row
+that does not exist, and the *first* activation for an industry is exactly that case; the industry
+row is guaranteed to exist by the foreign key, so locking it serialises every change to this
+pointer. That also makes the **return value exact**: the method reports the release that was live
+before the call, read under the same lock, rather than a value a concurrent activation could have
+moved underneath it. Activation is a reviewer action, so serialising per industry costs nothing.
+`ON CONFLICT (industry_slug) DO UPDATE` stays — it is what makes insert-or-replace one statement.
 
 The pointer and the history are written in one transaction because, split apart, a crash between
 them leaves either a pointer nobody can explain or a history entry for something that never took

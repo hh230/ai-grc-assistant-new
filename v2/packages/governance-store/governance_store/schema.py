@@ -124,7 +124,9 @@ GOVERNANCE_PLAN_ITEMS_COLUMNS_DDL = """\
     tenant_id              text             NOT NULL,
     pillar                 text             NOT NULL,
     title                  text             NOT NULL,
+    title_key              text             NOT NULL DEFAULT '',
     objective              text             NOT NULL,
+    objective_key          text             NOT NULL DEFAULT '',
     expected_outcome       text             NOT NULL,
     rationale              text             NOT NULL,
     timeframe_bucket       text             NOT NULL,
@@ -239,4 +241,21 @@ def apply_schema(conn: psycopg.Connection) -> None:
         f"ALTER TABLE {TABLE_GOVERNANCE_PLAN_EVENTS} "
         "ADD COLUMN IF NOT EXISTS sequence bigint GENERATED ALWAYS AS IDENTITY"
     )
+    # The i18n keys behind a plan item's title and objective, kept ALONGSIDE the rendered text
+    # rather than instead of it.
+    #
+    # `plan.seed.establish_risk_register.title` is an i18n key — that is what it is and why it
+    # exists. The draft tool used to resolve it to English at write time and store only the result,
+    # which meant the one field that could have been bilingual for free arrived monolingual. A key
+    # resolved at write time stops being a key.
+    #
+    # The text column stays and stays authoritative: a plan drafted before this column existed has
+    # an empty key and must keep rendering, and a UI with no translation for a key must be able to
+    # fall back to what was actually stored. Empty string, not NULL — "no key" is a fact about the
+    # row, not an unknown.
+    for column in ("title_key", "objective_key"):
+        conn.execute(
+            f"ALTER TABLE {TABLE_GOVERNANCE_PLAN_ITEMS} "
+            f"ADD COLUMN IF NOT EXISTS {column} text NOT NULL DEFAULT ''"
+        )
     conn.commit()

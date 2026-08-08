@@ -43,6 +43,12 @@ class PlanItem:
     # Always optional (ADR 0066 §5.4) — never a gate on `marked_done`.
     evidence_ids: tuple[str, ...] = ()
     confidence: float | None = None
+    # The i18n keys the rule engine produced, carried BESIDE the rendered text so a reader in
+    # another language can be served without re-running the model. Defaulted to empty because a
+    # plan drafted before these existed carries none and must keep rendering; declared last
+    # because a dataclass cannot put a defaulted field ahead of a required one.
+    title_key: str = ""
+    objective_key: str = ""
     risk_if_skipped: str | None = None
     revisit_at: float | None = None
 

@@ -6,7 +6,14 @@ from __future__ import annotations
 from governance_discovery.analysis import Applicability
 from governance_discovery.session import DiscoverySession
 from governance_discovery.signal import Signal, SignalSet, ValueType
-from governance_store.codec import answer_to_row, session_from_row, session_to_row
+from governance_discovery.plan import PlanItem
+from governance_store.codec import (
+    answer_to_row,
+    plan_item_from_row,
+    plan_item_to_row,
+    session_from_row,
+    session_to_row,
+)
 
 
 def _session(**overrides) -> DiscoverySession:
@@ -86,3 +93,40 @@ def test_round_trip_of_a_fresh_session_has_no_applicability() -> None:
     restored = session_from_row(row, answered_question_ids=frozenset())
     assert restored.applicability is None
     assert restored.status == "in_progress"
+
+
+def _plan_item(**overrides) -> PlanItem:
+    base = dict(
+        id="itm_1", plan_id="pln_1", tenant_id="t1", pillar="risk",
+        title="Establish Risk Register", objective="Close the identified gap.",
+        expected_outcome="A maintained register.", rationale="Identified during the assessment.",
+        timeframe_bucket="week_1", priority="high", effort_size="medium",
+        depends_on_item_ids=(), status="not_started", source_signal_keys=(),
+        source_framework_refs=(), created_at=1.0, updated_at=1.0,
+    )
+    base.update(overrides)
+    return PlanItem(**base)
+
+
+def test_a_plan_item_carries_its_i18n_keys_through_the_round_trip() -> None:
+    """The keys are what let a title render in a second language without re-running the model. A
+    codec that drops them turns a translatable field back into a monolingual one — which is exactly
+    how the titles became English-only in the first place."""
+    item = _plan_item(
+        title_key="plan.seed.establish_risk_register.title",
+        objective_key="plan.seed.establish_risk_register.objective",
+    )
+    row = plan_item_to_row(item)
+    assert row["title_key"] == "plan.seed.establish_risk_register.title"
+    assert plan_item_from_row(row).title_key == item.title_key
+    assert plan_item_from_row(row).objective_key == item.objective_key
+
+
+def test_a_row_written_before_the_key_columns_existed_still_decodes() -> None:
+    """Why the columns default to empty rather than being required: every plan drafted before today
+    has no key, and must keep rendering from the text that WAS stored."""
+    row = plan_item_to_row(_plan_item())
+    del row["title_key"], row["objective_key"]
+    decoded = plan_item_from_row(row)
+    assert decoded.title_key == ""
+    assert decoded.title == "Establish Risk Register"

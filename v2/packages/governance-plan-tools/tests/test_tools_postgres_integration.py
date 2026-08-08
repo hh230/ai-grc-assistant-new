@@ -166,6 +166,15 @@ def test_full_resolve_draft_finalize_flow(conn) -> None:
         assert all(item.status == "not_started" for item in items)
         assert all(item.rationale for item in items)
 
+        # The i18n keys the rule engine emitted survived all the way to storage, BESIDE the
+        # rendered text rather than instead of it. This is where they used to be lost: `finalize`
+        # built each PlanItem field by field and never mentioned them, so a translatable title
+        # reached the database as English prose with nothing left to translate from.
+        assert all(item.title for item in items), "the rendered text is still authoritative"
+        assert any(item.title_key for item in items), "no key survived the draft → finalize → store path"
+        keyed = next(i for i in items if i.title_key)
+        assert keyed.title_key.startswith("plan."), keyed.title_key
+
         # Dependency ids were correctly remapped to the persisted, plan-scoped item ids.
         dependent = next((i for i in items if i.depends_on_item_ids), None)
         if dependent is not None:

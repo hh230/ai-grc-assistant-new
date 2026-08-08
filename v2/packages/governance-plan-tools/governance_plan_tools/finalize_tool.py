@@ -124,6 +124,13 @@ class PlanFinalizeTool:
                 pillar=item["pillar"],
                 title=item["title"],
                 objective=item["objective"],
+                # The i18n keys the rule engine emitted, carried through to storage beside the
+                # rendered text. The draft already passes them along; this is where they stopped —
+                # `finalize` built the PlanItem field by field and simply never mentioned them, so
+                # a translatable title reached the database as English prose and nothing else.
+                # `.get`, because a draft produced before the keys existed has none.
+                title_key=item.get("title_key", ""),
+                objective_key=item.get("objective_key", ""),
                 expected_outcome=item["expected_outcome"],
                 rationale=item["rationale"],
                 timeframe_bucket=item["timeframe_bucket"],

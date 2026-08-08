@@ -47,7 +47,9 @@ CREATE TABLE IF NOT EXISTS governance_plan_items (
     tenant_id              text             NOT NULL,
     pillar                 text             NOT NULL,
     title                  text             NOT NULL,
+    title_key              text             NOT NULL DEFAULT '',
     objective              text             NOT NULL,
+    objective_key          text             NOT NULL DEFAULT '',
     expected_outcome       text             NOT NULL,
     rationale              text             NOT NULL,
     timeframe_bucket       text             NOT NULL,
@@ -92,6 +94,25 @@ CREATE TABLE IF NOT EXISTS governance_plan_events (
 
 -- Additive for a database created before `sequence` existed — see `schema.py`'s `apply_schema`.
 ALTER TABLE governance_plan_events ADD COLUMN IF NOT EXISTS sequence bigint GENERATED ALWAYS AS IDENTITY;
+
+-- Likewise additive: the i18n keys behind a plan item's title and objective, kept ALONGSIDE the
+-- rendered text rather than instead of it.
+--
+-- `plan.seed.establish_risk_register.title` is an i18n key — that is what it is and why the rule
+-- engine emits one. The draft tool resolved it to English at write time and stored only the
+-- result, so the one field that could have been bilingual for free arrived monolingual. A key
+-- resolved at write time stops being a key.
+--
+-- The text columns stay, and stay authoritative: a plan drafted before this existed carries an
+-- empty key and must keep rendering exactly as it does today, and a UI with no translation for a
+-- key falls back to what was actually stored. Empty string rather than NULL — "this row has no
+-- key" is a fact about the row, not something unknown about it.
+--
+-- These live HERE, beside the table they alter, rather than in a new migration file: the test
+-- fixtures apply migrations 4-and-up for the knowledge schema alone, so a plans-schema ALTER in a
+-- higher-numbered file runs against a database where `governance_plan_items` does not exist.
+ALTER TABLE governance_plan_items ADD COLUMN IF NOT EXISTS title_key     text NOT NULL DEFAULT '';
+ALTER TABLE governance_plan_items ADD COLUMN IF NOT EXISTS objective_key text NOT NULL DEFAULT '';
 
 CREATE INDEX IF NOT EXISTS governance_plan_events_tenant_item_idx
     ON governance_plan_events (tenant_id, plan_item_id);

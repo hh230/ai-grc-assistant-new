@@ -36,6 +36,22 @@ BEGIN
             'assessment % concluded at % and accepts no further writes (ADR 0067): open a new '
             'assessment instead of changing a finished one', target, finished;
     END IF;
+    -- SUPERSEDED — read 0017_assessment_freeze_delete.sql before trusting the next line.
+    --
+    -- `RETURN NEW` is wrong for the DELETE half of these triggers: on DELETE `NEW` is NULL, and a
+    -- BEFORE ROW trigger that returns NULL CANCELS the operation — silently, with `rowcount = 0`.
+    -- So this swallowed every DELETE on `sector_answers` and `template_selections`, including on
+    -- assessments that were still OPEN. The refusal above was never affected: `RAISE` aborts before
+    -- any return, so what this migration set out to prove held throughout.
+    --
+    -- 0017 replaces the function body with `RETURN COALESCE(NEW, OLD)` — NEW on INSERT/UPDATE, OLD
+    -- on DELETE, which is what lets a DELETE on an open assessment actually happen. The triggers
+    -- below still point at this same function name and needed no change.
+    --
+    -- Left exactly as it was, ON PURPOSE. This migration is historical and already applied;
+    -- migrations here re-run on every release with no apply-tracking ledger (ADR 0045), so editing
+    -- an applied file would change behaviour with nothing in the history saying it ever did.
+    -- Corrections arrive as new migrations. This comment is the pointer to the one that did.
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

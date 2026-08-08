@@ -103,6 +103,8 @@ interface PlanItemDto {
   plan_id: string;
   pillar: string;
   title: string;
+  title_key?: string;
+  objective_key?: string;
   objective: string;
   expected_outcome: string;
   rationale: string;
@@ -165,6 +167,10 @@ function toItem(dto: PlanItemDto): PlanItem {
     planId: dto.plan_id,
     pillar: dto.pillar,
     title: dto.title,
+    // Optional on the wire and defaulted here rather than at every reader: a plan drafted before
+    // the key was kept sends none, and every consumer would otherwise need its own guard.
+    titleKey: dto.title_key ?? "",
+    objectiveKey: dto.objective_key ?? "",
     objective: dto.objective,
     expectedOutcome: dto.expected_outcome,
     rationale: dto.rationale,

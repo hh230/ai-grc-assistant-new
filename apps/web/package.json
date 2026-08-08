@@ -2,14 +2,14 @@
   "name": "@grc/web",
   "version": "0.0.0",
   "private": true,
-  "description": "AI GRC Assistant — Workspace-first UX (Next.js App Router). Scaffold only.",
+  "description": "AI GRC Assistant \u2014 Workspace-first UX (Next.js App Router). Scaffold only.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "tsx tests/eval/planLabels.eval.ts && tsx tests/eval/missionSubject.eval.ts && tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts && tsx tests/eval/accessOnboarding.eval.ts && tsx tests/eval/analysisQuota.eval.ts && tsx tests/eval/teamInvitation.eval.ts",
+    "test": "tsx tests/eval/planLabels.eval.ts && tsx tests/eval/planItemTitleLocale.eval.ts && tsx tests/eval/missionSubject.eval.ts && tsx tests/eval/arabicAnalysis.eval.ts && tsx tests/eval/policyIntelligence.eval.ts && tsx tests/eval/accessOnboarding.eval.ts && tsx tests/eval/analysisQuota.eval.ts && tsx tests/eval/teamInvitation.eval.ts",
     "db:migrate": "node scripts/db-migrate.mjs",
     "db:migrate-data": "node scripts/migrate-file-data.mjs",
     "db:create-admin": "node scripts/create-admin.mjs"

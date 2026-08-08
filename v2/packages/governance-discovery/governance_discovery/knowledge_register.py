@@ -348,6 +348,21 @@ REGISTER: dict[str, RegisterEntry] = dict(
             WhenUnanswered.RULES_DO_NOT_FIRE,
             (DecisionEffect.DERIVES_APPLICABILITY,),
         ),
+        _entry(
+            "q:organization_language",
+            "The language the organization works in, so its plan is written in that language.",
+            "Not a compliance obligation — a property of the reader.",
+            WhenUnanswered.NO_EFFECT,
+            (DecisionEffect.NONE,),
+            inert_reason=(
+                "Inert BY DESIGN, not by backlog. This answer reaches only the wording of the "
+                "drafted prose; it must never move a gap, a maturity score, an applicability "
+                "derivation or a plan item. Two organizations answering identically except for "
+                "this question must receive the same plan in different words. Declaring it NONE is "
+                "how that boundary is stated where the engine can be read, rather than only "
+                "promised in a review."
+            ),
+        ),
         # --- declared inert: asked today, not yet acted on. Each is a backlog item. -------------
         _entry(
             "q:has_legal_team",

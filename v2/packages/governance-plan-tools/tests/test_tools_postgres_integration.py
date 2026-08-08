@@ -20,6 +20,8 @@ from governance_discovery.session import DiscoverySession  # noqa: E402
 from governance_plan_tools.applicability_tool import OrgApplicabilityTool  # noqa: E402
 from governance_plan_tools.draft_tool import PlanDraftTool  # noqa: E402
 from governance_plan_tools.finalize_tool import PlanFinalizeTool  # noqa: E402
+from governance_plan_tools.prompts import answer_language_directive  # noqa: E402
+from pipeline_contracts import Language  # noqa: E402
 from governance_store import PostgresGovernanceStore  # noqa: E402
 from governance_store.config import dsn  # noqa: E402
 from pipeline_contracts import TenantContext  # noqa: E402
@@ -419,3 +421,137 @@ def test_a_session_with_no_readable_signals_still_produces_a_plan(conn):
 
     assert _core_signals(_Broken()) == {}
     assert _core_signals(object()) == {}
+
+
+# --- the organization's language --------------------------------------------------------------
+
+
+def _with_language(store, tenant_id, engine, code: str | None):
+    """A concluded session whose organization answered (or did not answer) the language question."""
+    from governance_discovery.signal import Signal, ValueType
+
+    session = _concluded_session(store, tenant_id, engine)
+    if code is None:
+        return session
+    # `with_signal` is the SignalSet's own API — it returns a new set with the signal added, which
+    # is what an immutable value object should be asked for rather than rebuilt from its innards.
+    signals = session.signals.with_signal(
+        Signal(key="organization_language", value=code, value_type=ValueType.ENUM, confidence=1.0)
+    )
+    session = session.__class__(**{**session.__dict__, "signals": signals})
+    store.save_session(session)
+    return session
+
+
+def test_the_organizations_language_reaches_the_writer(conn) -> None:
+    """The answer has to travel: interview signal → draft tool → every prompt sent to the model.
+    Before this it could not, because the tool held a fixed `Language.ENGLISH` for everyone."""
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    try:
+        session = _with_language(store, tenant_id, DiscoveryEngine(load_bundled_packs()), "ar")
+        _, provider = _draft(store, session.id, tenant)
+        assert provider.requests, "the writer was never called"
+        assert {r.language for r in provider.requests} == {Language.ARABIC}
+    finally:
+        _cleanup(conn, tenant_id)
+
+
+def test_an_unanswered_language_falls_back_rather_than_guessing(conn) -> None:
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    try:
+        session = _with_language(store, tenant_id, DiscoveryEngine(load_bundled_packs()), None)
+        _, provider = _draft(store, session.id, tenant)
+        assert {r.language for r in provider.requests} == {Language.ENGLISH}
+    finally:
+        _cleanup(conn, tenant_id)
+
+
+def test_language_changes_the_WORDING_and_nothing_the_engine_decided(conn) -> None:
+    """The boundary, asserted rather than promised.
+
+    Two organizations identical except for the language they read in must receive the SAME
+    governance advice in different words. If this ever fails, a reading preference has started
+    moving compliance decisions — which is why the question is registered `DecisionEffect.NONE`
+    and deliberately left un-required (required-ness feeds coverage and confidence, and those are
+    engine outputs).
+    """
+    engine = DiscoveryEngine(load_bundled_packs())
+    decided: dict[str, object] = {}
+    languages: dict[str, set] = {}
+    for code in ("ar", "en"):
+        tenant_id = _tenant()
+        tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+        store = PostgresGovernanceStore(connection=conn)
+        try:
+            session = _with_language(store, tenant_id, engine, code)
+            draft, provider = _draft(store, session.id, tenant)
+            languages[code] = {r.language for r in provider.requests}
+            decided[code] = {
+                "frameworks": draft["inferred_frameworks"],
+                "maturity_baseline": draft["maturity_baseline"],
+                "maturity_vision": draft["maturity_vision"],
+                "gap_ids": [g["gap_id"] for g in draft["top_risks"]],
+                "items": [
+                    (i["id"], i["pillar"], i["priority"], i["timeframe_bucket"], i["title_key"])
+                    for i in draft["items"]
+                ],
+            }
+        finally:
+            _cleanup(conn, tenant_id)
+
+    assert languages["ar"] == {Language.ARABIC}
+    assert languages["en"] == {Language.ENGLISH}
+    assert decided["ar"] == decided["en"], "language moved something the rule engine decided"
+
+
+def test_language_is_an_INSTRUCTION_not_metadata(conn) -> None:
+    """The regression this exists to prevent, because it already happened once.
+
+    `LLMRequest.language` is metadata: `messages()` folds segments into system + user and never
+    turns that field into anything a model reads. A plan drafted for an Arabic-reading organization
+    came back in English with the request correctly marked ARABIC — every layer agreed, and the
+    model was never told.
+
+    So the assertion is not on `request.language`. It is on the text the model actually receives.
+    """
+    tenant_id = _tenant()
+    tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+    store = PostgresGovernanceStore(connection=conn)
+    try:
+        session = _with_language(store, tenant_id, DiscoveryEngine(load_bundled_packs()), "ar")
+        _, provider = _draft(store, session.id, tenant)
+
+        directive = answer_language_directive(Language.ARABIC)
+        for request in provider.requests:
+            system = next(m["content"] for m in request.messages() if m["role"] == "system")
+            assert directive in system, (
+                "the Arabic directive is missing from the system message the model reads — "
+                "setting only LLMRequest.language is the bug this test exists for"
+            )
+            # And it must be the language's own directive, not the other one silently applied.
+            assert answer_language_directive(Language.ENGLISH) not in system
+    finally:
+        _cleanup(conn, tenant_id)
+
+
+def test_each_language_sends_its_own_directive(conn) -> None:
+    """English must be instructed as explicitly as Arabic. A default that happens to match the
+    model's habit is not an instruction — it is a coincidence that holds until the model changes."""
+    engine = DiscoveryEngine(load_bundled_packs())
+    for code, language in (("ar", Language.ARABIC), ("en", Language.ENGLISH)):
+        tenant_id = _tenant()
+        tenant = TenantContext(tenant_id=tenant_id, principal_id="user_1", roles=("owner",))
+        store = PostgresGovernanceStore(connection=conn)
+        try:
+            session = _with_language(store, tenant_id, engine, code)
+            _, provider = _draft(store, session.id, tenant)
+            system = next(
+                m["content"] for m in provider.requests[0].messages() if m["role"] == "system"
+            )
+            assert answer_language_directive(language) in system
+        finally:
+            _cleanup(conn, tenant_id)

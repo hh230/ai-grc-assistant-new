@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { localisedTitle } from "@/lib/planExecution/localiseTitle";
 import {
   AlertTriangle,
   ChevronDown,
@@ -48,6 +49,11 @@ interface PlanItemCardProps {
 
 export function PlanItemCard({ item }: PlanItemCardProps) {
   const t = useTranslations("planExecution");
+  // A separate namespace, because these names are the RULE ENGINE's vocabulary, not this
+  // component's. `has` is asked first: next-intl answers a missing message with the
+  // namespace-qualified key rather than throwing, and `planSeed.foo` on a customer's screen is
+  // worse than the English the plan already stored.
+  const seed = useTranslations("planSeed");
   const [expanded, setExpanded] = useState(true);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -74,7 +80,9 @@ export function PlanItemCard({ item }: PlanItemCardProps) {
         )}
       </div>
 
-      <h3 className="mt-2.5 text-sm font-semibold leading-snug text-foreground">{item.title}</h3>
+      <h3 className="mt-2.5 text-sm font-semibold leading-snug text-foreground">
+        {localisedTitle(item, seed.has, seed)}
+      </h3>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
         <StatusStepper

@@ -15,6 +15,8 @@ for wording.
 
 from __future__ import annotations
 
+from pipeline_contracts import Language
+
 SYSTEM_PROMPT_ID = "governance_plan.system.v2"
 SYSTEM_PROMPT = (
     "You are a governance, risk, and compliance advisor writing for a business owner who does not "
@@ -136,3 +138,44 @@ __all__ = [
     "SECTOR_CONTEXT_HEADING",
     "sector_context_block",
 ]
+
+
+# The language directive for the governance-plan drafting role. THIS module owns it.
+#
+# Not a copy of anything. An earlier version of this block described itself as duplicating
+# `prompt_orchestrator.templates._ANSWER_LANGUAGE`, and that framing was the actual problem: two
+# things called the same thing will be expected to stay in step, and one day they will not. They
+# are not the same thing. That one governs the retrieve-then-generate pipeline's system template;
+# this one governs a tool that writes governance-plan prose and states what THAT job needs — keep
+# framework names and control identifiers in their original form, because "ISO 27001" and "NCA ECC"
+# translated are no longer citations. A prompt owning its own language directive is not
+# duplication; it is a prompt.
+#
+# It must be a SEGMENT, not the request's `language` field. `LLMRequest.language` is metadata:
+# `messages()` folds segments into system + user and never turns that field into anything a model
+# reads. A plan drafted for an Arabic-reading organization came back in English with the request
+# correctly marked ARABIC — the field was right and the model never saw it. `test_language_is_an
+# _INSTRUCTION_not_metadata` exists to keep that from returning.
+_PLAN_LANGUAGE_DIRECTIVE = {
+    Language.ENGLISH: (
+        "Write every field of the plan in clear, professional English."
+    ),
+    Language.ARABIC: (
+        "اكتب جميع حقول الخطة باللغة العربية الفصحى الواضحة والمهنية. "
+        "أبقِ أسماء الأطر ومعرّفات الضوابط كما هي بلغتها الأصلية "
+        "(مثل ISO 27001 وNCA ECC وSAMA CSF)، فترجمتها تُفقدها صفتها كمرجع."
+    ),
+    Language.MIXED: (
+        "Write the plan in the language the organization used. If it mixes Arabic and English, "
+        "mirror that mix, and keep framework names and control identifiers in their original form."
+    ),
+}
+
+
+def answer_language_directive(language: Language) -> str:
+    """The instruction that tells the model which language to write the plan in.
+
+    English is the fallback for a language this role has no directive for — a plan in the wrong
+    language is recoverable, a plan with no language instruction at all silently is not.
+    """
+    return _PLAN_LANGUAGE_DIRECTIVE.get(language, _PLAN_LANGUAGE_DIRECTIVE[Language.ENGLISH])

@@ -21,7 +21,12 @@ class PlanItemView(BaseModel):
     plan_id: str
     pillar: str
     title: str
+    # The i18n key behind the title, so a client can render it in the reader's language. Empty for
+    # a plan drafted before the key was kept — the client falls back to `title`, which stays
+    # authoritative.
+    title_key: str = ""
     objective: str
+    objective_key: str = ""
     expected_outcome: str
     rationale: str
     timeframe_bucket: str
@@ -45,7 +50,9 @@ class PlanItemView(BaseModel):
             plan_id=item.plan_id,
             pillar=item.pillar,
             title=item.title,
+            title_key=item.title_key,
             objective=item.objective,
+            objective_key=item.objective_key,
             expected_outcome=item.expected_outcome,
             rationale=item.rationale,
             timeframe_bucket=item.timeframe_bucket,

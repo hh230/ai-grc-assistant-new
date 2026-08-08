@@ -327,6 +327,21 @@
           }
         ]
       }
+    },
+    {
+      "id": "q:organization_language",
+      "version": "1.0",
+      "prompt_key": "discovery.question.organization_language",
+      "value_type": "enum",
+      "writes_signal": "organization_language",
+      "priority": 1,
+      "stage": "general",
+      "ui_hint": "dropdown",
+      "options": [
+        "ar",
+        "en"
+      ],
+      "required": false
     }
   ],
   "rules": [

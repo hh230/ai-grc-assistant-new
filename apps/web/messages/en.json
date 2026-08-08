@@ -2310,5 +2310,29 @@
     "summary": "{covered} of {total} controls have evidence linked.",
     "gaps": "{count, plural, =1 {1 control has nothing linked} other {# controls have nothing linked}}",
     "cta": "All controls"
+  },
+  "planSeed": {
+    "adopt_technical_security_baseline": "Adopt Technical Security Baseline",
+    "align_with_sama_csf": "Align With Sama Csf",
+    "approve_foundational_policies": "Approve Foundational Policies",
+    "approve_internal_audit_plan": "Approve Internal Audit Plan",
+    "approve_org_structure": "Approve Org Structure",
+    "approve_risk_register": "Approve Risk Register",
+    "confirm_regulatory_applicability": "Confirm Regulatory Applicability",
+    "designate_compliance_owner": "Designate Compliance Owner",
+    "draft_foundational_policies": "Draft Foundational Policies",
+    "establish_cross_border_transfer_safeguards": "Establish Cross Border Transfer Safeguards",
+    "establish_governance_oversight_body": "Establish Governance Oversight Body",
+    "establish_risk_register": "Establish Risk Register",
+    "establish_third_party_risk_management": "Establish Third Party Risk Management",
+    "formalize_org_structure": "Formalize Org Structure",
+    "harden_critical_infrastructure_controls": "Harden Critical Infrastructure Controls",
+    "implement_data_residency_controls": "Implement Data Residency Controls",
+    "plan_internal_audit_cadence": "Plan Internal Audit Cadence",
+    "review_personal_data_handling": "Review Personal Data Handling",
+    "schedule_internal_audit_review": "Schedule Internal Audit Review",
+    "schedule_org_structure_review": "Schedule Org Structure Review",
+    "schedule_policy_review": "Schedule Policy Review",
+    "schedule_risk_register_review": "Schedule Risk Register Review"
   }
 }

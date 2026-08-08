@@ -33,7 +33,11 @@ export interface PlanItem {
   planId: string;
   pillar: string;
   title: string;
+  /** The i18n key behind `title`, when the plan was drafted with one. Empty for a plan drafted
+   *  before the key was kept — `title` stays authoritative and is the fallback. */
+  titleKey: string;
   objective: string;
+  objectiveKey: string;
   expectedOutcome: string;
   rationale: string;
   timeframeBucket: TimeframeBucket;

@@ -11,6 +11,7 @@ from tests.fake_store import FakeGovernanceStore
 
 _ANSWERS = {
     "q:primary_activity": "legal_services",
+    "q:organization_language": "ar",
     "q:employee_count": 15,
     "q:provides_saas": False,
     "q:has_compliance_officer": True,

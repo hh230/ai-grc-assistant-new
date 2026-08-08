@@ -58,6 +58,28 @@ _FALLBACK_EXECUTIVE_BRIEF = (
 )
 
 
+# The signal the organization answers with, and what it maps to. `Language` is the prompt layer's
+# vocabulary; `ar`/`en` is the interview's. Translating between them here keeps the interview from
+# having to know about the prompt orchestrator.
+_LANGUAGES = {"ar": Language.ARABIC, "en": Language.ENGLISH}
+ORGANIZATION_LANGUAGE_SIGNAL = "organization_language"
+
+
+def _organization_language(core: dict, fallback: Language) -> Language:
+    """The language the ORGANIZATION works in, from its own answer to the core interview.
+
+    Language reaches exactly one place: the wording of the drafted prose. It must never move a
+    gap, a maturity score, an applicability derivation or a plan item — two organizations
+    answering identically except for this must get the same plan in different words. The question
+    is registered `DecisionEffect.NONE` for that reason, and is deliberately NOT required, because
+    required-ness feeds coverage and confidence, and those are engine outputs.
+
+    Unanswered means the caller's default, not a guess.
+    """
+    answer = core.get(ORGANIZATION_LANGUAGE_SIGNAL)
+    return _LANGUAGES.get(str(answer or "").lower(), fallback)
+
+
 def _core_signals(session: Any) -> dict:
     """The core interview's answers as plain values, for the WRITER only.
 
@@ -147,11 +169,14 @@ class PlanDraftTool:
         # What the customer SAID, alongside what the engine concluded. Both are context for the
         # writing; neither is a decision — the plan's items came from the rule engine above.
         core = _core_signals(session)
+        # Resolved per session, from the organization's answer. `self._language` is now the
+        # fallback for an organization that did not answer, not a fixed setting for everyone.
+        language = _organization_language(core, self._language)
 
-        executive_summary = self._draft_executive_brief(applicability, core, sector, warnings)
-        top_risks = [self._draft_gap(gap, warnings) for gap in applicability.gaps]
+        executive_summary = self._draft_executive_brief(applicability, core, sector, warnings, language)
+        top_risks = [self._draft_gap(gap, warnings, language) for gap in applicability.gaps]
         items = [
-            self._draft_item(item, core, sector, now, warnings)
+            self._draft_item(item, core, sector, now, warnings, language)
             for item in applicability.plan_items
         ]
 
@@ -206,11 +231,11 @@ class PlanDraftTool:
         """The last generation failure, for the warning that reports the fallback."""
         return getattr(self, "_last_error", None) or "no reason recorded"
 
-    def _generate(self, prompt: str) -> str | None:
+    def _generate(self, prompt: str, language: Language) -> str | None:
         request = LLMRequest(
             family=PromptFamily.TOOL,
             workflow="governance_plan_draft",
-            language=self._language,
+            language=language,
             segments=[
                 PromptSegment(
                     role=SegmentRole.SYSTEM,
@@ -218,6 +243,17 @@ class PlanDraftTool:
                     title="System",
                     content=prompts.SYSTEM_PROMPT,
                     source=prompts.SYSTEM_PROMPT_ID,
+                ),
+                # The language the ORGANIZATION reads in. `LLMRequest.language` alone is
+                # metadata — `messages()` folds segments and never turns that field into anything
+                # the model sees — so the directive has to be a segment. Borrowed from the prompt
+                # orchestrator rather than restated, so there is one wording platform-wide.
+                PromptSegment(
+                    role=SegmentRole.SYSTEM,
+                    kind=SegmentKind.POLICIES,
+                    title="Language",
+                    content=prompts.answer_language_directive(language),
+                    source="rasheed_system.v1",
                 ),
                 PromptSegment(
                     role=SegmentRole.USER,
@@ -241,7 +277,8 @@ class PlanDraftTool:
             return None
 
     def _draft_executive_brief(
-        self, applicability, core: dict, sector: list[dict], warnings: list[str]
+        self, applicability, core: dict, sector: list[dict], warnings: list[str],
+        language: Language,
     ) -> str:
         context = (
             json.dumps(
@@ -254,20 +291,20 @@ class PlanDraftTool:
             + prompts.core_context_block(core)
             + prompts.sector_context_block(sector)
         )
-        text = self._generate(prompts.executive_brief_prompt(context))
+        text = self._generate(prompts.executive_brief_prompt(context), language)
         if not text:
             warnings.append(f"executive_brief: generation failed ({self._why()}), used fallback")
             return _FALLBACK_EXECUTIVE_BRIEF
         return text.strip()
 
-    def _draft_gap(self, gap: dict, warnings: list[str]) -> dict:
+    def _draft_gap(self, gap: dict, warnings: list[str], language: Language) -> dict:
         description_seed = _humanize(gap.get("rationale_key", gap.get("gap_id", "")))
         context = (
             f"Gap id: {gap.get('gap_id')}\n"
             f"Severity: {gap.get('severity')}\n"
             f"Context: {description_seed}"
         )
-        text = self._generate(prompts.gap_prompt(context))
+        text = self._generate(prompts.gap_prompt(context), language)
         description, impact = _FALLBACK_GAP_DESCRIPTION, _FALLBACK_GAP_IMPACT
         if text:
             parsed = _parse_labeled_lines(text, ("DESCRIPTION", "IMPACT"))
@@ -283,7 +320,8 @@ class PlanDraftTool:
         }
 
     def _draft_item(
-        self, item: dict, core: dict, sector: list[dict], now: float, warnings: list[str]
+        self, item: dict, core: dict, sector: list[dict], now: float, warnings: list[str],
+        language: Language,
     ) -> dict:
         title = _humanize(item.get("title_key", item.get("id", "")))
         rationale_seed = _humanize(item.get("rationale_key", ""))
@@ -298,7 +336,7 @@ class PlanDraftTool:
             f"{', '.join(item.get('source_signal_keys', [])) or 'the organization'}\n"
             f"Context: {rationale_seed}"
         ) + prompts.core_context_block(core) + prompts.sector_context_block(sector)
-        text = self._generate(prompts.plan_item_prompt(context))
+        text = self._generate(prompts.plan_item_prompt(context), language)
         rationale, objective, outcome, risk = (
             _FALLBACK_RATIONALE,
             _FALLBACK_OBJECTIVE,

@@ -2310,5 +2310,29 @@
     "summary": "{covered} من {total} ضابطًا لديها أدلة مرتبطة.",
     "gaps": "{count, plural, zero {} one {ضابط واحد بلا أي دليل} two {ضابطان بلا أي دليل} few {# ضوابط بلا أي دليل} many {# ضابطًا بلا أي دليل} other {# ضابط بلا أي دليل}}",
     "cta": "كل الضوابط"
+  },
+  "planSeed": {
+    "adopt_technical_security_baseline": "اعتماد خط الأساس التقني للأمن السيبراني",
+    "align_with_sama_csf": "المواءمة مع إطار البنك المركزي السعودي للأمن السيبراني",
+    "approve_foundational_policies": "اعتماد السياسات التأسيسية",
+    "approve_internal_audit_plan": "اعتماد خطة المراجعة الداخلية",
+    "approve_org_structure": "اعتماد الهيكل التنظيمي",
+    "approve_risk_register": "اعتماد سجل المخاطر",
+    "confirm_regulatory_applicability": "تأكيد الأنظمة واللوائح المنطبقة",
+    "designate_compliance_owner": "تعيين مسؤول الالتزام",
+    "draft_foundational_policies": "صياغة السياسات التأسيسية",
+    "establish_cross_border_transfer_safeguards": "وضع ضوابط نقل البيانات خارج المملكة",
+    "establish_governance_oversight_body": "إنشاء جهة إشرافية للحوكمة",
+    "establish_risk_register": "إنشاء سجل المخاطر",
+    "establish_third_party_risk_management": "إنشاء إدارة مخاطر الأطراف الخارجية",
+    "formalize_org_structure": "توثيق الهيكل التنظيمي",
+    "harden_critical_infrastructure_controls": "تعزيز ضوابط البنى التحتية الحساسة",
+    "implement_data_residency_controls": "تطبيق ضوابط موقع استضافة البيانات",
+    "plan_internal_audit_cadence": "وضع دورية المراجعة الداخلية",
+    "review_personal_data_handling": "مراجعة التعامل مع البيانات الشخصية",
+    "schedule_internal_audit_review": "جدولة مراجعة التدقيق الداخلي",
+    "schedule_org_structure_review": "جدولة مراجعة الهيكل التنظيمي",
+    "schedule_policy_review": "جدولة مراجعة السياسات",
+    "schedule_risk_register_review": "جدولة مراجعة سجل المخاطر"
   }
 }

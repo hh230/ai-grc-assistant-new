@@ -31,7 +31,7 @@ def packs():
 def test_register_matches_the_packs_we_ship():
     report = verify_bundled()
     assert report.ok, report.render()
-    assert report.checked == 23
+    assert report.checked == 24
 
 
 def test_every_question_asked_is_registered(packs):
@@ -111,12 +111,21 @@ def test_inert_questions_are_the_known_backlog_and_no_more():
         for entry in REGISTER.values()
         if entry.decision_effect == (DecisionEffect.NONE,)
     }
-    assert inert == {
+    # Two different things wear the same NONE marker, and only one of them is a backlog.
+    #
+    # BACKLOG — asked today, not yet acted on. This set should SHRINK; if it grows, a dead question
+    # shipped.
+    backlog = {
         "q:has_legal_team",
         "q:held_licenses",
         "q:last_policy_review_date",
         "q:additional_context_note",
     }
+    # BY DESIGN — asked, and deliberately never allowed to reach a decision. This set must NOT
+    # shrink: the day `q:organization_language` starts moving a gap or a maturity score is the day
+    # two organizations that differ only in reading language receive different governance advice.
+    by_design = {"q:organization_language"}
+    assert inert == backlog | by_design
 
 
 def test_driving_signals_are_read_from_activation_predicates_too(packs):

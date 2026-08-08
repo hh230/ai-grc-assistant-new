@@ -556,6 +556,94 @@ def test_conclusion_is_one_way(clean):
         )
 
 
+# --- 0017: the freeze must PERMIT what it does not refuse ---------------------------------------
+#
+# Everything above asks whether the guard refuses. Nothing asked whether it lets the other case
+# through, and that is where it was broken for four migrations: `RETURN NEW` in a BEFORE DELETE
+# trigger returns NULL, and returning NULL CANCELS the row operation — silently, with no error and
+# `rowcount = 0`. Every DELETE on these two tables was being swallowed, open assessment or not.
+#
+# The four cases below are the full truth table for DELETE, because a guard is only correct when
+# both of its answers are.
+
+
+def test_a_sector_answer_on_an_OPEN_assessment_can_be_DELETED(clean):
+    """The permitted case, which the guard used to cancel while reporting success."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_del', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_del', %s, 'fal_license', 't', 'false'::jsonb)",
+        (release_id,),
+    )
+
+    deleted = clean.execute("DELETE FROM sector_answers WHERE assessment_id = 'as_del'")
+    # rowcount, not just a re-count: a cancelled DELETE and a DELETE that matched nothing both
+    # leave the table empty-handed, and only rowcount tells them apart at the moment it happens.
+    assert deleted.rowcount == 1
+    assert clean.execute(
+        "SELECT count(*) FROM sector_answers WHERE assessment_id = 'as_del'"
+    ).fetchone()[0] == 0
+
+
+def test_a_template_selection_on_an_OPEN_assessment_can_be_DELETED(clean):
+    """Same guard, second table — this is the one the foreign key caught in production."""
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_delsel', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+        " selected_by) VALUES ('as_delsel', 't', ARRAY['rel_x'], 'reviewer')"
+    )
+
+    deleted = clean.execute("DELETE FROM template_selections WHERE assessment_id = 'as_delsel'")
+    assert deleted.rowcount == 1
+
+    # And now the parent goes, which is the whole point: the FK could not release it while the
+    # child survived a DELETE that claimed to have removed it.
+    clean.execute("DELETE FROM assessments WHERE id = 'as_delsel'")
+    assert clean.execute(
+        "SELECT count(*) FROM assessments WHERE id = 'as_delsel'"
+    ).fetchone()[0] == 0
+
+
+def test_a_sector_answer_on_a_CONCLUDED_assessment_still_cannot_be_DELETED(clean):
+    """The refusal must survive the fix. It never depended on the return value — RAISE aborts
+    before any return — but a guard is not proved by the reasoning that it should hold."""
+    release_id = _release(clean, _template(clean))
+    _question(clean, release_id)
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_frzdel', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO sector_answers (assessment_id, release_id, question_id, tenant_id, answer) "
+        "VALUES ('as_frzdel', %s, 'fal_license', 't', 'false'::jsonb)",
+        (release_id,),
+    )
+    clean.execute("UPDATE assessments SET completed_at = now() WHERE id = 'as_frzdel'")
+
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute("DELETE FROM sector_answers WHERE assessment_id = 'as_frzdel'")
+
+
+def test_a_template_selection_on_a_CONCLUDED_assessment_still_cannot_be_DELETED(clean):
+    """Which knowledge produced a finished report cannot be erased from it either."""
+    clean.execute(
+        "INSERT INTO assessments (id, tenant_id, organization_id) VALUES ('as_frzsel', 't', 'o')"
+    )
+    clean.execute(
+        "INSERT INTO template_selections (assessment_id, tenant_id, selected_release_ids, "
+        " selected_by) VALUES ('as_frzsel', 't', ARRAY['rel_x'], 'reviewer')"
+    )
+    clean.execute("UPDATE assessments SET completed_at = now() WHERE id = 'as_frzsel'")
+
+    with pytest.raises(psycopg.errors.RaiseException, match="accepts no further writes"):
+        clean.execute("DELETE FROM template_selections WHERE assessment_id = 'as_frzsel'")
+
+
 # --- 0015: the tenant binding -----------------------------------------------------------------
 
 

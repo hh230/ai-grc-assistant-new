@@ -60,6 +60,9 @@ CORE_MIGRATIONS: tuple[str, ...] = (
     "governance-store/migrations/0014_assessment_freeze.sql",
     "governance-store/migrations/0015_assessment_tenant_binding.sql",
     "governance-store/migrations/0016_multi_select_questions.sql",
+    # Corrects 0014's guard, which cancelled DELETEs instead of permitting them. Must run after
+    # 0014, which creates the function this one replaces.
+    "governance-store/migrations/0017_assessment_freeze_delete.sql",
 )
 
 RETRIEVAL_MIGRATIONS: tuple[str, ...] = (

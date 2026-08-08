@@ -24,6 +24,27 @@ _FALLBACK_MAX_OUTPUT_TOKENS = 1200
 _FALLBACK_TEMPERATURE = 0.2
 _PROVIDER = "claude"
 
+# Models that still accept `temperature`. Sampling parameters were REMOVED from the Messages API
+# on Opus 4.7 and every model since — sending one returns 400 `temperature is deprecated for this
+# model`, which surfaces here as a GenerationError and, one layer up, as fallback prose where a
+# governance plan belongs.
+#
+# The list names the models that ACCEPT it rather than the ones that reject it, because those are
+# the finite, closed set: today's models are known, tomorrow's are not. An unrecognised model — a
+# newer one, or one this list has never heard of — is sent no temperature and therefore works. The
+# inverse list would have to be edited on every model release, and would fail closed the one time
+# nobody remembered to.
+_SAMPLING_MODELS = (
+    "claude-opus-4-6",
+    "claude-opus-4-5",
+    "claude-opus-4-1",
+    "claude-opus-4-0",
+    "claude-sonnet-4-6",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-0",
+    "claude-haiku-4-5",
+)
+
 
 class ClaudeGenerationProvider:
     """`GenerationProvider` adapter over Anthropic's Messages API. Maps the request's
@@ -49,18 +70,31 @@ class ClaudeGenerationProvider:
             ) from exc
         return anthropic.Anthropic()
 
+    def _accepts_temperature(self) -> bool:
+        """Whether THIS model accepts a sampling parameter. Asked of the model, not of the caller:
+        a tool asks for wording that varies a little, and only the adapter knows whether the model
+        it is about to call still has a knob for that."""
+        return self._model.startswith(_SAMPLING_MODELS)
+
     def generate(self, request: LLMRequest) -> Answer:
         params = request.params
         messages = request.messages()
         system = next((m["content"] for m in messages if m["role"] == "system"), "")
         turns = [{"role": m["role"], "content": m["content"]} for m in messages if m["role"] != "system"]
+        # Built conditionally rather than passed as `temperature=None`: the SDK forwards an explicit
+        # None as a field, and the API rejects the field's presence, not its value.
+        sampling = (
+            {"temperature": float(params.get("temperature", _FALLBACK_TEMPERATURE))}
+            if self._accepts_temperature()
+            else {}
+        )
         try:
             response = self._client.messages.create(  # type: ignore[attr-defined]
                 model=self._model,
                 system=system,
                 messages=turns,
-                temperature=float(params.get("temperature", _FALLBACK_TEMPERATURE)),
                 max_tokens=int(params.get("max_output_tokens", _FALLBACK_MAX_OUTPUT_TOKENS)),
+                **sampling,
             )
         except GenerationError:
             raise  # already a domain error (e.g. from a test double)

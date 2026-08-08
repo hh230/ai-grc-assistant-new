@@ -202,6 +202,10 @@ class PlanDraftTool:
 
     # --- LLM-drafted prose, each call bounded to wording over already-fixed facts -------------
 
+    def _why(self) -> str:
+        """The last generation failure, for the warning that reports the fallback."""
+        return getattr(self, "_last_error", None) or "no reason recorded"
+
     def _generate(self, prompt: str) -> str | None:
         request = LLMRequest(
             family=PromptFamily.TOOL,
@@ -227,7 +231,13 @@ class PlanDraftTool:
         )
         try:
             return self._provider.generate(request).text
-        except GenerationError:
+        except GenerationError as exc:
+            # The REASON is kept, not just the fact. Every field of a plan once fell back to
+            # templated prose because a 400 was caught here and reported one layer up as
+            # "generation unavailable" — a phrase that reads like a transient blip and was, in
+            # fact, a permanently misconfigured request. A warning that cannot distinguish a dead
+            # network from a rejected parameter sends the reader to the wrong place.
+            self._last_error = f"{type(exc).__name__}: {exc}"
             return None
 
     def _draft_executive_brief(
@@ -246,7 +256,7 @@ class PlanDraftTool:
         )
         text = self._generate(prompts.executive_brief_prompt(context))
         if not text:
-            warnings.append("executive_brief: generation unavailable, used fallback text")
+            warnings.append(f"executive_brief: generation failed ({self._why()}), used fallback")
             return _FALLBACK_EXECUTIVE_BRIEF
         return text.strip()
 
@@ -264,7 +274,7 @@ class PlanDraftTool:
             description = parsed.get("DESCRIPTION") or description_seed or description
             impact = parsed.get("IMPACT") or impact
         else:
-            warnings.append(f"gap {gap.get('gap_id')}: generation unavailable, used fallback text")
+            warnings.append(f"gap {gap.get('gap_id')}: generation failed ({self._why()})")
         return {
             "gap_id": gap.get("gap_id"),
             "severity": gap.get("severity"),
@@ -304,7 +314,7 @@ class PlanDraftTool:
             outcome = parsed.get("EXPECTED_OUTCOME") or outcome
             risk = parsed.get("RISK_IF_SKIPPED") or risk
         else:
-            warnings.append(f"item {item.get('id')}: generation unavailable, used fallback text")
+            warnings.append(f"item {item.get('id')}: generation failed ({self._why()})")
 
         return {
             **item,

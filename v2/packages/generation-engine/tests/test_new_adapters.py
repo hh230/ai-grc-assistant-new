@@ -66,7 +66,10 @@ def test_claude_maps_request_and_response():
 
     call = client.calls[0]
     assert call["model"] == "claude-opus-4-8"
-    assert call["temperature"] == 0.1
+    # NOT sent: sampling parameters were removed from the Messages API on Opus 4.7 and every model
+    # since. This assertion used to read `== 0.1`, and it passed — the fake accepts whatever it is
+    # handed, so it happily recorded the one field the real API answers with a 400.
+    assert "temperature" not in call
     assert call["max_tokens"] == 800
     # system prompt is lifted out of the chat turns into the top-level `system` arg
     assert "You are Rasheed." in call["system"]
@@ -83,8 +86,37 @@ def test_claude_maps_request_and_response():
 def test_claude_defaults_params_when_absent():
     client = FakeAnthropic()
     ClaudeGenerationProvider(client=client).generate(make_request())
-    assert client.calls[0]["temperature"] == 0.2
+    assert "temperature" not in client.calls[0]
     assert client.calls[0]["max_tokens"] == 1200
+
+
+def test_claude_omits_temperature_on_a_model_that_rejects_it():
+    """The defect this pins. Sending `temperature` to Opus 4.7-or-later returns 400 `temperature is
+    deprecated for this model`; the tool above catches the resulting GenerationError and falls back
+    to templated prose. Every governance plan read "This was identified as a gap during the
+    assessment." — with the model configured, the key loaded, and no error anywhere a person looks.
+    """
+    client = FakeAnthropic()
+    provider = ClaudeGenerationProvider(model="claude-sonnet-5", client=client)
+    provider.generate(make_request(temperature=0.3, max_output_tokens=400))
+    assert "temperature" not in client.calls[0]
+    assert client.calls[0]["max_tokens"] == 400
+
+
+def test_claude_treats_an_unknown_model_as_rejecting_temperature():
+    """Fail-safe direction, and the reason the constant lists models that ACCEPT the parameter. A
+    model this adapter has never heard of is newer than this adapter, and newer means no sampling
+    parameters — so the unknown case has to be the working one."""
+    client = FakeAnthropic()
+    ClaudeGenerationProvider(model="claude-something-7", client=client).generate(make_request())
+    assert "temperature" not in client.calls[0]
+
+
+def test_claude_still_sends_temperature_to_a_legacy_model():
+    client = FakeAnthropic()
+    provider = ClaudeGenerationProvider(model="claude-opus-4-6", client=client)
+    provider.generate(make_request(temperature=0.3))
+    assert client.calls[0]["temperature"] == 0.3
 
 
 # ── Gemini ────────────────────────────────────────────────────────────────────

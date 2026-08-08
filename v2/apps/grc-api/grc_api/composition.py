@@ -109,6 +109,7 @@ POOL_MAX_SIZE = int(os.environ.get("DB_POOL_MAX_SIZE", "5"))
 # A caller that waits longer than this gets an error instead of hanging: a request queued forever
 # on a pool is indistinguishable from a hung service, and it will trip a health probe.
 POOL_TIMEOUT_SECONDS = float(os.environ.get("DB_POOL_TIMEOUT", "10"))
+POOL_APPLICATION_NAME = "grc-api"
 
 _pools: dict[bool, Any] = {}
 
@@ -130,7 +131,10 @@ def _pool(*, autocommit: bool) -> Any:
         min_size=POOL_MIN_SIZE,
         max_size=POOL_MAX_SIZE,
         timeout=POOL_TIMEOUT_SECONDS,
-        kwargs={"autocommit": autocommit},
+        # `application_name` lands in `pg_stat_activity`, which is how an operator (or a test that
+        # simulates a pooler reaping idle sessions) tells this service's connections apart from
+        # everything else sharing the database.
+        kwargs={"autocommit": autocommit, "application_name": POOL_APPLICATION_NAME},
         # Hand out a connection only after checking it is alive. Without this, the first request
         # after a database failover or an idle-timeout reaper gets a dead connection and fails for
         # a reason that has nothing to do with it.
@@ -202,30 +206,53 @@ class DurableMissionReader:
             connection.close()
 
 
-class _LazyAdapter:
-    """Defers construction to first use, so importing the package never opens a connection —
-    `grc_api.app` builds a module-level `app = create_app()` for uvicorn, and that import must work
-    without a database. Forwards everything; holds no behaviour of its own."""
+class _PerCallAdapter:
+    """Builds the read-model adapter around a POOLED connection for each call, and gives the
+    connection back when the call returns. The same rule `DurableMissionReader` follows above:
+    nothing durable outlives the call.
 
-    def __init__(self, factory: Callable[[], Any], *, name: str) -> None:
+    This replaces an adapter that was constructed once, from a DSN, and kept its own connection for
+    the lifetime of the process — outside the pool, and so outside `check_connection`. Against a
+    local Postgres that connection lives forever and the arrangement looks fine. Against a managed
+    Postgres it does not: the pooler reaps an idle connection, and because nothing ever rebuilt the
+    adapter, `/v1/missions` then returned 500 `the connection is closed` FOREVER — only a restart
+    of the process brought it back. That was observed in production, not theorised.
+
+    Deferring construction also preserves what the earlier lazy adapter existed for: `grc_api.app`
+    builds a module-level `app = create_app()` for uvicorn, and that import must work with no
+    database reachable.
+
+    Every method of both read-model ports is a call — `record`, `get`, `list_missions`,
+    `list_documents` — so forwarding attribute access as a bound call is the whole surface. A
+    non-callable attribute would come back wrapped and fail loudly rather than quietly, which is
+    the right way round for a seam this thin.
+    """
+
+    def __init__(self, factory: Callable[[Any], Any], *, name: str) -> None:
         self._factory = factory
         self._name = name
-        self._inner: Any | None = None
 
     def __getattr__(self, attribute: str) -> Any:
-        if self._inner is None:
-            self._inner = self._factory()
-        return getattr(self._inner, attribute)
+        def call(*args: Any, **kwargs: Any) -> Any:
+            connection = _connect(autocommit=True)
+            try:
+                return getattr(self._factory(connection), attribute)(*args, **kwargs)
+            finally:
+                connection.close()  # returns it to the pool; see `_PooledConnection`
+
+        return call
 
     def __repr__(self) -> str:
-        return f"<durable {self._name} ({'connected' if self._inner else 'not yet connected'})>"
+        return f"<durable {self._name} (pooled, one connection per call)>"
 
 
 def build_mission_read_model(storage: Storage, tables: Tables) -> Any:
     if storage is Storage.MEMORY:
         return InMemoryMissionListReadModel()
-    return _LazyAdapter(
-        lambda: PostgresMissionListReadModel(dsn=database_dsn(), table=tables.missions_view),
+    return _PerCallAdapter(
+        lambda connection: PostgresMissionListReadModel(
+            connection=connection, table=tables.missions_view
+        ),
         name="mission read model",
     )
 
@@ -233,8 +260,10 @@ def build_mission_read_model(storage: Storage, tables: Tables) -> Any:
 def build_document_read_model(storage: Storage, tables: Tables) -> Any:
     if storage is Storage.MEMORY:
         return InMemoryDocumentReadModel()
-    return _LazyAdapter(
-        lambda: PostgresDocumentReadModel(dsn=database_dsn(), table=tables.documents_view),
+    return _PerCallAdapter(
+        lambda connection: PostgresDocumentReadModel(
+            connection=connection, table=tables.documents_view
+        ),
         name="document read model",
     )
 

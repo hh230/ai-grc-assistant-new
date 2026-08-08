@@ -18,15 +18,16 @@ from __future__ import annotations
 from typing import Annotated, Any
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
 from governance_store.knowledge_services import (
     ActivateKnowledgeRelease,
     Actor,
     ApproveKnowledgeTemplate,
-    CompleteAssessment,
+    Event,
     GenerateKnowledgeTemplate,
     ImportAuthoredPack,
     OpenSectorInterview,
+    Outcome,
     PublishKnowledgeTemplate,
     RecordSectorAnswers,
     RejectKnowledgeTemplate,
@@ -486,14 +487,64 @@ def record_answers(
 @router.post("/knowledge/assessments/{assessment_id}/complete", response_model=OutcomeResponse)
 def complete_assessment(
     assessment_id: str,
+    request: Request,
     tenant: Annotated[TenantContext, Depends(require_tenant)],
     store: Annotated[Any, Depends(get_knowledge_store)],
 ) -> OutcomeResponse:
     """One-way. After it the schema refuses every further write to this assessment, which is what
-    lets a plan be built from it without snapshot isolation."""
+    lets a plan be built from it without snapshot isolation.
+
+    It is also the single recomputation point (ADR 0068 §D5): any answer that DECLARED an engine
+    signal is merged here, once, and the resulting analysis is recorded as a new applicability
+    version. An interview whose questions declared nothing — every shipped pack today — takes the
+    original path and records no version, so the decision stays exactly where discovery left it.
+    """
+    from governance_store.store import PostgresGovernanceStore
+
+    from grc_api.sector_conclusion import AlreadyConcluded, conclude_sector_assessment
+
+    try:
+        result = conclude_sector_assessment(
+            connection=store._conn,
+            knowledge_store=store,
+            governance_store=PostgresGovernanceStore(connection=store._conn),
+            engine=request.app.state.discovery_engine,
+            assessment_id=assessment_id,
+            tenant_id=tenant.tenant_id,
+            now=utc_now(),
+        )
+    except LookupError:
+        # Invisible to this tenant. Reported as "nothing changed" rather than 404, preserving the
+        # existing contract: an assessment id is a fact about another customer, and a status code
+        # that distinguishes "yours, already done" from "not yours" would leak it.
+        return OutcomeResponse.from_outcome(
+            Outcome(changed=False, data={"assessment_id": assessment_id})
+        )
+    except AlreadyConcluded:
+        # Not an error the caller can fix by retrying, and not a 500: the assessment is already in
+        # the state they asked for. Reported as unchanged, the same shape `CompleteAssessment`
+        # returned when it was called twice.
+        return OutcomeResponse.from_outcome(
+            Outcome(changed=False, data={"assessment_id": assessment_id})
+        )
+
     return OutcomeResponse.from_outcome(
-        CompleteAssessment(store, now=utc_now)(
-            assessment_id=assessment_id, tenant_id=tenant.tenant_id
+        Outcome(
+            changed=True,
+            event=Event(
+                "AssessmentCompleted",
+                {
+                    "assessment_id": assessment_id,
+                    "tenant_id": tenant.tenant_id,
+                    "applicability_version_id": result.version_id,
+                    "conflict_count": len(result.conflicts),
+                },
+            ),
+            data={
+                "assessment_id": assessment_id,
+                "applicability_version_id": result.version_id,
+                "conflicts": list(result.conflicts),
+            },
         )
     )
 

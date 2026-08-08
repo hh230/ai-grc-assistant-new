@@ -84,7 +84,19 @@ def test_the_prompt_version_is_recorded_on_the_request():
 
 @pytest.mark.parametrize(
     "field",
-    ["maturity_level", "risk_score", "recommended_controls", "compliance_status", "verdict"],
+    [
+        "maturity_level",
+        "risk_score",
+        "recommended_controls",
+        "compliance_status",
+        "verdict",
+        # ADR 0068's declared channel. A model returning `writes_signal` would not be writing
+        # language, it would be choosing which fact the engine acts on — the same line as
+        # `maturity_level`, arriving through a newer door. The declaration is a human's, added and
+        # reviewed as its own change.
+        "writes_signal",
+        "signal_value_map",
+    ],
 )
 def test_a_decision_field_fails_the_WHOLE_response(field):
     """Claude is responsible for the language, not for the truth. The offending field is not

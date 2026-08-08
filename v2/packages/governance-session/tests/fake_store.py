@@ -23,6 +23,7 @@ class FakeGovernanceStore:
         self._sessions: dict[str, DiscoverySession] = {}
         self._answers: dict[str, list[_AnswerRow]] = {}
         self.organization_baselines: dict[str, tuple[tuple[str, ...], SignalSet]] = {}
+        self.applicability_versions: list[dict[str, object]] = []
 
     def save_session(self, session: DiscoverySession) -> None:
         self._sessions[session.id] = session
@@ -59,3 +60,12 @@ class FakeGovernanceStore:
         self, tenant_id: str, active_packs: tuple[str, ...], signals: SignalSet, now: float
     ) -> None:
         self.organization_baselines[tenant_id] = (active_packs, signals)
+
+    def transaction(self):
+        """No database, so nothing to roll back — the scope exists so the service can be written once."""
+        import contextlib
+
+        return contextlib.nullcontext()
+
+    def record_applicability_version(self, **fields: object) -> None:
+        self.applicability_versions.append(fields)

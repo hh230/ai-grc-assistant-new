@@ -92,3 +92,66 @@ def test_baseline_active_packs_match_the_concluded_sessions_active_packs() -> No
     assert outcome is not None
     active_packs, _ = store.organization_baselines["tenant_b"]
     assert set(active_packs) == set(outcome.session.active_pack_ids)
+
+
+# --- ADR 0068: the concluded analysis is recorded as version 1, here and nowhere else -----------
+
+
+def test_concluding_records_applicability_version_one() -> None:
+    """v1 is written where the analysis is COMPUTED.
+
+    An earlier draft let the sector conclusion create a missing v1 on demand. That made two write
+    paths for one fact, and left every session that never had a sector interview — the majority —
+    with no version at all.
+    """
+    service, store = _service()
+    outcome = _drive_to_conclusion(service, "tenant_a")
+    assert outcome is not None and outcome.concluded is True
+
+    assert len(store.applicability_versions) == 1
+    version = store.applicability_versions[0]
+    assert version["version"] == 1
+    assert version["source"] == "core_conclusion"
+    assert version["session_id"] == outcome.session.id
+    assert version["tenant_id"] == "tenant_a"
+    assert version["conflicts"] == []
+    assert "assessment_id" not in version, "a core version names no assessment"
+
+
+def test_the_recorded_version_is_the_analysis_the_session_concluded_with() -> None:
+    """Recorded, not recomputed — the row and the session must agree byte for byte."""
+    from governance_store.codec import applicability_to_dict
+
+    service, store = _service()
+    outcome = _drive_to_conclusion(service, "tenant_a")
+    assert outcome is not None
+
+    recorded = store.applicability_versions[0]["applicability"]
+    assert recorded == applicability_to_dict(outcome.session.applicability)
+
+
+def test_the_version_carries_the_pack_versions_that_ruled() -> None:
+    """Without this, reproducing an old decision means guessing which packs were installed."""
+    service, store = _service()
+    outcome = _drive_to_conclusion(service, "tenant_a")
+    assert outcome is not None
+
+    assert store.applicability_versions[0]["engine_pack_versions"] == dict(
+        outcome.session.pack_versions
+    )
+
+
+def test_a_session_that_has_not_concluded_records_no_version() -> None:
+    service, store = _service()
+    session, question = service.start("tenant_a")
+    service.answer(session.id, "tenant_a", question.id, _ANSWERS[question.id])
+
+    assert store.applicability_versions == []
+
+
+# The atomicity of a conclusion is NOT tested here. This store has no transactions, so a test
+# against it could only assert the ORDER of calls — and an audit found exactly that: a test whose
+# name promised "the conclusion is stopped" while it proved something weaker. The real property
+# lives in `grc-api/tests/production/test_stored_applicability_is_authoritative.py`, which fails
+# the version write against a real Postgres and asserts that no session, version or baseline
+# survives.

@@ -17,7 +17,7 @@ from collections.abc import Callable
 from typing import Any, Protocol
 
 from governance_discovery.scheduler import compute_due_at
-from governance_store import PostgresGovernanceStore
+from governance_store import PostgresGovernanceStore, applicability_from_dict
 from pipeline_contracts import (
     GenerationError,
     GenerationProvider,
@@ -155,10 +155,25 @@ class PlanDraftTool:
         if not session_id:
             return _fail("no discovery_session_id given")
         session = self._store.get_session(session_id, tenant.tenant_id)
-        if session is None or session.status != "concluded" or session.applicability is None:
+        if session is None or session.status != "concluded":
             return _fail("discovery session has not concluded yet")
 
-        applicability = session.applicability
+        # The RECORDED analysis, not `session.applicability` (ADR 0068 §D5). The column holds what
+        # discovery alone concluded and nothing updates it when a sector answer moves a decision;
+        # reading it here is what made the sector channel write a v2 nobody consumed. Read, never
+        # recomputed: no `analyze` call exists on this path.
+        version = self._store.latest_applicability_version(session_id, tenant.tenant_id)
+        if version is None:
+            return _fail(
+                f"no recorded applicability version for session {session_id} — run "
+                "`python -m grc_api.backfill_applicability`"
+            )
+        applicability = applicability_from_dict(version["applicability"])
+        if applicability is None:
+            return _fail(
+                f"the recorded applicability version for {session_id} is unreadable"
+            )
+        applicability_version_id = version["id"]
         now = self._now()
         warnings: list[str] = []
 
@@ -192,6 +207,9 @@ class PlanDraftTool:
             # from one written without it — the same reason the release id is stored beside the
             # assessment.
             "sector_answer_count": len(sector),
+            # Which analysis this draft rests on, carried through to the persisted plan so a
+            # reader a year from now can name it rather than infer it.
+            "source_applicability_id": applicability_version_id,
             "drafted_at": now,
         }
         return ToolStepResult(

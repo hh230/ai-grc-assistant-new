@@ -245,7 +245,19 @@ def test_an_enum_question_needs_at_least_two_options(clean):
 
 def test_the_schema_offers_NO_column_that_would_put_an_llm_fact_on_the_decision_path(clean):
     """§2, structurally: Claude authors language, not truth. A column here would be an invitation
-    to store an LLM-asserted decision, so none exists."""
+    to store an LLM-asserted decision, so none exists.
+
+    `writes_signal` and `signal_value_map` were added by ADR 0068 and are the one narrow exception,
+    which is why they are named here rather than quietly dropped from the set. They are not an
+    LLM-asserted decision: the generator REFUSES them (`_FORBIDDEN_FIELDS` in
+    `grc_api.knowledge_generation`, tested there), they may only name a signal the engine already
+    asks for and a rule already reads, and they carry no rule of their own. A human writes them and
+    a human reviews them — the property §2 was defending, held at the author rather than at the
+    column.
+
+    Everything else in `forbidden` stays forbidden, and for the original reason: a `priority` or a
+    `severity` here would be the model grading an organization.
+    """
     columns = {
         row[0]
         for row in clean.execute(
@@ -254,9 +266,13 @@ def test_the_schema_offers_NO_column_that_would_put_an_llm_fact_on_the_decision_
         ).fetchall()
     }
     forbidden = {
-        "writes_signal", "signal", "rule", "rules", "predicate", "effect",
+        "signal", "rule", "rules", "predicate", "effect",
         "severity", "maturity_delta", "priority", "plan_seed", "resolves_signal",
     }
+    assert {"writes_signal", "signal_value_map"} <= columns, (
+        "ADR 0068's declared channel is missing — this test would then be passing for the wrong "
+        "reason"
+    )
     assert not (columns & forbidden), f"decision columns leaked into the schema: {columns & forbidden}"
 
 

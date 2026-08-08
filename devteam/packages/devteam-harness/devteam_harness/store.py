@@ -38,6 +38,7 @@ class InMemoryGovernanceStore:
         self._sessions: dict[str, DiscoverySession] = {}
         self._answers: dict[str, list[AnswerRow]] = {}
         self.organization_baselines: dict[str, tuple[tuple[str, ...], SignalSet]] = {}
+        self.applicability_versions: list[dict[str, object]] = []
 
     # --- sessions ---------------------------------------------------------------------------
 
@@ -91,3 +92,17 @@ class InMemoryGovernanceStore:
         """Called by `DiscoverySessionService` when an interview concludes. Its absence is
         exactly what stops the grc-api test-local store from ever finishing a session."""
         self.organization_baselines[tenant_id] = (active_packs, signals)
+
+    def transaction(self):
+        """No database, so nothing to roll back. Present because `DiscoverySessionService` opens a transaction around conclusion and a store that cannot must not silently be usable."""
+        import contextlib
+
+        return contextlib.nullcontext()
+
+    def record_applicability_version(self, **fields: object) -> None:
+        """Also called on conclusion, since ADR 0068: the analysis is recorded as version 1 where
+        it is computed. Added here for the same reason the method above exists — a store that
+        cannot record it cannot conclude an interview, and this store's whole purpose is running
+        thousands of them to conclusion. The harness found this the moment the behaviour landed:
+        300 scenarios, 300 AttributeErrors."""
+        self.applicability_versions.append(fields)

@@ -111,6 +111,14 @@ class PlanFinalizeTool:
                 )
 
         self._store.create_plan(new_plan)
+        # Which analysis this plan rests on (ADR 0068). Bound after the insert rather than carried
+        # on `GovernancePlan`, so the frozen plan model and its codec stay unchanged: the plan is
+        # the same object it always was, plus one auditable pointer.
+        applicability_id = draft.get("source_applicability_id")
+        if applicability_id:
+            self._store.bind_plan_to_applicability(
+                new_plan_id, tenant.tenant_id, str(applicability_id)
+            )
 
         for item in draft.get("items", ()):
             item_id = f"{new_plan_id}:{item['id']}"

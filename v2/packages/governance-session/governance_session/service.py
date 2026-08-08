@@ -6,6 +6,8 @@ go back, resume (ADR 0066). Owns sequencing and boundary validation only; every 
 
 from __future__ import annotations
 
+import hashlib
+import json
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Protocol
@@ -25,6 +27,16 @@ from governance_session.errors import (
     SessionNotFound,
     UnknownQuestion,
 )
+
+CORE_CONCLUSION = "core_conclusion"
+
+
+def _signals_hash(signals: SignalSet) -> str:
+    """A fingerprint of the answers behind a version, so a reader can tell "the same answers" from
+    "the same result"."""
+    return hashlib.sha256(
+        json.dumps(signals.as_dict(), sort_keys=True, default=str).encode()
+    ).hexdigest()
 
 
 class AnswerHistoryRecord(Protocol):
@@ -46,6 +58,8 @@ class GovernanceStorePort(Protocol):
     def upsert_organization_baseline(
         self, tenant_id: str, active_packs: tuple[str, ...], signals: SignalSet, now: float
     ) -> None: ...
+    def record_applicability_version(self, **fields: object) -> None: ...
+    def transaction(self) -> object: ...   # a context manager; see `PostgresGovernanceStore`
 
 
 @dataclass(frozen=True)
@@ -74,6 +88,41 @@ class DiscoverySessionService:
         self._store = store
         self._new_id = new_id
         self._now = now
+
+    def _record_applicability_version(
+        self, session: DiscoverySession, applicability: Applicability
+    ) -> None:
+        """Record the concluded analysis as version 1 (ADR 0068).
+
+        Part of conclusion, not a consequence of it: `_advance` wraps this, `save_session` and the
+        baseline in ONE transaction, so a session cannot end up concluded with no version recorded.
+        If this raises, the whole conclusion rolls back. A plan built on an analysis nobody can name
+        later is worse than a conclusion that failed loudly now.
+        """
+        from governance_store.codec import applicability_to_dict
+
+        self._store.record_applicability_version(
+            version_id=f"av_{self._new_id()}",
+            tenant_id=session.tenant_id,
+            session_id=session.id,
+            version=1,
+            source=CORE_CONCLUSION,
+            applicability=applicability_to_dict(applicability),
+            resolved_signals=[
+                {
+                    "signal_key": key,
+                    "resolved_value": value,
+                    "origin": "core_answer",
+                    "outcome": "absent_filled",
+                    "core_claim": {"value": value},
+                    "sector_claims": [],
+                }
+                for key, value in sorted(session.signals.as_dict().items())
+            ],
+            conflicts=[],
+            answer_set_hash=_signals_hash(session.signals),
+            engine_pack_versions=dict(session.pack_versions or {}),
+        )
 
     # --- start / resume ---------------------------------------------------------------------
 
@@ -121,13 +170,22 @@ class DiscoverySessionService:
         if self._engine.is_concluded(session.state):
             applicability: Applicability = analyze(session.signals, self._engine)
             session = session.concluded(applicability, self._now())
-            self._store.save_session(session)
-            # ADR 0066 §5.7: the baseline `effective_signals()` (Plan Execution, §5.3) builds on —
-            # without this, organization_profiles never gets a first writer, and completing a
-            # plan item later would have nothing to layer its resolved signal on top of.
-            self._store.upsert_organization_baseline(
-                session.tenant_id, session.active_pack_ids, session.signals, self._now()
-            )
+            # ONE transaction for the three writes that have no meaning apart (ADR 0068 §D5).
+            # The store is autocommit, so before this each was its own commit and a failure on the
+            # last left a session concluded with no analysis version — a plan could then be built
+            # from an analysis nobody could name. `transaction()` opens an explicit block without
+            # changing the connection's autocommit for any other caller.
+            with self._store.transaction():
+                self._store.save_session(session)
+                # ADR 0066 §5.7: the baseline `effective_signals()` (Plan Execution, §5.3) builds
+                # on — without this, organization_profiles never gets a first writer, and
+                # completing a plan item later would have nothing to layer its signal on top of.
+                self._store.upsert_organization_baseline(
+                    session.tenant_id, session.active_pack_ids, session.signals, self._now()
+                )
+                # v1 is written HERE, where the analysis is computed — not later, and not by
+                # whoever happens to need it first.
+                self._record_applicability_version(session, applicability)
             return AnswerOutcome(session=session, next_question=None, concluded=True)
 
         next_question = self._engine.next_question(session.state)

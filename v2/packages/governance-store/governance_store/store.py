@@ -540,6 +540,100 @@ class PostgresGovernanceStore:
         )
         self._conn.execute(sql, params)
 
+    # --- transactions ---------------------------------------------------------------------------
+
+    def transaction(self) -> Any:
+        """An explicit transaction block for a caller that needs several writes to land together.
+
+        The connection is autocommit — one durable write per call, which is right for every other
+        operation here — and this does NOT change that. psycopg3's `Connection.transaction()`
+        issues a real BEGIN/COMMIT around the block even under autocommit, so the scope is local to
+        the `with` and the setting is untouched for every other caller sharing the connection.
+
+        Added for the discovery conclusion (ADR 0068 §D5), which writes three rows that have no
+        meaning apart: a concluded session, its baseline, and the analysis version a plan will
+        later be built from. Before this, a failure on the third left a session concluded with no
+        version — a state the ADR calls impossible.
+        """
+        return self._conn.transaction()
+
+    # --- applicability versions (ADR 0068) ----------------------------------------------------
+
+    def record_applicability_version(
+        self,
+        *,
+        version_id: str,
+        tenant_id: str,
+        session_id: str,
+        version: int,
+        source: str,
+        applicability: dict[str, Any],
+        resolved_signals: list[dict[str, Any]],
+        conflicts: list[dict[str, Any]],
+        answer_set_hash: str,
+        engine_pack_versions: dict[str, Any],
+        assessment_id: str | None = None,
+    ) -> None:
+        """Append one immutable analysis. No update path exists here, and none exists in the
+        schema either — a recorded decision is never rewritten (ADR 0068)."""
+        psycopg, jsonb, _ = _load_pg()
+        self._conn.execute(
+            "INSERT INTO session_applicability_versions "
+            "(id, tenant_id, session_id, version, source, assessment_id, applicability, "
+            " resolved_signals, conflicts, answer_set_hash, engine_pack_versions) "
+            "VALUES (%(id)s, %(tenant_id)s, %(session_id)s, %(version)s, %(source)s, "
+            "%(assessment_id)s, %(applicability)s, %(resolved_signals)s, %(conflicts)s, "
+            "%(answer_set_hash)s, %(engine_pack_versions)s)",
+            {
+                "id": version_id,
+                "tenant_id": tenant_id,
+                "session_id": session_id,
+                "version": version,
+                "source": source,
+                "assessment_id": assessment_id,
+                "applicability": jsonb(applicability),
+                "resolved_signals": jsonb(resolved_signals),
+                "conflicts": jsonb(conflicts),
+                "answer_set_hash": answer_set_hash,
+                "engine_pack_versions": jsonb(engine_pack_versions),
+            },
+        )
+
+    def latest_applicability_version(
+        self, session_id: str, tenant_id: str
+    ) -> dict[str, Any] | None:
+        """The newest recorded analysis for a session — a READ, never a recomputation. This is the
+        seam that makes an old plan explicable: the answer comes from what was stored at the time,
+        not from running today's rules over yesterday's answers."""
+        _, _, dict_row = _load_pg()
+        with self._conn.cursor(row_factory=dict_row) as cur:
+            cur.execute(
+                "SELECT id, version, source, assessment_id, applicability, resolved_signals, "
+                "       conflicts, answer_set_hash, engine_pack_versions "
+                "FROM session_applicability_versions "
+                "WHERE session_id = %(session_id)s AND tenant_id = %(tenant_id)s "
+                "ORDER BY version DESC LIMIT 1",
+                {"session_id": session_id, "tenant_id": tenant_id},
+            )
+            return cur.fetchone()
+
+    def next_applicability_version(self, session_id: str, tenant_id: str) -> int:
+        row = self._conn.execute(
+            "SELECT COALESCE(MAX(version), 0) + 1 FROM session_applicability_versions "
+            "WHERE session_id = %s AND tenant_id = %s",
+            (session_id, tenant_id),
+        ).fetchone()
+        return int(row[0]) if row else 1
+
+    def bind_plan_to_applicability(
+        self, plan_id: str, tenant_id: str, applicability_version_id: str
+    ) -> None:
+        self._conn.execute(
+            "UPDATE governance_plans SET source_applicability_id = %s "
+            "WHERE id = %s AND tenant_id = %s",
+            (applicability_version_id, plan_id, tenant_id),
+        )
+
     # --- lifecycle ---------------------------------------------------------------------------
 
     def close(self) -> None:

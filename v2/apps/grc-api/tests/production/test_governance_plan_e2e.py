@@ -112,11 +112,23 @@ def _make_signals() -> SignalSet:
 def _cleanup(dsn: str, tenant_id: str) -> None:
     conn = psycopg.connect(dsn, autocommit=True)
     try:
+        # Versions sit between the plans that cite them and the sessions they belong to — the two
+        # foreign keys pin this order. They are append-only, so the trigger stands down for a
+        # fixture teardown; both refusals are the product's, working as intended.
+        conn.execute(
+            "ALTER TABLE session_applicability_versions DISABLE TRIGGER "
+            "session_applicability_versions_append_only_trg"
+        )
         for table in (
             "governance_plan_events", "governance_plan_items", "governance_plans",
+            "session_applicability_versions",
             "organization_profiles", "discovery_answers", "discovery_sessions",
         ):
             conn.execute(f"DELETE FROM {table} WHERE tenant_id = %(t)s", {"t": tenant_id})
+        conn.execute(
+            "ALTER TABLE session_applicability_versions ENABLE TRIGGER "
+            "session_applicability_versions_append_only_trg"
+        )
     finally:
         conn.close()
 
@@ -166,6 +178,22 @@ def _seed_concluded_session(dsn: str, tenant_id: str) -> str:
     )
     store.save_session(session)
     store.upsert_organization_baseline(tenant_id, session.active_pack_ids, signals, now=1001.0)
+    # v1, exactly as the discovery conclusion writes it (ADR 0068 §D5). The plan pipeline reads the
+    # recorded version, so a seeded session without one is a state the product cannot produce.
+    from governance_store.codec import applicability_to_dict
+
+    store.record_applicability_version(
+        version_id=f"av_{uuid.uuid4().hex[:12]}",
+        tenant_id=tenant_id,
+        session_id=session.id,
+        version=1,
+        source="core_conclusion",
+        applicability=applicability_to_dict(applicability),
+        resolved_signals=[],
+        conflicts=[],
+        answer_set_hash="seeded",
+        engine_pack_versions=dict(session.pack_versions or {}),
+    )
     store.close()
     return session.id
 

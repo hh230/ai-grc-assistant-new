@@ -22,7 +22,8 @@ from governance_plan_tools.draft_tool import PlanDraftTool  # noqa: E402
 from governance_plan_tools.finalize_tool import PlanFinalizeTool  # noqa: E402
 from governance_plan_tools.prompts import answer_language_directive  # noqa: E402
 from pipeline_contracts import Language  # noqa: E402
-from governance_store import PostgresGovernanceStore  # noqa: E402
+from governance_store import PostgresGovernanceStore
+from governance_store.codec import applicability_to_dict  # noqa: E402
 from governance_store.config import dsn  # noqa: E402
 from pipeline_contracts import TenantContext  # noqa: E402
 from tool_registry import PAYLOAD_INSTRUCTION, PAYLOAD_PRIOR_CONTEXT  # noqa: E402
@@ -95,6 +96,20 @@ def _cleanup(conn, tenant_id: str) -> None:
     conn.execute("DELETE FROM governance_plan_events WHERE tenant_id = %(t)s", {"t": tenant_id})
     conn.execute("DELETE FROM governance_plan_items WHERE tenant_id = %(t)s", {"t": tenant_id})
     conn.execute("DELETE FROM governance_plans WHERE tenant_id = %(t)s", {"t": tenant_id})
+    # After the plans that cite them and before the sessions they belong to — the two foreign
+    # keys pin the order. Append-only, so the trigger stands down for a fixture teardown; both
+    # refusals are the product's, working as intended.
+    conn.execute(
+        "ALTER TABLE session_applicability_versions DISABLE TRIGGER "
+        "session_applicability_versions_append_only_trg"
+    )
+    conn.execute(
+        "DELETE FROM session_applicability_versions WHERE tenant_id = %(t)s", {"t": tenant_id}
+    )
+    conn.execute(
+        "ALTER TABLE session_applicability_versions ENABLE TRIGGER "
+        "session_applicability_versions_append_only_trg"
+    )
     conn.execute("DELETE FROM organization_profiles WHERE tenant_id = %(t)s", {"t": tenant_id})
     conn.execute("DELETE FROM discovery_answers WHERE tenant_id = %(t)s", {"t": tenant_id})
     conn.execute("DELETE FROM discovery_sessions WHERE tenant_id = %(t)s", {"t": tenant_id})
@@ -117,6 +132,21 @@ def _concluded_session(
     )
     store.save_session(session)
     store.upsert_organization_baseline(tenant_id, session.active_pack_ids, signals, now=1001.0)
+    # v1, exactly as the discovery conclusion writes it (ADR 0068 §D5). The plan pipeline reads the
+    # recorded version now, not `session.applicability`, so a fixture without one would be
+    # exercising a state the product cannot produce.
+    store.record_applicability_version(
+        version_id=f"av_{uuid.uuid4().hex[:12]}",
+        tenant_id=tenant_id,
+        session_id=session.id,
+        version=1,
+        source="core_conclusion",
+        applicability=applicability_to_dict(applicability),
+        resolved_signals=[],
+        conflicts=[],
+        answer_set_hash="fixture",
+        engine_pack_versions=dict(session.pack_versions or {}),
+    )
     return session
 
 

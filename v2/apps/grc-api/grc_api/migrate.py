@@ -63,6 +63,14 @@ CORE_MIGRATIONS: tuple[str, ...] = (
     # Corrects 0014's guard, which cancelled DELETEs instead of permitting them. Must run after
     # 0014, which creates the function this one replaces.
     "governance-store/migrations/0017_assessment_freeze_delete.sql",
+    # Signal Resolution (ADR 0068): versioned applicability, and the declaration a sector
+    # question needs to write an existing engine signal.
+    "governance-store/migrations/0018_applicability_versions.sql",
+    "governance-store/migrations/0019_release_question_signals.sql",
+    "governance-store/migrations/0020_plan_applicability_link.sql",
+    # Enforces the two references 0018/0020 introduced, tenant-safe. After them, because a foreign
+    # key cannot be added before the column it constrains.
+    "governance-store/migrations/0021_applicability_referential_integrity.sql",
 )
 
 RETRIEVAL_MIGRATIONS: tuple[str, ...] = (

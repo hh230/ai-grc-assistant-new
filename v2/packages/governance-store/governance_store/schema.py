@@ -218,6 +218,95 @@ def index_sql(table: str) -> list[str]:
     raise ValueError(f"unknown table: {table}")
 
 
+# ---------------------------------------------------------------------------------------------
+# session_applicability_versions — the recorded analyses a plan is built from (ADR 0068). Mirrors
+# migrations 0018/0020/0021 for the fixtures that build a schema without running the migration
+# runner. Kept faithful INCLUDING the constraints: a fixture that accepts rows production refuses
+# would let a test pass on a state the product cannot reach.
+# ---------------------------------------------------------------------------------------------
+APPLICABILITY_VERSIONS_DDL = """\
+CREATE TABLE IF NOT EXISTS session_applicability_versions (
+    id                   text        PRIMARY KEY,
+    tenant_id            text        NOT NULL,
+    session_id           text        NOT NULL,
+    version              integer     NOT NULL,
+    source               text        NOT NULL,
+    assessment_id        text,
+    applicability        jsonb       NOT NULL,
+    resolved_signals     jsonb       NOT NULL DEFAULT '[]'::jsonb,
+    conflicts            jsonb       NOT NULL DEFAULT '[]'::jsonb,
+    answer_set_hash      text        NOT NULL,
+    engine_pack_versions jsonb       NOT NULL DEFAULT '{}'::jsonb,
+    computed_at          timestamptz NOT NULL DEFAULT now(),
+    CONSTRAINT session_applicability_versions_source_ck
+        CHECK (source IN ('core_conclusion', 'sector_conclusion', 'recomputation')),
+    CONSTRAINT session_applicability_versions_assessment_ck
+        CHECK ((source = 'sector_conclusion') = (assessment_id IS NOT NULL)),
+    CONSTRAINT session_applicability_versions_v1_ck
+        CHECK ((version = 1) = (source = 'core_conclusion')),
+    CONSTRAINT session_applicability_versions_version_ck CHECK (version >= 1)
+)"""
+
+
+def apply_applicability_versions(conn: psycopg.Connection) -> None:
+    """The table, its keys, its append-only trigger and its two tenant-safe foreign keys."""
+    conn.execute(APPLICABILITY_VERSIONS_DDL)
+    conn.execute(
+        "CREATE UNIQUE INDEX IF NOT EXISTS session_applicability_versions_session_version_uq "
+        "ON session_applicability_versions (tenant_id, session_id, version)"
+    )
+    conn.execute(
+        "CREATE UNIQUE INDEX IF NOT EXISTS session_applicability_versions_assessment_uq "
+        "ON session_applicability_versions (tenant_id, assessment_id) "
+        "WHERE assessment_id IS NOT NULL"
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS session_applicability_versions_latest_idx "
+        "ON session_applicability_versions (tenant_id, session_id, version DESC)"
+    )
+    conn.execute(
+        """CREATE OR REPLACE FUNCTION applicability_versions_are_append_only() RETURNS trigger AS $$
+BEGIN
+    RAISE EXCEPTION
+        'applicability version % is immutable (ADR 0068): a recorded decision is never rewritten '
+        '— record a new version instead', COALESCE(OLD.id, NEW.id);
+    RETURN COALESCE(NEW, OLD);
+END;
+$$ LANGUAGE plpgsql"""
+    )
+    conn.execute(
+        "DROP TRIGGER IF EXISTS session_applicability_versions_append_only_trg "
+        "ON session_applicability_versions"
+    )
+    conn.execute(
+        "CREATE TRIGGER session_applicability_versions_append_only_trg "
+        "BEFORE UPDATE OR DELETE ON session_applicability_versions "
+        "FOR EACH ROW EXECUTE FUNCTION applicability_versions_are_append_only()"
+    )
+    conn.execute(
+        f"ALTER TABLE {TABLE_GOVERNANCE_PLANS} "
+        "ADD COLUMN IF NOT EXISTS source_applicability_id text"
+    )
+    for statement in (
+        f"ALTER TABLE {TABLE_DISCOVERY_SESSIONS} ADD CONSTRAINT discovery_sessions_id_tenant_key "
+        "UNIQUE (id, tenant_id)",
+        "ALTER TABLE session_applicability_versions "
+        "ADD CONSTRAINT applicability_versions_id_tenant_key UNIQUE (id, tenant_id)",
+        "ALTER TABLE session_applicability_versions "
+        "ADD CONSTRAINT applicability_versions_session_tenant_fk "
+        f"FOREIGN KEY (session_id, tenant_id) REFERENCES {TABLE_DISCOVERY_SESSIONS} "
+        "(id, tenant_id)",
+        f"ALTER TABLE {TABLE_GOVERNANCE_PLANS} "
+        "ADD CONSTRAINT governance_plans_applicability_tenant_fk "
+        "FOREIGN KEY (source_applicability_id, tenant_id) "
+        "REFERENCES session_applicability_versions (id, tenant_id)",
+    ):
+        conn.execute(
+            f"DO $$ BEGIN {statement}; EXCEPTION WHEN duplicate_table THEN NULL; "
+            "WHEN duplicate_object THEN NULL; END $$"
+        )
+
+
 def apply_schema(conn: psycopg.Connection) -> None:
     """Create every table and index if absent. Convenient for tests/first-run setup; production
     applies the canonical migrations in `migrations/`. Idempotent (`IF NOT EXISTS`). Tables are
@@ -253,6 +342,7 @@ def apply_schema(conn: psycopg.Connection) -> None:
     # an empty key and must keep rendering, and a UI with no translation for a key must be able to
     # fall back to what was actually stored. Empty string, not NULL — "no key" is a fact about the
     # row, not an unknown.
+    apply_applicability_versions(conn)
     for column in ("title_key", "objective_key"):
         conn.execute(
             f"ALTER TABLE {TABLE_GOVERNANCE_PLAN_ITEMS} "

@@ -48,6 +48,14 @@ class DiscoveryEngine:
         self._packs = packs
         self._derivations = derivations_from_packs(packs)
 
+    @property
+    def packs(self) -> dict[str, KnowledgePack]:
+        """The loaded packs, read-only. Exposed so that the question "which signals may a sector
+        pack declare?" can be answered FROM the engine rather than from a list kept alongside it —
+        a second list would be a second source of truth about this engine's own vocabulary
+        (ADR 0068 §D2)."""
+        return dict(self._packs)
+
     def resolve(self, signals: SignalSet) -> SignalSet:
         """What the organization told us, PLUS everything that implies (see `derivation.py`).
 

@@ -67,6 +67,13 @@ _FORBIDDEN_FIELDS = frozenset(
         "priority",
         "gap",
         "verdict",
+        # ADR 0068 opened a declared channel from a sector answer to an engine signal — and it is
+        # for HUMANS. A model that returns `writes_signal` is not writing language, it is deciding
+        # which fact the engine will act on, which is the exact line `_FORBIDDEN_FIELDS` exists to
+        # hold. The declaration is added by a person, reviewed as its own change, and validated
+        # against the engine's own vocabulary (`grc_api.signal_declarations`).
+        "writes_signal",
+        "signal_value_map",
     }
 )
 

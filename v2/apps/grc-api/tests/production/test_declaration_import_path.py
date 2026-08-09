@@ -217,13 +217,17 @@ def test_rewording_every_option_changes_nothing_that_was_stored(clean) -> None:
 # --- the released packs are untouched ------------------------------------------------------------
 
 
-def test_exactly_one_shipped_question_declares_a_signal() -> None:
-    """Phase 2 opens the channel for exactly ONE question, and this is what pins that number.
+def test_shipped_declarations_are_exactly_the_four_we_decided() -> None:
+    """FOUR questions declare a signal, and this is what pins which four.
 
-    It used to assert that nothing declared anything — true while the channel was empty, and the
-    right guard then. The pilot ends it deliberately for `technology / it_policies`, so the guard
-    becomes the stricter statement: that question and no other. A second declaration appearing
-    without a decision fails here, which is the point.
+    The guard has been rewritten twice, and each rewrite was a decision rather than a maintenance
+    chore. It first asserted that nothing declared anything — true while the channel was empty. The
+    pilot ended that for `technology / it_policies`, and the second wave adds three more: one per
+    pack, each reviewed against the rules that read its signal before it was written down.
+
+    So the assertion stays an exact map, never a count. A count catches a question that gained a
+    declaration by accident but not one that lost the declaration it was supposed to keep, and both
+    are ways a decision quietly changes. Editing this map is how a fifth declaration gets decided.
     """
     from grc_api.knowledge_seed import available_packs, load_pack
 
@@ -232,7 +236,9 @@ def test_exactly_one_shipped_question_declares_a_signal() -> None:
         for slug in available_packs()
     }
     assert declared == {
-        "financial_services": [], "healthcare": [], "legal_services": [],
-        "marketing_advertising": [], "real_estate": [], "retail": [],
         "technology": ["it_policies"],
+        "financial_services": ["fs_compliance_monitoring"],
+        "legal_services": ["lg_risk_register"],
+        "marketing_advertising": ["mk_policy_documentation"],
+        "healthcare": [], "real_estate": [], "retail": [],
     }, declared

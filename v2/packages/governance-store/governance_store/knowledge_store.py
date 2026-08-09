@@ -60,6 +60,10 @@ _QUESTION_COLUMNS = (
     "why_we_ask",
     "evidence_required",
     "position",
+    # ADR 0068: the declared channel. NULL on every shipped question — a pack that declares
+    # nothing reads back exactly as it did before this column existed.
+    "writes_signal",
+    "signal_value_map",
 )
 
 
@@ -201,11 +205,21 @@ class PostgresKnowledgeStore:
                 ),
             )
             for position, question in enumerate(questions):
+                # `writes_signal` / `signal_value_map` are the declared channel from a sector
+                # answer to an engine signal (ADR 0068). Both are OPTIONAL and default to NULL:
+                # a pack that declares nothing writes nothing, which is every shipped pack.
+                #
+                # They are carried here and validated by the caller BEFORE this runs
+                # (`grc_api.signal_declarations`), never interpreted in the repository. What
+                # protects them from a model is upstream, where it belongs: the generator's
+                # `_FORBIDDEN_FIELDS` refuses the fields outright, so a declaration reaches this
+                # statement only from an authored file a human wrote and a reviewer approved.
+                declaration = question.get("signal_value_map")
                 self._conn.execute(
                     "INSERT INTO release_questions (release_id, question_id, canonical_text_ar, "
                     ' type, options, required, category, importance, "references", why_we_ask, '
-                    " evidence_required, position) "
-                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    " evidence_required, position, writes_signal, signal_value_map) "
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                     (
                         release_id,
                         question["question_id"],
@@ -219,6 +233,8 @@ class PostgresKnowledgeStore:
                         question["why_we_ask"],
                         jsonb(question.get("evidence_required") or []),
                         position,
+                        question.get("writes_signal"),
+                        jsonb(declaration) if declaration is not None else None,
                     ),
                 )
         return version

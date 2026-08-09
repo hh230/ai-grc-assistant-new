@@ -36,6 +36,8 @@ import unicodedata
 from dataclasses import dataclass
 from typing import Any
 
+from grc_api.question_options import option_texts
+
 PACKS_DIR = pathlib.Path(__file__).with_name("knowledge_packs")
 
 # The schema's vocabulary (`release_questions_type_renderable`). Named here so a malformed pack
@@ -186,7 +188,25 @@ def load_pack(industry_slug: str) -> dict[str, Any]:
     seen: set[str] = set()
     for index, question in enumerate(questions):
         _validate(question, index, seen, matches[0].name)
+    _validate_declarations(questions, matches[0].name)
     return pack
+
+
+def _validate_declarations(questions: list[Any], filename: str) -> None:
+    """A pack may declare which engine signal an answer writes (ADR 0068). Checked HERE, at the
+    file boundary, so an invalid declaration never reaches the repository — the repository carries
+    the two columns and interprets neither.
+
+    Import-time and not write-time on purpose: the caller has the option list in hand here, which
+    is what makes "every option has a declared value" checkable at all.
+    """
+    from grc_api.signal_declarations import validate_pack_declarations
+
+    errors = validate_pack_declarations({"questions": questions})
+    if errors:
+        raise AuthoredPackRejected(
+            f"{filename}: invalid signal declaration — " + "; ".join(str(e) for e in errors[:3])
+        )
 
 
 def _validate(question: Any, index: int, seen: set[str], filename: str) -> None:
@@ -311,7 +331,8 @@ def _lint_question(question: Any, index: int, seen: set[str], filename: str) -> 
         out.append(Finding("error", label, "question_id must look like `re_fal_license` — a short sector prefix, an underscore, then lowercase words"))
 
     kind = str(question.get("type", ""))
-    options = [str(o) for o in (question.get("options") or [])]
+    # Through the shared model, so the linter reads WORDING whatever shape the pack used.
+    options = option_texts(question)
     if kind == "enum":
         # Reported once per question. A question carrying both an "أكثر من" option AND a list of
         # yeses has one problem, not two, and saying so twice makes a reviewer trust the list less.

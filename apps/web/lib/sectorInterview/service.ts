@@ -9,7 +9,7 @@ import { ForbiddenError, NotFoundError, UpstreamError, ValidationError } from "@
 import type { ActorContext } from "@/lib/auth/actor";
 import { logger } from "@/lib/observability/logger";
 import { mintGrcApiServiceToken } from "@/lib/discovery/serviceToken";
-import type { SectorAnswer, SectorInterview, SectorQuestion } from "./types";
+import type { SectorAnswer, SectorInterview, SectorOption, SectorQuestion } from "./types";
 
 function grcApiBaseUrl(): string {
   return process.env.GRC_API_BASE_URL ?? "http://localhost:8000";
@@ -86,12 +86,23 @@ interface InterviewDto {
   answers: Record<string, unknown>;
 }
 
+function toOption(raw: unknown): SectorOption {
+  // A bare string is its own id: that is exactly how the legacy path behaved, so nothing about a
+  // pack that declares no signal changes.
+  if (typeof raw === "object" && raw !== null && "option_id" in raw) {
+    const option = raw as { option_id: string; text_ar?: string };
+    return { value: option.option_id, label: option.text_ar ?? option.option_id };
+  }
+  const text = String(raw);
+  return { value: text, label: text };
+}
+
 function toQuestion(dto: QuestionDto): SectorQuestion {
   return {
     questionId: dto.question_id,
     canonicalTextAr: dto.canonical_text_ar,
     type: dto.type as SectorQuestion["type"],
-    options: dto.options.map(String),
+    options: dto.options.map(toOption),
     required: dto.required,
     category: dto.category,
     importance: dto.importance as SectorQuestion["importance"],

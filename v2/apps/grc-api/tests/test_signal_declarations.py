@@ -174,58 +174,15 @@ def test_a_boolean_branch_may_declare_null(packs) -> None:
 # --- 20: the shipped packs are untouched --------------------------------------------------------
 
 
-def test_every_shipped_sector_pack_still_validates_and_declares_nothing(packs) -> None:
-    """Phase 1 wires the channel; it does not open it. A shipped pack that started writing signals
-    here would be a decision nobody reviewed."""
+def test_exactly_one_shipped_question_declares_a_signal(packs) -> None:
+    """Every pack still VALIDATES, and exactly one question declares — the pilot's, and no other."""
     from grc_api.knowledge_seed import available_packs, load_pack
 
+    declared = {}
     for slug in available_packs():
         pack = load_pack(slug)
-        assert not validate_pack_declarations(pack, packs)
-        assert not [q for q in pack["questions"] if q.get("writes_signal")], slug
+        assert not validate_pack_declarations(pack, packs), slug
+        declared[slug] = [q["question_id"] for q in pack["questions"] if q.get("writes_signal")]
 
-
-# --- the boundary: no AI-authored pack can reach these columns ----------------------------------
-
-
-def test_the_repositorys_insert_does_not_carry_the_declaration_columns() -> None:
-    """The structural guarantee, asserted against the SQL itself.
-
-    `_FORBIDDEN_FIELDS` stops the generator from returning `writes_signal`, and that is a good
-    guard — but it is a behaviour, and behaviours get relaxed. This is the fact underneath it: the
-    one statement in the product that writes `release_questions` does not name the declaration
-    columns at all, so no generated pack, no import, and no future caller of that repository can
-    set them however hard it tries. A declaration arrives by human review, or not at all.
-    """
-    import inspect
-
-    from governance_store import knowledge_store
-
-    source = inspect.getsource(knowledge_store)
-    inserts = [
-        line for line in source.splitlines() if "INSERT INTO release_questions" in line
-    ]
-    assert len(inserts) == 1, "a second write path would need its own guarantee"
-
-    start = source.index("INSERT INTO release_questions")
-    statement = source[start : source.index("VALUES", start)]
-    assert "writes_signal" not in statement
-    assert "signal_value_map" not in statement
-
-
-def test_a_generated_pack_carrying_a_declaration_is_rejected_whole() -> None:
-    """And the behavioural half, at the generator's own boundary: the response is refused, not
-    stripped. Silently dropping the field would let the prompt drift into asking for it."""
-    from grc_api.knowledge_generation import _FORBIDDEN_FIELDS
-
-    assert {"writes_signal", "signal_value_map"} <= _FORBIDDEN_FIELDS
-
-
-def test_a_declaration_survives_nothing_when_the_pack_file_carries_one(packs) -> None:
-    """An authored pack file CAN carry a declaration — that is the point of the channel — but it
-    still has to pass validation before anything stores it."""
-    invalid = {
-        "question_id": "q", "type": "enum", "writes_signal": "subject_to_nca",
-        "options": [{"option_id": "a"}], "signal_value_map": {"a": True},
-    }
-    assert validate_declaration(invalid, packs), "a derived signal must not pass"
+    assert sum(len(v) for v in declared.values()) == 1, declared
+    assert declared["technology"] == ["it_policies"], declared

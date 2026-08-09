@@ -27,6 +27,8 @@ from governance_discovery.pack import load_bundled_packs
 from governance_discovery.signal import DEFAULT_MATURITY_SCALE, ValueType
 from governance_discovery.writable_signals import rejection_reason, writable_signals
 
+from grc_api.question_options import normalized_options
+
 # The only question types whose answer maps to a value without interpretation.
 DECLARABLE_TYPES = ("enum", "boolean")
 # A boolean question has no option list, so its two branches use these reserved ids — one
@@ -56,14 +58,11 @@ def _engine_enum_values(signal_key: str, packs: dict[str, Any]) -> tuple[str, ..
 
 
 def _expected_option_ids(question: dict[str, Any]) -> tuple[str, ...]:
+    """The ids a declaration must cover. Only options with a STABLE id count: a bare string's id is
+    the string itself, and a map keyed by Arabic text is the thing ADR 0068 exists to prevent."""
     if question.get("type") == "boolean":
         return BOOLEAN_OPTION_IDS
-    ids = []
-    for option in question.get("options") or ():
-        # An option is either a bare string (prose-only packs, no declaration) or an object with a
-        # stable id. Only the second form can carry a declaration at all.
-        ids.append(option.get("option_id") if isinstance(option, dict) else None)
-    return tuple(i for i in ids if i is not None)
+    return tuple(o.option_id for o in normalized_options(question) if o.has_stable_id)
 
 
 def validate_declaration(

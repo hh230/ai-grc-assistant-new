@@ -171,18 +171,29 @@ def test_a_boolean_branch_may_declare_null(packs) -> None:
          "signal_value_map": {"true": "international", "false": None}}, packs)
 
 
-# --- 20: the shipped packs are untouched --------------------------------------------------------
+# --- 20: what the shipped packs declare, named one by one ---------------------------------------
+
+# The declaring questions, by pack. Named rather than counted: a count catches a question that
+# gained a declaration by accident, but not one that lost the declaration it was supposed to keep,
+# and both are ways a decision quietly changes. Adding a row here is the deliberate act.
+SHIPPED_DECLARATIONS = {
+    "technology": ["it_policies"],
+    "financial_services": ["fs_compliance_monitoring"],
+    "legal_services": ["lg_risk_register"],
+    "marketing_advertising": ["mk_policy_documentation"],
+}
 
 
-def test_exactly_one_shipped_question_declares_a_signal(packs) -> None:
-    """Every pack still VALIDATES, and exactly one question declares — the pilot's, and no other."""
+def test_shipped_declarations_are_exactly_the_ones_we_named(packs) -> None:
+    """Every pack still VALIDATES, and declares exactly what this file says it declares."""
     from grc_api.knowledge_seed import available_packs, load_pack
 
     declared = {}
     for slug in available_packs():
         pack = load_pack(slug)
         assert not validate_pack_declarations(pack, packs), slug
-        declared[slug] = [q["question_id"] for q in pack["questions"] if q.get("writes_signal")]
+        if questions := [q["question_id"] for q in pack["questions"] if q.get("writes_signal")]:
+            declared[slug] = questions
 
-    assert sum(len(v) for v in declared.values()) == 1, declared
-    assert declared["technology"] == ["it_policies"], declared
+    assert declared == SHIPPED_DECLARATIONS, declared
+    assert sum(len(v) for v in declared.values()) == 4, declared

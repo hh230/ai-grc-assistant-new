@@ -234,10 +234,26 @@
       "canonical_text_ar": "هل يوجد سجل مخاطر معتمد يغطي المخاطر المهنية والتشغيلية للمكتب (فوات المواعيد النظامية، الأخطاء الإجرائية، إفشاء أسرار الموكلين، فقدان الملفات، الاعتماد على أشخاص مفتاحيين) مع تحديد مالك المخاطرة وخطة المعالجة ومراجعته دورياً؟",
       "type": "enum",
       "options": [
-        "يوجد سجل مخاطر معتمد ويُراجع دورياً",
-        "يوجد سجل غير محدث أو غير معتمد",
-        "تُدار المخاطر بشكل غير رسمي حسب الحالة",
-        "لا يوجد"
+        {
+          "option_id": "reviewed",
+          "text_ar": "يوجد سجل مخاطر معتمد ويُراجع دورياً"
+        },
+        {
+          "option_id": "approved_not_reviewed",
+          "text_ar": "يوجد سجل معتمد لكنه لم يُراجع دورياً"
+        },
+        {
+          "option_id": "documented_unapproved",
+          "text_ar": "يوجد سجل موثق لكنه غير معتمد"
+        },
+        {
+          "option_id": "informal",
+          "text_ar": "تُدار المخاطر بشكل غير رسمي حسب الحالة"
+        },
+        {
+          "option_id": "none",
+          "text_ar": "لا يوجد"
+        }
       ],
       "required": true,
       "category": "risk",
@@ -263,7 +279,15 @@
           "framework": "نظام الشركات المهنية",
           "clause": "المسؤولية المهنية والتأمين ضد أخطاء المهنة"
         }
-      ]
+      ],
+      "writes_signal": "risk_register_state",
+      "signal_value_map": {
+        "reviewed": "reviewed_periodically",
+        "approved_not_reviewed": "approved",
+        "documented_unapproved": "documented_unapproved",
+        "informal": "verbal",
+        "none": "absent"
+      }
     },
     {
       "question_id": "lg_statutory_deadlines",

@@ -527,10 +527,26 @@
       "canonical_text_ar": "ما مستوى توثيق السياسات والإجراءات الداخلية للمنشأة، وهل تخضع لاعتماد رسمي ومراجعة دورية وضبط للإصدارات؟",
       "type": "enum",
       "options": [
-        "سياسات معتمدة وموثقة ومراجعة دورياً",
-        "سياسات موجودة لكن غير معتمدة أو غير محدثة",
-        "ممارسات متعارف عليها غير مكتوبة",
-        "لا يوجد توثيق"
+        {
+          "option_id": "reviewed",
+          "text_ar": "سياسات معتمدة وموثقة ومراجعة دورياً"
+        },
+        {
+          "option_id": "approved_not_updated",
+          "text_ar": "سياسات معتمدة لكنها غير محدثة"
+        },
+        {
+          "option_id": "documented_unapproved",
+          "text_ar": "سياسات مكتوبة لكنها غير معتمدة"
+        },
+        {
+          "option_id": "verbal_only",
+          "text_ar": "ممارسات متعارف عليها غير مكتوبة"
+        },
+        {
+          "option_id": "none",
+          "text_ar": "لا يوجد توثيق"
+        }
       ],
       "required": true,
       "category": "records",
@@ -551,7 +567,15 @@
           "framework": "الضوابط الأساسية للأمن السيبراني (ECC)",
           "clause": "1-3 – سياسات وإجراءات الأمن السيبراني"
         }
-      ]
+      ],
+      "writes_signal": "policy_state",
+      "signal_value_map": {
+        "reviewed": "reviewed_periodically",
+        "approved_not_updated": "approved",
+        "documented_unapproved": "documented_unapproved",
+        "verbal_only": "verbal",
+        "none": "absent"
+      }
     },
     {
       "question_id": "mk_internal_audit",

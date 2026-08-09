@@ -273,22 +273,26 @@ function SectorAnswerInput({
     return (
       <ul className="space-y-1.5" dir="rtl">
         {question.options.map((option) => {
-          const checked = chosen.includes(option);
+          // The ANSWER carries `option.value`; the person reads `option.label`. For every question
+          // authored before ADR 0068 these are the same string, so nothing here changes for them.
+          const checked = chosen.includes(option.value);
           return (
-            <li key={option}>
+            <li key={option.value}>
               <label className="flex cursor-pointer items-start gap-2 text-sm text-foreground-secondary">
                 <input
                   type="checkbox"
                   checked={checked}
                   onChange={() =>
                     onChange(
-                      checked ? chosen.filter((o) => o !== option) : [...chosen, option],
+                      checked
+                        ? chosen.filter((o) => o !== option.value)
+                        : [...chosen, option.value],
                       true,
                     )
                   }
                   className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-accent"
                 />
-                <span>{option}</span>
+                <span>{option.label}</span>
               </label>
             </li>
           );
@@ -307,8 +311,8 @@ function SectorAnswerInput({
       >
         <option value="">{t("choose")}</option>
         {question.options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

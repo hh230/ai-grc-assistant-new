@@ -9,11 +9,24 @@
  * so no customer-facing code can render it by accident.
  */
 
+/**
+ * One choice. `value` is what an answer records; `label` is what a person reads.
+ *
+ * They are the same string for every question authored before ADR 0068, and different only where a
+ * question DECLARES an engine signal — there the value is a stable `option_id`, so that revising
+ * the Arabic wording or adding a translation cannot move a compliance decision. Keeping both here,
+ * rather than a bare string, is what stops the two cases needing two code paths.
+ */
+export interface SectorOption {
+  value: string;
+  label: string;
+}
+
 export interface SectorQuestion {
   questionId: string;
   canonicalTextAr: string;
   type: "boolean" | "enum" | "multi_select" | "numeric" | "date" | "text";
-  options: string[];
+  options: SectorOption[];
   required: boolean;
   category: string;
   importance: "critical" | "high" | "medium" | "low";

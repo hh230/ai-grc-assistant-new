@@ -150,6 +150,12 @@ def _answer(conn, assessment_id, release_id, question_id, value):
 
 
 def _conclude(conn, assessment_id):
+    # The conclusion timestamp comes from the DATABASE's clock, never a literal. An earlier version
+    # hardcoded "2026-08-09T00:00:00Z" — in the future when it was written, in the past a few hours
+    # later, at which point `assessments_ends_after_it_starts` correctly refused a conclusion that
+    # preceded its own start. A test that depends on the wall clock passes until it doesn't.
+    now = conn.execute("SELECT now()").fetchone()[0]
+
     from governance_discovery import DiscoveryEngine
     from governance_discovery.pack import load_bundled_packs
     from governance_store.store import PostgresGovernanceStore
@@ -159,7 +165,7 @@ def _conclude(conn, assessment_id):
         connection=conn, knowledge_store=None,
         governance_store=PostgresGovernanceStore(connection=conn),
         engine=DiscoveryEngine(load_bundled_packs()),
-        assessment_id=assessment_id, tenant_id=TENANT, now="2026-08-09T00:00:00Z",
+        assessment_id=assessment_id, tenant_id=TENANT, now=now,
     )
 
 

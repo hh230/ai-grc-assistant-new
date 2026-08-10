@@ -23,8 +23,8 @@ from grc_api.knowledge_seed import (
 def test_the_real_estate_pack_loads_and_is_the_one_that_was_authored():
     pack = load_pack("real_estate")
     ids = [q["question_id"] for q in pack["questions"]]
-    assert len(ids) == 22
-    assert len(set(ids)) == 22
+    assert len(ids) == 23
+    assert len(set(ids)) == 23
     assert pack["canonical_name_ar"] == "العقارات"
 
 
@@ -72,7 +72,7 @@ def test_every_question_carries_a_reference_and_a_reason():
 
 def test_the_generator_port_returns_the_authored_questions():
     """Same port as the model-backed generator, so the service needs no branch."""
-    assert len(AuthoredPackGenerator().generate(industry_slug="real_estate")) == 22
+    assert len(AuthoredPackGenerator().generate(industry_slug="real_estate")) == 23
 
 
 def test_an_unknown_sector_is_refused_by_name():

@@ -240,5 +240,7 @@ def test_shipped_declarations_are_exactly_the_four_we_decided() -> None:
         "financial_services": ["fs_compliance_monitoring"],
         "legal_services": ["lg_risk_register"],
         "marketing_advertising": ["mk_policy_documentation"],
-        "healthcare": [], "real_estate": [], "retail": [],
+        # Listed with an empty list rather than omitted: a new sector pack has to be named here
+        # before the suite goes green, so authoring one is never how a declaration slips in.
+        "consulting": [], "healthcare": [], "real_estate": [], "retail": [],
     }, declared

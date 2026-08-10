@@ -242,6 +242,6 @@ def test_shipped_declarations_are_exactly_the_four_we_decided() -> None:
         "marketing_advertising": ["mk_policy_documentation"],
         # Listed with an empty list rather than omitted: a new sector pack has to be named here
         # before the suite goes green, so authoring one is never how a declaration slips in.
-        "construction": [], "consulting": [], "education": [],
-        "healthcare": [], "real_estate": [], "retail": [],
+        "construction": [], "consulting": [], "education": [], "healthcare": [],
+        "manufacturing": [], "real_estate": [], "retail": [],
     }, declared

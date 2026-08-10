@@ -650,7 +650,7 @@ def test_the_AUTHORED_real_estate_pack_reaches_a_customer_with_its_multi_selects
     review = client.get(f"/v1/knowledge/releases/{release_id}", headers=APPROVER).json()
     assert review["generated_by_model"] == "authored"
     assert review["prompt_version"] == "authored:real_estate"
-    assert len(review["questions"]) == 22
+    assert len(review["questions"]) == 23
     assert review["status"] == "draft", "authored is not approved — the human gate still applies"
 
     for action in ("submit", "approve", "publish"):
@@ -673,7 +673,7 @@ def test_the_AUTHORED_real_estate_pack_reaches_a_customer_with_its_multi_selects
         headers=TENANT_A,
     ).json()
     questions = {q["question_id"]: q for q in opened["release"]["questions"]}
-    assert len(questions) == 22
+    assert len(questions) == 23
 
     multi = {qid for qid, q in questions.items() if q["type"] == "multi_select"}
     assert multi == {
@@ -752,7 +752,7 @@ def test_the_packs_this_deployment_ships_are_listable(client):
     packs = client.get("/v1/knowledge/packs", headers=APPROVER).json()["packs"]
     real_estate = next(p for p in packs if p["industry_slug"] == "real_estate")
     assert real_estate["canonical_name_ar"] == "العقارات"
-    assert real_estate["question_count"] == 22
+    assert real_estate["question_count"] == 23
     assert real_estate["problem"] is None
 
 
@@ -818,7 +818,7 @@ def test_DEPLOYING_A_SECTOR_from_an_empty_database_takes_no_manual_steps(client,
         headers=TENANT_A,
     ).json()
     assert opened["status"] == "opened"
-    assert len(opened["release"]["questions"]) == 22
+    assert len(opened["release"]["questions"]) == 23
     assert sum(1 for q in opened["release"]["questions"] if q["type"] == "multi_select") == 5
 
 

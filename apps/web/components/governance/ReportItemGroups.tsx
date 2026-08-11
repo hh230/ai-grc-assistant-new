@@ -5,6 +5,7 @@ import { CalendarClock, ListChecks, Target, Zap } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge, type Tone } from "@/components/ui/Badge";
 import { labelOrIdentifier } from "@/lib/planExecution/labels";
+import { localisedTitle } from "@/lib/planExecution/localiseTitle";
 import { groupItems, isQuickWin } from "@/lib/planExecution/grouping";
 import type { Priority } from "@/lib/planExecution/types";
 import type { GovernanceReportItem } from "@/lib/planGeneration/types";
@@ -28,6 +29,7 @@ function dueDate(dueAt: number | null): string | null {
  * immediately" here is exactly what they'll see as a Quick Win once the plan is active. */
 export function QuickWinsSection({ items }: { items: GovernanceReportItem[] }) {
   const t = useTranslations("governanceReport");
+  const seed = useTranslations("planSeed");
   const wins = items.filter(isQuickWin);
   if (wins.length === 0) return null;
   return (
@@ -42,7 +44,7 @@ export function QuickWinsSection({ items }: { items: GovernanceReportItem[] }) {
             key={item.id}
             className="flex items-center justify-between gap-3 rounded-lg border border-hairline px-3.5 py-2 text-sm"
           >
-            <span className="text-foreground-secondary">{item.title}</span>
+            <span className="text-foreground-secondary">{localisedTitle(item, seed.has, seed)}</span>
             <Badge tone="neutral">{labelOrIdentifier(t as (key: string) => string, "pillar", item.pillar)}</Badge>
           </li>
         ))}
@@ -55,6 +57,7 @@ export function QuickWinsSection({ items }: { items: GovernanceReportItem[] }) {
  * view (section 7) — an at-a-glance "what matters most" read. */
 export function PriorityRoadmapSection({ items }: { items: GovernanceReportItem[] }) {
   const t = useTranslations("governanceReport");
+  const seed = useTranslations("planSeed");
   const grouped = groupItems(items, "priority");
   return (
     <Card>
@@ -72,7 +75,7 @@ export function PriorityRoadmapSection({ items }: { items: GovernanceReportItem[
             <ul className="space-y-1.5 ps-1">
               {group.map((item) => (
                 <li key={item.id} className="text-sm text-foreground-secondary">
-                  {item.title}
+                  {localisedTitle(item, seed.has, seed)}
                 </li>
               ))}
             </ul>
@@ -87,6 +90,7 @@ export function PriorityRoadmapSection({ items }: { items: GovernanceReportItem[
  * never an LLM decision). */
 export function TimelineSection({ items }: { items: GovernanceReportItem[] }) {
   const t = useTranslations("governanceReport");
+  const seed = useTranslations("planSeed");
   const grouped = groupItems(items, "timeline");
   return (
     <Card>
@@ -109,7 +113,7 @@ export function TimelineSection({ items }: { items: GovernanceReportItem[] }) {
                   <Badge tone={PRIORITY_TONE[item.priority]} className="shrink-0">
                     {t(`priority.${item.priority}` as never)}
                   </Badge>
-                  {item.title}
+                  {localisedTitle(item, seed.has, seed)}
                 </li>
               ))}
             </ul>
@@ -126,6 +130,7 @@ export function TimelineSection({ items }: { items: GovernanceReportItem[] }) {
  * the live Plan (`components/plan/PlanItemCard.tsx`), once this content is real. */
 export function ActionTasksSection({ items }: { items: GovernanceReportItem[] }) {
   const t = useTranslations("governanceReport");
+  const seed = useTranslations("planSeed");
   return (
     <Card>
       <div className="mb-3 flex items-center gap-2">
@@ -147,7 +152,7 @@ export function ActionTasksSection({ items }: { items: GovernanceReportItem[] })
                   </span>
                 )}
               </div>
-              <h4 className="mt-2 text-sm font-semibold leading-snug text-foreground">{item.title}</h4>
+              <h4 className="mt-2 text-sm font-semibold leading-snug text-foreground">{localisedTitle(item, seed.has, seed)}</h4>
               <p className="mt-1.5 text-sm text-foreground-secondary">{item.rationale}</p>
               <p className="mt-1.5 text-2xs text-foreground-muted">
                 <span className="font-medium text-foreground-secondary">{t("actionTasks.outcome")}: </span>

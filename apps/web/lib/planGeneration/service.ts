@@ -142,6 +142,7 @@ interface DraftDto {
     id: string;
     pillar: string;
     title: string;
+    title_key?: string;
     objective: string;
     expected_outcome: string;
     rationale: string;
@@ -195,6 +196,7 @@ function extractDraft(detail: MissionDetailDto): GovernanceReportDraft {
       id: i.id,
       pillar: i.pillar,
       title: i.title,
+      titleKey: i.title_key ?? "",
       objective: i.objective,
       expectedOutcome: i.expected_outcome,
       rationale: i.rationale,

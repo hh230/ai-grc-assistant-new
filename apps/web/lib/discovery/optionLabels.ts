@@ -20,6 +20,8 @@ export function optionsNamespaceFor(questionId: string): string {
   if (questionId === "q:held_licenses") return "discoveryInterview.options.licenses";
   if (questionId === "q:ownership_type") return "discoveryInterview.options.ownershipType";
   if (questionId === "q:data_geography") return "discoveryInterview.options.dataGeography";
+  if (questionId === "q:organization_language")
+    return "discoveryInterview.options.organizationLanguage";
   if (MATURITY_SCALE_QUESTIONS.has(questionId)) return "discoveryInterview.options.maturityScale";
   return "discoveryInterview.options.generic";
 }

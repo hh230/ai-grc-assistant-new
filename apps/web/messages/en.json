@@ -1601,7 +1601,8 @@
       "ownership_type": "How is your organization owned?",
       "outsources_critical_functions": "Do you rely on external providers for functions your business depends on?",
       "operates_critical_infrastructure": "Does your organization operate infrastructure the country depends on?",
-      "data_geography": "Where is your regulated data stored?"
+      "data_geography": "Where is your regulated data stored?",
+      "organization_language": "Which language should the platform use for your outputs and reports?"
     }
   },
   "plan": {
@@ -1932,6 +1933,10 @@
         "gcc": "Within the GCC",
         "international": "Outside the region",
         "unknown": "We're not sure"
+      },
+      "organizationLanguage": {
+        "ar": "Arabic",
+        "en": "English"
       }
     },
     "activating": {

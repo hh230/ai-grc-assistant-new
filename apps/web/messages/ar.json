@@ -1601,7 +1601,8 @@
       "ownership_type": "ما طبيعة ملكية منشأتك؟",
       "outsources_critical_functions": "هل تعتمد على مزوّدين خارجيين في وظائف يعتمد عليها عملك؟",
       "operates_critical_infrastructure": "هل تشغّل منشأتك بنية تحتية تعتمد عليها الدولة؟",
-      "data_geography": "أين تُخزَّن بياناتك الخاضعة للتنظيم؟"
+      "data_geography": "أين تُخزَّن بياناتك الخاضعة للتنظيم؟",
+      "organization_language": "بأي لغة تفضّلون تلقّي مخرجات المنصة وتقاريرها؟"
     }
   },
   "plan": {
@@ -1932,6 +1933,10 @@
         "gcc": "داخل دول الخليج",
         "international": "خارج المنطقة",
         "unknown": "غير متأكدين"
+      },
+      "organizationLanguage": {
+        "ar": "العربية",
+        "en": "الإنجليزية"
       }
     },
     "activating": {

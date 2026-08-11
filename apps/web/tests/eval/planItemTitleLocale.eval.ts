@@ -75,4 +75,34 @@ for (const locale of ["ar", "en"]) {
   assert.deepEqual(missing, [], `messages/${locale}.json is missing planSeed entries: ${missing}`);
 }
 
-console.log(`planItemTitleLocale: ok (${seeds.size} seeds, ar + en)`);
+// --- the DRAFT report reads the same key, not just the persisted plan -------------------------
+// The report path (planGeneration -> ReportItemGroups) dropped `title_key` and rendered the stored
+// English straight into an Arabic screen. These three assert the contract the sections now honour:
+// the reader's language when the key is known, the other language when it is the reader's, and the
+// stored prose — never a raw key — when the engine names a seed this deployment has no message for.
+const arMessages = JSON.parse(readFileSync("messages/ar.json", "utf-8")) as {
+  planSeed: Record<string, string>;
+};
+const enMessages = JSON.parse(readFileSync("messages/en.json", "utf-8")) as {
+  planSeed: Record<string, string>;
+};
+const draftItem = {
+  title: "Designate Compliance Owner",
+  titleKey: "plan.seed.designate_compliance_owner.title",
+};
+const render = (messages: Record<string, string>) =>
+  localisedTitle(draftItem, (name) => name in messages, (name) => messages[name]!);
+
+// ar renders Arabic, and nothing of the stored English survives on screen
+const arabic = render(arMessages.planSeed);
+assert.equal(arabic, arMessages.planSeed.designate_compliance_owner);
+assert.notEqual(arabic, draftItem.title);
+assert.ok(!/[A-Za-z]/.test(arabic), `an Arabic screen must not show Latin script: ${arabic}`);
+
+// en stays English
+assert.equal(render(enMessages.planSeed), enMessages.planSeed.designate_compliance_owner);
+
+// a seed this deployment has no message for falls back to the stored prose, never the key
+assert.equal(render({}), "Designate Compliance Owner");
+
+console.log(`planItemTitleLocale: ok (${seeds.size} seeds, ar + en, draft report path)`);

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { CheckCircle2, ClipboardList, Flame, Target } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { localisedTitle } from "@/lib/planExecution/localiseTitle";
 import type { PlanItem, Priority } from "@/lib/planExecution/types";
 
 const NOW_SECONDS = () => Date.now() / 1000;
@@ -17,6 +18,10 @@ interface PlanStatsProps {
  * to-do count). */
 export function PlanStats({ items }: PlanStatsProps) {
   const t = useTranslations("planExecution");
+  // The rule engine's vocabulary lives in its own namespace, and `has` is asked before
+  // translating — the same mechanism the item cards use, so this scoreboard never names an
+  // action in a different language from the card it points at.
+  const seed = useTranslations("planSeed");
   const total = items.length;
   const done = items.filter((item) => item.status === "done").length;
   const now = NOW_SECONDS();
@@ -68,7 +73,7 @@ export function PlanStats({ items }: PlanStatsProps) {
         </div>
         {nextUp ? (
           <p className="mt-2 line-clamp-2 text-sm font-medium leading-snug text-foreground">
-            {nextUp.title}
+            {localisedTitle(nextUp, seed.has, seed)}
           </p>
         ) : (
           <p className="mt-2 flex items-center gap-1.5 text-sm text-success">

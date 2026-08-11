@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Link } from "@/i18n/navigation";
 import { PRIORITY_RANK, isQuickWin } from "@/lib/planExecution/grouping";
+import { localisedTitle } from "@/lib/planExecution/localiseTitle";
 import type { PlanDetail, PlanItem } from "@/lib/planExecution/types";
 
 /**
@@ -40,6 +41,10 @@ const DATE_ONLY = { year: "numeric", month: "short", day: "numeric" } as const;
 
 export async function WhatToDoNext({ plan }: { plan: PlanDetail }) {
   const t = await getTranslations("whatToDoNext");
+  // The rule engine's own vocabulary, in its own namespace — the same mechanism the plan cards
+  // use, so the page's largest card and the board below it never name the same action in two
+  // different languages. `has` is asked first: next-intl answers a miss with the qualified key.
+  const seed = await getTranslations("planSeed");
   const format = await getFormatter();
   const actions = nextActions(plan.items);
   const remaining = plan.items.filter((item) => item.status !== "done").length;
@@ -73,7 +78,9 @@ export async function WhatToDoNext({ plan }: { plan: PlanDetail }) {
                   <span aria-hidden className="text-sm text-foreground-muted">
                     {index + 1}
                   </span>
-                  <p className="text-sm font-medium text-foreground">{item.title}</p>
+                  <p className="text-sm font-medium text-foreground">
+                    {localisedTitle(item, seed.has, seed)}
+                  </p>
                 </div>
                 {/* The objective, not the rationale: what this action sets out to achieve is what
                     a person needs before starting it. The reasoning is on the plan page. */}

@@ -23,6 +23,9 @@ export interface GovernanceReportItem {
   id: string;
   pillar: string;
   title: string;
+  /** The engine's own i18n key for `title` (`plan.seed.<name>.title`). The stored title stays
+   * authoritative and is the fallback — see `lib/planExecution/localiseTitle`. */
+  titleKey: string;
   objective: string;
   expectedOutcome: string;
   rationale: string;

@@ -430,3 +430,46 @@ def test_organization_baseline_upsert_and_read(store: PostgresGovernanceStore) -
         assert active_packs2 == ("pack:core",)
     finally:
         _cleanup(store._conn, tenant_id)  # noqa: SLF001
+
+
+def test_the_lock_survives_a_server_that_truncates_float_text(
+    store: PostgresGovernanceStore,
+) -> None:
+    """The production outage this pins: with `extra_float_digits = 0` the server prints a
+    `double precision` to 15 significant digits, so an item read over the text protocol comes back
+    with a DIFFERENT `updated_at` than the one stored. The optimistic lock is an equality on that
+    value, so every transition matched 0 rows and answered "changed by someone else" — for a single
+    caller, with nothing else writing.
+
+    Every other test here uses round timestamps (1000.0, 1500.0) which survive truncation intact,
+    which is precisely why none of them caught it. This one uses a real-world epoch whose 17
+    significant digits do not.
+    """
+    tenant_id = _tenant()
+    # A genuine `time.time()` reading: 1786451275.8763337 prints as 1786451275.87633 at 15 digits.
+    stamped = 1786451275.8763337
+    assert repr(float(f"{stamped:.15g}")) != repr(stamped), "fixture must actually lose digits"
+
+    conn = store._conn  # noqa: SLF001
+    previous = conn.execute("SHOW extra_float_digits").fetchone()[0]
+    try:
+        conn.execute("SET extra_float_digits = 0")
+
+        plan = _plan(tenant_id)
+        store.create_plan(plan)
+        item = _item(tenant_id, plan.id, created_at=stamped, updated_at=stamped)
+        store.create_plan_item(item)
+
+        # The read must return the stored bits, not the server's shortened text form.
+        fetched = store.get_plan_item(item.id, tenant_id)
+        assert fetched.updated_at == stamped
+        assert store.list_plan_items(plan.id, tenant_id)[0].updated_at == stamped
+
+        # ...so the transition applies rather than being refused as a phantom conflict.
+        started = fetched.marked_in_progress(now=stamped + 5.0)
+        assert _transition(store, fetched, started, "started") is True
+        assert store.get_plan_item(item.id, tenant_id).status == "in_progress"
+        assert len(store.list_plan_events(item.id, tenant_id)) == 1
+    finally:
+        conn.execute("SET extra_float_digits = %s" % int(previous))
+        _cleanup(conn, tenant_id)

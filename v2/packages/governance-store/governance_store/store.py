@@ -369,6 +369,11 @@ class PostgresGovernanceStore:
         - **Tenant-safe by construction**: the event is only ever inserted after the item UPDATE
           (scoped `id = ... AND tenant_id = ...`) actually matched a row, so there is no separate
           trust-the-caller step for the event's tenant, unlike a bare `append_plan_event` call.
+
+        The lock is an equality on a `double precision`, so it only holds if the value the caller
+        read is *bit-identical* to the stored one. That is why `get_plan_item`/`list_plan_items`
+        read in binary — see their note. Do not "relax" this comparison with a tolerance: a lock
+        that accepts approximately-the-version-I-read is not a lock.
         """
         psycopg, jsonb, _ = _load_pg()
         row = plan_item_to_row(item)
@@ -407,23 +412,38 @@ class PostgresGovernanceStore:
         return applied
 
     def get_plan_item(self, item_id: str, tenant_id: str) -> PlanItem | None:
+        """Read in BINARY, deliberately: `updated_at` leaves this method as an optimistic-lock
+        token, and the text protocol only round-trips a `double precision` exactly when the server
+        runs `extra_float_digits >= 1`. Managed Postgres does not always: production sits behind a
+        pooler whose server sets it to `0`, which prints float8 to 15 significant digits and
+        silently truncates. The item then failed to match its OWN `updated_at`, so every
+        `record_item_transition` touched 0 rows and every start/complete/reopen/attach in
+        production answered 409 "changed by someone else" — with no other writer in sight.
+
+        Binary transfers the IEEE-754 bits and has no such setting. A `SET extra_float_digits`
+        alternative was tried against production first and rejected: the pooler swallowed it
+        (`SHOW` still answered `0`), which is exactly the kind of fix that looks applied and is not.
+        """
         _, _, dict_row = _load_pg()
         sql = (
             f"SELECT {', '.join(PLAN_ITEM_COLUMNS)} FROM {TABLE_GOVERNANCE_PLAN_ITEMS} "
             f"WHERE id = %(id)s AND tenant_id = %(tenant_id)s"
         )
-        with self._conn.cursor(row_factory=dict_row) as cur:
+        with self._conn.cursor(binary=True, row_factory=dict_row) as cur:
             cur.execute(sql, {"id": item_id, "tenant_id": tenant_id})
             row = cur.fetchone()
         return plan_item_from_row(row) if row is not None else None
 
     def list_plan_items(self, plan_id: str, tenant_id: str) -> list[PlanItem]:
+        """Binary for the same reason as `get_plan_item`: these items are handed to callers that
+        may transition them, and an item whose `updated_at` depends on how it was read is not the
+        same item."""
         _, _, dict_row = _load_pg()
         sql = (
             f"SELECT {', '.join(PLAN_ITEM_COLUMNS)} FROM {TABLE_GOVERNANCE_PLAN_ITEMS} "
             f"WHERE plan_id = %(plan_id)s AND tenant_id = %(tenant_id)s"
         )
-        with self._conn.cursor(row_factory=dict_row) as cur:
+        with self._conn.cursor(binary=True, row_factory=dict_row) as cur:
             cur.execute(sql, {"plan_id": plan_id, "tenant_id": tenant_id})
             rows = cur.fetchall()
         return [plan_item_from_row(row) for row in rows]

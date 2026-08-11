@@ -1822,7 +1822,10 @@
       "reportedBy": "Reported by you",
       "attachEvidence": "Attach evidence",
       "viewHistory": "View history",
-      "conflict": "This item was updated elsewhere — refreshing…"
+      "conflict": "This item was updated elsewhere — refreshing…",
+      "notPermitted": "You are not allowed to change this item's status.",
+      "missing": "This item no longer exists — refresh the page.",
+      "actionFailed": "That action could not be applied. Please try again."
     },
     "evidenceModal": {
       "title": "Attach evidence",

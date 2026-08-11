@@ -23,6 +23,7 @@ import {
   useStartPlanItem,
 } from "@/hooks/usePlanExecution";
 import { labelOrIdentifier } from "@/lib/planExecution/labels";
+import { PlanActionError } from "@/lib/planExecution/client";
 import type { PlanItem, PlanItemStatus, Priority } from "@/lib/planExecution/types";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +35,22 @@ const PRIORITY_TONE: Record<Priority, Tone> = {
 };
 
 const STATUS_STEPS: PlanItemStatus[] = ["not_started", "in_progress", "done"];
+
+/**
+ * What to tell someone whose action did not apply.
+ *
+ * Only `409` means "someone else changed this". Every other failure has its own cause, and
+ * reporting them all as a conflict points the reader at a phantom edit instead of the real
+ * problem — a mistake this screen made until an optimistic-lock bug turned every transition into
+ * a 409 and the copy dutifully lied about why.
+ */
+function failureKey(error: Error): string {
+  const status = error instanceof PlanActionError ? error.status : 0;
+  if (status === 409) return "item.conflict";
+  if (status === 401 || status === 403) return "item.notPermitted";
+  if (status === 404) return "item.missing";
+  return "item.actionFailed";
+}
 
 function dueMeta(dueAt: number | null): { key: string; values?: Record<string, number>; tone: Tone } | null {
   if (dueAt == null) return null;
@@ -62,7 +79,7 @@ export function PlanItemCard({ item }: PlanItemCardProps) {
   const complete = useCompletePlanItem();
   const reopen = useReopenPlanItem();
   const pending = start.isPending || complete.isPending || reopen.isPending;
-  const conflict = start.isError || complete.isError || reopen.isError;
+  const failure = start.error ?? complete.error ?? reopen.error;
 
   const due = dueMeta(item.dueAt);
   const stepIndex = STATUS_STEPS.indexOf(item.status === "not_applicable" || item.status === "deferred" ? "not_started" : item.status);
@@ -107,10 +124,10 @@ export function PlanItemCard({ item }: PlanItemCardProps) {
         )}
       </div>
 
-      {conflict && (
+      {failure && (
         <p className="mt-2 flex items-center gap-1.5 text-2xs text-warning">
           <AlertTriangle className="h-3.5 w-3.5" strokeWidth={1.75} />
-          {t("item.conflict")}
+          {(t as (key: string) => string)(failureKey(failure))}
         </p>
       )}
 

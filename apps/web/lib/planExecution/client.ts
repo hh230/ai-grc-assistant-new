@@ -3,14 +3,37 @@
 
 import type { CurrentMaturity, GovernancePlan, PlanDetail, PlanEvent, PlanItem } from "./types";
 
-async function parseError(response: Response): Promise<string> {
-  const data = (await response.json().catch(() => ({}))) as { error?: string };
-  return data.error ?? `Request failed (${response.status}).`;
+/**
+ * A failed plan call, carrying the status the API actually answered.
+ *
+ * The status is not decoration: it decides what the user is told. "Someone else changed this item"
+ * is only ever true of a `409`, and saying it after a `502` sends a person hunting for an edit
+ * nobody made — which is exactly what happened while an optimistic-lock bug made every transition
+ * answer 409.
+ */
+export class PlanActionError extends Error {
+  constructor(
+    readonly status: number,
+    message: string,
+    readonly code?: string,
+  ) {
+    super(message);
+    this.name = "PlanActionError";
+  }
+}
+
+async function toError(response: Response): Promise<PlanActionError> {
+  const data = (await response.json().catch(() => ({}))) as { error?: string; code?: string };
+  return new PlanActionError(
+    response.status,
+    data.error ?? `Request failed (${response.status}).`,
+    data.code,
+  );
 }
 
 async function getJson<T>(path: string): Promise<T> {
   const response = await fetch(path, { cache: "no-store" });
-  if (!response.ok) throw new Error(await parseError(response));
+  if (!response.ok) throw await toError(response);
   return (await response.json()) as T;
 }
 
@@ -20,7 +43,7 @@ async function postJson<T>(path: string, body?: unknown): Promise<T> {
     headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,
     body: body !== undefined ? JSON.stringify(body) : undefined,
   });
-  if (!response.ok) throw new Error(await parseError(response));
+  if (!response.ok) throw await toError(response);
   return (await response.json()) as T;
 }
 

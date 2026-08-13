@@ -44,6 +44,13 @@ class InterviewQuestionView(BaseModel):
     importance: str
     references: list[ReferenceView] = Field(default_factory=list)
     evidence_required: list[str] = Field(default_factory=list)
+    # ADR 0069. Present only when the WHOLE question was published in the requested language, so
+    # these three are all present or all absent — a client never has to handle a half-translated
+    # question, because publication refuses to be partial. Arabic above stays required and
+    # authoritative; it is what a question falls back to, and what a reviewer approved.
+    canonical_text_en: str | None = None
+    options_en: list[str] | None = None
+    evidence_required_en: list[str] | None = None
 
     @classmethod
     def from_row(cls, row: dict[str, Any]) -> InterviewQuestionView:
@@ -57,6 +64,9 @@ class InterviewQuestionView(BaseModel):
             importance=row["importance"],
             references=_reference_views(row.get("references")),
             evidence_required=list(row.get("evidence_required") or []),
+            canonical_text_en=row.get("canonical_text_en"),
+            options_en=row.get("options_en"),
+            evidence_required_en=row.get("evidence_required_en"),
         )
 
 

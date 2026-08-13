@@ -315,21 +315,27 @@ def test_the_active_release_carries_its_questions_and_provenance(store):
 def test_only_a_REVIEWED_translation_can_be_published(store):
     template_id = _template(store)
     release_id = _released(store, template_id, questions=[_question("a"), _question("b")])
+    # Since ADR 0069 a question is published whole, so the whole of it must first be translated:
+    # this fixture's question is its own text plus one `evidence_required` line.
     store.save_translation(release_id=release_id, question_id="a", language="en", text="A?")
-    assert store.publish_translation(
+    store.save_translation(release_id=release_id, question_id="a", language="en",
+                           text="License number", part=("evidence", 0))
+    assert store.publish_question_translation(
         release_id=release_id, question_id="a", language="en"
-    ) is False, "generated cannot be published — it has not been reviewed"
+    ) == 0, "generated cannot be published — it has not been reviewed"
 
     store._conn.execute(
         "UPDATE question_translations SET status = 'reviewed' WHERE release_id = %s",
         (release_id,),
     )
-    assert store.publish_translation(release_id=release_id, question_id="a", language="en") is True
+    # Publication is per QUESTION and returns how many parts it released — here, both of them.
+    assert store.publish_question_translation(
+        release_id=release_id, question_id="a", language="en") == 2
 
     # Coverage itself is a projection, not a repository operation — asserted against the rows.
     assert store._conn.execute(
         "SELECT count(*) FROM question_translations WHERE status = 'published'"
-    ).fetchone()[0] == 1
+    ).fetchone()[0] == 2
 
 
 def test_re_saving_a_translation_returns_it_to_generated(store):

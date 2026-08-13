@@ -612,6 +612,10 @@ def translation_coverage(
     if language == CANONICAL_LANGUAGE:
         return len(template.questions), len(template.questions)
     ids = {q.id for q in template.questions}
+    # QUESTIONS, never rows. Since ADR 0069 a question is several translated parts, and counting
+    # rows would report a sector as 7x covered because one question had seven parts. A question
+    # counts once, and only because publication is all-or-nothing (`publish_question_translation`)
+    # can its presence here be read as "this question is fully available in that language".
     published = {
         t.question_id
         for t in translations

@@ -7,6 +7,7 @@
     {
       "question_id": "it_licences",
       "canonical_text_ar": "ما هي التراخيص النظامية التي تحملها المنشأة حالياً لممارسة نشاط تقنية المعلومات في المملكة؟",
+      "canonical_text_en": "Which statutory licences does the organization currently hold in order to carry on information technology activity in the Kingdom?",
       "type": "enum",
       "options": [
         "سجل تجاري بنشاط تقنية معلومات فقط",
@@ -15,6 +16,13 @@
         "سجل تجاري + تراخيص قطاعية أخرى",
         "لا توجد تراخيص سارية حالياً"
       ],
+      "options_en": {
+        "سجل تجاري بنشاط تقنية معلومات فقط": "Commercial registration covering IT activity only",
+        "سجل تجاري + ترخيص هيئة الاتصالات والفضاء والتقنية (CST)": "Commercial registration plus a Communications, Space and Technology Commission (CST) licence",
+        "سجل تجاري + رخصة استثمار أجنبي من وزارة الاستثمار": "Commercial registration plus a foreign investment licence from the Ministry of Investment",
+        "سجل تجاري + تراخيص قطاعية أخرى": "Commercial registration plus other sector licences",
+        "لا توجد تراخيص سارية حالياً": "No valid licences at present"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -23,6 +31,11 @@
         "نسخة السجل التجاري",
         "شهادات التراخيص السارية",
         "رخصة الاستثمار الأجنبي إن وجدت"
+      ],
+      "evidence_required_en": [
+        "A copy of the commercial registration",
+        "Certificates of the licences in force",
+        "The foreign investment licence, if any"
       ],
       "references": [
         {
@@ -38,6 +51,7 @@
     {
       "question_id": "it_regulated_services",
       "canonical_text_ar": "اختر جميع الخدمات التي تقدمها المنشأة مما يستوجب ترخيصاً أو تسجيلاً خاصاً: خدمات الحوسبة السحابية، مراكز البيانات، خدمات الاتصالات، خدمات إدارة تقنية المعلومات المُدارة (MSP)، أو خدمات الأمن السيبراني.",
+      "canonical_text_en": "Select every service the organization provides that requires a specific licence or registration: cloud computing services, data centres, telecommunications services, managed IT services (MSP), or cybersecurity services.",
       "type": "multi_select",
       "options": [
         "خدمات حوسبة سحابية (مزود خدمة)",
@@ -47,6 +61,14 @@
         "خدمات أمن سيبراني",
         "تطوير برمجيات وحلول فقط دون ما سبق"
       ],
+      "options_en": {
+        "خدمات حوسبة سحابية (مزود خدمة)": "Cloud computing services (as a service provider)",
+        "تشغيل مركز بيانات": "Operating a data centre",
+        "خدمات اتصالات أو بنية تحتية": "Telecommunications or infrastructure services",
+        "خدمات تقنية مُدارة MSP": "Managed IT services (MSP)",
+        "خدمات أمن سيبراني": "Cybersecurity services",
+        "تطوير برمجيات وحلول فقط دون ما سبق": "Software and solution development only, none of the above"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -55,6 +77,11 @@
         "وصف الخدمات المقدمة",
         "تراخيص مزودي الخدمات السحابية إن وجدت",
         "قائمة عقود الخدمات المُدارة"
+      ],
+      "evidence_required_en": [
+        "A description of the services provided",
+        "Cloud service provider licences, if any",
+        "A list of managed service contracts"
       ],
       "references": [
         {
@@ -70,6 +97,7 @@
     {
       "question_id": "it_regulated_clients",
       "canonical_text_ar": "اختر جميع فئات الجهات التي تتعامل معها المنشأة بصفة عميل أو مورّد تقني: جهات حكومية، أو جهات خاضعة لإشراف البنك المركزي السعودي، أو جهات خاضعة لهيئة السوق المالية، أو جهات ذات بنية تحتية وطنية حساسة.",
+      "canonical_text_en": "Select every category of entity the organization deals with as a client or as a technology supplier: government entities, entities supervised by the Saudi Central Bank, entities regulated by the Capital Market Authority, or entities holding sensitive national infrastructure.",
       "type": "multi_select",
       "options": [
         "جهات حكومية",
@@ -78,6 +106,13 @@
         "جهات بنية تحتية وطنية حساسة",
         "قطاع خاص عام فقط"
       ],
+      "options_en": {
+        "جهات حكومية": "Government entities",
+        "جهات مالية خاضعة لساما": "Financial entities supervised by the Saudi Central Bank (SAMA)",
+        "جهات خاضعة لهيئة السوق المالية": "Entities regulated by the Capital Market Authority (CMA)",
+        "جهات بنية تحتية وطنية حساسة": "Entities holding sensitive national infrastructure",
+        "قطاع خاص عام فقط": "General private sector only"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -86,6 +121,11 @@
         "قائمة العملاء حسب القطاع",
         "نماذج من العقود الحكومية",
         "متطلبات الأمن السيبراني المضمّنة في العقود"
+      ],
+      "evidence_required_en": [
+        "A list of clients by sector",
+        "Samples of government contracts",
+        "The cybersecurity requirements embedded in the contracts"
       ],
       "references": [
         {
@@ -101,6 +141,7 @@
     {
       "question_id": "it_saudization",
       "canonical_text_ar": "ما مدى امتثال المنشأة لمتطلبات السعودة والتوطين في وظائف تقنية المعلومات والالتزامات النظامية العمالية ذات الصلة؟",
+      "canonical_text_en": "How far does the organization comply with Saudization requirements for IT roles and with the related statutory labour obligations?",
       "type": "enum",
       "options": [
         "ملتزمة بالكامل ونطاق أخضر مرتفع أو بلاتيني",
@@ -108,6 +149,12 @@
         "غير ملتزمة حالياً",
         "لم يتم تقييم الوضع"
       ],
+      "options_en": {
+        "ملتزمة بالكامل ونطاق أخضر مرتفع أو بلاتيني": "Fully compliant, in the high green or platinum Nitaqat band",
+        "ملتزمة بالحد الأدنى - نطاق أخضر منخفض": "Compliant at the minimum, in the low green Nitaqat band",
+        "غير ملتزمة حالياً": "Not compliant at present",
+        "لم يتم تقييم الوضع": "The position has not been assessed"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -116,6 +163,11 @@
         "شهادة الالتزام من وزارة الموارد البشرية",
         "تقرير نطاقات",
         "كشف الموظفين السعوديين في الوظائف التقنية"
+      ],
+      "evidence_required_en": [
+        "The compliance certificate from the Ministry of Human Resources",
+        "The Nitaqat report",
+        "A schedule of Saudi employees in technical roles"
       ],
       "references": [
         {
@@ -131,6 +183,7 @@
     {
       "question_id": "it_governance_structure",
       "canonical_text_ar": "هل يوجد هيكل حوكمة معتمد رسمياً يوضح مجلس الإدارة أو الشركاء واللجان المنبثقة وتفويض الصلاحيات؟",
+      "canonical_text_en": "Is there a formally approved governance structure setting out the board or the partners, the committees reporting to it, and the delegation of authority?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -141,6 +194,11 @@
         "الهيكل التنظيمي المعتمد",
         "مصفوفة تفويض الصلاحيات",
         "محاضر اجتماعات مجلس الإدارة أو الشركاء"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The delegation of authority matrix",
+        "Minutes of board or partners' meetings"
       ],
       "references": [
         {
@@ -156,6 +214,7 @@
     {
       "question_id": "it_compliance_owner",
       "canonical_text_ar": "من هو المسؤول المعيّن رسمياً عن الالتزام والحوكمة والمخاطر داخل المنشأة، وما مدى استقلاليته التنظيمية؟",
+      "canonical_text_en": "Who is formally appointed as responsible for compliance, governance and risk within the organization, and how independent is that role within the structure?",
       "type": "enum",
       "options": [
         "إدارة التزام مستقلة ترفع لمجلس الإدارة",
@@ -164,6 +223,13 @@
         "موكلة لجهة استشارية خارجية",
         "لا يوجد مسؤول محدد"
       ],
+      "options_en": {
+        "إدارة التزام مستقلة ترفع لمجلس الإدارة": "An independent compliance function reporting to the board",
+        "مسؤول التزام متفرغ يرفع للرئيس التنفيذي": "A full-time compliance officer reporting to the CEO",
+        "مهمة مسندة كعمل إضافي لموظف قائم": "The duty assigned as an additional task to an existing employee",
+        "موكلة لجهة استشارية خارجية": "Outsourced to an external advisory firm",
+        "لا يوجد مسؤول محدد": "No one is specifically responsible"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -172,6 +238,11 @@
         "قرار التعيين",
         "الوصف الوظيفي",
         "خطوط الرفع في الهيكل التنظيمي"
+      ],
+      "evidence_required_en": [
+        "The appointment decision",
+        "The job description",
+        "The reporting lines in the organizational structure"
       ],
       "references": [
         {
@@ -187,6 +258,7 @@
     {
       "question_id": "it_policies",
       "canonical_text_ar": "هل توجد سياسات مؤسسية معتمدة ومطبقة (مثل سياسة أمن المعلومات، تعارض المصالح، السلوك المهني، والإبلاغ عن المخالفات)؟",
+      "canonical_text_en": "Are there approved and applied corporate policies (such as information security, conflict of interest, professional conduct, and whistleblowing)?",
       "type": "enum",
       "options": [
         {
@@ -210,6 +282,13 @@
           "text_ar": "لا توجد سياسات"
         }
       ],
+      "options_en": {
+        "reviewed": "Policies approved, applied and reviewed periodically",
+        "approved_not_reviewed": "Policies approved but not reviewed periodically",
+        "draft_unapproved": "Drafts that have not been approved",
+        "verbal_only": "Verbal practices that are not documented",
+        "none": "No policies"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -218,6 +297,11 @@
         "حزمة السياسات المعتمدة",
         "محاضر الاعتماد",
         "إقرارات اطلاع الموظفين"
+      ],
+      "evidence_required_en": [
+        "The approved policy set",
+        "The approval minutes",
+        "Employee acknowledgements of having read them"
       ],
       "references": [
         {
@@ -241,6 +325,7 @@
     {
       "question_id": "it_risk_register",
       "canonical_text_ar": "هل لدى المنشأة سجل مخاطر مؤسسي موثّق يغطي المخاطر التشغيلية والتقنية والنظامية مع ملاك ومعالجات محددة؟",
+      "canonical_text_en": "Does the organization keep a documented corporate risk register covering operational, technical and regulatory risks, with named owners and defined treatments?",
       "type": "enum",
       "options": [
         "سجل مخاطر شامل يُحدّث دورياً ويُعرض على الإدارة العليا",
@@ -248,6 +333,12 @@
         "تقييم مخاطر تم مرة واحدة دون تحديث",
         "لا يوجد سجل مخاطر"
       ],
+      "options_en": {
+        "سجل مخاطر شامل يُحدّث دورياً ويُعرض على الإدارة العليا": "A comprehensive risk register, updated periodically and presented to senior management",
+        "سجل مخاطر محدود بالمخاطر التقنية فقط": "A risk register limited to technical risks only",
+        "تقييم مخاطر تم مرة واحدة دون تحديث": "A one-off risk assessment that has not been updated",
+        "لا يوجد سجل مخاطر": "There is no risk register"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -256,6 +347,11 @@
         "سجل المخاطر",
         "منهجية تقييم المخاطر",
         "خطط معالجة المخاطر وتواريخ المراجعة"
+      ],
+      "evidence_required_en": [
+        "The risk register",
+        "The risk assessment methodology",
+        "Risk treatment plans and their review dates"
       ],
       "references": [
         {
@@ -271,6 +367,7 @@
     {
       "question_id": "it_security_controls",
       "canonical_text_ar": "ما مستوى تطبيق ضوابط أمن المعلومات التقنية الأساسية لدى المنشأة (إدارة الهويات والصلاحيات، إدارة الثغرات والتحديثات، التشفير، النسخ الاحتياطي، تسجيل ومراقبة الأحداث)؟",
+      "canonical_text_en": "To what level does the organization apply the baseline technical information security controls (identity and access management, vulnerability and patch management, encryption, backup, and event logging and monitoring)?",
       "type": "enum",
       "options": [
         "مطبقة وموثقة ومراجعة دورياً",
@@ -278,6 +375,12 @@
         "مطبقة جزئياً على أنظمة محددة",
         "غير مطبقة"
       ],
+      "options_en": {
+        "مطبقة وموثقة ومراجعة دورياً": "Applied, documented and reviewed periodically",
+        "مطبقة تقنياً دون توثيق أو مراجعة": "Applied technically, with no documentation or review",
+        "مطبقة جزئياً على أنظمة محددة": "Applied partially, to specific systems",
+        "غير مطبقة": "Not applied"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -287,6 +390,12 @@
         "تقارير فحص الثغرات",
         "سجلات النسخ الاحتياطي واختبارات الاسترجاع",
         "أدلة مراقبة الأحداث"
+      ],
+      "evidence_required_en": [
+        "The identity and access management policy",
+        "Vulnerability scan reports",
+        "Backup logs and restore tests",
+        "Evidence of event monitoring"
       ],
       "references": [
         {
@@ -302,6 +411,7 @@
     {
       "question_id": "it_incident_response",
       "canonical_text_ar": "هل يوجد لدى المنشأة إجراء معتمد وموثّق للاستجابة لحوادث الأمن السيبراني يتضمن التصعيد والإبلاغ للجهات الرقابية والعملاء المتأثرين؟",
+      "canonical_text_en": "Does the organization have an approved, documented cybersecurity incident response procedure covering escalation and notification to regulators and to affected clients?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -312,6 +422,11 @@
         "إجراء الاستجابة للحوادث",
         "سجل الحوادث السابقة",
         "أدلة تمارين المحاكاة"
+      ],
+      "evidence_required_en": [
+        "The incident response procedure",
+        "The register of past incidents",
+        "Evidence of simulation exercises"
       ],
       "references": [
         {
@@ -327,6 +442,7 @@
     {
       "question_id": "it_data_role",
       "canonical_text_ar": "هل تقوم المنشأة بمعالجة بيانات شخصية، وبأي صفة تمارس ذلك؟",
+      "canonical_text_en": "Does the organization process personal data, and in what capacity does it do so?",
       "type": "enum",
       "options": [
         "جهة تحكم - بيانات موظفين وعملاء المنشأة فقط",
@@ -334,6 +450,12 @@
         "جهة تحكم وجهة معالجة معاً",
         "لا تتم معالجة بيانات شخصية"
       ],
+      "options_en": {
+        "جهة تحكم - بيانات موظفين وعملاء المنشأة فقط": "Data Controller — the organization's own employee and client data only",
+        "جهة معالجة نيابة عن عملاء المنشأة": "Data Processor, on behalf of the organization's clients",
+        "جهة تحكم وجهة معالجة معاً": "Both Data Controller and Data Processor",
+        "لا تتم معالجة بيانات شخصية": "No personal data is processed"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -342,6 +464,11 @@
         "سجل أنشطة المعالجة",
         "اتفاقيات معالجة البيانات مع العملاء",
         "خرائط تدفق البيانات"
+      ],
+      "evidence_required_en": [
+        "The record of processing activities",
+        "The data processing agreements with clients",
+        "Data flow maps"
       ],
       "references": [
         {
@@ -357,6 +484,7 @@
     {
       "question_id": "it_cross_border",
       "canonical_text_ar": "هل تُنقل أو تُخزّن أي بيانات شخصية أو بيانات عملاء خارج المملكة العربية السعودية، بما في ذلك عبر مزودي خدمات سحابية؟",
+      "canonical_text_en": "Is any personal data or client data transferred or stored outside the Kingdom of Saudi Arabia, including through cloud service providers?",
       "type": "enum",
       "options": [
         "لا - جميع البيانات داخل المملكة",
@@ -365,6 +493,13 @@
         "نعم - لأسباب دعم فني أو تطوير خارجي",
         "غير معروف"
       ],
+      "options_en": {
+        "لا - جميع البيانات داخل المملكة": "No — all data stays inside the Kingdom",
+        "نعم - عبر مزودي خدمات سحابية عالميين": "Yes — through global cloud service providers",
+        "نعم - عبر شركة أم أو فروع خارجية": "Yes — through a parent company or overseas branches",
+        "نعم - لأسباب دعم فني أو تطوير خارجي": "Yes — for technical support or offshore development",
+        "غير معروف": "Not known"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -373,6 +508,11 @@
         "خرائط تدفق البيانات عبر الحدود",
         "تقييم أثر النقل",
         "عقود مزودي الخدمات السحابية ومواقع مراكز البيانات"
+      ],
+      "evidence_required_en": [
+        "Cross-border data flow maps",
+        "The transfer impact assessment",
+        "Cloud service provider contracts and data centre locations"
       ],
       "references": [
         {
@@ -388,6 +528,7 @@
     {
       "question_id": "it_data_subject_rights",
       "canonical_text_ar": "ما الآلية المتبعة للاستجابة لطلبات أصحاب البيانات الشخصية (الاطلاع، التصحيح، الإتلاف) وللإفصاح عن سياسة الخصوصية والحصول على الموافقة؟",
+      "canonical_text_en": "What mechanism is used to respond to data subject requests (access, correction, destruction), to disclose the privacy policy, and to obtain consent?",
       "type": "enum",
       "options": [
         "إجراء موثق مع قنوات معلنة وسجل للطلبات",
@@ -395,6 +536,12 @@
         "سياسة خصوصية منشورة دون إجراء تنفيذي",
         "لا توجد آلية"
       ],
+      "options_en": {
+        "إجراء موثق مع قنوات معلنة وسجل للطلبات": "A documented procedure, with published channels and a register of requests",
+        "إجراء غير رسمي يعالج حسب الحالة": "An informal procedure, handled case by case",
+        "سياسة خصوصية منشورة دون إجراء تنفيذي": "A published privacy policy, with no operating procedure",
+        "لا توجد آلية": "There is no mechanism"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -403,6 +550,11 @@
         "إجراء التعامل مع طلبات أصحاب البيانات",
         "سياسة الخصوصية المنشورة",
         "نماذج وسجل الموافقات"
+      ],
+      "evidence_required_en": [
+        "The procedure for handling data subject requests",
+        "The published privacy policy",
+        "Consent forms and the consent register"
       ],
       "references": [
         {
@@ -418,6 +570,7 @@
     {
       "question_id": "it_data_breach",
       "canonical_text_ar": "ما إجراءات المنشأة عند تسرّب بيانات شخصية أو تلفها أو الوصول غير المشروع إليها — سواء كانت بياناتها هي أو بيانات عملائها التي تعالجها نيابةً عنهم — من حيث الاكتشاف والإشعار وحفظ أدلة المعالجة؟",
+      "canonical_text_en": "What does the organization do when personal data is leaked, damaged or unlawfully accessed — whether it is the organization's own data or client data it processes on their behalf — in terms of detection, notification, and keeping evidence of how the incident was handled?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية، ويفرّق بين ما تُشعر به المنشأة بصفتها جهة تحكم وما تُبلّغ به عميلها بصفتها جهة معالجة، مع سجل وقائع",
@@ -425,6 +578,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث السيبرانية العام",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية، ويفرّق بين ما تُشعر به المنشأة بصفتها جهة تحكم وما تُبلّغ به عميلها بصفتها جهة معالجة، مع سجل وقائع": "A documented procedure naming the responsible person and the internal deadlines, distinguishing what the organization notifies as a Data Controller from what it reports to its client as a Data Processor, with an incident register",
+        "إجراء موثّق للإشعار دون تفريق بين صفة التحكم وصفة المعالجة": "A documented notification procedure that does not distinguish the Data Controller capacity from the Data Processor capacity",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث السيبرانية العام": "No notification procedure; the incident is handled under the general cybersecurity incident procedure",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية": "No procedure for handling a personal data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -433,6 +592,11 @@
         "إجراء الإشعار عن تسرّب البيانات الشخصية والمسؤول عنه",
         "سجل وقائع التسرّب أو التلف أو الوصول غير المشروع",
         "البنود التعاقدية الملزِمة بإبلاغ العميل عند وقوع الواقعة"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The register of leakage, damage or unlawful access incidents",
+        "The contractual clauses requiring the client to be informed when an incident occurs"
       ],
       "references": [
         {
@@ -448,6 +612,7 @@
     {
       "question_id": "it_business_continuity",
       "canonical_text_ar": "هل لدى المنشأة خطة استمرارية أعمال وتعافٍ من الكوارث معتمدة، وهل تم اختبارها خلال الاثني عشر شهراً الماضية؟",
+      "canonical_text_en": "Does the organization have an approved business continuity and disaster recovery plan, and has it been tested in the past twelve months?",
       "type": "enum",
       "options": [
         "خطة معتمدة ومختبرة خلال آخر 12 شهراً",
@@ -455,6 +620,12 @@
         "ترتيبات نسخ احتياطي فقط دون خطة رسمية",
         "لا توجد خطة"
       ],
+      "options_en": {
+        "خطة معتمدة ومختبرة خلال آخر 12 شهراً": "An approved plan, tested within the past 12 months",
+        "خطة معتمدة لكن غير مختبرة": "An approved plan that has not been tested",
+        "ترتيبات نسخ احتياطي فقط دون خطة رسمية": "Backup arrangements only, with no formal plan",
+        "لا توجد خطة": "There is no plan"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -463,6 +634,11 @@
         "خطة استمرارية الأعمال",
         "تحليل الأثر على الأعمال (BIA) مع RTO وRPO",
         "تقارير اختبار التعافي"
+      ],
+      "evidence_required_en": [
+        "The business continuity plan",
+        "The business impact analysis (BIA), with RTO and RPO",
+        "Recovery test reports"
       ],
       "references": [
         {
@@ -478,6 +654,7 @@
     {
       "question_id": "it_third_party",
       "canonical_text_ar": "كيف تدير المنشأة مخاطر الأطراف الخارجية من موردين ومتعاقدين من الباطن ومزودي خدمات سحابية، من حيث التقييم قبل التعاقد والاشتراطات التعاقدية والمراقبة المستمرة؟",
+      "canonical_text_en": "How does the organization manage third party risk across suppliers, subcontractors and cloud service providers — pre-contract assessment, contractual requirements, and ongoing monitoring?",
       "type": "enum",
       "options": [
         "تقييم مسبق واشتراطات تعاقدية ومراجعة دورية موثقة",
@@ -485,6 +662,12 @@
         "اعتماد على سمعة المورد دون إجراء رسمي",
         "لا توجد إدارة للأطراف الخارجية"
       ],
+      "options_en": {
+        "تقييم مسبق واشتراطات تعاقدية ومراجعة دورية موثقة": "Pre-contract assessment, contractual requirements and documented periodic review",
+        "اشتراطات تعاقدية فقط دون تقييم أو مراجعة": "Contractual requirements only, with no assessment or review",
+        "اعتماد على سمعة المورد دون إجراء رسمي": "Reliance on the supplier's reputation, with no formal procedure",
+        "لا توجد إدارة للأطراف الخارجية": "No third party management"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -493,6 +676,11 @@
         "سجل الموردين وتصنيف حرجيتهم",
         "نماذج التقييم قبل التعاقد",
         "بنود الأمن والسرية وحماية البيانات في العقود"
+      ],
+      "evidence_required_en": [
+        "The supplier register and their criticality rating",
+        "Pre-contract assessment forms",
+        "The security, confidentiality and data protection clauses in the contracts"
       ],
       "references": [
         {
@@ -512,6 +700,7 @@
     {
       "question_id": "it_documentation",
       "canonical_text_ar": "ما مدى توثيق الأنظمة والعمليات الداخلية للمنشأة، وهل توجد اعتمادية حرجة على أفراد بعينهم في تشغيل أنظمة أو معرفة غير موثقة؟",
+      "canonical_text_en": "How well documented are the organization's internal systems and processes, and is there critical dependence on particular individuals to run systems or on knowledge that is not written down?",
       "type": "enum",
       "options": [
         "توثيق شامل ومحدّث لجميع الأنظمة والعمليات الحرجة",
@@ -519,6 +708,12 @@
         "توثيق قديم غير محدّث",
         "اعتماد شبه كامل على معرفة الأفراد دون توثيق"
       ],
+      "options_en": {
+        "توثيق شامل ومحدّث لجميع الأنظمة والعمليات الحرجة": "Comprehensive, current documentation of every critical system and process",
+        "توثيق جزئي للأنظمة الرئيسية فقط": "Partial documentation, covering the main systems only",
+        "توثيق قديم غير محدّث": "Old documentation that is no longer current",
+        "اعتماد شبه كامل على معرفة الأفراد دون توثيق": "Near-total reliance on individuals' knowledge, with no documentation"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -527,6 +722,11 @@
         "قائمة الأصول والأنظمة",
         "أدلة التشغيل والإجراءات الفنية",
         "مصفوفة البدائل والتعاقب الوظيفي"
+      ],
+      "evidence_required_en": [
+        "The asset and system inventory",
+        "Operating manuals and technical procedures",
+        "The backup-personnel and succession matrix"
       ],
       "references": [
         {
@@ -542,6 +742,7 @@
     {
       "question_id": "it_compliance_register",
       "canonical_text_ar": "هل يوجد سجل التزام تنظيمي يحصر الأنظمة واللوائح والاشتراطات التعاقدية السارية على المنشأة مع تحديد مالك كل التزام وتاريخ المراجعة؟",
+      "canonical_text_en": "Is there a regulatory compliance register listing the laws, regulations and contractual requirements that apply to the organization, with an owner and a review date for each obligation?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -552,6 +753,11 @@
         "سجل الالتزام التنظيمي",
         "مصفوفة ربط المتطلبات بالضوابط",
         "أدلة تتبع التحديثات التنظيمية"
+      ],
+      "evidence_required_en": [
+        "The regulatory compliance register",
+        "The matrix mapping requirements to controls",
+        "Evidence of tracking regulatory updates"
       ],
       "references": [
         {
@@ -567,6 +773,7 @@
     {
       "question_id": "it_audit",
       "canonical_text_ar": "هل تُجري المنشأة مراجعة أو تدقيقاً دورياً على فاعلية ضوابط الالتزام والأمن السيبراني، ويُتابَع إغلاق ملاحظاته؟",
+      "canonical_text_en": "Does the organization carry out periodic review or audit of how effective its compliance and cybersecurity controls are, and are the findings followed through to closure?",
       "type": "enum",
       "options": [
         "تدقيق دوري وفق خطة معتمدة، وملاحظاته متابَعة بخطط تصحيحية حتى الإغلاق",
@@ -574,6 +781,12 @@
         "تُجرى مراجعات عند الطلب أو عند الحاجة دون خطة دورية معتمدة",
         "لا تُجرى مراجعات على فاعلية الضوابط"
       ],
+      "options_en": {
+        "تدقيق دوري وفق خطة معتمدة، وملاحظاته متابَعة بخطط تصحيحية حتى الإغلاق": "Periodic audit under an approved plan, with the findings tracked through corrective plans until they are closed",
+        "تدقيق دوري وفق خطة معتمدة، دون متابعة موثّقة لإغلاق الملاحظات": "Periodic audit under an approved plan, with no documented follow-up to close the findings",
+        "تُجرى مراجعات عند الطلب أو عند الحاجة دون خطة دورية معتمدة": "Reviews carried out on request or as needed, with no approved periodic plan",
+        "لا تُجرى مراجعات على فاعلية الضوابط": "No review of control effectiveness is carried out"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -582,6 +795,11 @@
         "خطة التدقيق السنوية المعتمدة",
         "تقارير التدقيق السابقة",
         "سجل الملاحظات وحالة إغلاقها"
+      ],
+      "evidence_required_en": [
+        "The approved annual audit plan",
+        "Previous audit reports",
+        "The findings register and their closure status"
       ],
       "references": [
         {
@@ -593,6 +811,7 @@
     {
       "question_id": "it_audit_performed_by",
       "canonical_text_ar": "اختر جميع الجهات التي نفّذت مراجعة أو تدقيقاً على ضوابط المنشأة خلال آخر اثني عشر شهراً.",
+      "canonical_text_en": "Select every party that carried out a review or an audit of the organization's controls in the past twelve months.",
       "type": "multi_select",
       "options": [
         "تدقيق داخلي تنفّذه المنشأة",
@@ -601,6 +820,13 @@
         "تقييم أو زيارة من جهة رقابية",
         "لم تُنفَّذ أي مراجعة خلال آخر اثني عشر شهراً"
       ],
+      "options_en": {
+        "تدقيق داخلي تنفّذه المنشأة": "Internal audit carried out by the organization",
+        "مدقق خارجي مستقل تكلّفه المنشأة": "An independent external auditor engaged by the organization",
+        "تدقيق أو تقييم يجريه العملاء بموجب عقودهم": "An audit or assessment carried out by clients under their contracts",
+        "تقييم أو زيارة من جهة رقابية": "An assessment or visit by a regulator",
+        "لم تُنفَّذ أي مراجعة خلال آخر اثني عشر شهراً": "No review was carried out in the past twelve months"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -609,6 +835,11 @@
         "تقارير المراجعات المنفَّذة وجهاتها ونطاق كل منها",
         "خطابات التكليف أو طلبات العملاء",
         "تقارير الجهات الرقابية إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "Reports of the reviews carried out, who carried them out, and the scope of each",
+        "Engagement letters or client requests",
+        "Regulator reports, if any"
       ],
       "references": [
         {
@@ -620,6 +851,7 @@
     {
       "question_id": "it_management_reporting",
       "canonical_text_ar": "ما مؤشرات الأداء أو التقارير الدورية التي تُرفع للإدارة العليا بشأن الالتزام والمخاطر والأمن السيبراني، وما دوريتها؟",
+      "canonical_text_en": "Which performance indicators or periodic reports on compliance, risk and cybersecurity are submitted to senior management, and how often?",
       "type": "enum",
       "options": [
         "تقارير ربعية أو أكثر بمؤشرات محددة ومعتمدة",
@@ -627,6 +859,12 @@
         "تقارير عند وقوع حوادث أو طلب استثنائي",
         "لا توجد تقارير منتظمة"
       ],
+      "options_en": {
+        "تقارير ربعية أو أكثر بمؤشرات محددة ومعتمدة": "Quarterly or more frequent reports, with defined and approved indicators",
+        "تقارير سنوية فقط": "Annual reports only",
+        "تقارير عند وقوع حوادث أو طلب استثنائي": "Reports only when an incident occurs or on exceptional request",
+        "لا توجد تقارير منتظمة": "No regular reports"
+      },
       "required": true,
       "category": "assurance",
       "importance": "medium",
@@ -635,6 +873,11 @@
         "نماذج التقارير الدورية",
         "مؤشرات الأداء المعتمدة",
         "محاضر عرض التقارير على الإدارة"
+      ],
+      "evidence_required_en": [
+        "Samples of the periodic reports",
+        "The approved performance indicators",
+        "Minutes of the reports being presented to management"
       ],
       "references": [
         {

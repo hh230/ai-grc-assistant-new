@@ -7,6 +7,7 @@
     {
       "question_id": "lg_legal_form_license",
       "canonical_text_ar": "ما الوضع النظامي والترخيصي للمنشأة لمزاولة أعمال المحاماة والاستشارات النظامية في المملكة؟",
+      "canonical_text_en": "What is the organization's legal and licensing position for practising law and providing legal advisory services in the Kingdom?",
       "type": "enum",
       "options": [
         "مكتب محاماة فردي بترخيص محامٍ مرخص",
@@ -15,6 +16,13 @@
         "شراكة أو تحالف مع مكتب أجنبي مرخص",
         "الوضع النظامي غير محدد بدقة"
       ],
+      "options_en": {
+        "مكتب محاماة فردي بترخيص محامٍ مرخص": "A sole law office under a licensed lawyer's licence",
+        "شركة مهنية مرخصة وفق نظام الشركات المهنية": "A professional company licensed under the Professional Companies Law",
+        "كيان تجاري يقدم استشارات نظامية دون ترخيص محاماة": "A commercial entity providing legal advice without a law practice licence",
+        "شراكة أو تحالف مع مكتب أجنبي مرخص": "A partnership or alliance with a licensed foreign firm",
+        "الوضع النظامي غير محدد بدقة": "The legal position is not clearly established"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -24,6 +32,12 @@
         "السجل التجاري",
         "عقد التأسيس أو النظام الأساس",
         "وثيقة التأمين ضد المسؤولية المهنية إن وجدت"
+      ],
+      "evidence_required_en": [
+        "The licence to practise law",
+        "The commercial registration",
+        "The articles of association or the bylaws",
+        "The professional indemnity insurance policy, if any"
       ],
       "references": [
         {
@@ -43,6 +57,7 @@
     {
       "question_id": "lg_practitioner_licensing",
       "canonical_text_ar": "هل جميع من يباشرون أعمال المحاماة والترافع في المكتب مقيدون نظاماً وتراخيصهم وعضوياتهم سارية وموثقة، مع آلية للتحقق الدوري من سريانها؟",
+      "canonical_text_en": "Is everyone practising law and appearing before the courts at the firm duly enrolled, with valid, documented licences and memberships, and a mechanism for periodically verifying that they remain in force?",
       "type": "enum",
       "options": [
         "جميع الممارسين مقيدون وتراخيصهم سارية وموثقة",
@@ -50,6 +65,12 @@
         "يوجد من يباشر أعمال المحاماة دون قيد أو ترخيص ساري",
         "لا توجد آلية للتحقق والمتابعة"
       ],
+      "options_en": {
+        "جميع الممارسين مقيدون وتراخيصهم سارية وموثقة": "All practitioners are enrolled and their licences are valid and documented",
+        "الأغلبية مقيدون مع وجود حالات غير موثقة": "Most are enrolled, with some cases undocumented",
+        "يوجد من يباشر أعمال المحاماة دون قيد أو ترخيص ساري": "Some practise law without enrolment or a valid licence",
+        "لا توجد آلية للتحقق والمتابعة": "There is no mechanism for verification and follow-up"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -59,6 +80,12 @@
         "شهادات القيد وعضوية الهيئة السعودية للمحامين",
         "إجراء التحقق الدوري من سريان التراخيص",
         "سجل المتدربين وضوابط عملهم"
+      ],
+      "evidence_required_en": [
+        "A schedule of practitioners, their licence numbers and expiry dates",
+        "Enrolment certificates and Saudi Bar Association membership",
+        "The procedure for periodically verifying that licences remain in force",
+        "The trainee register and the controls over their work"
       ],
       "references": [
         {
@@ -74,6 +101,7 @@
     {
       "question_id": "lg_dnfbp_activities",
       "canonical_text_ar": "اختر جميع الخدمات الآتية التي يقدمها المكتب لعملائه فعلياً: بيع أو شراء العقارات، أو إدارة أموال أو حسابات أو أصول العملاء أو حفظ أمانات مالية، أو تأسيس الشركات وإدارتها أو تشغيلها أو نقل ملكيتها نيابة عن العميل.",
+      "canonical_text_en": "Select every one of the following services the firm actually provides to clients: buying or selling real estate; managing client money, accounts or assets, or holding funds in trust; or forming, managing, operating or transferring ownership of companies on a client's behalf.",
       "type": "multi_select",
       "options": [
         "بيع أو شراء العقارات أو إدارة صفقاتها",
@@ -81,6 +109,12 @@
         "تأسيس الشركات أو إدارتها أو تشغيلها أو نقل ملكيتها نيابة عن العميل",
         "لا نقدم أياً من هذه الخدمات"
       ],
+      "options_en": {
+        "بيع أو شراء العقارات أو إدارة صفقاتها": "Buying or selling real estate, or managing property transactions",
+        "إدارة أموال أو حسابات أو أصول العملاء أو حفظ أمانات مالية": "Managing client money, accounts or assets, or holding funds in trust",
+        "تأسيس الشركات أو إدارتها أو تشغيلها أو نقل ملكيتها نيابة عن العميل": "Forming, managing, operating or transferring ownership of companies on a client's behalf",
+        "لا نقدم أياً من هذه الخدمات": "We provide none of these services"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "high",
@@ -89,6 +123,11 @@
         "وصف الخدمات المقدمة فعلياً",
         "عينة من اتفاقيات الأتعاب والتوكيلات",
         "بيان بوجود حسابات أو أمانات تُدار لصالح العملاء"
+      ],
+      "evidence_required_en": [
+        "A description of the services actually provided",
+        "A sample of engagement letters and powers of attorney",
+        "A statement of any accounts or trust funds held for clients"
       ],
       "references": [
         {
@@ -104,6 +143,7 @@
     {
       "question_id": "lg_aml_program",
       "canonical_text_ar": "في حال ممارسة أي من الأنشطة الواردة في السؤال السابق، ما مستوى تطبيق متطلبات مكافحة غسل الأموال وتمويل الإرهاب لديكم (تقييم المخاطر، العناية الواجبة تجاه العميل، تحديد المستفيد الحقيقي، حفظ السجلات، تعيين مسؤول الالتزام، والإبلاغ عن العمليات المشبوهة)؟",
+      "canonical_text_en": "Where any of the activities in the previous question are carried on, to what level are the anti-money-laundering and counter-terrorist-financing requirements applied (risk assessment, customer due diligence, identifying the beneficial owner, record keeping, appointing a compliance officer, and reporting suspicious transactions)?",
       "type": "enum",
       "options": [
         "مطبقة بالكامل وموثقة",
@@ -111,6 +151,12 @@
         "غير مطبقة",
         "لا ينطبق لعدم ممارسة تلك الأنشطة"
       ],
+      "options_en": {
+        "مطبقة بالكامل وموثقة": "Fully applied and documented",
+        "مطبقة جزئياً": "Partly applied",
+        "غير مطبقة": "Not applied",
+        "لا ينطبق لعدم ممارسة تلك الأنشطة": "Not applicable, as those activities are not carried on"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "high",
@@ -121,6 +167,13 @@
         "نماذج العناية الواجبة وتحديد المستفيد الحقيقي",
         "قرار تعيين مسؤول الالتزام",
         "سجلات التدريب وآلية الإبلاغ عن العمليات المشبوهة"
+      ],
+      "evidence_required_en": [
+        "The anti-money-laundering and counter-terrorist-financing policy and procedures",
+        "The firm-wide money laundering risk assessment",
+        "Due diligence forms and beneficial owner identification",
+        "The decision appointing the compliance officer",
+        "Training records and the mechanism for reporting suspicious transactions"
       ],
       "references": [
         {
@@ -136,6 +189,7 @@
     {
       "question_id": "lg_client_sectors",
       "canonical_text_ar": "اختر جميع فئات العملاء والقطاعات التي يخدمها المكتب، بما قد يرتب التزامات تعاقدية أو نظامية إضافية في السرية والأمن السيبراني.",
+      "canonical_text_en": "Select every client category and sector the firm serves that may create additional contractual or statutory obligations on confidentiality and cybersecurity.",
       "type": "multi_select",
       "options": [
         "جهات حكومية وعقود حكومية",
@@ -143,6 +197,12 @@
         "شركات مدرجة أو أعمال متصلة بالسوق المالية والمعلومات الداخلية",
         "أفراد ومنشآت من القطاع الخاص فقط"
       ],
+      "options_en": {
+        "جهات حكومية وعقود حكومية": "Government entities and government contracts",
+        "جهات مالية خاضعة لإشراف البنك المركزي السعودي": "Financial entities supervised by the Saudi Central Bank (SAMA)",
+        "شركات مدرجة أو أعمال متصلة بالسوق المالية والمعلومات الداخلية": "Listed companies, or work touching the capital market and inside information",
+        "أفراد ومنشآت من القطاع الخاص فقط": "Individuals and private sector businesses only"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -151,6 +211,11 @@
         "نماذج من العقود واتفاقيات تقديم الخدمات",
         "بنود السرية والأمن السيبراني المفروضة من العملاء",
         "متطلبات التأهيل في المنافسات الحكومية إن وجدت"
+      ],
+      "evidence_required_en": [
+        "Samples of the contracts and service agreements",
+        "The confidentiality and cybersecurity clauses imposed by clients",
+        "Prequalification requirements in government tenders, if any"
       ],
       "references": [
         {
@@ -174,6 +239,7 @@
     {
       "question_id": "lg_authority_matrix",
       "canonical_text_ar": "هل يوجد هيكل تنظيمي معتمد ومصفوفة صلاحيات وتفويضات موثقة تحدد أدوار الشركاء والمحامين والمتدربين والإداريين ومن يملك حق قبول القضايا وتوقيع المرافعات والعقود؟",
+      "canonical_text_en": "Is there an approved organizational structure and a documented authority and delegation matrix setting out the roles of partners, lawyers, trainees and administrators, and who may accept cases and sign pleadings and contracts?",
       "type": "enum",
       "options": [
         "نعم، معتمد وموثق ويُراجع دورياً",
@@ -181,6 +247,12 @@
         "تُمارس الصلاحيات عرفياً دون توثيق",
         "لا يوجد"
       ],
+      "options_en": {
+        "نعم، معتمد وموثق ويُراجع دورياً": "Yes — approved, documented and reviewed regularly",
+        "يوجد بشكل جزئي وغير محدث": "Partly in place and out of date",
+        "تُمارس الصلاحيات عرفياً دون توثيق": "Authorities are exercised by custom, without documentation",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -190,6 +262,12 @@
         "مصفوفة الصلاحيات والتفويضات",
         "الأوصاف الوظيفية",
         "محاضر اجتماعات الشركاء أو الإدارة"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The authority and delegation matrix",
+        "The job descriptions",
+        "Minutes of the partners' or management meetings"
       ],
       "references": [
         {
@@ -205,6 +283,7 @@
     {
       "question_id": "lg_conflict_of_interest",
       "canonical_text_ar": "كيف يُدار تعارض المصالح قبل قبول التوكيل وأثناء سير القضية (الخصوم السابقون، الأطراف المرتبطة، تمثيل أكثر من طرف في ذات النزاع، مصالح الشركاء الشخصية)؟",
+      "canonical_text_en": "How is conflict of interest managed before accepting an engagement and while a case is running (former opponents, related parties, representing more than one party in the same dispute, partners' personal interests)?",
       "type": "enum",
       "options": [
         "إجراء موثق وفحص إلزامي قبل قبول التوكيل مع سجل معتمد",
@@ -212,6 +291,12 @@
         "يُعالج التعارض عند ظهوره فقط",
         "لا يوجد إجراء"
       ],
+      "options_en": {
+        "إجراء موثق وفحص إلزامي قبل قبول التوكيل مع سجل معتمد": "A documented procedure with a mandatory check before accepting an engagement, and an approved register",
+        "فحص غير موثق يعتمد على خبرة الشركاء ومعرفتهم": "An undocumented check resting on the partners' experience and knowledge",
+        "يُعالج التعارض عند ظهوره فقط": "Conflicts are addressed only when they surface",
+        "لا يوجد إجراء": "There is no procedure"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -221,6 +306,12 @@
         "سجل الموكلين والخصوم",
         "سجل حالات التعارض والقرارات المتخذة",
         "نماذج إقرار المحامين والموظفين"
+      ],
+      "evidence_required_en": [
+        "The conflict of interest checking procedure",
+        "The register of clients and opposing parties",
+        "The register of conflicts identified and the decisions taken",
+        "Declaration forms signed by lawyers and staff"
       ],
       "references": [
         {
@@ -232,6 +323,7 @@
     {
       "question_id": "lg_risk_register",
       "canonical_text_ar": "هل يوجد سجل مخاطر معتمد يغطي المخاطر المهنية والتشغيلية للمكتب (فوات المواعيد النظامية، الأخطاء الإجرائية، إفشاء أسرار الموكلين، فقدان الملفات، الاعتماد على أشخاص مفتاحيين) مع تحديد مالك المخاطرة وخطة المعالجة ومراجعته دورياً؟",
+      "canonical_text_en": "Is there an approved risk register covering the firm's professional and operational risks (missed statutory deadlines, procedural errors, disclosure of client confidences, lost files, dependence on key individuals), naming a risk owner and a treatment plan, and reviewed regularly?",
       "type": "enum",
       "options": [
         {
@@ -255,6 +347,13 @@
           "text_ar": "لا يوجد"
         }
       ],
+      "options_en": {
+        "reviewed": "An approved risk register that is reviewed regularly",
+        "approved_not_reviewed": "An approved register that has not been reviewed regularly",
+        "documented_unapproved": "A documented register that has not been approved",
+        "informal": "Risk is managed informally, case by case",
+        "none": "There is none"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -265,6 +364,13 @@
         "محاضر مراجعة المخاطر",
         "سجل الحوادث والشكاوى والمطالبات المهنية",
         "وثيقة التأمين ضد المسؤولية المهنية"
+      ],
+      "evidence_required_en": [
+        "The risk register",
+        "The methodology for assessing and treating risk",
+        "Minutes of the risk reviews",
+        "The register of incidents, complaints and professional claims",
+        "The professional indemnity insurance policy"
       ],
       "references": [
         {
@@ -292,6 +398,7 @@
     {
       "question_id": "lg_statutory_deadlines",
       "canonical_text_ar": "ما الضوابط المطبقة لضمان عدم فوات المواعيد النظامية والجلسات (نظام مركزي لإدارة القضايا، تنبيهات مسبقة، متابعة إشعارات المنصات القضائية، مراجعة ثنائية، وتسليم موثق عند تغيّر المحامي المسؤول)؟",
+      "canonical_text_en": "What controls are in place to make sure statutory deadlines and hearings are not missed (a central case management system, advance alerts, following notifications from the judicial platforms, second review, and a documented handover when the responsible lawyer changes)?",
       "type": "enum",
       "options": [
         "نظام مركزي معتمد مع تنبيهات ومراجعة دورية موثقة",
@@ -299,6 +406,12 @@
         "تعتمد كلياً على المتابعة الشخصية للمحامي المسؤول",
         "لا توجد ضوابط واضحة"
       ],
+      "options_en": {
+        "نظام مركزي معتمد مع تنبيهات ومراجعة دورية موثقة": "An approved central system, with alerts and documented periodic review",
+        "متابعة عبر جداول أو ملفات فردية دون نظام مركزي": "Tracking through individual spreadsheets or files, with no central system",
+        "تعتمد كلياً على المتابعة الشخصية للمحامي المسؤول": "Entirely dependent on the responsible lawyer's personal follow-up",
+        "لا توجد ضوابط واضحة": "There are no clear controls"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -308,6 +421,12 @@
         "سجل الجلسات والمواعيد النظامية",
         "إجراء المتابعة والتنبيه المبكر",
         "نموذج تسليم واستلام القضايا عند تغيّر المحامي المسؤول"
+      ],
+      "evidence_required_en": [
+        "The case management system and its reports",
+        "The register of hearings and statutory deadlines",
+        "The follow-up and early warning procedure",
+        "The case handover form used when the responsible lawyer changes"
       ],
       "references": [
         {
@@ -323,6 +442,7 @@
     {
       "question_id": "lg_infosec_policy",
       "canonical_text_ar": "هل توجد سياسة أمن معلومات معتمدة مع تحديد مسؤول عن أمن المعلومات، تشمل تصنيف المعلومات وحماية أسرار الموكلين وضوابط استخدام الأجهزة وتطبيقات المراسلة وأدوات الذكاء الاصطناعي في العمل؟",
+      "canonical_text_en": "Is there an approved information security policy with a named information security officer, covering information classification, protection of client confidences, and controls on the use of devices, messaging apps and AI tools at work?",
       "type": "enum",
       "options": [
         "نعم، سياسة معتمدة ومعممة ومطبقة",
@@ -330,6 +450,12 @@
         "قيد الإعداد",
         "لا توجد"
       ],
+      "options_en": {
+        "نعم، سياسة معتمدة ومعممة ومطبقة": "Yes — an approved policy, circulated and applied",
+        "توجد تعليمات متفرقة غير معتمدة رسمياً": "Scattered instructions that are not formally approved",
+        "قيد الإعداد": "Being prepared",
+        "لا توجد": "There is none"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -340,6 +466,13 @@
         "سياسة تصنيف وتداول المعلومات",
         "سياسة الاستخدام المقبول وأدوات الذكاء الاصطناعي",
         "إقرارات السرية الموقعة من المنسوبين والمتدربين"
+      ],
+      "evidence_required_en": [
+        "The approved information security policy",
+        "The decision appointing the information security officer",
+        "The information classification and handling policy",
+        "The acceptable use policy, including AI tools",
+        "Confidentiality undertakings signed by staff and trainees"
       ],
       "references": [
         {
@@ -359,6 +492,7 @@
     {
       "question_id": "lg_access_management",
       "canonical_text_ar": "كيف تُدار صلاحيات الوصول إلى ملفات القضايا والأنظمة، بما في ذلك حسابات المتدربين والموظفين المنتهية علاقتهم، وبيانات الدخول إلى المنصات القضائية والحكومية والتوقيع الرقمي؟",
+      "canonical_text_en": "How is access to case files and systems managed, including trainee accounts and accounts of people who have left, and credentials for the judicial and government platforms and the digital signature?",
       "type": "enum",
       "options": [
         "صلاحيات محددة على مبدأ الحاجة مع مصادقة متعددة العوامل ومراجعة دورية وإجراء إلغاء وصول موثق",
@@ -366,6 +500,12 @@
         "حسابات وكلمات مرور مشتركة بين المنسوبين",
         "لا توجد ضوابط واضحة"
       ],
+      "options_en": {
+        "صلاحيات محددة على مبدأ الحاجة مع مصادقة متعددة العوامل ومراجعة دورية وإجراء إلغاء وصول موثق": "Access granted on a need-to-know basis, with multi-factor authentication, periodic review and a documented revocation procedure",
+        "صلاحيات محددة جزئياً دون مراجعة دورية": "Partly defined access, with no periodic review",
+        "حسابات وكلمات مرور مشتركة بين المنسوبين": "Accounts and passwords shared between staff",
+        "لا توجد ضوابط واضحة": "There are no clear controls"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -375,6 +515,12 @@
         "مصفوفة الصلاحيات على الأنظمة وملفات القضايا",
         "سجل المراجعة الدورية للصلاحيات",
         "إجراء إخلاء الطرف وإلغاء الوصول عند انتهاء العلاقة"
+      ],
+      "evidence_required_en": [
+        "The identity and access management policy",
+        "The permissions matrix for systems and case files",
+        "The record of periodic access reviews",
+        "The clearance and access revocation procedure when a relationship ends"
       ],
       "references": [
         {
@@ -390,6 +536,7 @@
     {
       "question_id": "lg_data_storage_backup",
       "canonical_text_ar": "أين تُخزّن ملفات القضايا والبيانات (خوادم داخل المكتب، استضافة سحابية داخل المملكة، استضافة خارج المملكة، أجهزة شخصية أو تطبيقات مراسلة)، وهل توجد نسخ احتياطية دورية جرى اختبار استرجاعها؟",
+      "canonical_text_en": "Where are case files and data stored (servers in the office, cloud hosting inside the Kingdom, hosting outside it, personal devices or messaging apps), and are there regular backups whose restoration has been tested?",
       "type": "enum",
       "options": [
         "تخزين مركزي مع نسخ احتياطية دورية مُختبرة وموثقة",
@@ -397,6 +544,12 @@
         "تخزين موزع على أجهزة المنسوبين وتطبيقات المراسلة",
         "غير محدد أو غير معروف"
       ],
+      "options_en": {
+        "تخزين مركزي مع نسخ احتياطية دورية مُختبرة وموثقة": "Central storage, with regular backups that are tested and documented",
+        "تخزين مركزي مع نسخ احتياطية غير مُختبرة": "Central storage, with backups that have not been tested",
+        "تخزين موزع على أجهزة المنسوبين وتطبيقات المراسلة": "Storage spread across staff devices and messaging apps",
+        "غير محدد أو غير معروف": "Not defined, or not known"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -405,6 +558,11 @@
         "مخطط البنية التقنية ومواقع الاستضافة",
         "عقود مزودي الاستضافة أو الخدمات السحابية",
         "سجلات النسخ الاحتياطي ونتائج اختبارات الاسترجاع"
+      ],
+      "evidence_required_en": [
+        "The technical architecture diagram and the hosting locations",
+        "Contracts with hosting or cloud service providers",
+        "Backup logs and restore test results"
       ],
       "references": [
         {
@@ -420,6 +578,7 @@
     {
       "question_id": "lg_processing_record",
       "canonical_text_ar": "هل يوجد سجل لأنشطة معالجة البيانات الشخصية وسياسة خصوصية معلنة، مع تحديد الأساس النظامي للمعالجة وإشعار أصحاب البيانات (الموكلين، الخصوم، الشهود، الموظفين، المتقدمين للوظائف)؟",
+      "canonical_text_en": "Is there a record of personal data processing activities and a published privacy policy, setting out the legal basis for processing and how data subjects are notified (clients, opposing parties, witnesses, employees, job applicants)?",
       "type": "enum",
       "options": [
         "نعم، السجل والسياسة موجودان ومحدثان",
@@ -427,6 +586,12 @@
         "لا يوجد أي منهما",
         "غير متأكد"
       ],
+      "options_en": {
+        "نعم، السجل والسياسة موجودان ومحدثان": "Yes — the record and the policy exist and are current",
+        "توجد سياسة خصوصية دون سجل أنشطة معالجة": "There is a privacy policy, with no record of processing activities",
+        "لا يوجد أي منهما": "Neither exists",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -436,6 +601,12 @@
         "سياسة الخصوصية المعلنة",
         "نماذج الإشعار والموافقة",
         "بنود حماية البيانات في اتفاقية الأتعاب والتوكيل"
+      ],
+      "evidence_required_en": [
+        "The record of personal data processing activities",
+        "The published privacy policy",
+        "The notice and consent forms",
+        "The data protection clauses in the engagement letter and power of attorney"
       ],
       "references": [
         {
@@ -451,6 +622,7 @@
     {
       "question_id": "lg_sensitive_data_dpia",
       "canonical_text_ar": "هل تشمل أعمالكم معالجة بيانات شخصية حساسة أو واسعة النطاق (قضايا جنائية، أحوال شخصية وحضانة، بيانات صحية أو نفسية، بيانات قاصرين، قوائم موظفي العملاء)، وهل أُجري تقييم أثر لهذه المعالجة وعُيّن مختص لحماية البيانات الشخصية؟",
+      "canonical_text_en": "Does your work involve processing sensitive or large-scale personal data (criminal cases, family and custody matters, health or psychological data, minors' data, client employee lists), and has an impact assessment been carried out for that processing and a personal data protection specialist appointed?",
       "type": "enum",
       "options": [
         "نعم نعالج بيانات حساسة، ويوجد تقييم أثر ومختص معيّن",
@@ -458,6 +630,12 @@
         "معالجة محدودة لا تشمل بيانات حساسة",
         "لم يتم حصر أنواع البيانات المعالجة"
       ],
+      "options_en": {
+        "نعم نعالج بيانات حساسة، ويوجد تقييم أثر ومختص معيّن": "Yes — we process sensitive data, and there is an impact assessment and an appointed specialist",
+        "نعم نعالج بيانات حساسة دون تقييم أثر أو مختص": "Yes — we process sensitive data, with no impact assessment and no specialist",
+        "معالجة محدودة لا تشمل بيانات حساسة": "Limited processing that does not include sensitive data",
+        "لم يتم حصر أنواع البيانات المعالجة": "The kinds of data processed have not been inventoried"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -467,6 +645,12 @@
         "تقييم أثر معالجة البيانات الشخصية",
         "قرار تعيين مختص حماية البيانات الشخصية ومهامه",
         "ضوابط الوصول الخاصة بالملفات ذات البيانات الحساسة"
+      ],
+      "evidence_required_en": [
+        "An inventory of the categories of personal data processed",
+        "The personal data processing impact assessment",
+        "The decision appointing the personal data protection specialist and their duties",
+        "The access controls specific to files holding sensitive data"
       ],
       "references": [
         {
@@ -478,6 +662,7 @@
     {
       "question_id": "lg_cross_border_transfer",
       "canonical_text_ar": "هل يتم نقل أو إتاحة بيانات شخصية أو مستندات قضايا خارج المملكة (استضافة سحابية أجنبية، مكاتب مراسلة أو محامون أجانب، مكاتب تحكيم، أدوات ترجمة أو ذكاء اصطناعي خارجية)؟",
+      "canonical_text_en": "Is personal data or case documentation transferred or made accessible outside the Kingdom (foreign cloud hosting, correspondent offices or foreign lawyers, arbitration institutions, external translation or AI tools)?",
       "type": "enum",
       "options": [
         "نعم، مع تقييم وضوابط تعاقدية موثقة",
@@ -485,6 +670,12 @@
         "لا يتم أي نقل خارج المملكة",
         "غير معروف"
       ],
+      "options_en": {
+        "نعم، مع تقييم وضوابط تعاقدية موثقة": "Yes — with a documented assessment and contractual safeguards",
+        "نعم، دون تقييم أو ضوابط موثقة": "Yes — with no documented assessment or safeguards",
+        "لا يتم أي نقل خارج المملكة": "No transfer outside the Kingdom takes place",
+        "غير معروف": "Not known"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -493,6 +684,11 @@
         "حصر مزودي الخدمة والأدوات المستخدمة ومواقع معالجتها",
         "تقييم مخاطر النقل خارج المملكة",
         "الاتفاقيات وبنود حماية البيانات مع الأطراف خارج المملكة"
+      ],
+      "evidence_required_en": [
+        "An inventory of the service providers and tools used and where they process data",
+        "The risk assessment for transfer outside the Kingdom",
+        "The agreements and data protection clauses with parties outside the Kingdom"
       ],
       "references": [
         {
@@ -508,6 +704,7 @@
     {
       "question_id": "lg_cyber_incident_response",
       "canonical_text_ar": "ما استعداد المكتب لحوادث الأمن السيبراني التي تمسّ أنظمته وملفات قضاياه، من حيث إجراء الاستجابة والتصعيد وسجل الحوادث؟",
+      "canonical_text_en": "How prepared is the firm for cybersecurity incidents affecting its systems and case files, in terms of the response and escalation procedure and an incident register?",
       "type": "enum",
       "options": [
         "إجراء استجابة موثّق مع تصعيد محدد وسجل حوادث، ومُختبَر ولو بتمرين محدود",
@@ -515,6 +712,12 @@
         "تُعالَج الحوادث حالة بحالة دون إجراء موثّق",
         "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني"
       ],
+      "options_en": {
+        "إجراء استجابة موثّق مع تصعيد محدد وسجل حوادث، ومُختبَر ولو بتمرين محدود": "A documented response procedure with defined escalation and an incident register, tested at least by a limited exercise",
+        "إجراء استجابة موثّق دون اختبار أو دون سجل حوادث منتظم": "A documented response procedure, untested or without a consistent incident register",
+        "تُعالَج الحوادث حالة بحالة دون إجراء موثّق": "Incidents are handled case by case, with no documented procedure",
+        "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني": "There is no procedure for handling cybersecurity incidents"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -524,6 +727,12 @@
         "مصفوفة التصعيد وجهات الإبلاغ",
         "سجل الحوادث",
         "نتائج آخر تمرين إن وُجد"
+      ],
+      "evidence_required_en": [
+        "The incident management and response procedure",
+        "The escalation matrix and who is notified",
+        "The incident register",
+        "The results of the most recent exercise, if any"
       ],
       "references": [
         {
@@ -535,6 +744,7 @@
     {
       "question_id": "lg_data_breach_notification",
       "canonical_text_ar": "ما إجراءات المكتب عند تسرّب بيانات شخصية أو الوصول غير المشروع إليها، من حيث إشعار الجهة المختصة وإشعار صاحب البيانات عند انطباق ذلك وحفظ أدلة المعالجة؟",
+      "canonical_text_en": "What does the firm do when personal data is leaked or unlawfully accessed, in terms of notifying the competent authority, notifying the data subject where that applies, and keeping evidence of how the incident was handled?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية ويغطي إشعار الجهة المختصة وإشعار صاحب البيانات عند انطباق ذلك، مع سجل وقائع",
@@ -542,6 +752,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث التقنية",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية ويغطي إشعار الجهة المختصة وإشعار صاحب البيانات عند انطباق ذلك، مع سجل وقائع": "A documented procedure naming the responsible person and the internal deadlines, covering notification of the competent authority and of the data subject where that applies, with an incident register",
+        "إجراء موثّق للإشعار دون سجل وقائع أو دون حفظ منتظم لأدلة المعالجة": "A documented notification procedure, with no incident register or no consistent record of how incidents were handled",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث التقنية": "No notification procedure; the incident is handled under the technical incident procedure",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية": "No procedure for handling a personal data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -551,6 +767,12 @@
         "سجل وقائع التسرّب أو الوصول غير المشروع",
         "نماذج الإشعارات وأدلة معالجة الواقعة",
         "سجل الوصول إلى ملفات القضايا ومستندات الموكّلين عند اتصاله بالواقعة"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The register of leaks or unlawful access",
+        "Copies of the notifications and evidence of how the incident was handled",
+        "The access log for case files and client documents, where it relates to the incident"
       ],
       "references": [
         {
@@ -562,6 +784,7 @@
     {
       "question_id": "lg_business_continuity",
       "canonical_text_ar": "هل توجد خطة استمرارية أعمال معتمدة تعالج انقطاع الأنظمة أو تعذر الوصول للمقر أو غياب المحامي المرخص أو الشخص المفتاحي، مع ترتيبات إنابة نظامية تضمن استمرار تمثيل الموكلين وحضور الجلسات؟",
+      "canonical_text_en": "Is there an approved business continuity plan addressing system outages, being unable to reach the premises, or the absence of the licensed lawyer or a key person, with substitution arrangements that keep clients represented and hearings attended?",
       "type": "enum",
       "options": [
         "خطة معتمدة ومختبرة مع ترتيبات إنابة موثقة",
@@ -569,6 +792,12 @@
         "ترتيبات غير رسمية تعتمد على التنسيق الشخصي",
         "لا توجد"
       ],
+      "options_en": {
+        "خطة معتمدة ومختبرة مع ترتيبات إنابة موثقة": "An approved, tested plan with documented substitution arrangements",
+        "خطة مكتوبة لم تُختبر": "A written plan that has not been tested",
+        "ترتيبات غير رسمية تعتمد على التنسيق الشخصي": "Informal arrangements resting on personal coordination",
+        "لا توجد": "There is none"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -579,6 +808,13 @@
         "نتائج اختبار الخطة",
         "الوكالات والتفويضات البديلة",
         "خطة التعافي التقني ووثائق تشغيل الأنظمة الداخلية"
+      ],
+      "evidence_required_en": [
+        "The business continuity plan",
+        "The business impact analysis and identification of critical activities",
+        "The plan test results",
+        "The substitute powers of attorney and delegations",
+        "The technical recovery plan and the internal system operating documentation"
       ],
       "references": [
         {
@@ -594,6 +830,7 @@
     {
       "question_id": "lg_third_parties",
       "canonical_text_ar": "هل يوجد سجل معتمد للأطراف الخارجية (مزود نظام إدارة القضايا، الاستضافة والدعم التقني، المحاسب، المترجمون، الخبراء، مكاتب المراسلة، شركات الأرشفة والإتلاف) مع تقييم قبل التعاقد واتفاقيات سرية ومعالجة بيانات وحق تدقيق؟",
+      "canonical_text_en": "Is there an approved register of third parties (case management system provider, hosting and technical support, the accountant, translators, experts, correspondent offices, archiving and destruction companies) with pre-contract assessment, confidentiality and data processing agreements, and audit rights?",
       "type": "enum",
       "options": [
         "سجل معتمد مع تقييم واتفاقيات مكتملة",
@@ -601,6 +838,12 @@
         "تعاقدات قائمة دون اتفاقيات سرية أو حماية بيانات",
         "لا يوجد سجل للأطراف الخارجية"
       ],
+      "options_en": {
+        "سجل معتمد مع تقييم واتفاقيات مكتملة": "An approved register, with assessment and complete agreements",
+        "سجل جزئي واتفاقيات غير موحدة": "A partial register and non-standard agreements",
+        "تعاقدات قائمة دون اتفاقيات سرية أو حماية بيانات": "Contracts in place, with no confidentiality or data protection agreements",
+        "لا يوجد سجل للأطراف الخارجية": "There is no third party register"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -610,6 +853,12 @@
         "نماذج تقييم المورد قبل التعاقد",
         "اتفاقيات السرية واتفاقيات معالجة البيانات",
         "العقود واتفاقيات مستوى الخدمة"
+      ],
+      "evidence_required_en": [
+        "The third party register and their level of access",
+        "Pre-contract supplier assessment forms",
+        "The confidentiality and data processing agreements",
+        "The contracts and service level agreements"
       ],
       "references": [
         {
@@ -625,6 +874,7 @@
     {
       "question_id": "lg_records_retention",
       "canonical_text_ar": "كيف تُدار وثائق المكتب وسجلاته (سجل القضايا والوكالات، اتفاقيات الأتعاب، المرافعات، السياسات والإجراءات) من حيث ضبط الإصدارات ومدد الاحتفاظ والإتلاف الآمن للملفات الورقية والإلكترونية بعد انتهاء القضية؟",
+      "canonical_text_en": "How are the firm's documents and records managed (the case and power of attorney register, engagement letters, pleadings, policies and procedures) in terms of version control, retention periods, and secure destruction of paper and electronic files once a case ends?",
       "type": "enum",
       "options": [
         "نظام موثق لإدارة الوثائق مع جدول احتفاظ وإتلاف معتمد",
@@ -632,6 +882,12 @@
         "حفظ غير منظم وموزع بين الورقي والإلكتروني",
         "لا يوجد نظام لإدارة الوثائق"
       ],
+      "options_en": {
+        "نظام موثق لإدارة الوثائق مع جدول احتفاظ وإتلاف معتمد": "A documented document management system with an approved retention and destruction schedule",
+        "حفظ منظم دون جدول احتفاظ أو إتلاف معتمد": "Organised storage, with no approved retention or destruction schedule",
+        "حفظ غير منظم وموزع بين الورقي والإلكتروني": "Disorganised storage, split between paper and electronic",
+        "لا يوجد نظام لإدارة الوثائق": "There is no document management system"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -642,6 +898,13 @@
         "نماذج اتفاقيات الأتعاب",
         "محاضر الإتلاف الآمن",
         "دليل السياسات والإجراءات المعتمد"
+      ],
+      "evidence_required_en": [
+        "The approved retention and destruction schedule",
+        "The case and power of attorney register",
+        "The engagement letter templates",
+        "The secure destruction records",
+        "The approved policy and procedure manual"
       ],
       "references": [
         {
@@ -661,6 +924,7 @@
     {
       "question_id": "lg_compliance_monitoring",
       "canonical_text_ar": "هل توجد آلية دورية لمراقبة الالتزام (مراجعة داخلية، مؤشرات، خطط إجراءات تصحيحية) مع متابعة موثقة للتحديثات النظامية وبرنامج تدريب وتوعية إلزامي للمنسوبين والمتدربين على السرية وحماية البيانات؟",
+      "canonical_text_en": "Is there a periodic compliance monitoring mechanism (internal review, indicators, corrective action plans), with documented tracking of regulatory updates and a mandatory training and awareness programme for staff and trainees on confidentiality and data protection?",
       "type": "enum",
       "options": [
         "مراجعة دورية موثقة مع خطط تصحيحية وبرنامج تدريب معتمد",
@@ -668,6 +932,12 @@
         "تُراجع الأمور فقط عند وقوع مشكلة أو طلب رسمي",
         "لا توجد آلية"
       ],
+      "options_en": {
+        "مراجعة دورية موثقة مع خطط تصحيحية وبرنامج تدريب معتمد": "Documented periodic review, with corrective plans and an approved training programme",
+        "مراجعات متفرقة غير موثقة": "Occasional, undocumented reviews",
+        "تُراجع الأمور فقط عند وقوع مشكلة أو طلب رسمي": "Matters are reviewed only when a problem arises or an official request is made",
+        "لا توجد آلية": "There is no mechanism"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -678,6 +948,13 @@
         "خطط الإجراءات التصحيحية ومتابعة إغلاقها",
         "سجلات التدريب والتوعية",
         "محاضر مراجعة الإدارة أو الشركاء"
+      ],
+      "evidence_required_en": [
+        "The internal compliance review plan and its reports",
+        "The register of statutory and regulatory requirements and its updates",
+        "The corrective action plans and the follow-up to closure",
+        "The training and awareness records",
+        "Minutes of the management or partners' review"
       ],
       "references": [
         {

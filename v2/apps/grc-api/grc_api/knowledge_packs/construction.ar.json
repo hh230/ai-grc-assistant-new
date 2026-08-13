@@ -7,6 +7,7 @@
     {
       "question_id": "cn_contractor_classification",
       "canonical_text_ar": "ما وضع تصنيف المنشأة كمقاول، وهل درجة التصنيف السارية تغطي حجم وطبيعة المشاريع التي تنفّذها فعلياً؟",
+      "canonical_text_en": "What is the organization's contractor classification status, and does the grade in force cover the size and nature of the projects it actually carries out?",
       "type": "enum",
       "options": [
         "مصنّفة بدرجة سارية تغطي كل المشاريع المنفّذة ويُتابَع تجديدها",
@@ -15,6 +16,13 @@
         "غير مصنّفة، ومشاريعنا لا تتطلب تصنيفاً",
         "غير مصنّفة رغم تنفيذ مشاريع تتطلب تصنيفاً"
       ],
+      "options_en": {
+        "مصنّفة بدرجة سارية تغطي كل المشاريع المنفّذة ويُتابَع تجديدها": "Classified at a grade in force that covers every project carried out, and its renewal is tracked",
+        "مصنّفة بدرجة سارية لكن بعض المشاريع تتجاوز حدود الدرجة": "Classified at a grade in force, but some projects exceed the limits of that grade",
+        "التصنيف منتهٍ أو قيد التجديد حالياً": "The classification has expired or is currently being renewed",
+        "غير مصنّفة، ومشاريعنا لا تتطلب تصنيفاً": "Not classified, and our projects do not require classification",
+        "غير مصنّفة رغم تنفيذ مشاريع تتطلب تصنيفاً": "Not classified, although we carry out projects that require classification"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -24,6 +32,12 @@
         "قائمة المشاريع القائمة وقيمها التعاقدية",
         "السجل التجاري وأنشطة المقاولات المدوَّنة",
         "طلبات التجديد أو الترقية إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The contractor classification certificate, its grade and its validity date",
+        "A list of current projects and their contract values",
+        "The commercial registration and the contracting activities recorded in it",
+        "Renewal or upgrade applications, if any"
       ],
       "references": [
         {
@@ -39,6 +53,7 @@
     {
       "question_id": "cn_building_permits",
       "canonical_text_ar": "هل تُستخرَج رخص البناء والتصاريح البلدية لكل مشروع قبل مباشرة التنفيذ، ويُلتزم باشتراطات كود البناء السعودي في التصميم والتنفيذ؟",
+      "canonical_text_en": "Are building permits and municipal approvals obtained for every project before work starts, and are the Saudi Building Code requirements met in design and execution?",
       "type": "enum",
       "options": [
         "رخصة وتصاريح مستخرجة لكل مشروع مع تحقق موثّق من مطابقة الكود",
@@ -46,6 +61,12 @@
         "تبدأ بعض الأعمال التمهيدية قبل اكتمال الرخصة",
         "التصاريح مسؤولية المالك ولا نتحقق منها"
       ],
+      "options_en": {
+        "رخصة وتصاريح مستخرجة لكل مشروع مع تحقق موثّق من مطابقة الكود": "A permit and approvals obtained for every project, with documented verification of Code conformity",
+        "رخصة مستخرجة لكل مشروع دون تحقق موثّق من مطابقة الكود": "A permit obtained for every project, with no documented verification of Code conformity",
+        "تبدأ بعض الأعمال التمهيدية قبل اكتمال الرخصة": "Some preliminary works begin before the permit is complete",
+        "التصاريح مسؤولية المالك ولا نتحقق منها": "Approvals are the owner's responsibility and we do not verify them"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -55,6 +76,12 @@
         "التصاريح البلدية المصاحبة (حفر، إشغال طريق، هدم)",
         "تقارير مطابقة كود البناء السعودي",
         "محاضر الزيارات الرقابية البلدية إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The building permits in force for the current projects",
+        "The accompanying municipal approvals (excavation, road occupation, demolition)",
+        "Saudi Building Code conformity reports",
+        "Records of municipal inspection visits, if any"
       ],
       "references": [
         {
@@ -70,6 +97,7 @@
     {
       "question_id": "cn_engineering_supervision",
       "canonical_text_ar": "من يتولى الإشراف الهندسي على التنفيذ، وهل هو مكتب أو مهندس معتمد لدى الهيئة السعودية للمهندسين؟",
+      "canonical_text_en": "Who carries out engineering supervision of the works, and are they an office or engineer accredited with the Saudi Council of Engineers?",
       "type": "enum",
       "options": [
         "مكتب إشراف معتمد مع مهندس مقيم وتقارير إشراف دورية موثّقة",
@@ -78,6 +106,13 @@
         "الإشراف الهندسي مسؤولية المالك ولا نتحقق من اعتماده",
         "لا يوجد إشراف هندسي موثّق"
       ],
+      "options_en": {
+        "مكتب إشراف معتمد مع مهندس مقيم وتقارير إشراف دورية موثّقة": "An accredited supervision office with a resident engineer and documented periodic supervision reports",
+        "مكتب إشراف معتمد لكن دون مهندس مقيم في الموقع": "An accredited supervision office, with no resident engineer on site",
+        "الإشراف يتولاه مهندس من المنشأة دون اعتماد إشراف رسمي": "Supervision is carried out by one of the organization's engineers, with no formal supervision accreditation",
+        "الإشراف الهندسي مسؤولية المالك ولا نتحقق من اعتماده": "Engineering supervision is the owner's responsibility and we do not verify its accreditation",
+        "لا يوجد إشراف هندسي موثّق": "There is no documented engineering supervision"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -86,6 +121,11 @@
         "عقد الإشراف الهندسي واعتماد المكتب",
         "سجل عضوية المهندس المسؤول لدى الهيئة السعودية للمهندسين",
         "تقارير الإشراف الدورية لمشروع قائم"
+      ],
+      "evidence_required_en": [
+        "The engineering supervision contract and the office's accreditation",
+        "The responsible engineer's membership record with the Saudi Council of Engineers",
+        "The periodic supervision reports for a current project"
       ],
       "references": [
         {
@@ -101,6 +141,7 @@
     {
       "question_id": "cn_osh_program",
       "canonical_text_ar": "ما وضع برنامج السلامة والصحة المهنية في مواقع المنشأة من حيث وجود سياسة معتمدة ومختص سلامة وتقييم مخاطر لكل موقع؟",
+      "canonical_text_en": "What is the state of the occupational safety and health programme on the organization's sites — an approved policy, a safety specialist, and a risk assessment for each site?",
       "type": "enum",
       "options": [
         "سياسة معتمدة ومختص سلامة مخصص وتقييم مخاطر موثّق لكل موقع ويُحدَّث",
@@ -109,6 +150,13 @@
         "تُطبَّق ممارسات سلامة متعارف عليها دون سياسة أو مختص",
         "لا يوجد برنامج سلامة"
       ],
+      "options_en": {
+        "سياسة معتمدة ومختص سلامة مخصص وتقييم مخاطر موثّق لكل موقع ويُحدَّث": "An approved policy, a dedicated safety specialist, and a documented risk assessment for each site that is kept updated",
+        "سياسة معتمدة ومختص سلامة دون تقييم مخاطر موثّق لكل موقع": "An approved policy and a safety specialist, with no documented risk assessment for each site",
+        "مسؤولية السلامة مسندة لمهندس الموقع ضمن مهامه الأخرى": "Safety is assigned to the site engineer alongside their other duties",
+        "تُطبَّق ممارسات سلامة متعارف عليها دون سياسة أو مختص": "Customary safety practices are applied, with no policy and no specialist",
+        "لا يوجد برنامج سلامة": "There is no safety programme"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -118,6 +166,12 @@
         "قرار تعيين مختص السلامة ومؤهلاته",
         "تقييم المخاطر لموقع قائم وتاريخ آخر تحديث",
         "سجل جولات التفتيش الداخلية على المواقع"
+      ],
+      "evidence_required_en": [
+        "The approved occupational safety and health policy",
+        "The decision appointing the safety specialist and their qualifications",
+        "The risk assessment for a current site and the date it was last updated",
+        "The record of internal site inspection rounds"
       ],
       "references": [
         {
@@ -133,6 +187,7 @@
     {
       "question_id": "cn_incident_investigation",
       "canonical_text_ar": "كيف تُدار إصابات العمل والحوادث القريبة من الوقوع في المواقع، من حيث الإبلاغ والتحقيق ومعالجة السبب الجذري؟",
+      "canonical_text_en": "How are workplace injuries and near misses on site managed — reporting, investigation, and addressing the root cause?",
       "type": "enum",
       "options": [
         "إبلاغ إلزامي موثّق مع تحقيق في السبب الجذري ومتابعة الإجراءات التصحيحية حتى الإغلاق",
@@ -141,6 +196,13 @@
         "تُعالَج الحوادث في الموقع دون توثيق",
         "لا يوجد إجراء للإبلاغ عن الحوادث"
       ],
+      "options_en": {
+        "إبلاغ إلزامي موثّق مع تحقيق في السبب الجذري ومتابعة الإجراءات التصحيحية حتى الإغلاق": "Mandatory documented reporting, with root cause investigation and follow-up of corrective actions to closure",
+        "إبلاغ موثّق للإصابات مع تحقيق دون متابعة موثّقة للإجراءات التصحيحية": "Documented reporting of injuries with investigation, but no documented follow-up of corrective actions",
+        "يُبلَّغ عن الإصابات الجسيمة فقط دون الحوادث القريبة من الوقوع": "Only serious injuries are reported, not near misses",
+        "تُعالَج الحوادث في الموقع دون توثيق": "Incidents are dealt with on site, without documentation",
+        "لا يوجد إجراء للإبلاغ عن الحوادث": "There is no incident reporting procedure"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -150,6 +212,12 @@
         "سجل الإصابات والحوادث القريبة من الوقوع",
         "تقارير تحقيق لحوادث سابقة وحالة إغلاق الإجراءات",
         "بلاغات إصابات العمل المقدَّمة للتأمينات الاجتماعية"
+      ],
+      "evidence_required_en": [
+        "The incident reporting and investigation procedure",
+        "The register of injuries and near misses",
+        "Investigation reports for past incidents and the closure status of the actions",
+        "Work injury reports submitted to the General Organization for Social Insurance"
       ],
       "references": [
         {
@@ -165,6 +233,7 @@
     {
       "question_id": "cn_high_risk_work_permits",
       "canonical_text_ar": "هل يُشترط تصريح عمل موثّق قبل مباشرة الأعمال عالية الخطورة (العمل على ارتفاع، والحفر، والأماكن المحصورة، والأعمال الساخنة، والرفع بالأوناش)؟",
+      "canonical_text_en": "Is a documented work permit required before high-risk work begins (working at height, excavation, confined spaces, hot works, and crane lifting)?",
       "type": "enum",
       "options": [
         "تصريح إلزامي موثّق لكل عمل عالي الخطورة مع تحقق ميداني قبل البدء",
@@ -172,6 +241,12 @@
         "يُكتفى بالتنسيق الشفهي مع مشرف الموقع",
         "لا يوجد نظام تصاريح عمل"
       ],
+      "options_en": {
+        "تصريح إلزامي موثّق لكل عمل عالي الخطورة مع تحقق ميداني قبل البدء": "A mandatory documented permit for every high-risk activity, with a field check before starting",
+        "تصريح موثّق لبعض الأعمال دون تغطية كل الأنواع عالية الخطورة": "A documented permit for some activities, not covering every high-risk type",
+        "يُكتفى بالتنسيق الشفهي مع مشرف الموقع": "Verbal coordination with the site supervisor is considered enough",
+        "لا يوجد نظام تصاريح عمل": "There is no work permit system"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -181,6 +256,12 @@
         "نماذج تصاريح مستخدمة في موقع قائم",
         "سجل التصاريح الصادرة خلال آخر شهر",
         "شهادات فحص معدات الرفع والسقالات"
+      ],
+      "evidence_required_en": [
+        "The high-risk work permit procedure",
+        "Permit forms in use on a current site",
+        "The register of permits issued in the past month",
+        "Inspection certificates for lifting equipment and scaffolding"
       ],
       "references": [
         {
@@ -196,6 +277,7 @@
     {
       "question_id": "cn_schedule_and_claims",
       "canonical_text_ar": "كيف تُتابَع الجداول الزمنية للمشاريع، وكيف تُوثَّق أسباب التأخير والمطالبات بتمديد المدة؟",
+      "canonical_text_en": "How are project schedules tracked, and how are the causes of delay and extension of time claims documented?",
       "type": "enum",
       "options": [
         "جدول زمني معتمد يُحدَّث دورياً مع توثيق فوري لأسباب التأخير والمطالبات",
@@ -203,6 +285,12 @@
         "متابعة تقديرية عبر تقارير الموقع دون جدول معتمد",
         "لا توجد متابعة موثّقة للجدول الزمني"
       ],
+      "options_en": {
+        "جدول زمني معتمد يُحدَّث دورياً مع توثيق فوري لأسباب التأخير والمطالبات": "An approved schedule updated regularly, with immediate documentation of the causes of delay and of the claims",
+        "جدول زمني معتمد يُحدَّث دون توثيق منهجي لأسباب التأخير": "An approved schedule that is updated, with no systematic documentation of the causes of delay",
+        "متابعة تقديرية عبر تقارير الموقع دون جدول معتمد": "Approximate tracking through site reports, with no approved schedule",
+        "لا توجد متابعة موثّقة للجدول الزمني": "There is no documented tracking of the schedule"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -212,6 +300,12 @@
         "سجل أسباب التأخير ومراسلات إشعار المالك",
         "المطالبات بتمديد المدة وحالتها",
         "تقارير التقدم الدورية"
+      ],
+      "evidence_required_en": [
+        "The approved schedule and its latest update",
+        "The register of delay causes and the notices sent to the owner",
+        "The extension of time claims and their status",
+        "The periodic progress reports"
       ],
       "references": [
         {
@@ -227,6 +321,7 @@
     {
       "question_id": "cn_material_conformity",
       "canonical_text_ar": "كيف يُتحقق من مطابقة مواد البناء للمواصفات المعتمدة قبل استخدامها في التنفيذ (شهادات المطابقة واختبارات العينات)؟",
+      "canonical_text_en": "How is it verified that building materials conform to the approved specifications before they are used in the works (conformity certificates and sample testing)?",
       "type": "enum",
       "options": [
         "شهادات مطابقة لكل مورّد واختبارات عينات في مختبر معتمد موثّقة قبل الاستخدام",
@@ -234,6 +329,12 @@
         "يُعتمد على سمعة المورّد ومعاينة الموقع",
         "لا يوجد تحقق موثّق من مطابقة المواد"
       ],
+      "options_en": {
+        "شهادات مطابقة لكل مورّد واختبارات عينات في مختبر معتمد موثّقة قبل الاستخدام": "Conformity certificates from every supplier and sample testing at an accredited laboratory, documented before use",
+        "شهادات مطابقة من المورّد دون اختبارات عينات مستقلة": "Conformity certificates from the supplier, with no independent sample testing",
+        "يُعتمد على سمعة المورّد ومعاينة الموقع": "Reliance on the supplier's reputation and site inspection",
+        "لا يوجد تحقق موثّق من مطابقة المواد": "There is no documented verification of material conformity"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -243,6 +344,12 @@
         "تقارير اختبارات العينات من مختبر معتمد",
         "إجراء استلام المواد في الموقع",
         "سجل رفض المواد غير المطابقة إن وُجد"
+      ],
+      "evidence_required_en": [
+        "Conformity certificates for the incoming materials",
+        "Sample test reports from an accredited laboratory",
+        "The procedure for receiving materials on site",
+        "The register of non-conforming materials rejected, if any"
       ],
       "references": [
         {
@@ -258,6 +365,7 @@
     {
       "question_id": "cn_contract_administration",
       "canonical_text_ar": "كيف تُدار عقود المشاريع من حيث الضمانات البنكية وأوامر التغيير والمستخلصات ومحاضر الاستلام؟",
+      "canonical_text_en": "How are project contracts administered — bank guarantees, change orders, interim payment certificates, and handover records?",
       "type": "enum",
       "options": [
         "إدارة عقود مركزية تتابع الضمانات وأوامر التغيير والمستخلصات بإجراء معتمد",
@@ -265,6 +373,12 @@
         "تُدار العقود بمعرفة مدير المشروع دون إجراء موحّد",
         "لا توجد إدارة موثّقة للعقود"
       ],
+      "options_en": {
+        "إدارة عقود مركزية تتابع الضمانات وأوامر التغيير والمستخلصات بإجراء معتمد": "Central contract administration tracking guarantees, change orders and payment certificates under an approved procedure",
+        "متابعة موثّقة للمستخلصات دون ضبط منهجي لأوامر التغيير": "Documented tracking of payment certificates, with no systematic control of change orders",
+        "تُدار العقود بمعرفة مدير المشروع دون إجراء موحّد": "Contracts are administered by the project manager, with no standard procedure",
+        "لا توجد إدارة موثّقة للعقود": "There is no documented contract administration"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -274,6 +388,12 @@
         "سجل الضمانات البنكية وتواريخ انتهائها",
         "أوامر التغيير المعتمدة لمشروع قائم",
         "المستخلصات المقدَّمة وحالة صرفها"
+      ],
+      "evidence_required_en": [
+        "The register of current contracts, their values and durations",
+        "The register of bank guarantees and their expiry dates",
+        "The approved change orders for a current project",
+        "The payment certificates submitted and their payment status"
       ],
       "references": [
         {
@@ -289,6 +409,7 @@
     {
       "question_id": "cn_workforce_compliance",
       "canonical_text_ar": "ما وضع العمالة في مواقع المنشأة من حيث نظامية العقود ونقل الكفالة وصرف الأجور عبر نظام حماية الأجور والتسجيل في التأمينات الاجتماعية؟",
+      "canonical_text_en": "What is the position of the workforce on the organization's sites — lawful contracts, sponsorship transfer, paying wages through the Wage Protection System, and registration with social insurance?",
       "type": "enum",
       "options": [
         "جميع العمالة على كفالة المنشأة بعقود موثّقة وأجور عبر حماية الأجور وتسجيل تأميني كامل",
@@ -297,6 +418,13 @@
         "يُستعان بعمالة دون عقود موثّقة",
         "لم يجرِ حصر لوضع العمالة في المواقع"
       ],
+      "options_en": {
+        "جميع العمالة على كفالة المنشأة بعقود موثّقة وأجور عبر حماية الأجور وتسجيل تأميني كامل": "All workers are under the organization's sponsorship with documented contracts, wages through the Wage Protection System, and full social insurance registration",
+        "العمالة نظامية لكن تُصرف بعض الأجور خارج نظام حماية الأجور": "The workforce is lawful, but some wages are paid outside the Wage Protection System",
+        "يُستعان بعمالة على كفالة الغير في بعض المواقع": "Workers sponsored by others are used on some sites",
+        "يُستعان بعمالة دون عقود موثّقة": "Workers are used without documented contracts",
+        "لم يجرِ حصر لوضع العمالة في المواقع": "The position of the workforce on site has not been inventoried"
+      },
       "required": true,
       "category": "operations",
       "importance": "critical",
@@ -306,6 +434,12 @@
         "تقارير التزام نظام حماية الأجور",
         "شهادة التسجيل في التأمينات الاجتماعية وكشف المشتركين",
         "عينة من عقود العمل الموثّقة"
+      ],
+      "evidence_required_en": [
+        "The schedule of workers under the organization's sponsorship",
+        "Wage Protection System compliance reports",
+        "The social insurance registration certificate and the list of registered workers",
+        "A sample of the documented employment contracts"
       ],
       "references": [
         {
@@ -321,6 +455,7 @@
     {
       "question_id": "cn_environmental_compliance",
       "canonical_text_ar": "كيف تُدار الالتزامات البيئية في المواقع (التصاريح البيئية، وإدارة مخلفات البناء والهدم، وضبط الغبار والضوضاء)؟",
+      "canonical_text_en": "How are environmental obligations managed on site (environmental permits, construction and demolition waste management, and dust and noise control)?",
       "type": "enum",
       "options": [
         "تصاريح بيئية سارية وخطة موثّقة لإدارة المخلفات وضبط الغبار والضوضاء",
@@ -328,6 +463,12 @@
         "تُنقل المخلفات عبر مقاول نقل دون توثيق لوجهة التخلص",
         "لا تُدار الالتزامات البيئية بشكل موثّق"
       ],
+      "options_en": {
+        "تصاريح بيئية سارية وخطة موثّقة لإدارة المخلفات وضبط الغبار والضوضاء": "Environmental permits in force and a documented plan for waste management and dust and noise control",
+        "تصاريح سارية دون خطة موثّقة لإدارة المخلفات": "Permits in force, with no documented waste management plan",
+        "تُنقل المخلفات عبر مقاول نقل دون توثيق لوجهة التخلص": "Waste is removed by a haulage contractor, with no record of where it is disposed of",
+        "لا تُدار الالتزامات البيئية بشكل موثّق": "Environmental obligations are not managed in any documented way"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -337,6 +478,12 @@
         "خطة إدارة مخلفات البناء والهدم",
         "إيصالات التخلص من المخلفات ووجهتها",
         "سجل شكاوى الجوار ومعالجتها إن وُجد"
+      ],
+      "evidence_required_en": [
+        "The environmental permits in force for the projects",
+        "The construction and demolition waste management plan",
+        "Waste disposal receipts and the destination",
+        "The register of neighbours' complaints and how they were handled, if any"
       ],
       "references": [
         {
@@ -352,6 +499,7 @@
     {
       "question_id": "cn_subcontractors",
       "canonical_text_ar": "كيف يُختار المقاولون من الباطن ويُدار التزامهم (التصنيف، والعقد المكتوب، والسلامة في الموقع، ونظامية عمالتهم)؟",
+      "canonical_text_en": "How are subcontractors selected and their compliance managed (classification, a written contract, site safety, and the lawful status of their workers)?",
       "type": "enum",
       "options": [
         "تأهيل موثّق قبل التعاقد وعقود مكتوبة تشمل التزامات السلامة ونظامية العمالة مع متابعة ميدانية",
@@ -359,6 +507,12 @@
         "تعاقدات قائمة على أوامر شراء أو اتفاقات شفهية",
         "لا نستعين بمقاولين من الباطن"
       ],
+      "options_en": {
+        "تأهيل موثّق قبل التعاقد وعقود مكتوبة تشمل التزامات السلامة ونظامية العمالة مع متابعة ميدانية": "Documented prequalification before contracting, written contracts covering safety obligations and lawful workforce status, with field monitoring",
+        "عقود مكتوبة دون تأهيل موثّق أو متابعة لالتزامهم في الموقع": "Written contracts, with no documented prequalification and no monitoring of their compliance on site",
+        "تعاقدات قائمة على أوامر شراء أو اتفاقات شفهية": "Engagements based on purchase orders or verbal arrangements",
+        "لا نستعين بمقاولين من الباطن": "We do not use subcontractors"
+      },
       "required": true,
       "category": "third_party",
       "importance": "critical",
@@ -368,6 +522,12 @@
         "عقود الباطن وبنود السلامة والعمالة فيها",
         "شهادات تصنيف المقاولين من الباطن إن انطبقت",
         "سجل المتابعة الميدانية لالتزامهم"
+      ],
+      "evidence_required_en": [
+        "The subcontractor prequalification procedure",
+        "The subcontracts and their safety and workforce clauses",
+        "Subcontractors' classification certificates, where applicable",
+        "The record of field monitoring of their compliance"
       ],
       "references": [
         {
@@ -383,6 +543,7 @@
     {
       "question_id": "cn_commercial_concealment",
       "canonical_text_ar": "هل تُنفَّذ أي من مشاريع المنشأة أو أنشطتها بواسطة أشخاص أو جهات تستخدم اسمها أو ترخيصها دون صفة نظامية (تشغيل باسم المنشأة مقابل نسبة، أو إدارة فعلية من غير الملاك)؟",
+      "canonical_text_en": "Are any of the organization's projects or activities carried out by persons or parties using its name or licence without legal standing (operating under the organization's name for a share, or effective management by someone other than the owners)?",
       "type": "enum",
       "options": [
         "لا، وجميع المشاريع تُدار وتُنفَّذ بكوادر المنشأة وبعقود موثّقة",
@@ -390,6 +551,12 @@
         "توجد ترتيبات تشغيل غير موثّقة مع أطراف خارجية",
         "غير متأكد ولم يجرِ التحقق"
       ],
+      "options_en": {
+        "لا، وجميع المشاريع تُدار وتُنفَّذ بكوادر المنشأة وبعقود موثّقة": "No — every project is managed and carried out by the organization's own people under documented contracts",
+        "لا، لكن لا يوجد إجراء موثّق يمنع ذلك أو يكشفه": "No — but there is no documented procedure to prevent or detect it",
+        "توجد ترتيبات تشغيل غير موثّقة مع أطراف خارجية": "There are undocumented operating arrangements with outside parties",
+        "غير متأكد ولم يجرِ التحقق": "Not sure; this has not been verified"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "critical",
@@ -399,6 +566,12 @@
         "عقود المشاريع القائمة وأطرافها",
         "كشوف الحسابات البنكية للمشاريع",
         "إقرارات الشركاء بعدم وجود ترتيبات تشغيل خارجية"
+      ],
+      "evidence_required_en": [
+        "The effective management structure and the signing authorities",
+        "The contracts for current projects and their parties",
+        "The project bank statements",
+        "Partners' declarations that there are no outside operating arrangements"
       ],
       "references": [
         {
@@ -414,6 +587,7 @@
     {
       "question_id": "cn_risk_register",
       "canonical_text_ar": "هل يوجد سجل مخاطر معتمد يغطي مخاطر المنشأة (الإصابات، وتأخر التسليم، وتعثر التدفق النقدي، وعيوب التنفيذ، وإخلال مقاول الباطن) مع مالك وخطة معالجة لكل خطر؟",
+      "canonical_text_en": "Is there an approved risk register covering the organization's risks (injuries, late delivery, cash flow difficulty, defective works, and subcontractor default), with an owner and a treatment plan for each risk?",
       "type": "enum",
       "options": [
         "سجل معتمد يُراجع دورياً مع مالك وخطة معالجة لكل خطر",
@@ -422,6 +596,13 @@
         "تُدار المخاطر بشكل غير رسمي حسب الحالة",
         "لا يوجد سجل مخاطر"
       ],
+      "options_en": {
+        "سجل معتمد يُراجع دورياً مع مالك وخطة معالجة لكل خطر": "An approved register, reviewed regularly, with an owner and a treatment plan for each risk",
+        "سجل معتمد لكنه لم يُراجع منذ فترة": "An approved register that has not been reviewed for some time",
+        "سجل موثّق لكنه غير معتمد": "A documented register that has not been approved",
+        "تُدار المخاطر بشكل غير رسمي حسب الحالة": "Risk is managed informally, case by case",
+        "لا يوجد سجل مخاطر": "There is no risk register"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -431,6 +612,12 @@
         "محضر آخر مراجعة للسجل",
         "خطط معالجة المخاطر عالية الأثر",
         "وثائق التأمين على المشاريع إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The approved risk register",
+        "The minutes of the most recent review of the register",
+        "The treatment plans for the high-impact risks",
+        "The project insurance policies, if any"
       ],
       "references": [
         {
@@ -446,6 +633,7 @@
     {
       "question_id": "cn_authority_matrix",
       "canonical_text_ar": "هل يوجد هيكل تنظيمي معتمد ومصفوفة صلاحيات موثّقة تحدد من يوقّع العقود وأوامر التغيير والمستخلصات وأوامر الشراء؟",
+      "canonical_text_en": "Is there an approved organizational structure and a documented authority matrix setting out who signs contracts, change orders, payment certificates and purchase orders?",
       "type": "enum",
       "options": [
         "هيكل ومصفوفة صلاحيات معتمدان بحدود مالية واضحة لكل مستوى",
@@ -453,6 +641,12 @@
         "الصلاحيات تُمارس عرفاً دون توثيق",
         "لا يوجد توثيق للصلاحيات"
       ],
+      "options_en": {
+        "هيكل ومصفوفة صلاحيات معتمدان بحدود مالية واضحة لكل مستوى": "An approved structure and authority matrix with clear financial limits for each level",
+        "مصفوفة صلاحيات موثّقة لكنها غير محدَّثة أو لا تغطي كل أنواع الالتزامات": "A documented authority matrix that is out of date or does not cover every kind of commitment",
+        "الصلاحيات تُمارس عرفاً دون توثيق": "Authorities are exercised by custom, without documentation",
+        "لا يوجد توثيق للصلاحيات": "Authorities are not documented at all"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -462,6 +656,12 @@
         "مصفوفة الصلاحيات والحدود المالية",
         "سندات التفويض بالتوقيع",
         "عينة من أوامر تغيير وأوامر شراء معتمدة"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The authority matrix and the financial limits",
+        "The signing delegation instruments",
+        "A sample of approved change orders and purchase orders"
       ],
       "references": [
         {
@@ -477,6 +677,7 @@
     {
       "question_id": "cn_compliance_ownership",
       "canonical_text_ar": "من الشخص أو الجهة المسؤولة رسمياً داخل المنشأة عن متابعة الالتزام النظامي (العمالي، والبلدي، والبيئي، والتعاقدي)، وهل المسؤولية موثّقة في قرار تعيين؟",
+      "canonical_text_en": "Who inside the organization is formally responsible for tracking statutory compliance (labour, municipal, environmental and contractual), and is that responsibility documented in an appointment decision?",
       "type": "enum",
       "options": [
         "مسؤول التزام معيَّن بقرار مع نطاق مسؤولية مكتوب",
@@ -484,6 +685,12 @@
         "تُدار عبر مستشار خارجي عند الحاجة",
         "لا توجد مسؤولية محددة"
       ],
+      "options_en": {
+        "مسؤول التزام معيَّن بقرار مع نطاق مسؤولية مكتوب": "A compliance officer appointed by decision, with a written scope of responsibility",
+        "المسؤولية مسندة إلى مدير ضمن مهامه الأخرى وموثّقة": "The responsibility assigned to a manager alongside their other duties, and documented",
+        "تُدار عبر مستشار خارجي عند الحاجة": "Handled through an external adviser when needed",
+        "لا توجد مسؤولية محددة": "There is no defined responsibility"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -492,6 +699,11 @@
         "قرار التعيين ونطاق المسؤولية",
         "الهيكل التنظيمي المعتمد",
         "تقارير المتابعة الدورية إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The appointment decision and the scope of responsibility",
+        "The approved organizational structure",
+        "The periodic follow-up reports, if any"
       ],
       "references": [
         {
@@ -507,6 +719,7 @@
     {
       "question_id": "cn_project_records",
       "canonical_text_ar": "كيف تُحفظ وثائق المشروع (المخططات المعتمدة، والتصاريح، ومحاضر الاستلام، وتقارير الاختبارات، والمخططات كما نُفِّذت) بعد إغلاق المشروع؟",
+      "canonical_text_en": "How are project documents kept after a project closes (approved drawings, permits, handover records, test reports, and as-built drawings)?",
       "type": "enum",
       "options": [
         "أرشفة مركزية منظّمة تشمل المخططات كما نُفِّذت مع جدول احتفاظ معتمد",
@@ -514,6 +727,12 @@
         "الوثائق موزّعة بين المواقع وأجهزة العاملين",
         "لا يوجد نظام لحفظ وثائق المشاريع"
       ],
+      "options_en": {
+        "أرشفة مركزية منظّمة تشمل المخططات كما نُفِّذت مع جدول احتفاظ معتمد": "Organised central archiving including the as-built drawings, with an approved retention schedule",
+        "أرشفة مركزية دون جدول احتفاظ معتمد": "Central archiving, with no approved retention schedule",
+        "الوثائق موزّعة بين المواقع وأجهزة العاملين": "Documents are spread between the sites and staff devices",
+        "لا يوجد نظام لحفظ وثائق المشاريع": "There is no system for keeping project documents"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -523,6 +742,12 @@
         "المخططات كما نُفِّذت لمشروع مغلق",
         "محاضر الاستلام الابتدائي والنهائي",
         "تقارير الاختبارات المرتبطة بالمشروع"
+      ],
+      "evidence_required_en": [
+        "The archiving system and the retention schedule",
+        "The as-built drawings for a closed project",
+        "The preliminary and final handover records",
+        "The test reports associated with the project"
       ],
       "references": [
         {
@@ -538,6 +763,7 @@
     {
       "question_id": "cn_infosec_policy",
       "canonical_text_ar": "هل توجد ضوابط موثّقة لحماية بيانات المشاريع وأنظمتها (المخططات، والتسعير، وعقود العملاء) من حيث السياسة وإدارة صلاحيات الوصول؟",
+      "canonical_text_en": "Are there documented controls protecting project data and systems (drawings, pricing, client contracts) in terms of policy and access rights management?",
       "type": "enum",
       "options": [
         "سياسة معتمدة مع صلاحيات محددة ومراجعة دورية للوصول",
@@ -545,6 +771,12 @@
         "الملفات على أجهزة العاملين وتُتبادل عبر تطبيقات المراسلة",
         "لا توجد ضوابط"
       ],
+      "options_en": {
+        "سياسة معتمدة مع صلاحيات محددة ومراجعة دورية للوصول": "An approved policy, with defined permissions and periodic access review",
+        "ضوابط تقنية مطبّقة دون سياسة موثّقة": "Technical controls applied, with no documented policy",
+        "الملفات على أجهزة العاملين وتُتبادل عبر تطبيقات المراسلة": "Files sit on staff devices and are exchanged through messaging apps",
+        "لا توجد ضوابط": "There are no controls"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -554,6 +786,12 @@
         "مصفوفة صلاحيات الوصول لملفات المشاريع",
         "دليل مراجعة دورية للصلاحيات",
         "ضوابط تداول المخططات والدراسات"
+      ],
+      "evidence_required_en": [
+        "The approved information security policy",
+        "The access permissions matrix for the project files",
+        "Evidence of periodic access review",
+        "The controls over circulating drawings and studies"
       ],
       "references": [
         {
@@ -569,6 +807,7 @@
     {
       "question_id": "cn_worker_personal_data",
       "canonical_text_ar": "هل يوجد سجل لأنشطة معالجة البيانات الشخصية التي تحتفظ بها المنشأة (بيانات العمال، والفحوص الطبية، وبيانات ملاك المشاريع)، مع تحديد الأساس النظامي للمعالجة؟",
+      "canonical_text_en": "Is there a record of the personal data processing activities the organization holds (worker data, medical examinations, and project owners' data), identifying the legal basis for processing?",
       "type": "enum",
       "options": [
         "سجل أنشطة معالجة محدَّث مع أساس نظامي محدد لكل نشاط",
@@ -576,6 +815,12 @@
         "سياسة خصوصية معلنة دون سجل أنشطة معالجة",
         "لم يجرِ حصر للبيانات الشخصية التي نعالجها"
       ],
+      "options_en": {
+        "سجل أنشطة معالجة محدَّث مع أساس نظامي محدد لكل نشاط": "A current record of processing activities, with a defined legal basis for each",
+        "سجل موجود لكنه غير محدَّث أو لا يغطي كل البيانات": "A record exists but is out of date, or does not cover all the data",
+        "سياسة خصوصية معلنة دون سجل أنشطة معالجة": "A published privacy policy, with no record of processing activities",
+        "لم يجرِ حصر للبيانات الشخصية التي نعالجها": "The personal data we process has not been inventoried"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -585,6 +830,12 @@
         "الأساس النظامي لكل نشاط معالجة",
         "سياسة الخصوصية المعلنة",
         "ضوابط حفظ الملفات الطبية للعمال"
+      ],
+      "evidence_required_en": [
+        "The record of personal data processing activities",
+        "The legal basis for each processing activity",
+        "The published privacy policy",
+        "The controls over keeping workers' medical files"
       ],
       "references": [
         {
@@ -600,6 +851,7 @@
     {
       "question_id": "cn_site_surveillance",
       "canonical_text_ar": "إذا كانت المواقع مزوّدة بكاميرات مراقبة أو أنظمة تتبّع للمركبات والعمال، فهل يوجد إشعار للعاملين وضوابط موثّقة للوصول إلى التسجيلات ومدة حفظها؟",
+      "canonical_text_en": "Where sites have surveillance cameras or vehicle and worker tracking systems, is there a notice to workers and documented controls over access to the recordings and how long they are kept?",
       "type": "enum",
       "options": [
         "نعم، مع إشعار للعاملين وضوابط وصول موثّقة ومدة حفظ محددة",
@@ -607,6 +859,12 @@
         "نعم، دون ضوابط موثّقة للوصول أو مدة الحفظ",
         "لا توجد كاميرات أو أنظمة تتبّع"
       ],
+      "options_en": {
+        "نعم، مع إشعار للعاملين وضوابط وصول موثّقة ومدة حفظ محددة": "Yes — with a notice to workers, documented access controls and a defined retention period",
+        "نعم، مع ضوابط وصول دون إشعار موثّق للعاملين": "Yes — with access controls, but no documented notice to workers",
+        "نعم، دون ضوابط موثّقة للوصول أو مدة الحفظ": "Yes — with no documented access controls or retention period",
+        "لا توجد كاميرات أو أنظمة تتبّع": "There are no cameras or tracking systems"
+      },
       "required": true,
       "category": "privacy",
       "importance": "medium",
@@ -615,6 +873,11 @@
         "إشعار المراقبة المعلن في المواقع",
         "ضوابط الوصول إلى التسجيلات",
         "سياسة مدة حفظ التسجيلات"
+      ],
+      "evidence_required_en": [
+        "The surveillance notice displayed on the sites",
+        "The controls over access to the recordings",
+        "The policy on how long recordings are kept"
       ],
       "references": [
         {
@@ -626,6 +889,7 @@
     {
       "question_id": "cn_cross_border",
       "canonical_text_ar": "هل تُنقل بيانات شخصية أو يُفصح عنها لجهة خارج المملكة (منصات المزوّد لتسجيلات كاميرات المواقع أو تتبّع المركبات، أو أنظمة إدارة مشاريع مستضافة خارجياً، أو شركة أم أو شريك في مشروع مشترك)، وما الضوابط المتبعة؟",
+      "canonical_text_en": "Is personal data transferred or disclosed to a party outside the Kingdom (a provider's platform for site camera recordings or vehicle tracking, externally hosted project management systems, or a parent company or joint venture partner), and what safeguards are in place?",
       "type": "enum",
       "options": [
         "يقع نقل، وشروط النقل مستوفاة وموثقة ويقتصر على الحد الأدنى اللازم من البيانات",
@@ -634,6 +898,13 @@
         "لا يقع أي نقل أو إفصاح خارج المملكة، وذلك بعد حصر موثق للأنظمة والمزوّدين",
         "لم يُحصر ما إذا كانت بيانات تُنقل خارج المملكة"
       ],
+      "options_en": {
+        "يقع نقل، وشروط النقل مستوفاة وموثقة ويقتصر على الحد الأدنى اللازم من البيانات": "Transfer occurs, the conditions for transfer are met and documented, and it is limited to the minimum data necessary",
+        "يقع نقل، والضوابط جزئية أو غير موثقة بالكامل": "Transfer occurs, and the safeguards are partial or not fully documented",
+        "يقع نقل دون تقييم أو ضوابط موثقة": "Transfer occurs with no documented assessment or safeguards",
+        "لا يقع أي نقل أو إفصاح خارج المملكة، وذلك بعد حصر موثق للأنظمة والمزوّدين": "No transfer or disclosure outside the Kingdom occurs, confirmed by a documented inventory of the systems and providers",
+        "لم يُحصر ما إذا كانت بيانات تُنقل خارج المملكة": "Whether data is transferred outside the Kingdom has not been inventoried"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -642,6 +913,11 @@
         "حصر الأنظمة والمزوّدين ومواقع الاستضافة، بما فيها أنظمة المراقبة والتتبّع",
         "وثائق استيفاء شروط النقل",
         "الضوابط التعاقدية مع الجهات خارج المملكة"
+      ],
+      "evidence_required_en": [
+        "An inventory of the systems, providers and hosting locations, including the surveillance and tracking systems",
+        "The documents evidencing that the transfer conditions are met",
+        "The contractual safeguards with parties outside the Kingdom"
       ],
       "references": [
         {
@@ -657,6 +933,7 @@
     {
       "question_id": "cn_project_continuity",
       "canonical_text_ar": "ما الترتيبات القائمة لاستمرار تنفيذ المشاريع عند انقطاع مورّد رئيسي، أو تعطل معدة حرجة، أو غياب مدير مشروع؟",
+      "canonical_text_en": "What arrangements keep projects running when a key supplier is interrupted, critical plant breaks down, or a project manager is absent?",
       "type": "enum",
       "options": [
         "بدائل محددة وموثّقة للمورّدين والمعدات والكوادر الرئيسية",
@@ -664,6 +941,12 @@
         "ترتيبات غير رسمية تُدبَّر عند وقوع الانقطاع",
         "لا توجد ترتيبات"
       ],
+      "options_en": {
+        "بدائل محددة وموثّقة للمورّدين والمعدات والكوادر الرئيسية": "Named, documented alternatives for the key suppliers, plant and people",
+        "خطة مكتوبة للاستمرارية لكنها لم تُختبر عملياً": "A written continuity plan that has not been tested in practice",
+        "ترتيبات غير رسمية تُدبَّر عند وقوع الانقطاع": "Informal arrangements improvised when the interruption happens",
+        "لا توجد ترتيبات": "There are no arrangements"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -672,6 +955,11 @@
         "قائمة الموردين البدلاء للمواد الحرجة",
         "خطة صيانة المعدات وترتيبات الاستبدال",
         "ترتيبات تغطية غياب الكوادر الرئيسية"
+      ],
+      "evidence_required_en": [
+        "The list of alternative suppliers for critical materials",
+        "The plant maintenance plan and the replacement arrangements",
+        "The arrangements for covering the absence of key people"
       ],
       "references": [
         {
@@ -687,6 +975,7 @@
     {
       "question_id": "cn_internal_inspection",
       "canonical_text_ar": "هل تُنفَّذ جولات تفتيش أو مراجعة داخلية دورية على المواقع للتحقق من الالتزام بالسلامة والجودة والاشتراطات النظامية، مع متابعة موثّقة لإغلاق الملاحظات؟",
+      "canonical_text_en": "Are periodic internal inspection rounds or reviews carried out on site to verify compliance with safety, quality and the statutory requirements, with documented follow-up until the findings are closed?",
       "type": "enum",
       "options": [
         "خطة تفتيش معتمدة تُنفَّذ دورياً مع متابعة موثّقة للملاحظات حتى الإغلاق",
@@ -694,6 +983,12 @@
         "تفتيش يتم قبل زيارات الجهات الرقابية فقط",
         "لا توجد جولات تفتيش داخلية"
       ],
+      "options_en": {
+        "خطة تفتيش معتمدة تُنفَّذ دورياً مع متابعة موثّقة للملاحظات حتى الإغلاق": "An approved inspection plan carried out periodically, with documented follow-up of findings to closure",
+        "جولات تفتيش تُنفَّذ دون خطة معتمدة أو متابعة موثّقة للإغلاق": "Inspection rounds carried out with no approved plan and no documented follow-up to closure",
+        "تفتيش يتم قبل زيارات الجهات الرقابية فقط": "Inspection happens only ahead of regulator visits",
+        "لا توجد جولات تفتيش داخلية": "There are no internal inspection rounds"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -703,6 +998,12 @@
         "تقارير جولات التفتيش الأخيرة",
         "سجل الملاحظات وحالة الإغلاق",
         "محاضر اجتماعات السلامة الدورية"
+      ],
+      "evidence_required_en": [
+        "The approved internal inspection plan",
+        "The most recent inspection round reports",
+        "The findings register and their closure status",
+        "Minutes of the periodic safety meetings"
       ],
       "references": [
         {

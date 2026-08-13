@@ -7,6 +7,7 @@
     {
       "question_id": "hc_facility_type",
       "canonical_text_ar": "ما نوع المنشأة الصحية ونشاطها الرئيسي المرخّص من وزارة الصحة؟",
+      "canonical_text_en": "What type of health facility is this, and what is its main activity as licensed by the Ministry of Health?",
       "type": "enum",
       "options": [
         "مستشفى عام",
@@ -19,6 +20,17 @@
         "منشأة رعاية صحية منزلية أو نقل إسعافي",
         "منشأة صحية حكومية أو تابعة لتجمع صحي"
       ],
+      "options_en": {
+        "مستشفى عام": "General hospital",
+        "مستشفى تخصصي": "Specialist hospital",
+        "مجمع طبي": "Medical complex",
+        "مركز أو عيادة طبية": "Medical centre or clinic",
+        "مركز تأهيل أو رعاية يوم واحد": "Rehabilitation or day-care centre",
+        "مختبر طبي أو مركز أشعة": "Medical laboratory or radiology centre",
+        "صيدلية مجتمعية أو مؤسسة صيدلانية": "Community pharmacy or pharmaceutical establishment",
+        "منشأة رعاية صحية منزلية أو نقل إسعافي": "Home healthcare or ambulance transport facility",
+        "منشأة صحية حكومية أو تابعة لتجمع صحي": "Government health facility, or one belonging to a health cluster"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -27,6 +39,11 @@
         "الترخيص الصادر من وزارة الصحة موضحًا فيه النشاط والتصنيف",
         "السجل التجاري أو الوثيقة النظامية المنشئة للكيان",
         "قائمة الخدمات الطبية المعتمدة في الترخيص"
+      ],
+      "evidence_required_en": [
+        "The Ministry of Health licence, showing the activity and the classification",
+        "The commercial registration, or the statutory instrument establishing the entity",
+        "The list of medical services approved in the licence"
       ],
       "references": [
         {
@@ -42,6 +59,7 @@
     {
       "question_id": "hc_licences_valid",
       "canonical_text_ar": "هل جميع التراخيص التشغيلية للمنشأة وفروعها وأنشطتها الفرعية سارية المفعول وغير منتهية أو معلّقة حاليًا؟",
+      "canonical_text_en": "Are all the operating licences of the facility, its branches and its sub-activities currently valid, and none expired or suspended?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -52,6 +70,11 @@
         "نسخ التراخيص السارية لجميع الفروع والأنشطة",
         "سجل متابعة تواريخ انتهاء وتجديد التراخيص",
         "أي محاضر تفتيش أو مخالفات صادرة خلال آخر سنتين"
+      ],
+      "evidence_required_en": [
+        "Copies of the valid licences for every branch and activity",
+        "A tracker of licence expiry and renewal dates",
+        "Any inspection reports or violations issued in the past two years"
       ],
       "references": [
         {
@@ -67,6 +90,7 @@
     {
       "question_id": "hc_practitioner_registration",
       "canonical_text_ar": "هل جميع الممارسين الصحيين العاملين لديكم مسجلون ومصنّفون لدى الهيئة السعودية للتخصصات الصحية، مع وجود إجراء موثّق للتحقق من التصنيف والتسجيل قبل التوظيف وعند التجديد؟",
+      "canonical_text_en": "Are all the health practitioners working with you registered and classified with the Saudi Commission for Health Specialties, with a documented procedure for verifying classification and registration before hiring and at renewal?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -77,6 +101,11 @@
         "سجل الممارسين موضحًا فيه رقم التسجيل والتصنيف وتاريخ الانتهاء",
         "إجراء التحقق من المؤهلات والاعتماد المهني قبل التوظيف",
         "وثائق التأمين ضد الأخطاء الطبية للممارسين"
+      ],
+      "evidence_required_en": [
+        "The practitioner register, showing registration number, classification and expiry date",
+        "The procedure for verifying qualifications and professional credentials before hiring",
+        "Medical malpractice insurance documents for the practitioners"
       ],
       "references": [
         {
@@ -92,6 +121,7 @@
     {
       "question_id": "hc_cbahi_accreditation",
       "canonical_text_ar": "ما وضع المنشأة الحالي من اعتماد المركز السعودي لاعتماد المنشآت الصحية (CBAHI)؟",
+      "canonical_text_en": "What is the facility's current position on accreditation by the Saudi Central Board for Accreditation of Healthcare Institutions (CBAHI)?",
       "type": "enum",
       "options": [
         "حاصلة على الاعتماد وساري",
@@ -100,6 +130,13 @@
         "لم يتم التقديم إطلاقًا",
         "غير متأكد من الوضع"
       ],
+      "options_en": {
+        "حاصلة على الاعتماد وساري": "Accredited, and the accreditation is in force",
+        "الاعتماد منتهٍ ولم يُجدَّد": "The accreditation has expired and was not renewed",
+        "قيد التقديم أو التحضير للزيارة التقييمية": "Applying, or preparing for the assessment visit",
+        "لم يتم التقديم إطلاقًا": "No application has ever been made",
+        "غير متأكد من الوضع": "The position is not known"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -108,6 +145,11 @@
         "شهادة الاعتماد وتاريخ سريانها",
         "تقرير الزيارة التقييمية الأخيرة وخطة معالجة الملاحظات",
         "نتائج التقييم الذاتي مقابل معايير CBAHI"
+      ],
+      "evidence_required_en": [
+        "The accreditation certificate and its validity date",
+        "The most recent assessment visit report and the plan for addressing its findings",
+        "The results of self-assessment against the CBAHI standards"
       ],
       "references": [
         {
@@ -123,6 +165,7 @@
     {
       "question_id": "hc_sfda_activities",
       "canonical_text_ar": "اختر جميع الأنشطة الخاضعة لرقابة الهيئة العامة للغذاء والدواء التي تمارسها المنشأة.",
+      "canonical_text_en": "Select every activity the facility carries out that is regulated by the Saudi Food and Drug Authority.",
       "type": "multi_select",
       "options": [
         "صرف أو تخزين الأدوية (صيدلية داخلية أو مستودع)",
@@ -131,6 +174,13 @@
         "تداول مواد مخدرة أو مؤثرات عقلية أو أدوية خاضعة للرقابة",
         "لا يوجد نشاط خاضع للهيئة"
       ],
+      "options_en": {
+        "صرف أو تخزين الأدوية (صيدلية داخلية أو مستودع)": "Dispensing or storing medicines (an in-house pharmacy or a store)",
+        "استخدام أو استيراد أو تركيب أجهزة ومنتجات طبية": "Using, importing or installing medical devices and products",
+        "مختبر طبي يستخدم مستلزمات تشخيصية مخبرية": "A medical laboratory using in-vitro diagnostic supplies",
+        "تداول مواد مخدرة أو مؤثرات عقلية أو أدوية خاضعة للرقابة": "Handling narcotics, psychotropic substances or controlled medicines",
+        "لا يوجد نشاط خاضع للهيئة": "No activity regulated by the Authority"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -139,6 +189,11 @@
         "تراخيص المؤسسات الصيدلانية أو تسجيل منشأة الأجهزة الطبية إن وجدت",
         "سجلات المواد المخدرة والمؤثرات العقلية وضوابط حفظها",
         "إجراءات التيقظ الدوائي والإبلاغ عن الأحداث السلبية للأجهزة الطبية"
+      ],
+      "evidence_required_en": [
+        "Pharmaceutical establishment licences, or medical device establishment registration, if any",
+        "Registers of narcotics and psychotropic substances and the controls over their storage",
+        "Pharmacovigilance procedures and reporting of medical device adverse events"
       ],
       "references": [
         {
@@ -158,6 +213,7 @@
     {
       "question_id": "hc_insurance_claims",
       "canonical_text_ar": "هل تتعامل المنشأة مع شركات التأمين الصحي وترفع المطالبات والبيانات الصحية إلكترونيًا عبر المنصة الوطنية (نفيس) أو الأنظمة المرتبطة بها؟",
+      "canonical_text_en": "Does the facility deal with health insurance companies and submit claims and health data electronically through the national platform (Nphies) or systems connected to it?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -168,6 +224,11 @@
         "عقود التعاقد مع شركات التأمين أو مقدمي إدارة المطالبات",
         "إجراءات الترميز الطبي والتدقيق على المطالبات",
         "وثائق الربط الفني مع منصة نفيس وسياسة تبادل البيانات"
+      ],
+      "evidence_required_en": [
+        "Contracts with insurers or with claims administration providers",
+        "Medical coding procedures and claims auditing",
+        "Technical integration documents for the Nphies platform and the data exchange policy"
       ],
       "references": [
         {
@@ -183,6 +244,7 @@
     {
       "question_id": "hc_governance_structure",
       "canonical_text_ar": "كيف يوصف هيكل الحوكمة الحالي للمنشأة من حيث وجود مرجعية إشرافية معتمدة ووثيقة صلاحيات وسياسة لتعارض المصالح؟",
+      "canonical_text_en": "How would you describe the facility's current governance structure, in terms of an approved supervisory body, a delegation of authority document, and a conflict of interest policy?",
       "type": "enum",
       "options": [
         "مجلس إدارة معتمد مع لجان منبثقة ووثيقة صلاحيات مكتوبة",
@@ -190,6 +252,12 @@
         "إدارة تنفيذية فقط دون مرجعية إشرافية موثقة",
         "الهيكل قيد الإعداد أو غير موثق"
       ],
+      "options_en": {
+        "مجلس إدارة معتمد مع لجان منبثقة ووثيقة صلاحيات مكتوبة": "An approved board with committees reporting to it and a written delegation of authority document",
+        "مجلس إدارة أو مالك بدون لجان ولا وثيقة صلاحيات مكتوبة": "A board or an owner, with no committees and no written delegation of authority",
+        "إدارة تنفيذية فقط دون مرجعية إشرافية موثقة": "Executive management only, with no documented supervisory body",
+        "الهيكل قيد الإعداد أو غير موثق": "The structure is being prepared, or is not documented"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -199,6 +267,12 @@
         "وثيقة تفويض الصلاحيات ومصفوفة الاعتماد",
         "سياسة تعارض المصالح ونماذج الإفصاح الموقعة",
         "محاضر اجتماعات المجلس أو الجهة الإشرافية"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The delegation of authority document and the approval matrix",
+        "The conflict of interest policy and the signed disclosure forms",
+        "Minutes of the board or supervisory body meetings"
       ],
       "references": [
         {
@@ -214,6 +288,7 @@
     {
       "question_id": "hc_clinical_committees",
       "canonical_text_ar": "اختر جميع اللجان الفنية والطبية المُشكّلة رسميًا لديكم والتي تعقد اجتماعات موثقة بشكل دوري.",
+      "canonical_text_en": "Select every technical and clinical committee formally constituted at the facility that holds documented meetings on a regular basis.",
       "type": "multi_select",
       "options": [
         "لجنة مكافحة العدوى",
@@ -222,6 +297,13 @@
         "لجنة الأدوية والعلاجات أو الصيدلة",
         "لا توجد لجان مشكّلة رسميًا"
       ],
+      "options_en": {
+        "لجنة مكافحة العدوى": "Infection prevention and control committee",
+        "لجنة الجودة وسلامة المرضى": "Quality and patient safety committee",
+        "لجنة أخلاقيات مهنة الطب أو أخلاقيات البحث": "Medical ethics or research ethics committee",
+        "لجنة الأدوية والعلاجات أو الصيدلة": "Pharmacy and therapeutics committee",
+        "لا توجد لجان مشكّلة رسميًا": "No committees are formally constituted"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -230,6 +312,11 @@
         "قرارات تشكيل اللجان ولوائح عملها",
         "محاضر الاجتماعات خلال آخر اثني عشر شهرًا",
         "متابعة تنفيذ توصيات اللجان"
+      ],
+      "evidence_required_en": [
+        "The decisions constituting the committees and their terms of reference",
+        "Meeting minutes for the past twelve months",
+        "Follow-up on implementation of the committees' recommendations"
       ],
       "references": [
         {
@@ -245,6 +332,7 @@
     {
       "question_id": "hc_risk_register",
       "canonical_text_ar": "هل لدى المنشأة سجل مخاطر مؤسسي موثّق يشمل المخاطر الإكلينيكية والتشغيلية والتقنية والامتثالية، ويُراجع ويُحدَّث دوريًا؟",
+      "canonical_text_en": "Does the facility keep a documented corporate risk register covering clinical, operational, technical and compliance risks, reviewed and updated regularly?",
       "type": "enum",
       "options": [
         "سجل مخاطر شامل ومعتمد ويُحدَّث بشكل دوري",
@@ -252,6 +340,12 @@
         "إدارة المخاطر تتم بشكل غير موثق وعند الحاجة فقط",
         "لا يوجد سجل مخاطر"
       ],
+      "options_en": {
+        "سجل مخاطر شامل ومعتمد ويُحدَّث بشكل دوري": "A comprehensive, approved risk register that is updated regularly",
+        "سجل مخاطر موجود لكنه غير محدّث أو محدود بمجال واحد": "A risk register exists but is out of date, or covers one area only",
+        "إدارة المخاطر تتم بشكل غير موثق وعند الحاجة فقط": "Risk is managed informally and only when the need arises",
+        "لا يوجد سجل مخاطر": "There is no risk register"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -260,6 +354,11 @@
         "سجل المخاطر المؤسسي وتاريخ آخر تحديث",
         "منهجية تقييم المخاطر ومعايير القبول",
         "خطط معالجة المخاطر ومالكوها"
+      ],
+      "evidence_required_en": [
+        "The corporate risk register and the date it was last updated",
+        "The risk assessment methodology and the risk acceptance criteria",
+        "Risk treatment plans and their owners"
       ],
       "references": [
         {
@@ -279,6 +378,7 @@
     {
       "question_id": "hc_incident_reporting",
       "canonical_text_ar": "هل يوجد نظام موثّق للإبلاغ الداخلي عن حوادث ووشيكات سلامة المرضى، مرتبط بآلية واضحة للإبلاغ الإلزامي للجهات الرقابية عند وقوع الأحداث الجسيمة؟",
+      "canonical_text_en": "Is there a documented system for internal reporting of patient safety incidents and near misses, linked to a clear mechanism for mandatory reporting to the regulators when a serious event occurs?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -289,6 +389,11 @@
         "سياسة وإجراء الإبلاغ عن الحوادث والأحداث الجسيمة",
         "تقارير تحليل الأسباب الجذرية لآخر الحوادث",
         "سجل البلاغات المرفوعة للجهات الرقابية والإجراءات التصحيحية"
+      ],
+      "evidence_required_en": [
+        "The policy and procedure for reporting incidents and serious events",
+        "Root cause analysis reports for the most recent incidents",
+        "The register of reports submitted to regulators and the corrective actions taken"
       ],
       "references": [
         {
@@ -304,6 +409,7 @@
     {
       "question_id": "hc_critical_infrastructure",
       "canonical_text_ar": "هل المنشأة جهة حكومية أو تابعة لجهة حكومية أو مشغّل لأصول مصنّفة ضمن البنى التحتية الوطنية الحساسة؟",
+      "canonical_text_en": "Is the facility a government entity, part of one, or an operator of assets classified as sensitive national infrastructure?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -315,6 +421,11 @@
         "أي مراسلات أو تصنيف صادر من الهيئة الوطنية للأمن السيبراني",
         "نتائج تقييم الالتزام السابق بالضوابط إن وجد"
       ],
+      "evidence_required_en": [
+        "The statutory instrument establishing which body the entity reports to",
+        "Any correspondence or classification issued by the National Cybersecurity Authority",
+        "The results of any previous compliance assessment against the controls"
+      ],
       "references": [
         {
           "framework": "الهيئة الوطنية للأمن السيبراني – الضوابط الأساسية للأمن السيبراني (ECC)",
@@ -325,6 +436,7 @@
     {
       "question_id": "hc_security_ownership",
       "canonical_text_ar": "كيف تُدار مسؤولية الأمن السيبراني داخل المنشأة، وهل توجد سياسة أمن معلومات معتمدة من الإدارة العليا؟",
+      "canonical_text_en": "How is responsibility for cybersecurity managed inside the facility, and is there an information security policy approved by senior management?",
       "type": "enum",
       "options": [
         "وظيفة أو إدارة مستقلة للأمن السيبراني مع سياسات معتمدة",
@@ -332,6 +444,12 @@
         "الاعتماد الكامل على مزود خدمة خارجي",
         "لا توجد مسؤولية محددة ولا سياسات معتمدة"
       ],
+      "options_en": {
+        "وظيفة أو إدارة مستقلة للأمن السيبراني مع سياسات معتمدة": "An independent cybersecurity role or function, with approved policies",
+        "مسؤول مكلّف ضمن إدارة تقنية المعلومات مع سياسات جزئية": "Someone assigned within the IT function, with partial policies",
+        "الاعتماد الكامل على مزود خدمة خارجي": "Complete reliance on an external service provider",
+        "لا توجد مسؤولية محددة ولا سياسات معتمدة": "No defined responsibility and no approved policies"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -340,6 +458,11 @@
         "سياسة أمن المعلومات المعتمدة وتاريخ اعتمادها",
         "قرار تعيين مسؤول الأمن السيبراني وتوصيف مهامه",
         "نتائج آخر تقييم للثغرات أو اختبار اختراق إن وجد"
+      ],
+      "evidence_required_en": [
+        "The approved information security policy and the date it was approved",
+        "The decision appointing the cybersecurity officer and the description of the role",
+        "The results of the most recent vulnerability assessment or penetration test, if any"
       ],
       "references": [
         {
@@ -355,6 +478,7 @@
     {
       "question_id": "hc_emr_access_control",
       "canonical_text_ar": "هل الوصول إلى السجلات الطبية الإلكترونية مقيّد بحسابات فردية وصلاحيات مبنية على الحاجة الوظيفية، مع تفعيل سجلات تدقيق تُظهر من اطّلع على ملف المريض ومتى؟",
+      "canonical_text_en": "Is access to electronic medical records restricted to individual accounts with permissions based on job need, with audit logs enabled that show who viewed a patient file and when?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -366,6 +490,12 @@
         "عينة من سجلات التدقيق على الاطلاع والتعديل",
         "إجراء منح وسحب الصلاحيات عند التوظيف وإنهاء الخدمة",
         "تعهدات السرية الموقعة من الممارسين والموظفين"
+      ],
+      "evidence_required_en": [
+        "The permissions matrix by job title",
+        "A sample of the audit logs for viewing and amendment",
+        "The procedure for granting and revoking access on hiring and on termination",
+        "Confidentiality undertakings signed by practitioners and staff"
       ],
       "references": [
         {
@@ -385,6 +515,7 @@
     {
       "question_id": "hc_pdpl_readiness",
       "canonical_text_ar": "ما مستوى جاهزية المنشأة لمتطلبات نظام حماية البيانات الشخصية من حيث تعيين مسؤول حماية البيانات وسجل أنشطة المعالجة وإشعار الخصوصية وآلية أخذ موافقة المريض؟",
+      "canonical_text_en": "How ready is the facility for the Personal Data Protection Law requirements — appointing a data protection officer, the record of processing activities, the privacy notice, and the mechanism for obtaining patient consent?",
       "type": "enum",
       "options": [
         "جميع العناصر مطبقة وموثقة",
@@ -393,6 +524,13 @@
         "لم يبدأ العمل على المتطلبات",
         "غير مطلعين على متطلبات النظام"
       ],
+      "options_en": {
+        "جميع العناصر مطبقة وموثقة": "All of these are in place and documented",
+        "بعض العناصر مطبقة جزئيًا": "Some of them are partly in place",
+        "العمل جارٍ على التطبيق حاليًا": "Implementation is under way",
+        "لم يبدأ العمل على المتطلبات": "Work on the requirements has not begun",
+        "غير مطلعين على متطلبات النظام": "We are not familiar with the Law's requirements"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -403,6 +541,13 @@
         "نماذج الموافقة على معالجة البيانات الصحية ومشاركتها",
         "قرار تعيين مسؤول حماية البيانات وتوصيف مهامه",
         "إجراء الاستجابة لطلبات أصحاب البيانات والإبلاغ عن التسريب"
+      ],
+      "evidence_required_en": [
+        "The record of processing activities",
+        "The privacy notice shown to patients",
+        "Consent forms for processing and sharing health data",
+        "The decision appointing the data protection officer and the description of the role",
+        "The procedure for responding to data subject requests and for breach notification"
       ],
       "references": [
         {
@@ -418,6 +563,7 @@
     {
       "question_id": "hc_hosting_location",
       "canonical_text_ar": "أين تُستضاف الأنظمة والبيانات الصحية للمنشأة، وهل يوجد أي نقل أو إتاحة للبيانات خارج المملكة؟",
+      "canonical_text_en": "Where are the facility's health systems and data hosted, and is any data transferred or made accessible outside the Kingdom?",
       "type": "enum",
       "options": [
         "استضافة داخل المملكة بالكامل ولا يوجد نقل للخارج",
@@ -426,6 +572,13 @@
         "بيئة هجينة تشمل الحالتين",
         "غير معروف أو يُدار بالكامل من مزود خارجي"
       ],
+      "options_en": {
+        "استضافة داخل المملكة بالكامل ولا يوجد نقل للخارج": "Hosted entirely inside the Kingdom, with no transfer abroad",
+        "استضافة داخل المملكة مع دعم فني أو وصول من خارج المملكة": "Hosted inside the Kingdom, with technical support or access from outside it",
+        "استضافة أو نسخ احتياطي خارج المملكة": "Hosting or backup outside the Kingdom",
+        "بيئة هجينة تشمل الحالتين": "A hybrid environment covering both",
+        "غير معروف أو يُدار بالكامل من مزود خارجي": "Not known, or managed entirely by an external provider"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -435,6 +588,12 @@
         "عقود مزودي الاستضافة أو الخدمات السحابية",
         "تقييم أثر النقل خارج المملكة إن وجد",
         "سجل حسابات الوصول عن بُعد من خارج المملكة"
+      ],
+      "evidence_required_en": [
+        "A statement of the hosting and backup locations",
+        "Contracts with hosting or cloud service providers",
+        "The impact assessment for transfer outside the Kingdom, if any",
+        "The register of remote access accounts from outside the Kingdom"
       ],
       "references": [
         {
@@ -454,6 +613,7 @@
     {
       "question_id": "hc_data_breach",
       "canonical_text_ar": "ما إجراءات المنشأة عند تسرّب بيانات صحية أو بيانات شخصية للمرضى أو تلفها أو الوصول غير المشروع إليها، من حيث اكتشاف الواقعة وإشعار الجهة المختصة وإشعار المريض عند الضرر وحفظ أدلة المعالجة؟",
+      "canonical_text_en": "What does the facility do when health data or patients' personal data is leaked, damaged or unlawfully accessed — detecting the incident, notifying the competent authority, notifying the patient where there is harm, and keeping evidence of how it was handled?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية ويشمل إشعار المريض عند الضرر، مع سجل وقائع وأدلة معالجة محفوظة",
@@ -461,6 +621,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن نظام الإبلاغ عن حوادث سلامة المرضى",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الصحية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية ويشمل إشعار المريض عند الضرر، مع سجل وقائع وأدلة معالجة محفوظة": "A documented procedure naming the responsible person and the internal deadlines, including notifying the patient where there is harm, with an incident register and evidence of handling kept on file",
+        "إجراء موثّق للإشعار دون سجل وقائع أو دون حفظ منتظم لأدلة المعالجة": "A documented notification procedure, with no incident register or no consistent record of how incidents were handled",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن نظام الإبلاغ عن حوادث سلامة المرضى": "No notification procedure; the incident is handled under the patient safety incident reporting system",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الصحية": "No procedure for handling a health data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -469,6 +635,11 @@
         "إجراء الإشعار عن تسرّب البيانات الشخصية والمسؤول عنه",
         "سجل وقائع التسرّب أو الوصول غير المشروع للسجلات الطبية",
         "نماذج الإشعارات المرسلة وأدلة معالجة الواقعة"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The register of leaks or unlawful access to medical records",
+        "Copies of the notifications sent and evidence of how the incident was handled"
       ],
       "references": [
         {
@@ -484,6 +655,7 @@
     {
       "question_id": "hc_business_continuity",
       "canonical_text_ar": "هل لدى المنشأة خطة معتمدة لاستمرارية الأعمال والتعافي من الكوارث تغطي انقطاع الأنظمة الصحية والطوارئ التشغيلية، مع نسخ احتياطي دوري تم اختبار استعادته فعليًا؟",
+      "canonical_text_en": "Does the facility have an approved business continuity and disaster recovery plan covering health system outages and operational emergencies, with regular backups whose restoration has actually been tested?",
       "type": "enum",
       "options": [
         "خطة معتمدة ومختبرة خلال آخر اثني عشر شهرًا مع اختبار استعادة موثق",
@@ -491,6 +663,12 @@
         "إجراءات نسخ احتياطي فقط دون خطة استمرارية",
         "لا يوجد شيء من ذلك"
       ],
+      "options_en": {
+        "خطة معتمدة ومختبرة خلال آخر اثني عشر شهرًا مع اختبار استعادة موثق": "An approved plan, tested within the past twelve months, with a documented restore test",
+        "خطة معتمدة لكن لم تُختبر": "An approved plan that has not been tested",
+        "إجراءات نسخ احتياطي فقط دون خطة استمرارية": "Backup procedures only, with no continuity plan",
+        "لا يوجد شيء من ذلك": "None of these"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -500,6 +678,12 @@
         "تحليل أثر الأعمال وتحديد أزمنة التعافي المستهدفة",
         "تقرير آخر اختبار للخطة أو اختبار استعادة النسخ الاحتياطية",
         "إجراءات التشغيل البديل اليدوي أثناء تعطل الأنظمة"
+      ],
+      "evidence_required_en": [
+        "The approved business continuity and disaster recovery plans",
+        "The business impact analysis and the target recovery times",
+        "The report of the most recent plan test or backup restore test",
+        "Manual fallback operating procedures for when the systems are down"
       ],
       "references": [
         {
@@ -519,6 +703,7 @@
     {
       "question_id": "hc_third_party",
       "canonical_text_ar": "كيف تُدار العلاقة مع الأطراف الخارجية التي تصل إلى البيانات الصحية أو تقدم خدمات مؤثرة على الرعاية، مثل مزود نظام السجل الطبي والمختبرات المرجعية والأشعة عن بُعد والتعقيم وشركات إدارة المطالبات؟",
+      "canonical_text_en": "How is the relationship managed with third parties that access health data or provide services affecting care — such as the medical record system provider, reference laboratories, teleradiology, sterilization, and claims administration companies?",
       "type": "enum",
       "options": [
         "سجل موردين معتمد مع تقييم مخاطر وشروط تعاقدية لحماية البيانات والسرية",
@@ -526,6 +711,12 @@
         "التعامل قائم على اتفاقات غير موثقة أو أوامر شراء فقط",
         "لا توجد إدارة مركزية للأطراف الخارجية"
       ],
+      "options_en": {
+        "سجل موردين معتمد مع تقييم مخاطر وشروط تعاقدية لحماية البيانات والسرية": "An approved supplier register, with risk assessment and contractual terms for data protection and confidentiality",
+        "عقود موقعة دون تقييم مخاطر أو شروط خاصة بحماية البيانات": "Signed contracts, with no risk assessment and no specific data protection terms",
+        "التعامل قائم على اتفاقات غير موثقة أو أوامر شراء فقط": "Dealings rest on undocumented arrangements or purchase orders only",
+        "لا توجد إدارة مركزية للأطراف الخارجية": "There is no central management of third parties"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -535,6 +726,12 @@
         "نماذج العقود واتفاقيات معالجة البيانات والسرية",
         "اتفاقيات مستوى الخدمة ومؤشرات متابعة الأداء",
         "إجراء تقييم مخاطر الطرف الخارجي قبل التعاقد"
+      ],
+      "evidence_required_en": [
+        "The third party register and their criticality rating",
+        "Contract templates and the data processing and confidentiality agreements",
+        "Service level agreements and the indicators used to monitor performance",
+        "The procedure for assessing third party risk before contracting"
       ],
       "references": [
         {
@@ -554,6 +751,7 @@
     {
       "question_id": "hc_document_control",
       "canonical_text_ar": "هل توجد منظومة موثقة لضبط الوثائق تشمل اعتماد السياسات والإجراءات الإكلينيكية والإدارية وترقيم إصداراتها ومراجعتها الدورية وإتاحة النسخة السارية فقط للعاملين؟",
+      "canonical_text_en": "Is there a documented document control system covering approval of clinical and administrative policies and procedures, version numbering, periodic review, and making only the current version available to staff?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -565,6 +763,12 @@
         "قائمة السياسات والإجراءات السارية وتواريخ المراجعة",
         "دليل على إتاحة النسخ السارية وسحب النسخ الملغاة",
         "سياسة الاحتفاظ بالسجلات الطبية ومدد حفظها وإتلافها"
+      ],
+      "evidence_required_en": [
+        "The document and records control policy and procedure",
+        "The list of policies and procedures in force and their review dates",
+        "Evidence that current versions are available and withdrawn versions removed",
+        "The medical records retention policy, with retention periods and destruction"
       ],
       "references": [
         {
@@ -584,6 +788,7 @@
     {
       "question_id": "hc_internal_audit",
       "canonical_text_ar": "هل تُنفَّذ مراجعات أو تدقيق داخلي دوري للتحقق من الالتزام بالمتطلبات النظامية والسياسات الداخلية، مع متابعة موثقة لإغلاق الملاحظات؟",
+      "canonical_text_en": "Are periodic internal reviews or audits carried out to verify compliance with the statutory requirements and internal policies, with documented follow-up until the findings are closed?",
       "type": "enum",
       "options": [
         "برنامج تدقيق داخلي دوري مع خطة معتمدة ومتابعة للملاحظات",
@@ -591,6 +796,12 @@
         "الاعتماد على جهة خارجية عند التجديد أو الاعتماد",
         "لا توجد مراجعات داخلية"
       ],
+      "options_en": {
+        "برنامج تدقيق داخلي دوري مع خطة معتمدة ومتابعة للملاحظات": "A periodic internal audit programme, with an approved plan and follow-up of findings",
+        "مراجعات تتم عند الحاجة أو قبل الزيارات التفتيشية فقط": "Reviews carried out as needed, or only ahead of inspection visits",
+        "الاعتماد على جهة خارجية عند التجديد أو الاعتماد": "Reliance on an external party at renewal or accreditation",
+        "لا توجد مراجعات داخلية": "No internal reviews are carried out"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -600,6 +811,12 @@
         "تقارير التدقيق لآخر اثني عشر شهرًا",
         "سجل الملاحظات والإجراءات التصحيحية وحالة إغلاقها",
         "تقارير رفع نتائج الامتثال للإدارة العليا"
+      ],
+      "evidence_required_en": [
+        "The internal audit plan and programme",
+        "Audit reports for the past twelve months",
+        "The findings register, the corrective actions, and their closure status",
+        "Reports submitting the compliance results to senior management"
       ],
       "references": [
         {
@@ -615,6 +832,7 @@
     {
       "question_id": "hc_patient_complaints",
       "canonical_text_ar": "هل توجد آلية معتمدة لاستقبال شكاوى المرضى ومعالجتها ضمن مدة محددة، مع تطبيق لائحة حقوق ومسؤوليات المرضى وتحليل اتجاهات الشكاوى دوريًا؟",
+      "canonical_text_en": "Is there an approved mechanism for receiving and handling patient complaints within a defined period, applying the patients' rights and responsibilities charter and analysing complaint trends regularly?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -626,6 +844,12 @@
         "سجل الشكاوى ومدد الاستجابة والإغلاق",
         "دليل إعلان لائحة حقوق ومسؤوليات المرضى داخل المنشأة",
         "تقارير تحليل اتجاهات الشكاوى والإجراءات التصحيحية"
+      ],
+      "evidence_required_en": [
+        "The patient complaints management policy and procedure",
+        "The complaints register, with response and closure times",
+        "Evidence that the patients' rights and responsibilities charter is displayed in the facility",
+        "Reports analysing complaint trends and the corrective actions taken"
       ],
       "references": [
         {

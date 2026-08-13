@@ -70,6 +70,10 @@ interface QuestionDto {
   importance: string;
   references: { framework: string; clause?: string | null }[];
   evidence_required: string[];
+  // ADR 0069 — all three or none, per question.
+  canonical_text_en?: string | null;
+  options_en?: string[] | null;
+  evidence_required_en?: string[] | null;
 }
 
 interface InterviewDto {
@@ -111,6 +115,9 @@ function toQuestion(dto: QuestionDto): SectorQuestion {
       ...(r.clause ? { clause: r.clause } : {}),
     })),
     evidenceRequired: dto.evidence_required,
+    canonicalTextEn: dto.canonical_text_en ?? undefined,
+    optionsEn: dto.options_en ?? undefined,
+    evidenceRequiredEn: dto.evidence_required_en ?? undefined,
   };
 }
 

@@ -7,6 +7,7 @@
     {
       "question_id": "mk_media_license",
       "canonical_text_ar": "هل تمتلك المنشأة سجلاً تجارياً سارياً يشمل نشاط الدعاية والإعلان، إضافةً إلى ترخيص من الهيئة العامة لتنظيم الإعلام لممارسة الأنشطة الإعلامية والإعلانية (وكالة إعلانية / إنتاج إعلاني / نشر إعلاني)؟",
+      "canonical_text_en": "Does the organization hold a valid commercial registration covering advertising activity, together with a licence from the General Authority for Media Regulation to carry on media and advertising activities (advertising agency / advertising production / advertising publishing)?",
       "type": "enum",
       "options": [
         "سجل تجاري وترخيص إعلامي ساريان",
@@ -15,6 +16,13 @@
         "لا يوجد سجل تجاري مطابق للنشاط",
         "غير متأكد"
       ],
+      "options_en": {
+        "سجل تجاري وترخيص إعلامي ساريان": "A valid commercial registration and a valid media licence",
+        "سجل تجاري فقط دون ترخيص إعلامي": "A commercial registration only, with no media licence",
+        "الترخيص الإعلامي قيد الإصدار أو منتهي": "The media licence is being issued, or has expired",
+        "لا يوجد سجل تجاري مطابق للنشاط": "There is no commercial registration matching the activity",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -24,6 +32,12 @@
         "الترخيص الصادر من الهيئة العامة لتنظيم الإعلام",
         "شهادة العنوان الوطني",
         "تراخيص البلدية للمقر إن وجدت"
+      ],
+      "evidence_required_en": [
+        "A copy of the commercial registration and its activities",
+        "The licence issued by the General Authority for Media Regulation",
+        "The national address certificate",
+        "Municipal licences for the premises, if any"
       ],
       "references": [
         {
@@ -39,6 +53,7 @@
     {
       "question_id": "mk_regulated_sectors",
       "canonical_text_ar": "اختر جميع القطاعات المنظّمة التي تنتجون أو تنشرون لها محتوى إعلانياً، والتي تتطلب موافقات مسبقة من جهات إشرافية محددة.",
+      "canonical_text_en": "Select every regulated sector for which you produce or publish advertising content that requires prior approval from a specific supervisory body.",
       "type": "multi_select",
       "options": [
         "إعلانات صحية أو دوائية أو غذائية (الهيئة العامة للغذاء والدواء)",
@@ -47,6 +62,13 @@
         "إعلانات جهات حكومية",
         "لا نعمل مع قطاعات منظّمة"
       ],
+      "options_en": {
+        "إعلانات صحية أو دوائية أو غذائية (الهيئة العامة للغذاء والدواء)": "Health, pharmaceutical or food advertising (Saudi Food and Drug Authority)",
+        "إعلانات مالية أو استثمارية (هيئة السوق المالية / البنك المركزي)": "Financial or investment advertising (Capital Market Authority (CMA) / Saudi Central Bank (SAMA))",
+        "إعلانات عقارية (الهيئة العامة للعقار)": "Real estate advertising (Real Estate General Authority)",
+        "إعلانات جهات حكومية": "Advertising for government entities",
+        "لا نعمل مع قطاعات منظّمة": "We do not work with regulated sectors"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -56,6 +78,12 @@
         "نماذج من الموافقات الإعلانية المسبقة",
         "رخص الإعلان العقاري لحملات العقار",
         "إجراء التحقق من ترخيص المعلن قبل النشر"
+      ],
+      "evidence_required_en": [
+        "A list of clients by sector",
+        "Samples of the prior advertising approvals",
+        "Real estate advertising permits for property campaigns",
+        "The procedure for verifying the advertiser's licence before publication"
       ],
       "references": [
         {
@@ -75,6 +103,7 @@
     {
       "question_id": "mk_direct_marketing",
       "canonical_text_ar": "هل تقوم المنشأة بتنفيذ حملات تسويق مباشر عبر الرسائل النصية أو البريد الإلكتروني أو الإشعارات نيابةً عن العملاء، وهل تُنفَّذ عبر قنوات إرسال مرخّصة ومعتمدة لدى هيئة الاتصالات والفضاء والتقنية؟",
+      "canonical_text_en": "Does the organization run direct marketing campaigns by SMS, email or push notification on behalf of clients, and are they sent through channels licensed and approved by the Communications, Space and Technology Commission (CST)?",
       "type": "enum",
       "options": [
         "نعم عبر مزود مرخّص وباسم مرسِل معتمد",
@@ -82,6 +111,12 @@
         "لا ننفذ تسويقاً مباشراً",
         "غير متأكد"
       ],
+      "options_en": {
+        "نعم عبر مزود مرخّص وباسم مرسِل معتمد": "Yes — through a licensed provider and an approved sender name",
+        "نعم لكن عبر أدوات أو مزودين غير موثّقين": "Yes — but through tools or providers that are not documented",
+        "لا ننفذ تسويقاً مباشراً": "We do not run direct marketing",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -91,6 +126,12 @@
         "اعتماد اسم المرسِل",
         "سجل الموافقات وآلية إلغاء الاشتراك",
         "عينة من الرسائل المرسلة"
+      ],
+      "evidence_required_en": [
+        "Contracts with the messaging service providers",
+        "Approval of the sender name",
+        "The consent register and the unsubscribe mechanism",
+        "A sample of the messages sent"
       ],
       "references": [
         {
@@ -106,6 +147,7 @@
     {
       "question_id": "mk_authority_matrix",
       "canonical_text_ar": "هل يوجد هيكل تنظيمي معتمد ومصفوفة صلاحيات موثقة تحدد من يملك صلاحية اعتماد العقود والإنفاق ونشر المحتوى نيابة عن المنشأة؟",
+      "canonical_text_en": "Is there an approved organizational structure and a documented authority matrix setting out who may approve contracts, spending, and publication of content on behalf of the organization?",
       "type": "enum",
       "options": [
         "هيكل ومصفوفة صلاحيات معتمدان وموثقان",
@@ -113,6 +155,12 @@
         "صلاحيات غير مكتوبة تُدار بشكل شفهي",
         "لا يوجد"
       ],
+      "options_en": {
+        "هيكل ومصفوفة صلاحيات معتمدان وموثقان": "An approved, documented structure and authority matrix",
+        "هيكل تنظيمي فقط دون مصفوفة صلاحيات": "An organizational structure only, with no authority matrix",
+        "صلاحيات غير مكتوبة تُدار بشكل شفهي": "Unwritten authorities, handled verbally",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -122,6 +170,12 @@
         "مصفوفة الصلاحيات والتفويضات",
         "قرارات التفويض الموقّعة",
         "عقد التأسيس أو النظام الأساس"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The authority and delegation matrix",
+        "The signed delegation decisions",
+        "The articles of association or the bylaws"
       ],
       "references": [
         {
@@ -137,6 +191,7 @@
     {
       "question_id": "mk_compliance_owner",
       "canonical_text_ar": "من هو الشخص أو الجهة المسؤولة رسمياً داخل المنشأة عن متابعة الالتزام النظامي (الإعلامي، والعمالي، والضريبي، وحماية البيانات)، وهل المسؤولية موثقة في قرار تعيين؟",
+      "canonical_text_en": "Who inside the organization is formally responsible for tracking statutory compliance (media, labour, tax and data protection), and is that responsibility documented in an appointment decision?",
       "type": "enum",
       "options": [
         "مسؤول التزام متفرغ ومعيَّن بقرار",
@@ -144,6 +199,12 @@
         "تُدار عبر مستشار خارجي",
         "لا توجد مسؤولية محددة"
       ],
+      "options_en": {
+        "مسؤول التزام متفرغ ومعيَّن بقرار": "A full-time compliance officer, appointed by decision",
+        "مسؤولية مسندة إلى موظف ضمن مهام أخرى وموثقة": "The duty assigned to an employee alongside other tasks, and documented",
+        "تُدار عبر مستشار خارجي": "Handled through an external adviser",
+        "لا توجد مسؤولية محددة": "There is no defined responsibility"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -153,6 +214,12 @@
         "الوصف الوظيفي",
         "عقد الاستشارة الخارجية إن وجد",
         "تقارير الالتزام الدورية"
+      ],
+      "evidence_required_en": [
+        "The appointment or assignment decision",
+        "The job description",
+        "The external advisory contract, if any",
+        "The periodic compliance reports"
       ],
       "references": [
         {
@@ -168,6 +235,7 @@
     {
       "question_id": "mk_risk_register",
       "canonical_text_ar": "هل لدى المنشأة سجل مخاطر موثق ومنهجية معتمدة لتقييم المخاطر التشغيلية والتنظيمية والسمعية، ويُراجَع بشكل دوري؟",
+      "canonical_text_en": "Does the organization keep a documented risk register and an approved methodology for assessing operational, regulatory and reputational risk, reviewed regularly?",
       "type": "enum",
       "options": [
         "سجل مخاطر موثق ويُراجع دورياً",
@@ -175,6 +243,12 @@
         "تقييم غير رسمي عند الحاجة فقط",
         "لا يوجد"
       ],
+      "options_en": {
+        "سجل مخاطر موثق ويُراجع دورياً": "A documented risk register, reviewed regularly",
+        "سجل مخاطر موجود لكن غير محدّث": "A risk register exists but is out of date",
+        "تقييم غير رسمي عند الحاجة فقط": "Informal assessment, only when needed",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -184,6 +258,12 @@
         "منهجية تقييم المخاطر",
         "محاضر مراجعة المخاطر",
         "خطط المعالجة والمالكون"
+      ],
+      "evidence_required_en": [
+        "The risk register",
+        "The risk assessment methodology",
+        "Minutes of the risk reviews",
+        "The treatment plans and their owners"
       ],
       "references": [
         {
@@ -199,6 +279,7 @@
     {
       "question_id": "mk_content_approval",
       "canonical_text_ar": "هل يوجد إجراء موثق لمراجعة واعتماد المحتوى الإعلاني قبل النشر للتحقق من مطابقته للأنظمة والضوابط الإعلامية والقيم المجتمعية وعدم تضليل المستهلك؟",
+      "canonical_text_en": "Is there a documented procedure for reviewing and approving advertising content before publication, to check that it complies with the laws and media controls and with social values, and does not mislead the consumer?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -210,6 +291,12 @@
         "قائمة تحقق ما قبل النشر",
         "سجل الاعتمادات لعينة من الحملات",
         "دليل الضوابط التحريرية الداخلي"
+      ],
+      "evidence_required_en": [
+        "The content review and approval procedure",
+        "The pre-publication checklist",
+        "The approval record for a sample of campaigns",
+        "The internal editorial standards guide"
       ],
       "references": [
         {
@@ -225,6 +312,7 @@
     {
       "question_id": "mk_client_security_obligations",
       "canonical_text_ar": "اختر جميع فئات الجهات التي تقدمون لها خدمات وتفرض عليكم متطلبات تعاقدية للأمن السيبراني (الجهات الحكومية، والجهات الخاضعة لإشراف البنك المركزي، ومنشآت البنى التحتية الحساسة).",
+      "canonical_text_en": "Select every category of client you serve that imposes contractual cybersecurity requirements on you (government entities, entities supervised by the Saudi Central Bank (SAMA), and sensitive infrastructure operators).",
       "type": "multi_select",
       "options": [
         "جهات حكومية",
@@ -233,6 +321,13 @@
         "لا نتعامل مع هذه الجهات",
         "غير متأكد"
       ],
+      "options_en": {
+        "جهات حكومية": "Government entities",
+        "جهات مالية خاضعة للبنك المركزي": "Financial entities supervised by SAMA",
+        "منشآت بنى تحتية حساسة": "Sensitive infrastructure operators",
+        "لا نتعامل مع هذه الجهات": "We do not deal with these entities",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -242,6 +337,12 @@
         "ملاحق متطلبات الأمن السيبراني التعاقدية",
         "استبيانات التقييم الواردة من العملاء",
         "نتائج تقييمات الطرف الثالث السابقة"
+      ],
+      "evidence_required_en": [
+        "Contracts with government or financial clients",
+        "The contractual cybersecurity requirement schedules",
+        "Assessment questionnaires received from clients",
+        "The results of previous third party assessments"
       ],
       "references": [
         {
@@ -257,6 +358,7 @@
     {
       "question_id": "mk_security_posture",
       "canonical_text_ar": "ما وضع الأمن السيبراني الحالي في المنشأة من حيث السياسات المعتمدة وإدارة الهويات والصلاحيات وحماية الأجهزة والحسابات الإعلانية والاجتماعية للعملاء؟",
+      "canonical_text_en": "What is the organization's current cybersecurity position — approved policies, identity and access management, and protection of devices and of clients' advertising and social media accounts?",
       "type": "enum",
       "options": [
         "سياسات معتمدة وضوابط مطبقة وموثقة",
@@ -264,6 +366,12 @@
         "إجراءات فردية غير موحدة",
         "لا توجد ضوابط منظمة"
       ],
+      "options_en": {
+        "سياسات معتمدة وضوابط مطبقة وموثقة": "Approved policies, with controls applied and documented",
+        "ضوابط تقنية مطبقة دون سياسات موثقة": "Technical controls applied, with no documented policies",
+        "إجراءات فردية غير موحدة": "Individual practices, not standardised",
+        "لا توجد ضوابط منظمة": "There are no organised controls"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -273,6 +381,12 @@
         "سجل الحسابات والصلاحيات الممنوحة لكل عميل",
         "إثبات تفعيل التحقق متعدد العناصر",
         "إجراء منح وسحب الصلاحيات عند التحاق ومغادرة الموظفين"
+      ],
+      "evidence_required_en": [
+        "The information security policy",
+        "The register of accounts and the permissions granted for each client",
+        "Evidence that multi-factor authentication is enabled",
+        "The procedure for granting and revoking access when staff join and leave"
       ],
       "references": [
         {
@@ -288,6 +402,7 @@
     {
       "question_id": "mk_cyber_incident_response",
       "canonical_text_ar": "ما استعداد المنشأة لحوادث الأمن السيبراني التي تمسّ أنظمتها أو حسابات عملائها الإعلانية التي تديرها، من حيث إجراء الاستجابة والتصعيد؟",
+      "canonical_text_en": "How prepared is the organization for cybersecurity incidents affecting its own systems or the client advertising accounts it manages, in terms of the response and escalation procedure?",
       "type": "enum",
       "options": [
         "إجراء استجابة موثّق يشمل حسابات العملاء الإعلانية ومنصات النشر، مع تصعيد محدد وسجل حوادث",
@@ -295,6 +410,12 @@
         "تُعالَج الحوادث حالة بحالة دون إجراء موثّق",
         "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني"
       ],
+      "options_en": {
+        "إجراء استجابة موثّق يشمل حسابات العملاء الإعلانية ومنصات النشر، مع تصعيد محدد وسجل حوادث": "A documented response procedure covering client advertising accounts and publishing platforms, with defined escalation and an incident register",
+        "إجراء استجابة موثّق يقتصر على أنظمة المنشأة دون حسابات العملاء ومنصات النشر": "A documented response procedure limited to the organization's own systems, excluding client accounts and publishing platforms",
+        "تُعالَج الحوادث حالة بحالة دون إجراء موثّق": "Incidents are handled case by case, with no documented procedure",
+        "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني": "There is no procedure for handling cybersecurity incidents"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -303,6 +424,11 @@
         "إجراء الاستجابة للحوادث ونطاقه",
         "ترتيبات استعادة السيطرة على حسابات العملاء الإعلانية",
         "سجل الحوادث وقنوات التصعيد"
+      ],
+      "evidence_required_en": [
+        "The incident response procedure and its scope",
+        "Arrangements for regaining control of client advertising accounts",
+        "The incident register and the escalation channels"
       ],
       "references": [
         {
@@ -314,6 +440,7 @@
     {
       "question_id": "mk_data_breach_notification",
       "canonical_text_ar": "ما إجراءات المنشأة عند تسرّب بيانات شخصية تعالجها لنفسها أو لعملائها (قوائم تسويقية، بيانات حملات، بيانات جمهور) أو الوصول غير المشروع إليها، من حيث الإشعار وحفظ أدلة المعالجة؟",
+      "canonical_text_en": "What does the organization do when personal data it processes for itself or for its clients (marketing lists, campaign data, audience data) is leaked or unlawfully accessed, in terms of notification and keeping evidence of how it was handled?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية، ويميّز بين ما تُشعر به المنشأة بصفتها جهة تحكم وما تُبلّغ به عميلها بصفتها جهة معالجة، مع سجل وقائع",
@@ -321,6 +448,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث الأمنية",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية، ويميّز بين ما تُشعر به المنشأة بصفتها جهة تحكم وما تُبلّغ به عميلها بصفتها جهة معالجة، مع سجل وقائع": "A documented procedure naming the responsible person and the internal deadlines, distinguishing what the organization notifies as a Data Controller from what it reports to its client as a Data Processor, with an incident register",
+        "إجراء موثّق للإشعار دون تمييز بين صفة التحكم وصفة المعالجة": "A documented notification procedure that does not distinguish the Data Controller capacity from the Data Processor capacity",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث الأمنية": "No notification procedure; the incident is handled under the security incident procedure",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية": "No procedure for handling a personal data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -329,6 +462,11 @@
         "إجراء الإشعار عن تسرّب البيانات الشخصية والمسؤول عنه",
         "سجل وقائع التسرّب",
         "البنود التعاقدية الملزِمة بإبلاغ العميل"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The breach incident register",
+        "The contractual clauses requiring the client to be informed"
       ],
       "references": [
         {
@@ -340,6 +478,7 @@
     {
       "question_id": "mk_data_roles",
       "canonical_text_ar": "ما أنواع البيانات الشخصية التي تعالجها المنشأة، وهل تعالجها بصفتها جهة تحكم (بيانات موظفيها وعملائها) أم بصفتها جهة معالجة نيابة عن العملاء (قواعد بيانات الجمهور والحملات)؟",
+      "canonical_text_en": "What kinds of personal data does the organization process, and does it process them as a Data Controller (its own employee and client data) or as a Data Processor on behalf of clients (audience and campaign databases)?",
       "type": "text",
       "options": [],
       "required": true,
@@ -351,6 +490,12 @@
         "تصنيف الصفة النظامية لكل نشاط معالجة",
         "عينة من قواعد بيانات الحملات ومصادرها",
         "الأنظمة والمنصات المستخدمة في التخزين"
+      ],
+      "evidence_required_en": [
+        "An inventory of the kinds of personal data processed",
+        "The classification of the legal capacity for each processing activity",
+        "A sample of the campaign databases and their sources",
+        "The systems and platforms used for storage"
       ],
       "references": [
         {
@@ -366,6 +511,7 @@
     {
       "question_id": "mk_marketing_consent",
       "canonical_text_ar": "هل تحصل المنشأة أو عملاؤها على موافقة صريحة من أصحاب البيانات قبل استخدام بياناتهم في الحملات التسويقية، مع توفير آلية واضحة لإيقاف الإرسال؟",
+      "canonical_text_en": "Do the organization or its clients obtain express consent from data subjects before using their data in marketing campaigns, with a clear way to stop receiving messages?",
       "type": "enum",
       "options": [
         "نعم مع سجل موافقات موثق وآلية إيقاف",
@@ -373,6 +519,12 @@
         "نستخدم قواعد بيانات دون تأكد من مصدر الموافقة",
         "لا ينطبق"
       ],
+      "options_en": {
+        "نعم مع سجل موافقات موثق وآلية إيقاف": "Yes — with a documented consent register and an opt-out mechanism",
+        "الموافقة مسؤولية العميل دون تحقق من جانبنا": "Consent is the client's responsibility, with no verification on our side",
+        "نستخدم قواعد بيانات دون تأكد من مصدر الموافقة": "We use databases without confirming the source of consent",
+        "لا ينطبق": "Not applicable"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -382,6 +534,12 @@
         "نص إقرار العميل بمشروعية مصدر البيانات",
         "لقطة من آلية إلغاء الاشتراك",
         "سياسة الخصوصية المنشورة"
+      ],
+      "evidence_required_en": [
+        "The consent register",
+        "The client's written confirmation that the data was lawfully sourced",
+        "A screenshot of the unsubscribe mechanism",
+        "The published privacy policy"
       ],
       "references": [
         {
@@ -397,6 +555,7 @@
     {
       "question_id": "mk_processing_record",
       "canonical_text_ar": "هل لدى المنشأة سجل لأنشطة معالجة البيانات الشخصية، وسياسة خصوصية معتمدة، وشخص مسؤول عن حماية البيانات الشخصية؟",
+      "canonical_text_en": "Does the organization keep a record of personal data processing activities, an approved privacy policy, and a person responsible for personal data protection?",
       "type": "enum",
       "options": [
         "الثلاثة متوفرة وموثقة",
@@ -404,6 +563,12 @@
         "مسؤول معيّن دون توثيق كافٍ",
         "لا يوجد أي منها"
       ],
+      "options_en": {
+        "الثلاثة متوفرة وموثقة": "All three exist and are documented",
+        "سياسة خصوصية فقط": "A privacy policy only",
+        "مسؤول معيّن دون توثيق كافٍ": "Someone appointed, without adequate documentation",
+        "لا يوجد أي منها": "None of them exists"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -413,6 +578,12 @@
         "سياسة الخصوصية المعتمدة",
         "قرار تعيين مسؤول حماية البيانات",
         "إثبات التسجيل في المنصة الوطنية إن كان مطلوباً"
+      ],
+      "evidence_required_en": [
+        "The record of processing activities",
+        "The approved privacy policy",
+        "The decision appointing the data protection officer",
+        "Evidence of registration on the national platform, where required"
       ],
       "references": [
         {
@@ -428,6 +599,7 @@
     {
       "question_id": "mk_cross_border_transfer",
       "canonical_text_ar": "هل يتم نقل أو تخزين بيانات شخصية خارج المملكة عبر منصات إعلانية أو أدوات تحليلات أو خدمات سحابية (مثل منصات الإعلانات العالمية وأدوات إدارة العملاء)، وهل تم تقييم ذلك نظامياً؟",
+      "canonical_text_en": "Is personal data transferred or stored outside the Kingdom through advertising platforms, analytics tools or cloud services (such as global ad platforms and customer management tools), and has that been assessed against the law?",
       "type": "enum",
       "options": [
         "نعم ومع تقييم موثق للنقل",
@@ -435,6 +607,12 @@
         "التخزين داخل المملكة فقط",
         "غير متأكد"
       ],
+      "options_en": {
+        "نعم ومع تقييم موثق للنقل": "Yes — with a documented transfer assessment",
+        "نعم دون تقييم أو ضوابط": "Yes — with no assessment or safeguards",
+        "التخزين داخل المملكة فقط": "Storage inside the Kingdom only",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -444,6 +622,12 @@
         "مواقع تخزين البيانات",
         "تقييم أثر النقل خارج المملكة",
         "اتفاقيات معالجة البيانات مع المزودين"
+      ],
+      "evidence_required_en": [
+        "A list of the external platforms and services used",
+        "The data storage locations",
+        "The impact assessment for transfer outside the Kingdom",
+        "Data processing agreements with the providers"
       ],
       "references": [
         {
@@ -459,6 +643,7 @@
     {
       "question_id": "mk_business_continuity",
       "canonical_text_ar": "هل توجد خطة موثقة لاستمرارية الأعمال تشمل النسخ الاحتياطي للأصول الإبداعية وملفات العملاء، واستمرار تنفيذ الحملات عند تعطل الأنظمة أو غياب الأشخاص الرئيسيين؟",
+      "canonical_text_en": "Is there a documented business continuity plan covering backup of creative assets and client files, and continuing to run campaigns when systems fail or key people are absent?",
       "type": "enum",
       "options": [
         "خطة موثقة ومختبرة",
@@ -466,6 +651,12 @@
         "نسخ احتياطي فقط دون خطة",
         "لا يوجد"
       ],
+      "options_en": {
+        "خطة موثقة ومختبرة": "A documented plan that has been tested",
+        "خطة موثقة دون اختبار": "A documented plan that has not been tested",
+        "نسخ احتياطي فقط دون خطة": "Backups only, with no plan",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "resilience",
       "importance": "medium",
@@ -475,6 +666,12 @@
         "سياسة وسجلات النسخ الاحتياطي",
         "نتائج اختبار الاستعادة",
         "توثيق الأنظمة والحسابات ومفاتيح الوصول"
+      ],
+      "evidence_required_en": [
+        "The business continuity plan",
+        "The backup policy and logs",
+        "The restore test results",
+        "Documentation of the systems, accounts and access keys"
       ],
       "references": [
         {
@@ -490,6 +687,7 @@
     {
       "question_id": "mk_subcontractor_contracts",
       "canonical_text_ar": "هل تتضمن العقود مع المتعاونين من الباطن (المصممون المستقلون، شركات الإنتاج، المؤثرون، وكالات شراء الوسائط) بنوداً للسرية وحماية البيانات الشخصية ونقل ملكية الحقوق الفكرية للعميل؟",
+      "canonical_text_en": "Do contracts with subcontractors (freelance designers, production companies, influencers, media buying agencies) include clauses on confidentiality, personal data protection, and transfer of intellectual property to the client?",
       "type": "enum",
       "options": [
         "نعم في جميع العقود وبنماذج موحدة",
@@ -497,6 +695,12 @@
         "اتفاقيات شفهية أو أوامر شراء فقط",
         "لا يوجد تعاقد من الباطن"
       ],
+      "options_en": {
+        "نعم في جميع العقود وبنماذج موحدة": "Yes — in every contract, using standard templates",
+        "بنود جزئية أو غير موحدة": "Partial or non-standard clauses",
+        "اتفاقيات شفهية أو أوامر شراء فقط": "Verbal arrangements or purchase orders only",
+        "لا يوجد تعاقد من الباطن": "There is no subcontracting"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -506,6 +710,12 @@
         "اتفاقيات السرية",
         "بنود معالجة البيانات ونقل الملكية الفكرية",
         "سجل الأطراف الخارجية والتقييم المسبق لها"
+      ],
+      "evidence_required_en": [
+        "Contract templates for collaborators and influencers",
+        "The confidentiality agreements",
+        "The data processing and intellectual property transfer clauses",
+        "The third party register and their pre-contract assessment"
       ],
       "references": [
         {
@@ -525,6 +735,7 @@
     {
       "question_id": "mk_ip_asset_register",
       "canonical_text_ar": "هل تحتفظ المنشأة بسجل موثق لملكية الأصول الإبداعية والحقوق الفكرية (التصاميم، والمواد المصورة، والموسيقى، والخطوط، والصور المرخصة) المستخدمة في أعمال العملاء؟",
+      "canonical_text_en": "Does the organization keep a documented register of ownership of the creative assets and intellectual property rights (designs, footage, music, fonts, licensed images) used in client work?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -536,6 +747,12 @@
         "فواتير وشهادات ترخيص الصور والخطوط والموسيقى",
         "إقرارات المصممين بأصالة العمل",
         "سياسة استخدام المواد المرخصة"
+      ],
+      "evidence_required_en": [
+        "The asset and licence register",
+        "Invoices and licence certificates for images, fonts and music",
+        "Designers' declarations that the work is original",
+        "The policy on using licensed material"
       ],
       "references": [
         {
@@ -551,6 +768,7 @@
     {
       "question_id": "mk_policy_documentation",
       "canonical_text_ar": "ما مستوى توثيق السياسات والإجراءات الداخلية للمنشأة، وهل تخضع لاعتماد رسمي ومراجعة دورية وضبط للإصدارات؟",
+      "canonical_text_en": "How well documented are the organization's internal policies and procedures, and are they formally approved, periodically reviewed and version controlled?",
       "type": "enum",
       "options": [
         {
@@ -574,6 +792,13 @@
           "text_ar": "لا يوجد توثيق"
         }
       ],
+      "options_en": {
+        "reviewed": "Policies approved, documented and reviewed periodically",
+        "approved_not_updated": "Policies approved but not kept up to date",
+        "documented_unapproved": "Policies written but not approved",
+        "verbal_only": "Customary practices that are not written down",
+        "none": "No documentation"
+      },
       "required": true,
       "category": "records",
       "importance": "medium",
@@ -583,6 +808,12 @@
         "محاضر الاعتماد",
         "سجل الإصدارات والمراجعات",
         "إثبات إطلاع الموظفين عليها"
+      ],
+      "evidence_required_en": [
+        "The list of approved policies and procedures",
+        "The approval minutes",
+        "The version and review register",
+        "Evidence that staff have read them"
       ],
       "references": [
         {
@@ -606,6 +837,7 @@
     {
       "question_id": "mk_internal_audit",
       "canonical_text_ar": "هل تُجري المنشأة مراجعات أو تدقيقاً داخلياً دورياً للتحقق من الالتزام النظامي والتعاقدي، وهل يوجد سجل موثق للمخالفات والشكاوى والملاحظات الرقابية السابقة وإجراءات معالجتها؟",
+      "canonical_text_en": "Does the organization carry out periodic internal review or audit to verify statutory and contractual compliance, and is there a documented record of past violations, complaints and regulator findings and how they were addressed?",
       "type": "enum",
       "options": [
         "مراجعات دورية موثقة مع سجل معالجة",
@@ -613,6 +845,12 @@
         "تُعالج المشكلات عند وقوعها فقط",
         "لا توجد مراجعات"
       ],
+      "options_en": {
+        "مراجعات دورية موثقة مع سجل معالجة": "Documented periodic reviews, with a record of how findings were addressed",
+        "مراجعات غير منتظمة": "Irregular reviews",
+        "تُعالج المشكلات عند وقوعها فقط": "Problems are addressed only as they arise",
+        "لا توجد مراجعات": "No reviews are carried out"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -622,6 +860,12 @@
         "سجل المخالفات والشكاوى",
         "خطط الإجراءات التصحيحية ونتائجها",
         "أي إنذارات أو قرارات صادرة من جهات رقابية"
+      ],
+      "evidence_required_en": [
+        "The internal review plan and its reports",
+        "The register of violations and complaints",
+        "The corrective action plans and their outcomes",
+        "Any warnings or decisions issued by regulators"
       ],
       "references": [
         {

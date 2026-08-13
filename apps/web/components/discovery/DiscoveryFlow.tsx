@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowLeft, Compass, Loader2, Sparkles, TriangleAlert } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { AnswerInput } from "./AnswerInput";
@@ -56,6 +56,9 @@ async function readJson<T>(response: Response): Promise<T> {
  */
 export function DiscoveryFlow() {
   const t = useTranslations("discoveryInterview");
+  // Presentation only: it selects the published translation to show, never the questions
+  // asked nor how an answer is stored.
+  const locale = useLocale();
   // `promptKey` is a full, root-relative path ("discovery.question.primary_activity") — the
   // engine's contract with the UI (ADR 0066), not scoped under the "discoveryInterview"
   // namespace the rest of this component's chrome copy lives in.
@@ -107,7 +110,7 @@ export function DiscoveryFlow() {
       // and offering them "Start" would silently discard a concluded session and an open
       // assessment. Looked up by tenant: a returning customer holds no session id.
       try {
-        const unfinished = await findOpenSectorInterview();
+        const unfinished = await findOpenSectorInterview(locale);
         // `sourceSessionId` is required, not optional: the plan is generated FROM the session, so
         // resuming into questions that lead nowhere would be a worse trap than starting over.
         if (unfinished.release && unfinished.sourceSessionId && !cancelled) {
@@ -141,6 +144,11 @@ export function DiscoveryFlow() {
     return () => {
       cancelled = true;
     };
+    // `locale` is read above but deliberately NOT a dependency. This is a mount-once resume, and
+    // switching language navigates between /ar and /en — which remounts this component and re-runs
+    // the effect with the new locale anyway. Listing it would instead re-run the resume in the
+    // middle of a session and throw away the phase the customer is already in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const start = useCallback(async () => {
@@ -174,7 +182,7 @@ export function DiscoveryFlow() {
     async (forSessionId: string) => {
       setPhase("analyzing");
       try {
-        const interview = await openSectorInterview(forSessionId);
+        const interview = await openSectorInterview(forSessionId, locale);
         if (interview.status !== "no_sector_pack" && !interview.completed && interview.release) {
           setSectorInterview(interview);
           setPhase("sectorQuestions");

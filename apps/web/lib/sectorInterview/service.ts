@@ -15,13 +15,30 @@ function grcApiBaseUrl(): string {
   return process.env.GRC_API_BASE_URL ?? "http://localhost:8000";
 }
 
+/**
+ * The languages the interview may be requested in. Kept in step with grc-api's own closed list:
+ * anything else is a 400 there, so sending an unvalidated locale would surface as an upstream
+ * error rather than the Arabic the customer would still be perfectly able to read.
+ */
+const INTERVIEW_LANGUAGES = ["ar", "en"] as const;
+export type InterviewLanguage = (typeof INTERVIEW_LANGUAGES)[number];
+
+/** Any other locale — and there will be others — asks for Arabic, which is authoritative. */
+export function interviewLanguage(locale: string | undefined): InterviewLanguage {
+  return (INTERVIEW_LANGUAGES as readonly string[]).includes(locale ?? "")
+    ? (locale as InterviewLanguage)
+    : "ar";
+}
+
 async function call<T>(
   actor: ActorContext,
   method: "GET" | "POST",
   path: string,
   body?: unknown,
+  language?: InterviewLanguage,
 ): Promise<T> {
   const url = new URL(`/v1/knowledge${path}`, grcApiBaseUrl());
+  if (language) url.searchParams.set("language", language);
   const token = mintGrcApiServiceToken({
     tenantId: actor.tenantId,
     principalId: actor.userId,
@@ -129,12 +146,14 @@ export async function openSectorInterview(
   actor: ActorContext,
   sessionId: string,
   organizationId: string,
+  language: InterviewLanguage = "ar",
 ): Promise<SectorInterview> {
   const dto = await call<InterviewDto>(
     actor,
     "POST",
     `/sessions/${encodeURIComponent(sessionId)}/sector-interview`,
     { organization_id: organizationId },
+    language,
   );
   return toInterview(dto);
 }
@@ -167,8 +186,13 @@ function toInterview(dto: InterviewDto): SectorInterview {
  * the app can only offer to start over, and their concluded session and open assessment sit
  * orphaned — which is exactly the work they would lose.
  */
-export async function findOpenSectorInterview(actor: ActorContext): Promise<SectorInterview> {
-  return toInterview(await call<InterviewDto>(actor, "GET", "/sector-interview/open"));
+export async function findOpenSectorInterview(
+  actor: ActorContext,
+  language: InterviewLanguage = "ar",
+): Promise<SectorInterview> {
+  return toInterview(
+    await call<InterviewDto>(actor, "GET", "/sector-interview/open", undefined, language),
+  );
 }
 
 /**

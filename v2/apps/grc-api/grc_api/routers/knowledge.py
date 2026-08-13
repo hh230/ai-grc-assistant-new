@@ -327,6 +327,22 @@ def list_activations(
     )
 
 
+#: The languages an interview may be requested in. Closed and small on purpose: an unknown
+#: language must be a 400, never a silent fall back to Arabic — that is how a missing language
+#: becomes invisible to the person who asked for it (ADR 0069).
+INTERVIEW_LANGUAGES = ("ar", "en")
+
+
+def _language(value: str) -> str:
+    if value not in INTERVIEW_LANGUAGES:
+        raise ApiError(
+            status_code=400,
+            code="unsupported_language",
+            message=f"language must be one of {', '.join(INTERVIEW_LANGUAGES)}",
+        )
+    return value
+
+
 # --- the interview (tenant-scoped) ------------------------------------------------------------
 
 
@@ -337,10 +353,16 @@ def get_active_release(
     industry_slug: str,
     _: Annotated[TenantContext, Depends(require_tenant)],
     store: Annotated[Any, Depends(get_knowledge_store)],
+    language: str = "ar",
 ) -> ActiveReleaseView:
     """What an interview draws from. `404` when nothing is active — an interview must never be
-    handed knowledge nobody activated, and a near-miss would be worse than nothing."""
-    row = store.get_active_release(industry_slug)
+    handed knowledge nobody activated, and a near-miss would be worse than nothing.
+
+    `language` is validated HERE as well as on the interview routes. This endpoint serves the same
+    questions, so without it an unsupported language would return a 200 of Arabic and nothing in
+    the payload would admit the language was ignored (ADR 0069).
+    """
+    row = store.get_active_release(industry_slug, language=_language(language))
     if row is None:
         raise _not_found("active release for industry", industry_slug)
     return ActiveReleaseView.from_row(industry_slug, row)
@@ -361,6 +383,7 @@ def open_sector_interview(
     tenant: Annotated[TenantContext, Depends(require_tenant)],
     store: Annotated[Any, Depends(get_knowledge_store)],
     sessions: Annotated[Any, Depends(get_discovery_session_reader)],
+    language: str = "ar",
 ) -> SectorInterviewView:
     """Closes the loop: what a reviewer activated is exactly what this customer is asked.
 
@@ -369,6 +392,7 @@ def open_sector_interview(
     (`no_sector_pack`), not an error: most sectors will have no published pack for a long time, and
     an organization must still be able to finish.
     """
+    language = _language(language)
     try:
         outcome = OpenSectorInterview(
             store, sessions, connection=store._conn, new_id=lambda: str(uuid4())
@@ -386,7 +410,9 @@ def open_sector_interview(
 
     release_id = outcome.data.get("release_id")
     rows = (
-        store.list_releases(release_id=str(release_id), with_questions=True) if release_id else []
+        store.list_releases(release_id=str(release_id), with_questions=True, language=language)
+        if release_id
+        else []
     )
     if not rows:
         raise _not_found("release cited by this assessment", str(release_id))
@@ -404,6 +430,7 @@ def open_sector_interview(
 def resume_sector_interview(
     tenant: Annotated[TenantContext, Depends(require_tenant)],
     store: Annotated[Any, Depends(get_knowledge_store)],
+    language: str = "ar",
 ) -> SectorInterviewView:
     """The tenant's unfinished sector interview, if there is one.
 
@@ -421,7 +448,12 @@ def resume_sector_interview(
 
     selection = store.get_selection(assessment["id"], tenant_id=tenant.tenant_id)
     cited = (selection or {}).get("selected_release_ids") or []
-    rows = store.list_releases(release_id=cited[0], with_questions=True) if cited else []
+    language = _language(language)
+    rows = (
+        store.list_releases(release_id=cited[0], with_questions=True, language=language)
+        if cited
+        else []
+    )
     if not rows:
         # An assessment with no readable selection cannot be resumed into questions. Reported as
         # nothing to resume rather than as an error: the customer must still be able to proceed.

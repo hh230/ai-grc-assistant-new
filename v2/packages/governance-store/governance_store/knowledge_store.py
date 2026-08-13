@@ -67,6 +67,10 @@ _QUESTION_COLUMNS = (
 )
 
 
+#: Arabic is the source, never a translation (ADR 0067 §3).
+CANONICAL_LANGUAGE = "ar"
+
+
 class PostgresKnowledgeStore:
     """One connection, one call per method. Mirrors `PostgresGovernanceStore`'s shape."""
 
@@ -239,6 +243,50 @@ class PostgresKnowledgeStore:
                 )
         return version
 
+    def attach_translations(self, release: dict[str, Any], language: str) -> dict[str, Any]:
+        """Folds PUBLISHED translations into a release's questions, in place, and returns it.
+
+        Published means the whole question was released together (see
+        `publish_question_translation`), so a question either gains all three English fields or
+        none — there is no partial state for a caller to handle. Arabic is untouched and stays
+        authoritative: a question with no published translation simply has no English fields, and
+        the interface falls back to Arabic for that question alone.
+        """
+        if language == CANONICAL_LANGUAGE:
+            return release
+        parts_by_question: dict[str, dict[tuple[str, int], str]] = {}
+        for row in self.list_translations(
+            release_id=release["id"], language=language, status="published"
+        ):
+            parts_by_question.setdefault(row["question_id"], {})[
+                (row["part_kind"], row["part_index"])
+            ] = row["text"]
+        for question in release.get("questions") or []:
+            parts = parts_by_question.get(question["question_id"])
+            if not parts:
+                continue
+            # Completeness is re-checked HERE, not assumed from "some parts are published".
+            # Publication is all-or-nothing, but a published question can later lose one part:
+            # correcting a single English string returns that part to `generated` while its
+            # siblings stay `published`. That state is legitimate — it is the lifecycle working —
+            # and it means "not fully available in this language", so the whole question falls
+            # back to Arabic rather than rendering three quarters translated.
+            option_count = len(list(question.get("options") or []))
+            evidence_count = len(list(question.get("evidence_required") or []))
+            expected = (
+                [("question", 0)]
+                + [("option", i) for i in range(option_count)]
+                + [("evidence", i) for i in range(evidence_count)]
+            )
+            if any(part not in parts for part in expected):
+                continue
+            question["canonical_text_en"] = parts[("question", 0)]
+            question["options_en"] = [parts[("option", i)] for i in range(option_count)]
+            question["evidence_required_en"] = [
+                parts[("evidence", i)] for i in range(evidence_count)
+            ]
+        return release
+
     def list_releases(
         self,
         *,
@@ -246,6 +294,7 @@ class PostgresKnowledgeStore:
         release_id: str | None = None,
         status: str | None = None,
         with_questions: bool = False,
+        language: str | None = None,
     ) -> list[dict[str, Any]]:
         """READ COMMITTED · no lock · read. The Get/List primitive — not one method per screen.
 
@@ -284,6 +333,8 @@ class PostgresKnowledgeStore:
                     "WHERE release_id = %s ORDER BY position, question_id",
                     (release["id"],),
                 )
+                if language is not None:
+                    self.attach_translations(release, language)
         return releases
 
     def submit_for_review(self, release_id: str) -> bool:
@@ -403,7 +454,9 @@ class PostgresKnowledgeStore:
                 )
         return previous[0] if previous else None
 
-    def get_active_release(self, industry_slug: str) -> dict[str, Any] | None:
+    def get_active_release(
+        self, industry_slug: str, *, language: str | None = None
+    ) -> dict[str, Any] | None:
         """READ COMMITTED · **no lock** · read. What an interview draws from.
 
         Deliberately takes no lock: this runs on every interview, and `FOR UPDATE` here would
@@ -423,6 +476,8 @@ class PostgresKnowledgeStore:
             "WHERE release_id = %s ORDER BY position, question_id",
             (release["id"],),
         )
+        if language is not None:
+            self.attach_translations(release, language)
         return release
 
     def list_activation_history(self, industry_slug: str) -> list[dict[str, Any]]:
@@ -434,30 +489,218 @@ class PostgresKnowledgeStore:
             (industry_slug,),
         )
 
-    # ── translations ─────────────────────────────────────────────────────────────────────────
+    # ── translations (ADR 0069) ──────────────────────────────────────────────────────────────
+    #
+    # A question is three kinds of customer-facing text: its own, its options', and its evidence
+    # lines'. Each is a row, addressed by `(part_kind, part_index)`, because 1083 of 1103 authored
+    # options carry no `option_id` — their identity IS their Arabic string, which is also what
+    # `sector_answers` stores — and evidence lines carry no identity at all. The index is the only
+    # addressing scheme that covers all three, and it is stable forever because a release is an
+    # immutable snapshot: what is never updated is never reordered.
+    #
+    # `source_text_ar` is the defensive copy of what was translated. The link is an integer, and an
+    # integer is silent; the copy is what turns "this English landed on the wrong option" from
+    # forbidden-by-intention into caught-by-comparison.
+
+    QUESTION_PART = ("question", 0)
+
+    def _question_row(self, release_id: str, question_id: str) -> dict[str, Any]:
+        row = self._row(
+            "SELECT canonical_text_ar, options, evidence_required FROM release_questions "
+            "WHERE release_id = %s AND question_id = %s",
+            (release_id, question_id),
+        )
+        if row is None:
+            raise LookupError(f"no question {question_id!r} in release {release_id!r}")
+        return row
+
+    @staticmethod
+    def _option_text(option: Any) -> str:
+        """An option is either a bare Arabic string or `{option_id, text_ar}`. Both shapes ship in
+        the authored packs, and this is the one place that needs to know it."""
+        return option["text_ar"] if isinstance(option, dict) else str(option)
+
+    def _source_text(self, release_id: str, question_id: str, part: tuple[str, int]) -> str:
+        """The Arabic this part translates, read from the release — never from the caller.
+
+        Raises rather than returns None for an index outside the array: a translation addressed at
+        a part that does not exist is not a near-miss to be tolerated, it is a wrong address.
+        """
+        kind, index = part
+        row = self._question_row(release_id, question_id)
+        if kind == "question":
+            return str(row["canonical_text_ar"])
+        collection = row["options"] if kind == "option" else row["evidence_required"]
+        collection = list(collection or [])
+        if not 0 <= index < len(collection):
+            raise IndexError(
+                f"{kind} index {index} is outside {question_id!r}, which has {len(collection)}"
+            )
+        return self._option_text(collection[index]) if kind == "option" else str(collection[index])
+
+    def expected_parts(self, *, release_id: str, question_id: str) -> int:
+        """How many translatable parts this question has: itself, its options, its evidence."""
+        row = self._question_row(release_id, question_id)
+        return 1 + len(list(row["options"] or [])) + len(list(row["evidence_required"] or []))
 
     def save_translation(
-        self, *, release_id: str, question_id: str, language: str, text: str
+        self,
+        *,
+        release_id: str,
+        question_id: str,
+        language: str,
+        text: str,
+        part: tuple[str, int] = QUESTION_PART,
+        source_text_ar: str | None = None,
     ) -> None:
-        """READ COMMITTED · no lock · idempotent. Arabic is refused by the schema, not here."""
+        """READ COMMITTED · no lock · idempotent. Arabic is refused by the schema, not here.
+
+        `source_text_ar` is VERIFIED against the release, never trusted: if the caller passes text
+        that is not what the release holds at that part, the write is refused. That is the check
+        that keeps English from being filed against the wrong option — and it lives here rather
+        than in a trigger, so the database never needs to know the shape of an authored pack.
+        """
+        kind, index = part
+        actual = self._source_text(release_id, question_id, part)
+        if source_text_ar is not None and source_text_ar != actual:
+            raise ValueError(
+                f"{question_id}/{kind}[{index}]: the source Arabic does not match the release — "
+                f"refusing to attach a translation to a part it does not describe"
+            )
         self._conn.execute(
-            "INSERT INTO question_translations (release_id, question_id, language, text) "
-            "VALUES (%s, %s, %s, %s) "
-            "ON CONFLICT (release_id, question_id, language) DO UPDATE SET "
-            " text = EXCLUDED.text, status = 'generated'",
-            (release_id, question_id, language, text),
+            "INSERT INTO question_translations "
+            " (release_id, question_id, language, part_kind, part_index, source_text_ar, text) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s) "
+            "ON CONFLICT (release_id, question_id, language, part_kind, part_index) DO UPDATE SET "
+            " text = EXCLUDED.text, source_text_ar = EXCLUDED.source_text_ar, status = 'generated'",
+            (release_id, question_id, language, kind, index, actual, text),
         )
 
-    def publish_translation(self, *, release_id: str, question_id: str, language: str) -> bool:
-        """READ COMMITTED · no lock · idempotent. Only `reviewed` may be published — an
-        unreviewed string reaching a customer in a language nobody on the team reads is the
-        failure this guard exists for."""
+    def get_translation(
+        self,
+        *,
+        release_id: str,
+        question_id: str,
+        language: str,
+        part: tuple[str, int] = QUESTION_PART,
+    ) -> dict[str, Any] | None:
+        """READ COMMITTED · no lock · read. What is stored for this part in this language.
+
+        An importer needs this before it writes: a re-run that saved an identical string would
+        still reset `status` to `generated` through the ON CONFLICT above, silently demoting
+        something a human had already reviewed. Reading first is what makes a second run a true
+        no-op rather than a quiet regression.
+        """
+        kind, index = part
+        return self._row(
+            "SELECT release_id, question_id, language, part_kind, part_index, source_text_ar, "
+            " text, status, created_at FROM question_translations "
+            "WHERE release_id = %s AND question_id = %s AND language = %s "
+            " AND part_kind = %s AND part_index = %s",
+            (release_id, question_id, language, kind, index),
+        )
+
+    def list_translations(
+        self, *, release_id: str, language: str, status: str | None = None
+    ) -> list[dict[str, Any]]:
+        """READ COMMITTED · no lock · read. Every part of every question in one release, in one
+        query — the read path the interview uses, rather than one query per question."""
+        sql = (
+            "SELECT question_id, part_kind, part_index, source_text_ar, text, status "
+            "FROM question_translations WHERE release_id = %s AND language = %s"
+        )
+        params: list[Any] = [release_id, language]
+        if status is not None:
+            sql += " AND status = %s"
+            params.append(status)
+        return self._rows(sql + " ORDER BY question_id, part_kind, part_index", tuple(params))
+
+    def review_translation(
+        self,
+        *,
+        release_id: str,
+        question_id: str,
+        language: str,
+        part: tuple[str, int] = QUESTION_PART,
+    ) -> bool:
+        """READ COMMITTED · no lock · idempotent. `generated` -> `reviewed`: a human read this
+        string and stands behind it.
+
+        Per PART, deliberately: a reviewer may accept a question and its options while leaving one
+        evidence line hanging. Publication is the step that refuses to be partial.
+        """
+        kind, index = part
         cur = self._conn.execute(
-            "UPDATE question_translations SET status = 'published' "
-            "WHERE release_id = %s AND question_id = %s AND language = %s AND status = 'reviewed'",
-            (release_id, question_id, language),
+            "UPDATE question_translations SET status = 'reviewed' "
+            "WHERE release_id = %s AND question_id = %s AND language = %s "
+            " AND part_kind = %s AND part_index = %s AND status = 'generated'",
+            (release_id, question_id, language, kind, index),
         )
         return cur.rowcount == 1
+
+    def publish_question_translation(
+        self, *, release_id: str, question_id: str, language: str
+    ) -> int:
+        """READ COMMITTED · one transaction · returns the number of parts published, 0 if refused.
+
+        THE WHOLE QUESTION OR NOTHING. A customer reads a question, its options and its evidence as
+        one screen; publishing them separately is how a screen ends up half English and half
+        Arabic, which is worse than all Arabic. So this is the only way to publish, and it refuses
+        unless, verified HERE against the release itself rather than taken from the caller:
+
+        * every part of the question is present — count matches what the release actually holds;
+        * every part's `source_text_ar` still matches the release's own text at that index;
+        * every part is `reviewed` (or already `published`, so re-running is harmless).
+
+        The verification and the write share one transaction, so a refusal leaves nothing changed
+        and a success changes everything together. The UPDATE re-asserts the two countable
+        conditions in its own WHERE as a last guard against a concurrent writer between the check
+        and the write.
+        """
+        with self._conn.transaction():
+            row = self._question_row(release_id, question_id)
+            sources = [(self.QUESTION_PART, str(row["canonical_text_ar"]))]
+            sources += [
+                (("option", i), self._option_text(o))
+                for i, o in enumerate(list(row["options"] or []))
+            ]
+            sources += [
+                (("evidence", i), str(e))
+                for i, e in enumerate(list(row["evidence_required"] or []))
+            ]
+
+            stored = {
+                (r["part_kind"], r["part_index"]): r
+                for r in self._rows(
+                    "SELECT part_kind, part_index, source_text_ar, status "
+                    "FROM question_translations "
+                    "WHERE release_id = %s AND question_id = %s AND language = %s",
+                    (release_id, question_id, language),
+                )
+            }
+            for part, source in sources:
+                found = stored.get(part)
+                if found is None:
+                    return 0  # a missing part means the screen would fall back mid-question
+                if found["source_text_ar"] != source:
+                    return 0  # the English no longer describes the Arabic it claims to translate
+                if found["status"] not in ("reviewed", "published"):
+                    return 0  # unreviewed text must never reach a customer
+            if len(stored) != len(sources):
+                return 0  # a part addressed at something the release does not have
+
+            cur = self._conn.execute(
+                "UPDATE question_translations SET status = 'published' "
+                "WHERE release_id = %s AND question_id = %s AND language = %s "
+                " AND NOT EXISTS (SELECT 1 FROM question_translations x "
+                "                  WHERE x.release_id = %s AND x.question_id = %s "
+                "                    AND x.language = %s "
+                "                    AND x.status NOT IN ('reviewed', 'published')) "
+                " AND (SELECT count(*) FROM question_translations c "
+                "       WHERE c.release_id = %s AND c.question_id = %s AND c.language = %s) = %s",
+                (release_id, question_id, language) * 3 + (len(sources),),
+            )
+            return cur.rowcount
 
     def open_assessment(
         self,

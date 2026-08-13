@@ -7,6 +7,7 @@
     {
       "question_id": "ec_maroof_registration",
       "canonical_text_ar": "هل لدى المنشأة سجل تجاري ساري يتضمن نشاط التجارة الإلكترونية (بيع التجزئة عبر الإنترنت)، وهل المتجر الإلكتروني موثّق في منصة \"معروف\" التابعة لوزارة التجارة مع نشر بيانات مقدم الخدمة على الواجهة الإلكترونية؟",
+      "canonical_text_en": "Does the organization hold a valid commercial registration that includes e-commerce activity (online retail), and is the online store authenticated on the Ministry of Commerce's Maroof platform, with the service provider's details published on the storefront?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -17,6 +18,11 @@
         "نسخة السجل التجاري موضحاً فيها النشاط",
         "شهادة/رابط توثيق المتجر في منصة معروف",
         "لقطة شاشة من صفحة \"من نحن\" وبيانات التواصل في المتجر"
+      ],
+      "evidence_required_en": [
+        "A copy of the commercial registration showing the activity",
+        "The Maroof authentication certificate or link for the store",
+        "A screenshot of the store's \"About us\" page and its contact details"
       ],
       "references": [
         {
@@ -32,6 +38,7 @@
     {
       "question_id": "ec_product_categories",
       "canonical_text_ar": "اختر جميع فئات المنتجات أو الخدمات التي تبيعها المنشأة عبر قنواتها الإلكترونية.",
+      "canonical_text_en": "Select every category of product or service the organization sells through its electronic channels.",
       "type": "multi_select",
       "options": [
         "أغذية ومكملات غذائية",
@@ -43,6 +50,16 @@
         "منتجات مستوردة يعاد بيعها",
         "أخرى"
       ],
+      "options_en": {
+        "أغذية ومكملات غذائية": "Food and food supplements",
+        "مستحضرات تجميل وعناية شخصية": "Cosmetics and personal care products",
+        "أدوية وأجهزة ومستلزمات طبية": "Medicines, medical devices and medical supplies",
+        "أجهزة إلكترونية واتصالات": "Electronics and telecommunications devices",
+        "أزياء ومستلزمات منزلية عامة": "Fashion and general household goods",
+        "خدمات رقمية أو محتوى إلكتروني": "Digital services or electronic content",
+        "منتجات مستوردة يعاد بيعها": "Imported products resold by the organization",
+        "أخرى": "Other"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -51,6 +68,11 @@
         "قائمة فئات المنتجات المعروضة",
         "شهادات تسجيل المنتجات أو موافقات الاستيراد إن وُجدت",
         "بيانات المورّدين والمصانع للمنتجات الخاضعة للتسجيل"
+      ],
+      "evidence_required_en": [
+        "A list of the product categories offered",
+        "Product registration certificates or import approvals, if any",
+        "Supplier and manufacturer details for products subject to registration"
       ],
       "references": [
         {
@@ -70,6 +92,7 @@
     {
       "question_id": "ec_payment_model",
       "canonical_text_ar": "كيف تُدار عمليات الدفع الإلكتروني في المتجر؟",
+      "canonical_text_en": "How are electronic payments handled in the store?",
       "type": "enum",
       "options": [
         "عبر مزود خدمات مدفوعات مرخّص من البنك المركزي السعودي فقط",
@@ -78,6 +101,13 @@
         "الدفع عند الاستلام فقط",
         "نموذج مختلط"
       ],
+      "options_en": {
+        "عبر مزود خدمات مدفوعات مرخّص من البنك المركزي السعودي فقط": "Through a payment service provider licensed by the Saudi Central Bank (SAMA) only",
+        "عبر بوابة دفع مرخّصة مع تحصيل نيابة عن بائعين آخرين (سوق إلكتروني)": "Through a licensed payment gateway, collecting on behalf of other sellers (a marketplace)",
+        "محفظة إلكترونية أو رصيد عملاء مملوك للمنشأة": "An e-wallet or customer balance owned by the organization",
+        "الدفع عند الاستلام فقط": "Cash on delivery only",
+        "نموذج مختلط": "A mixed model"
+      },
       "required": true,
       "category": "financial_controls",
       "importance": "high",
@@ -86,6 +116,11 @@
         "اتفاقية مزود خدمات المدفوعات",
         "ما يثبت ترخيص المزود من البنك المركزي السعودي",
         "وصف تدفق الأموال ودورة التسوية مع البائعين"
+      ],
+      "evidence_required_en": [
+        "The payment service provider agreement",
+        "Evidence that the provider is licensed by SAMA",
+        "A description of the flow of funds and the settlement cycle with sellers"
       ],
       "references": [
         {
@@ -101,6 +136,7 @@
     {
       "question_id": "ec_delivery_model",
       "canonical_text_ar": "ما نموذج تنفيذ التوصيل والخدمات اللوجستية المعتمد لدى المنشأة؟",
+      "canonical_text_en": "What delivery and logistics fulfilment model has the organization adopted?",
       "type": "enum",
       "options": [
         "التعاقد مع شركات توصيل مرخّصة من الهيئة العامة للنقل",
@@ -109,6 +145,13 @@
         "شحن دولي عبر شركات شحن ووسطاء تخليص",
         "نموذج مختلط"
       ],
+      "options_en": {
+        "التعاقد مع شركات توصيل مرخّصة من الهيئة العامة للنقل": "Contracting delivery companies licensed by the Transport General Authority",
+        "أسطول توصيل مملوك للمنشأة": "A delivery fleet owned by the organization",
+        "تطبيق أو منصة توصيل تديرها المنشأة وتضم مندوبين": "A delivery app or platform run by the organization with its own couriers",
+        "شحن دولي عبر شركات شحن ووسطاء تخليص": "International shipping through freight companies and customs brokers",
+        "نموذج مختلط": "A mixed model"
+      },
       "required": true,
       "category": "operations",
       "importance": "medium",
@@ -117,6 +160,11 @@
         "عقود شركات التوصيل",
         "ترخيص نشاط التوصيل إن كان مملوكاً للمنشأة",
         "إجراءات تسليم الطلبات ومعالجة الشحنات المرتجعة"
+      ],
+      "evidence_required_en": [
+        "Contracts with the delivery companies",
+        "The delivery activity licence, where the fleet is the organization's own",
+        "Procedures for delivering orders and handling returned shipments"
       ],
       "references": [
         {
@@ -132,6 +180,7 @@
     {
       "question_id": "ec_e_invoicing",
       "canonical_text_ar": "ما وضع المنشأة في الفوترة الإلكترونية لدى هيئة الزكاة والضريبة والجمارك؟",
+      "canonical_text_en": "What is the organization's position on e-invoicing with the Zakat, Tax and Customs Authority?",
       "type": "enum",
       "options": [
         "مطبّقة للمرحلة الثانية (الربط والتكامل) بالكامل",
@@ -140,6 +189,13 @@
         "غير مسجلة في ضريبة القيمة المضافة",
         "غير متأكد"
       ],
+      "options_en": {
+        "مطبّقة للمرحلة الثانية (الربط والتكامل) بالكامل": "Phase two (integration) fully implemented",
+        "مطبّقة للمرحلة الأولى فقط ولم يحن موعد الربط": "Phase one only; the integration date has not yet arrived",
+        "مبلّغة بموجة ربط قادمة ولم تستكمل الاستعداد": "Notified of an upcoming integration wave, with preparation incomplete",
+        "غير مسجلة في ضريبة القيمة المضافة": "Not registered for VAT",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "tax",
       "importance": "high",
@@ -148,6 +204,11 @@
         "شهادة التسجيل في ضريبة القيمة المضافة",
         "إشعار الموجة الصادر من الهيئة",
         "نموذج فاتورة إلكترونية صادرة من النظام وشهادة الامتثال التقني للحل المستخدم"
+      ],
+      "evidence_required_en": [
+        "The VAT registration certificate",
+        "The wave notification issued by the Authority",
+        "A sample e-invoice issued by the system and the technical compliance certificate for the solution used"
       ],
       "references": [
         {
@@ -163,6 +224,7 @@
     {
       "question_id": "ec_consumer_terms",
       "canonical_text_ar": "هل تعتمد المنشأة سياسات معلنة للاسترجاع والاستبدال وشروط التعاقد الإلكتروني، وهل تلتزم إعلاناتها التسويقية — بما فيها التسويق عبر المؤثرين — بالاشتراطات النظامية للإعلان في المملكة؟",
+      "canonical_text_en": "Does the organization publish return and exchange policies and electronic contracting terms, and do its marketing communications — including influencer marketing — meet the statutory advertising requirements in the Kingdom?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -173,6 +235,11 @@
         "سياسة الاسترجاع والاستبدال المنشورة",
         "الشروط والأحكام واتفاقية الاستخدام",
         "عقود حملات التسويق مع المؤثرين وما يثبت تصاريحهم الإعلانية"
+      ],
+      "evidence_required_en": [
+        "The published return and exchange policy",
+        "The terms and conditions and the user agreement",
+        "Influencer marketing campaign contracts and evidence of their advertising permits"
       ],
       "references": [
         {
@@ -192,6 +259,7 @@
     {
       "question_id": "ec_legal_form",
       "canonical_text_ar": "ما الشكل النظامي للمنشأة، وهل تخضع لأي إشراف رقابي إضافي؟",
+      "canonical_text_en": "What is the organization's legal form, and is it subject to any additional regulatory supervision?",
       "type": "enum",
       "options": [
         "مؤسسة فردية أو عمل حر",
@@ -200,6 +268,13 @@
         "شركة مساهمة مدرجة أو خاضعة لهيئة السوق المالية",
         "منشأة مملوكة أو مرتبطة بجهة خاضعة للبنك المركزي السعودي"
       ],
+      "options_en": {
+        "مؤسسة فردية أو عمل حر": "A sole establishment or self-employment",
+        "شركة ذات مسؤولية محدودة غير مدرجة": "An unlisted limited liability company",
+        "شركة مساهمة مقفلة": "A closed joint stock company",
+        "شركة مساهمة مدرجة أو خاضعة لهيئة السوق المالية": "A listed joint stock company, or one regulated by the Capital Market Authority (CMA)",
+        "منشأة مملوكة أو مرتبطة بجهة خاضعة للبنك المركزي السعودي": "An entity owned by, or connected to, a body supervised by SAMA"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -208,6 +283,11 @@
         "عقد التأسيس أو النظام الأساسي",
         "هيكل الملكية وقائمة الشركاء أو المساهمين",
         "قرارات تعيين مجلس الإدارة أو المدير المسؤول"
+      ],
+      "evidence_required_en": [
+        "The articles of association or the bylaws",
+        "The ownership structure and the list of partners or shareholders",
+        "The decisions appointing the board or the responsible manager"
       ],
       "references": [
         {
@@ -223,6 +303,7 @@
     {
       "question_id": "ec_governance_documents",
       "canonical_text_ar": "اختر جميع وثائق الحوكمة المعتمدة والمطبّقة فعلياً داخل المنشأة.",
+      "canonical_text_en": "Select every governance document that is approved and actually applied inside the organization.",
       "type": "multi_select",
       "options": [
         "هيكل تنظيمي معتمد",
@@ -232,6 +313,14 @@
         "ميثاق سلوك مهني",
         "لا يوجد أي منها موثق"
       ],
+      "options_en": {
+        "هيكل تنظيمي معتمد": "An approved organizational structure",
+        "مصفوفة تفويض الصلاحيات": "A delegation of authority matrix",
+        "سياسة تعارض المصالح وإفصاحات سنوية": "A conflict of interest policy with annual disclosures",
+        "لوائح عمل اللجان أو الاجتماعات الإدارية الدورية": "Terms of reference for committees, or regular management meetings",
+        "ميثاق سلوك مهني": "A code of professional conduct",
+        "لا يوجد أي منها موثق": "None of these is documented"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -241,6 +330,12 @@
         "مصفوفة الصلاحيات المالية والتشغيلية",
         "نماذج إفصاح تعارض المصالح",
         "محاضر الاجتماعات الإدارية"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The financial and operational authority matrix",
+        "Conflict of interest disclosure forms",
+        "Minutes of the management meetings"
       ],
       "references": [
         {
@@ -256,6 +351,7 @@
     {
       "question_id": "ec_risk_register",
       "canonical_text_ar": "هل لدى المنشأة منهجية معتمدة لإدارة المخاطر وسجل مخاطر محدّث يشمل المخاطر التشغيلية والسيبرانية والامتثالية مع مالك لكل خطر؟",
+      "canonical_text_en": "Does the organization have an approved risk management methodology and an up-to-date risk register covering operational, cyber and compliance risks, with an owner for each risk?",
       "type": "enum",
       "options": [
         "منهجية معتمدة وسجل مخاطر محدّث ويُراجع دورياً",
@@ -263,6 +359,12 @@
         "تُدار المخاطر بشكل غير موثق حسب الحالة",
         "لا يوجد"
       ],
+      "options_en": {
+        "منهجية معتمدة وسجل مخاطر محدّث ويُراجع دورياً": "An approved methodology and a current risk register, reviewed regularly",
+        "سجل مخاطر موجود لكنه غير محدّث أو غير مرتبط بمنهجية": "A risk register exists but is out of date, or is not tied to a methodology",
+        "تُدار المخاطر بشكل غير موثق حسب الحالة": "Risk is managed without documentation, case by case",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -271,6 +373,11 @@
         "منهجية تقييم المخاطر",
         "سجل المخاطر الحالي",
         "محاضر مراجعة المخاطر وخطط المعالجة"
+      ],
+      "evidence_required_en": [
+        "The risk assessment methodology",
+        "The current risk register",
+        "Minutes of risk reviews and the treatment plans"
       ],
       "references": [
         {
@@ -286,6 +393,7 @@
     {
       "question_id": "ec_fraud_controls",
       "canonical_text_ar": "ما الضوابط القائمة لمواجهة مخاطر الاحتيال في التجارة الإلكترونية (عمليات الدفع المشبوهة، ردود المدفوعات، الحسابات الوهمية، إساءة استخدام العروض، بيع منتجات مقلّدة، أو ممارسة النشاط لصالح غير مرخّص)؟",
+      "canonical_text_en": "What controls are in place against e-commerce fraud risks (suspicious payments, chargebacks, fake accounts, promotion abuse, sale of counterfeit goods, or trading on behalf of an unlicensed party)?",
       "type": "text",
       "options": [],
       "required": true,
@@ -297,6 +405,12 @@
         "تقارير ردود المدفوعات والعمليات المرفوضة",
         "إجراءات التحقق من الموردين ومصدر البضاعة",
         "سجل بلاغات المنتجات المقلّدة إن وُجد"
+      ],
+      "evidence_required_en": [
+        "The anti-fraud policy or procedure",
+        "Chargeback and declined transaction reports",
+        "Procedures for verifying suppliers and the source of goods",
+        "The register of counterfeit product reports, if any"
       ],
       "references": [
         {
@@ -312,6 +426,7 @@
     {
       "question_id": "ec_regulated_classification",
       "canonical_text_ar": "هل صُنّفت المنشأة أو أي من أنظمتها ضمن البنى التحتية الوطنية الحرجة أو خضعت لمتطلبات سيبرانية إلزامية من جهة رقابية (مثل الهيئة الوطنية للأمن السيبراني أو البنك المركزي السعودي)؟",
+      "canonical_text_en": "Has the organization or any of its systems been classified as critical national infrastructure, or been made subject to mandatory cybersecurity requirements by a regulator (such as the National Cybersecurity Authority or SAMA)?",
       "type": "enum",
       "options": [
         "نعم - مصنفة ضمن البنى التحتية الوطنية الحرجة",
@@ -319,6 +434,12 @@
         "لا - لا توجد متطلبات سيبرانية إلزامية مفروضة",
         "غير متأكد ولم يتم التحقق"
       ],
+      "options_en": {
+        "نعم - مصنفة ضمن البنى التحتية الوطنية الحرجة": "Yes — classified as critical national infrastructure",
+        "نعم - خاضعة لمتطلبات البنك المركزي السعودي عبر نشاط مرخّص": "Yes — subject to SAMA requirements through a licensed activity",
+        "لا - لا توجد متطلبات سيبرانية إلزامية مفروضة": "No — no mandatory cybersecurity requirements are imposed",
+        "غير متأكد ولم يتم التحقق": "Not sure; this has not been checked"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -327,6 +448,11 @@
         "أي مخاطبات رسمية من الجهات الرقابية بشأن التصنيف",
         "تراخيص الأنشطة الخاضعة للإشراف",
         "تقارير الالتزام السيبراني السابقة إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "Any official correspondence from regulators about the classification",
+        "Licences for the supervised activities",
+        "Previous cybersecurity compliance reports, if any"
       ],
       "references": [
         {
@@ -342,6 +468,7 @@
     {
       "question_id": "ec_infosec_governance",
       "canonical_text_ar": "ما وضع حوكمة أمن المعلومات في المنشأة من حيث السياسات المعتمدة، ومسؤول أمن المعلومات، والشهادات أو التقييمات المستقلة؟",
+      "canonical_text_en": "What is the state of information security governance in the organization — approved policies, an information security officer, and independent certification or assessment?",
       "type": "enum",
       "options": [
         "سياسات معتمدة ومسؤول محدد وشهادة ISO/IEC 27001 سارية",
@@ -350,6 +477,13 @@
         "يعتمد الأمن بالكامل على مزود المنصة أو الاستضافة",
         "لا توجد سياسات موثقة"
       ],
+      "options_en": {
+        "سياسات معتمدة ومسؤول محدد وشهادة ISO/IEC 27001 سارية": "Approved policies, a named officer, and a valid ISO/IEC 27001 certificate",
+        "سياسات معتمدة ومسؤول محدد دون شهادة": "Approved policies and a named officer, with no certificate",
+        "سياسات جزئية والمسؤولية موزعة على فريق التقنية": "Partial policies, with responsibility spread across the technology team",
+        "يعتمد الأمن بالكامل على مزود المنصة أو الاستضافة": "Security rests entirely on the platform or hosting provider",
+        "لا توجد سياسات موثقة": "There are no documented policies"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -359,6 +493,12 @@
         "قرار تعيين مسؤول أمن المعلومات",
         "شهادة ISO/IEC 27001 أو تقرير تقييم مستقل",
         "اتفاقية مستوى الخدمة مع مزود المنصة أو الاستضافة"
+      ],
+      "evidence_required_en": [
+        "The approved information security policy",
+        "The decision appointing the information security officer",
+        "The ISO/IEC 27001 certificate or an independent assessment report",
+        "The service level agreement with the platform or hosting provider"
       ],
       "references": [
         {
@@ -374,6 +514,7 @@
     {
       "question_id": "ec_technical_controls",
       "canonical_text_ar": "اختر جميع الضوابط التقنية المطبّقة فعلياً على المتجر والأنظمة المساندة.",
+      "canonical_text_en": "Select every technical control actually applied to the store and its supporting systems.",
       "type": "multi_select",
       "options": [
         "التحقق متعدد العوامل للوصول الإداري",
@@ -384,6 +525,15 @@
         "إدارة التحديثات والنسخ الاحتياطي",
         "لا يوجد ضوابط موثقة"
       ],
+      "options_en": {
+        "التحقق متعدد العوامل للوصول الإداري": "Multi-factor authentication for administrative access",
+        "إدارة الصلاحيات ومراجعتها دورياً": "Access rights management, with periodic review",
+        "تشفير البيانات أثناء النقل والتخزين": "Encryption of data in transit and at rest",
+        "تسجيل الأحداث ومراقبتها": "Event logging and monitoring",
+        "فحص الثغرات أو اختبار الاختراق الدوري": "Periodic vulnerability scanning or penetration testing",
+        "إدارة التحديثات والنسخ الاحتياطي": "Patch management and backup",
+        "لا يوجد ضوابط موثقة": "No documented controls"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -393,6 +543,12 @@
         "عينة من مراجعة الصلاحيات",
         "تقرير آخر فحص ثغرات أو اختبار اختراق مع خطة المعالجة",
         "إثبات تفعيل التشفير والنسخ الاحتياطي"
+      ],
+      "evidence_required_en": [
+        "The identity and access management policy",
+        "A sample access rights review",
+        "The most recent vulnerability scan or penetration test report, with the remediation plan",
+        "Evidence that encryption and backup are enabled"
       ],
       "references": [
         {
@@ -408,6 +564,7 @@
     {
       "question_id": "ec_personal_data_inventory",
       "canonical_text_ar": "هل لدى المنشأة حصر موثق للبيانات الشخصية التي تجمعها (بيانات العملاء والعناوين وسلوك التصفح وبيانات المندوبين والموظفين)، مع أساس نظامي واضح للمعالجة وسياسة خصوصية منشورة تتوافق مع نظام حماية البيانات الشخصية؟",
+      "canonical_text_en": "Does the organization keep a documented inventory of the personal data it collects (customer details, addresses, browsing behaviour, courier and employee data), with a clear lawful basis for processing and a published privacy policy that meets the Personal Data Protection Law?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -419,6 +576,12 @@
         "سياسة الخصوصية المنشورة",
         "آليات أخذ الموافقة وسحبها بما فيها موافقات التسويق وملفات التتبع",
         "إجراء الاستجابة لطلبات أصحاب البيانات"
+      ],
+      "evidence_required_en": [
+        "The personal data inventory and its flows",
+        "The published privacy policy",
+        "Mechanisms for giving and withdrawing consent, including marketing consent and tracking cookies",
+        "The procedure for responding to data subject requests"
       ],
       "references": [
         {
@@ -438,6 +601,7 @@
     {
       "question_id": "ec_data_residency",
       "canonical_text_ar": "أين تُستضاف بيانات العملاء وأنظمة المتجر، وهل تُنقل بيانات شخصية خارج المملكة (منصات سحابية، أدوات تحليلات وتسويق، مراكز اتصال، أو شركات مجموعة)؟",
+      "canonical_text_en": "Where are customer data and the store's systems hosted, and is personal data transferred outside the Kingdom (cloud platforms, analytics and marketing tools, call centres, or group companies)?",
       "type": "enum",
       "options": [
         "الاستضافة والمعالجة داخل المملكة بالكامل",
@@ -446,6 +610,13 @@
         "نموذج مختلط",
         "غير معروف بدقة"
       ],
+      "options_en": {
+        "الاستضافة والمعالجة داخل المملكة بالكامل": "Hosting and processing entirely inside the Kingdom",
+        "استضافة داخل المملكة مع أدوات خارجية للتحليلات أو التسويق": "Hosted inside the Kingdom, with external analytics or marketing tools",
+        "استضافة خارج المملكة لدى مزود سحابي عالمي": "Hosted outside the Kingdom with a global cloud provider",
+        "نموذج مختلط": "A mixed model",
+        "غير معروف بدقة": "Not known precisely"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -454,6 +625,11 @@
         "قائمة الأنظمة ومواقع الاستضافة",
         "قائمة أدوات التتبع والتحليلات المدمجة",
         "تقييم أثر النقل والضمانات التعاقدية مع الجهات المستقبِلة"
+      ],
+      "evidence_required_en": [
+        "The list of systems and their hosting locations",
+        "A list of the embedded tracking and analytics tools",
+        "The transfer impact assessment and the contractual safeguards with the recipients"
       ],
       "references": [
         {
@@ -469,6 +645,7 @@
     {
       "question_id": "ec_pdpl_operational",
       "canonical_text_ar": "اختر جميع متطلبات الالتزام التشغيلي بنظام حماية البيانات الشخصية المطبّقة حالياً.",
+      "canonical_text_en": "Select every operational Personal Data Protection Law requirement that is currently in place.",
       "type": "multi_select",
       "options": [
         "تعيين مسؤول لحماية البيانات الشخصية",
@@ -478,6 +655,14 @@
         "سياسة الاحتفاظ بالبيانات وإتلافها",
         "لا شيء مما سبق"
       ],
+      "options_en": {
+        "تعيين مسؤول لحماية البيانات الشخصية": "A personal data protection officer appointed",
+        "سجل أنشطة معالجة البيانات الشخصية": "A record of personal data processing activities",
+        "إجراء موثق للإشعار عن حوادث تسريب البيانات": "A documented data breach notification procedure",
+        "تقييم أثر حماية البيانات للمنتجات والخدمات الجديدة": "Data protection impact assessment for new products and services",
+        "سياسة الاحتفاظ بالبيانات وإتلافها": "A data retention and destruction policy",
+        "لا شيء مما سبق": "None of the above"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -487,6 +672,12 @@
         "سجل أنشطة المعالجة",
         "إجراء الاستجابة لحوادث تسريب البيانات",
         "نموذج تقييم الأثر وسياسة الاحتفاظ والإتلاف"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the data protection officer, if any",
+        "The record of processing activities",
+        "The procedure for responding to data breach incidents",
+        "The impact assessment template and the retention and destruction policy"
       ],
       "references": [
         {
@@ -510,6 +701,7 @@
     {
       "question_id": "ec_business_continuity",
       "canonical_text_ar": "ما مستوى جاهزية المنشأة لاستمرارية الأعمال والتعافي من الكوارث، بما يشمل النسخ الاحتياطي واختباره، وأهداف زمن التعافي، وخطة التعامل مع انقطاع المتجر أو مزود الاستضافة في مواسم الذروة؟",
+      "canonical_text_en": "How ready is the organization for business continuity and disaster recovery — including backups and their testing, recovery time objectives, and a plan for the store or the hosting provider going down in peak season?",
       "type": "enum",
       "options": [
         "خطة استمرارية وتعافي معتمدة ومختبرة دورياً",
@@ -517,6 +709,12 @@
         "الاعتماد الكامل على مزود المنصة دون تحقق أو اختبار",
         "لا يوجد ترتيبات موثقة"
       ],
+      "options_en": {
+        "خطة استمرارية وتعافي معتمدة ومختبرة دورياً": "An approved continuity and recovery plan, tested regularly",
+        "نسخ احتياطي منتظم دون خطة استمرارية موثقة": "Regular backups, with no documented continuity plan",
+        "الاعتماد الكامل على مزود المنصة دون تحقق أو اختبار": "Complete reliance on the platform provider, with no verification or testing",
+        "لا يوجد ترتيبات موثقة": "There are no documented arrangements"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -526,6 +724,12 @@
         "تحليل الأثر على الأعمال وأهداف RTO/RPO",
         "تقارير اختبار الاستعادة الأخيرة",
         "اتفاقيات مستوى الخدمة مع مزودي الاستضافة"
+      ],
+      "evidence_required_en": [
+        "The business continuity plan and the recovery plan",
+        "The business impact analysis and the RTO/RPO targets",
+        "The most recent restore test reports",
+        "Service level agreements with the hosting providers"
       ],
       "references": [
         {
@@ -541,6 +745,7 @@
     {
       "question_id": "ec_third_party",
       "canonical_text_ar": "هل يوجد سجل معتمد للأطراف الخارجية (مزودو المنصة والاستضافة والدفع والتوصيل والتسويق، والبائعون في السوق الإلكتروني إن وُجد) يتضمن تقييماً للمخاطر قبل التعاقد وبنوداً تعاقدية للسرية وحماية البيانات الشخصية والإشعار عن الحوادث؟",
+      "canonical_text_en": "Is there an approved register of third parties (platform, hosting, payment, delivery and marketing providers, and marketplace sellers where applicable) that includes pre-contract risk assessment and contractual clauses on confidentiality, personal data protection and incident notification?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -552,6 +757,12 @@
         "نماذج تقييم المورّدين قبل التعاقد",
         "عينة من العقود متضمنة بنود حماية البيانات والسرية",
         "إجراءات تأهيل البائعين والتحقق من سجلاتهم التجارية"
+      ],
+      "evidence_required_en": [
+        "The third party register",
+        "Pre-contract supplier assessment forms",
+        "A sample of contracts including the data protection and confidentiality clauses",
+        "Seller onboarding procedures and verification of their commercial registrations"
       ],
       "references": [
         {
@@ -571,6 +782,7 @@
     {
       "question_id": "ec_records_retention",
       "canonical_text_ar": "كيف تُدار الوثائق والسجلات في المنشأة من حيث الاعتماد والإصدار والحفظ، وما مدة الاحتفاظ المطبقة بسجلات الطلبات والفواتير وعقود العملاء وبيانات المستهلكين؟",
+      "canonical_text_en": "How are documents and records managed in the organization — approval, versioning and storage — and what retention period applies to order records, invoices, customer contracts and consumer data?",
       "type": "text",
       "options": [],
       "required": false,
@@ -581,6 +793,11 @@
         "إجراء ضبط الوثائق والسجلات",
         "جدول مدد الاحتفاظ والإتلاف",
         "قائمة السياسات المعتمدة مع تواريخ الإصدار والمراجعة"
+      ],
+      "evidence_required_en": [
+        "The document and records control procedure",
+        "The retention and destruction schedule",
+        "The list of approved policies with their issue and review dates"
       ],
       "references": [
         {
@@ -600,6 +817,7 @@
     {
       "question_id": "ec_compliance_monitoring",
       "canonical_text_ar": "ما آليات مراقبة الامتثال المطبقة حالياً (مراجعة داخلية، مؤشرات أداء، متابعة تحديثات الأنظمة، ومعالجة بلاغات وشكاوى المستهلكين الواردة عبر القنوات الرسمية)، ومن الجهة المسؤولة عنها؟",
+      "canonical_text_en": "What compliance monitoring is in place today (internal review, performance indicators, tracking regulatory updates, and handling consumer reports and complaints received through the official channels), and who is responsible for it?",
       "type": "enum",
       "options": [
         "وظيفة امتثال أو مراجعة داخلية مستقلة مع تقارير دورية",
@@ -607,6 +825,12 @@
         "متابعة عند ورود ملاحظة أو بلاغ فقط",
         "لا توجد آلية مراقبة"
       ],
+      "options_en": {
+        "وظيفة امتثال أو مراجعة داخلية مستقلة مع تقارير دورية": "An independent compliance or internal review function, with periodic reports",
+        "مسؤولية مسندة لأحد المديرين دون خطة مراجعة موثقة": "The duty assigned to one of the managers, with no documented review plan",
+        "متابعة عند ورود ملاحظة أو بلاغ فقط": "Follow-up only when a finding or a report comes in",
+        "لا توجد آلية مراقبة": "There is no monitoring mechanism"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -616,6 +840,12 @@
         "سجل شكاوى المستهلكين وإجراءات المعالجة والمدد الزمنية",
         "مؤشرات أداء الامتثال",
         "سجل المخالفات أو الغرامات السابقة إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The internal review plan and its reports",
+        "The consumer complaints register, the handling procedures and the timeframes",
+        "The compliance performance indicators",
+        "The register of past violations or fines, if any"
       ],
       "references": [
         {

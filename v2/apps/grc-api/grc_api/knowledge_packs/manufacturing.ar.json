@@ -7,6 +7,7 @@
     {
       "question_id": "cm_industrial_licence",
       "canonical_text_ar": "ما مرحلة الترخيص الصناعي للمنشأة حالياً، وهل النشاط الإنتاجي القائم فعلياً يطابق ما يسمح به الترخيص؟",
+      "canonical_text_en": "What stage is the organization's industrial licence at, and does the production actually taking place match what the licence permits?",
       "type": "enum",
       "options": [
         "ترخيص في مرحلة الإنتاج ساري، والمنتجات القائمة مطابقة لما يسمح به",
@@ -15,6 +16,13 @@
         "الترخيص منتهٍ أو قيد التجديد حالياً",
         "الإنتاج قائم دون ترخيص صناعي في مرحلة الإنتاج"
       ],
+      "options_en": {
+        "ترخيص في مرحلة الإنتاج ساري، والمنتجات القائمة مطابقة لما يسمح به": "A production-stage licence in force, and the current products match what it permits",
+        "ترخيص في مرحلة الإنتاج ساري، لكن أُضيفت منتجات دون تحديث الترخيص": "A production-stage licence in force, but products have been added without updating it",
+        "الترخيص في مرحلة الإنشاء والإنتاج التجريبي جارٍ": "The licence is at construction stage and trial production is under way",
+        "الترخيص منتهٍ أو قيد التجديد حالياً": "The licence has expired or is currently being renewed",
+        "الإنتاج قائم دون ترخيص صناعي في مرحلة الإنتاج": "Production is running without a production-stage industrial licence"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -24,6 +32,12 @@
         "قائمة المنتجات المصرّح بها مقابل المنتجة فعلياً",
         "السجل التجاري وأنشطة التصنيع المدوَّنة",
         "موافقات الوزارة على أي توسعة أو تغيير منتجات"
+      ],
+      "evidence_required_en": [
+        "The industrial licence, its stage and its validity date",
+        "The list of permitted products against those actually produced",
+        "The commercial registration and the manufacturing activities recorded in it",
+        "The Ministry's approvals for any expansion or change of products"
       ],
       "references": [
         {
@@ -39,6 +53,7 @@
     {
       "question_id": "cm_operating_permits",
       "canonical_text_ar": "ما وضع التصاريح والتراخيص التشغيلية المطلوبة لنطاق النشاط الصناعي، وهل هي سارية ومطابقة للموقع وخطوط الإنتاج الحالية مع الالتزام بمتطلبات الرصد والإبلاغ البيئي؟",
+      "canonical_text_en": "What is the position of the operating permits and licences required for the scope of the industrial activity — are they in force and matched to the site and the current production lines, with compliance with environmental monitoring and reporting requirements?",
       "type": "enum",
       "options": [
         "جميع التصاريح التشغيلية سارية ومطابقة للموقع والخطوط، مع التزام موثّق بمتطلبات الرصد والإبلاغ البيئي",
@@ -48,6 +63,14 @@
         "بعض المتطلبات التصريحية لم تُحدَّد بعد",
         "لا تتوافر التصاريح التشغيلية المطلوبة"
       ],
+      "options_en": {
+        "جميع التصاريح التشغيلية سارية ومطابقة للموقع والخطوط، مع التزام موثّق بمتطلبات الرصد والإبلاغ البيئي": "Every operating permit is in force and matched to the site and the lines, with documented compliance with environmental monitoring and reporting requirements",
+        "التصاريح سارية ومطابقة دون التزام موثّق بمتطلبات الرصد والإبلاغ": "The permits are in force and matched, with no documented compliance with the monitoring and reporting requirements",
+        "التصاريح سارية لكنها لا تغطي بعض الأنشطة أو خطوط الإنتاج الحالية": "The permits are in force but do not cover some current activities or production lines",
+        "بعض التصاريح منتهٍ أو تحت التجديد والإنتاج مستمر": "Some permits have expired or are being renewed while production continues",
+        "بعض المتطلبات التصريحية لم تُحدَّد بعد": "Some permit requirements have not yet been established",
+        "لا تتوافر التصاريح التشغيلية المطلوبة": "The required operating permits are not in place"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -57,6 +80,12 @@
         "رخصة السلامة السارية من الدفاع المدني",
         "سجلات الرصد البيئي والتقارير المرفوعة للجهة المختصة",
         "مخطط خطوط الإنتاج ومطابقته لنطاق التصاريح"
+      ],
+      "evidence_required_en": [
+        "The operating permits and licences in force and the scope of each",
+        "The Civil Defence safety licence in force",
+        "The environmental monitoring records and the reports submitted to the competent authority",
+        "The production line layout and its match to the scope of the permits"
       ],
       "references": [
         {
@@ -76,6 +105,7 @@
     {
       "question_id": "cm_sfda_scope",
       "canonical_text_ar": "هل تنتج المنشأة منتجات تخضع لإشراف الهيئة العامة للغذاء والدواء، مثل الأغذية والمياه أو الأدوية أو المستحضرات أو الأجهزة الطبية؟",
+      "canonical_text_en": "Does the organization produce goods regulated by the Saudi Food and Drug Authority, such as food and water, medicines, preparations or medical devices?",
       "type": "enum",
       "options": [
         "نعم، أغذية أو مياه",
@@ -84,6 +114,13 @@
         "لا، منتجاتنا لا تخضع لإشراف الهيئة",
         "لم يُحدَّد نطاق الانطباق بعد"
       ],
+      "options_en": {
+        "نعم، أغذية أو مياه": "Yes — food or water",
+        "نعم، أدوية أو مستحضرات أو أجهزة طبية": "Yes — medicines, preparations or medical devices",
+        "نعم، منتجات أخرى خاضعة لإشراف الهيئة": "Yes — other products regulated by the Authority",
+        "لا، منتجاتنا لا تخضع لإشراف الهيئة": "No — our products are not regulated by the Authority",
+        "لم يُحدَّد نطاق الانطباق بعد": "The scope of applicability has not yet been established"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -93,6 +130,12 @@
         "ترخيص المنشأة من الهيئة إن انطبق",
         "شهادات تسجيل المنتجات لدى الهيئة",
         "شهادة نظام سلامة الغذاء أو التصنيع الجيد إن انطبقت"
+      ],
+      "evidence_required_en": [
+        "The list of items produced and their classification",
+        "The Authority's licence for the facility, where applicable",
+        "Product registration certificates with the Authority",
+        "The food safety system or good manufacturing practice certificate, where applicable"
       ],
       "references": [
         {
@@ -104,6 +147,7 @@
     {
       "question_id": "cm_machine_safety",
       "canonical_text_ar": "ما وضع ضوابط سلامة الآلات وخطوط الإنتاج (تحصين الأجزاء المتحركة، ومفاتيح الإيقاف الاضطراري، وإجراء عزل الطاقة قبل الصيانة)؟",
+      "canonical_text_en": "What is the state of machine and production line safety controls (guarding moving parts, emergency stop switches, and an energy isolation procedure before maintenance)?",
       "type": "enum",
       "options": [
         "تحصين كامل وإيقاف اضطراري مُختبَر وإجراء موثّق لعزل الطاقة قبل أي تدخل",
@@ -112,6 +156,13 @@
         "يُعتمد على خبرة المشغّلين وتعليمات شفهية",
         "لا توجد ضوابط سلامة على الآلات"
       ],
+      "options_en": {
+        "تحصين كامل وإيقاف اضطراري مُختبَر وإجراء موثّق لعزل الطاقة قبل أي تدخل": "Full guarding, tested emergency stops, and a documented energy isolation procedure before any intervention",
+        "تحصين وإيقاف اضطراري قائم دون إجراء موثّق لعزل الطاقة": "Guarding and emergency stops in place, with no documented energy isolation procedure",
+        "ضوابط مطبّقة على بعض الآلات دون تغطية كل الخطوط": "Controls applied to some machines, not covering every line",
+        "يُعتمد على خبرة المشغّلين وتعليمات شفهية": "Reliance on the operators' experience and verbal instructions",
+        "لا توجد ضوابط سلامة على الآلات": "There are no machine safety controls"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -121,6 +172,12 @@
         "إجراء عزل الطاقة قبل الصيانة ونماذجه",
         "سجل اختبار مفاتيح الإيقاف الاضطراري",
         "سجلات تدريب المشغّلين على سلامة التشغيل"
+      ],
+      "evidence_required_en": [
+        "The machine register and the guarding status of each",
+        "The energy isolation procedure before maintenance and its forms",
+        "The emergency stop switch testing record",
+        "Records of operator training on safe operation"
       ],
       "references": [
         {
@@ -136,6 +193,7 @@
     {
       "question_id": "cm_hazardous_materials",
       "canonical_text_ar": "كيف تُدار المواد الكيميائية والمواد الخطرة الداخلة في الإنتاج ونفاياتها (الحصر، وبطاقات السلامة، والتخزين، والتخلص عبر جهة مرخّصة)؟",
+      "canonical_text_en": "How are the chemicals and hazardous materials used in production and their waste managed (inventory, safety data sheets, storage, and disposal through a licensed party)?",
       "type": "enum",
       "options": [
         "حصر موثّق وبطاقات سلامة وتخزين مفصول وتخلص عبر جهة مرخّصة بمستندات تتبّع",
@@ -144,6 +202,13 @@
         "لا نتعامل مع مواد كيميائية أو خطرة في الإنتاج",
         "لم يجرِ حصر للمواد المستخدمة وتصنيف خطورتها"
       ],
+      "options_en": {
+        "حصر موثّق وبطاقات سلامة وتخزين مفصول وتخلص عبر جهة مرخّصة بمستندات تتبّع": "A documented inventory, safety data sheets, segregated storage, and disposal through a licensed party with tracking documents",
+        "حصر وتخزين منظّم لكن التخلص يتم دون توثيق وجهة التخلص": "An inventory and organised storage, but disposal takes place without recording where it went",
+        "تُدار المواد بمعرفة المشغّلين دون حصر أو بطاقات سلامة": "Materials are handled by the operators, with no inventory and no safety data sheets",
+        "لا نتعامل مع مواد كيميائية أو خطرة في الإنتاج": "We use no chemicals or hazardous materials in production",
+        "لم يجرِ حصر للمواد المستخدمة وتصنيف خطورتها": "The materials used and their hazard classification have not been inventoried"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -153,6 +218,12 @@
         "بطاقات السلامة للمواد",
         "ترخيص جهة التخلص من النفايات الخطرة",
         "مستندات تتبّع النفايات ووجهة التخلص"
+      ],
+      "evidence_required_en": [
+        "The inventory of chemicals used and their hazard classification",
+        "The safety data sheets for the materials",
+        "The licence of the hazardous waste disposal contractor",
+        "The waste tracking documents and the disposal destination"
       ],
       "references": [
         {
@@ -168,6 +239,7 @@
     {
       "question_id": "cm_incident_reporting",
       "canonical_text_ar": "كيف تُدار إصابات العمل والحوادث القريبة من الوقوع في المصنع، من حيث الإبلاغ والتحقيق في السبب الجذري ومتابعة الإجراءات التصحيحية؟",
+      "canonical_text_en": "How are workplace injuries and near misses in the plant managed — reporting, root cause investigation, and follow-up of corrective actions?",
       "type": "enum",
       "options": [
         "إبلاغ إلزامي موثّق مع تحقيق في السبب الجذري ومتابعة الإجراءات حتى الإغلاق",
@@ -176,6 +248,13 @@
         "تُعالَج الحوادث في الموقع دون توثيق",
         "لا يوجد إجراء للإبلاغ عن الحوادث"
       ],
+      "options_en": {
+        "إبلاغ إلزامي موثّق مع تحقيق في السبب الجذري ومتابعة الإجراءات حتى الإغلاق": "Mandatory documented reporting, with root cause investigation and follow-up of the actions to closure",
+        "إبلاغ وتحقيق موثّقان دون متابعة موثّقة لإغلاق الإجراءات التصحيحية": "Documented reporting and investigation, with no documented follow-up to close the corrective actions",
+        "يُبلَّغ عن الإصابات الجسيمة فقط دون الحوادث القريبة من الوقوع": "Only serious injuries are reported, not near misses",
+        "تُعالَج الحوادث في الموقع دون توثيق": "Incidents are dealt with on site, without documentation",
+        "لا يوجد إجراء للإبلاغ عن الحوادث": "There is no incident reporting procedure"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -185,6 +264,12 @@
         "سجل الإصابات والحوادث القريبة من الوقوع",
         "تقارير تحقيق وحالة إغلاق الإجراءات التصحيحية",
         "بلاغات إصابات العمل المقدَّمة للتأمينات الاجتماعية"
+      ],
+      "evidence_required_en": [
+        "The incident reporting and investigation procedure",
+        "The register of injuries and near misses",
+        "Investigation reports and the closure status of the corrective actions",
+        "Work injury reports submitted to the General Organization for Social Insurance"
       ],
       "references": [
         {
@@ -200,6 +285,7 @@
     {
       "question_id": "cm_product_conformity",
       "canonical_text_ar": "هل مُنتجات المنشأة الخاضعة للوائح الفنية مسجَّلة ولها شهادات تقويم مطابقة سارية قبل طرحها في السوق؟",
+      "canonical_text_en": "Are the organization's products that fall under technical regulations registered, with valid conformity assessment certificates, before being placed on the market?",
       "type": "enum",
       "options": [
         "كل المنتجات الخاضعة مسجَّلة ولها شهادات مطابقة سارية ويُتابَع تجديدها",
@@ -208,6 +294,13 @@
         "لم يجرِ تحديد أي منتجاتنا يخضع للوائح فنية",
         "منتجات خاضعة تُطرح دون تسجيل أو شهادة مطابقة"
       ],
+      "options_en": {
+        "كل المنتجات الخاضعة مسجَّلة ولها شهادات مطابقة سارية ويُتابَع تجديدها": "Every regulated product is registered with conformity certificates in force, and their renewal is tracked",
+        "المنتجات مسجَّلة لكن بعض الشهادات منتهٍ سريانها": "The products are registered, but some certificates have expired",
+        "التسجيل يتم عند الطلب أو عند التصدير فقط": "Registration happens on request or only for export",
+        "لم يجرِ تحديد أي منتجاتنا يخضع للوائح فنية": "It has not been established which of our products fall under technical regulations",
+        "منتجات خاضعة تُطرح دون تسجيل أو شهادة مطابقة": "Regulated products are placed on the market without registration or a conformity certificate"
+      },
       "required": true,
       "category": "operations",
       "importance": "critical",
@@ -217,6 +310,12 @@
         "شهادات تقويم المطابقة وتواريخ سريانها",
         "سجل تسجيل المنتجات في المنصة المعتمدة",
         "تقارير الفحص من جهة تقويم مطابقة معتمدة"
+      ],
+      "evidence_required_en": [
+        "The list of products and the technical regulations that apply to them",
+        "The conformity assessment certificates and their validity dates",
+        "The record of product registration on the approved platform",
+        "Test reports from an accredited conformity assessment body"
       ],
       "references": [
         {
@@ -232,6 +331,7 @@
     {
       "question_id": "cm_nonconformity_control",
       "canonical_text_ar": "كيف يُتعامل مع المنتج غير المطابق المكتشَف أثناء الإنتاج أو الفحص النهائي (العزل، والقرار، ومنع الخلط مع المطابق)؟",
+      "canonical_text_en": "How is non-conforming product found during production or final inspection handled (segregation, the decision, and preventing it from being mixed with conforming product)?",
       "type": "enum",
       "options": [
         "عزل مادي موثّق ومنطقة حجر محددة وقرار معتمد لكل حالة مع سجل",
@@ -239,6 +339,12 @@
         "يُعاد التشغيل أو الفرز دون توثيق أو منطقة حجر محددة",
         "لا يوجد إجراء لضبط المنتج غير المطابق"
       ],
+      "options_en": {
+        "عزل مادي موثّق ومنطقة حجر محددة وقرار معتمد لكل حالة مع سجل": "Documented physical segregation, a defined quarantine area, and an approved decision for each case with a register",
+        "يُعزَل المنتج غير المطابق دون سجل موثّق للقرارات": "Non-conforming product is segregated, with no documented record of the decisions",
+        "يُعاد التشغيل أو الفرز دون توثيق أو منطقة حجر محددة": "It is reworked or sorted, with no documentation and no defined quarantine area",
+        "لا يوجد إجراء لضبط المنتج غير المطابق": "There is no procedure for controlling non-conforming product"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -248,6 +354,12 @@
         "سجل حالات عدم المطابقة والقرارات المتخذة",
         "توصيف منطقة الحجر وضوابط الوصول إليها",
         "تقارير الفحص النهائي"
+      ],
+      "evidence_required_en": [
+        "The non-conforming product control procedure",
+        "The register of non-conformities and the decisions taken",
+        "The description of the quarantine area and the controls over access to it",
+        "The final inspection reports"
       ],
       "references": [
         {
@@ -263,6 +375,7 @@
     {
       "question_id": "cm_batch_traceability",
       "canonical_text_ar": "هل يمكن للمنشأة تتبّع أي دفعة إنتاج من المادة الخام حتى العميل، وتحديد ما دخل فيها ومتى أُنتجت وأين ذهبت؟",
+      "canonical_text_en": "Can the organization trace any production batch from raw material through to the customer, identifying what went into it, when it was produced, and where it went?",
       "type": "enum",
       "options": [
         "تتبّع كامل موثّق من المادة الخام إلى العميل ويُختبَر دورياً",
@@ -270,6 +383,12 @@
         "تتبّع تقديري يعتمد على تواريخ الإنتاج والسجلات الورقية",
         "لا يمكن تتبّع الدفعات"
       ],
+      "options_en": {
+        "تتبّع كامل موثّق من المادة الخام إلى العميل ويُختبَر دورياً": "Full documented traceability from raw material to customer, tested periodically",
+        "تتبّع موثّق للمنتج النهائي دون ربطه بدفعات المواد الخام": "Documented traceability of the finished product, without linking it to raw material batches",
+        "تتبّع تقديري يعتمد على تواريخ الإنتاج والسجلات الورقية": "Approximate traceability based on production dates and paper records",
+        "لا يمكن تتبّع الدفعات": "Batches cannot be traced"
+      },
       "required": true,
       "category": "operations",
       "importance": "critical",
@@ -279,6 +398,12 @@
         "سجل إنتاج لدفعة محددة",
         "سجلات التوزيع والعملاء لتلك الدفعة",
         "نتيجة آخر اختبار لتتبّع دفعة"
+      ],
+      "evidence_required_en": [
+        "The batch numbering system and its link to the raw materials",
+        "The production record for a specific batch",
+        "The distribution and customer records for that batch",
+        "The result of the most recent batch traceability test"
       ],
       "references": [
         {
@@ -294,6 +419,7 @@
     {
       "question_id": "cm_product_recall",
       "canonical_text_ar": "هل يوجد إجراء معتمد لسحب أو استدعاء منتج بعد طرحه في السوق، يحدد المسؤول وقنوات إبلاغ العملاء والجهة المختصة؟",
+      "canonical_text_en": "Is there an approved procedure for withdrawing or recalling a product after it has been placed on the market, naming the responsible person and the channels for informing customers and the competent authority?",
       "type": "enum",
       "options": [
         "إجراء معتمد بمسؤول محدد وقنوات إبلاغ وجرى اختباره أو تطبيقه فعلياً",
@@ -301,6 +427,12 @@
         "يُعالَج الأمر عند وقوعه بالتنسيق مع الموزّعين",
         "لا يوجد إجراء للسحب أو الاستدعاء"
       ],
+      "options_en": {
+        "إجراء معتمد بمسؤول محدد وقنوات إبلاغ وجرى اختباره أو تطبيقه فعلياً": "An approved procedure with a named owner and notification channels, that has been tested or actually used",
+        "إجراء معتمد مكتوب لم يُختبر ولم يُطبَّق": "A written approved procedure that has never been tested or used",
+        "يُعالَج الأمر عند وقوعه بالتنسيق مع الموزّعين": "It is dealt with when it happens, in coordination with the distributors",
+        "لا يوجد إجراء للسحب أو الاستدعاء": "There is no withdrawal or recall procedure"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -310,6 +442,12 @@
         "مصفوفة الإبلاغ للعملاء والجهات المختصة",
         "سجل أي حالة سحب سابقة ونتائجها",
         "قوائم الموزّعين ومنافذ البيع"
+      ],
+      "evidence_required_en": [
+        "The approved withdrawal and recall procedure",
+        "The notification matrix for customers and the competent authorities",
+        "The record of any previous recall and its outcome",
+        "The lists of distributors and points of sale"
       ],
       "references": [
         {
@@ -325,6 +463,7 @@
     {
       "question_id": "cm_preventive_maintenance",
       "canonical_text_ar": "ما وضع الصيانة الوقائية للمعدات وخطوط الإنتاج، ومعايرة أجهزة القياس والفحص المستخدمة في ضبط الجودة؟",
+      "canonical_text_en": "What is the state of preventive maintenance for equipment and production lines, and of calibration of the measuring and inspection devices used in quality control?",
       "type": "enum",
       "options": [
         "خطة صيانة وقائية معتمدة تُنفَّذ بجدول موثّق مع معايرة دورية لأجهزة القياس",
@@ -332,6 +471,12 @@
         "تُنفَّذ الصيانة عند الأعطال فقط",
         "لا توجد خطة صيانة"
       ],
+      "options_en": {
+        "خطة صيانة وقائية معتمدة تُنفَّذ بجدول موثّق مع معايرة دورية لأجهزة القياس": "An approved preventive maintenance plan carried out to a documented schedule, with periodic calibration of the measuring devices",
+        "خطة صيانة وقائية قائمة دون معايرة موثّقة لأجهزة القياس": "A preventive maintenance plan in place, with no documented calibration of the measuring devices",
+        "تُنفَّذ الصيانة عند الأعطال فقط": "Maintenance is carried out only on breakdown",
+        "لا توجد خطة صيانة": "There is no maintenance plan"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -341,6 +486,12 @@
         "سجلات معايرة أجهزة القياس وشهاداتها",
         "سجل الأعطال وزمن التوقف",
         "تقارير الصيانة لآخر فترة"
+      ],
+      "evidence_required_en": [
+        "The preventive maintenance plan and its schedule",
+        "The calibration records for the measuring devices and their certificates",
+        "The breakdown and downtime register",
+        "The maintenance reports for the most recent period"
       ],
       "references": [
         {
@@ -356,6 +507,7 @@
     {
       "question_id": "cm_ot_security",
       "canonical_text_ar": "هل لدى المنشأة أنظمة تشغيلية أو أنظمة تحكم صناعي، وهل تنطبق عليها متطلبات ضوابط الأمن السيبراني للأنظمة التشغيلية بحسب تصنيف المنشأة ونطاقها؟",
+      "canonical_text_en": "Does the organization have operational technology or industrial control systems, and do the operational technology cybersecurity control requirements apply to them given the organization's classification and scope?",
       "type": "enum",
       "options": [
         "الانطباق قائم ومتطلبات الضوابط مطبّقة مع فصل موثّق لبيئة التحكم ومراقبة مستمرة",
@@ -365,6 +517,14 @@
         "لا توجد أنظمة تشغيلية أو تحكم صناعي",
         "لم يُحسم نطاق الانطباق ولا حصر لأنظمة التحكم"
       ],
+      "options_en": {
+        "الانطباق قائم ومتطلبات الضوابط مطبّقة مع فصل موثّق لبيئة التحكم ومراقبة مستمرة": "They apply, and the control requirements are implemented with documented segregation of the control environment and continuous monitoring",
+        "الانطباق قائم وتطبيق واسع مع فجوات محددة وخطة معالجة موثّقة": "They apply, implementation is broad, with identified gaps and a documented remediation plan",
+        "الانطباق قائم والتطبيق جزئي أو الضوابط غير مكتملة": "They apply, and implementation is partial or the controls are incomplete",
+        "توجد أنظمة تشغيلية أو تحكم صناعي ولا تنطبق عليها الضوابط": "Operational or industrial control systems exist and the controls do not apply to them",
+        "لا توجد أنظمة تشغيلية أو تحكم صناعي": "There are no operational or industrial control systems",
+        "لم يُحسم نطاق الانطباق ولا حصر لأنظمة التحكم": "Neither the scope of applicability nor an inventory of the control systems has been settled"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -374,6 +534,12 @@
         "تصنيف المنشأة لدى الهيئة الوطنية للأمن السيبراني إن وُجد",
         "مخطط الشبكة وفصل بيئة التحكم عن بيئة المكاتب",
         "تقرير تقييم الالتزام بالضوابط إن انطبقت"
+      ],
+      "evidence_required_en": [
+        "An inventory of the operational and industrial control systems",
+        "The organization's classification with the National Cybersecurity Authority, if any",
+        "The network diagram and the segregation of the control environment from the office environment",
+        "The compliance assessment report against the controls, where they apply"
       ],
       "references": [
         {
@@ -389,6 +555,7 @@
     {
       "question_id": "cm_raw_material_suppliers",
       "canonical_text_ar": "كيف يُختار موردو المواد الخام ويُتحقق من مطابقة موادهم قبل إدخالها في الإنتاج؟",
+      "canonical_text_en": "How are raw material suppliers selected, and how is the conformity of their materials verified before they enter production?",
       "type": "enum",
       "options": [
         "تأهيل موثّق للمورّدين وفحص استلام لكل دفعة مع سجل رفض موثّق",
@@ -396,6 +563,12 @@
         "يُعتمد على سمعة المورّد والتعامل السابق",
         "لا يوجد تأهيل ولا فحص عند الاستلام"
       ],
+      "options_en": {
+        "تأهيل موثّق للمورّدين وفحص استلام لكل دفعة مع سجل رفض موثّق": "Documented supplier prequalification and incoming inspection of every batch, with a documented rejection register",
+        "تأهيل موثّق للمورّدين ويُكتفى بشهادة المورّد دون فحص استلام": "Documented supplier prequalification, relying on the supplier's certificate with no incoming inspection",
+        "يُعتمد على سمعة المورّد والتعامل السابق": "Reliance on the supplier's reputation and past dealings",
+        "لا يوجد تأهيل ولا فحص عند الاستلام": "There is no prequalification and no incoming inspection"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -405,6 +578,12 @@
         "شهادات مطابقة المواد الواردة",
         "سجلات فحص الاستلام ونتائجها",
         "سجل رفض المواد غير المطابقة"
+      ],
+      "evidence_required_en": [
+        "The supplier prequalification procedure and the approved supplier list",
+        "Conformity certificates for the incoming materials",
+        "The incoming inspection records and their results",
+        "The register of non-conforming materials rejected"
       ],
       "references": [
         {
@@ -420,6 +599,7 @@
     {
       "question_id": "cm_storage_and_transport",
       "canonical_text_ar": "كيف تُدار ظروف تخزين المواد والمنتجات ونقلها بما يحفظ سلامتها ومطابقتها حتى وصولها للعميل؟",
+      "canonical_text_en": "How are the storage and transport conditions of materials and products managed so that they remain safe and conforming until they reach the customer?",
       "type": "enum",
       "options": [
         "اشتراطات تخزين ونقل موثّقة مع مراقبة الظروف وسجلات للمخالفات",
@@ -427,6 +607,12 @@
         "التخزين والنقل يُداران بالممارسة المتعارف عليها",
         "لا توجد اشتراطات موثّقة"
       ],
+      "options_en": {
+        "اشتراطات تخزين ونقل موثّقة مع مراقبة الظروف وسجلات للمخالفات": "Documented storage and transport requirements, with condition monitoring and records of deviations",
+        "اشتراطات تخزين موثّقة دون ضوابط موثّقة على النقل": "Documented storage requirements, with no documented controls over transport",
+        "التخزين والنقل يُداران بالممارسة المتعارف عليها": "Storage and transport are managed by customary practice",
+        "لا توجد اشتراطات موثّقة": "There are no documented requirements"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -436,6 +622,12 @@
         "سجلات مراقبة ظروف المستودعات",
         "عقود النقل والاشتراطات المفروضة على الناقل",
         "سجل شكاوى العملاء المتعلقة بحالة المنتج"
+      ],
+      "evidence_required_en": [
+        "The storage requirements for each item and its conditions",
+        "The warehouse condition monitoring records",
+        "The transport contracts and the requirements imposed on the carrier",
+        "The register of customer complaints about product condition"
       ],
       "references": [
         {
@@ -451,6 +643,7 @@
     {
       "question_id": "cm_production_records",
       "canonical_text_ar": "كيف تُحفظ سجلات الإنتاج والفحص والمعايرة، وما مدة الاحتفاظ المعتمدة بها بعد شحن المنتج؟",
+      "canonical_text_en": "How are production, inspection and calibration records kept, and what retention period has the organization approved after the product ships?",
       "type": "enum",
       "options": [
         "حفظ مركزي منظّم بصلاحيات محددة وجدول احتفاظ معتمد",
@@ -458,6 +651,12 @@
         "السجلات موزّعة بين الخطوط وملفات المشرفين",
         "لا يوجد نظام لحفظ سجلات الإنتاج"
       ],
+      "options_en": {
+        "حفظ مركزي منظّم بصلاحيات محددة وجدول احتفاظ معتمد": "Organised central storage with defined permissions and an approved retention schedule",
+        "حفظ مركزي منظّم دون جدول احتفاظ معتمد": "Organised central storage, with no approved retention schedule",
+        "السجلات موزّعة بين الخطوط وملفات المشرفين": "Records are spread between the lines and the supervisors' files",
+        "لا يوجد نظام لحفظ سجلات الإنتاج": "There is no system for keeping production records"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -467,6 +666,12 @@
         "سجلات إنتاج وفحص لدفعة محددة",
         "شهادات معايرة أجهزة القياس",
         "ضوابط الوصول إلى السجلات"
+      ],
+      "evidence_required_en": [
+        "The records management policy and the retention schedule",
+        "Production and inspection records for a specific batch",
+        "Calibration certificates for the measuring devices",
+        "The controls over access to the records"
       ],
       "references": [
         {
@@ -482,6 +687,7 @@
     {
       "question_id": "cm_industrial_ip",
       "canonical_text_ar": "كيف تُحمى التركيبات والوصفات الصناعية وأسرار العمليات الإنتاجية داخل المنشأة ومع الأطراف الخارجية؟",
+      "canonical_text_en": "How are industrial formulations, recipes and process secrets protected inside the organization and with third parties?",
       "type": "enum",
       "options": [
         "تصنيف معتمد للمعلومات وفصل للوصول واتفاقيات سرية موقّعة مع المنسوبين والأطراف",
@@ -489,6 +695,12 @@
         "السرية ممارسة متعارف عليها دون التزام مكتوب",
         "لا توجد ضوابط لحماية التركيبات وأسرار العمليات"
       ],
+      "options_en": {
+        "تصنيف معتمد للمعلومات وفصل للوصول واتفاقيات سرية موقّعة مع المنسوبين والأطراف": "Approved information classification, separated access, and confidentiality agreements signed with staff and third parties",
+        "اتفاقيات سرية موقّعة دون تصنيف للمعلومات أو فصل للوصول": "Signed confidentiality agreements, with no information classification and no separated access",
+        "السرية ممارسة متعارف عليها دون التزام مكتوب": "Confidentiality is customary practice, with no written obligation",
+        "لا توجد ضوابط لحماية التركيبات وأسرار العمليات": "There are no controls protecting the formulations and process secrets"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -498,6 +710,12 @@
         "اتفاقيات السرية الموقّعة من المنسوبين",
         "بنود السرية في عقود الموردين والمقاولين",
         "سجل من يملك الوصول إلى وثائق التركيبات"
+      ],
+      "evidence_required_en": [
+        "The information classification policy and the access controls over the formulations",
+        "The confidentiality agreements signed by staff",
+        "The confidentiality clauses in the supplier and contractor contracts",
+        "The register of who has access to the formulation documents"
       ],
       "references": [
         {
@@ -513,6 +731,7 @@
     {
       "question_id": "cm_authority_matrix",
       "canonical_text_ar": "هل يوجد هيكل تنظيمي معتمد ومصفوفة صلاحيات تحدد من يعتمد إيقاف خط إنتاج أو الإفراج عن دفعة أو تغيير مواصفة منتج؟",
+      "canonical_text_en": "Is there an approved organizational structure and an authority matrix setting out who approves stopping a production line, releasing a batch, or changing a product specification?",
       "type": "enum",
       "options": [
         "مصفوفة صلاحيات معتمدة تشمل قرارات الإيقاف والإفراج وتغيير المواصفات",
@@ -520,6 +739,12 @@
         "الصلاحيات تُمارس عرفاً بحسب الأقدمية",
         "لا يوجد توثيق للصلاحيات"
       ],
+      "options_en": {
+        "مصفوفة صلاحيات معتمدة تشمل قرارات الإيقاف والإفراج وتغيير المواصفات": "An approved authority matrix covering stoppage, release and specification change decisions",
+        "مصفوفة صلاحيات موثّقة لا تغطي قرارات الجودة والإفراج": "A documented authority matrix that does not cover quality and release decisions",
+        "الصلاحيات تُمارس عرفاً بحسب الأقدمية": "Authorities are exercised by custom, according to seniority",
+        "لا يوجد توثيق للصلاحيات": "Authorities are not documented at all"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -529,6 +754,12 @@
         "مصفوفة الصلاحيات وحدودها",
         "نماذج من قرارات إفراج عن دفعات",
         "سجل قرارات إيقاف الخطوط وأسبابها"
+      ],
+      "evidence_required_en": [
+        "The approved organizational structure",
+        "The authority matrix and its limits",
+        "Samples of batch release decisions",
+        "The register of line stoppage decisions and their reasons"
       ],
       "references": [
         {
@@ -544,6 +775,7 @@
     {
       "question_id": "cm_risk_register",
       "canonical_text_ar": "هل يوجد سجل مخاطر معتمد يغطي مخاطر المصنع (إصابات الآلات، وتوقف الخطوط، وعدم مطابقة المنتج، وانقطاع المواد الخام، والحوادث البيئية) مع مالك وخطة معالجة لكل خطر؟",
+      "canonical_text_en": "Is there an approved risk register covering the plant's risks (machine injuries, line stoppages, product non-conformity, raw material interruption, and environmental incidents), with an owner and a treatment plan for each risk?",
       "type": "enum",
       "options": [
         "سجل معتمد يُراجع دورياً مع مالك وخطة معالجة لكل خطر",
@@ -552,6 +784,13 @@
         "تُدار المخاطر بشكل غير رسمي حسب الحالة",
         "لا يوجد سجل مخاطر"
       ],
+      "options_en": {
+        "سجل معتمد يُراجع دورياً مع مالك وخطة معالجة لكل خطر": "An approved register, reviewed regularly, with an owner and a treatment plan for each risk",
+        "سجل معتمد لكنه لم يُراجع منذ فترة": "An approved register that has not been reviewed for some time",
+        "سجل موثّق لكنه غير معتمد": "A documented register that has not been approved",
+        "تُدار المخاطر بشكل غير رسمي حسب الحالة": "Risk is managed informally, case by case",
+        "لا يوجد سجل مخاطر": "There is no risk register"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -561,6 +800,12 @@
         "محضر آخر مراجعة للسجل",
         "خطط معالجة المخاطر عالية الأثر",
         "وثائق التأمين على المصنع والمعدات إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The approved risk register",
+        "The minutes of the most recent review of the register",
+        "The treatment plans for the high-impact risks",
+        "The insurance policies for the plant and equipment, if any"
       ],
       "references": [
         {
@@ -576,6 +821,7 @@
     {
       "question_id": "cm_production_continuity",
       "canonical_text_ar": "ما الترتيبات القائمة لاستمرار الإنتاج عند تعطل معدة حرجة، أو انقطاع مورّد وحيد لمادة خام، أو انقطاع الطاقة؟",
+      "canonical_text_en": "What arrangements keep production running when critical equipment fails, a sole supplier of a raw material is interrupted, or power is lost?",
       "type": "enum",
       "options": [
         "بدائل محددة وموثّقة للمعدات الحرجة والموردين مع خطة استمرارية مُختبَرة",
@@ -583,6 +829,12 @@
         "ترتيبات غير رسمية تُدبَّر عند وقوع الانقطاع",
         "لا توجد ترتيبات"
       ],
+      "options_en": {
+        "بدائل محددة وموثّقة للمعدات الحرجة والموردين مع خطة استمرارية مُختبَرة": "Named, documented alternatives for the critical equipment and suppliers, with a tested continuity plan",
+        "خطة استمرارية مكتوبة لكنها لم تُختبر عملياً": "A written continuity plan that has not been tested in practice",
+        "ترتيبات غير رسمية تُدبَّر عند وقوع الانقطاع": "Informal arrangements improvised when the interruption happens",
+        "لا توجد ترتيبات": "There are no arrangements"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -592,6 +844,12 @@
         "قائمة الموردين البدلاء المؤهَّلين",
         "خطة استمرارية الإنتاج ونتائج اختبارها",
         "ترتيبات مصدر الطاقة البديل"
+      ],
+      "evidence_required_en": [
+        "The list of critical equipment and the spare parts arrangements",
+        "The list of qualified alternative suppliers",
+        "The production continuity plan and its test results",
+        "The standby power arrangements"
       ],
       "references": [
         {
@@ -607,6 +865,7 @@
     {
       "question_id": "cm_internal_audit",
       "canonical_text_ar": "هل تُنفَّذ مراجعة داخلية دورية على عمليات الإنتاج والجودة والسلامة، مع متابعة موثّقة لإغلاق الملاحظات؟",
+      "canonical_text_en": "Is periodic internal audit carried out over the production, quality and safety processes, with documented follow-up until the findings are closed?",
       "type": "enum",
       "options": [
         "خطة مراجعة معتمدة تُنفَّذ دورياً مع متابعة موثّقة للملاحظات حتى الإغلاق",
@@ -614,6 +873,12 @@
         "مراجعات متفرقة تسبق زيارات العملاء أو الجهات الرقابية",
         "لا توجد مراجعة داخلية"
       ],
+      "options_en": {
+        "خطة مراجعة معتمدة تُنفَّذ دورياً مع متابعة موثّقة للملاحظات حتى الإغلاق": "An approved audit plan carried out periodically, with documented follow-up of findings to closure",
+        "خطة مراجعة معتمدة لكنها لا تُنفَّذ بدورية منتظمة": "An approved audit plan that is not carried out on a regular cycle",
+        "مراجعات متفرقة تسبق زيارات العملاء أو الجهات الرقابية": "Occasional reviews ahead of customer or regulator visits",
+        "لا توجد مراجعة داخلية": "There is no internal audit"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -623,6 +888,12 @@
         "تقارير المراجعات المنفَّذة",
         "سجل الملاحظات وحالة الإغلاق",
         "محاضر مراجعة الإدارة"
+      ],
+      "evidence_required_en": [
+        "The approved internal audit plan",
+        "The reports of the audits carried out",
+        "The findings register and their closure status",
+        "The management review minutes"
       ],
       "references": [
         {
@@ -638,6 +909,7 @@
     {
       "question_id": "cm_regulatory_inspections",
       "canonical_text_ar": "ما وضع الجهة تجاه زيارات الجهات الرقابية وملحوظاتها (الصناعة، والغذاء والدواء، والمواصفات، والرقابة البيئية، والدفاع المدني)، من حيث سجل الملحوظات وخطط المعالجة وحفظ أدلة الإغلاق؟",
+      "canonical_text_en": "What is the organization's position on regulator visits and their findings (industry, food and drug, standards, environmental oversight, and Civil Defence) — the findings register, the remediation plans, and keeping closure evidence?",
       "type": "enum",
       "options": [
         "سجل موحّد للملحوظات وخطط معالجة بمالك وتاريخ، وأدلة إغلاق محفوظة لكل ملحوظة",
@@ -646,6 +918,13 @@
         "لا توجد آلية لمتابعة ملحوظات الجهات الرقابية",
         "لم تُجرَ أي زيارة رقابية على المصنع حتى الآن"
       ],
+      "options_en": {
+        "سجل موحّد للملحوظات وخطط معالجة بمالك وتاريخ، وأدلة إغلاق محفوظة لكل ملحوظة": "A single findings register and remediation plans with an owner and a date, with closure evidence kept for every finding",
+        "تُعالَج الملحوظات وتُغلق دون سجل موحّد أو دون حفظ منتظم لأدلة الإغلاق": "Findings are addressed and closed with no single register, or with no consistent record of closure evidence",
+        "تُعالَج الملحوظات حالة بحالة داخل الإدارة المعنية دون متابعة مركزية": "Findings are addressed case by case within the department concerned, with no central follow-up",
+        "لا توجد آلية لمتابعة ملحوظات الجهات الرقابية": "There is no mechanism for following up regulators' findings",
+        "لم تُجرَ أي زيارة رقابية على المصنع حتى الآن": "No regulator visit to the plant has taken place so far"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -655,6 +934,12 @@
         "خطط المعالجة ومالكوها ومهل التصحيح",
         "أدلة إغلاق الملحوظات والردود المرسلة للجهات",
         "تقارير الزيارات الرقابية السابقة"
+      ],
+      "evidence_required_en": [
+        "The register of regulators' findings and their dates",
+        "The remediation plans, their owners and the correction deadlines",
+        "The closure evidence and the responses sent to the authorities",
+        "The reports of previous regulator visits"
       ],
       "references": [
         {
@@ -666,6 +951,7 @@
     {
       "question_id": "cm_worker_personal_data",
       "canonical_text_ar": "هل يوجد سجل لأنشطة معالجة البيانات الشخصية التي تحتفظ بها المنشأة (بيانات العاملين، والفحوص الطبية المهنية، وبيانات ممثلي العملاء)، مع تحديد الأساس النظامي للمعالجة؟",
+      "canonical_text_en": "Is there a record of the personal data processing activities the organization holds (worker data, occupational medical examinations, and customer representatives' data), identifying the legal basis for processing?",
       "type": "enum",
       "options": [
         "سجل أنشطة معالجة محدَّث مع أساس نظامي محدد لكل نشاط",
@@ -673,6 +959,12 @@
         "سياسة خصوصية معلنة دون سجل أنشطة معالجة",
         "لم يجرِ حصر للبيانات الشخصية التي نعالجها"
       ],
+      "options_en": {
+        "سجل أنشطة معالجة محدَّث مع أساس نظامي محدد لكل نشاط": "A current record of processing activities, with a defined legal basis for each",
+        "سجل موجود لكنه غير محدَّث أو لا يغطي كل البيانات": "A record exists but is out of date, or does not cover all the data",
+        "سياسة خصوصية معلنة دون سجل أنشطة معالجة": "A published privacy policy, with no record of processing activities",
+        "لم يجرِ حصر للبيانات الشخصية التي نعالجها": "The personal data we process has not been inventoried"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -682,6 +974,12 @@
         "الأساس النظامي لكل نشاط معالجة",
         "سياسة الخصوصية المعلنة",
         "ضوابط حفظ الملفات الطبية المهنية"
+      ],
+      "evidence_required_en": [
+        "The record of personal data processing activities",
+        "The legal basis for each processing activity",
+        "The published privacy policy",
+        "The controls over keeping the occupational medical files"
       ],
       "references": [
         {
@@ -697,6 +995,7 @@
     {
       "question_id": "cm_data_breach",
       "canonical_text_ar": "ما إجراءات المنشأة عند تسرّب البيانات الشخصية التي تحتفظ بها أو تلفها أو الوصول غير المشروع إليها (بيانات العاملين، والفحوص الطبية المهنية، وبيانات ممثلي العملاء)، من حيث الاكتشاف والإشعار والتوثيق؟",
+      "canonical_text_en": "What does the organization do when the personal data it holds is leaked, damaged or unlawfully accessed (worker data, occupational medical examinations, customer representatives' data) — detection, notification and documentation?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية، مع سجل وقائع وأدلة معالجة محفوظة",
@@ -704,6 +1003,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الإبلاغ عن حوادث المصنع",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية، مع سجل وقائع وأدلة معالجة محفوظة": "A documented procedure naming the responsible person and the internal deadlines, with an incident register and evidence of handling kept on file",
+        "إجراء موثّق للإشعار دون سجل وقائع أو دون حفظ منتظم لأدلة المعالجة": "A documented notification procedure, with no incident register or no consistent record of how incidents were handled",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الإبلاغ عن حوادث المصنع": "No notification procedure; the incident is handled under the plant incident reporting procedure",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية": "No procedure for handling a personal data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -712,6 +1017,11 @@
         "إجراء الإشعار عن تسرّب البيانات الشخصية والمسؤول عنه",
         "سجل وقائع التسرّب أو الوصول غير المشروع",
         "نماذج الإشعارات وأدلة معالجة الواقعة"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The register of leaks or unlawful access",
+        "Copies of the notifications and evidence of how the incident was handled"
       ],
       "references": [
         {
@@ -723,6 +1033,7 @@
     {
       "question_id": "cm_cross_border",
       "canonical_text_ar": "هل تُنقل بيانات شخصية أو يُفصح عنها لجهة خارج المملكة (أنظمة تخطيط موارد أو تشغيل مستضافة خارجياً، أو دعم فني للمعدات من المصنّع الأصلي، أو شركة أم أو مجموعة خارج المملكة)، وما الضوابط المتبعة؟",
+      "canonical_text_en": "Is personal data transferred or disclosed to a party outside the Kingdom (externally hosted ERP or operations systems, equipment support from the original manufacturer, or a parent company or group outside the Kingdom), and what safeguards are in place?",
       "type": "enum",
       "options": [
         "يقع نقل، وشروط النقل مستوفاة وموثقة ويقتصر على الحد الأدنى اللازم من البيانات",
@@ -731,6 +1042,13 @@
         "لا يقع أي نقل أو إفصاح خارج المملكة، وذلك بعد حصر موثق للأنظمة والمزوّدين",
         "لم يُحصر ما إذا كانت بيانات تُنقل خارج المملكة"
       ],
+      "options_en": {
+        "يقع نقل، وشروط النقل مستوفاة وموثقة ويقتصر على الحد الأدنى اللازم من البيانات": "Transfer occurs, the conditions for transfer are met and documented, and it is limited to the minimum data necessary",
+        "يقع نقل، والضوابط جزئية أو غير موثقة بالكامل": "Transfer occurs, and the safeguards are partial or not fully documented",
+        "يقع نقل دون تقييم أو ضوابط موثقة": "Transfer occurs with no documented assessment or safeguards",
+        "لا يقع أي نقل أو إفصاح خارج المملكة، وذلك بعد حصر موثق للأنظمة والمزوّدين": "No transfer or disclosure outside the Kingdom occurs, confirmed by a documented inventory of the systems and providers",
+        "لم يُحصر ما إذا كانت بيانات تُنقل خارج المملكة": "Whether data is transferred outside the Kingdom has not been inventoried"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -739,6 +1057,11 @@
         "حصر الأنظمة والمزوّدين ومواقع الاستضافة وجلسات الدعم عن بُعد",
         "وثائق استيفاء شروط النقل",
         "الضوابط التعاقدية مع الجهات خارج المملكة"
+      ],
+      "evidence_required_en": [
+        "An inventory of the systems, providers, hosting locations and remote support sessions",
+        "The documents evidencing that the transfer conditions are met",
+        "The contractual safeguards with parties outside the Kingdom"
       ],
       "references": [
         {
@@ -754,6 +1077,7 @@
     {
       "question_id": "cm_commercial_concealment",
       "canonical_text_ar": "هل يُشغَّل أي جزء من نشاط المصنع أو خطوطه بواسطة أشخاص أو جهات تستخدم اسم المنشأة أو ترخيصها دون صفة نظامية (تشغيل خط مقابل نسبة، أو إدارة فعلية من غير الملاك)؟",
+      "canonical_text_en": "Is any part of the plant's activity or any of its lines operated by persons or parties using the organization's name or licence without legal standing (running a line for a share, or effective management by someone other than the owners)?",
       "type": "enum",
       "options": [
         "لا، وكل الخطوط تُدار وتُشغَّل بكوادر المنشأة وبعقود موثّقة",
@@ -761,6 +1085,12 @@
         "توجد ترتيبات تشغيل غير موثّقة مع أطراف خارجية",
         "غير متأكد ولم يجرِ التحقق"
       ],
+      "options_en": {
+        "لا، وكل الخطوط تُدار وتُشغَّل بكوادر المنشأة وبعقود موثّقة": "No — every line is managed and run by the organization's own people under documented contracts",
+        "لا، لكن لا يوجد إجراء موثّق يمنع ذلك أو يكشفه": "No — but there is no documented procedure to prevent or detect it",
+        "توجد ترتيبات تشغيل غير موثّقة مع أطراف خارجية": "There are undocumented operating arrangements with outside parties",
+        "غير متأكد ولم يجرِ التحقق": "Not sure; this has not been verified"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "critical",
@@ -770,6 +1100,12 @@
         "عقود تشغيل الخطوط والعمالة وأطرافها",
         "كشوف الحسابات البنكية للمنشأة",
         "إقرارات الشركاء بعدم وجود ترتيبات تشغيل خارجية"
+      ],
+      "evidence_required_en": [
+        "The effective management structure and the signing authorities",
+        "The line operating and labour contracts and their parties",
+        "The organization's bank statements",
+        "Partners' declarations that there are no outside operating arrangements"
       ],
       "references": [
         {

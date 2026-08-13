@@ -7,6 +7,7 @@
     {
       "question_id": "fs_sama_licence",
       "canonical_text_ar": "ما نوع الترخيص الممنوح للمنشأة من البنك المركزي السعودي (ساما)، وما تاريخ صدوره وحالته الحالية؟",
+      "canonical_text_en": "What type of licence has the Saudi Central Bank (SAMA) granted the organization, when was it issued, and what is its current status?",
       "type": "enum",
       "options": [
         "بنك محلي مرخص (مساهمة سعودية)",
@@ -16,6 +17,14 @@
         "ترخيص قيد الإصدار أو تحت التأسيس",
         "غير ذلك (يُوضح)"
       ],
+      "options_en": {
+        "بنك محلي مرخص (مساهمة سعودية)": "A licensed domestic bank (a Saudi joint stock company)",
+        "فرع بنك أجنبي مرخص للعمل في المملكة": "A branch of a foreign bank licensed to operate in the Kingdom",
+        "بنك رقمي مرخص": "A licensed digital bank",
+        "بنك يعمل وفق نافذة/فروع مصرفية إسلامية": "A bank operating through an Islamic banking window or branches",
+        "ترخيص قيد الإصدار أو تحت التأسيس": "A licence being issued, or under formation",
+        "غير ذلك (يُوضح)": "Other (please specify)"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -25,6 +34,12 @@
         "خطاب الموافقة/شروط الترخيص الملحقة",
         "السجل التجاري والنظام الأساسي",
         "آخر خطابات ساما بشأن تعديل نطاق النشاط"
+      ],
+      "evidence_required_en": [
+        "A copy of the Saudi Central Bank licence",
+        "The approval letter and the licence conditions attached to it",
+        "The commercial registration and the bylaws",
+        "The most recent SAMA letters on amending the scope of activity"
       ],
       "references": [
         {
@@ -40,6 +55,7 @@
     {
       "question_id": "fs_foreign_operations",
       "canonical_text_ar": "اختر جميع أشكال حضور البنك أو عملياته خارج المملكة القائمة أو المعتمدة التي لم يبدأ تشغيلها بعد.",
+      "canonical_text_en": "Select every form of the bank's presence or operations outside the Kingdom that is in place, or that has been approved but not yet started.",
       "type": "multi_select",
       "options": [
         "فروع خارج المملكة",
@@ -49,6 +65,14 @@
         "توسع خارجي معتمد وقيد الإنشاء ولم يبدأ التشغيل بعد",
         "لا يوجد أي حضور أو عمليات خارج المملكة"
       ],
+      "options_en": {
+        "فروع خارج المملكة": "Branches outside the Kingdom",
+        "شركات تابعة أو مشاركة خارج المملكة": "Subsidiaries or associates outside the Kingdom",
+        "مكاتب تمثيل خارج المملكة": "Representative offices outside the Kingdom",
+        "تقديم خدمات عابرة للحدود دون كيان قانوني خارجي": "Providing cross-border services with no legal entity abroad",
+        "توسع خارجي معتمد وقيد الإنشاء ولم يبدأ التشغيل بعد": "An approved overseas expansion under construction that has not started operating",
+        "لا يوجد أي حضور أو عمليات خارج المملكة": "No presence or operations outside the Kingdom"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -58,6 +82,12 @@
         "موافقات البنك المركزي على الفروع أو الشركات التابعة الخارجية",
         "ترتيبات الرقابة الموحّدة إن وُجدت",
         "سياسة الحوكمة على مستوى المجموعة"
+      ],
+      "evidence_required_en": [
+        "The group's legal structure",
+        "SAMA's approvals for the overseas branches or subsidiaries",
+        "The consolidated supervision arrangements, if any",
+        "The group-level governance policy"
       ],
       "references": [
         {
@@ -73,6 +103,7 @@
     {
       "question_id": "fs_cma_status",
       "canonical_text_ar": "هل ينطبق على البنك أي من الحالات التالية المتعلقة بهيئة السوق المالية: إدراج أسهمه في السوق المالية (تداول)، أو ممارسة أنشطة الأوراق المالية عبر شركة تابعة مرخصة كمؤسسة سوق مالية، أو إصدار أدوات دين مدرجة؟",
+      "canonical_text_en": "Does any of the following apply to the bank in relation to the Capital Market Authority: its shares listed on the capital market (Tadawul), carrying on securities activities through a subsidiary licensed as a capital market institution, or issuing listed debt instruments?",
       "type": "enum",
       "options": [
         "مدرج في السوق المالية السعودية",
@@ -81,6 +112,13 @@
         "لديه أدوات دين/صكوك مدرجة فقط",
         "لا ينطبق أي مما سبق"
       ],
+      "options_en": {
+        "مدرج في السوق المالية السعودية": "Listed on the Saudi capital market",
+        "غير مدرج ولكن لديه شركة تابعة مرخصة من هيئة السوق المالية": "Not listed, but has a subsidiary licensed by the Capital Market Authority (CMA)",
+        "مدرج ولديه شركة تابعة مرخصة من هيئة السوق المالية": "Listed and has a subsidiary licensed by the CMA",
+        "لديه أدوات دين/صكوك مدرجة فقط": "Has listed debt instruments or sukuk only",
+        "لا ينطبق أي مما سبق": "None of the above applies"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -90,6 +128,12 @@
         "ترخيص مؤسسة السوق المالية للشركة التابعة",
         "تقرير مجلس الإدارة السنوي الأخير",
         "سياسة الإفصاح المعتمدة"
+      ],
+      "evidence_required_en": [
+        "The listing certificate or the prospectus",
+        "The capital market institution licence for the subsidiary",
+        "The most recent annual board report",
+        "The approved disclosure policy"
       ],
       "references": [
         {
@@ -109,6 +153,7 @@
     {
       "question_id": "fs_sharia_governance",
       "canonical_text_ar": "هل يقدم البنك منتجات أو خدمات مصرفية متوافقة مع الشريعة الإسلامية (بنك إسلامي كامل أو نوافذ إسلامية)، وهل توجد لجنة شرعية معتمدة ووظيفة رقابة وتدقيق شرعي داخلية؟",
+      "canonical_text_en": "Does the bank offer Shariah-compliant banking products or services (a full Islamic bank or Islamic windows), and is there an approved Shariah committee and an internal Shariah control and audit function?",
       "type": "enum",
       "options": [
         "بنك إسلامي كامل مع لجنة شرعية ووظائف رقابة وتدقيق شرعي",
@@ -116,6 +161,12 @@
         "يقدم منتجات متوافقة دون هيكل حوكمة شرعية مكتمل",
         "لا يقدم منتجات متوافقة مع الشريعة"
       ],
+      "options_en": {
+        "بنك إسلامي كامل مع لجنة شرعية ووظائف رقابة وتدقيق شرعي": "A full Islamic bank, with a Shariah committee and Shariah control and audit functions",
+        "بنك تقليدي بنوافذ إسلامية مع لجنة شرعية": "A conventional bank with Islamic windows and a Shariah committee",
+        "يقدم منتجات متوافقة دون هيكل حوكمة شرعية مكتمل": "Offers compliant products without a complete Shariah governance structure",
+        "لا يقدم منتجات متوافقة مع الشريعة": "Does not offer Shariah-compliant products"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -125,6 +176,12 @@
         "الهيكل التنظيمي لوظائف الرقابة والتدقيق الشرعي",
         "تقرير التدقيق الشرعي الداخلي الأخير",
         "سجل القرارات والفتاوى الشرعية"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the Shariah committee members and its terms of reference",
+        "The organizational structure of the Shariah control and audit functions",
+        "The most recent internal Shariah audit report",
+        "The register of Shariah resolutions and fatwas"
       ],
       "references": [
         {
@@ -136,6 +193,7 @@
     {
       "question_id": "fs_board_committees",
       "canonical_text_ar": "اختر جميع اللجان المنبثقة عن مجلس الإدارة القائمة فعلياً حالياً، والتي لكل منها ميثاق معتمد وتقارير دورية موثقة.",
+      "canonical_text_en": "Select every board committee that actually exists today, each with an approved charter and documented periodic reporting.",
       "type": "multi_select",
       "options": [
         "لجنة مراجعة",
@@ -146,6 +204,15 @@
         "لجنة تقنية المعلومات والأمن السيبراني",
         "لا توجد لجان رسمية منبثقة عن المجلس"
       ],
+      "options_en": {
+        "لجنة مراجعة": "Audit committee",
+        "لجنة إدارة المخاطر": "Risk management committee",
+        "لجنة الترشيحات والمكافآت": "Nomination and remuneration committee",
+        "لجنة تنفيذية": "Executive committee",
+        "لجنة الالتزام/مكافحة غسل الأموال": "Compliance / anti-money-laundering committee",
+        "لجنة تقنية المعلومات والأمن السيبراني": "Information technology and cybersecurity committee",
+        "لا توجد لجان رسمية منبثقة عن المجلس": "There are no formal board committees"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -155,6 +222,12 @@
         "محاضر اجتماعات اللجان لآخر 12 شهراً",
         "مصفوفة عضوية اللجان وتصنيف الاستقلالية",
         "الهيكل التنظيمي المعتمد"
+      ],
+      "evidence_required_en": [
+        "The committee charters approved by the board",
+        "The committees' meeting minutes for the past 12 months",
+        "The committee membership matrix and the independence classification",
+        "The approved organizational structure"
       ],
       "references": [
         {
@@ -170,6 +243,7 @@
     {
       "question_id": "fs_governance_framework",
       "canonical_text_ar": "هل يوجد إطار أو دليل حوكمة مكتوب ومعتمد من مجلس الإدارة، ومتى روجع آخر مرة واعتُمدت مراجعته؟",
+      "canonical_text_en": "Is there a written governance framework or manual approved by the board, and when was it last reviewed and that review approved?",
       "type": "enum",
       "options": [
         "معتمد من المجلس وروجع واعتُمدت مراجعته خلال آخر اثني عشر شهراً",
@@ -178,6 +252,13 @@
         "مسودة لم تُعتمد من المجلس",
         "لا يوجد إطار حوكمة مكتوب"
       ],
+      "options_en": {
+        "معتمد من المجلس وروجع واعتُمدت مراجعته خلال آخر اثني عشر شهراً": "Approved by the board, and reviewed with that review approved within the past twelve months",
+        "معتمد من المجلس وآخر مراجعة معتمدة له بين سنة وسنتين": "Approved by the board, with the last approved review between one and two years ago",
+        "معتمد من المجلس ولم يُراجع منذ أكثر من سنتين": "Approved by the board and not reviewed for more than two years",
+        "مسودة لم تُعتمد من المجلس": "A draft that the board has not approved",
+        "لا يوجد إطار حوكمة مكتوب": "There is no written governance framework"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -186,6 +267,11 @@
         "دليل أو إطار الحوكمة المعتمد",
         "محضر اعتماد المجلس",
         "محضر آخر مراجعة معتمدة"
+      ],
+      "evidence_required_en": [
+        "The approved governance manual or framework",
+        "The board approval minutes",
+        "The minutes of the last approved review"
       ],
       "references": [
         {
@@ -197,6 +283,7 @@
     {
       "question_id": "fs_governance_instruments",
       "canonical_text_ar": "اختر جميع أدوات الضبط الحوكمي المعتمدة والمطبَّقة فعلياً في البنك.",
+      "canonical_text_en": "Select every governance control instrument that is approved and actually applied in the bank.",
       "type": "multi_select",
       "options": [
         "مصفوفة صلاحيات وتفويض (DoA) معتمدة ومحدَّثة",
@@ -206,6 +293,14 @@
         "قناة إبلاغ تتيح الإبلاغ دون كشف الهوية وسجل للبلاغات ومعالجتها",
         "لا يوجد أيٌّ مما سبق"
       ],
+      "options_en": {
+        "مصفوفة صلاحيات وتفويض (DoA) معتمدة ومحدَّثة": "An approved, current delegation of authority (DoA) matrix",
+        "سياسة تعارض مصالح معتمدة": "An approved conflict of interest policy",
+        "إقرارات تعارض مصالح سنوية لأعضاء المجلس والتنفيذيين وسجل للحالات المعالَجة": "Annual conflict of interest declarations from board members and executives, and a register of the cases addressed",
+        "سياسة إبلاغ عن المخالفات معتمدة": "An approved whistleblowing policy",
+        "قناة إبلاغ تتيح الإبلاغ دون كشف الهوية وسجل للبلاغات ومعالجتها": "A whistleblowing channel allowing anonymous reports, and a register of reports and how they were handled",
+        "لا يوجد أيٌّ مما سبق": "None of the above exists"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -215,6 +310,12 @@
         "سياسة تعارض المصالح وإقرارات الأعضاء والتنفيذيين",
         "سياسة وقناة الإبلاغ عن المخالفات",
         "سجل البلاغات وحالات تعارض المصالح المعالَجة"
+      ],
+      "evidence_required_en": [
+        "The authority and delegation matrix",
+        "The conflict of interest policy and the members' and executives' declarations",
+        "The whistleblowing policy and channel",
+        "The register of reports and of the conflict of interest cases addressed"
       ],
       "references": [
         {
@@ -230,6 +331,7 @@
     {
       "question_id": "fs_compliance_function",
       "canonical_text_ar": "ما وضع وظيفة الالتزام في البنك من حيث الاستقلالية والتبعية والموارد، وهل تم تعيين رئيس الالتزام بعد الحصول على عدم ممانعة البنك المركزي السعودي؟",
+      "canonical_text_en": "What is the state of the compliance function in the bank in terms of independence, reporting line and resources, and was the head of compliance appointed after obtaining SAMA's no-objection?",
       "type": "enum",
       "options": [
         "إدارة التزام مستقلة ترفع لمجلس الإدارة/لجنة منبثقة ورئيسها معتمد من ساما",
@@ -238,6 +340,13 @@
         "موظف التزام واحد دون هيكل معتمد",
         "لا توجد وظيفة التزام رسمية"
       ],
+      "options_en": {
+        "إدارة التزام مستقلة ترفع لمجلس الإدارة/لجنة منبثقة ورئيسها معتمد من ساما": "An independent compliance function reporting to the board or a board committee, with its head approved by SAMA",
+        "إدارة التزام قائمة لكنها تتبع الإدارة التنفيذية مباشرة": "A compliance function in place, but reporting directly to executive management",
+        "وظيفة الالتزام مدمجة مع وظيفة أخرى (مثل المخاطر أو الشؤون القانونية)": "The compliance function is merged with another function (such as risk or legal)",
+        "موظف التزام واحد دون هيكل معتمد": "A single compliance officer, with no approved structure",
+        "لا توجد وظيفة التزام رسمية": "There is no formal compliance function"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -247,6 +356,12 @@
         "ميثاق/سياسة الالتزام المعتمدة",
         "خطاب عدم الممانعة من ساما على تعيين رئيس الالتزام",
         "تقارير الالتزام المرفوعة للمجلس خلال آخر سنة"
+      ],
+      "evidence_required_en": [
+        "The organizational structure of the compliance function",
+        "The approved compliance charter or policy",
+        "SAMA's no-objection letter for the appointment of the head of compliance",
+        "The compliance reports submitted to the board over the past year"
       ],
       "references": [
         {
@@ -262,6 +377,7 @@
     {
       "question_id": "fs_aml_programme",
       "canonical_text_ar": "ما مستوى نضج برنامج مكافحة غسل الأموال وتمويل الإرهاب لديكم من حيث تعيين مسؤول الالتزام بمكافحة غسل الأموال، وأنظمة المراقبة الآلية للمعاملات والفحص ضد قوائم العقوبات، وآلية رفع تقارير العمليات المشتبه بها إلى وحدة التحريات المالية؟",
+      "canonical_text_en": "How mature is your anti-money-laundering and counter-terrorist-financing programme — appointing an AML compliance officer, automated transaction monitoring and sanctions list screening, and the mechanism for filing suspicious transaction reports with the Financial Intelligence Unit?",
       "type": "enum",
       "options": [
         "برنامج متكامل مع أنظمة آلية للمراقبة والفحص ومراجعة مستقلة دورية",
@@ -270,6 +386,13 @@
         "برنامج أولي/تحت التطوير",
         "لا يوجد برنامج موثق"
       ],
+      "options_en": {
+        "برنامج متكامل مع أنظمة آلية للمراقبة والفحص ومراجعة مستقلة دورية": "A complete programme with automated monitoring and screening systems and periodic independent review",
+        "برنامج قائم مع أنظمة آلية لكن دون مراجعة مستقلة موثقة": "A programme in place with automated systems, but no documented independent review",
+        "برنامج قائم يعتمد على مراقبة يدوية بشكل رئيسي": "A programme in place that relies mainly on manual monitoring",
+        "برنامج أولي/تحت التطوير": "An initial programme, still being developed",
+        "لا يوجد برنامج موثق": "There is no documented programme"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "high",
@@ -280,6 +403,13 @@
         "تقييم المخاطر المؤسسي لغسل الأموال",
         "تقرير المراجعة المستقلة/التدقيق الداخلي لبرنامج المكافحة",
         "سجل بلاغات العمليات المشتبه بها وخطط التدريب"
+      ],
+      "evidence_required_en": [
+        "The approved anti-money-laundering and counter-terrorist-financing policy and procedures",
+        "The decision appointing the AML compliance officer and their deputy",
+        "The enterprise-wide money laundering risk assessment",
+        "The independent review or internal audit report on the programme",
+        "The register of suspicious transaction reports and the training plans"
       ],
       "references": [
         {
@@ -299,6 +429,7 @@
     {
       "question_id": "fs_risk_function",
       "canonical_text_ar": "هل توجد وظيفة مستقلة لإدارة المخاطر برئاسة رئيس تنفيذي للمخاطر (CRO) ترفع تقاريرها للجنة المخاطر، مع بيان الأنواع المغطاة (ائتمانية، سوق، سيولة، تشغيلية، سيبرانية، امتثال) ووجود بيان معتمد لتقبل المخاطر (Risk Appetite)؟",
+      "canonical_text_en": "Is there an independent risk management function headed by a Chief Risk Officer (CRO) reporting to the risk committee, covering the risk types (credit, market, liquidity, operational, cyber, compliance), with an approved risk appetite statement?",
       "type": "enum",
       "options": [
         "وظيفة مستقلة مع CRO وبيان تقبل مخاطر معتمد يغطي كل الأنواع",
@@ -307,6 +438,13 @@
         "إدارة المخاطر مدمجة ضمن وظيفة تنفيذية أخرى",
         "لا توجد وظيفة مخاطر مستقلة"
       ],
+      "options_en": {
+        "وظيفة مستقلة مع CRO وبيان تقبل مخاطر معتمد يغطي كل الأنواع": "An independent function with a CRO and an approved risk appetite statement covering every type",
+        "وظيفة مستقلة مع CRO لكن بيان تقبل المخاطر غير معتمد أو غير محدث": "An independent function with a CRO, but the risk appetite statement is unapproved or out of date",
+        "وظيفة قائمة تغطي المخاطر المالية فقط دون المخاطر التشغيلية/السيبرانية": "A function in place covering financial risk only, excluding operational and cyber risk",
+        "إدارة المخاطر مدمجة ضمن وظيفة تنفيذية أخرى": "Risk management is merged into another executive function",
+        "لا توجد وظيفة مخاطر مستقلة": "There is no independent risk function"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -317,6 +455,13 @@
         "سجل المخاطر المؤسسي المحدث",
         "تقارير المخاطر المرفوعة للجنة المخاطر",
         "منهجية تقييم المخاطر التشغيلية"
+      ],
+      "evidence_required_en": [
+        "The approved risk management charter and policy",
+        "The risk appetite statement and the key risk indicators (KRIs)",
+        "The current enterprise risk register",
+        "The risk reports submitted to the risk committee",
+        "The operational risk assessment methodology"
       ],
       "references": [
         {
@@ -332,6 +477,7 @@
     {
       "question_id": "fs_icaap",
       "canonical_text_ar": "هل ينفذ البنك عملية تقييم داخلي لكفاية رأس المال (ICAAP) واختبارات تحمل (Stress Testing) معتمدة من المجلس ومقدمة للبنك المركزي وفق الدورية المطلوبة؟",
+      "canonical_text_en": "Does the bank run an Internal Capital Adequacy Assessment Process (ICAAP) and stress testing, approved by the board and submitted to the Central Bank at the required frequency?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -344,6 +490,12 @@
         "نتائج اختبارات التحمل والسيناريوهات المستخدمة",
         "المراسلات مع البنك المركزي بشأن التغذية الراجعة"
       ],
+      "evidence_required_en": [
+        "The ICAAP document for the most recent approved cycle",
+        "The board approval minutes",
+        "The stress test results and the scenarios used",
+        "The correspondence with the Central Bank on its feedback"
+      ],
       "references": [
         {
           "framework": "تعليمات كفاية رأس المال (بازل) - البنك المركزي السعودي",
@@ -354,6 +506,7 @@
     {
       "question_id": "fs_csf_self_assessment",
       "canonical_text_ar": "هل نُفِّذ تقييم ذاتي لمستوى النضج مقابل إطار الأمن السيبراني الصادر عن البنك المركزي السعودي، وما آخر مستوى نضج بلغه البنك في هذا التقييم؟",
+      "canonical_text_en": "Has a maturity self-assessment been carried out against the Saudi Central Bank's Cyber Security Framework, and what maturity level did the bank last reach in that assessment?",
       "type": "enum",
       "options": [
         "نُفِّذ تقييم خلال آخر اثني عشر شهراً وبلغ المستوى (5)",
@@ -364,6 +517,15 @@
         "التقييم قيد التنفيذ حالياً",
         "لم يُنفَّذ تقييم ذاتي رسمي"
       ],
+      "options_en": {
+        "نُفِّذ تقييم خلال آخر اثني عشر شهراً وبلغ المستوى (5)": "An assessment was carried out in the past twelve months and reached level 5",
+        "نُفِّذ تقييم خلال آخر اثني عشر شهراً وبلغ المستوى (4)": "An assessment was carried out in the past twelve months and reached level 4",
+        "نُفِّذ تقييم خلال آخر اثني عشر شهراً وبلغ المستوى (3)": "An assessment was carried out in the past twelve months and reached level 3",
+        "نُفِّذ تقييم خلال آخر اثني عشر شهراً وجاء أقل من المستوى (3)": "An assessment was carried out in the past twelve months and came in below level 3",
+        "نُفِّذ تقييم سابق ولم يُحدَّث خلال آخر اثني عشر شهراً": "An earlier assessment was carried out and has not been updated in the past twelve months",
+        "التقييم قيد التنفيذ حالياً": "An assessment is currently under way",
+        "لم يُنفَّذ تقييم ذاتي رسمي": "No formal self-assessment has been carried out"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -372,6 +534,11 @@
         "تقرير التقييم الذاتي وفق إطار البنك المركزي للأمن السيبراني وتاريخه",
         "المستوى المُبلَّغ لكل مجال من مجالات الإطار",
         "تقارير الأمن السيبراني المرفوعة للجنة المختصة"
+      ],
+      "evidence_required_en": [
+        "The self-assessment report against the Central Bank's Cyber Security Framework and its date",
+        "The level reported for each domain of the framework",
+        "The cybersecurity reports submitted to the relevant committee"
       ],
       "references": [
         {
@@ -383,6 +550,7 @@
     {
       "question_id": "fs_csf_gap_remediation",
       "canonical_text_ar": "ما وضع معالجة الفجوات التي أظهرها آخر تقييم لمستوى النضج في الأمن السيبراني، من حيث اعتماد خطة المعالجة ومالك كل فجوة ومتابعة الإغلاق؟",
+      "canonical_text_en": "What is the position on remediating the gaps the last cybersecurity maturity assessment revealed — approving the remediation plan, an owner for each gap, and following up to closure?",
       "type": "enum",
       "options": [
         "خطة معالجة معتمدة لكل فجوة بمالك وتاريخ مستهدف، ومتابعة موثّقة حتى الإغلاق",
@@ -391,6 +559,13 @@
         "لم تُحصر الفجوات",
         "لا ينطبق: لم يُنفَّذ تقييم بعد"
       ],
+      "options_en": {
+        "خطة معالجة معتمدة لكل فجوة بمالك وتاريخ مستهدف، ومتابعة موثّقة حتى الإغلاق": "An approved remediation plan for each gap with an owner and a target date, and documented follow-up to closure",
+        "خطة معالجة معتمدة دون متابعة موثّقة لإغلاق البنود": "An approved remediation plan, with no documented follow-up to close the items",
+        "الفجوات محصورة دون خطة معالجة معتمدة": "The gaps are inventoried, with no approved remediation plan",
+        "لم تُحصر الفجوات": "The gaps have not been inventoried",
+        "لا ينطبق: لم يُنفَّذ تقييم بعد": "Not applicable: no assessment has been carried out yet"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -399,6 +574,11 @@
         "خطة معالجة الفجوات المعتمدة ومالكوها",
         "حالة تنفيذ البنود وتواريخ الإغلاق",
         "محاضر عرض حالة المعالجة على اللجنة المختصة"
+      ],
+      "evidence_required_en": [
+        "The approved gap remediation plan and its owners",
+        "The implementation status of the items and their closure dates",
+        "Minutes of presenting the remediation status to the relevant committee"
       ],
       "references": [
         {
@@ -410,6 +590,7 @@
     {
       "question_id": "fs_ciso",
       "canonical_text_ar": "هل تم تعيين رئيس للأمن السيبراني (CISO) بخط رفع تقاريري مستقل عن إدارة تقنية المعلومات، وهل توجد لجنة مختصة بالأمن السيبراني تجتمع بشكل دوري وموثق؟",
+      "canonical_text_en": "Has a Chief Information Security Officer (CISO) been appointed with a reporting line independent of the IT function, and is there a cybersecurity committee that meets regularly with documented minutes?",
       "type": "enum",
       "options": [
         "CISO معين ومستقل عن تقنية المعلومات مع لجنة أمن سيبراني فاعلة",
@@ -418,6 +599,13 @@
         "الأمن السيبراني مُسند بالكامل لجهة خارجية",
         "لا يوجد تعيين ولا لجنة"
       ],
+      "options_en": {
+        "CISO معين ومستقل عن تقنية المعلومات مع لجنة أمن سيبراني فاعلة": "A CISO appointed, independent of IT, with an active cybersecurity committee",
+        "CISO معين لكنه يتبع رئيس تقنية المعلومات": "A CISO appointed, but reporting to the head of IT",
+        "المهام موزعة على موظفين دون تعيين رسمي لـ CISO": "The duties are spread across staff, with no formal CISO appointment",
+        "الأمن السيبراني مُسند بالكامل لجهة خارجية": "Cybersecurity is fully outsourced to an external party",
+        "لا يوجد تعيين ولا لجنة": "There is neither an appointment nor a committee"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -427,6 +615,12 @@
         "ميثاق لجنة الأمن السيبراني ومحاضر اجتماعاتها",
         "وثيقة الأدوار والمسؤوليات في الأمن السيبراني",
         "الميزانية والموارد المخصصة للأمن السيبراني"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the CISO and the organizational structure showing the reporting line",
+        "The cybersecurity committee charter and its meeting minutes",
+        "The cybersecurity roles and responsibilities document",
+        "The budget and resources allocated to cybersecurity"
       ],
       "references": [
         {
@@ -442,6 +636,7 @@
     {
       "question_id": "fs_certifications",
       "canonical_text_ar": "ما وضع الشهادات والمعايير الدولية لدى البنك (مثل ISO/IEC 27001 وPCI DSS لبيئة بيانات بطاقات الدفع)، مع بيان نطاق الشهادة وتاريخ انتهائها إن وجدت؟",
+      "canonical_text_en": "What is the bank's position on international certifications and standards (such as ISO/IEC 27001 and PCI DSS for the payment card data environment), stating the scope of the certificate and its expiry date where one exists?",
       "type": "enum",
       "options": [
         "حاصل على ISO 27001 وPCI DSS ساريتين",
@@ -450,6 +645,13 @@
         "قيد التحضير للحصول على إحداهما",
         "لا توجد شهادات حالية"
       ],
+      "options_en": {
+        "حاصل على ISO 27001 وPCI DSS ساريتين": "Holds valid ISO 27001 and PCI DSS certifications",
+        "حاصل على ISO 27001 فقط": "Holds ISO 27001 only",
+        "حاصل على PCI DSS فقط": "Holds PCI DSS only",
+        "قيد التحضير للحصول على إحداهما": "Preparing to obtain one of them",
+        "لا توجد شهادات حالية": "There are no current certifications"
+      },
       "required": true,
       "category": "assurance",
       "importance": "medium",
@@ -459,6 +661,12 @@
         "بيان نطاق التطبيق (Statement of Applicability)",
         "تقارير التدقيق الخارجي وعدم المطابقات",
         "شهادة الامتثال لـ PCI DSS (AoC) إن وجدت"
+      ],
+      "evidence_required_en": [
+        "The certificates in force",
+        "The Statement of Applicability",
+        "The external audit reports and the non-conformities",
+        "The PCI DSS Attestation of Compliance (AoC), if any"
       ],
       "references": [
         {
@@ -474,6 +682,7 @@
     {
       "question_id": "fs_nca_classification",
       "canonical_text_ar": "هل صُنّف أي من أنظمة البنك ضمن الأنظمة الحساسة أو البنى التحتية الوطنية الحرجة بموجب تصنيف الهيئة الوطنية للأمن السيبراني، بما يستوجب الالتزام بضوابطها إضافة إلى متطلبات البنك المركزي؟",
+      "canonical_text_en": "Have any of the bank's systems been classified as critical systems or critical national infrastructure under the National Cybersecurity Authority's classification, requiring compliance with its controls in addition to the Central Bank's requirements?",
       "type": "enum",
       "options": [
         "نعم، وتم تنفيذ تقييم امتثال لضوابط الأنظمة الحساسة",
@@ -481,6 +690,12 @@
         "لا يوجد تصنيف رسمي حتى الآن",
         "غير معروف / لم يتم التحقق من الجهة المختصة"
       ],
+      "options_en": {
+        "نعم، وتم تنفيذ تقييم امتثال لضوابط الأنظمة الحساسة": "Yes — and a compliance assessment against the critical systems controls has been carried out",
+        "نعم، ولم يُنفذ تقييم امتثال بعد": "Yes — and no compliance assessment has been carried out yet",
+        "لا يوجد تصنيف رسمي حتى الآن": "There is no formal classification so far",
+        "غير معروف / لم يتم التحقق من الجهة المختصة": "Not known / not checked with the competent authority"
+      },
       "required": true,
       "category": "security",
       "importance": "medium",
@@ -490,6 +705,12 @@
         "تقرير تقييم الامتثال للضوابط ذات العلاقة",
         "قائمة الأنظمة المصنفة حساسة",
         "خطة معالجة الفجوات"
+      ],
+      "evidence_required_en": [
+        "The classification letter or decision from the competent authority",
+        "The compliance assessment report against the relevant controls",
+        "The list of systems classified as critical",
+        "The gap remediation plan"
       ],
       "references": [
         {
@@ -505,6 +726,7 @@
     {
       "question_id": "fs_pdpl_readiness",
       "canonical_text_ar": "ما مستوى جاهزية البنك للامتثال لنظام حماية البيانات الشخصية من حيث تعيين مسؤول حماية البيانات الشخصية، وإعداد سجل أنشطة المعالجة، وتحديد الأسس النظامية للمعالجة، وتقييم أثر المعالجة على الخصوصية؟",
+      "canonical_text_en": "How ready is the bank to comply with the Personal Data Protection Law — appointing a personal data protection officer, preparing the record of processing activities, establishing the legal bases for processing, and assessing the privacy impact of processing?",
       "type": "enum",
       "options": [
         "جميع العناصر مطبقة وموثقة ومحدثة",
@@ -513,6 +735,13 @@
         "العمل جارٍ على تقييم الفجوات",
         "لم يبدأ العمل على الامتثال"
       ],
+      "options_en": {
+        "جميع العناصر مطبقة وموثقة ومحدثة": "All of these are in place, documented and current",
+        "تم تعيين مسؤول حماية البيانات وسجل الأنشطة قيد الإعداد": "A data protection officer has been appointed and the record of activities is being prepared",
+        "توجد سياسة خصوصية فقط دون سجل أنشطة أو تقييمات أثر": "There is a privacy policy only, with no record of activities and no impact assessments",
+        "العمل جارٍ على تقييم الفجوات": "Gap assessment is under way",
+        "لم يبدأ العمل على الامتثال": "Work on compliance has not begun"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -523,6 +752,13 @@
         "سياسة الخصوصية وإشعارات الخصوصية للعملاء",
         "نماذج تقييم الأثر على حماية البيانات",
         "إجراءات الاستجابة لطلبات أصحاب البيانات"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the personal data protection officer",
+        "The record of personal data processing activities",
+        "The privacy policy and the privacy notices given to customers",
+        "The data protection impact assessment templates",
+        "The procedures for responding to data subject requests"
       ],
       "references": [
         {
@@ -538,6 +774,7 @@
     {
       "question_id": "fs_data_residency",
       "canonical_text_ar": "أين تُستضاف بيانات البنك وبيانات عملائه (داخل المملكة أم خارجها)، وهل يوجد نقل للبيانات الشخصية خارج المملكة، وما الأساس النظامي والموافقات الرقابية الخاصة بذلك؟",
+      "canonical_text_en": "Where are the bank's data and its customers' data hosted (inside or outside the Kingdom), is personal data transferred outside the Kingdom, and what is the legal basis and the regulatory approvals for that?",
       "type": "enum",
       "options": [
         "كل البيانات مستضافة داخل المملكة ولا يوجد نقل خارجي",
@@ -546,6 +783,13 @@
         "استضافة سحابية مختلطة والوضع غير محدد بدقة",
         "غير معروف / يحتاج تحقق"
       ],
+      "options_en": {
+        "كل البيانات مستضافة داخل المملكة ولا يوجد نقل خارجي": "All data is hosted inside the Kingdom and there is no transfer abroad",
+        "استضافة داخل المملكة مع نقل محدود للخارج بموافقات موثقة": "Hosted inside the Kingdom, with limited transfer abroad under documented approvals",
+        "استضافة أو نقل خارج المملكة دون موافقة موثقة من الجهة الرقابية": "Hosting or transfer outside the Kingdom without a documented regulatory approval",
+        "استضافة سحابية مختلطة والوضع غير محدد بدقة": "Hybrid cloud hosting, with the position not precisely established",
+        "غير معروف / يحتاج تحقق": "Not known / needs to be checked"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -555,6 +799,12 @@
         "خطابات عدم الممانعة من البنك المركزي بشأن الاستضافة/الإسناد الخارجي",
         "تقييم مخاطر نقل البيانات خارج المملكة",
         "الاتفاقيات والضمانات التعاقدية مع مزودي الخدمات السحابية"
+      ],
+      "evidence_required_en": [
+        "The data flow maps and the hosting locations",
+        "The Central Bank's no-objection letters on hosting and outsourcing",
+        "The risk assessment for transferring data outside the Kingdom",
+        "The agreements and contractual safeguards with the cloud service providers"
       ],
       "references": [
         {
@@ -574,6 +824,7 @@
     {
       "question_id": "fs_cyber_incident_response",
       "canonical_text_ar": "ما استعداد البنك لحوادث الأمن السيبراني من حيث إجراء الاستجابة وتصنيف الحوادث ومصفوفة الإبلاغ للجهات الرقابية ضمن المدد المقررة واختبار الإجراء بتمارين محاكاة؟",
+      "canonical_text_en": "How prepared is the bank for cybersecurity incidents — the response procedure, incident classification, the matrix for notifying regulators within the prescribed deadlines, and testing the procedure through simulation exercises?",
       "type": "enum",
       "options": [
         "إجراء موثّق مع تصنيف للحوادث ومصفوفة إبلاغ للجهات الرقابية، ومُختبَر بتمرين محاكاة خلال آخر اثني عشر شهراً",
@@ -582,6 +833,13 @@
         "تُعالَج الحوادث حالة بحالة دون إجراء موثّق",
         "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني"
       ],
+      "options_en": {
+        "إجراء موثّق مع تصنيف للحوادث ومصفوفة إبلاغ للجهات الرقابية، ومُختبَر بتمرين محاكاة خلال آخر اثني عشر شهراً": "A documented procedure with incident classification and a regulator notification matrix, tested by a simulation exercise within the past twelve months",
+        "إجراء موثّق مع مصفوفة إبلاغ، دون تمرين محاكاة خلال آخر اثني عشر شهراً": "A documented procedure with a notification matrix, with no simulation exercise in the past twelve months",
+        "إجراء موثّق دون تصنيف للحوادث أو دون مصفوفة إبلاغ للجهات الرقابية": "A documented procedure, with no incident classification or no regulator notification matrix",
+        "تُعالَج الحوادث حالة بحالة دون إجراء موثّق": "Incidents are handled case by case, with no documented procedure",
+        "لا يوجد إجراء للتعامل مع حوادث الأمن السيبراني": "There is no procedure for handling cybersecurity incidents"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -591,6 +849,12 @@
         "مصفوفة تصنيف الحوادث ومدد الإبلاغ للجهات المختصة",
         "سجل الحوادث السيبرانية لآخر اثني عشر شهراً",
         "تقرير آخر تمرين محاكاة"
+      ],
+      "evidence_required_en": [
+        "The cyber incident management procedure and the response plan",
+        "The incident classification matrix and the reporting deadlines to the competent authorities",
+        "The cyber incident register for the past twelve months",
+        "The most recent simulation exercise report"
       ],
       "references": [
         {
@@ -602,6 +866,7 @@
     {
       "question_id": "fs_data_breach_notification",
       "canonical_text_ar": "ما إجراءات البنك عند تسرّب بيانات شخصية لعملائه أو منسوبيه أو تلفها أو الوصول غير المشروع إليها، من حيث الإشعار وحفظ أدلة المعالجة؟",
+      "canonical_text_en": "What does the bank do when the personal data of its customers or staff is leaked, damaged or unlawfully accessed, in terms of notification and keeping evidence of how it was handled?",
       "type": "enum",
       "options": [
         "إجراء موثّق يحدد المسؤول والمدد الداخلية ويغطي إشعار الجهة المختصة وإشعار صاحب البيانات عند الضرر، مع سجل وقائع",
@@ -609,6 +874,12 @@
         "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث السيبرانية",
         "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية"
       ],
+      "options_en": {
+        "إجراء موثّق يحدد المسؤول والمدد الداخلية ويغطي إشعار الجهة المختصة وإشعار صاحب البيانات عند الضرر، مع سجل وقائع": "A documented procedure naming the responsible person and the internal deadlines, covering notification of the competent authority and of the data subject where there is harm, with an incident register",
+        "إجراء موثّق للإشعار دون سجل وقائع أو دون حفظ منتظم لأدلة المعالجة": "A documented notification procedure, with no incident register or no consistent record of how incidents were handled",
+        "لا يوجد إجراء للإشعار، وتُعالَج الواقعة ضمن إجراء الحوادث السيبرانية": "No notification procedure; the incident is handled under the cybersecurity incident procedure",
+        "لا يوجد إجراء للتعامل مع تسرّب البيانات الشخصية": "No procedure for handling a personal data breach"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -617,6 +888,11 @@
         "إجراء الإشعار عن تسرّب البيانات الشخصية والمسؤول عنه",
         "سجل وقائع التسرّب أو الوصول غير المشروع",
         "نماذج الإشعارات وأدلة معالجة الواقعة"
+      ],
+      "evidence_required_en": [
+        "The personal data breach notification procedure and who owns it",
+        "The register of leaks or unlawful access",
+        "Copies of the notifications and evidence of how the incident was handled"
       ],
       "references": [
         {
@@ -628,6 +904,7 @@
     {
       "question_id": "fs_business_continuity",
       "canonical_text_ar": "ما وضع إدارة استمرارية الأعمال لديكم من حيث وجود تحليل أثر الأعمال (BIA) محدث، وتحديد أهداف زمن التعافي (RTO/RPO) للخدمات الحرجة، وموقع تعافٍ بديل، ودورية اختبار الخطط؟",
+      "canonical_text_en": "What is the state of business continuity management — a current business impact analysis (BIA), recovery time and point objectives (RTO/RPO) for the critical services, an alternative recovery site, and how often the plans are tested?",
       "type": "enum",
       "options": [
         "برنامج متكامل مع BIA محدث وموقع بديل واختبار سنوي موثق",
@@ -636,6 +913,13 @@
         "خطط تقتصر على التعافي التقني للأنظمة (DR) دون استمرارية الأعمال",
         "لا يوجد برنامج رسمي"
       ],
+      "options_en": {
+        "برنامج متكامل مع BIA محدث وموقع بديل واختبار سنوي موثق": "A complete programme with a current BIA, an alternative site, and documented annual testing",
+        "خطط موجودة لكن دون تحديث BIA خلال آخر 24 شهراً": "Plans exist, but the BIA has not been updated in the past 24 months",
+        "خطط موثقة لم تُختبر إطلاقاً": "Documented plans that have never been tested",
+        "خطط تقتصر على التعافي التقني للأنظمة (DR) دون استمرارية الأعمال": "Plans limited to technical disaster recovery (DR), with no business continuity",
+        "لا يوجد برنامج رسمي": "There is no formal programme"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -645,6 +929,12 @@
         "تحليل أثر الأعمال المحدث وقائمة الخدمات الحرجة",
         "خطط الاستمرارية والتعافي من الكوارث",
         "تقارير آخر اختبار للخطط ونتائجه والدروس المستفادة"
+      ],
+      "evidence_required_en": [
+        "The approved business continuity management policy and framework",
+        "The current business impact analysis and the list of critical services",
+        "The continuity and disaster recovery plans",
+        "The most recent plan test report, its results and the lessons learned"
       ],
       "references": [
         {
@@ -660,6 +950,7 @@
     {
       "question_id": "fs_outsourcing",
       "canonical_text_ar": "هل يوجد سجل معتمد لمقدمي الخدمات والإسناد يصنّفهم حسب الأهمية (جوهري/غير جوهري)، مع تقييم مخاطر وأمن سيبراني قبل التعاقد، وبنود تعاقدية للحق في التدقيق وحماية البيانات، وموافقة مسبقة من البنك المركزي على الإسناد الجوهري؟",
+      "canonical_text_en": "Is there an approved register of service providers and outsourcing arrangements classifying them by materiality (material / non-material), with risk and cybersecurity assessment before contracting, contractual audit rights and data protection clauses, and the Central Bank's prior approval for material outsourcing?",
       "type": "enum",
       "options": [
         "سجل معتمد مع تصنيف وتقييم وبنود تعاقدية وموافقات موثقة",
@@ -668,6 +959,13 @@
         "إسناد جوهري قائم دون التحقق من موافقة البنك المركزي",
         "لا يوجد إسناد لأطراف خارجية"
       ],
+      "options_en": {
+        "سجل معتمد مع تصنيف وتقييم وبنود تعاقدية وموافقات موثقة": "An approved register with classification, assessment, contractual clauses and documented approvals",
+        "سجل موجود لكن دون تقييم مخاطر منهجي قبل التعاقد": "A register exists, with no systematic risk assessment before contracting",
+        "تعاقدات قائمة دون سجل مركزي أو تصنيف للأهمية": "Contracts in place, with no central register and no materiality classification",
+        "إسناد جوهري قائم دون التحقق من موافقة البنك المركزي": "Material outsourcing in place without verifying the Central Bank's approval",
+        "لا يوجد إسناد لأطراف خارجية": "There is no outsourcing to third parties"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -678,6 +976,13 @@
         "نماذج العقود المتضمنة بنود السرية والتدقيق ومستوى الخدمة",
         "خطابات عدم الممانعة من البنك المركزي على الإسناد الجوهري",
         "اتفاقيات معالجة البيانات الشخصية مع الموردين"
+      ],
+      "evidence_required_en": [
+        "The service provider register and the materiality classification",
+        "The third party risk assessment templates, before and after contracting",
+        "The contract templates containing the confidentiality, audit and service level clauses",
+        "The Central Bank's no-objection letters for material outsourcing",
+        "The personal data processing agreements with the suppliers"
       ],
       "references": [
         {
@@ -697,6 +1002,7 @@
     {
       "question_id": "fs_policy_framework",
       "canonical_text_ar": "ما وضع منظومة السياسات والإجراءات الداخلية من حيث الاعتماد الرسمي، وضبط الإصدارات، ودورية المراجعة، وآلية إيصالها للموظفين وإثبات اطلاعهم عليها؟",
+      "canonical_text_en": "What is the state of the internal policy and procedure framework — formal approval, version control, review frequency, and how policies are communicated to staff with evidence that they have read them?",
       "type": "enum",
       "options": [
         "منظومة كاملة معتمدة مع ضبط إصدارات ومراجعة سنوية وإثبات اطلاع موثق",
@@ -705,6 +1011,13 @@
         "إجراءات تشغيلية متوارثة شفهياً دون توثيق",
         "لا توجد منظومة سياسات"
       ],
+      "options_en": {
+        "منظومة كاملة معتمدة مع ضبط إصدارات ومراجعة سنوية وإثبات اطلاع موثق": "A complete approved framework with version control, annual review and documented evidence that staff have read them",
+        "سياسات معتمدة لكن دون دورية مراجعة منتظمة": "Approved policies, with no regular review cycle",
+        "سياسات متفرقة غير مترابطة وبعضها غير معتمد": "Scattered, disconnected policies, some of them unapproved",
+        "إجراءات تشغيلية متوارثة شفهياً دون توثيق": "Operating procedures passed on verbally, without documentation",
+        "لا توجد منظومة سياسات": "There is no policy framework"
+      },
       "required": true,
       "category": "records",
       "importance": "medium",
@@ -714,6 +1027,12 @@
         "سجل ضبط الوثائق والإصدارات",
         "أدلة إيصال السياسات وإقرارات الاطلاع",
         "سياسة حفظ وإتلاف السجلات ومدد الاحتفاظ"
+      ],
+      "evidence_required_en": [
+        "The list of approved policies and procedures with their approval and review dates",
+        "The document and version control register",
+        "Evidence that the policies were communicated and the acknowledgements",
+        "The records retention and destruction policy and the retention periods"
       ],
       "references": [
         {
@@ -733,6 +1052,7 @@
     {
       "question_id": "fs_compliance_monitoring",
       "canonical_text_ar": "هل توجد خطة سنوية معتمدة لمراقبة الالتزام والتدقيق الداخلي المبنية على المخاطر، وآلية موثقة لتتبع ملاحظات البنك المركزي والمدققين حتى الإغلاق، ومصفوفة محدثة للالتزامات التنظيمية والتقارير الرقابية الدورية؟",
+      "canonical_text_en": "Is there an approved annual risk-based compliance monitoring and internal audit plan, a documented mechanism for tracking the Central Bank's and the auditors' findings to closure, and a current matrix of regulatory obligations and periodic regulatory reports?",
       "type": "enum",
       "options": [
         {
@@ -756,6 +1076,13 @@
           "text_ar": "لا توجد مراقبة التزام أو تدقيق داخلي منتظم"
         }
       ],
+      "options_en": {
+        "reviewed": "An approved plan, with a current obligations matrix and documented tracking of findings to closure",
+        "approved_partial_matrix": "An approved plan, but without a comprehensive regulatory obligations matrix",
+        "on_demand": "Reactive monitoring on request, with no annual plan",
+        "outsourced": "Internal audit is outsourced, with no risk-based plan",
+        "none": "There is no compliance monitoring and no regular internal audit"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -766,6 +1093,13 @@
         "سجل متابعة ملاحظات ساما والمدققين وحالة الإغلاق",
         "تقارير التدقيق الداخلي المرفوعة للجنة المراجعة",
         "جدول التقارير الرقابية الدورية ومواعيد رفعها"
+      ],
+      "evidence_required_en": [
+        "The approved annual compliance monitoring and internal audit plan",
+        "The regulatory obligations matrix and the register of regulatory circulars",
+        "The register tracking the findings of the Saudi Central Bank (SAMA) and the auditors, and their closure status",
+        "The internal audit reports submitted to the audit committee",
+        "The schedule of periodic regulatory reports and their submission dates"
       ],
       "references": [
         {

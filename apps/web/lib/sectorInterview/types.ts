@@ -32,6 +32,15 @@ export interface SectorQuestion {
   importance: "critical" | "high" | "medium" | "low";
   references: { framework: string; clause?: string }[];
   evidenceRequired: string[];
+  /**
+   * ADR 0069. Present only when the WHOLE question was published in the requested language, so
+   * these three are all present or all absent — a half-translated question cannot reach here,
+   * because publication refuses to be partial. Arabic above stays authoritative and is what any
+   * untranslated question falls back to.
+   */
+  canonicalTextEn?: string;
+  optionsEn?: string[];
+  evidenceRequiredEn?: string[];
 }
 
 export interface SectorInterview {

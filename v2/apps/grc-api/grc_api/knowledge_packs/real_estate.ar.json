@@ -7,6 +7,7 @@
     {
       "question_id": "re_activities_practiced",
       "canonical_text_ar": "اختر جميع الأنشطة العقارية التي تمارسها المنشأة فعلياً اليوم",
+      "canonical_text_en": "Select every real estate activity the organization actually carries on today",
       "type": "multi_select",
       "options": [
         "الوساطة العقارية (بيع/شراء)",
@@ -20,6 +21,18 @@
         "الاستثمار العقاري لحساب المنشأة فقط",
         "أنشطة أخرى"
       ],
+      "options_en": {
+        "الوساطة العقارية (بيع/شراء)": "Real estate brokerage (sale/purchase)",
+        "الوساطة في التأجير": "Leasing brokerage",
+        "إدارة الأملاك": "Property management",
+        "التسويق العقاري": "Real estate marketing",
+        "التطوير العقاري": "Real estate development",
+        "البيع أو التأجير على الخارطة": "Off-plan sale or lease",
+        "إدارة اتحادات الملاك": "Owners' association management",
+        "المزادات العقارية": "Real estate auctions",
+        "الاستثمار العقاري لحساب المنشأة فقط": "Real estate investment for the organization's own account only",
+        "أنشطة أخرى": "Other activities"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -28,6 +41,11 @@
         "السجل التجاري",
         "قائمة الأنشطة المرخصة من الهيئة العامة للعقار",
         "الهيكل التنظيمي المعتمد"
+      ],
+      "evidence_required_en": [
+        "The commercial registration",
+        "The list of activities licensed by the Real Estate General Authority",
+        "The approved organizational structure"
       ],
       "references": [
         {
@@ -43,6 +61,7 @@
     {
       "question_id": "re_fal_license",
       "canonical_text_ar": "هل تمتلك المنشأة رخصة ممارسة النشاط العقاري (فال) سارية المفعول، وهل جميع الممارسين لديكم (الوسطاء والمسوّقون ومديرو الأملاك) مقيّدون ومرخّصون بشكل فردي؟",
+      "canonical_text_en": "Does the organization hold a valid real estate practice licence (Fal), and are all your practitioners (brokers, marketers and property managers) individually registered and licensed?",
       "type": "enum",
       "options": [
         "نعم، رخصة المنشأة سارية وجميع الممارسين مرخّصون",
@@ -50,6 +69,12 @@
         "الرخصة قيد الإصدار أو التجديد",
         "لا توجد رخصة"
       ],
+      "options_en": {
+        "نعم، رخصة المنشأة سارية وجميع الممارسين مرخّصون": "Yes — the organization's licence is in force and every practitioner is licensed",
+        "رخصة المنشأة سارية لكن بعض الممارسين غير مرخّصين": "The organization's licence is in force, but some practitioners are unlicensed",
+        "الرخصة قيد الإصدار أو التجديد": "The licence is being issued or renewed",
+        "لا توجد رخصة": "There is no licence"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -58,6 +83,11 @@
         "شهادة ترخيص فال للمنشأة",
         "قائمة الممارسين مع أرقام تراخيصهم وتواريخ انتهائها",
         "سجل متابعة تجديد التراخيص"
+      ],
+      "evidence_required_en": [
+        "The organization's Fal licence certificate",
+        "The list of practitioners with their licence numbers and expiry dates",
+        "The licence renewal tracker"
       ],
       "references": [
         {
@@ -73,6 +103,7 @@
     {
       "question_id": "re_government_platforms",
       "canonical_text_ar": "اختر جميع المنصات والأنظمة الحكومية التي ترتبط بها أعمالكم أو أنظمتكم اليوم",
+      "canonical_text_en": "Select every government platform and system your business or systems connect to today",
       "type": "multi_select",
       "options": [
         "شبكة إيجار",
@@ -85,6 +116,17 @@
         "لا نرتبط بأي منصة حكومية",
         "غير متأكد"
       ],
+      "options_en": {
+        "شبكة إيجار": "The Ejar network",
+        "منصة فال (الهيئة العامة للعقار)": "The Fal platform (Real Estate General Authority)",
+        "منصة بلدي": "The Balady platform",
+        "منصة نافذ": "The Nafith platform",
+        "كتابات العدل / بوابة وزارة العدل": "Notary offices / the Ministry of Justice portal",
+        "منصة إحكام": "The Ehkam platform",
+        "منصة اعتماد أو المنافسات الحكومية": "The Etimad platform or government tenders",
+        "لا نرتبط بأي منصة حكومية": "We connect to no government platform",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "operations",
       "importance": "critical",
@@ -93,6 +135,11 @@
         "قائمة الأنظمة المرتبطة وطريقة الربط (يدوي / واجهة برمجية)",
         "اتفاقيات أو شروط استخدام المنصات الحكومية",
         "سجل إدارة صلاحيات الوصول إلى تلك المنصات"
+      ],
+      "evidence_required_en": [
+        "The list of connected systems and how they connect (manual / API)",
+        "The agreements or terms of use for the government platforms",
+        "The record of managing access rights to those platforms"
       ],
       "references": [
         {
@@ -108,6 +155,7 @@
     {
       "question_id": "re_off_plan_licensing",
       "canonical_text_ar": "هل جميع مشاريع البيع أو التأجير على الخارطة لدى المنشأة مرخّصة من الجهة المختصة قبل بدء التسويق أو التعاقد؟",
+      "canonical_text_en": "Are all the organization's off-plan sale or lease projects licensed by the competent authority before marketing or contracting begins?",
       "type": "enum",
       "options": [
         "جميع المشاريع مرخّصة، ولا يبدأ التسويق أو التعاقد قبل صدور الترخيص",
@@ -116,6 +164,13 @@
         "يُمارَس النشاط دون ترخيص مشروع",
         "لا تمارس المنشأة البيع أو التأجير على الخارطة"
       ],
+      "options_en": {
+        "جميع المشاريع مرخّصة، ولا يبدأ التسويق أو التعاقد قبل صدور الترخيص": "Every project is licensed, and neither marketing nor contracting starts before the licence is issued",
+        "جميع المشاريع القائمة مرخّصة، لكن سبق أن بدأ التسويق قبل صدور الترخيص في مشروع أو أكثر": "Every current project is licensed, but marketing has previously started before the licence was issued on one or more projects",
+        "بعض المشاريع مرخّصة وبعضها قيد استكمال الترخيص": "Some projects are licensed and others are still completing licensing",
+        "يُمارَس النشاط دون ترخيص مشروع": "The activity is carried on without a project licence",
+        "لا تمارس المنشأة البيع أو التأجير على الخارطة": "The organization does not carry on off-plan sale or lease"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -124,6 +179,11 @@
         "تراخيص المشاريع على الخارطة وتواريخ إصدارها",
         "تواريخ بدء التسويق والتعاقد لكل مشروع",
         "نماذج عقود البيع على الخارطة"
+      ],
+      "evidence_required_en": [
+        "The off-plan project licences and their issue dates",
+        "The dates marketing and contracting began for each project",
+        "The off-plan sale contract templates"
       ],
       "references": [
         {
@@ -135,6 +195,7 @@
     {
       "question_id": "re_off_plan_escrow",
       "canonical_text_ar": "كيف تُدار المبالغ المحصّلة من مشتري الوحدات على الخارطة، من حيث إيداعها في حساب ضمان مستقل للمشروع وربط الصرف منه بنسب الإنجاز المعتمدة في تقارير الإشراف الهندسي؟",
+      "canonical_text_en": "How are the amounts collected from off-plan unit buyers handled — depositing them in a separate escrow account for the project, and tying withdrawals to completion percentages approved in the engineering supervision reports?",
       "type": "enum",
       "options": [
         "حساب ضمان مستقل لكل مشروع، ولا يُصرف منه إلا وفق نسب إنجاز معتمدة في تقارير إشراف دورية",
@@ -143,6 +204,13 @@
         "تُحصَّل المبالغ دون حساب ضمان مستقل",
         "لا تمارس المنشأة البيع أو التأجير على الخارطة"
       ],
+      "options_en": {
+        "حساب ضمان مستقل لكل مشروع، ولا يُصرف منه إلا وفق نسب إنجاز معتمدة في تقارير إشراف دورية": "A separate escrow account for each project, from which withdrawals are made only against completion percentages approved in periodic supervision reports",
+        "حساب ضمان مستقل قائم، لكن الصرف لا يرتبط موثقاً بنسب الإنجاز أو لا تتوافر تقارير إشراف دورية": "A separate escrow account exists, but withdrawals are not documented against completion percentages, or periodic supervision reports are not available",
+        "تُحصَّل المبالغ في حساب المنشأة العام ثم تُحوَّل إلى حساب المشروع": "Amounts are collected into the organization's general account and then transferred to the project account",
+        "تُحصَّل المبالغ دون حساب ضمان مستقل": "Amounts are collected with no separate escrow account",
+        "لا تمارس المنشأة البيع أو التأجير على الخارطة": "The organization does not carry on off-plan sale or lease"
+      },
       "required": true,
       "category": "financial_controls",
       "importance": "critical",
@@ -151,6 +219,11 @@
         "اتفاقيات حسابات الضمان مع البنك لكل مشروع",
         "تقارير الإشراف الهندسي ونسب الإنجاز المعتمدة",
         "كشوف الصرف من حساب الضمان مقابل نسب الإنجاز"
+      ],
+      "evidence_required_en": [
+        "The escrow account agreements with the bank for each project",
+        "The engineering supervision reports and the approved completion percentages",
+        "Statements of withdrawals from the escrow account against completion percentages"
       ],
       "references": [
         {
@@ -162,6 +235,7 @@
     {
       "question_id": "re_ejar_documentation",
       "canonical_text_ar": "بالنسبة لعقود الإيجار التي تديرها أو تتوسط فيها المنشأة، ما نسبة العقود الموثّقة في شبكة إيجار؟",
+      "canonical_text_en": "For the lease contracts the organization manages or brokers, what proportion is registered on the Ejar network?",
       "type": "enum",
       "options": [
         "لا ننفذ عقود إيجار",
@@ -170,6 +244,13 @@
         "توثيق جزئي (أقل من 70%)",
         "لا يوجد توثيق"
       ],
+      "options_en": {
+        "لا ننفذ عقود إيجار": "We do not handle lease contracts",
+        "جميع العقود موثّقة (100%)": "Every contract is registered (100%)",
+        "أغلب العقود موثّقة (أكثر من 70%)": "Most contracts are registered (more than 70%)",
+        "توثيق جزئي (أقل من 70%)": "Partial registration (less than 70%)",
+        "لا يوجد توثيق": "There is no registration"
+      },
       "required": true,
       "category": "operations",
       "importance": "high",
@@ -178,6 +259,11 @@
         "تقرير إحصائي بعدد العقود المنفذة مقابل الموثّقة",
         "عينة من العقود الموثّقة",
         "إجراء عمل موثّق لتوثيق العقود"
+      ],
+      "evidence_required_en": [
+        "A statistical report of contracts handled against contracts registered",
+        "A sample of the registered contracts",
+        "A documented working procedure for registering contracts"
       ],
       "references": [
         {
@@ -193,6 +279,7 @@
     {
       "question_id": "re_aml_program",
       "canonical_text_ar": "ما مستوى تطبيق متطلبات مكافحة غسل الأموال وتمويل الإرهاب لديكم (تعيين مسؤول التزام، تقييم مخاطر مكتوب، إجراءات العناية الواجبة تجاه العملاء، فحص القوائم، والإبلاغ عن العمليات المشبوهة)؟",
+      "canonical_text_en": "To what level are the anti-money-laundering and counter-terrorist-financing requirements applied (appointing a compliance officer, a written risk assessment, customer due diligence procedures, list screening, and reporting suspicious transactions)?",
       "type": "enum",
       "options": [
         "برنامج متكامل ومطبّق ويُراجع دورياً",
@@ -200,6 +287,12 @@
         "التزام شكلي فقط (نماذج دون تطبيق فعلي)",
         "لا يوجد"
       ],
+      "options_en": {
+        "برنامج متكامل ومطبّق ويُراجع دورياً": "A complete programme, applied and reviewed regularly",
+        "إجراءات موجودة لكن غير مكتملة أو غير موثّقة": "Procedures exist but are incomplete or undocumented",
+        "التزام شكلي فقط (نماذج دون تطبيق فعلي)": "Compliance in form only (forms with no actual application)",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "financial_crime",
       "importance": "critical",
@@ -210,6 +303,13 @@
         "تقييم المخاطر المؤسسي",
         "نماذج العناية الواجبة والمستفيد الحقيقي",
         "سجل البلاغات وسجل التدريب"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the anti-money-laundering compliance officer",
+        "The approved anti-money-laundering policy and procedures",
+        "The enterprise risk assessment",
+        "The due diligence and beneficial owner forms",
+        "The reporting register and the training register"
       ],
       "references": [
         {
@@ -229,6 +329,7 @@
     {
       "question_id": "re_additional_regulator",
       "canonical_text_ar": "هل تخضع المنشأة أو أي من كياناتها لإشراف جهة رقابية إضافية بحكم طبيعة نشاطها المالي أو الاستثماري؟",
+      "canonical_text_en": "Is the organization or any of its entities supervised by an additional regulator because of the nature of its financial or investment activity?",
       "type": "enum",
       "options": [
         "لا، الإشراف مقتصر على الهيئة العامة للعقار ووزارة التجارة",
@@ -237,6 +338,13 @@
         "نعم، أكثر من جهة",
         "غير متأكد"
       ],
+      "options_en": {
+        "لا، الإشراف مقتصر على الهيئة العامة للعقار ووزارة التجارة": "No — supervision is limited to the Real Estate General Authority and the Ministry of Commerce",
+        "نعم، البنك المركزي السعودي (تمويل عقاري / وساطة تمويلية / تأجير تمويلي)": "Yes — the Saudi Central Bank (SAMA) (real estate finance / finance brokerage / finance leasing)",
+        "نعم، هيئة السوق المالية (صناديق عقارية / ريت / طرح أوراق مالية)": "Yes — the Capital Market Authority (CMA) (real estate funds / REITs / securities offerings)",
+        "نعم، أكثر من جهة": "Yes — more than one regulator",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -245,6 +353,11 @@
         "تراخيص الجهات الرقابية إن وُجدت",
         "الهيكل القانوني للمجموعة والكيانات التابعة",
         "نشرات إصدار أو شروط وأحكام الصناديق العقارية إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The regulators' licences, if any",
+        "The group's legal structure and its subsidiaries",
+        "Prospectuses or terms and conditions of the real estate funds, if any"
       ],
       "references": [
         {
@@ -260,6 +373,7 @@
     {
       "question_id": "re_tax_obligations",
       "canonical_text_ar": "كيف تتعاملون مع الالتزامات الزكوية والضريبية المرتبطة بالنشاط العقاري، وتحديداً ضريبة التصرفات العقارية والفوترة الإلكترونية؟",
+      "canonical_text_en": "How do you handle the zakat and tax obligations tied to real estate activity, specifically the Real Estate Transaction Tax and e-invoicing?",
       "type": "enum",
       "options": [
         "التزام كامل وموثّق مع مراجعة دورية",
@@ -268,6 +382,13 @@
         "لا ينطبق (لا نبرم تصرفات عقارية بأسمائنا ولا نصدر فواتير)",
         "غير متأكد"
       ],
+      "options_en": {
+        "التزام كامل وموثّق مع مراجعة دورية": "Full, documented compliance with periodic review",
+        "التزام قائم لكن دون إجراءات مكتوبة": "Compliance in place, with no written procedures",
+        "التزام جزئي أو متأخر في بعض الحالات": "Partial or late compliance in some cases",
+        "لا ينطبق (لا نبرم تصرفات عقارية بأسمائنا ولا نصدر فواتير)": "Not applicable (we conclude no real estate transactions in our own name and issue no invoices)",
+        "غير متأكد": "Not sure"
+      },
       "required": true,
       "category": "tax",
       "importance": "high",
@@ -277,6 +398,12 @@
         "شهادة التسجيل في ضريبة القيمة المضافة إن وُجدت",
         "عينة من الفواتير الإلكترونية المطابقة للمواصفات",
         "إجراء عمل موثّق لإتمام الصفقة"
+      ],
+      "evidence_required_en": [
+        "Real estate transaction documentation forms and payment notices",
+        "The VAT registration certificate, if any",
+        "A sample of e-invoices meeting the specifications",
+        "A documented working procedure for completing a transaction"
       ],
       "references": [
         {
@@ -292,6 +419,7 @@
     {
       "question_id": "re_governance_documents",
       "canonical_text_ar": "اختر جميع وثائق الحوكمة المعتمدة والمطبّقة لديكم فعلياً",
+      "canonical_text_en": "Select every governance document that is approved and actually applied in your organization",
       "type": "multi_select",
       "options": [
         "هيكل تنظيمي معتمد مع وصف وظيفي",
@@ -302,6 +430,15 @@
         "لجان أو مسؤوليات مسندة للالتزام والمخاطر",
         "لا يوجد شيء مما سبق"
       ],
+      "options_en": {
+        "هيكل تنظيمي معتمد مع وصف وظيفي": "An approved organizational structure with job descriptions",
+        "لائحة/دليل حوكمة معتمد": "An approved governance charter or manual",
+        "لائحة تفويض الصلاحيات المالية والإدارية": "A financial and administrative delegation of authority charter",
+        "سياسة تعارض المصالح وإقرارات سنوية": "A conflict of interest policy with annual declarations",
+        "محاضر اجتماعات مجلس الإدارة/الشركاء موثّقة": "Documented minutes of board or partners' meetings",
+        "لجان أو مسؤوليات مسندة للالتزام والمخاطر": "Committees or assigned responsibilities for compliance and risk",
+        "لا يوجد شيء مما سبق": "None of the above"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -311,6 +448,12 @@
         "سياسة تعارض المصالح والإقرارات الموقّعة",
         "الهيكل التنظيمي والوصف الوظيفي",
         "عينة من محاضر الاجتماعات وقراراتها"
+      ],
+      "evidence_required_en": [
+        "The governance manual and the authority charter",
+        "The conflict of interest policy and the signed declarations",
+        "The organizational structure and the job descriptions",
+        "A sample of meeting minutes and their resolutions"
       ],
       "references": [
         {
@@ -326,6 +469,7 @@
     {
       "question_id": "re_client_funds",
       "canonical_text_ar": "كيف تُدار الأموال المستلمة لحساب الغير (عربون، أجرة محصّلة لملاك، مبالغ صيانة اتحادات الملاك، دفعات مشترين)؟",
+      "canonical_text_en": "How are funds received on behalf of others handled (deposits, rent collected for owners, owners' association maintenance funds, buyers' instalments)?",
       "type": "enum",
       "options": [
         "حسابات بنكية مستقلة لكل غرض مع تسوية دورية موثّقة",
@@ -333,6 +477,12 @@
         "تُخلط مع الحساب التشغيلي للمنشأة",
         "لا نستلم أموالاً لحساب الغير"
       ],
+      "options_en": {
+        "حسابات بنكية مستقلة لكل غرض مع تسوية دورية موثّقة": "Separate bank accounts for each purpose, with documented periodic reconciliation",
+        "حساب مستقل واحد دون تسوية دورية منتظمة": "A single separate account, with no regular periodic reconciliation",
+        "تُخلط مع الحساب التشغيلي للمنشأة": "They are mixed with the organization's operating account",
+        "لا نستلم أموالاً لحساب الغير": "We receive no funds on behalf of others"
+      },
       "required": true,
       "category": "financial_controls",
       "importance": "critical",
@@ -342,6 +492,12 @@
         "إجراء التحصيل والصرف والتسويات",
         "تقارير مطابقة دورية موقّعة",
         "نماذج إفادة الملاك بالتحصيل"
+      ],
+      "evidence_required_en": [
+        "Statements of the dedicated bank accounts",
+        "The collection, disbursement and reconciliation procedure",
+        "Signed periodic reconciliation reports",
+        "The forms notifying owners of amounts collected"
       ],
       "references": [
         {
@@ -357,6 +513,7 @@
     {
       "question_id": "re_risk_register",
       "canonical_text_ar": "هل يوجد لدى المنشأة سجل مخاطر مكتوب ومعتمد، مع تحديد مالك لكل خطر وخطة معالجة ومراجعة دورية؟",
+      "canonical_text_en": "Does the organization keep a written, approved risk register, with an owner for each risk, a treatment plan, and periodic review?",
       "type": "enum",
       "options": [
         "نعم، سجل معتمد ويُراجع بشكل دوري موثّق",
@@ -364,6 +521,12 @@
         "تُدار المخاطر بشكل غير رسمي دون توثيق",
         "لا يوجد"
       ],
+      "options_en": {
+        "نعم، سجل معتمد ويُراجع بشكل دوري موثّق": "Yes — an approved register, reviewed periodically and documented",
+        "يوجد سجل لكنه غير محدّث أو غير معتمد": "A register exists but is out of date or unapproved",
+        "تُدار المخاطر بشكل غير رسمي دون توثيق": "Risk is managed informally, without documentation",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -372,6 +535,11 @@
         "سجل المخاطر المعتمد",
         "منهجية تقييم المخاطر ومصفوفة الاحتمال والأثر",
         "محاضر مراجعة المخاطر"
+      ],
+      "evidence_required_en": [
+        "The approved risk register",
+        "The risk assessment methodology and the likelihood and impact matrix",
+        "Minutes of the risk reviews"
       ],
       "references": [
         {
@@ -387,6 +555,7 @@
     {
       "question_id": "re_recent_incidents",
       "canonical_text_ar": "ما أبرز ثلاث حوادث أو نزاعات أو مخالفات واجهتها المنشأة خلال آخر (24) شهراً (مخالفات رقابية، نزاعات عقود، تعثر مشاريع، مطالبات ملاك أو مستأجرين، حوادث تقنية)؟",
+      "canonical_text_en": "What are the three most significant incidents, disputes or violations the organization has faced in the past 24 months (regulatory violations, contract disputes, stalled projects, owner or tenant claims, technical incidents)?",
       "type": "text",
       "options": [],
       "required": false,
@@ -397,6 +566,11 @@
         "سجل المخالفات والغرامات الرقابية",
         "قائمة القضايا والنزاعات القائمة",
         "تقارير الشكاوى وإجراءات التصحيح"
+      ],
+      "evidence_required_en": [
+        "The register of regulatory violations and fines",
+        "The list of current cases and disputes",
+        "The complaints reports and the corrective actions"
       ],
       "references": [
         {
@@ -412,6 +586,7 @@
     {
       "question_id": "re_technical_outsourcing",
       "canonical_text_ar": "كيف تُشغَّل أنظمتكم التقنية التي تحتوي بيانات العملاء والعقود؟",
+      "canonical_text_en": "How are your technical systems holding client and contract data operated?",
       "type": "enum",
       "options": [
         "اعتماد كامل على خدمات جاهزة (SaaS) يديرها مزوّدون خارجيون",
@@ -420,6 +595,13 @@
         "تشغيل مُسند بالكامل إلى جهة خارجية (Outsourcing)",
         "أنظمة مكتبية وملفات فقط دون نظام مركزي"
       ],
+      "options_en": {
+        "اعتماد كامل على خدمات جاهزة (SaaS) يديرها مزوّدون خارجيون": "Complete reliance on ready-made services (SaaS) run by external providers",
+        "مزيج من خدمات جاهزة وأنظمة نديرها بأنفسنا": "A mix of ready-made services and systems we run ourselves",
+        "أنظمة نديرها ونستضيفها بأنفسنا بالكامل": "Systems we run and host entirely ourselves",
+        "تشغيل مُسند بالكامل إلى جهة خارجية (Outsourcing)": "Operation fully outsourced to an external party",
+        "أنظمة مكتبية وملفات فقط دون نظام مركزي": "Office tools and files only, with no central system"
+      },
       "required": true,
       "category": "third_party",
       "importance": "critical",
@@ -429,6 +611,12 @@
         "عقود الخدمة واتفاقيات مستوى الخدمة",
         "تقارير ضمان المزوّد إن وُجدت (مثل SOC 2 أو ISO 27001)",
         "مصفوفة مسؤوليات مشتركة بين المنشأة والمزوّد"
+      ],
+      "evidence_required_en": [
+        "The list of systems, their providers, and the operating model for each",
+        "The service contracts and the service level agreements",
+        "The provider's assurance reports, if any (such as SOC 2 or ISO 27001)",
+        "The shared responsibility matrix between the organization and the provider"
       ],
       "references": [
         {
@@ -444,6 +632,7 @@
     {
       "question_id": "re_infosec_controls",
       "canonical_text_ar": "ما مستوى ضوابط أمن المعلومات المطبّقة على الأنظمة التي تحتوي بيانات العملاء والعقود (سياسة معتمدة، إدارة صلاحيات الوصول، المصادقة متعددة العوامل، تسجيل الأحداث، إدارة التحديثات)؟",
+      "canonical_text_en": "What level of information security controls is applied to the systems holding client and contract data (an approved policy, access rights management, multi-factor authentication, event logging, patch management)?",
       "type": "enum",
       "options": [
         "ضوابط موثّقة ومطبّقة وتخضع لمراجعة",
@@ -451,6 +640,12 @@
         "اعتماد كامل على مزوّد الخدمة دون رقابة داخلية",
         "لا توجد ضوابط واضحة"
       ],
+      "options_en": {
+        "ضوابط موثّقة ومطبّقة وتخضع لمراجعة": "Controls documented, applied and subject to review",
+        "ضوابط تقنية مطبّقة جزئياً دون سياسات مكتوبة": "Technical controls partly applied, with no written policies",
+        "اعتماد كامل على مزوّد الخدمة دون رقابة داخلية": "Complete reliance on the service provider, with no internal oversight",
+        "لا توجد ضوابط واضحة": "There are no clear controls"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -460,6 +655,12 @@
         "مصفوفة صلاحيات الوصول",
         "دليل تفعيل المصادقة متعددة العوامل",
         "إجراءات إدارة التحديثات وسجلات الأحداث"
+      ],
+      "evidence_required_en": [
+        "The approved information security policy",
+        "The access rights matrix",
+        "Evidence that multi-factor authentication is enabled",
+        "The patch management procedures and the event logs"
       ],
       "references": [
         {
@@ -475,6 +676,7 @@
     {
       "question_id": "re_nca_scope",
       "canonical_text_ar": "هل تخضع المنشأة لضوابط الهيئة الوطنية للأمن السيبراني بحكم كونها جهة حكومية، أو مشغّلاً لبنية تحتية وطنية حساسة، أو مقدّم خدمة مرتبط بأنظمة جهة حكومية؟",
+      "canonical_text_en": "Is the organization subject to National Cybersecurity Authority controls as a government entity, an operator of sensitive national infrastructure, or a service provider connected to a government body's systems?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -486,6 +688,11 @@
         "أي مراسلات أو متطلبات أمن سيبراني تعاقدية",
         "تصنيف المنشأة إن سبق تحديده"
       ],
+      "evidence_required_en": [
+        "Contracts with government bodies, if any",
+        "Any correspondence or contractual cybersecurity requirements",
+        "The organization's classification, where one has been determined"
+      ],
       "references": [
         {
           "framework": "الضوابط الأساسية للأمن السيبراني (ECC) – الهيئة الوطنية للأمن السيبراني",
@@ -496,6 +703,7 @@
     {
       "question_id": "re_data_categories",
       "canonical_text_ar": "اختر جميع فئات البيانات الشخصية التي تعالجها المنشأة",
+      "canonical_text_en": "Select every category of personal data the organization processes",
       "type": "multi_select",
       "options": [
         "بيانات هوية وصور الهوية الوطنية/الإقامة",
@@ -506,6 +714,15 @@
         "تسجيلات كاميرات المراقبة في العقارات المدارة",
         "بيانات الموظفين والمتدربين"
       ],
+      "options_en": {
+        "بيانات هوية وصور الهوية الوطنية/الإقامة": "Identity data and copies of national ID / residence permits",
+        "بيانات اتصال (جوال، بريد، عنوان)": "Contact data (mobile, email, address)",
+        "بيانات مالية وبنكية (آيبان، دفعات، تعثر سداد)": "Financial and banking data (IBAN, payments, payment default)",
+        "صكوك ووثائق ملكية مرتبطة بأشخاص": "Title deeds and ownership documents linked to individuals",
+        "بيانات وظيفية أو دخل لأغراض التمويل": "Employment or income data for financing purposes",
+        "تسجيلات كاميرات المراقبة في العقارات المدارة": "Surveillance camera recordings in the managed properties",
+        "بيانات الموظفين والمتدربين": "Employee and trainee data"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -514,6 +731,11 @@
         "جرد البيانات ومصادرها",
         "نماذج جمع البيانات من العملاء",
         "سياسة تشغيل كاميرات المراقبة إن وُجدت"
+      ],
+      "evidence_required_en": [
+        "The data inventory and its sources",
+        "The forms used to collect data from clients",
+        "The surveillance camera operating policy, if any"
       ],
       "references": [
         {
@@ -525,6 +747,7 @@
     {
       "question_id": "re_pdpl_requirements",
       "canonical_text_ar": "اختر جميع متطلبات نظام حماية البيانات الشخصية المطبّقة لديكم فعلياً",
+      "canonical_text_en": "Select every Personal Data Protection Law requirement you actually apply",
       "type": "multi_select",
       "options": [
         "سياسة خصوصية معلنة للعملاء",
@@ -536,6 +759,16 @@
         "تعيين مسؤول لحماية البيانات",
         "لا يوجد شيء مما سبق"
       ],
+      "options_en": {
+        "سياسة خصوصية معلنة للعملاء": "A privacy policy published to clients",
+        "سجل أنشطة معالجة البيانات الشخصية": "A record of personal data processing activities",
+        "تحديد الأساس النظامي للمعالجة وأخذ الموافقات": "Establishing the legal basis for processing and obtaining consent",
+        "موافقة منفصلة للتسويق المباشر وآلية إلغاء الاشتراك": "Separate consent for direct marketing and an unsubscribe mechanism",
+        "إجراء للتعامل مع طلبات أصحاب البيانات": "A procedure for handling data subject requests",
+        "إجراء وخطة للإبلاغ عن تسرب البيانات": "A procedure and plan for data breach notification",
+        "تعيين مسؤول لحماية البيانات": "A data protection officer appointed",
+        "لا يوجد شيء مما سبق": "None of the above"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -545,6 +778,12 @@
         "سجل أنشطة المعالجة",
         "نماذج الموافقة وسجل إلغاء الاشتراك",
         "إجراء طلبات أصحاب البيانات وإجراء الإبلاغ عن التسرب"
+      ],
+      "evidence_required_en": [
+        "The published privacy policy",
+        "The record of processing activities",
+        "The consent forms and the unsubscribe register",
+        "The data subject request procedure and the breach notification procedure"
       ],
       "references": [
         {
@@ -560,6 +799,7 @@
     {
       "question_id": "re_cross_border_transfer",
       "canonical_text_ar": "هل تُخزَّن أو تُعالَج بيانات عملائكم خارج المملكة (استضافة سحابية أجنبية، أنظمة CRM عالمية، مزوّد تسويق خارجي)؟",
+      "canonical_text_en": "Is your clients' data stored or processed outside the Kingdom (foreign cloud hosting, global CRM systems, an external marketing provider)?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -570,6 +810,11 @@
         "قائمة الأنظمة ومواقع الاستضافة",
         "عقود مزودي الخدمة وبنود حماية البيانات",
         "تقييم أثر النقل إن وُجد"
+      ],
+      "evidence_required_en": [
+        "The list of systems and their hosting locations",
+        "The service provider contracts and the data protection clauses",
+        "The transfer impact assessment, if any"
       ],
       "references": [
         {
@@ -585,6 +830,7 @@
     {
       "question_id": "re_business_continuity",
       "canonical_text_ar": "ما مستوى جاهزية المنشأة لاستمرارية الأعمال (نسخ احتياطي مُختبر، بديل للأنظمة الحرجة، خطة مكتوبة للتعافي، وتقليل الاعتماد على شخص واحد يمتلك المعرفة أو الصلاحيات)؟",
+      "canonical_text_en": "How ready is the organization for business continuity (tested backups, an alternative for the critical systems, a written recovery plan, and reducing dependence on one person holding the knowledge or the access)?",
       "type": "enum",
       "options": [
         "خطة مكتوبة ونسخ احتياطي يُختبر دورياً",
@@ -592,6 +838,12 @@
         "ترتيبات غير رسمية فقط",
         "لا توجد ترتيبات"
       ],
+      "options_en": {
+        "خطة مكتوبة ونسخ احتياطي يُختبر دورياً": "A written plan and backups tested regularly",
+        "نسخ احتياطي موجود دون اختبار ودون خطة مكتوبة": "Backups exist, untested and with no written plan",
+        "ترتيبات غير رسمية فقط": "Informal arrangements only",
+        "لا توجد ترتيبات": "There are no arrangements"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -600,6 +852,11 @@
         "خطة استمرارية الأعمال والتعافي",
         "سجلات النسخ الاحتياطي ونتائج اختبار الاستعادة",
         "مصفوفة الصلاحيات الحرجة والبدائل الوظيفية"
+      ],
+      "evidence_required_en": [
+        "The business continuity and recovery plan",
+        "The backup logs and the restore test results",
+        "The critical access matrix and the role backups"
       ],
       "references": [
         {
@@ -615,6 +872,7 @@
     {
       "question_id": "re_third_parties",
       "canonical_text_ar": "كيف تُدار العلاقة مع الأطراف الثالثة (المقاولون، مكاتب التسويق، الوسطاء من الباطن، شركات الصيانة، مزودو الأنظمة التقنية) من حيث التحقق من الترخيص والعقود المكتوبة وبنود السرية وحماية البيانات؟",
+      "canonical_text_en": "How is the relationship with third parties managed (contractors, marketing agencies, sub-brokers, maintenance companies, technical system providers) in terms of verifying licences, written contracts, and confidentiality and data protection clauses?",
       "type": "enum",
       "options": [
         "عناية واجبة موثّقة وعقود تتضمن بنود السرية وحماية البيانات",
@@ -622,6 +880,12 @@
         "تعاملات بعضها بلا عقود مكتوبة",
         "لا يوجد إطار لإدارة الأطراف الثالثة"
       ],
+      "options_en": {
+        "عناية واجبة موثّقة وعقود تتضمن بنود السرية وحماية البيانات": "Documented due diligence and contracts containing confidentiality and data protection clauses",
+        "عقود مكتوبة دون بنود سرية أو حماية بيانات": "Written contracts, with no confidentiality or data protection clauses",
+        "تعاملات بعضها بلا عقود مكتوبة": "Some dealings have no written contracts",
+        "لا يوجد إطار لإدارة الأطراف الثالثة": "There is no framework for managing third parties"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -631,6 +895,12 @@
         "نماذج العقود واتفاقيات عدم الإفصاح",
         "نسخ من تراخيص المتعاقدين",
         "إجراء تقييم واعتماد الموردين"
+      ],
+      "evidence_required_en": [
+        "The list of third parties and their criticality rating",
+        "The contract templates and the non-disclosure agreements",
+        "Copies of the contractors' licences",
+        "The supplier assessment and approval procedure"
       ],
       "references": [
         {
@@ -650,6 +920,7 @@
     {
       "question_id": "re_records_retention",
       "canonical_text_ar": "كيف تُحفظ العقود وملفات الصفقات وسجلات العملاء، وما المدة المعتمدة للحفظ؟",
+      "canonical_text_en": "How are contracts, transaction files and client records kept, and what retention period has the organization approved?",
       "type": "enum",
       "options": [
         "أرشفة إلكترونية منظمة بصلاحيات محددة وسياسة حفظ معتمدة",
@@ -657,6 +928,12 @@
         "حفظ ورقي بشكل رئيسي",
         "حفظ متفرق وغير منظم"
       ],
+      "options_en": {
+        "أرشفة إلكترونية منظمة بصلاحيات محددة وسياسة حفظ معتمدة": "Organised electronic archiving with defined permissions and an approved retention policy",
+        "أرشفة إلكترونية دون سياسة حفظ أو ضبط صلاحيات": "Electronic archiving, with no retention policy and no access control",
+        "حفظ ورقي بشكل رئيسي": "Mainly paper storage",
+        "حفظ متفرق وغير منظم": "Scattered, disorganised storage"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -665,6 +942,11 @@
         "سياسة حفظ وإتلاف الوثائق",
         "هيكل الأرشيف الإلكتروني وصلاحيات الوصول",
         "عينة استرجاع لملف صفقة قديمة"
+      ],
+      "evidence_required_en": [
+        "The document retention and destruction policy",
+        "The electronic archive structure and the access rights",
+        "A sample retrieval of an old transaction file"
       ],
       "references": [
         {
@@ -684,6 +966,7 @@
     {
       "question_id": "re_compliance_monitoring",
       "canonical_text_ar": "هل يوجد نشاط رقابي دوري على الالتزام (مراجعة داخلية أو فحص التزام، مؤشرات أداء، تدريب سنوي للموظفين، وآلية معالجة الشكاوى وملاحظات الجهات الرقابية)؟",
+      "canonical_text_en": "Is there periodic compliance oversight (internal review or compliance testing, performance indicators, annual staff training, and a mechanism for handling complaints and regulators' findings)?",
       "type": "enum",
       "options": [
         "نعم، خطة مراجعة وتدريب معتمدة وتقارير دورية للإدارة",
@@ -691,6 +974,12 @@
         "تدريب أو توعية فقط دون مراجعة",
         "لا يوجد"
       ],
+      "options_en": {
+        "نعم، خطة مراجعة وتدريب معتمدة وتقارير دورية للإدارة": "Yes — an approved review and training plan, with periodic reports to management",
+        "مراجعات متفرقة عند الحاجة فقط": "Occasional reviews, only as needed",
+        "تدريب أو توعية فقط دون مراجعة": "Training or awareness only, with no review",
+        "لا يوجد": "There is none"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -700,6 +989,12 @@
         "سجل التدريب وشهادات الحضور",
         "سجل الشكاوى وإجراءات معالجتها",
         "تقارير الالتزام المرفوعة للإدارة العليا"
+      ],
+      "evidence_required_en": [
+        "The internal review or compliance testing plan and its reports",
+        "The training register and the attendance certificates",
+        "The complaints register and how they were handled",
+        "The compliance reports submitted to senior management"
       ],
       "references": [
         {

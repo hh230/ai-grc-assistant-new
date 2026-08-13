@@ -151,8 +151,24 @@ export function SectorQuestions({
       </div>
 
       <div className="mt-5 rounded-xl border border-hairline bg-surface px-4 py-4">
-        {/* Canonical Arabic, always — this is the text a reviewer approved. */}
-        <p className="text-base text-foreground" dir="rtl" lang="ar">
+        {/* The published English leads when there is one; the canonical Arabic stays visible
+            beneath it, because that is the text a reviewer approved and the one a customer would
+            cite. A question with no published translation shows Arabic alone — there is no
+            half-translated state to render, since publication is all-or-nothing (ADR 0069). */}
+        {question.canonicalTextEn && (
+          <p className="text-base text-foreground" dir="ltr" lang="en">
+            {question.canonicalTextEn}
+          </p>
+        )}
+        <p
+          className={
+            question.canonicalTextEn
+              ? "mt-2 text-sm text-foreground-muted"
+              : "text-base text-foreground"
+          }
+          dir="rtl"
+          lang="ar"
+        >
           {question.canonicalTextAr}
         </p>
         {question.references.length > 0 && (

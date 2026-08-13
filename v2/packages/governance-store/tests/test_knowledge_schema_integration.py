@@ -285,8 +285,9 @@ def test_arabic_can_NEVER_be_stored_as_a_translation(clean):
     _question(clean, release_id)
     with pytest.raises(psycopg.errors.CheckViolation, match="never_arabic"):
         clean.execute(
-            "INSERT INTO question_translations (release_id, question_id, language, text) "
-            "VALUES (%s, 'fal_license', 'ar', 'نسخة ثانية')",
+            "INSERT INTO question_translations "
+            " (release_id, question_id, language, text, source_text_ar) "
+            "VALUES (%s, 'fal_license', 'ar', 'نسخة ثانية', 'المصدر')",
             (release_id,),
         )
 
@@ -296,8 +297,9 @@ def test_a_translation_must_belong_to_a_question_that_exists_in_that_release(cle
     _question(clean, release_id)
     with pytest.raises(psycopg.errors.ForeignKeyViolation):
         clean.execute(
-            "INSERT INTO question_translations (release_id, question_id, language, text) "
-            "VALUES (%s, 'no_such_question', 'en', 'x')",
+            "INSERT INTO question_translations "
+            " (release_id, question_id, language, text, source_text_ar) "
+            "VALUES (%s, 'no_such_question', 'en', 'x', 'المصدر')",
             (release_id,),
         )
 

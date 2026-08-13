@@ -7,6 +7,7 @@
     {
       "question_id": "ed_activity_type",
       "canonical_text_ar": "ما طبيعة النشاط التعليمي الذي تزاوله المنشأة؟",
+      "canonical_text_en": "What kind of educational activity does the organization carry on?",
       "type": "enum",
       "options": [
         "رياض أطفال ومدارس أهلية (تعليم عام)",
@@ -16,6 +17,14 @@
         "منصة تعليم إلكتروني أو تدريب عن بُعد",
         "نشاط تعليمي مختلط (أكثر من نوع)"
       ],
+      "options_en": {
+        "رياض أطفال ومدارس أهلية (تعليم عام)": "Kindergartens and private schools (general education)",
+        "مدارس عالمية أو أجنبية بمناهج غير سعودية": "International or foreign schools with non-Saudi curricula",
+        "جامعة أو كلية أهلية (تعليم عالٍ)": "A private university or college (higher education)",
+        "معهد أو مركز تدريب أهلي خاضع للمؤسسة العامة للتدريب التقني والمهني": "A private institute or training centre under the Technical and Vocational Training Corporation",
+        "منصة تعليم إلكتروني أو تدريب عن بُعد": "An e-learning platform or distance training provider",
+        "نشاط تعليمي مختلط (أكثر من نوع)": "A mixed educational activity (more than one type)"
+      },
       "required": true,
       "category": "licensing",
       "importance": "high",
@@ -24,6 +33,11 @@
         "السجل التجاري موضحاً به الأنشطة",
         "الترخيص الصادر من الجهة المشرفة",
         "قائمة المراحل أو البرامج التعليمية المقدمة"
+      ],
+      "evidence_required_en": [
+        "The commercial registration showing the activities",
+        "The licence issued by the supervising authority",
+        "A list of the stages or educational programmes offered"
       ],
       "references": [
         {
@@ -47,6 +61,7 @@
     {
       "question_id": "ed_licences_inventory",
       "canonical_text_ar": "ما التراخيص والموافقات النظامية السارية لدى المنشأة حالياً، وما تواريخ انتهائها والجهة المصدرة لكل منها؟",
+      "canonical_text_en": "Which statutory licences and approvals does the organization currently hold in force, when do they expire, and which body issued each of them?",
       "type": "text",
       "options": [],
       "required": true,
@@ -60,6 +75,14 @@
         "الرخصة البلدية للمبنى",
         "ترخيص الاستثمار الأجنبي إن وُجد",
         "تراخيص نقل الطلاب إن كانت الخدمة مقدمة"
+      ],
+      "evidence_required_en": [
+        "The educational facility licence from the supervising authority",
+        "The commercial registration",
+        "The safety licence from the General Directorate of Civil Defence",
+        "The municipal licence for the building",
+        "The foreign investment licence, if any",
+        "Student transport licences, where that service is provided"
       ],
       "references": [
         {
@@ -79,6 +102,7 @@
     {
       "question_id": "ed_etec_accreditation",
       "canonical_text_ar": "ما وضع المنشأة من الاعتماد الصادر عن هيئة تقويم التعليم والتدريب؟",
+      "canonical_text_en": "What is the organization's position on accreditation from the Education and Training Evaluation Commission?",
       "type": "enum",
       "options": [
         "حاصلة على اعتماد مؤسسي ساري",
@@ -87,6 +111,13 @@
         "لم يُقدَّم طلب اعتماد حتى الآن",
         "غير منطبق على نشاط المنشأة"
       ],
+      "options_en": {
+        "حاصلة على اعتماد مؤسسي ساري": "Holds valid institutional accreditation",
+        "حاصلة على اعتماد مؤسسي وبرامجي": "Holds both institutional and programmatic accreditation",
+        "الطلب مقدم وقيد الدراسة": "An application has been submitted and is under review",
+        "لم يُقدَّم طلب اعتماد حتى الآن": "No accreditation application has been submitted yet",
+        "غير منطبق على نشاط المنشأة": "Not applicable to the organization's activity"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -95,6 +126,11 @@
         "شهادة الاعتماد أو خطاب الجهة المانحة",
         "تقرير الدراسة الذاتية",
         "خطة التحسين المعتمدة ونتائج آخر زيارة تقويمية"
+      ],
+      "evidence_required_en": [
+        "The accreditation certificate or the awarding body's letter",
+        "The self-study report",
+        "The approved improvement plan and the results of the most recent evaluation visit"
       ],
       "references": [
         {
@@ -106,6 +142,7 @@
     {
       "question_id": "ed_teaching_licences",
       "canonical_text_ar": "هل يحمل جميع شاغلي الوظائف التعليمية والتدريبية في المنشأة رخصة مهنية سارية وفق متطلبات هيئة تقويم التعليم والتدريب؟",
+      "canonical_text_en": "Do all staff in teaching and training roles hold a valid professional licence as required by the Education and Training Evaluation Commission?",
       "type": "enum",
       "options": [
         "نعم، جميع الشاغلين مرخصون وتُتابع تواريخ الانتهاء",
@@ -114,6 +151,13 @@
         "لا توجد متابعة موثقة لهذا المتطلب",
         "غير منطبق على طبيعة الوظائف لدينا"
       ],
+      "options_en": {
+        "نعم، جميع الشاغلين مرخصون وتُتابع تواريخ الانتهاء": "Yes — all of them are licensed and expiry dates are tracked",
+        "الغالبية مرخصون مع وجود حالات غير مكتملة": "Most are licensed, with some cases incomplete",
+        "عدد محدود فقط يحمل الرخصة": "Only a limited number hold the licence",
+        "لا توجد متابعة موثقة لهذا المتطلب": "There is no documented tracking of this requirement",
+        "غير منطبق على طبيعة الوظائف لدينا": "Not applicable to the nature of our roles"
+      },
       "required": true,
       "category": "licensing",
       "importance": "critical",
@@ -122,6 +166,11 @@
         "سجل الرخص المهنية وتواريخ سريانها",
         "ملفات الموظفين التعليميين",
         "إجراء التوظيف الموثق لشروط شغل الوظيفة"
+      ],
+      "evidence_required_en": [
+        "The register of professional licences and their validity dates",
+        "The teaching staff files",
+        "The documented recruitment procedure setting the conditions for the role"
       ],
       "references": [
         {
@@ -137,6 +186,7 @@
     {
       "question_id": "ed_fees_and_curriculum",
       "canonical_text_ar": "هل تحصل المنشأة على اعتماد الجهة المشرفة للرسوم الدراسية والخطط والمناهج والمواد التعليمية قبل تطبيقها؟",
+      "canonical_text_en": "Does the organization obtain the supervising authority's approval for tuition fees, study plans, curricula and teaching materials before applying them?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -148,6 +198,12 @@
         "الخطط الدراسية المعتمدة",
         "موافقات المواد والمناهج غير السعودية إن وُجدت",
         "نموذج العقد المبرم مع أولياء الأمور"
+      ],
+      "evidence_required_en": [
+        "Tuition fee approval letters for recent years",
+        "The approved study plans",
+        "Approvals for non-Saudi subjects and curricula, if any",
+        "The template contract signed with parents"
       ],
       "references": [
         {
@@ -163,6 +219,7 @@
     {
       "question_id": "ed_legal_form",
       "canonical_text_ar": "ما الشكل النظامي للكيان المالك للمنشأة التعليمية؟",
+      "canonical_text_en": "What is the legal form of the entity that owns the educational facility?",
       "type": "enum",
       "options": [
         "مؤسسة فردية",
@@ -171,6 +228,13 @@
         "شركة مساهمة مدرجة في السوق المالية",
         "جمعية أو مؤسسة أهلية أو وقف غير ربحي"
       ],
+      "options_en": {
+        "مؤسسة فردية": "A sole establishment",
+        "شركة ذات مسؤولية محدودة": "A limited liability company",
+        "شركة مساهمة مقفلة": "A closed joint stock company",
+        "شركة مساهمة مدرجة في السوق المالية": "A joint stock company listed on the capital market",
+        "جمعية أو مؤسسة أهلية أو وقف غير ربحي": "A non-profit association, foundation or endowment"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -179,6 +243,11 @@
         "عقد التأسيس أو النظام الأساسي",
         "السجل التجاري أو ترخيص الجهة المشرفة على القطاع غير الربحي",
         "هيكل الملكية المحدّث"
+      ],
+      "evidence_required_en": [
+        "The articles of association or the bylaws",
+        "The commercial registration, or the licence from the authority supervising the non-profit sector",
+        "The current ownership structure"
       ],
       "references": [
         {
@@ -198,6 +267,7 @@
     {
       "question_id": "ed_governance_maturity",
       "canonical_text_ar": "ما مستوى نضج هيكل الحوكمة لدى المنشأة من حيث وجود مجلس إدارة أو لجنة عليا ولوائح معتمدة ولجان فرعية وسياسة لتعارض المصالح؟",
+      "canonical_text_en": "How mature is the organization's governance structure — a board or senior committee, approved charters, sub-committees, and a conflict of interest policy?",
       "type": "enum",
       "options": [
         "منظومة حوكمة متكاملة تشمل تفويض الصلاحيات وتعارض المصالح وتقييم الأداء",
@@ -206,6 +276,13 @@
         "يوجد هيكل تنظيمي فقط دون لوائح حوكمة معتمدة",
         "لا يوجد هيكل حوكمة موثق والقرارات مركزية لدى المالك"
       ],
+      "options_en": {
+        "منظومة حوكمة متكاملة تشمل تفويض الصلاحيات وتعارض المصالح وتقييم الأداء": "A complete governance framework covering delegation of authority, conflict of interest and performance evaluation",
+        "يوجد مجلس ولجان فرعية تجتمع دورياً وتوثق محاضرها": "A board and sub-committees that meet regularly and minute their meetings",
+        "توجد لائحة حوكمة معتمدة دون لجان فاعلة": "An approved governance charter, with no active committees",
+        "يوجد هيكل تنظيمي فقط دون لوائح حوكمة معتمدة": "An organizational structure only, with no approved governance charter",
+        "لا يوجد هيكل حوكمة موثق والقرارات مركزية لدى المالك": "No documented governance structure; decisions are centralised with the owner"
+      },
       "required": true,
       "category": "governance",
       "importance": "high",
@@ -215,6 +292,12 @@
         "مصفوفة تفويض الصلاحيات",
         "محاضر اجتماعات المجلس أو اللجان",
         "سياسة تعارض المصالح ونماذج الإفصاح"
+      ],
+      "evidence_required_en": [
+        "The approved governance charter",
+        "The delegation of authority matrix",
+        "Minutes of the board or committee meetings",
+        "The conflict of interest policy and the disclosure forms"
       ],
       "references": [
         {
@@ -234,6 +317,7 @@
     {
       "question_id": "ed_risk_management",
       "canonical_text_ar": "كيف تُدار المخاطر المؤسسية في المنشأة حالياً؟",
+      "canonical_text_en": "How is enterprise risk managed in the organization today?",
       "type": "enum",
       "options": [
         "إطار متكامل لإدارة المخاطر مرتبط بالتخطيط الاستراتيجي والتقارير الدورية",
@@ -242,6 +326,13 @@
         "تُناقش المخاطر شفهياً دون توثيق",
         "لا توجد إدارة مخاطر ويتم التعامل مع الأحداث عند وقوعها"
       ],
+      "options_en": {
+        "إطار متكامل لإدارة المخاطر مرتبط بالتخطيط الاستراتيجي والتقارير الدورية": "A complete risk management framework, tied to strategic planning and periodic reporting",
+        "يوجد سجل مخاطر معتمد يُحدّث دورياً مع مالكي مخاطر وخطط معالجة": "An approved risk register, updated regularly, with risk owners and treatment plans",
+        "يوجد سجل مخاطر غير محدّث بشكل دوري": "A risk register that is not updated regularly",
+        "تُناقش المخاطر شفهياً دون توثيق": "Risks are discussed verbally, without documentation",
+        "لا توجد إدارة مخاطر ويتم التعامل مع الأحداث عند وقوعها": "There is no risk management; events are dealt with as they occur"
+      },
       "required": true,
       "category": "risk",
       "importance": "high",
@@ -250,6 +341,11 @@
         "منهجية أو سياسة إدارة المخاطر",
         "سجل المخاطر المؤسسي",
         "خطط المعالجة وتقارير المتابعة الدورية"
+      ],
+      "evidence_required_en": [
+        "The risk management methodology or policy",
+        "The corporate risk register",
+        "The treatment plans and the periodic follow-up reports"
       ],
       "references": [
         {
@@ -265,6 +361,7 @@
     {
       "question_id": "ed_student_protection",
       "canonical_text_ar": "ما الإجراءات المطبقة لحماية الطلاب وضمان سلامتهم داخل المنشأة وفي وسائل النقل، وهل توجد آلية معتمدة للإبلاغ عن حالات الإيذاء؟",
+      "canonical_text_en": "What measures are in place to protect students and keep them safe inside the facility and on transport, and is there an approved mechanism for reporting abuse?",
       "type": "enum",
       "options": [
         "توجد سياسة ومسؤول حماية معتمد وقنوات إبلاغ وتدريب موثق للعاملين",
@@ -272,6 +369,12 @@
         "توجد ممارسات غير موثقة يتولاها الإداريون",
         "لا توجد سياسة أو آلية موثقة"
       ],
+      "options_en": {
+        "توجد سياسة ومسؤول حماية معتمد وقنوات إبلاغ وتدريب موثق للعاملين": "There is a policy, an approved safeguarding officer, reporting channels and documented staff training",
+        "توجد سياسة حماية معتمدة دون مسؤول محدد أو تدريب": "An approved safeguarding policy, with no named officer and no training",
+        "توجد ممارسات غير موثقة يتولاها الإداريون": "Undocumented practices handled by the administrators",
+        "لا توجد سياسة أو آلية موثقة": "There is no documented policy or mechanism"
+      },
       "required": true,
       "category": "safety",
       "importance": "critical",
@@ -282,6 +385,13 @@
         "سجلات التحقق من العاملين المخالطين للطلاب",
         "سجلات تدريب العاملين على الحماية والسلامة",
         "عقود وتراخيص خدمة نقل الطلاب"
+      ],
+      "evidence_required_en": [
+        "The approved student safeguarding policy",
+        "The abuse reporting procedure and the register of reports",
+        "Vetting records for staff who have contact with students",
+        "Records of staff training on safeguarding and safety",
+        "Contracts and licences for the student transport service"
       ],
       "references": [
         {
@@ -301,6 +411,7 @@
     {
       "question_id": "ed_government_integration",
       "canonical_text_ar": "هل ترتبط أنظمة المنشأة تقنياً بأنظمة الجهات الحكومية المشرفة (تبادل بيانات الطلاب أو النتائج أو التراخيص)، وما ضوابط هذا الربط؟",
+      "canonical_text_en": "Are the organization's systems technically integrated with those of the supervising government bodies (exchanging student data, results or licences), and what controls govern that integration?",
       "type": "enum",
       "options": [
         "يوجد ربط تقني موثّق مع تحديد البيانات المتبادلة والمسؤول عنه وضوابط الوصول إليه",
@@ -309,6 +420,13 @@
         "لا يوجد أي تبادل بيانات مع أنظمة الجهات الحكومية، وذلك بعد حصر موثق",
         "لم يُحصر ما إذا كانت أنظمة المنشأة مرتبطة بأنظمة جهات حكومية"
       ],
+      "options_en": {
+        "يوجد ربط تقني موثّق مع تحديد البيانات المتبادلة والمسؤول عنه وضوابط الوصول إليه": "A documented technical integration, identifying the data exchanged, who owns it and the access controls over it",
+        "يوجد ربط تقني دون توثيق للبيانات المتبادلة أو دون ضوابط وصول محددة": "A technical integration, with no documentation of the data exchanged or no defined access controls",
+        "يتم التبادل يدوياً برفع ملفات أو إدخال مباشر دون ربط تقني": "Exchange is manual, by uploading files or direct entry, with no technical integration",
+        "لا يوجد أي تبادل بيانات مع أنظمة الجهات الحكومية، وذلك بعد حصر موثق": "There is no data exchange with government systems, confirmed by a documented inventory",
+        "لم يُحصر ما إذا كانت أنظمة المنشأة مرتبطة بأنظمة جهات حكومية": "It has not been established whether the organization's systems are integrated with government systems"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -317,6 +435,11 @@
         "وثائق الربط التقني مع الجهات الحكومية وبيان البيانات المتبادلة",
         "صلاحيات الوصول إلى واجهة الربط ومالكها",
         "سجل عمليات التبادل أو التصدير اليدوي إن وُجد"
+      ],
+      "evidence_required_en": [
+        "The technical integration documents with government bodies and a statement of the data exchanged",
+        "Access rights to the integration interface and who owns them",
+        "The log of exchanges or manual exports, if any"
       ],
       "references": [
         {
@@ -328,6 +451,7 @@
     {
       "question_id": "ed_cyber_controls",
       "canonical_text_ar": "ما مستوى ضوابط الأمن السيبراني المطبقة فعلياً في المنشأة؟",
+      "canonical_text_en": "What level of cybersecurity controls is actually applied in the organization?",
       "type": "enum",
       "options": [
         "منظومة أمن سيبراني مقاسة بمؤشرات ومراجعة دورية مستقلة",
@@ -336,6 +460,13 @@
         "توجد ممارسات تقنية أساسية دون سياسات معتمدة",
         "لا توجد سياسات ولا مسؤول مكلف بالأمن السيبراني"
       ],
+      "options_en": {
+        "منظومة أمن سيبراني مقاسة بمؤشرات ومراجعة دورية مستقلة": "A cybersecurity framework measured by indicators, with periodic independent review",
+        "تطبيق شامل يشمل إدارة الهويات والصلاحيات والنسخ الاحتياطي وإدارة الثغرات والاستجابة للحوادث": "Comprehensive implementation covering identity and access management, backup, vulnerability management and incident response",
+        "توجد سياسات معتمدة وتطبيق جزئي لضوابط الوصول والنسخ الاحتياطي": "Approved policies, with partial implementation of access controls and backup",
+        "توجد ممارسات تقنية أساسية دون سياسات معتمدة": "Basic technical practices, with no approved policies",
+        "لا توجد سياسات ولا مسؤول مكلف بالأمن السيبراني": "There are no policies and no one assigned to cybersecurity"
+      },
       "required": true,
       "category": "security",
       "importance": "high",
@@ -348,6 +479,15 @@
         "خطة الاستجابة للحوادث وسجل الحوادث",
         "جرد الأنظمة المستخدمة في المنشأة وتصنيفها ومواقع استضافتها، حيثما كان ذلك ذا صلة بنطاق الضوابط",
         "بيانات الاستضافة ومواقع معالجة البيانات أو تخزينها"
+      ],
+      "evidence_required_en": [
+        "The approved cybersecurity policies",
+        "The decision assigning the cybersecurity officer",
+        "The system access rights matrix",
+        "Backup logs and restore tests",
+        "The incident response plan and the incident register",
+        "An inventory of the systems used, their classification and hosting locations, where relevant to the scope of the controls",
+        "Hosting details and the locations where data is processed or stored"
       ],
       "references": [
         {
@@ -363,6 +503,7 @@
     {
       "question_id": "ed_nca_scope",
       "canonical_text_ar": "هل تخضع المنشأة لمتطلبات الهيئة الوطنية للأمن السيبراني بوصفها جهة حكومية أو جهة ذات علاقة ببنية تحتية وطنية حساسة أو بموجب التزام تعاقدي مع جهة حكومية؟",
+      "canonical_text_en": "Is the organization subject to National Cybersecurity Authority requirements as a government entity, as one connected to sensitive national infrastructure, or under a contractual obligation to a government body?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -374,6 +515,11 @@
         "المراسلات التنظيمية المحددة لصفة المنشأة",
         "أي تقارير التزام سابقة بضوابط الأمن السيبراني"
       ],
+      "evidence_required_en": [
+        "Contracts or agreements entered into with government bodies",
+        "The regulatory correspondence establishing the organization's status",
+        "Any previous compliance reports against the cybersecurity controls"
+      ],
       "references": [
         {
           "framework": "الضوابط الأساسية للأمن السيبراني (ECC)",
@@ -384,6 +530,7 @@
     {
       "question_id": "ed_processing_record",
       "canonical_text_ar": "هل أعدت المنشأة سجلاً لأنشطة معالجة البيانات الشخصية يشمل بيانات الطلاب وأولياء الأمور والموظفين وأغراض المعالجة وأسسها ومدد الاحتفاظ وجهات الإفصاح؟",
+      "canonical_text_en": "Has the organization prepared a record of personal data processing activities covering student, parent and staff data, the purposes and legal bases of processing, retention periods and the parties data is disclosed to?",
       "type": "enum",
       "options": [
         "يوجد سجل معتمد ومحدّث يغطي جميع أنشطة المعالجة",
@@ -391,6 +538,12 @@
         "يوجد حصر جزئي غير موثق رسمياً",
         "لا يوجد سجل ولا حصر لأنشطة المعالجة"
       ],
+      "options_en": {
+        "يوجد سجل معتمد ومحدّث يغطي جميع أنشطة المعالجة": "An approved, current record covering every processing activity",
+        "يوجد سجل معتمد لكنه غير محدّث": "An approved record that is out of date",
+        "يوجد حصر جزئي غير موثق رسمياً": "A partial inventory that is not formally documented",
+        "لا يوجد سجل ولا حصر لأنشطة المعالجة": "There is no record and no inventory of processing activities"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -399,6 +552,11 @@
         "سجل أنشطة معالجة البيانات الشخصية",
         "تصنيف البيانات وخريطة تدفقها",
         "سياسة الاحتفاظ والإتلاف"
+      ],
+      "evidence_required_en": [
+        "The record of personal data processing activities",
+        "The data classification and flow map",
+        "The retention and destruction policy"
       ],
       "references": [
         {
@@ -414,6 +572,7 @@
     {
       "question_id": "ed_guardian_consent",
       "canonical_text_ar": "كيف تحصل المنشأة على موافقة ولي الأمر وتحدد الأساس النظامي لمعالجة بيانات الطلاب، وبخاصة الصور ومقاطع الفيديو والبيانات الصحية والنشر عبر وسائل التواصل؟",
+      "canonical_text_en": "How does the organization obtain parental consent and establish the legal basis for processing student data, particularly photographs, video, health data and publishing on social media?",
       "type": "enum",
       "options": [
         "توجد موافقات مفصلة لكل غرض مع إمكانية السحب وسجل موثق للموافقات",
@@ -421,6 +580,12 @@
         "تُطلب موافقة عامة ضمن عقد التسجيل دون تفصيل الأغراض",
         "لا تُطلب موافقات موثقة"
       ],
+      "options_en": {
+        "توجد موافقات مفصلة لكل غرض مع إمكانية السحب وسجل موثق للموافقات": "Separate consent for each purpose, with the ability to withdraw it and a documented consent register",
+        "تُطلب موافقات منفصلة لبعض الأغراض دون آلية سحب الموافقة": "Separate consent for some purposes, with no withdrawal mechanism",
+        "تُطلب موافقة عامة ضمن عقد التسجيل دون تفصيل الأغراض": "A general consent within the enrolment contract, with no breakdown of purposes",
+        "لا تُطلب موافقات موثقة": "No documented consent is obtained"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -430,6 +595,12 @@
         "عقد التسجيل وملاحقه",
         "سياسة استخدام صور الطلاب والنشر الإعلامي",
         "سجل الموافقات وطلبات السحب"
+      ],
+      "evidence_required_en": [
+        "The parental consent forms",
+        "The enrolment contract and its schedules",
+        "The policy on using student images and media publication",
+        "The consent register and withdrawal requests"
       ],
       "references": [
         {
@@ -449,6 +620,7 @@
     {
       "question_id": "ed_privacy_governance",
       "canonical_text_ar": "ما الترتيبات القائمة لحوكمة الخصوصية من حيث تعيين مختص لحماية البيانات وإعلان سياسة الخصوصية والاستجابة لطلبات أصحاب البيانات والإبلاغ عن حوادث تسرّب البيانات؟",
+      "canonical_text_en": "What privacy governance arrangements are in place — appointing a data protection specialist, publishing a privacy policy, responding to data subject requests, and reporting data breach incidents?",
       "type": "enum",
       "options": [
         "مختص مكلّف وسياسة معلنة وإجراءات موثّقة للطلبات وللإبلاغ عن الحوادث",
@@ -456,6 +628,12 @@
         "سياسة خصوصية معلنة فقط دون مختص مكلّف",
         "لا توجد أي من هذه الترتيبات"
       ],
+      "options_en": {
+        "مختص مكلّف وسياسة معلنة وإجراءات موثّقة للطلبات وللإبلاغ عن الحوادث": "An assigned specialist, a published policy, and documented procedures for requests and for incident reporting",
+        "مختص مكلّف وسياسة معلنة دون إجراءات موثّقة للطلبات والحوادث": "An assigned specialist and a published policy, with no documented procedures for requests and incidents",
+        "سياسة خصوصية معلنة فقط دون مختص مكلّف": "A published privacy policy only, with no assigned specialist",
+        "لا توجد أي من هذه الترتيبات": "None of these arrangements exists"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -465,6 +643,12 @@
         "سياسة الخصوصية المعلنة",
         "إجراء الاستجابة لطلبات أصحاب البيانات وسجل الطلبات",
         "إجراء الإبلاغ عن حوادث تسرّب البيانات"
+      ],
+      "evidence_required_en": [
+        "The decision appointing the data protection specialist",
+        "The published privacy policy",
+        "The procedure for responding to data subject requests and the request register",
+        "The data breach reporting procedure"
       ],
       "references": [
         {
@@ -480,6 +664,7 @@
     {
       "question_id": "ed_cross_border_transfer",
       "canonical_text_ar": "هل تُنقل بيانات شخصية تخص الطلاب أو أولياء الأمور أو الموظفين خارج المملكة (منصات تعلّم مستضافة خارجياً، أو أنظمة إدارة طلاب أجنبية، أو أدوات تحليلات ودعم فني)؟",
+      "canonical_text_en": "Is personal data relating to students, parents or staff transferred outside the Kingdom (externally hosted learning platforms, foreign student information systems, or analytics and support tools)?",
       "type": "enum",
       "options": [
         "لا يتم أي نقل خارج المملكة",
@@ -487,6 +672,12 @@
         "نعم، دون تقييم أو ضوابط موثّقة",
         "غير معروف ويحتاج تحققاً"
       ],
+      "options_en": {
+        "لا يتم أي نقل خارج المملكة": "No transfer outside the Kingdom takes place",
+        "نعم، مع تقييم موثّق وضوابط تعاقدية للنقل": "Yes — with a documented assessment and contractual safeguards for the transfer",
+        "نعم، دون تقييم أو ضوابط موثّقة": "Yes — with no documented assessment or safeguards",
+        "غير معروف ويحتاج تحققاً": "Not known; this needs to be checked"
+      },
       "required": true,
       "category": "privacy",
       "importance": "high",
@@ -495,6 +686,11 @@
         "حصر منصات التعلّم وأنظمة إدارة الطلاب ومواقع استضافتها",
         "تقييم أثر النقل خارج المملكة إن وُجد",
         "الضوابط التعاقدية مع المزوّدين خارج المملكة"
+      ],
+      "evidence_required_en": [
+        "An inventory of the learning platforms and student information systems and where they are hosted",
+        "The impact assessment for transfer outside the Kingdom, if any",
+        "The contractual safeguards with providers outside the Kingdom"
       ],
       "references": [
         {
@@ -506,6 +702,7 @@
     {
       "question_id": "ed_education_continuity",
       "canonical_text_ar": "هل لدى المنشأة خطة موثقة لاستمرارية العملية التعليمية تغطي انقطاع الأنظمة أو تعذر استخدام المبنى أو التحول إلى التعليم عن بُعد؟",
+      "canonical_text_en": "Does the organization have a documented plan for continuity of teaching that covers system outages, the building becoming unusable, or a switch to distance learning?",
       "type": "enum",
       "options": [
         "توجد خطة معتمدة تشمل تحليل أثر الأعمال وأزمنة التعافي وتُختبر دورياً",
@@ -513,6 +710,12 @@
         "توجد ترتيبات غير موثقة تعتمد على اجتهاد الإدارة",
         "لا توجد خطة"
       ],
+      "options_en": {
+        "توجد خطة معتمدة تشمل تحليل أثر الأعمال وأزمنة التعافي وتُختبر دورياً": "An approved plan covering business impact analysis and recovery times, tested regularly",
+        "توجد خطة موثقة دون تحديد أزمنة التعافي أو اختبارها": "A documented plan, with no recovery times defined and no testing",
+        "توجد ترتيبات غير موثقة تعتمد على اجتهاد الإدارة": "Undocumented arrangements that rely on management's judgement",
+        "لا توجد خطة": "There is no plan"
+      },
       "required": true,
       "category": "resilience",
       "importance": "high",
@@ -522,6 +725,12 @@
         "تحليل أثر الأعمال",
         "نتائج اختبار الخطة وتقارير الدروس المستفادة",
         "خطة التحول للتعليم عن بُعد والبدائل التشغيلية"
+      ],
+      "evidence_required_en": [
+        "The approved business continuity plan",
+        "The business impact analysis",
+        "The plan test results and the lessons learned reports",
+        "The plan for switching to distance learning and the operational alternatives"
       ],
       "references": [
         {
@@ -537,6 +746,7 @@
     {
       "question_id": "ed_emergency_evacuation",
       "canonical_text_ar": "هل توجد خطط معتمدة للطوارئ والإخلاء تُنفَّذ تجاربها دورياً وتُوثَّق نتائجها، مع صيانة معدات السلامة وفق اشتراطات الدفاع المدني؟",
+      "canonical_text_en": "Are there approved emergency and evacuation plans, with drills carried out regularly and their results documented, and safety equipment maintained to Civil Defence requirements?",
       "type": "enum",
       "options": [
         "خطة معتمدة وتجارب دورية موثقة وصيانة معدات سلامة سارية",
@@ -544,6 +754,12 @@
         "توجد خطة دون تنفيذ تجارب",
         "لا توجد خطة إخلاء معتمدة"
       ],
+      "options_en": {
+        "خطة معتمدة وتجارب دورية موثقة وصيانة معدات سلامة سارية": "An approved plan, documented periodic drills, and safety equipment maintenance in force",
+        "تُنفذ تجارب إخلاء دون توثيق منهجي للنتائج": "Evacuation drills are carried out, with no systematic record of the results",
+        "توجد خطة دون تنفيذ تجارب": "A plan exists, but no drills are carried out",
+        "لا توجد خطة إخلاء معتمدة": "There is no approved evacuation plan"
+      },
       "required": true,
       "category": "safety",
       "importance": "high",
@@ -553,6 +769,12 @@
         "محاضر تجارب الإخلاء",
         "عقود وتقارير صيانة أنظمة الإنذار والإطفاء",
         "شهادة السلامة السارية"
+      ],
+      "evidence_required_en": [
+        "The approved emergency and evacuation plan",
+        "The evacuation drill records",
+        "Maintenance contracts and reports for the alarm and firefighting systems",
+        "The safety certificate in force"
       ],
       "references": [
         {
@@ -568,6 +790,7 @@
     {
       "question_id": "ed_third_party_register",
       "canonical_text_ar": "هل يوجد سجل معتمد للأطراف الخارجية المسند إليها خدمات مؤثرة، مع التحقق من تراخيصها وتقييم أدائها دورياً؟",
+      "canonical_text_en": "Is there an approved register of third parties providing material services, with verification of their licences and periodic evaluation of their performance?",
       "type": "enum",
       "options": [
         "سجل معتمد مع تحقق من التراخيص وتقييم دوري موثق للأداء والالتزام",
@@ -575,6 +798,12 @@
         "يوجد حصر للعقود دون تقييم أو تحقق من التراخيص",
         "لا يوجد سجل ولا تقييم"
       ],
+      "options_en": {
+        "سجل معتمد مع تحقق من التراخيص وتقييم دوري موثق للأداء والالتزام": "An approved register, with licence verification and documented periodic evaluation of performance and compliance",
+        "يوجد سجل مع تحقق من التراخيص دون تقييم دوري للأداء": "A register with licence verification, but no periodic performance evaluation",
+        "يوجد حصر للعقود دون تقييم أو تحقق من التراخيص": "An inventory of contracts, with no evaluation and no licence verification",
+        "لا يوجد سجل ولا تقييم": "There is no register and no evaluation"
+      },
       "required": true,
       "category": "third_party",
       "importance": "high",
@@ -584,6 +813,12 @@
         "تراخيص مقدمي الخدمات ونسخ من وثائقهم النظامية",
         "تقارير تقييم الأداء الدوري",
         "إجراء التعاقد واختيار الموردين"
+      ],
+      "evidence_required_en": [
+        "The third party register and the contracts in force",
+        "Service providers' licences and copies of their statutory documents",
+        "The periodic performance evaluation reports",
+        "The contracting and supplier selection procedure"
       ],
       "references": [
         {
@@ -599,6 +834,7 @@
     {
       "question_id": "ed_provider_contract_terms",
       "canonical_text_ar": "هل تتضمن عقود مقدمي الخدمات ومنصات التعلم الإلكتروني بنوداً للسرية وحماية البيانات الشخصية تحدد مسؤوليات المعالجة وحق التدقيق والإبلاغ عن الحوادث وإعادة البيانات أو إتلافها عند انتهاء العقد؟",
+      "canonical_text_en": "Do contracts with service providers and e-learning platforms include confidentiality and personal data protection clauses setting out processing responsibilities, audit rights, incident reporting, and return or destruction of the data when the contract ends?",
       "type": "boolean",
       "options": [],
       "required": true,
@@ -610,6 +846,12 @@
         "اتفاقيات معالجة البيانات مع مزودي المنصات",
         "اتفاقيات مستوى الخدمة",
         "إثباتات إعادة البيانات أو إتلافها عند إنهاء التعاقد"
+      ],
+      "evidence_required_en": [
+        "The contract templates and the confidentiality and data protection clauses",
+        "Data processing agreements with the platform providers",
+        "The service level agreements",
+        "Evidence that data was returned or destroyed when a contract ended"
       ],
       "references": [
         {
@@ -625,6 +867,7 @@
     {
       "question_id": "ed_policy_documentation",
       "canonical_text_ar": "ما الوضع الحالي لمنظومة السياسات والإجراءات وضبط الوثائق وحفظ السجلات الطلابية والمالية؟",
+      "canonical_text_en": "What is the current state of the policy and procedure framework, document control, and retention of student and financial records?",
       "type": "enum",
       "options": [
         "منظومة معتمدة مع ضبط إصدارات ومراجعة دورية وسياسة احتفاظ بالسجلات",
@@ -632,6 +875,12 @@
         "توجد وثائق متفرقة دون اعتماد أو ترقيم إصدارات",
         "لا توجد سياسات مكتوبة والعمل قائم على الممارسات المتوارثة"
       ],
+      "options_en": {
+        "منظومة معتمدة مع ضبط إصدارات ومراجعة دورية وسياسة احتفاظ بالسجلات": "An approved framework with version control, periodic review and a records retention policy",
+        "توجد منظومة سياسات معتمدة دون مراجعة دورية": "An approved policy framework, with no periodic review",
+        "توجد وثائق متفرقة دون اعتماد أو ترقيم إصدارات": "Scattered documents, with no approval and no version numbering",
+        "لا توجد سياسات مكتوبة والعمل قائم على الممارسات المتوارثة": "There are no written policies; the work rests on inherited practice"
+      },
       "required": true,
       "category": "records",
       "importance": "high",
@@ -641,6 +890,12 @@
         "إجراء ضبط الوثائق والسجلات",
         "سياسة الاحتفاظ بالسجلات وجدول مددها",
         "نماذج من ملفات الطلاب والسجلات الأكاديمية"
+      ],
+      "evidence_required_en": [
+        "The list of approved policies and procedures",
+        "The document and records control procedure",
+        "The records retention policy and its retention schedule",
+        "Samples of student files and academic records"
       ],
       "references": [
         {
@@ -660,6 +915,7 @@
     {
       "question_id": "ed_compliance_monitoring",
       "canonical_text_ar": "كيف تراقب المنشأة التزامها التنظيمي وتتابع ملاحظات الجهات الرقابية وزيارات التقويم حتى إغلاقها؟",
+      "canonical_text_en": "How does the organization monitor its regulatory compliance and follow regulator findings and evaluation visits through to closure?",
       "type": "enum",
       "options": [
         "يوجد سجل التزام وخطط تصحيحية ومراجعة داخلية دورية وتقارير ترفع للإدارة العليا",
@@ -667,6 +923,12 @@
         "تُتابع الملاحظات من الإدارة التنفيذية دون خطط تصحيحية موثقة",
         "لا توجد متابعة منظمة وتُعالج الملاحظات عند ورودها"
       ],
+      "options_en": {
+        "يوجد سجل التزام وخطط تصحيحية ومراجعة داخلية دورية وتقارير ترفع للإدارة العليا": "There is a compliance register, corrective plans, periodic internal review, and reports submitted to senior management",
+        "توجد خطط تصحيحية موثقة دون تحقق من فاعليتها": "Documented corrective plans, with no verification that they worked",
+        "تُتابع الملاحظات من الإدارة التنفيذية دون خطط تصحيحية موثقة": "Findings are followed by executive management, with no documented corrective plans",
+        "لا توجد متابعة منظمة وتُعالج الملاحظات عند ورودها": "There is no organised follow-up; findings are addressed as they arrive"
+      },
       "required": true,
       "category": "assurance",
       "importance": "high",
@@ -676,6 +938,12 @@
         "تقارير الزيارات الرقابية وزيارات التقويم",
         "خطط الإجراءات التصحيحية وأدلة إغلاقها",
         "تقارير المراجعة الداخلية ومحاضر عرضها على الإدارة العليا"
+      ],
+      "evidence_required_en": [
+        "The register of compliance with the statutory requirements",
+        "Reports of regulator and evaluation visits",
+        "The corrective action plans and the evidence that they were closed",
+        "The internal review reports and the minutes of presenting them to senior management"
       ],
       "references": [
         {

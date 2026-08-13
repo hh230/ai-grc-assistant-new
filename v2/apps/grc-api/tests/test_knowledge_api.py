@@ -884,3 +884,51 @@ def test_saving_an_answer_does_not_advance_the_assessment(client, dsn):
     assert client.get("/v1/knowledge/sector-interview/open", headers=TENANT_A).json()[
         "status"
     ] == "already_open"
+
+
+# --- the language parameter (ADR 0069) ---------------------------------------------------------
+
+
+def test_an_unknown_interview_language_is_a_400_not_a_silent_fallback(client):
+    """A typo'd or unsupported language must be REFUSED. Falling back to Arabic would hand the
+    caller a correct-looking payload in a language they did not ask for, and nothing in the
+    response would say so — the failure would only surface to the customer reading the screen."""
+    release_id = _release(client)
+    _activate(client, release_id)
+
+    refused = client.get(
+        "/v1/knowledge/industries/real_estate/active-release?language=fr", headers=TENANT_A
+    )
+    assert refused.status_code == 400
+    assert refused.json()["error"]["code"] == "unsupported_language"
+
+
+def test_arabic_and_no_language_return_the_same_payload(client):
+    """`language=ar` is not a translation path — it is the untranslated release. Its payload must
+    be byte-identical to the one served before this feature existed, which is what omitting the
+    parameter still asks for."""
+    release_id = _release(client)
+    _activate(client, release_id)
+
+    default = client.get(
+        "/v1/knowledge/industries/real_estate/active-release", headers=TENANT_A)
+    arabic = client.get(
+        "/v1/knowledge/industries/real_estate/active-release?language=ar", headers=TENANT_A)
+    assert default.status_code == arabic.status_code == 200
+    assert default.json() == arabic.json()
+
+
+def test_english_is_absent_until_a_question_is_published(client):
+    """`language=en` on a release with no published translation is not an error and not empty —
+    it is the Arabic, with no English fields at all."""
+    release_id = _release(client)
+    _activate(client, release_id)
+
+    english = client.get(
+        "/v1/knowledge/industries/real_estate/active-release?language=en", headers=TENANT_A)
+    assert english.status_code == 200
+    for question in english.json()["questions"]:
+        assert question["canonical_text_en"] is None
+        assert question["options_en"] is None
+        assert question["evidence_required_en"] is None
+        assert question["canonical_text_ar"], "the Arabic must still be served in full"

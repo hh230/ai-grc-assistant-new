@@ -7,14 +7,26 @@ async function parseError(response: Response): Promise<string> {
   return data.error ?? `Request failed (${response.status}).`;
 }
 
-export async function openSectorInterview(sessionId: string): Promise<SectorInterview> {
-  const response = await fetch(`/api/sector-interview/${sessionId}`, { method: "POST" });
+/** The locale travels with the two reads that return QUESTIONS, and with nothing else: it picks
+ * which published translation is folded in. Saving and concluding are unaffected, because an
+ * answer means the same thing in either language and is stored the same way. */
+export async function openSectorInterview(
+  sessionId: string,
+  language: string,
+): Promise<SectorInterview> {
+  const response = await fetch(
+    `/api/sector-interview/${sessionId}?language=${encodeURIComponent(language)}`,
+    { method: "POST" },
+  );
   if (!response.ok) throw new Error(await parseError(response));
   return (await response.json()) as SectorInterview;
 }
 
-export async function findOpenSectorInterview(): Promise<SectorInterview> {
-  const response = await fetch("/api/sector-interview/open", { cache: "no-store" });
+export async function findOpenSectorInterview(language: string): Promise<SectorInterview> {
+  const response = await fetch(
+    `/api/sector-interview/open?language=${encodeURIComponent(language)}`,
+    { cache: "no-store" },
+  );
   if (!response.ok) throw new Error(await parseError(response));
   return (await response.json()) as SectorInterview;
 }

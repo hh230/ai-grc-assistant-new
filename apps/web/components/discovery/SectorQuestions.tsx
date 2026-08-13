@@ -192,8 +192,16 @@ export function SectorQuestions({
           />
         </div>
         {question.evidenceRequired.length > 0 && (
-          <p className="mt-3 text-2xs text-foreground-muted">
-            {t("evidence")} {question.evidenceRequired.join(" · ")}
+          // Published English when the whole question was released in it; otherwise the Arabic.
+          // Never a mix — the two lists are positionally aligned, so falling back per line would
+          // read as a translation that ran out halfway.
+          <p
+            className="mt-3 text-2xs text-foreground-muted"
+            dir={question.evidenceRequiredEn ? "ltr" : "rtl"}
+            lang={question.evidenceRequiredEn ? "en" : "ar"}
+          >
+            {t("evidence")}{" "}
+            {(question.evidenceRequiredEn ?? question.evidenceRequired).join(" · ")}
           </p>
         )}
       </div>

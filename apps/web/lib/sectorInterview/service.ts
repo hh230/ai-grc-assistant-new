@@ -107,15 +107,19 @@ interface InterviewDto {
   answers: Record<string, unknown>;
 }
 
-function toOption(raw: unknown): SectorOption {
+function toOption(raw: unknown, english?: string): SectorOption {
   // A bare string is its own id: that is exactly how the legacy path behaved, so nothing about a
   // pack that declares no signal changes.
+  //
+  // `english` only ever replaces the LABEL. `value` stays the Arabic string or the `option_id`,
+  // because that is the answer's identity — what gets stored, what `writes_signal` maps. Reading
+  // a question in English must not change what answering it means.
   if (typeof raw === "object" && raw !== null && "option_id" in raw) {
     const option = raw as { option_id: string; text_ar?: string };
-    return { value: option.option_id, label: option.text_ar ?? option.option_id };
+    return { value: option.option_id, label: english ?? option.text_ar ?? option.option_id };
   }
   const text = String(raw);
-  return { value: text, label: text };
+  return { value: text, label: english ?? text };
 }
 
 function toQuestion(dto: QuestionDto): SectorQuestion {
@@ -123,7 +127,8 @@ function toQuestion(dto: QuestionDto): SectorQuestion {
     questionId: dto.question_id,
     canonicalTextAr: dto.canonical_text_ar,
     type: dto.type as SectorQuestion["type"],
-    options: dto.options.map(toOption),
+    options: dto.options.map((option, index) =>
+      toOption(option, dto.options_en?.[index])),
     required: dto.required,
     category: dto.category,
     importance: dto.importance as SectorQuestion["importance"],

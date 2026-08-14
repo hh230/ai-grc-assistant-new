@@ -65,9 +65,13 @@ jobs:
       - name: Deploy
         if: steps.changed.outputs.deploy == 'true'
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          SECRET: ${{ secrets.RAILWAY_TOKEN }}
+          # Explicit, so the deploy never depends on a linked working directory — a CI checkout
+          # has no `.railway` state to inherit.
+          PROJECT: fba42808-b43d-4e10-8102-097e045ad238
+          ENVIRONMENT: production
         run: |
-          if [ -z "$RAILWAY_TOKEN" ]; then
+          if [ -z "$SECRET" ]; then
             echo "::error::RAILWAY_TOKEN is not set. Add it under Settings → Secrets and variables"
             echo "::error::→ Actions. Without it grc-api stays on its previous image while the web"
             echo "::error::app moves ahead — the split this workflow exists to close."
@@ -77,8 +81,23 @@ jobs:
           # packages through relative path dependencies, and the service's own
           # RAILWAY_DOCKERFILE_PATH (`apps/grc-api/Dockerfile`) is stated relative to it.
           cd v2
+          # Railway has two token kinds and reads each from a DIFFERENT variable: an account or
+          # team token from RAILWAY_API_TOKEN, a project-scoped one from RAILWAY_TOKEN. Passing
+          # the wrong kind fails with a flat "Invalid RAILWAY_TOKEN" that names neither. Rather
+          # than make whoever rotates this secret remember which page they generated it on, try
+          # both — the deploy is identical either way.
           # `--ci` streams the build and exits with its status, so a failed build fails this job.
-          railway up --ci --service grc-api
+          set +e
+          RAILWAY_API_TOKEN="$SECRET" railway up --ci \
+            --project "$PROJECT" --environment "$ENVIRONMENT" --service grc-api
+          status=$?
+          if [ $status -ne 0 ]; then
+            echo "account-token form did not authenticate; retrying as a project token"
+            RAILWAY_TOKEN="$SECRET" railway up --ci \
+              --project "$PROJECT" --environment "$ENVIRONMENT" --service grc-api
+            status=$?
+          fi
+          exit $status
 
       - name: Verify the deployed API is serving
         if: steps.changed.outputs.deploy == 'true'

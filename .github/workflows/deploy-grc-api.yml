@@ -1,0 +1,99 @@
+# Deploys `grc-api` to Railway whenever CI passes on `main`.
+#
+# WHY THIS EXISTS. Vercel deploys `apps/web` on every merge, and nothing deployed `grc-api`. So a
+# merge that changed both shipped only the frontend, and the product broke in a way that looked
+# like success from every angle: PR merged, CI green, "Deployment completed". That is exactly how
+# an English interview reached production while the API serving it still had no `language`
+# parameter. A silent half-deploy is worse than a failed one.
+#
+# It runs on `workflow_run` rather than `push` so a red CI can never deploy: GitHub only fires this
+# after the CI workflow finishes, and the job below refuses anything but `success`.
+
+name: Deploy grc-api
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  # A manual escape hatch: re-deploy the current `main` without pushing an empty commit.
+  workflow_dispatch:
+
+# One deploy at a time. A queued run replaces a pending one rather than racing it onto the same
+# service, but an in-flight deploy is allowed to finish — cancelling mid-push can leave the
+# service on a half-uploaded build.
+concurrency:
+  group: deploy-grc-api
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # `workflow_dispatch` carries no `workflow_run`, so the second clause keeps manual runs working.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Deploy the exact commit CI validated, not whatever `main` points at by now — between
+          # CI finishing and this running, another merge may have landed.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Did anything under v2/ change?
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            echo "manual run — deploying regardless of the diff"
+          elif git diff --quiet HEAD^ HEAD -- v2/ 2>/dev/null; then
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "no change under v2/ — the running image is already this code"
+          else
+            # Fail OPEN. If the diff cannot be computed (shallow history, first commit, a merge
+            # with no single parent), deploy. A needless redeploy costs two minutes; a skipped one
+            # is the exact bug this workflow exists to prevent.
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            echo "v2/ changed (or the diff was unavailable) — deploying"
+          fi
+
+      - name: Install the Railway CLI
+        if: steps.changed.outputs.deploy == 'true'
+        run: npm install -g @railway/cli
+
+      - name: Deploy
+        if: steps.changed.outputs.deploy == 'true'
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ]; then
+            echo "::error::RAILWAY_TOKEN is not set. Add it under Settings → Secrets and variables"
+            echo "::error::→ Actions. Without it grc-api stays on its previous image while the web"
+            echo "::error::app moves ahead — the split this workflow exists to close."
+            exit 1
+          fi
+          # The build context is `v2/`, not the app directory: grc-api resolves ~20 sibling
+          # packages through relative path dependencies, and the service's own
+          # RAILWAY_DOCKERFILE_PATH (`apps/grc-api/Dockerfile`) is stated relative to it.
+          cd v2
+          # `--ci` streams the build and exits with its status, so a failed build fails this job.
+          railway up --ci --service grc-api
+
+      - name: Verify the deployed API is serving
+        if: steps.changed.outputs.deploy == 'true'
+        run: |
+          API=https://grc-api-production-90ae.up.railway.app
+          # Railway swaps the container in after the build reports done; give it room, but do not
+          # call the job green until the service actually answers.
+          for i in $(seq 1 30); do
+            if curl -fsS --max-time 10 "$API/health" | grep -q '"ok"'; then
+              echo "health: ok"
+              # /health/ready also proves the database is reachable AND migrated.
+              curl -fsS --max-time 15 "$API/health/ready" || true
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::$API/health did not return ok within five minutes."
+          exit 1
